@@ -15,59 +15,33 @@ class Reader: NfcAdapter.ReaderCallback {
 
         if (tag.toString().contains("MifareUltralight")
             || tag.toString().contains("NfcA")) {
-            Log.i(TAG, "Occasional card detected")
-            val occasionalCard = MifareUltralight.get(tag)
-
             try {
-                occasionalCard.connect()
-                val data: Array<ByteArray> = arrayOf(
-                    occasionalCard.readPages(0),
-                    occasionalCard.readPages(4),
-                    occasionalCard.readPages(8),
-                    occasionalCard.readPages(12),
-                )
-
+                Log.i(TAG, "Occasional card detected")
+                val card = MifareUltralight.get(tag)
+                val data = this.getDataFromMifareUltralight(card)
+                Parser().parseOccasionalCard(data)
             } catch (e: IOException) {
                 Log.e(TAG, "Error occurred during the communication: $e")
             }
         } else if (tag.toString().contains("IsoDep")
             || tag.toString().contains("NfcB")) {
-            Log.i(TAG, "Opus card detected")
-            val opusCard = IsoDep.get(tag)
-
+            val card = IsoDep.get(tag)
             try {
-                opusCard.connect()
-
-                opusCard.transceive("94A4000002000219".toByteArray())
-                val id = opusCard.transceive("94B201041D".toByteArray())
-                opusCard.transceive("94a408000420002001".toByteArray())
-                val expiryDate = opusCard.transceive("94b2010400".toByteArray())
-
-                val validations = arrayListOf<ByteArray>()
-                opusCard.transceive("94a408000420002010".toByteArray())
-                for (i in 1..8) {
-                    validations.add(opusCard.transceive("94b20${i}0400".toByteArray()))
-                }
-
-                val passes = arrayListOf<ByteArray>()
-                opusCard.transceive("94a408000420002020".toByteArray())
-                for (i in 1..4) {
-                    passes.add(opusCard.transceive("94b20${i}0400".toByteArray()))
-                }
-
-                val tickets = arrayListOf<ByteArray>()
-                opusCard.transceive("94a40800042000202A".toByteArray())
-                tickets.add(opusCard.transceive("94b2010400".toByteArray()))
-                opusCard.transceive("94a40800042000202B".toByteArray())
-                tickets.add(opusCard.transceive("94b2010400".toByteArray()))
-                opusCard.transceive("94a40800042000202C".toByteArray())
-                tickets.add(opusCard.transceive("94b2010400".toByteArray()))
-                opusCard.transceive("94a40800042000202D".toByteArray())
-                tickets.add(opusCard.transceive("94b2010400".toByteArray()))
-
+                Log.i(TAG, "Opus card detected")
+                Parser().parseOpusCard(card)
             } catch (e: IOException) {
                 Log.e(TAG, "Error occurred during the communication: $e")
             }
         }
+    }
+
+    private fun getDataFromMifareUltralight(card: MifareUltralight): Array<ByteArray> {
+        card.connect()
+        return arrayOf(
+            card.readPages(0),
+            card.readPages(4),
+            card.readPages(8),
+            card.readPages(12),
+        )
     }
 }
