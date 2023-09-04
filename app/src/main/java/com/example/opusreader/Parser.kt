@@ -110,14 +110,14 @@ class Parser {
         }
     }
 
-    private fun getOccasionalCardTripFirstUseDate(data: ByteArray): Calendar {
-        val tripFirstUseDays = (data[0].toUInt().and(0x03u).shl(12)
-                or data[1].toUInt().and(0xFFu).shl(4)
-                or data[2].toUInt().and(0xF0u).shr(4))
-        val tripFirstUseMinutes = (data[2].toUInt().and(0x0Fu).shl(7)
-                or data[3].toUInt().and(0xFEu))
+    private fun getOccasionalCardTripLineId(data: ByteArray): UInt {
+        return (data[5].toUInt().and(0x1Fu).shl(4)
+                or data[6].toUInt().and(0xF0u).shr(4))
+    }
 
-        return this.uIntToDate(tripFirstUseDays, tripFirstUseMinutes)
+    private fun getOccasionalCardTripOperatorId(data: ByteArray): UInt {
+        return (data[12].toUInt().and(0x01u).shl(7)
+                or data[13].toUInt().and(0xFEu).shr(1))
     }
 
     private fun getOccasionalCardTripUseDate(data: ByteArray): Calendar {
@@ -130,14 +130,14 @@ class Parser {
         return this.uIntToDate(tripFirstUseDays, tripUseMinutes)
     }
 
-    private fun getOccasionalCardTripLineId(data: ByteArray): UInt {
-        return (data[5].toUInt().and(0x1Fu).shl(4)
-                or data[6].toUInt().and(0xF0u).shr(4))
-    }
+    private fun getOccasionalCardTripFirstUseDate(data: ByteArray): Calendar {
+        val tripFirstUseDays = (data[0].toUInt().and(0x03u).shl(12)
+                or data[1].toUInt().and(0xFFu).shl(4)
+                or data[2].toUInt().and(0xF0u).shr(4))
+        val tripFirstUseMinutes = (data[2].toUInt().and(0x0Fu).shl(7)
+                or data[3].toUInt().and(0xFEu))
 
-    private fun getOccasionalCardTripOperatorId(data: ByteArray): UInt {
-        return (data[12].toUInt().and(0x01u).shl(7)
-                or data[13].toUInt().and(0xFEu).shr(1))
+        return this.uIntToDate(tripFirstUseDays, tripFirstUseMinutes)
     }
 
 
@@ -166,34 +166,62 @@ class Parser {
         card.transceive(this.hexStringToByteArray("94a408000420002010"))
         for (i in 1..3) {
             val data = card.transceive(this.hexStringToByteArray("94b20${i}0400"))
-            val tripDays = (data[0].toUInt().and(0xFFu).shl(6)
-                    or data[1].toUInt().and(0xFCu).shr(2))
-            val tripMinutes = (data[1].toUInt().and(0x03u).shl(9)
-                    or data[2].toUInt().and(0xFFu).shl(1)
-                    or data[3].toUInt().and(0x80u).shr(7))
-
-            val tripUse = this.uIntToDate(tripDays, tripMinutes)
 
             var tripLineId: UInt
             var tripOperatorId: UInt
-            if ((data[5].toUInt().and(0x0Fu).shl(7)
-                    or data[6].toUInt().and(0xFEu).shr(1)
-                        ).compareTo(0xFF8u) == 0) {
-                tripLineId = (data[12].toUInt().and(0x0Fu).shl(5)
-                        or data[13].toUInt().and(0xF8u).shr(3))
-                tripOperatorId = (data[8].toUInt().and(0x01u).shl(7)
-                        or data[9].toUInt().and(0xFEu).shr(1))
+            var tripFirstUseDate: Calendar
+            if (this.opusCardHasToUseByteOffset(data)) {
+                tripLineId = this.getOpusCardTripLineId(data, 1)
+                tripOperatorId = this.getOpusCardTripOperatorId(data, 1)
+                tripFirstUseDate = this.getOpusCardTripFirstUseDate(data, 5)
             } else {
-                tripLineId = (data[11].toUInt().and(0x0Fu).shl(5)
-                        or data[12].toUInt().and(0xF8u).shr(3))
-                tripOperatorId = (data[7].toUInt().and(0x01u).shl(7)
-                        or data[8].toUInt().and(0xFEu).shr(1))
+                tripLineId = this.getOpusCardTripLineId(data)
+                tripOperatorId = this.getOpusCardTripOperatorId(data)
+                tripFirstUseDate = this.getOccasionalCardTripFirstUseDate(data)
             }
 
-            Log.i(TAG, "tripUse: $tripUse")
+            val tripUseDate = this.getOpusCardTripUseDate(data)
+
             Log.i(TAG, "tripLineId: $tripLineId")
             Log.i(TAG, "tripOperatorId: $tripOperatorId")
+            Log.i(TAG, "tripUseDate: $tripUseDate")
+            Log.i(TAG, "tripFirstUseDate: $tripFirstUseDate")
         }
+    }
+
+    private fun opusCardHasToUseByteOffset(data: ByteArray): Boolean {
+        return (data[5].toUInt().and(0x0Fu).shl(8)
+                or data[6].toUInt().and(0xFFu)).compareTo(0xFF8u) == 0
+    }
+
+    private fun getOpusCardTripLineId(data: ByteArray, byteOffset: Int = 0): UInt {
+        return (data[11 + byteOffset].toUInt().and(0x0Fu).shl(5)
+                or data[12 + byteOffset].toUInt().and(0xF8u).shr(3))
+    }
+
+    private fun getOpusCardTripOperatorId(data: ByteArray, byteOffset: Int = 0): UInt {
+        return (data[7 + byteOffset].toUInt().and(0x01u).shl(7)
+                or data[8 + byteOffset].toUInt().and(0xFEu).shr(1))
+    }
+
+    private fun getOpusCardTripUseDate(data: ByteArray): Calendar {
+        val tripUseDays = (data[0].toUInt().and(0xFFu).shl(6)
+                or data[1].toUInt().and(0xFCu).shr(2))
+        val tripUseMinutes = (data[1].toUInt().and(0x03u).shl(9)
+                or data[2].toUInt().and(0xFFu).shl(1)
+                or data[3].toUInt().and(0x80u).shr(7))
+
+        return this.uIntToDate(tripUseDays, tripUseMinutes)
+    }
+
+    private fun getOpusCardTripFirstUseDate(data: ByteArray, byteOffset: Int = 0): Calendar {
+        val tripFirstUseDays = (data[14 + byteOffset].toUInt().and(0x7Fu).shl(7)
+                or data[15 + byteOffset].toUInt().and(0xFEu).shr(1))
+        val tripFirstUseMinutes = (data[15].toUInt().and(0x01u).shl(10)
+                or data[16 + byteOffset].toUInt().and(0xFFu).shl(2)
+                or data[17 + byteOffset].toUInt().and(0xC0u).shr(6))
+
+        return this.uIntToDate(tripFirstUseDays, tripFirstUseMinutes)
     }
 
 
