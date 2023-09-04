@@ -177,7 +177,7 @@ class Parser {
             } else {
                 tripLineId = this.getOpusCardTripLineId(data)
                 tripOperatorId = this.getOpusCardTripOperatorId(data)
-                tripFirstUseDate = this.getOccasionalCardTripFirstUseDate(data)
+                tripFirstUseDate = this.getOpusCardTripFirstUseDate(data)
             }
 
             val tripUseDate = this.getOpusCardTripUseDate(data)
