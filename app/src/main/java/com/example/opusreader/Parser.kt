@@ -2,7 +2,6 @@ package com.example.opusreader
 
 import android.nfc.tech.IsoDep
 import android.util.Log
-import java.math.BigInteger
 import java.util.Calendar
 
 private const val TAG = "Parser"
@@ -13,6 +12,8 @@ class Parser {
 
         val fareType = this.getOccasionalCardFareType(data)
         val fareOperatorId = this.getOccasionalCardFareOperatorId(data)
+        val fareBuyingDate = this.getOccasionalCardFareBuyingDate(data)
+
         var fareUnlimited = false
         var fareNbOfTickets = 0u
         if (this.isTicketsOccasionalCard(data)) {
@@ -25,6 +26,7 @@ class Parser {
         Log.i(TAG, "id: $id")
         Log.i(TAG, "fareType: $fareType")
         Log.i(TAG, "fareOperatorId: $fareOperatorId")
+        Log.i(TAG, "fareBuyingDate: $fareBuyingDate")
         Log.i(TAG, "fareUnlimited: $fareUnlimited")
         Log.i(TAG, "fareNbOfTickets: $fareNbOfTickets")
 
@@ -65,9 +67,8 @@ class Parser {
     }
 
     private fun getOccasionalCardFareType(data: Array<ByteArray>): UInt {
-        return (data[1][4].toUInt().and(0xFFu).shl(9)
-                or data[1][5].toUInt().and(0xFFu).shl(1)
-                or data[1][6].toUInt().and(0xFFu).shr(7))
+        return (data[1][4].toUInt().and(0xFFu).shl(8)
+                or data[1][5].toUInt().and(0xFFu))
     }
 
     private fun getOccasionalCardFareOperatorId(data: Array<ByteArray>): UInt {
@@ -91,6 +92,13 @@ class Parser {
 
     private fun getOccasionalCardFareNbOfTickets(data: Array<ByteArray>): UInt {
         return data[1][7].toUInt().and(0x1Fu)
+    }
+
+    private fun getOccasionalCardFareBuyingDate(data: Array<ByteArray>): Calendar {
+        val fareBuyingDays = (data[1][8].toUInt().and(0xFFu).shl(6)
+                or data[1][9].toUInt().and(0xFCu).shr(2))
+
+        return this.uIntToDate(fareBuyingDays, 0u)
     }
 
     private fun getOccasionalCardTrips(data: Array<ByteArray>) {
@@ -177,13 +185,28 @@ class Parser {
         card.transceive(this.hexStringToByteArray("94a408000420002020"))
         for (i in 1..4) {
             val data = card.transceive(this.hexStringToByteArray("94b20${i}0400"))
-            val fareDays = (data[5].toUInt().and(0x01u).shl(13)
+
+            val fareDaysFrom = (data[4].toUInt().and(0x7Fu).shl(7)
+                    or data[5].toUInt().and(0xFEu).shr(1))
+
+            val fareDaysUntil = (data[5].toUInt().and(0x01u).shl(13)
                     or data[6].toUInt().and(0xFFu).shl(5)
                     or data[7].toUInt().and(0xF8u).shr(3))
 
-            val fareValidity = this.uIntToDate(fareDays, 0u)
+            val fareDaysBuying = (data[9].toUInt().and(0x03u).shl(12)
+                    or data[10].toUInt().and(0xFFu).shl(4)
+                    or data[11].toUInt().and(0xF0u).shr(4))
 
-            Log.i(TAG, "fareValidity: $fareValidity")
+            val fareMinutesBuying = (data[11].toUInt().and(0x0Fu).shl(7)
+                    or data[12].toUInt().and(0xFEu).shr(1))
+
+            val fareValidityFromDate = this.uIntToDate(fareDaysFrom, 0u)
+            val fareValidityUntilDate = this.uIntToDate(fareDaysUntil, 0u)
+            val fareBuyingDate = this.uIntToDate(fareDaysBuying, fareMinutesBuying)
+
+            Log.i(TAG, "fareValidityFromDate: $fareValidityFromDate")
+            Log.i(TAG, "fareValidityUntilDate: $fareValidityUntilDate")
+            Log.i(TAG, "fareBuyingDate: $fareBuyingDate")
         }
     }
 
