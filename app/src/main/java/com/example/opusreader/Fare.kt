@@ -25,7 +25,6 @@ class Fare {
         this.ticketCount = ticketCount
         this.validityFromDate = null
         this.validityUntilDate = null
-        this.log()
     }
 
     constructor(
@@ -41,17 +40,15 @@ class Fare {
         this.ticketCount = null
         this.validityFromDate = validityFromDate
         this.validityUntilDate = validityUntilDate
-        this.log()
     }
 
-    private fun log() {
-        Log.i(TAG, "-----")
-        Log.i(TAG, "Fare")
-        Log.i(TAG, "typeId: $typeId")
-        Log.i(TAG, "operatorId: $operatorId")
-        Log.i(TAG, "buyingDate: $buyingDate")
-        Log.i(TAG, "ticketCount: $ticketCount")
-        Log.i(TAG, "validityFromDate: $validityFromDate")
-        Log.i(TAG, "validityUntilDate: $validityUntilDate")
+    fun log(prefix: String = "") {
+        Log.i(TAG, "${prefix}FARE")
+        Log.i(TAG, "${prefix}typeId: $typeId")
+        Log.i(TAG, "${prefix}operatorId: $operatorId")
+        Log.i(TAG, "${prefix}buyingDate: $buyingDate")
+        Log.i(TAG, "${prefix}ticketCount: $ticketCount")
+        Log.i(TAG, "${prefix}validityFromDate: $validityFromDate")
+        Log.i(TAG, "${prefix}validityUntilDate: $validityUntilDate")
     }
 }

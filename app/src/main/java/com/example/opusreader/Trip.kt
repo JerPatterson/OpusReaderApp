@@ -21,15 +21,13 @@ class Trip {
         this.operatorId = operatorId
         this.useDate = useDate
         this.firstUseDate = firstUseDate
-        this.log()
     }
 
-    private fun log() {
-        Log.i(TAG, "-----")
-        Log.i(TAG, "TRIP")
-        Log.i(TAG, "lineId: $lineId")
-        Log.i(TAG, "operatorId: $operatorId")
-        Log.i(TAG, "useDate: $useDate")
-        Log.i(TAG, "firstUseDate: $firstUseDate")
+    fun log(prefix: String = "") {
+        Log.i(TAG, "${prefix}TRIP")
+        Log.i(TAG, "${prefix}lineId: $lineId")
+        Log.i(TAG, "${prefix}operatorId: $operatorId")
+        Log.i(TAG, "${prefix}useDate: $useDate")
+        Log.i(TAG, "${prefix}firstUseDate: $firstUseDate")
     }
 }

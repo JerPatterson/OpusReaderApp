@@ -8,28 +8,25 @@ import java.util.Calendar
 private const val TAG = "Parser"
 
 class Parser {
-    fun parseOccasionalCard(card: MifareUltralight) {
+    fun parseOccasionalCard(card: MifareUltralight): Card {
         val data = this.getDataFromMifareUltralight(card)
 
         val id = this.getOccasionalCardId(data)
-
-        Log.i(TAG, "id: $id")
-
         val fares = this.getOccasionalCardFare(data)
         val trips = this.getOccasionalCardTrips(data)
+
+        return Card(CardType.Occasional, id, null, fares, trips)
     }
 
-    fun parseOpusCard(card: IsoDep) {
+    fun parseOpusCard(card: IsoDep): Card {
         card.connect()
 
         val id = this.getOpusCardId(card)
         val expiryDate = this.getOpusCardExpiryDate(card)
-
-        Log.i(TAG, "id: $id")
-        Log.i(TAG, "expiryDate: $expiryDate")
-
         val fares = this.getOpusCardFares(card)
         val trips = this.getOpusCardTrips(card)
+
+        return Card(CardType.Opus, id.toULong(), expiryDate, fares, trips)
     }
 
 
