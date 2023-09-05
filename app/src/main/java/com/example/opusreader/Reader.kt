@@ -16,10 +16,9 @@ class Reader: NfcAdapter.ReaderCallback {
         if (tag.toString().contains("MifareUltralight")
             || tag.toString().contains("NfcA")) {
             try {
-                Log.i(TAG, "Occasional card detected")
                 val card = MifareUltralight.get(tag)
-                val data = this.getDataFromMifareUltralight(card)
-                Parser().parseOccasionalCard(data)
+                Log.i(TAG, "Occasional card detected")
+                Parser().parseOccasionalCard(card)
             } catch (e: IOException) {
                 Log.e(TAG, "Error occurred during the communication: $e")
             }
@@ -33,15 +32,5 @@ class Reader: NfcAdapter.ReaderCallback {
                 Log.e(TAG, "Error occurred during the communication: $e")
             }
         }
-    }
-
-    private fun getDataFromMifareUltralight(card: MifareUltralight): Array<ByteArray> {
-        card.connect()
-        return arrayOf(
-            card.readPages(0),
-            card.readPages(4),
-            card.readPages(8),
-            card.readPages(12),
-        )
     }
 }
