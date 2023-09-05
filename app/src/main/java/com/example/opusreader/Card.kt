@@ -12,6 +12,7 @@ class Card(
     private var fares: ArrayList<Fare>,
     private var trips: ArrayList<Trip>
 ) {
+
     init {
         this.log()
     }
