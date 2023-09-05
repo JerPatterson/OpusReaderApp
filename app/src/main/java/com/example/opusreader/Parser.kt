@@ -2,10 +2,7 @@ package com.example.opusreader
 
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
-import android.util.Log
 import java.util.Calendar
-
-private const val TAG = "Parser"
 
 class Parser {
     fun parseOccasionalCard(card: MifareUltralight): Card {
@@ -198,7 +195,7 @@ class Parser {
             trips.add(Trip(lineId, operatorId, useDate, firstUseDate))
         }
 
-        return trips;
+        return trips
     }
 
     private fun opusCardHasToUseByteOffset(data: ByteArray): Boolean {
@@ -263,7 +260,7 @@ class Parser {
                 val validityFromDate = this.getOpusCardFareValidityFromDate(data)
                 val validityUntilDate = this.getOpusCardFareValidityUntilDate(data)
 
-                fares.add(Fare(typeId, operatorId, buyingDate, validityFromDate, validityUntilDate))
+                fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, validityUntilDate))
             }
         }
 

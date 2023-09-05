@@ -5,25 +5,14 @@ import java.util.Calendar
 
 private const val TAG = "Card"
 
-class Card {
-    private var type: CardType
-    private var id: ULong
-    private var fares: ArrayList<Fare>
+class Card(
+    private var type: CardType,
+    private var id: ULong,
+    private var expiryDate: Calendar?,
+    private var fares: ArrayList<Fare>,
     private var trips: ArrayList<Trip>
-    private var expiryDate: Calendar?
-
-    constructor(
-        type: CardType,
-        id: ULong,
-        expiryDate: Calendar?,
-        fares: ArrayList<Fare>,
-        trips: ArrayList<Trip>,
-    ) {
-        this.type = type
-        this.id = id
-        this.expiryDate = expiryDate
-        this.fares = fares
-        this.trips = trips
+) {
+    init {
         this.log()
     }
 
@@ -33,6 +22,7 @@ class Card {
         Log.i(TAG, "type: $type")
         Log.i(TAG, "id: $id")
         Log.i(TAG, "expiryDate: $expiryDate")
+        Log.i(TAG, "\t-----")
         this.logFares()
         Log.i(TAG, "\t-----")
         this.logTrips()
@@ -42,7 +32,7 @@ class Card {
     private fun logFares() {
         for ((i, fare) in this.fares.withIndex()) {
             fare.log("\t")
-            if (i !== this.fares.lastIndex) Log.i(TAG, "\t-----")
+            if (i.compareTo(this.fares.lastIndex) != 0) Log.i(TAG, "\t-----")
         }
 
     }
@@ -50,7 +40,7 @@ class Card {
     private fun logTrips() {
         for ((i, trip) in this.trips.withIndex()) {
             trip.log("\t")
-            if (i !== this.trips.lastIndex) Log.i(TAG, "\t-----")
+            if (i.compareTo(this.trips.lastIndex) != 0) Log.i(TAG, "\t-----")
         }
     }
 }
