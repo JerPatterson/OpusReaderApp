@@ -239,6 +239,8 @@ class Parser {
         card.transceive(this.hexStringToByteArray("94a408000420002020"))
         for (i in 1..4) {
             val data = card.transceive(this.hexStringToByteArray("94b20${i}0400"))
+            if (data.size.compareTo(31) != 0) continue
+
             val typeId = this.getOpusCardFareTypeId(data)
             val operatorId = this.getOpusCardFareOperatorId(data)
             val buyingDate = this.getOpusCardFareBuyingDate(data)
@@ -260,7 +262,16 @@ class Parser {
                 val validityFromDate = this.getOpusCardFareValidityFromDate(data)
                 val validityUntilDate = this.getOpusCardFareValidityUntilDate(data)
 
-                fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, validityUntilDate))
+                fares.add(
+                    Fare(
+                        typeId,
+                        operatorId,
+                        buyingDate,
+                        null,
+                        validityFromDate,
+                        validityUntilDate
+                    )
+                )
             }
         }
 
@@ -268,10 +279,8 @@ class Parser {
     }
 
     private fun getOpusCardFareTypeId(data: ByteArray): UInt {
-        return (data[0].toUInt().and(0xFFu).shl(24)
-                or data[1].toUInt().and(0xFFu).shl(16)
-                or data[2].toUInt().and(0xFFu).shl(8)
-                or data[3].toUInt().and(0xFFu))
+        return (data[0].toUInt().and(0xFFu).shl(8)
+                or data[1].toUInt().and(0xFFu))
     }
 
     private fun getOpusCardFareOperatorId(data: ByteArray): UInt {

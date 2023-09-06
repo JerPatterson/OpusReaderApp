@@ -9,7 +9,7 @@ private const val TAG = "MainActivity"
 private const val FLAGS = NfcAdapter.FLAG_READER_NFC_A or NfcAdapter.FLAG_READER_NFC_B
 
 class MainActivity : AppCompatActivity() {
-    private val reader = Reader()
+    private val reader = Reader(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

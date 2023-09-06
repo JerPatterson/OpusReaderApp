@@ -1,6 +1,8 @@
 package com.example.opusreader
 
+
 import android.util.Log
+import java.io.Serializable
 import java.util.Calendar
 
 private const val TAG = "Card"
@@ -10,7 +12,7 @@ class Card(
     private var id: ULong,
     private var expiryDate: Calendar?,
     private var fares: ArrayList<Fare>,
-    private var trips: ArrayList<Trip>
+    var trips: ArrayList<Trip>
 ) {
 
     init {

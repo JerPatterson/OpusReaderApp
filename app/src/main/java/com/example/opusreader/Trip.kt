@@ -6,7 +6,7 @@ import java.util.Calendar
 private const val TAG = "Trip"
 
 class Trip(
-    private var lineId: UInt,
+    var lineId: UInt,
     private var operatorId: UInt,
     private var useDate: Calendar,
     private var firstUseDate: Calendar
