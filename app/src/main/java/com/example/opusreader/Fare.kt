@@ -1,6 +1,7 @@
 package com.example.opusreader
 
 import android.util.Log
+import java.io.Serializable
 import java.util.Calendar
 
 private const val TAG = "Fare"
@@ -12,7 +13,7 @@ class Fare(
     private var ticketCount: UInt?,
     private var validityFromDate: Calendar? = null,
     private var validityUntilDate: Calendar? = null
-) {
+): Serializable {
 
     fun log(prefix: String = "") {
         Log.i(TAG, "${prefix}FARE")

@@ -13,7 +13,7 @@ class Card(
     private var expiryDate: Calendar?,
     private var fares: ArrayList<Fare>,
     var trips: ArrayList<Trip>
-) {
+): Serializable {
 
     init {
         this.log()

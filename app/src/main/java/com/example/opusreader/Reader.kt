@@ -5,6 +5,7 @@ import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
+import android.os.Bundle
 import android.util.Log
 import java.io.IOException
 
@@ -36,13 +37,8 @@ class Reader(private var activity: MainActivity) : NfcAdapter.ReaderCallback {
         }
 
         if (cardParsed != null) {
-            val lines = Array(3) { _ -> 0 }
             val intent = Intent(activity, CardActivity::class.java)
-            for ((i, trip) in cardParsed.trips.withIndex()) {
-                lines[i] = trip.lineId.toInt()
-            }
-
-            intent.putExtra("lines", lines)
+            intent.putExtra("card", cardParsed)
             activity.startActivity(intent)
         }
     }
