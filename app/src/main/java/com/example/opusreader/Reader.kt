@@ -5,8 +5,8 @@ import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
-import android.os.Bundle
 import android.util.Log
+import com.google.gson.Gson
 import java.io.IOException
 
 
@@ -37,8 +37,9 @@ class Reader(private var activity: MainActivity) : NfcAdapter.ReaderCallback {
         }
 
         if (cardParsed != null) {
+            val gson = Gson()
             val intent = Intent(activity, CardActivity::class.java)
-            intent.putExtra("card", cardParsed)
+            intent.putExtra("card", gson.toJson(cardParsed))
             activity.startActivity(intent)
         }
     }

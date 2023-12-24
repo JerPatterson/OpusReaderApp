@@ -2,18 +2,17 @@ package com.example.opusreader
 
 
 import android.util.Log
-import java.io.Serializable
 import java.util.Calendar
 
 private const val TAG = "Card"
 
 class Card(
-    private var type: CardType,
-    private var id: ULong,
-    private var expiryDate: Calendar?,
+    var type: CardType,
+    var id: ULong,
+    var expiryDate: Calendar?,
     private var fares: ArrayList<Fare>,
     var trips: ArrayList<Trip>
-): Serializable {
+) {
 
     init {
         this.log()
@@ -37,7 +36,6 @@ class Card(
             fare.log("\t")
             if (i.compareTo(this.fares.lastIndex) != 0) Log.i(TAG, "\t-----")
         }
-
     }
 
     private fun logTrips() {
