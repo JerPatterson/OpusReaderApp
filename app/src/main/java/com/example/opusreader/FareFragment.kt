@@ -1,17 +1,15 @@
 package com.example.opusreader
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.google.gson.Gson
 
-private const val ARG_FARE_NAME = "lineLongName"
-private const val ARG_OPERATOR_NAME = "operatorName"
-private const val ARG_BUYING_DATE = "buyingDate"
-private const val ARG_TICKET_COUNT = "ticketCount"
-private const val ARG_VALIDITY_FROM_DATE = "buyingDate"
-private const val ARG_VALIDITY_UNTIL_DATE = "buyingDate"
+private const val ARG_FARE = "fare"
 
 /**
  * A simple [Fragment] subclass.
@@ -19,22 +17,13 @@ private const val ARG_VALIDITY_UNTIL_DATE = "buyingDate"
  * create an instance of this fragment.
  */
 class FareFragment : Fragment() {
-    private var fareName: String? = null
-    private var operatorName: String? = null
-    private var buyingDate: String? = null
-    private var ticketCount: String? = null
-    private var validityFromDate: String? = null
-    private var validityUntilDate: String? = null
+    private var mView: View? = null
+    private var fare: Fare? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            this.fareName = it.getString(ARG_FARE_NAME)
-            this.operatorName = it.getString(ARG_OPERATOR_NAME)
-            this.buyingDate = it.getString(ARG_BUYING_DATE)
-            this.ticketCount = it.getString(ARG_TICKET_COUNT)
-            this.validityFromDate = it.getString(ARG_VALIDITY_FROM_DATE)
-            this.validityUntilDate = it.getString(ARG_VALIDITY_UNTIL_DATE)
+            this.fare = Gson().fromJson(it.getString(ARG_FARE), Fare::class.java)
         }
     }
 
@@ -42,22 +31,39 @@ class FareFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_fare, container, false)
+        mView = inflater.inflate(R.layout.fragment_fare, container, false)
+
+        val fareValue = this.fare
+        if (fareValue != null) {
+            this.addFareInfoSection(fareValue)
+        }
+
+        return mView
     }
 
     companion object {
         @JvmStatic
         fun newInstance(fare: Fare) =
             FareFragment().apply {
-                // TODO
                 arguments = Bundle().apply {
-                    putString(ARG_FARE_NAME, "")
-                    putString(ARG_OPERATOR_NAME, "")
-                    putString(ARG_BUYING_DATE, "")
-                    putString(ARG_TICKET_COUNT, "")
-                    putString(ARG_VALIDITY_FROM_DATE, "")
-                    putString(ARG_VALIDITY_UNTIL_DATE, "")
+                    putString(ARG_FARE, Gson().toJson(fare))
                 }
             }
+    }
+
+    private fun addFareInfoSection(fare: Fare) {
+        this.addFareInfoSectionTitles(fare.typeId)
+    }
+
+    private fun addFareInfoSectionTitles(typeId: UInt) {
+        val title = this.mView?.findViewById<TextView>(R.id.fareTypeValueTv)
+        val buyingDate = this.mView?.findViewById<TextView>(R.id.fareBuyingDateTv)
+        val firstUseDate = this.mView?.findViewById<TextView>(R.id.firstUseDateTv)
+        val validityUntilDate = this.mView?.findViewById<TextView>(R.id.validityUntilDateTv)
+
+        title?.text = "Inconnu ($typeId)"
+        buyingDate?.text = "Acheté le"
+        firstUseDate?.text = "Passage utilisé le"
+        validityUntilDate?.text = "Valide jusqu'au"
     }
 }

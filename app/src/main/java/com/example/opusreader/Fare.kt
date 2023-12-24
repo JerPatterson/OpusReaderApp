@@ -7,12 +7,12 @@ import java.util.Calendar
 private const val TAG = "Fare"
 
 class Fare(
-    private var typeId: UInt,
-    private var operatorId: UInt,
-    private var buyingDate: Calendar,
-    private var ticketCount: UInt?,
-    private var validityFromDate: Calendar? = null,
-    private var validityUntilDate: Calendar? = null
+    var typeId: UInt,
+    var operatorId: UInt,
+    var buyingDate: Calendar,
+    var ticketCount: UInt?,
+    var validityFromDate: Calendar? = null,
+    var validityUntilDate: Calendar? = null
 ): Serializable {
 
     fun log(prefix: String = "") {
