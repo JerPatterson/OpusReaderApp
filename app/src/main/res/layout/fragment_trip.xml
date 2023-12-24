@@ -34,7 +34,7 @@
             tools:text="Boarding on" />
 
         <TextView
-            android:id="@+id/boardingDateValueTv"
+            android:id="@+id/fareBuyingDateValueTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -44,24 +44,24 @@
             tools:text="August 21, 2023 at 17:51" />
 
         <TextView
-            android:id="@+id/firstUseDateTv"
+            android:id="@+id/validityFromDateTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="5dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardingDateValueTv"
+            app:layout_constraintTop_toBottomOf="@+id/fareBuyingDateValueTv"
             tools:text="Starting on" />
 
         <TextView
-            android:id="@+id/firstUseDateValueTv"
+            android:id="@+id/validityFromDateValueTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstUseDateTv"
+            app:layout_constraintTop_toBottomOf="@+id/validityFromDateTv"
             tools:text="August 21, 2023 at 16:57" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

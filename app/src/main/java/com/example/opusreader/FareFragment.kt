@@ -1,13 +1,13 @@
 package com.example.opusreader
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.google.gson.Gson
+import java.util.Calendar
 
 private const val ARG_FARE = "fare"
 
@@ -53,17 +53,47 @@ class FareFragment : Fragment() {
 
     private fun addFareInfoSection(fare: Fare) {
         this.addFareInfoSectionTitles(fare.typeId)
+        this.addFareInfoSectionValues(fare)
     }
 
     private fun addFareInfoSectionTitles(typeId: UInt) {
         val title = this.mView?.findViewById<TextView>(R.id.fareTypeValueTv)
         val buyingDate = this.mView?.findViewById<TextView>(R.id.fareBuyingDateTv)
-        val firstUseDate = this.mView?.findViewById<TextView>(R.id.firstUseDateTv)
+        val firstUseDate = this.mView?.findViewById<TextView>(R.id.validityFromDateTv)
         val validityUntilDate = this.mView?.findViewById<TextView>(R.id.validityUntilDateTv)
 
         title?.text = "Inconnu ($typeId)"
         buyingDate?.text = "Acheté le"
-        firstUseDate?.text = "Passage utilisé le"
+        firstUseDate?.text = "Valide à partir du"
         validityUntilDate?.text = "Valide jusqu'au"
+    }
+
+    private fun addFareInfoSectionValues(fare: Fare) {
+        val buyingDate = this.mView?.findViewById<TextView>(R.id.fareBuyingDateValueTv)
+        val validityFromDate = this.mView?.findViewById<TextView>(R.id.validityFromDateValueTv)
+        val validityUntilDate = this.mView?.findViewById<TextView>(R.id.validityUntilDateValueTv)
+
+        buyingDate?.text = this.calendarToString(fare.buyingDate)
+
+        val fromDate = fare.validityFromDate
+        if (fromDate != null) {
+            validityFromDate?.text = this.calendarToString(fromDate)
+        }
+
+        val untilDate = fare.validityUntilDate
+        if (untilDate != null) {
+            validityUntilDate?.text = this.calendarToString(untilDate)
+        }
+    }
+
+    private fun calendarToString(cal: Calendar): String {
+        return String.format(
+            "%04d-%02d-%02d à %02d:%02d",
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH).inc(),
+            cal.get(Calendar.DATE),
+            cal.get(Calendar.HOUR_OF_DAY),
+            cal.get(Calendar.MINUTE)
+        )
     }
 }
