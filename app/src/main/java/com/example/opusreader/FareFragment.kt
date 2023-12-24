@@ -52,34 +52,38 @@ class FareFragment : Fragment() {
     }
 
     private fun addFareInfoSection(fare: Fare) {
-        this.addFareInfoSectionTitles(fare.typeId)
+        if (fare.typeId == 0u) return
+        this.addFareInfoSectionTitles(fare)
         this.addFareInfoSectionValues(fare)
     }
 
-    private fun addFareInfoSectionTitles(typeId: UInt) {
+    private fun addFareInfoSectionTitles(fare: Fare) {
         val title = this.mView?.findViewById<TextView>(R.id.fareTypeValueTv)
         val buyingDate = this.mView?.findViewById<TextView>(R.id.fareBuyingDateTv)
         val firstUseDate = this.mView?.findViewById<TextView>(R.id.validityFromDateTv)
         val validityUntilDate = this.mView?.findViewById<TextView>(R.id.validityUntilDateTv)
+        val ticketCount = this.mView?.findViewById<TextView>(R.id.ticketCountTv)
 
-        title?.text = "Inconnu ($typeId)"
+        title?.text = "Inconnu (${fare.typeId})"
         buyingDate?.text = "Acheté le"
         firstUseDate?.text = "Valide à partir du"
         validityUntilDate?.text = "Valide jusqu'au"
+        if (fare.ticketCount != null)  ticketCount?.text = "Nb de billets restants"
     }
 
     private fun addFareInfoSectionValues(fare: Fare) {
+        val ticketCount = this.mView?.findViewById<TextView>(R.id.ticketCountValueTv)
         val buyingDate = this.mView?.findViewById<TextView>(R.id.fareBuyingDateValueTv)
         val validityFromDate = this.mView?.findViewById<TextView>(R.id.validityFromDateValueTv)
         val validityUntilDate = this.mView?.findViewById<TextView>(R.id.validityUntilDateValueTv)
 
+        if (fare.ticketCount != null) ticketCount?.text = fare.ticketCount.toString()
         buyingDate?.text = this.calendarToString(fare.buyingDate)
 
         val fromDate = fare.validityFromDate
         if (fromDate != null) {
             validityFromDate?.text = this.calendarToString(fromDate)
         }
-
         val untilDate = fare.validityUntilDate
         if (untilDate != null) {
             validityUntilDate?.text = this.calendarToString(untilDate)
