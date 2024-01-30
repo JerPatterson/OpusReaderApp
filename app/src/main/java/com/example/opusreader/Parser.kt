@@ -2,6 +2,7 @@ package com.example.opusreader
 
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
+import android.util.Log
 import java.util.Calendar
 
 class Parser {
@@ -68,15 +69,13 @@ class Parser {
     }
 
     private fun getOccasionalCardFareTypeId(data: Array<ByteArray>): UInt {
-        return (data[1][4].toUInt().and(0xFFu).shl(19)
-                or data[1][5].toUInt().and(0xFFu).shl(11)
-                or data[1][6].toUInt().and(0xFFu).shl(3)
-                or data[1][7].toUInt().and(0xE0u).shr(5))
+        return (data[1][4].toUInt().and(0xFFu).shl(16)
+                or data[1][5].toUInt().and(0xFFu).shl(8)
+                or data[1][6].toUInt().and(0xFFu))
     }
 
     private fun getOccasionalCardFareOperatorId(data: Array<ByteArray>): UInt {
-        return (data[1][6].toUInt().and(0x3Fu).shl(2)
-                or data[1][7].toUInt().and(0xC0u).shr(6))
+        return data[0][0].toUInt().and(0xFFu)
     }
 
     private fun getOccasionalCardFareBuyingDate(data: Array<ByteArray>): Calendar {
@@ -87,21 +86,37 @@ class Parser {
     }
 
     private fun occasionalCardHasTicket(data: Array<ByteArray>): Boolean {
-        return (data[1][0].toUInt().and(0xFFu).shl(24)
-                or data[1][1].toUInt().and(0xFFu).shl(16)
-                or data[1][2].toUInt().and(0xFFu).shl(8)
-                or data[1][3].toUInt().and(0xFFu)).compareTo(0x00000000u) == 0
+        val hasTicketVerificationBits = (data[0][12].toUInt().and(0xFFu).shl(8)
+            or data[0][13].toUInt().and(0xFFu))
+
+        return hasTicketVerificationBits.compareTo(0xFFFFu) == 0
     }
 
     private fun occasionalCardHasPass(data: Array<ByteArray>): Boolean {
-        return (data[1][0].toUInt().and(0xFFu).shl(24)
-                or data[1][1].toUInt().and(0xFFu).shl(16)
-                or data[1][2].toUInt().and(0xFFu).shl(8)
-                or data[1][3].toUInt().and(0xFFu)).compareTo(0x80000000u) == 0
+        val hasPassVerificationBits = (data[0][12].toUInt().and(0xFFu).shl(8)
+                or data[0][13].toUInt().and(0xFFu))
+
+        return ((hasPassVerificationBits.compareTo(0x0000u) == 0)
+            or (hasPassVerificationBits.compareTo(0x8000u) == 0))
     }
 
     private fun getOccasionalCardFareNbOfTickets(data: Array<ByteArray>): UInt {
-        return data[1][7].toUInt().and(0x1Fu)
+        val ticketBits = (data[0][14].toUInt().and(0x03u).shl(8)
+                or data[0][15].toUInt().and(0xFFu))
+
+        return when (ticketBits) {
+            0u -> 10u
+            512u -> 9u
+            768u -> 8u
+            896u -> 7u
+            960u -> 6u
+            992u -> 5u
+            1008u -> 4u
+            1016u -> 3u
+            1020u -> 2u
+            1022u -> 1u
+            else -> 0u
+        }
     }
 
 

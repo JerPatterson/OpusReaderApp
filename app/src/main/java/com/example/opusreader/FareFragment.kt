@@ -52,7 +52,7 @@ class FareFragment : Fragment() {
     }
 
     private fun addFareInfoSection(fare: Fare) {
-        if (fare.typeId == 0u) return
+        // if (fare.typeId == 0u) return
         this.addFareInfoSectionTitles(fare)
         this.addFareInfoSectionValues(fare)
     }
@@ -68,7 +68,7 @@ class FareFragment : Fragment() {
         buyingDate?.text = "Acheté le"
         firstUseDate?.text = "Valide à partir du"
         validityUntilDate?.text = "Valide jusqu'au"
-        if (fare.ticketCount != null)  ticketCount?.text = "Nb de billets restants"
+        if (fare.ticketCount != null)  ticketCount?.text = "Billets restants"
     }
 
     private fun addFareInfoSectionValues(fare: Fare) {
