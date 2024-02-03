@@ -284,7 +284,8 @@ class Parser {
                         buyingDate,
                         null,
                         validityFromDate,
-                        validityUntilDate
+                        validityUntilDate,
+                        true
                     )
                 )
             }

@@ -35,7 +35,11 @@ class CardActivity : AppCompatActivity() {
         val identifier = findViewById<TextView>(R.id.idTv)
         val expirationDate = findViewById<TextView>(R.id.expiryDateTv)
 
-        title.text = if (cardType == CardType.Opus) "CARTE OPUS" else "CARTE OCCASIONNELLE"
+        title.text = when (cardType) {
+            CardType.Opus -> "CARTE OPUS"
+            CardType.Occasional -> "CARTE OCCASIONNELLE"
+        }
+
         identifier.text = "Identifiant"
         expirationDate.text = "Date d'expiration"
     }

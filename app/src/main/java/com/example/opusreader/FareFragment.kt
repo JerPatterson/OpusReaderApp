@@ -52,7 +52,6 @@ class FareFragment : Fragment() {
     }
 
     private fun addFareInfoSection(fare: Fare) {
-        // if (fare.typeId == 0u) return
         this.addFareInfoSectionTitles(fare)
         this.addFareInfoSectionValues(fare)
     }
@@ -64,10 +63,22 @@ class FareFragment : Fragment() {
         val validityUntilDate = this.mView?.findViewById<TextView>(R.id.validityUntilDateTv)
         val ticketCount = this.mView?.findViewById<TextView>(R.id.ticketCountTv)
 
-        title?.text = "Inconnu (${fare.typeId})"
+        title?.text = when (fare.typeId) {
+            3316801u -> "2 passages, Bus"
+            3316865u -> "10 passages, Bus"
+            3314625u -> "2 passages, Tous modes A"
+            3314689u -> "1 passage, Tous modes AB"
+            3314753u -> "2 passages, Tous modes AB"
+            3312577u -> "10 passages, Tous modes AB"
+            3321601u -> "3 jours, Tous modes AB"
+            3310337u -> "1 passage, Tous modes ABC"
+            3305921u -> "Soirée illimité"
+            else -> "Inconnu (${fare.typeId})"
+        }
+
         buyingDate?.text = "Acheté le"
-        firstUseDate?.text = "Valide à partir du"
-        validityUntilDate?.text = "Valide jusqu'au"
+        if (fare.validityFromDate != null) firstUseDate?.text = "Valide à partir du"
+        if (fare.validityUntilDate != null) validityUntilDate?.text = "Valide jusqu'au"
         if (fare.ticketCount != null)  ticketCount?.text = "Billets restants"
     }
 
@@ -78,12 +89,18 @@ class FareFragment : Fragment() {
         val validityUntilDate = this.mView?.findViewById<TextView>(R.id.validityUntilDateValueTv)
 
         if (fare.ticketCount != null) ticketCount?.text = fare.ticketCount.toString()
-        buyingDate?.text = this.calendarToString(fare.buyingDate)
+
+        if (fare.buyingDateHasMinutes) {
+            buyingDate?.text = this.calendarToStringWithTime(fare.buyingDate)
+        } else {
+            buyingDate?.text = this.calendarToString(fare.buyingDate)
+        }
 
         val fromDate = fare.validityFromDate
         if (fromDate != null) {
             validityFromDate?.text = this.calendarToString(fromDate)
         }
+
         val untilDate = fare.validityUntilDate
         if (untilDate != null) {
             validityUntilDate?.text = this.calendarToString(untilDate)
@@ -91,6 +108,15 @@ class FareFragment : Fragment() {
     }
 
     private fun calendarToString(cal: Calendar): String {
+        return String.format(
+            "%04d-%02d-%02d",
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH).inc(),
+            cal.get(Calendar.DATE)
+        )
+    }
+
+    private fun calendarToStringWithTime(cal: Calendar): String {
         return String.format(
             "%04d-%02d-%02d à %02d:%02d",
             cal.get(Calendar.YEAR),

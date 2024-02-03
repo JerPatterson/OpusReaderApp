@@ -12,7 +12,8 @@ class Fare(
     var buyingDate: Calendar,
     var ticketCount: UInt?,
     var validityFromDate: Calendar? = null,
-    var validityUntilDate: Calendar? = null
+    var validityUntilDate: Calendar? = null,
+    var buyingDateHasMinutes: Boolean = false
 ): Serializable {
 
     fun log(prefix: String = "") {
