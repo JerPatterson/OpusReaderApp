@@ -3,11 +3,9 @@ package com.example.opusreader
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
 import java.util.Calendar
 
@@ -34,12 +32,18 @@ class CardActivity : AppCompatActivity() {
 
     private fun addCardInfoSectionTitles(cardType: CardType) {
         val title = findViewById<TextView>(R.id.cardSectionTitleTv)
-        val identifier = findViewById<TextView>(R.id.idTv)
-        val expirationDate = findViewById<TextView>(R.id.expiryDateTv)
+        val image = findViewById<ImageView>(R.id.cardImageView)
+        val identifier = findViewById<TextView>(R.id.cardIdTv)
+        val expirationDate = findViewById<TextView>(R.id.cardExpiryDateTv)
 
         title.text = when (cardType) {
             CardType.Opus -> "CARTE OPUS"
             CardType.Occasional -> "CARTE OCCASIONNELLE"
+        }
+
+        when (cardType) {
+            CardType.Opus -> image.setImageResource(R.drawable.opus)
+            CardType.Occasional -> image.setImageResource(R.drawable.occasionnelle)
         }
 
         identifier.text = "Identifiant"
@@ -47,8 +51,8 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addCardInfoSectionValues(id: ULong, date: Calendar?) {
-        val identifier = findViewById<TextView>(R.id.idValueTv)
-        val expiryDate = findViewById<TextView>(R.id.expiryDateValueTv)
+        val identifier = findViewById<TextView>(R.id.cardIdValueTv)
+        val expiryDate = findViewById<TextView>(R.id.cardExpiryDateValueTv)
 
         identifier.text = id.toString()
         expiryDate.text = if (date != null) this.calendarToString(date) else "Aucune"
