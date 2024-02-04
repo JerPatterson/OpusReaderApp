@@ -11,17 +11,19 @@ import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
 import java.util.Calendar
 
+private const val ARG_CARD = "card"
+
 class CardActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card)
 
-        val gson = Gson()
-        val card = gson.fromJson(intent.getStringExtra("card"), Card::class.java)
+        val card = Gson().fromJson(intent.getStringExtra(ARG_CARD), Card::class.java)
         if (card != null) {
             this.addCardInfoSection(card)
             this.addFareInfoSection(card)
+            this.addTripInfoSection(card)
         }
     }
 
@@ -63,6 +65,27 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addFareInfoSectionValues(fares: ArrayList<Fare>) {
+        if (fares.size < 4 || fares[3].typeId == 0u) {
+            var fragmentTransaction = supportFragmentManager.beginTransaction()
+            var fragment = supportFragmentManager.findFragmentById(R.id.fourthFareFragment)
+            if (fragment != null) fragmentTransaction.hide(fragment)
+            fragmentTransaction.commit()
+
+            if (fares.size < 3 || fares[2].typeId == 0u) {
+                fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragment = supportFragmentManager.findFragmentById(R.id.thirdFareFragment)
+                if (fragment != null) fragmentTransaction.hide(fragment)
+                fragmentTransaction.commit()
+
+                if (fares.size < 2 || fares[1].typeId == 0u) {
+                    fragmentTransaction = supportFragmentManager.beginTransaction()
+                    fragment = supportFragmentManager.findFragmentById(R.id.secondFareFragment)
+                    if (fragment != null) fragmentTransaction.hide(fragment)
+                    fragmentTransaction.commit()
+                }
+            }
+        }
+
         for ((i, fare) in fares.withIndex()) {
             when (i + 1) {
                 1 -> supportFragmentManager.beginTransaction()
@@ -73,6 +96,44 @@ class CardActivity : AppCompatActivity() {
                     .add(R.id.thirdFareFragment, FareFragment.newInstance(fare)).commit()
                 4 -> supportFragmentManager.beginTransaction()
                     .add(R.id.fourthFareFragment, FareFragment.newInstance(fare)).commit()
+            }
+        }
+    }
+
+
+    private fun addTripInfoSection(card: Card) {
+        this.addTripInfoSectionTitles()
+        this.addTripInfoSectionValues(card.trips)
+    }
+
+    private fun addTripInfoSectionTitles() {
+        val title = findViewById<TextView>(R.id.tripSectionTitleTv)
+        title.text = "DERNIÈRES UTILISATIONS DES TITRES"
+    }
+
+    private fun addTripInfoSectionValues(trips: ArrayList<Trip>) {
+        if (trips.size < 3 || trips[2].operatorId == 0u) {
+            var fragmentTransaction = supportFragmentManager.beginTransaction()
+            var fragment = supportFragmentManager.findFragmentById(R.id.thirdTripFragment)
+            if (fragment != null) fragmentTransaction.hide(fragment)
+            fragmentTransaction.commit()
+
+            if (trips.size < 2 || trips[1].operatorId == 0u) {
+                fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragment = supportFragmentManager.findFragmentById(R.id.secondTripFragment)
+                if (fragment != null) fragmentTransaction.hide(fragment)
+                fragmentTransaction.commit()
+            }
+        }
+
+        for ((i, trip) in trips.withIndex()) {
+            when (i + 1) {
+                1 -> supportFragmentManager.beginTransaction()
+                    .add(R.id.firstTripFragment, TripFragment.newInstance(trip)).commit()
+                2 -> supportFragmentManager.beginTransaction()
+                    .add(R.id.secondTripFragment, TripFragment.newInstance(trip)).commit()
+                3 -> supportFragmentManager.beginTransaction()
+                    .add(R.id.thirdTripFragment, TripFragment.newInstance(trip)).commit()
             }
         }
     }

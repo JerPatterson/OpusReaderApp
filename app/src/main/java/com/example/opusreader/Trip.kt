@@ -8,9 +8,9 @@ private const val TAG = "Trip"
 
 class Trip(
     var lineId: UInt,
-    private var operatorId: UInt,
-    private var useDate: Calendar,
-    private var firstUseDate: Calendar
+    var operatorId: UInt,
+    var useDate: Calendar,
+    var firstUseDate: Calendar
 ): Serializable {
 
     fun log(prefix: String = "") {

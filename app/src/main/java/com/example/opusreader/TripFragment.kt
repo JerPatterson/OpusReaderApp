@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.google.gson.Gson
+import java.util.Calendar
 
-private const val ARG_LINE_SHORT_NAME = "lineLongName"
-private const val ARG_LINE_LONG_NAME = "lineLongName"
-private const val ARG_OPERATOR_NAME = "operatorName"
-private const val ARG_BOARDING_DATE = "boardingDate"
-private const val ARG_IS_TRANSFER = "isTransfer"
+private const val ARG_TRIP = "trip"
 
 /**
  * A simple [Fragment] subclass.
@@ -18,20 +17,13 @@ private const val ARG_IS_TRANSFER = "isTransfer"
  * create an instance of this fragment.
  */
 class TripFragment : Fragment() {
-    private var operatorName: String? = null
-    private var lineShortName: String? = null
-    private var lineLongName: String? = null
-    private var boardingDate: String? = null
-    private var isTransfer: Boolean? = null
+    private var mView: View? = null
+    private var trip: Trip? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            this.operatorName = it.getString(ARG_OPERATOR_NAME)
-            this.lineShortName = it.getString(ARG_LINE_SHORT_NAME)
-            this.lineLongName = it.getString(ARG_LINE_LONG_NAME)
-            this.boardingDate = it.getString(ARG_BOARDING_DATE)
-            this.isTransfer = it.getBoolean(ARG_IS_TRANSFER)
+            this.trip = Gson().fromJson(it.getString(ARG_TRIP), Trip::class.java)
         }
     }
 
@@ -39,7 +31,14 @@ class TripFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_trip, container, false)
+        mView = inflater.inflate(R.layout.fragment_trip, container, false)
+
+        val tripValue = this.trip
+        if (tripValue != null) {
+            this.addTripInfoSection(tripValue)
+        }
+
+        return mView
     }
 
     companion object {
@@ -47,13 +46,42 @@ class TripFragment : Fragment() {
         fun newInstance(trip: Trip) =
             TripFragment().apply {
                 arguments = Bundle().apply {
-                    // TODO
-                    putString(ARG_OPERATOR_NAME, "")
-                    putString(ARG_LINE_SHORT_NAME, "")
-                    putString(ARG_LINE_LONG_NAME, "")
-                    putString(ARG_BOARDING_DATE, "")
-                    putBoolean(ARG_IS_TRANSFER, false)
+                    putString(ARG_TRIP, Gson().toJson(trip))
                 }
             }
+    }
+
+    private fun addTripInfoSection(trip: Trip) {
+        this.addTripInfoSectionTitles(trip)
+        this.addTripInfoSectionValues(trip)
+    }
+
+    private fun addTripInfoSectionTitles(trip: Trip) {
+        val title = this.mView?.findViewById<TextView>(R.id.tripLineTv)
+        val boardingDate = this.mView?.findViewById<TextView>(R.id.tripBoardingDateTv)
+        val validityFromDate = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
+
+        title?.text = IdConverter.getLineById(trip.operatorId, trip.lineId)
+        boardingDate?.text = "Embarquement le"
+        validityFromDate?.text = "Valide à partir du"
+    }
+
+    private fun addTripInfoSectionValues(trip: Trip) {
+        val boardingDate = this.mView?.findViewById<TextView>(R.id.tripBoardingDateValueTv)
+        val validityFromDate = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateValueTv)
+
+        boardingDate?.text = calendarToStringWithTime(trip.useDate)
+        validityFromDate?.text = calendarToStringWithTime(trip.firstUseDate)
+    }
+
+    private fun calendarToStringWithTime(cal: Calendar): String {
+        return String.format(
+            "%04d-%02d-%02d à %02d:%02d",
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH).inc(),
+            cal.get(Calendar.DATE),
+            cal.get(Calendar.HOUR_OF_DAY),
+            cal.get(Calendar.MINUTE)
+        )
     }
 }
