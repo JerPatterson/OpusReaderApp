@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.google.gson.Gson
+import java.text.SimpleDateFormat
 import java.util.Calendar
 
 private const val ARG_FARE = "fare"
@@ -108,22 +109,11 @@ class FareFragment : Fragment() {
     }
 
     private fun calendarToString(cal: Calendar): String {
-        return String.format(
-            "%04d-%02d-%02d",
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH).inc(),
-            cal.get(Calendar.DATE)
-        )
+        return SimpleDateFormat("dd MMMM YYYY").format(cal.time)
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
-        return String.format(
-            "%04d-%02d-%02d à %02d:%02d",
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH).inc(),
-            cal.get(Calendar.DATE),
-            cal.get(Calendar.HOUR_OF_DAY),
-            cal.get(Calendar.MINUTE)
-        )
+
+        return SimpleDateFormat("dd MMMM YYYY à HH:MM").format(cal.time)
     }
 }
