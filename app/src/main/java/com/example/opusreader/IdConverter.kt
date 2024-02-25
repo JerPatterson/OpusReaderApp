@@ -1,631 +1,634 @@
 package com.example.opusreader
 
+
+data class Operator(val name: String, val color: String, val imageId: Int)
+data class Line(val name: String, val color: String)
+
 class IdConverter {
     companion object {
         @JvmStatic
-        fun getOperatorById(id: UInt): String {
+        fun getOperatorById(id: UInt): Operator {
             return when (id) {
-                4u -> "ARTM"
-                8u -> "STM"
-                12u -> "RTL"
-                16u -> "RTM"
-                20u -> "RTC"
-                24u -> "STL"
-                64u -> "STLévis"
-                else -> "Unknown (id: $id)"
+                4u -> Operator("ARTM", "#007373", -1)
+                8u -> Operator("STM", "#00aeef", -1)
+                12u -> Operator("RTL", "#9e2536", -1)
+                16u -> Operator("exo", "#000000", -1)
+                20u -> Operator("RTC", "#003878", -1)
+                24u -> Operator("STL", "#151f6d", -1)
+                64u -> Operator("STLévis", "#0091b3", -1)
+                else -> Operator("Unknown (id: $id)", "#696969", -1)
             }
         }
 
-        fun getLineById(operatorId: UInt, lineId: UInt): String {
+        fun getLineById(operatorId: UInt, lineId: UInt): Line {
             return when (operatorId) {
                 8u -> this.getSTMLineById(lineId)
                 12u -> this.getRTLLineById(lineId)
-                16u -> this.getRTMLineById(lineId)
+                16u -> this.getEXOLineById(lineId)
                 20u -> this.getRTCLineById(lineId)
                 24u -> this.getSTLLineById(lineId)
                 64u -> this.getSTLevisLineById(lineId)
-                else -> "Unknown (operatorId: $operatorId)"
+                else -> Line("Unknown (operatorId: $operatorId)", "#696969")
             }
         }
 
-        private fun getSTMLineById(id: UInt): String {
+        private fun getSTMLineById(id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
-                1u -> "1 - Ligne Verte"
-                2u -> "2 - Ligne Orange"
-                224u -> "2 - Ligne Orange (zone B)"
-                3u -> "4 - Ligne Jaune"
-                4u -> "5 - Ligne Bleue"
-                517u -> "10 De Lorimier"
-                518u -> "11 Parc-du-Mont-Royal / Ridgewood"
-                519u -> "12 Île-des-Soeurs"
-                520u -> "13 Christophe-Colomb"
-                521u -> "14 Atateken"
-                522u -> "15 Sainte-Catherine"
-                523u -> "16 Graham"
-                524u -> "17 Décarie"
-                525u -> "18 Beaubien"
-                526u -> "19 Chabanel / Marché Central"
-                527u -> "21 Place du Commerce"
-                528u -> "22 Notre-Dame"
-                529u -> "24 Sherbrooke"
-                530u -> "25 Angus"
-                531u -> "26 Mercier-Est"
-                532u -> "27 Boulevard Saint-Joseph"
-                533u -> "28 Honoré-Beaugrand"
-                534u -> "29 Rachel"
-                535u -> "30 Saint-Denis / Saint-Hubert"
-                536u -> "31 Saint-Denis"
-                537u -> "32 Lacordaire"
-                538u -> "33 Langelier"
-                539u -> "34 Sainte-Catherine"
-                540u -> "35 Griffintown"
-                541u -> "36 Monk"
-                542u -> "37 Jolicoeur"
-                543u -> "39 Des Grandes-Prairies"
-                544u -> "40 Henri-Bourassa-Est"
-                545u -> "41 Quartier Saint-Michel / Ahuntsic"
-                546u -> "43 Monselet"
-                547u -> "44 Armand-Bombardier"
-                548u -> "45 Papineau"
-                549u -> "46 Casgrain"
-                550u -> "47 Masson"
-                551u -> "48 Perras"
-                552u -> "49 Maurice-Duplessis"
-                553u -> "51 Édouard-Montpetit"
-                554u -> "52 de Liège"
-                555u -> "54 Charland / Chabanel"
-                556u -> "55 Boulevard Saint-Laurent"
-                557u -> "56 Saint-Hubert"
-                558u -> "57 Pointe-Saint-Charles"
-                559u -> "58 Wellington"
-                560u -> "61 Wellington"
-                561u -> "63 Girouard"
-                562u -> "64 Grenet"
-                563u -> "66 The Boulevard"
-                564u -> "67 Saint-Michel"
-                565u -> "68 Pierrefonds"
-                566u -> "69 Gouin"
-                567u -> "70 Bois-Franc"
-                568u -> "71 Du Centre"
-                569u -> "72 Alfred-Nobel"
-                570u -> "73 Dalton"
-                571u -> "74 Bridge"
-                572u -> "75 De la Commune"
-                573u -> "78 Laurendeau"
-                574u -> "80 Avenue du Parc"
-                575u -> "81 Saint-Jean-Baptiste"
-                576u -> "85 Hochelaga"
-                577u -> "86 Pointe-aux-Trembles"
-                578u -> "90 Saint-Jacques"
-                579u -> "92 Jean-Talon Ouest"
-                580u -> "93 Jean-Talon"
-                581u -> "94 D'Iberville"
-                582u -> "95 Bélanger"
-                583u -> "97 Avenue-du-Mont-Royal"
-                584u -> "99 Villeray"
-                585u -> "100 Crémazie"
-                586u -> "101 Saint-Patrick"
-                587u -> "102 Somerled"
-                588u -> "103 Monkland"
-                589u -> "104 Cavendish"
-                590u -> "105 Sherbrooke"
-                591u -> "106 Newman"
-                592u -> "107 Verdun"
-                593u -> "108 Bannantyne"
-                594u -> "109 Boulevard Shevchenko"
-                595u -> "110 Centrale"
-                596u -> "112 Airlie"
-                597u -> "113 Lapierre"
-                598u -> "115 Paré"
-                599u -> "116 Lafleur / Norman"
-                600u -> "117 O'Brien"
-                601u -> "119 Rockland"
-                602u -> "121 Sauvé / Côte-Vertu"
-                603u -> "123 Dollard"
-                604u -> "124 Victoria"
-                605u -> "125 Ontario"
-                606u -> "126 Thimens / Grenet"
-                607u -> "128 Saint-Laurent"
-                608u -> "129 Côte-Sainte-Catherine"
-                609u -> "131 De l'Assomption"
-                610u -> "135 De l'Esplanade"
-                611u -> "136 Viau"
-                612u -> "138 Notre-Dame-de-Grâce"
-                613u -> "139 Pie-IX"
-                614u -> "140 Fleury"
-                615u -> "141 Jean-Talon Est"
-                616u -> "144 Avenue des Pins"
-                617u -> "146 Christophe-Colomb / Meilleur"
-                618u -> "150 René-Lévesque"
-                619u -> "160 Barclay"
-                620u -> "161 Van Horne"
-                621u -> "162 Westminster"
-                622u -> "164 Dudemaine"
-                623u -> "165 Côte-des-Neiges"
-                624u -> "166 Queen-Mary"
-                625u -> "168 Cité-du-Havre"
-                626u -> "170 Keller"
-                627u -> "171 Henri-Bourassa"
-                628u -> "172 Du Golf"
-                629u -> "174 Côte-Vertu-Ouest"
-                630u -> "175 Griffith / Saint-François"
-                631u -> "176 Berlioz"
-                632u -> "177 Thimens"
-                633u -> "178 Pointe-Nord / Île-des-Soeurs"
-                634u -> "179 De l'Acadie"
-                635u -> "180 De Salaberry"
-                636u -> "183 Gouin Est"
-                637u -> "185 Sherbrooke"
-                638u -> "186 Sherbrooke-Est"
-                639u -> "187 René-Lévesque"
-                640u -> "188 Couture"
-                641u -> "189 Notre-Dame"
-                642u -> "191 Broadway / Provost"
-                643u -> "192 Robert"
-                644u -> "193 Jarry"
-                645u -> "195 Sherbrooke / Notre-Dame"
-                646u -> "196 Parc-Industriel-Lachine"
-                647u -> "197 Rosemont"
-                648u -> "200 Sainte-Anne-de-Bellevue"
-                649u -> "201 Saint-Charles / Saint-Jean"
-                650u -> "202 Dawson"
-                651u -> "203 Carson"
-                652u -> "204 Cardinal"
-                653u -> "205 Gouin"
-                654u -> "206 Roger-Pilon"
-                655u -> "207 Jacques-Bizard"
-                656u -> "208 Brunswick"
-                657u -> "209 Des Sources"
-                658u -> "211 Bord-du-Lac"
-                659u -> "212 Sainte-Anne"
-                660u -> "213 Parc-Industriel-Saint-Laurent"
-                661u -> "215 Henri-Bourassa"
-                662u -> "216 Transcanadienne"
-                663u -> "217 Anse-à-l'Orme"
-                664u -> "218 Antoine-Faucon"
-                665u -> "219 Chemin Sainte-Marie"
-                666u -> "220 Kieran"
-                667u -> "225 Hymus"
-                668u -> "350 Verdun / LaSalle"
-                669u -> "353 Lacordaire / Maurice-Duplessis"
-                670u -> "354 Sainte-Anne-de-Bellevue / Centre-ville"
-                671u -> "355 Pie-IX"
-                672u -> "356 Lachine / YUL Aéroport / Des Sources"
-                673u -> "357 Saint-Michel"
-                674u -> "358 Sainte-Catherine"
-                675u -> "359 Papineau"
-                676u -> "360 Avenue des Pins"
-                677u -> "361 Saint-Denis"
-                678u -> "362 Hochelaga / Notre-Dame"
-                679u -> "363 Boulevard Saint-Laurent"
-                680u -> "364 Sherbrooke / Joseph-Renaud"
-                681u -> "365 Avenue du Parc"
-                682u -> "368 Avenue-du-Mont-Royal"
-                683u -> "369 Côte-des-Neiges"
-                684u -> "370 Rosemont"
-                685u -> "371 Décarie"
-                686u -> "372 Jean-Talon"
-                687u -> "376 Pierrefonds / Centre-ville"
-                688u -> "378 Sauvé / YUL Aéroport"
-                689u -> "380 Henri-Bourassa"
-                690u -> "382 Pierrefonds / Saint-Charles"
-                691u -> "401 Express Saint-Charles"
-                692u -> "405 Express Bord-du-Lac"
-                693u -> "406 Express Newman"
-                694u -> "407 Express Île-Bizard"
-                695u -> "409 Express Des Sources"
-                696u -> "410 Express Notre-Dame"
-                697u -> "411 Express Lionel-Groulx"
-                698u -> "419 Express John Abbott"
-                699u -> "420 Express Notre-Dame-de-Grâce"
-                700u -> "425 Express Anse-à-l'Orme"
-                701u -> "427 Express Saint-Joseph"
-                702u -> "428 Express Parcs industriels de l'Est"
-                703u -> "430 Express Pointe-aux-Trembles"
-                704u -> "432 Express Lacordaire"
-                705u -> "439 Express Pie-IX"
-                706u -> "440 Express Charleroi"
-                707u -> "444 Express Cégep Marie-Victorin"
-                708u -> "445 Express Papineau"
-                709u -> "448 Express Maurice-Duplessis"
-                710u -> "449 Express Rivière-des-Prairies"
-                711u -> "460 Express Métropolitaine"
-                712u -> "465 Express Côte-des-Neiges"
-                713u -> "467 Express Saint-Michel"
-                714u -> "468 Express Pierrefonds / Gouin"
-                715u -> "469 Express Henri-Bourassa"
-                716u -> "470 Express Pierrefonds"
-                717u -> "475 Express Dollard-des-Ormeaux"
-                718u -> "480 Express du Parc"
-                719u -> "485 Express Antoine-Faucon"
-                720u -> "486 Express Sherbrooke"
-                721u -> "487 Express Bout-de-l'Île"
-                722u -> "491 Express Lachine"
-                723u -> "495 Express Lachine / LaSalle"
-                724u -> "496 Express Victoria"
-                725u -> "711 Parc-du-Mont-Royal / Oratoire"
-                726u -> "715 Vieux-Montréal / Vieux-Port"
-                727u -> "747 YUL Aéroport  / Centre-Ville"
-                728u -> "767 La Ronde / Station Jean-Drapeau"
-                729u -> "768 Plage Jean-Doré / Station Jean-Drapeau"
-                730u -> "769 La Ronde / Station Papineau"
-                731u -> "777 Jean-Drapeau / Casino / Bonaventure"
-                732u -> "811 Navette Services santé"
-                733u -> "822 Navette Longue-Pointe"
-                734u -> "968 Trainbus Roxboro / Côte-Vertu"
-                else -> "Unknown (lineId: $id)"
+                1u -> Line("1 - Ligne Verte", "#008e4f")
+                2u -> Line("2 - Ligne Orange", "#ef8122")
+                224u -> Line("2 - Ligne Orange (zone B)", "#ef8122")
+                3u -> Line("4 - Ligne Jaune", "#ffe300")
+                4u -> Line("5 - Ligne Bleue", "#0083c9")
+                517u -> Line("10 De Lorimier", "#009ee0")
+                518u -> Line("11 Parc-du-Mont-Royal / Ridgewood", "#009ee0")
+                519u -> Line("12 Île-des-Soeurs", "#009ee0")
+                520u -> Line("13 Christophe-Colomb", "#009ee0")
+                521u -> Line("14 Atateken", "#009ee0")
+                522u -> Line("15 Sainte-Catherine", "#009ee0")
+                523u -> Line("16 Graham", "#009ee0")
+                524u -> Line("17 Décarie", "#009ee0")
+                525u -> Line("18 Beaubien", "#781b7d")
+                526u -> Line("19 Chabanel / Marché Central", "#009ee0")
+                527u -> Line("21 Place du Commerce", "#009ee0")
+                528u -> Line("22 Notre-Dame", "#009ee0")
+                529u -> Line("24 Sherbrooke", "#781b7d")
+                530u -> Line("25 Angus", "#009ee0")
+                531u -> Line("26 Mercier-Est", "#009ee0")
+                532u -> Line("27 Boulevard Saint-Joseph", "#009ee0")
+                533u -> Line("28 Honoré-Beaugrand", "#009ee0")
+                534u -> Line("29 Rachel", "#009ee0")
+                535u -> Line("30 Saint-Denis / Saint-Hubert", "#009ee0")
+                536u -> Line("31 Saint-Denis", "#009ee0")
+                537u -> Line("32 Lacordaire", "#781b7d")
+                538u -> Line("33 Langelier", "#781b7d")
+                539u -> Line("34 Sainte-Catherine", "#009ee0")
+                540u -> Line("35 Griffintown", "#009ee0")
+                541u -> Line("36 Monk", "#009ee0")
+                542u -> Line("37 Jolicoeur", "#009ee0")
+                543u -> Line("39 Des Grandes-Prairies", "#009ee0")
+                544u -> Line("40 Henri-Bourassa-Est", "#009ee0")
+                545u -> Line("41 Quartier Saint-Michel / Ahuntsic", "#009ee0")
+                546u -> Line("43 Monselet", "#009ee0")
+                547u -> Line("44 Armand-Bombardier", "#781b7d")
+                548u -> Line("45 Papineau", "#781b7d")
+                549u -> Line("46 Casgrain", "#009ee0")
+                550u -> Line("47 Masson", "#009ee0")
+                551u -> Line("48 Perras", "#781b7d")
+                552u -> Line("49 Maurice-Duplessis", "#781b7d")
+                553u -> Line("51 Édouard-Montpetit", "#781b7d")
+                554u -> Line("52 de Liège", "#009ee0")
+                555u -> Line("54 Charland / Chabanel", "#009ee0")
+                556u -> Line("55 Boulevard Saint-Laurent", "#781b7d")
+                557u -> Line("56 Saint-Hubert", "#009ee0")
+                558u -> Line("57 Pointe-Saint-Charles", "#009ee0")
+                559u -> Line("58 Wellington", "#009ee0")
+                560u -> Line("61 Wellington", "#009ee0")
+                561u -> Line("63 Girouard", "#009ee0")
+                562u -> Line("64 Grenet", "#781b7d")
+                563u -> Line("66 The Boulevard", "#009ee0")
+                564u -> Line("67 Saint-Michel", "#781b7d")
+                565u -> Line("68 Pierrefonds", "#009ee0")
+                566u -> Line("69 Gouin", "#781b7d")
+                567u -> Line("70 Bois-Franc", "#009ee0")
+                568u -> Line("71 Du Centre", "#009ee0")
+                569u -> Line("72 Alfred-Nobel", "#009ee0")
+                570u -> Line("73 Dalton", "#009ee0")
+                571u -> Line("74 Bridge", "#009ee0")
+                572u -> Line("75 De la Commune", "#009ee0")
+                573u -> Line("78 Laurendeau", "#009ee0")
+                574u -> Line("80 Avenue du Parc", "#781b7d")
+                575u -> Line("81 Saint-Jean-Baptiste", "#009ee0")
+                576u -> Line("85 Hochelaga", "#009ee0")
+                577u -> Line("86 Pointe-aux-Trembles", "#009ee0")
+                578u -> Line("90 Saint-Jacques", "#781b7d")
+                579u -> Line("92 Jean-Talon Ouest", "#009ee0")
+                580u -> Line("93 Jean-Talon", "#009ee0")
+                581u -> Line("94 D'Iberville", "#009ee0")
+                582u -> Line("95 Bélanger", "#009ee0")
+                583u -> Line("97 Avenue-du-Mont-Royal", "#781b7d")
+                584u -> Line("99 Villeray", "#009ee0")
+                585u -> Line("100 Crémazie", "#009ee0")
+                586u -> Line("101 Saint-Patrick", "#009ee0")
+                587u -> Line("102 Somerled", "#009ee0")
+                588u -> Line("103 Monkland", "#781b7d")
+                589u -> Line("104 Cavendish", "#009ee0")
+                590u -> Line("105 Sherbrooke", "#781b7d")
+                591u -> Line("106 Newman", "#009ee0")
+                592u -> Line("107 Verdun", "#009ee0")
+                593u -> Line("108 Bannantyne", "#009ee0")
+                594u -> Line("109 Boulevard Shevchenko", "#009ee0")
+                595u -> Line("110 Centrale", "#009ee0")
+                596u -> Line("112 Airlie", "#009ee0")
+                597u -> Line("113 Lapierre", "#009ee0")
+                598u -> Line("115 Paré", "#009ee0")
+                599u -> Line("116 Lafleur / Norman", "#009ee0")
+                600u -> Line("117 O'Brien", "#009ee0")
+                601u -> Line("119 Rockland", "#009ee0")
+                602u -> Line("121 Sauvé / Côte-Vertu", "#781b7d")
+                603u -> Line("123 Dollard", "#009ee0")
+                604u -> Line("124 Victoria", "#009ee0")
+                605u -> Line("125 Ontario", "#009ee0")
+                606u -> Line("126 Thimens / Grenet", "#009ee0")
+                607u -> Line("128 Saint-Laurent", "#009ee0")
+                608u -> Line("129 Côte-Sainte-Catherine", "#009ee0")
+                609u -> Line("131 De l'Assomption", "#009ee0")
+                610u -> Line("135 De l'Esplanade", "#009ee0")
+                611u -> Line("136 Viau", "#781b7d")
+                612u -> Line("138 Notre-Dame-de-Grâce", "#009ee0")
+                613u -> Line("139 Pie-IX", "#009ee0")
+                614u -> Line("140 Fleury", "#009ee0")
+                615u -> Line("141 Jean-Talon Est", "#781b7d")
+                616u -> Line("144 Avenue des Pins", "#009ee0")
+                617u -> Line("146 Christophe-Colomb / Meilleur", "#009ee0")
+                618u -> Line("150 René-Lévesque", "#009ee0")
+                619u -> Line("160 Barclay", "#009ee0")
+                620u -> Line("161 Van Horne", "#781b7d")
+                621u -> Line("162 Westminster", "#009ee0")
+                622u -> Line("164 Dudemaine", "#009ee0")
+                623u -> Line("165 Côte-des-Neiges", "#781b7d")
+                624u -> Line("166 Queen-Mary", "#009ee0")
+                625u -> Line("168 Cité-du-Havre", "#009ee0")
+                626u -> Line("170 Keller", "#009ee0")
+                627u -> Line("171 Henri-Bourassa", "#781b7d")
+                628u -> Line("172 Du Golf", "#009ee0")
+                629u -> Line("174 Côte-Vertu-Ouest", "#009ee0")
+                630u -> Line("175 Griffith / Saint-François", "#009ee0")
+                631u -> Line("176 Berlioz", "#009ee0")
+                632u -> Line("177 Thimens", "#009ee0")
+                633u -> Line("178 Pointe-Nord / Île-des-Soeurs", "#009ee0")
+                634u -> Line("179 De l'Acadie", "#009ee0")
+                635u -> Line("180 De Salaberry", "#009ee0")
+                636u -> Line("183 Gouin Est", "#009ee0")
+                637u -> Line("185 Sherbrooke", "#009ee0")
+                638u -> Line("186 Sherbrooke-Est", "#009ee0")
+                639u -> Line("187 René-Lévesque", "#781b7d")
+                640u -> Line("188 Couture", "#009ee0")
+                641u -> Line("189 Notre-Dame", "#009ee0")
+                642u -> Line("191 Broadway / Provost", "#009ee0")
+                643u -> Line("192 Robert", "#009ee0")
+                644u -> Line("193 Jarry", "#781b7d")
+                645u -> Line("195 Sherbrooke / Notre-Dame", "#009ee0")
+                646u -> Line("196 Parc-Industriel-Lachine", "#781b7d")
+                647u -> Line("197 Rosemont", "#781b7d")
+                648u -> Line("200 Sainte-Anne-de-Bellevue", "#009ee0")
+                649u -> Line("201 Saint-Charles / Saint-Jean", "#009ee0")
+                650u -> Line("202 Dawson", "#009ee0")
+                651u -> Line("203 Carson", "#009ee0")
+                652u -> Line("204 Cardinal", "#009ee0")
+                653u -> Line("205 Gouin", "#009ee0")
+                654u -> Line("206 Roger-Pilon", "#009ee0")
+                655u -> Line("207 Jacques-Bizard", "#009ee0")
+                656u -> Line("208 Brunswick", "#009ee0")
+                657u -> Line("209 Des Sources", "#009ee0")
+                658u -> Line("211 Bord-du-Lac", "#009ee0")
+                659u -> Line("212 Sainte-Anne", "#009ee0")
+                660u -> Line("213 Parc-Industriel-Saint-Laurent", "#009ee0")
+                661u -> Line("215 Henri-Bourassa", "#009ee0")
+                662u -> Line("216 Transcanadienne", "#009ee0")
+                663u -> Line("217 Anse-à-l'Orme", "#009ee0")
+                664u -> Line("218 Antoine-Faucon", "#009ee0")
+                665u -> Line("219 Chemin Sainte-Marie", "#009ee0")
+                666u -> Line("220 Kieran", "#009ee0")
+                667u -> Line("225 Hymus", "#009ee0")
+                668u -> Line("350 Verdun / LaSalle", "#000000")
+                669u -> Line("353 Lacordaire / Maurice-Duplessis", "#000000")
+                670u -> Line("354 Sainte-Anne-de-Bellevue / Centre-ville", "#000000")
+                671u -> Line("355 Pie-IX", "#000000")
+                672u -> Line("356 Lachine / YUL Aéroport / Des Sources", "#000000")
+                673u -> Line("357 Saint-Michel", "#000000")
+                674u -> Line("358 Sainte-Catherine", "#000000")
+                675u -> Line("359 Papineau", "#000000")
+                676u -> Line("360 Avenue des Pins", "#000000")
+                677u -> Line("361 Saint-Denis", "#000000")
+                678u -> Line("362 Hochelaga / Notre-Dame", "#000000")
+                679u -> Line("363 Boulevard Saint-Laurent", "#000000")
+                680u -> Line("364 Sherbrooke / Joseph-Renaud", "#000000")
+                681u -> Line("365 Avenue du Parc", "#000000")
+                682u -> Line("368 Avenue-du-Mont-Royal", "#000000")
+                683u -> Line("369 Côte-des-Neiges", "#000000")
+                684u -> Line("370 Rosemont", "#000000")
+                685u -> Line("371 Décarie", "#000000")
+                686u -> Line("372 Jean-Talon", "#000000")
+                687u -> Line("376 Pierrefonds / Centre-ville", "#000000")
+                688u -> Line("378 Sauvé / YUL Aéroport", "#000000")
+                689u -> Line("380 Henri-Bourassa", "#000000")
+                690u -> Line("382 Pierrefonds / Saint-Charles", "#000000")
+                691u -> Line("401 Express Saint-Charles", "#009ee0")
+                692u -> Line("405 Express Bord-du-Lac", "#009ee0")
+                693u -> Line("406 Express Newman", "#781b7d")
+                694u -> Line("407 Express Île-Bizard", "#009ee0")
+                695u -> Line("409 Express Des Sources", "#009ee0")
+                696u -> Line("410 Express Notre-Dame", "#009ee0")
+                697u -> Line("411 Express Lionel-Groulx", "#009ee0")
+                698u -> Line("419 Express John Abbott", "#009ee0")
+                699u -> Line("420 Express Notre-Dame-de-Grâce", "#009ee0")
+                700u -> Line("425 Express Anse-à-l'Orme", "#009ee0")
+                701u -> Line("427 Express Saint-Joseph", "#009ee0")
+                702u -> Line("428 Express Parcs industriels de l'Est", "#009ee0")
+                703u -> Line("430 Express Pointe-aux-Trembles", "#009ee0")
+                704u -> Line("432 Express Lacordaire", "#009ee0")
+                705u -> Line("439 Express Pie-IX", "#781b7d")
+                706u -> Line("440 Express Charleroi", "#009ee0")
+                707u -> Line("444 Express Cégep Marie-Victorin", "#009ee0")
+                708u -> Line("445 Express Papineau", "#009ee0")
+                709u -> Line("448 Express Maurice-Duplessis", "#009ee0")
+                710u -> Line("449 Express Rivière-des-Prairies", "#009ee0")
+                711u -> Line("460 Express Métropolitaine", "#009ee0")
+                712u -> Line("465 Express Côte-des-Neiges", "#009ee0")
+                713u -> Line("467 Express Saint-Michel", "#009ee0")
+                714u -> Line("468 Express Pierrefonds / Gouin", "#009ee0")
+                715u -> Line("469 Express Henri-Bourassa", "#009ee0")
+                716u -> Line("470 Express Pierrefonds", "#781b7d")
+                717u -> Line("475 Express Dollard-des-Ormeaux", "#009ee0")
+                718u -> Line("480 Express du Parc", "#009ee0")
+                719u -> Line("485 Express Antoine-Faucon", "#009ee0")
+                720u -> Line("486 Express Sherbrooke", "#009ee0")
+                721u -> Line("487 Express Bout-de-l'Île", "#009ee0")
+                722u -> Line("491 Express Lachine", "#009ee0")
+                723u -> Line("495 Express Lachine / LaSalle", "#009ee0")
+                724u -> Line("496 Express Victoria", "#009ee0")
+                725u -> Line("711 Parc-du-Mont-Royal / Oratoire", "#009ee0")
+                726u -> Line("715 Vieux-Montréal / Vieux-Port", "#009ee0")
+                727u -> Line("747 YUL Aéroport  / Centre-Ville", "#009ee0")
+                728u -> Line("767 La Ronde / Station Jean-Drapeau", "#009ee0")
+                729u -> Line("768 Plage Jean-Doré / Station Jean-Drapeau", "#009ee0")
+                730u -> Line("769 La Ronde / Station Papineau", "#009ee0")
+                731u -> Line("777 Jean-Drapeau / Casino / Bonaventure", "#009ee0")
+                732u -> Line("811 Navette Services santé", "#009ee0")
+                733u -> Line("822 Navette Longue-Pointe", "#009ee0")
+                734u -> Line("968 Trainbus Roxboro / Côte-Vertu", "#009ee0")
+                else -> Line("STM Unknown (lineId: $id)", "#009ee0")
             }
         }
 
-        private fun getRTLLineById(id: UInt): String {
-            return when (id) {
+        private fun getRTLLineById(id: UInt): Line {
                 // TODO Find ids of all lines
                 //   (Id of the line is on 9bits so higher
                 //   than 512u means it's not known yet)
-                513u -> "1 Desaulniers / Victoria / Windsor"
-                514u -> "3 Secteur Laflèche"
-                515u -> "4 Taschereau / Payer / DIX30"
-                516u -> "5 Auteuil / Mtée St-Hubert / Maisonneuve"
-                517u -> "6 Victoria"
-                518u -> "8 Ch. Chambly / Cousineau / Promenades St-Bruno"
-                519u -> "9 Secteurs L-M St-Hubert"
-                520u -> "10 Roland-Therrien / Belcourt"
-                521u -> "13 Riverside / Secteurs P-V Brossard"
-                522u -> "14 Rome / DIX30"
-                523u -> "15 Riverside / Alexandra / Churchill"
-                524u -> "16 Nobert / King-George / Adoncour"
-                525u -> "17 Roland-Therrien / Roberval"
-                526u -> "19 Davis"
-                527u -> "20 Jean-Paul-Vincent / Beauharnois"
-                528u -> "21 Grande-Allée / du Quartier"
-                529u -> "22 Gare Longueuil - St-Hubert / Sect. B Vieux-Longueuil"
-                530u -> "23 Ste-Hélène / Jacques-Cartier"
-                531u -> "25 Parcs industriels Vieux-Longueuil / Boucherville"
-                532u -> "28 Ch. Chambly / Savane / ENA"
-                533u -> "29 Collectivité Nouvelle"
-                534u -> "30 Secteurs P-V Brossard"
-                535u -> "31 Secteurs R-S-T Brossard / St-Laurent"
-                536u -> "32 Secteur B Brossard / Mountainview"
-                537u -> "33 Secteurs M-N-O Brossard"
-                538u -> "34 Secteur A Brossard / Bellevue"
-                539u -> "37 Simard / du Béarn"
-                540u -> "38 Chevrier / Secteur B Brossard"
-                541u -> "41 Rome / Milan"
-                542u -> "42 Gaétan-Boucher / Parc de la Cité"
-                543u -> "43 Milan / Rome"
-                544u -> "44 Secteurs M-N-O Brossard"
-                545u -> "46 Secteurs R-S-T Brossard"
-                546u -> "47 Secteurs R-S-T Brossard"
-                547u -> "49 Secteurs R-S Brossard"
-                548u -> "50 Bienville / Orchard / Prince-Charles"
-                549u -> "54 Tiffin / St-Georges / Taschereau"
-                550u -> "55 Victoria / Wellington"
-                551u -> "59 Montgomery / Gareau"
-                552u -> "60 Milan / Gaétan-Boucher / Promenades St-Bruno"
-                553u -> "61 Boucherville / Station Radisson"
-                554u -> "71 Curé-Poirier"
-                555u -> "73 Joliette / de Lyon"
-                556u -> "74 St-Laurent / Secteur Bellerive"
-                557u -> "75 Quinn / Brébeuf"
-                558u -> "76 Roland-Therrien / Roberval"
-                559u -> "77 Taschereau / Coteau-Rouge / Cégep É.-Montpetit"
-                560u -> "78 Adoncour / du Colisée"
-                561u -> "80 De Montarville / Carrefour de la Rive-Sud"
-                562u -> "81 du Fort-St-Louis / Marie-Victorin"
-                563u -> "82 Marie-Victorin / du Fort-St-Louis"
-                564u -> "83 De Montarville / Samuel-De Champlain"
-                565u -> "84 Samuel-De Champlain / De Montarville"
-                566u -> "85 Îles-Percées / de Mortagne / de Gascogne"
-                567u -> "86 Samuel-De Champlain / De Montarville / TCV"
-                568u -> "87 Marie-Victorin / du Fort St-Louis / TCV"
-                569u -> "88 Ch. Chambly / Mountainview"
-                570u -> "93 Gare St-Bruno / Montarville / Y.-Duckett"
-                571u -> "98 Parc industriel St-Bruno / Parent"
-                572u -> "99 Promenades St-Bruno / Saint-Bruno-de-Montarville"
-                573u -> "120 Fernand-Lafontaine / Stationnement de Mortagne"
-                574u -> "123 Jacques-Cartier / Parcs industriels"
-                575u -> "125 Pratt & Whitney / Lumenpulse"
-                576u -> "128 Zone aéroportuaire / Parc industriel St-Bruno"
-                577u -> "132 DIX30 / Parc de la Cité / Mountainview"
-                578u -> "160 Milan / Gaétan-Boucher / Centre-ville St-Bruno"
-                579u -> "161 R.-Therrien / J.-Cartier / De Montarville"
-                580u -> "170 Station Papineau / Ste-Hélène / J.-Cartier"
-                581u -> "180 De Montarville / des Sureaux"
-                582u -> "185 Ampère / Gay-Lussac"
-                583u -> "192 Station Brossard / Montarville / Y.-Duckett"
-                584u -> "199 Seigneurial / Grand Boulevard"
-                585u -> "214 Station Brossard / de Rome / St-Laurent"
-                586u -> "284 Navette Boucherville"
-                587u -> "410 Express Roland-Therrien / Belcourt"
-                588u -> "417 Express Roland-Therrien / Roberval"
-                589u -> "421 Grande-Allée / A.-Frappier"
-                590u -> "428 Zone aéroportuaire / Agence Spatiale canadienne"
-                591u -> "442 Cousineau / Pacific"
-                592u -> "461 Express de Touraine / de Montarville / Radisson"
-                593u -> "462 Touraine-Mortagne-Radisson-HMR-Inst.cardio"
-                594u -> "500 École Saint-Lambert International High School"
-                595u -> "503 École Centennial Regional High School"
-                596u -> "505 École Centennial Regional High School"
-                597u -> "521 École Centennial Regional High School"
-                598u -> "524 École Centennial Regional High School"
-                599u -> "525 École Centennial Regional High School"
-                600u -> "526 École Centennial Regional High School"
-                601u -> "530 École Centennial Regional High School"
-                602u -> "532 École Centennial Regional High School"
-                603u -> "533 École Centennial Regional High School"
-                604u -> "534 École Centennial Regional High School"
-                605u -> "535 École Centennial Regional High School"
-                606u -> "536 École Centennial Regional High School"
-                607u -> "538 École Heritage Regional High School"
-                608u -> "539 École Heritage Regional High School"
-                609u -> "540 École Heritage Regional High School"
-                610u -> "542 École Heritage Regional High School"
-                611u -> "544 École Centennial Regional High School"
-                612u -> "546 École Centennial Regional High School"
-                613u -> "547 École Centennial Regional High School"
-                614u -> "549 École Centennial Regional High School"
-                615u -> "550 École Centennial Regional High School"
-                616u -> "551 École Centennial Regional High School"
-                617u -> "565 École Saint-Lambert International High School"
-                618u -> "570 École Saint-Lambert International High School"
-                619u -> "572 École Saint-Lambert International High School"
-                620u -> "575 École Saint-Lambert International High School"
-                621u -> "580 École Saint-Lambert International High School"
-                622u -> "600 Écoles privées"
-                623u -> "601 École de l'Agora"
-                624u -> "602 École de l'Agora"
-                625u -> "604 École de l'Agora"
-                626u -> "605 École de l'Agora"
-                627u -> "606 Écoles privées"
-                628u -> "607 École de l'Agora"
-                629u -> "608 École André-Laurendeau et Cégep Édouard-Montpetit"
-                630u -> "609 École de l'Agora"
-                631u -> "613 Écoles privées"
-                632u -> "614 Écoles privées"
-                633u -> "616 École Gérard-Filion"
-                634u -> "618 Écoles privées"
-                635u -> "620 Collège Français"
-                636u -> "624 École St-Jean-Baptiste"
-                637u -> "640 École Antoine-Brossard"
-                638u -> "644 École Antoine-Brossard"
-                639u -> "650 École Antoine-Brossard"
-                640u -> "653 École Antoine-Brossard"
-                641u -> "656 École Antoine-Brossard"
-                642u -> "660 École Antoine-Brossard"
-                643u -> "664 École Antoine-Brossard"
-                644u -> "665 École Antoine-Brossard"
-                645u -> "670 École Antoine-Brossard"
-                646u -> "671 École Jacques-Rousseau"
-                647u -> "672 École Jacques-Rousseau"
-                648u -> "673 École Jacques-Rousseau"
-                649u -> "674 École Antoine-Brossard"
-                650u -> "675 École Jacques-Rousseau"
-                651u -> "676 École Jacques-Rousseau"
-                652u -> "678 École Jacques-Rousseau"
-                653u -> "683 Cégep Édouard-Montpetit"
-                654u -> "684 École Antoine-Brossard"
-                655u -> "689 École Antoine-Brossard"
-                656u -> "690 École Antoine-Brossard"
-                657u -> "691 École Lucille-Teasdale"
-                658u -> "692 École Lucille-Teasdale"
-                659u -> "693 École Lucille-Teasdale"
-                660u -> "694 École Lucille-Teasdale"
-                661u -> "695 École Lucille-Teasdale"
-                662u -> "696 École Lucille-Teasdale"
-                663u -> "697 École Lucille-Teasdale - Secteur Chevrier"
-                else -> "Unknown (lineId: $id)"
+            return when (id) {
+                513u -> Line("1 Desaulniers / Victoria / Windsor", "#9e2536")
+                514u -> Line("3 Secteur Laflèche", "#9e2536")
+                515u -> Line("4 Taschereau / Payer / DIX30", "#9e2536")
+                516u -> Line("5 Auteuil / Mtée St-Hubert / Maisonneuve", "#9e2536")
+                517u -> Line("6 Victoria", "#9e2536")
+                518u -> Line("8 Ch. Chambly / Cousineau / Promenades St-Bruno", "#9e2536")
+                519u -> Line("9 Secteurs L-M St-Hubert", "#9e2536")
+                520u -> Line("10 Roland-Therrien / Belcourt", "#9e2536")
+                521u -> Line("13 Riverside / Secteurs P-V Brossard", "#9e2536")
+                522u -> Line("14 Rome / DIX30", "#9e2536")
+                523u -> Line("15 Riverside / Alexandra / Churchill", "#9e2536")
+                524u -> Line("16 Nobert / King-George / Adoncour", "#9e2536")
+                525u -> Line("17 Roland-Therrien / Roberval", "#9e2536")
+                526u -> Line("19 Davis", "#9e2536")
+                527u -> Line("20 Jean-Paul-Vincent / Beauharnois", "#9e2536")
+                528u -> Line("21 Grande-Allée / du Quartier", "#9e2536")
+                529u -> Line("22 Gare Longueuil - St-Hubert / Sect. B Vieux-Longueuil", "#9e2536")
+                530u -> Line("23 Ste-Hélène / Jacques-Cartier", "#9e2536")
+                531u -> Line("25 Parcs industriels Vieux-Longueuil / Boucherville", "#9e2536")
+                532u -> Line("28 Ch. Chambly / Savane / ENA", "#9e2536")
+                533u -> Line("29 Collectivité Nouvelle", "#9e2536")
+                534u -> Line("30 Secteurs P-V Brossard", "#9e2536")
+                535u -> Line("31 Secteurs R-S-T Brossard / St-Laurent", "#9e2536")
+                536u -> Line("32 Secteur B Brossard / Mountainview", "#9e2536")
+                537u -> Line("33 Secteurs M-N-O Brossard", "#9e2536")
+                538u -> Line("34 Secteur A Brossard / Bellevue", "#9e2536")
+                539u -> Line("37 Simard / du Béarn", "#9e2536")
+                540u -> Line("38 Chevrier / Secteur B Brossard", "#9e2536")
+                541u -> Line("41 Rome / Milan", "#9e2536")
+                542u -> Line("42 Gaétan-Boucher / Parc de la Cité", "#9e2536")
+                543u -> Line("43 Milan / Rome", "#9e2536")
+                544u -> Line("44 Secteurs M-N-O Brossard", "#9e2536")
+                545u -> Line("46 Secteurs R-S-T Brossard", "#9e2536")
+                546u -> Line("47 Secteurs R-S-T Brossard", "#9e2536")
+                547u -> Line("49 Secteurs R-S Brossard", "#9e2536")
+                548u -> Line("50 Bienville / Orchard / Prince-Charles", "#9e2536")
+                549u -> Line("54 Tiffin / St-Georges / Taschereau", "#9e2536")
+                550u -> Line("55 Victoria / Wellington", "#9e2536")
+                551u -> Line("59 Montgomery / Gareau", "#9e2536")
+                552u -> Line("60 Milan / Gaétan-Boucher / Promenades St-Bruno", "#9e2536")
+                553u -> Line("61 Boucherville / Station Radisson", "#9e2536")
+                554u -> Line("71 Curé-Poirier", "#9e2536")
+                555u -> Line("73 Joliette / de Lyon", "#9e2536")
+                556u -> Line("74 St-Laurent / Secteur Bellerive", "#9e2536")
+                557u -> Line("75 Quinn / Brébeuf", "#9e2536")
+                558u -> Line("76 Roland-Therrien / Roberval", "#9e2536")
+                559u -> Line("77 Taschereau / Coteau-Rouge / Cégep É.-Montpetit", "#9e2536")
+                560u -> Line("78 Adoncour / du Colisée", "#9e2536")
+                561u -> Line("80 De Montarville / Carrefour de la Rive-Sud", "#9e2536")
+                562u -> Line("81 du Fort-St-Louis / Marie-Victorin", "#9e2536")
+                563u -> Line("82 Marie-Victorin / du Fort-St-Louis", "#9e2536")
+                564u -> Line("83 De Montarville / Samuel-De Champlain", "#9e2536")
+                565u -> Line("84 Samuel-De Champlain / De Montarville", "#9e2536")
+                566u -> Line("85 Îles-Percées / de Mortagne / de Gascogne", "#9e2536")
+                567u -> Line("86 Samuel-De Champlain / De Montarville / TCV", "#9e2536")
+                568u -> Line("87 Marie-Victorin / du Fort St-Louis / TCV", "#9e2536")
+                569u -> Line("88 Ch. Chambly / Mountainview", "#9e2536")
+                570u -> Line("93 Gare St-Bruno / Montarville / Y.-Duckett", "#9e2536")
+                571u -> Line("98 Parc industriel St-Bruno / Parent", "#9e2536")
+                572u -> Line("99 Promenades St-Bruno / Saint-Bruno-de-Montarville", "#9e2536")
+                573u -> Line("120 Fernand-Lafontaine / Stationnement de Mortagne", "#9e2536")
+                574u -> Line("123 Jacques-Cartier / Parcs industriels", "#9e2536")
+                575u -> Line("125 Pratt & Whitney / Lumenpulse", "#9e2536")
+                576u -> Line("128 Zone aéroportuaire / Parc industriel St-Bruno", "#9e2536")
+                577u -> Line("132 DIX30 / Parc de la Cité / Mountainview", "#9e2536")
+                578u -> Line("160 Milan / Gaétan-Boucher / Centre-ville St-Bruno", "#9e2536")
+                579u -> Line("161 R.-Therrien / J.-Cartier / De Montarville", "#9e2536")
+                580u -> Line("170 Station Papineau / Ste-Hélène / J.-Cartier", "#9e2536")
+                581u -> Line("180 De Montarville / des Sureaux", "#9e2536")
+                582u -> Line("185 Ampère / Gay-Lussac", "#9e2536")
+                583u -> Line("192 Station Brossard / Montarville / Y.-Duckett", "#9e2536")
+                584u -> Line("199 Seigneurial / Grand Boulevard", "#9e2536")
+                585u -> Line("214 Station Brossard / de Rome / St-Laurent", "#9e2536")
+                586u -> Line("284 Navette Boucherville", "#9e2536")
+                587u -> Line("410 Express Roland-Therrien / Belcourt", "#9e2536")
+                588u -> Line("417 Express Roland-Therrien / Roberval", "#9e2536")
+                589u -> Line("421 Grande-Allée / A.-Frappier", "#9e2536")
+                590u -> Line("428 Zone aéroportuaire / Agence Spatiale canadienne", "#9e2536")
+                591u -> Line("442 Cousineau / Pacific", "#9e2536")
+                592u -> Line("461 Express de Touraine / de Montarville / Radisson", "#9e2536")
+                593u -> Line("462 Touraine-Mortagne-Radisson-HMR-Inst.cardio", "#9e2536")
+                594u -> Line("500 École Saint-Lambert International High School", "#9e2536")
+                595u -> Line("503 École Centennial Regional High School", "#9e2536")
+                596u -> Line("505 École Centennial Regional High School", "#9e2536")
+                597u -> Line("521 École Centennial Regional High School", "#9e2536")
+                598u -> Line("524 École Centennial Regional High School", "#9e2536")
+                599u -> Line("525 École Centennial Regional High School", "#9e2536")
+                600u -> Line("526 École Centennial Regional High School", "#9e2536")
+                601u -> Line("530 École Centennial Regional High School", "#9e2536")
+                602u -> Line("532 École Centennial Regional High School", "#9e2536")
+                603u -> Line("533 École Centennial Regional High School", "#9e2536")
+                604u -> Line("534 École Centennial Regional High School", "#9e2536")
+                605u -> Line("535 École Centennial Regional High School", "#9e2536")
+                606u -> Line("536 École Centennial Regional High School", "#9e2536")
+                607u -> Line("538 École Heritage Regional High School", "#9e2536")
+                608u -> Line("539 École Heritage Regional High School", "#9e2536")
+                609u -> Line("540 École Heritage Regional High School", "#9e2536")
+                610u -> Line("542 École Heritage Regional High School", "#9e2536")
+                611u -> Line("544 École Centennial Regional High School", "#9e2536")
+                612u -> Line("546 École Centennial Regional High School", "#9e2536")
+                613u -> Line("547 École Centennial Regional High School", "#9e2536")
+                614u -> Line("549 École Centennial Regional High School", "#9e2536")
+                615u -> Line("550 École Centennial Regional High School", "#9e2536")
+                616u -> Line("551 École Centennial Regional High School", "#9e2536")
+                617u -> Line("565 École Saint-Lambert International High School", "#9e2536")
+                618u -> Line("570 École Saint-Lambert International High School", "#9e2536")
+                619u -> Line("572 École Saint-Lambert International High School", "#9e2536")
+                620u -> Line("575 École Saint-Lambert International High School", "#9e2536")
+                621u -> Line("580 École Saint-Lambert International High School", "#9e2536")
+                622u -> Line("600 Écoles privées", "#9e2536")
+                623u -> Line("601 École de l'Agora", "#9e2536")
+                624u -> Line("602 École de l'Agora", "#9e2536")
+                625u -> Line("604 École de l'Agora", "#9e2536")
+                626u -> Line("605 École de l'Agora", "#9e2536")
+                627u -> Line("606 Écoles privées", "#9e2536")
+                628u -> Line("607 École de l'Agora", "#9e2536")
+                629u -> Line("608 École André-Laurendeau et Cégep Édouard-Montpetit", "#9e2536")
+                630u -> Line("609 École de l'Agora", "#9e2536")
+                631u -> Line("613 Écoles privées", "#9e2536")
+                632u -> Line("614 Écoles privées", "#9e2536")
+                633u -> Line("616 École Gérard-Filion", "#9e2536")
+                634u -> Line("618 Écoles privées", "#9e2536")
+                635u -> Line("620 Collège Français", "#9e2536")
+                636u -> Line("624 École St-Jean-Baptiste", "#9e2536")
+                637u -> Line("640 École Antoine-Brossard", "#9e2536")
+                638u -> Line("644 École Antoine-Brossard", "#9e2536")
+                639u -> Line("650 École Antoine-Brossard", "#9e2536")
+                640u -> Line("653 École Antoine-Brossard", "#9e2536")
+                641u -> Line("656 École Antoine-Brossard", "#9e2536")
+                642u -> Line("660 École Antoine-Brossard", "#9e2536")
+                643u -> Line("664 École Antoine-Brossard", "#9e2536")
+                644u -> Line("665 École Antoine-Brossard", "#9e2536")
+                645u -> Line("670 École Antoine-Brossard", "#9e2536")
+                646u -> Line("671 École Jacques-Rousseau", "#9e2536")
+                647u -> Line("672 École Jacques-Rousseau", "#9e2536")
+                648u -> Line("673 École Jacques-Rousseau", "#9e2536")
+                649u -> Line("674 École Antoine-Brossard", "#9e2536")
+                650u -> Line("675 École Jacques-Rousseau", "#9e2536")
+                651u -> Line("676 École Jacques-Rousseau", "#9e2536")
+                652u -> Line("678 École Jacques-Rousseau", "#9e2536")
+                653u -> Line("683 Cégep Édouard-Montpetit", "#9e2536")
+                654u -> Line("684 École Antoine-Brossard", "#9e2536")
+                655u -> Line("689 École Antoine-Brossard", "#9e2536")
+                656u -> Line("690 École Antoine-Brossard", "#9e2536")
+                657u -> Line("691 École Lucille-Teasdale", "#9e2536")
+                658u -> Line("692 École Lucille-Teasdale", "#9e2536")
+                659u -> Line("693 École Lucille-Teasdale", "#9e2536")
+                660u -> Line("694 École Lucille-Teasdale", "#9e2536")
+                661u -> Line("695 École Lucille-Teasdale", "#9e2536")
+                662u -> Line("696 École Lucille-Teasdale", "#9e2536")
+                663u -> Line("697 École Lucille-Teasdale - Secteur Chevrier", "#9e2536")
+                else -> Line("RTL Unknown (lineId: $id)", "#9e2536")
             }
         }
 
-        private fun getRTMLineById(id: UInt): String {
+        private fun getEXOLineById(id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
-                513u -> "11 Vaudreuil-Hudson"
-                514u -> "12 Saint-Jérôme"
-                515u -> "13 Mont-Saint-Hilaire"
-                516u -> "14 Candiac"
-                517u -> "15 Mascouche"
-                518u -> "12 Saint-Jérôme (zone B)"
-                519u -> "13 Mont-Saint-Hilaire (zone B)"
-                520u -> "11 Vaudreuil-Hudson (zone C)"
-                521u -> "12 Saint-Jérôme (zone C)"
-                522u -> "13 Mont-Saint-Hilaire (zone C)"
-                523u -> "14 Candiac (zone C)"
-                524u -> "15 Mascouche (zone C)"
-                else -> "Unknown (lineId: $id)"
+                513u -> Line("11 Vaudreuil-Hudson", "#f16179")
+                514u -> Line("12 Saint-Jérôme", "#fed16d")
+                515u -> Line("13 Mont-Saint-Hilaire", "#999ac6")
+                516u -> Line("14 Candiac", "#5ab6b2")
+                517u -> Line("15 Mascouche", "#ca5898")
+                518u -> Line("12 Saint-Jérôme (zone B)", "#fed16d")
+                519u -> Line("13 Mont-Saint-Hilaire (zone B)", "#999ac6")
+                520u -> Line("11 Vaudreuil-Hudson (zone C)", "#f16179")
+                521u -> Line("12 Saint-Jérôme (zone C)", "#fed16d")
+                522u -> Line("13 Mont-Saint-Hilaire (zone C)", "#999ac6")
+                523u -> Line("14 Candiac (zone C)", "#5ab6b2")
+                524u -> Line("15 Mascouche (zone C)", "#ca5898")
+                else -> Line("EXO Unknown (lineId: $id)", "#000000")
             }
         }
 
-        private fun getRTCLineById(id: UInt): String {
+        private fun getRTCLineById(id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
-                513u -> "1 Station Belvédère - Gare fluviale / Cap-Blanc"
-                514u -> "107 Gare du Palais - Pointe-de-Sainte-Foy"
-                515u -> "11 Gare fluviale - Pointe-de-Sainte-Foy"
-                516u -> "11G C.-Laforte / McCartney"
-                517u -> "13 Saint-Louis/Sainte-Foy Centre/du Versant-Nord - Du Versant-Nord/Sainte-Foy Centre/Saint-Louis"
-                518u -> "133 Vieux-Québec - Terminus de la Faune"
-                519u -> "136 Colline Parlementaire - Montagne-des-Roches"
-                520u -> "13A École secondaire De Rochebelle - De Terrebonne / de La Suète"
-                521u -> "13B École secondaire De Rochebelle - Des Sapins / du Versant-Nord"
-                522u -> "14 Pointe-de-Sainte-Foy - Cap-Rouge"
-                523u -> "14A Collège des Compagnons - De la Rivière / du Domaine"
-                524u -> "14G Collège Jésus-Marie de Sillery - Des Carougeois / J.-C.-Cantin"
-                525u -> "15 Pointe-de-Sainte-Foy - Cap-Rouge"
-                526u -> "15A Collège des Compagnons - de la Prom.-des-Soeurs / J.-C.-Cantin"
-                527u -> "15B Collège des Compagnons - de la Prom-des-Soeurs / Escoffier"
-                528u -> "16 Sillery / U. Laval / Sainte-Foy Centre - U. Laval / Sillery / Sainte-Foy Centre"
-                529u -> "18 Gare du Palais - Université Laval"
-                530u -> "185 Station Belvédère / Sainte-Foy Centre - Neufchâtel"
-                531u -> "19 Grand Théâtre - Limoilou"
-                532u -> "214 Gare du Palais - Cap-Rouge"
-                533u -> "215 Gare du Palais - Cap-Rouge"
-                534u -> "22 Sainte-Foy Centre - Terminus Les Saules"
-                535u -> "230 Colline Parlementaire - Terminus de la Faune"
-                536u -> "236 Colline Parlementaire - Station des Roses"
-                537u -> "238 Colline Parlementaire - Guillaume-Mathieu"
-                538u -> "239 Colline Parlementaire - Terminus de la Faune"
-                539u -> "25 Place D'Youville / Gare du Palais - Pointe-de-Sainte-Foy"
-                540u -> "250 Colline Parlementaire - Terminus Chute-Montmorency"
-                541u -> "251 Colline Parlementaire - Parc-O-Bus Sainte-Anne"
-                542u -> "253 Colline Parlementaire - Courville"
-                543u -> "254 Colline Parlementaire - Sainte-Thérèse-de-Lisieux"
-                544u -> "255 Colline Parlementaire - Sainte-Thérèse-de-Lisieux"
-                545u -> "257 Colline Parlementaire - Sainte-Thérèse-de-Lisieux"
-                546u -> "258 Colline Parlementaire - Sainte-Thérèse-de-Lisieux"
-                547u -> "25G Pointe-de-Sainte-Foy"
-                548u -> "272 Colline Parlementaire - Loretteville"
-                549u -> "273 Colline Parlementaire - Loretteville Sud"
-                550u -> "274 Colline Parlementaire - Neufchâtel"
-                551u -> "277 Colline Parlementaire - Val-Bélair"
-                552u -> "279 Colline Parlementaire - L'Ancienne-Lorette"
-                553u -> "28 Colline Parlementaire - 51e Rue Est"
-                554u -> "280 Place Jacques-Cartier / colline Parlementaire - L'Ancienne-Lorette"
-                555u -> "281 Colline Parlementaire - Neufchâtel"
-                556u -> "282 Colline Parlementaire - Lac-Saint-Charles"
-                557u -> "283 Gare du Palais - Champigny"
-                558u -> "284 Colline Parlementaire - Loretteville"
-                559u -> "289 Colline Parlementaire - Saint-Émile"
-                560u -> "29 Parc Colbert Ouest - Place Jacques-Cartier"
-                561u -> "290 Vieux-Québec - Loretteville"
-                562u -> "292 Place Jacques-Cartier - Saint-Augustin"
-                else -> "Unknown (lineId: $id)"
+                513u -> Line("1 Station Belvédère - Gare fluviale / Cap-Blanc", "#003878")
+                514u -> Line("107 Gare du Palais - Pointe-de-Sainte-Foy", "#003878")
+                515u -> Line("11 Gare fluviale - Pointe-de-Sainte-Foy", "#003878")
+                516u -> Line("11G C.-Laforte / McCartney", "#003878")
+                517u -> Line("13 Saint-Louis/Sainte-Foy Centre/du Versant-Nord - Du Versant-Nord/Sainte-Foy Centre/Saint-Louis", "#003878")
+                518u -> Line("133 Vieux-Québec - Terminus de la Faune", "#003878")
+                519u -> Line("136 Colline Parlementaire - Montagne-des-Roches", "#003878")
+                520u -> Line("13A École secondaire De Rochebelle - De Terrebonne / de La Suète", "#003878")
+                521u -> Line("13B École secondaire De Rochebelle - Des Sapins / du Versant-Nord", "#003878")
+                522u -> Line("14 Pointe-de-Sainte-Foy - Cap-Rouge", "#003878")
+                523u -> Line("14A Collège des Compagnons - De la Rivière / du Domaine", "#003878")
+                524u -> Line("14G Collège Jésus-Marie de Sillery - Des Carougeois / J.-C.-Cantin", "#003878")
+                525u -> Line("15 Pointe-de-Sainte-Foy - Cap-Rouge", "#003878")
+                526u -> Line("15A Collège des Compagnons - de la Prom.-des-Soeurs / J.-C.-Cantin", "#003878")
+                527u -> Line("15B Collège des Compagnons - de la Prom-des-Soeurs / Escoffier", "#003878")
+                528u -> Line("16 Sillery / U. Laval / Sainte-Foy Centre - U. Laval / Sillery / Sainte-Foy Centre", "#003878")
+                529u -> Line("18 Gare du Palais - Université Laval", "#003878")
+                530u -> Line("185 Station Belvédère / Sainte-Foy Centre - Neufchâtel", "#003878")
+                531u -> Line("19 Grand Théâtre - Limoilou", "#003878")
+                532u -> Line("214 Gare du Palais - Cap-Rouge", "#003878")
+                533u -> Line("215 Gare du Palais - Cap-Rouge", "#003878")
+                534u -> Line("22 Sainte-Foy Centre - Terminus Les Saules", "#003878")
+                535u -> Line("230 Colline Parlementaire - Terminus de la Faune", "#003878")
+                536u -> Line("236 Colline Parlementaire - Station des Roses", "#003878")
+                537u -> Line("238 Colline Parlementaire - Guillaume-Mathieu", "#003878")
+                538u -> Line("239 Colline Parlementaire - Terminus de la Faune", "#003878")
+                539u -> Line("25 Place D'Youville / Gare du Palais - Pointe-de-Sainte-Foy", "#003878")
+                540u -> Line("250 Colline Parlementaire - Terminus Chute-Montmorency", "#003878")
+                541u -> Line("251 Colline Parlementaire - Parc-O-Bus Sainte-Anne", "#003878")
+                542u -> Line("253 Colline Parlementaire - Courville", "#003878")
+                543u -> Line("254 Colline Parlementaire - Sainte-Thérèse-de-Lisieux", "#003878")
+                544u -> Line("255 Colline Parlementaire - Sainte-Thérèse-de-Lisieux", "#003878")
+                545u -> Line("257 Colline Parlementaire - Sainte-Thérèse-de-Lisieux", "#003878")
+                546u -> Line("258 Colline Parlementaire - Sainte-Thérèse-de-Lisieux", "#003878")
+                547u -> Line("25G Pointe-de-Sainte-Foy", "#003878")
+                548u -> Line("272 Colline Parlementaire - Loretteville", "#003878")
+                549u -> Line("273 Colline Parlementaire - Loretteville Sud", "#003878")
+                550u -> Line("274 Colline Parlementaire - Neufchâtel", "#003878")
+                551u -> Line("277 Colline Parlementaire - Val-Bélair", "#003878")
+                552u -> Line("279 Colline Parlementaire - L'Ancienne-Lorette", "#003878")
+                553u -> Line("28 Colline Parlementaire - 51e Rue Est", "#003878")
+                554u -> Line("280 Place Jacques-Cartier / colline Parlementaire - L'Ancienne-Lorette", "#003878")
+                555u -> Line("281 Colline Parlementaire - Neufchâtel", "#003878")
+                556u -> Line("282 Colline Parlementaire - Lac-Saint-Charles", "#003878")
+                557u -> Line("283 Gare du Palais - Champigny", "#003878")
+                558u -> Line("284 Colline Parlementaire - Loretteville", "#003878")
+                559u -> Line("289 Colline Parlementaire - Saint-Émile", "#003878")
+                560u -> Line("29 Parc Colbert Ouest - Place Jacques-Cartier", "#003878")
+                561u -> Line("290 Vieux-Québec - Loretteville", "#003878")
+                562u -> Line("292 Place Jacques-Cartier - Saint-Augustin", "#003878")
+                else -> Line("RTC Unknown (lineId: $id)", "#003878")
             }
         }
 
-        private fun getSTLLineById(id: UInt): String {
+        private fun getSTLLineById(id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
-                513u -> "12 Pont-Viau / Métro Cartier"
-                514u -> "144 Métro Côte-Vertu / Sainte-Dorothée"
-                515u -> "151 Sainte-Rose / Métro Côte-Vertu"
-                516u -> "16 Métro Montmorency / Laval-des-Rapides / Armand-Frappier"
-                517u -> "17 Auteuil / Métro Cartier"
-                518u -> "2 Métro Henri-Bourassa / Métro Montmorency"
-                519u -> "20 Métro Cartier / Chomedey"
-                520u -> "22 Saint-François / Métro Cartier"
-                521u -> "222 Saint-Vincent-De-Paul / Métro Cartier"
-                522u -> "24 Métro Cartier / Sainte-Dorothée"
-                523u -> "252 Saint-François / Métro Henri-Bourassa"
-                524u -> "26 Métro Montmorency / Gare Sainte-Dorothée"
-                525u -> "27 Gare Vimont / Métro Cartier"
-                526u -> "31 Auteuil / Métro Henri-Bourassa"
-                527u -> "313 Chomedey / Métro Côte-Vertu"
-                528u -> "33 Métro Montmorency / Métro Cartier"
-                529u -> "345 Gare Vimont / Métro Henri-Bourassa"
-                530u -> "36 Métro Montmorency / Chomedey"
-                531u -> "360 Navette Centre-Ville (Gratuit)"
-                532u -> "37 Sainte-Rose / Métro Cartier"
-                533u -> "39 Auteuil / Terminus Le Carrefour"
-                534u -> "40 Métro Montmorency / Chomedey"
-                535u -> "41 Auteuil / Métro Cartier"
-                536u -> "42 Saint-François / Terminus Le Carrefour"
-                537u -> "43 Auteuil / Métro Cartier"
-                538u -> "45 Auteuil / Métro Montmorency"
-                539u -> "46 Laval-Ouest / Métro Montmorency"
-                540u -> "48 Gare Vimont / Métro Cartier"
-                541u -> "50 Saint-Vincent-De-Paul / Terminus Le Carrefour"
-                542u -> "52 Saint-François / Métro Henri-Bourassa"
-                543u -> "55 Laval-Ouest / Métro Henri-Bourassa"
-                544u -> "56 Métro Montmorency / Sainte-Dorothée"
-                545u -> "58 Saint-Vincent-De-Paul / Métro Cartier"
-                546u -> "60 Métro Cartier / Chomedey"
-                547u -> "61 Fabreville / Métro Montmorency"
-                548u -> "63 Gare Sainte-Rose / Métro Cartier"
-                549u -> "65 Gare Sainte-Rose / Métro Montmorency"
-                550u -> "66 Terminus Le Carrefour / Sainte-Dorothée"
-                551u -> "70 Métro Cartier / Métro Montmorency"
-                552u -> "713 Sainte-Dorothée / Métro Côte-Vertu"
-                553u -> "73 Fabreville / Métro Cartier"
-                554u -> "730 Gare Sainte-Dorothée / Montréal"
-                555u -> "74 Saint-François / Métro Cartier"
-                556u -> "744 Métro Côte-Vertu / Gare Sainte-Dorothée"
-                557u -> "76 Métro Montmorency / Gare Sainte-Dorothée"
-                558u -> "901 Saint-François / Métro Cartier"
-                559u -> "902 Terminus Le Carrefour / Métro Côte-Vertu"
-                560u -> "903 Gare Sainte-Dorothée / Métro Montmorency"
-                561u -> "925 Saint-François / Métro Radisson"
-                562u -> "942 Saint-François / Métro Montmorency"
-                else -> "Unknown (lineId: $id)"
-            }
+                513u -> Line("12 Pont-Viau / Métro Cartier", "#151f6d")
+                514u -> Line("144 Métro Côte-Vertu / Sainte-Dorothée", "#151f6d")
+                515u -> Line("151 Sainte-Rose / Métro Côte-Vertu", "#151f6d")
+                516u -> Line("16 Métro Montmorency / Laval-des-Rapides / Armand-Frappier", "#151f6d")
+                517u -> Line("17 Auteuil / Métro Cartier", "#151f6d")
+                518u -> Line("2 Métro Henri-Bourassa / Métro Montmorency", "#151f6d")
+                519u -> Line("20 Métro Cartier / Chomedey", "#151f6d")
+                520u -> Line("22 Saint-François / Métro Cartier", "#151f6d")
+                521u -> Line("222 Saint-Vincent-De-Paul / Métro Cartier", "#151f6d")
+                522u -> Line("24 Métro Cartier / Sainte-Dorothée", "#151f6d")
+                523u -> Line("252 Saint-François / Métro Henri-Bourassa", "#151f6d")
+                524u -> Line("26 Métro Montmorency / Gare Sainte-Dorothée", "#151f6d")
+                525u -> Line("27 Gare Vimont / Métro Cartier", "#151f6d")
+                526u -> Line("31 Auteuil / Métro Henri-Bourassa", "#151f6d")
+                527u -> Line("313 Chomedey / Métro Côte-Vertu", "#151f6d")
+                528u -> Line("33 Métro Montmorency / Métro Cartier", "#151f6d")
+                529u -> Line("345 Gare Vimont / Métro Henri-Bourassa", "#151f6d")
+                530u -> Line("36 Métro Montmorency / Chomedey", "#151f6d")
+                531u -> Line("360 Navette Centre-Ville (Gratuit)", "#151f6d")
+                532u -> Line("37 Sainte-Rose / Métro Cartier", "#151f6d")
+                533u -> Line("39 Auteuil / Terminus Le Carrefour", "#151f6d")
+                534u -> Line("40 Métro Montmorency / Chomedey", "#151f6d")
+                535u -> Line("41 Auteuil / Métro Cartier", "#151f6d")
+                536u -> Line("42 Saint-François / Terminus Le Carrefour", "#151f6d")
+                537u -> Line("43 Auteuil / Métro Cartier", "#151f6d")
+                538u -> Line("45 Auteuil / Métro Montmorency", "#151f6d")
+                539u -> Line("46 Laval-Ouest / Métro Montmorency", "#151f6d")
+                540u -> Line("48 Gare Vimont / Métro Cartier", "#151f6d")
+                541u -> Line("50 Saint-Vincent-De-Paul / Terminus Le Carrefour", "#151f6d")
+                542u -> Line("52 Saint-François / Métro Henri-Bourassa", "#151f6d")
+                543u -> Line("55 Laval-Ouest / Métro Henri-Bourassa", "#151f6d")
+                544u -> Line("56 Métro Montmorency / Sainte-Dorothée", "#151f6d")
+                545u -> Line("58 Saint-Vincent-De-Paul / Métro Cartier", "#151f6d")
+                546u -> Line("60 Métro Cartier / Chomedey", "#151f6d")
+                547u -> Line("61 Fabreville / Métro Montmorency", "#151f6d")
+                548u -> Line("63 Gare Sainte-Rose / Métro Cartier", "#151f6d")
+                549u -> Line("65 Gare Sainte-Rose / Métro Montmorency", "#151f6d")
+                550u -> Line("66 Terminus Le Carrefour / Sainte-Dorothée", "#151f6d")
+                551u -> Line("70 Métro Cartier / Métro Montmorency", "#151f6d")
+                552u -> Line("713 Sainte-Dorothée / Métro Côte-Vertu", "#151f6d")
+                553u -> Line("73 Fabreville / Métro Cartier", "#151f6d")
+                554u -> Line("730 Gare Sainte-Dorothée / Montréal", "#151f6d")
+                555u -> Line("74 Saint-François / Métro Cartier", "#151f6d")
+                556u -> Line("744 Métro Côte-Vertu / Gare Sainte-Dorothée", "#151f6d")
+                557u -> Line("76 Métro Montmorency / Gare Sainte-Dorothée", "#151f6d")
+                558u -> Line("901 Saint-François / Métro Cartier", "#151f6d")
+                559u -> Line("902 Terminus Le Carrefour / Métro Côte-Vertu", "#151f6d")
+                560u -> Line("903 Gare Sainte-Dorothée / Métro Montmorency", "#151f6d")
+                561u -> Line("925 Saint-François / Métro Radisson", "#151f6d")
+                562u -> Line("942 Saint-François / Métro Montmorency", "#151f6d")
+                else -> Line("STL Unknown (lineId: $id)", "#151f6d")            }
         }
 
-        private fun getSTLevisLineById(id: UInt): String {
+        private fun getSTLevisLineById(id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
-                513u -> "11"
-                514u -> "111"
-                515u -> "115"
-                516u -> "119"
-                517u -> "11A"
-                518u -> "125"
-                519u -> "126"
-                520u -> "127"
-                521u -> "129"
-                522u -> "13"
-                523u -> "131"
-                524u -> "135"
-                525u -> "136"
-                526u -> "137"
-                527u -> "139"
-                528u -> "15"
-                529u -> "155"
-                530u -> "156"
-                531u -> "158"
-                532u -> "22"
-                533u -> "221"
-                534u -> "222"
-                535u -> "225"
-                536u -> "23"
-                537u -> "231"
-                538u -> "232"
-                539u -> "235"
-                540u -> "24"
-                541u -> "241"
-                542u -> "242"
-                543u -> "245"
-                544u -> "246"
-                545u -> "31"
-                546u -> "311"
-                547u -> "325"
-                548u -> "34"
-                549u -> "345"
-                550u -> "34E"
-                551u -> "35"
-                552u -> "351"
-                553u -> "355"
-                554u -> "36"
-                555u -> "36E"
-                556u -> "37"
-                557u -> "375"
-                558u -> "37E"
-                559u -> "38"
-                560u -> "381"
-                561u -> "385"
-                562u -> "38E"
-                563u -> "39"
-                564u -> "42E"
-                565u -> "43E"
-                566u -> "65"
-                567u -> "ECQ"
-                568u -> "ELQ"
-                569u -> "EOQ"
-                570u -> "ESQ"
-                571u -> "L1 Lévisien 1"
-                572u -> "L2 Lévisien 2"
-                573u -> "L3 Lévisien 3"
-                else -> "Unknown (lineId: $id)"
+                513u -> Line("11", "#0091b3")
+                514u -> Line("111", "#7e4082")
+                515u -> Line("115", "#7e4082")
+                516u -> Line("119", "#7e4082")
+                517u -> Line("11A", "#0091b3")
+                518u -> Line("125", "#7e4082")
+                519u -> Line("126", "#7e4082")
+                520u -> Line("127", "#7e4082")
+                521u -> Line("129", "#7e4082")
+                522u -> Line("13", "#4ea685")
+                523u -> Line("131", "#7e4082")
+                524u -> Line("135", "#7e4082")
+                525u -> Line("136", "#7e4082")
+                526u -> Line("137", "#7e4082")
+                527u -> Line("139", "#7e4082")
+                528u -> Line("15", "#0091b3")
+                529u -> Line("155", "#7e4082")
+                530u -> Line("156", "#7e4082")
+                531u -> Line("158", "#7e4082")
+                532u -> Line("22", "#0091b3")
+                533u -> Line("221", "#7e4082")
+                534u -> Line("222", "#7e4082")
+                535u -> Line("225", "#7e4082")
+                536u -> Line("23", "#0091b3")
+                537u -> Line("231", "#7e4082")
+                538u -> Line("232", "#7e4082")
+                539u -> Line("235", "#7e4082")
+                540u -> Line("24", "#4ea685")
+                541u -> Line("241", "#7e4082")
+                542u -> Line("242", "#7e4082")
+                543u -> Line("245", "#7e4082")
+                544u -> Line("246", "#7e4082")
+                545u -> Line("31", "#0091b3")
+                546u -> Line("311", "#7e4082")
+                547u -> Line("325", "#7e4082")
+                548u -> Line("34", "#0091b3")
+                549u -> Line("345", "#7e4082")
+                550u -> Line("34E", "#ffa400")
+                551u -> Line("35", "#0091b3")
+                552u -> Line("351", "#7e4082")
+                553u -> Line("355", "#7e4082")
+                554u -> Line("36", "#0091b3")
+                555u -> Line("36E", "#ffa400")
+                556u -> Line("37", "#0091b3")
+                557u -> Line("375", "#7e4082")
+                558u -> Line("37E", "#ffa400")
+                559u -> Line("38", "#0091b3")
+                560u -> Line("381", "#7e4082")
+                561u -> Line("385", "#7e4082")
+                562u -> Line("38E", "#ffa400")
+                563u -> Line("39", "#4ea685")
+                564u -> Line("42E", "#ffa400")
+                565u -> Line("43E", "#ffa400")
+                566u -> Line("65", "#4ea685")
+                567u -> Line("ECQ", "#ffa400")
+                568u -> Line("ELQ", "#ffa400")
+                569u -> Line("EOQ", "#ffa400")
+                570u -> Line("ESQ", "#ffa400")
+                571u -> Line("L1 Lévisien 1", "#1e4289")
+                572u -> Line("L2 Lévisien 2", "#1e4289")
+                573u -> Line("L3 Lévisien 3", "#1e4289")
+                else -> Line("STLévis Unknown (lineId: $id)", "#0091b3")
             }
         }
     }

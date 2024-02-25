@@ -62,7 +62,7 @@ class TripFragment : Fragment() {
         val boardingDate = this.mView?.findViewById<TextView>(R.id.tripBoardingDateTv)
         val validityFromDate = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
 
-        title?.text = IdConverter.getLineById(trip.operatorId, trip.lineId)
+        title?.text = IdConverter.getLineById(trip.operatorId, trip.lineId).name
         boardingDate?.text = "Embarquement le"
         validityFromDate?.text = "Valide à partir du"
     }
