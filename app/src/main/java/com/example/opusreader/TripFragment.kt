@@ -60,13 +60,13 @@ class TripFragment : Fragment() {
     }
 
     private fun addTripInfoSectionTitles(trip: Trip) {
-        val title = this.mView?.findViewById<TextView>(R.id.tripLineTv)
+        val name = this.mView?.findViewById<TextView>(R.id.tripLineNameTv)
         val color = this.mView?.findViewById<LinearLayout>(R.id.tripColorLayout)
         val boardingDate = this.mView?.findViewById<TextView>(R.id.tripBoardingDateTv)
         val validityFromDate = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
 
         val line = IdConverter.getLineById(trip.operatorId, trip.lineId)
-        title?.text = line.name
+        name?.text = line.name
         color?.setBackgroundColor(Color.parseColor(line.color))
 
         boardingDate?.text = "Embarquement le"
