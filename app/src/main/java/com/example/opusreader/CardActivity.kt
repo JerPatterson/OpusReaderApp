@@ -3,11 +3,14 @@ package com.example.opusreader
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.google.gson.Gson
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 private const val ARG_CARD = "card"
 
@@ -69,37 +72,38 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addFareInfoSectionValues(fares: ArrayList<Fare>) {
-        if (fares.size < 4 || fares[3].typeId == 0u) {
-            var fragmentTransaction = supportFragmentManager.beginTransaction()
-            var fragment = supportFragmentManager.findFragmentById(R.id.fourthFareFragment)
-            if (fragment != null) fragmentTransaction.hide(fragment)
-            fragmentTransaction.commit()
-
-            if (fares.size < 3 || fares[2].typeId == 0u) {
-                fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragment = supportFragmentManager.findFragmentById(R.id.thirdFareFragment)
-                if (fragment != null) fragmentTransaction.hide(fragment)
-                fragmentTransaction.commit()
-
-                if (fares.size < 2 || fares[1].typeId == 0u) {
-                    fragmentTransaction = supportFragmentManager.beginTransaction()
-                    fragment = supportFragmentManager.findFragmentById(R.id.secondFareFragment)
-                    if (fragment != null) fragmentTransaction.hide(fragment)
-                    fragmentTransaction.commit()
-                }
-            }
-        }
+        var fragmentTransaction = supportFragmentManager.beginTransaction()
+        var fragment = supportFragmentManager.findFragmentById(R.id.fourthFareFragment)
+        if (fragment != null) fragmentTransaction.hide(fragment).commit()
+        fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragment = supportFragmentManager.findFragmentById(R.id.thirdFareFragment)
+        if (fragment != null) fragmentTransaction.hide(fragment).commit()
+        fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragment = supportFragmentManager.findFragmentById(R.id.secondFareFragment)
+        if (fragment != null) fragmentTransaction.hide(fragment).commit()
+        fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragment = supportFragmentManager.findFragmentById(R.id.firstFareFragment)
+        if (fragment != null) fragmentTransaction.hide(fragment).commit()
 
         for ((i, fare) in fares.withIndex()) {
-            when (i + 1) {
-                1 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.firstFareFragment, FareFragment.newInstance(fare)).commit()
-                2 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.secondFareFragment, FareFragment.newInstance(fare)).commit()
-                3 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.thirdFareFragment, FareFragment.newInstance(fare)).commit()
-                4 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.fourthFareFragment, FareFragment.newInstance(fare)).commit()
+            if (fares[i].typeId != 0u) {
+                when (i + 1) {
+                    1 -> supportFragmentManager.beginTransaction()
+                        .add(R.id.firstFareFragment, FareFragment.newInstance(fare))
+                        .commit()
+
+                    2 -> supportFragmentManager.beginTransaction()
+                        .add(R.id.secondFareFragment, FareFragment.newInstance(fare))
+                        .commit()
+
+                    3 -> supportFragmentManager.beginTransaction()
+                        .add(R.id.thirdFareFragment, FareFragment.newInstance(fare))
+                        .commit()
+
+                    4 -> supportFragmentManager.beginTransaction()
+                        .add(R.id.fourthFareFragment, FareFragment.newInstance(fare))
+                        .commit()
+                }
             }
         }
     }
@@ -143,11 +147,6 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun calendarToString(cal: Calendar): String {
-        return String.format(
-            "%04d-%02d-%02d",
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH).inc(),
-            cal.get(Calendar.DATE)
-        )
+        return SimpleDateFormat("dd MMMM yyyy", Locale.CANADA_FRENCH).format(cal.time)
     }
 }

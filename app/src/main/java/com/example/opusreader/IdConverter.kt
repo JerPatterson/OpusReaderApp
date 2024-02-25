@@ -1,12 +1,29 @@
 package com.example.opusreader
 
 
+data class FareProduct(val name: String)
 data class Operator(val name: String, val color: String, val imageId: Int)
 data class Line(val id: String, val name: String, val color: String, val textColor: String, val icon: Int)
 
 class IdConverter {
     companion object {
-        @JvmStatic
+        fun getFareProductById(id: UInt): FareProduct {
+            return when (id) {
+                3316801u -> FareProduct("2 passages, Bus")
+                3316865u -> FareProduct("10 passages, Bus")
+                3314625u -> FareProduct("2 passages, Tous modes A")
+                3314689u -> FareProduct("1 passage, Tous modes AB")
+                3314753u -> FareProduct("2 passages, Tous modes AB")
+                3312577u -> FareProduct("10 passages, Tous modes AB")
+                3322369u -> FareProduct("24hrs, Tous modes AB")
+                3321601u -> FareProduct("3 jours, Tous modes AB")
+                3310337u -> FareProduct("1 passage, Tous modes ABC")
+                3305921u -> FareProduct("Soirée illimité")
+                3305985u -> FareProduct("Week-end illimité")
+                else -> FareProduct("Inconnu (${id})")
+            }
+        }
+
         fun getOperatorById(id: UInt): Operator {
             return when (id) {
                 4u -> Operator("ARTM", "#007373", R.drawable.unknown)

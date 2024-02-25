@@ -64,21 +64,9 @@ class FareFragment : Fragment() {
         val firstUseDate = this.mView?.findViewById<TextView>(R.id.validityFromDateTv)
         val ticketCount = this.mView?.findViewById<TextView>(R.id.ticketCountTv)
 
-        title?.text = when (fare.typeId) {
-            3316801u -> "2 passages, Bus"
-            3316865u -> "10 passages, Bus"
-            3314625u -> "2 passages, Tous modes A"
-            3314689u -> "1 passage, Tous modes AB"
-            3314753u -> "2 passages, Tous modes AB"
-            3312577u -> "10 passages, Tous modes AB"
-            3321601u -> "3 jours, Tous modes AB"
-            3310337u -> "1 passage, Tous modes ABC"
-            3305921u -> "Soirée illimité"
-            else -> "Inconnu (${fare.typeId})"
-        }
-
+        title?.text = IdConverter.getFareProductById(fare.typeId).name
         buyingDate?.text = "Acheté le"
-        if (fare.validityFromDate != null) firstUseDate?.text = "Validité du titre"
+        if (fare.validityFromDate != null) firstUseDate?.text = "Valide du"
         if (fare.ticketCount != null)  ticketCount?.text = "Passages\nrestants"
     }
 
@@ -96,17 +84,21 @@ class FareFragment : Fragment() {
         }
 
         val fromDate = fare.validityFromDate
-        if (fromDate != null) {
-            validityFromDate?.text = this.calendarToString(fromDate)
+        val untilDate = fare.validityUntilDate
+        if (fromDate != null && untilDate != null) {
+            validityFromDate?.text = "${this.calendarToStringWithoutYear(fromDate)} au ${this.calendarToString(untilDate)}"
         }
     }
 
     private fun calendarToString(cal: Calendar): String {
         return SimpleDateFormat("dd MMMM yyyy", Locale.CANADA_FRENCH).format(cal.time)
     }
+    private fun calendarToStringWithoutYear(cal: Calendar): String {
+        return SimpleDateFormat("dd MMMM", Locale.CANADA_FRENCH).format(cal.time)
+    }
+
 
     private fun calendarToStringWithTime(cal: Calendar): String {
-
         return SimpleDateFormat("dd MMMM yyyy à HH:MM", Locale.CANADA_FRENCH).format(cal.time)
     }
 }
