@@ -65,7 +65,7 @@ class CardActivity : AppCompatActivity() {
 
     private fun addFareInfoSectionTitles() {
         val title = findViewById<TextView>(R.id.fareSectionTitleTv)
-        title.text = "TITRES DE LA CARTE"
+        title.text = "Titres de la carte"
     }
 
     private fun addFareInfoSectionValues(fares: ArrayList<Fare>) {
@@ -112,7 +112,7 @@ class CardActivity : AppCompatActivity() {
 
     private fun addTripInfoSectionTitles() {
         val title = findViewById<TextView>(R.id.tripSectionTitleTv)
-        title.text = "DERNIÈRES UTILISATIONS DES TITRES"
+        title.text = "Dernières utilisations"
     }
 
     private fun addTripInfoSectionValues(trips: ArrayList<Trip>) {

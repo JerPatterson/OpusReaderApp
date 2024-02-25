@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 private const val ARG_TRIP = "trip"
 
@@ -60,28 +62,46 @@ class TripFragment : Fragment() {
     }
 
     private fun addTripInfoSectionTitles(trip: Trip) {
-        val name = this.mView?.findViewById<TextView>(R.id.tripLineNameTv)
-        val color = this.mView?.findViewById<LinearLayout>(R.id.tripColorLayout)
         val boardingDate = this.mView?.findViewById<TextView>(R.id.tripBoardingDateTv)
         val validityFromDate = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
-
-        val line = IdConverter.getLineById(trip.operatorId, trip.lineId)
-        name?.text = line.name
-        color?.setBackgroundColor(Color.parseColor(line.color))
 
         boardingDate?.text = "Embarquement le"
         validityFromDate?.text = "Valide à partir du"
     }
 
     private fun addTripInfoSectionValues(trip: Trip) {
+        val line = IdConverter.getLineById(trip.operatorId, trip.lineId)
+        val operator = IdConverter.getOperatorById(trip.operatorId)
+
+        val id = this.mView?.findViewById<TextView>(R.id.tripLineIdTv)
+        val name = this.mView?.findViewById<TextView>(R.id.tripLineNameTv)
+        id?.text = line.id
+        name?.text = line.name
+
+        val color = this.mView?.findViewById<LinearLayout>(R.id.tripColorLayout)
+        val textColor = Color.parseColor(line.textColor)
+        val background = Color.parseColor(line.color)
+        id?.setTextColor(textColor)
+        id?.setBackgroundColor(background)
+        color?.setBackgroundColor(background)
+
         val boardingDate = this.mView?.findViewById<TextView>(R.id.tripBoardingDateValueTv)
         val validityFromDate = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateValueTv)
-
         boardingDate?.text = calendarToStringWithTime(trip.useDate)
         validityFromDate?.text = calendarToStringWithTime(trip.firstUseDate)
+
+        addTripInfoSectionImages(operator, line)
+    }
+
+    private fun addTripInfoSectionImages(operator: Operator, line: Line) {
+        val modeImage = this.mView?.findViewById<ImageView>(R.id.modeImageView)
+        val operatorImage = this.mView?.findViewById<ImageView>(R.id.operatorImageView)
+
+        modeImage?.setImageResource(line.icon)
+        operatorImage?.setImageResource(operator.imageId)
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
-        return SimpleDateFormat("dd MMMM YYYY à HH:MM").format(cal.time)
+        return SimpleDateFormat("dd MMMM yyyy à HH:MM", Locale.CANADA).format(cal.time)
     }
 }
