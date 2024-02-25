@@ -1,10 +1,12 @@
 package com.example.opusreader
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
@@ -59,10 +61,14 @@ class TripFragment : Fragment() {
 
     private fun addTripInfoSectionTitles(trip: Trip) {
         val title = this.mView?.findViewById<TextView>(R.id.tripLineTv)
+        val color = this.mView?.findViewById<LinearLayout>(R.id.tripColorLayout)
         val boardingDate = this.mView?.findViewById<TextView>(R.id.tripBoardingDateTv)
         val validityFromDate = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
 
-        title?.text = IdConverter.getLineById(trip.operatorId, trip.lineId).name
+        val line = IdConverter.getLineById(trip.operatorId, trip.lineId)
+        title?.text = line.name
+        color?.setBackgroundColor(Color.parseColor(line.color))
+
         boardingDate?.text = "Embarquement le"
         validityFromDate?.text = "Valide à partir du"
     }
