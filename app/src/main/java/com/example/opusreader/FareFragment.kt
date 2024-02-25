@@ -62,7 +62,6 @@ class FareFragment : Fragment() {
         val title = this.mView?.findViewById<TextView>(R.id.fareTypeValueTv)
         val buyingDate = this.mView?.findViewById<TextView>(R.id.fareBuyingDateTv)
         val firstUseDate = this.mView?.findViewById<TextView>(R.id.validityFromDateTv)
-        val validityUntilDate = this.mView?.findViewById<TextView>(R.id.validityUntilDateTv)
         val ticketCount = this.mView?.findViewById<TextView>(R.id.ticketCountTv)
 
         title?.text = when (fare.typeId) {
@@ -79,16 +78,14 @@ class FareFragment : Fragment() {
         }
 
         buyingDate?.text = "Acheté le"
-        if (fare.validityFromDate != null) firstUseDate?.text = "Valide à partir du"
-        if (fare.validityUntilDate != null) validityUntilDate?.text = "Valide jusqu'au"
-        if (fare.ticketCount != null)  ticketCount?.text = "Billets restants"
+        if (fare.validityFromDate != null) firstUseDate?.text = "Validité du titre"
+        if (fare.ticketCount != null)  ticketCount?.text = "Passages\nrestants"
     }
 
     private fun addFareInfoSectionValues(fare: Fare) {
         val ticketCount = this.mView?.findViewById<TextView>(R.id.ticketCountValueTv)
         val buyingDate = this.mView?.findViewById<TextView>(R.id.fareBuyingDateValueTv)
         val validityFromDate = this.mView?.findViewById<TextView>(R.id.validityFromDateValueTv)
-        val validityUntilDate = this.mView?.findViewById<TextView>(R.id.validityUntilDateValueTv)
 
         if (fare.ticketCount != null) ticketCount?.text = fare.ticketCount.toString()
 
@@ -101,11 +98,6 @@ class FareFragment : Fragment() {
         val fromDate = fare.validityFromDate
         if (fromDate != null) {
             validityFromDate?.text = this.calendarToString(fromDate)
-        }
-
-        val untilDate = fare.validityUntilDate
-        if (untilDate != null) {
-            validityUntilDate?.text = this.calendarToString(untilDate)
         }
     }
 

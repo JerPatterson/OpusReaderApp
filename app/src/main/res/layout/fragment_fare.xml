@@ -20,11 +20,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <LinearLayout
+                android:id="@+id/fareColorLayout"
+                android:layout_width="14dp"
+                android:layout_height="0dp"
+                android:background="#0f850e"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/fareTypeValueTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_width="279dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,8 +46,8 @@
                 android:id="@+id/ticketCountValueTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="6dp"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,19 +57,19 @@
             <TextView
                 android:id="@+id/ticketCountTv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="6dp"
                 app:layout_constraintEnd_toStartOf="@+id/ticketCountValueTv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Tickets Remaining" />
+                tools:text="Tickets\nRemaining" />
 
             <TextView
                 android:id="@+id/fareBuyingDateTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fareTypeValueTv"
@@ -83,7 +94,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fareBuyingDateValueTv"
-                tools:text="From" />
+                tools:text="Fare validity" />
 
             <TextView
                 android:id="@+id/validityFromDateValueTv"
@@ -95,37 +106,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/validityFromDateTv"
                 tools:text="September 1st, 2023 at 0:00" />
 
-            <TextView
-                android:id="@+id/validityUntilDateTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/validityFromDateValueTv"
-                tools:text="Until" />
-
-            <TextView
-                android:id="@+id/validityUntilDateValueTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/validityUntilDateTv"
-                tools:text="September 30, 2023 at 23:59" />
-
-            <LinearLayout
-                android:id="@+id/fareColorLayout"
-                android:layout_width="14dp"
-                android:layout_height="0dp"
-                android:background="#0f850e"
-                android:orientation="horizontal"
+            <ImageView
+                android:id="@+id/operatorImageView"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="55dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/artm"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ticketCountTv" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>
