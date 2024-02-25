@@ -10,12 +10,12 @@ class IdConverter {
         fun getOperatorById(id: UInt): Operator {
             return when (id) {
                 4u -> Operator("ARTM", "#007373", R.drawable.unknown)
-                8u -> Operator("STM", "#00aeef", R.drawable.unknown)
-                12u -> Operator("RTL", "#9e2536", R.drawable.unknown)
-                16u -> Operator("exo", "#000000", R.drawable.unknown)
-                20u -> Operator("RTC", "#003878", R.drawable.unknown)
-                24u -> Operator("STL", "#151f6d", R.drawable.unknown)
-                64u -> Operator("STLévis", "#0091b3", R.drawable.unknown)
+                8u -> Operator("STM", "#00aeef", R.drawable.stm)
+                12u -> Operator("RTL", "#9e2536", R.drawable.rtl)
+                16u -> Operator("exo", "#000000", R.drawable.exo)
+                20u -> Operator("RTC", "#003878", R.drawable.rtc)
+                24u -> Operator("STL", "#151f6d", R.drawable.stl)
+                64u -> Operator("STLévis", "#0091b3", R.drawable.stlevis)
                 else -> Operator("Unknown (id: $id)", "#696969", R.drawable.unknown)
             }
         }
