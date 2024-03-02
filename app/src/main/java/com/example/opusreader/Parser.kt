@@ -274,7 +274,14 @@ class Parser {
                     or data[6].toUInt().and(0xFFu)).compareTo(0u) == 0) {
                 val ticketCount = ticketsData[i - 1][2].toUInt()
 
-                fares.add(Fare(typeId, operatorId, buyingDate, ticketCount))
+                fares.add(Fare(
+                    typeId,
+                    operatorId,
+                    buyingDate,
+                    ticketCount,
+                    null,
+                    null,
+                    true))
             } else {
                 val validityFromDate = this.getOpusCardFareValidityFromDate(data)
                 val validityUntilDate = this.getOpusCardFareValidityUntilDate(data)
