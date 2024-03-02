@@ -176,7 +176,7 @@ class Parser {
     }
 
     private fun getOpusCardExpiryDate(card: IsoDep): Calendar {
-        card.transceive(this.hexStringToByteArray("94a408000420002001"))
+        card.transceive(this.hexStringToByteArray("94A408000420002001"))
         val data = card.transceive(this.hexStringToByteArray("94B2010400"))
         val daysUntilExpiry = (data[5].toUInt().and(0x07u).shl(11)
                 or data[6].toUInt().and(0xFFu).shl(3)
@@ -250,6 +250,16 @@ class Parser {
 
 
     private fun getOpusCardFares(card: IsoDep): ArrayList<Fare> {
+        val ticketsData = ArrayList<ByteArray>()
+        card.transceive(this.hexStringToByteArray("94a40200042000202A"))
+        ticketsData.add(card.transceive(this.hexStringToByteArray("94b2010400")))
+        card.transceive(this.hexStringToByteArray("94a40200042000202B"))
+        ticketsData.add(card.transceive(this.hexStringToByteArray("94b2010400")))
+        card.transceive(this.hexStringToByteArray("94a40200042000202C"))
+        ticketsData.add(card.transceive(this.hexStringToByteArray("94b2010400")))
+        card.transceive(this.hexStringToByteArray("94a40200042000202D"))
+        ticketsData.add(card.transceive(this.hexStringToByteArray("94b2010400")))
+
         val fares = ArrayList<Fare>()
         card.transceive(this.hexStringToByteArray("94a402000420002020"))
         for (i in 1..4) {
@@ -262,15 +272,7 @@ class Parser {
 
             if ((data[5].toUInt().and(0xFFu).shl(8)
                     or data[6].toUInt().and(0xFFu)).compareTo(0u) == 0) {
-                when (i) {
-                    1 -> card.transceive(this.hexStringToByteArray("94a40800092000202A"))
-                    2 -> card.transceive(this.hexStringToByteArray("94a40800092000202B"))
-                    3 -> card.transceive(this.hexStringToByteArray("94a40800092000202C"))
-                    4 -> card.transceive(this.hexStringToByteArray("94a40800092000202D"))
-                }
-
-                val ticketsData = card.transceive(this.hexStringToByteArray("94b2010400"))
-                val ticketCount = ticketsData[2].toUInt().and(0xFFu)
+                val ticketCount = ticketsData[i - 1][2].toUInt()
 
                 fares.add(Fare(typeId, operatorId, buyingDate, ticketCount))
             } else {

@@ -9,6 +9,10 @@ class IdConverter {
     companion object {
         fun getFareProductById(id: UInt): FareProduct {
             return when (id) {
+                728u -> FareProduct("10 passages, Bus")
+                752u -> FareProduct("Mensuel, Tous modes AB")
+                744u -> FareProduct("Soirée illimité")
+
                 3316801u -> FareProduct("2 passages, Bus")
                 3316865u -> FareProduct("10 passages, Bus")
                 3314625u -> FareProduct("2 passages, Tous modes A")
@@ -20,6 +24,7 @@ class IdConverter {
                 3310337u -> FareProduct("1 passage, Tous modes ABC")
                 3305921u -> FareProduct("Soirée illimité")
                 3305985u -> FareProduct("Week-end illimité")
+
                 else -> FareProduct("Inconnu (${id})")
             }
         }
