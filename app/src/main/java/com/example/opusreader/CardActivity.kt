@@ -86,24 +86,16 @@ class CardActivity : AppCompatActivity() {
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
 
         for ((i, fare) in fares.withIndex()) {
-            if (fares[i].typeId != 0u) {
-                when (i + 1) {
-                    1 -> supportFragmentManager.beginTransaction()
-                        .add(R.id.firstFareFragment, FareFragment.newInstance(fare))
-                        .commit()
-
-                    2 -> supportFragmentManager.beginTransaction()
-                        .add(R.id.secondFareFragment, FareFragment.newInstance(fare))
-                        .commit()
-
-                    3 -> supportFragmentManager.beginTransaction()
-                        .add(R.id.thirdFareFragment, FareFragment.newInstance(fare))
-                        .commit()
-
-                    4 -> supportFragmentManager.beginTransaction()
-                        .add(R.id.fourthFareFragment, FareFragment.newInstance(fare))
-                        .commit()
-                }
+            if (fares[i].typeId == 0u) continue
+            when (i + 1) {
+                1 -> supportFragmentManager.beginTransaction()
+                    .add(R.id.firstFareFragment, FareFragment.newInstance(fare)).commit()
+                2 -> supportFragmentManager.beginTransaction()
+                    .add(R.id.secondFareFragment, FareFragment.newInstance(fare)).commit()
+                3 -> supportFragmentManager.beginTransaction()
+                    .add(R.id.thirdFareFragment, FareFragment.newInstance(fare)).commit()
+                4 -> supportFragmentManager.beginTransaction()
+                    .add(R.id.fourthFareFragment, FareFragment.newInstance(fare)).commit()
             }
         }
     }

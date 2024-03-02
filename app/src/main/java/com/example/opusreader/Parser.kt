@@ -251,7 +251,7 @@ class Parser {
 
     private fun getOpusCardFares(card: IsoDep): ArrayList<Fare> {
         val fares = ArrayList<Fare>()
-        card.transceive(this.hexStringToByteArray("94a408000420002020"))
+        card.transceive(this.hexStringToByteArray("94a402000420002020"))
         for (i in 1..4) {
             val data = card.transceive(this.hexStringToByteArray("94b20${i}0400"))
             if (data.size.compareTo(31) != 0) continue
@@ -263,10 +263,10 @@ class Parser {
             if ((data[5].toUInt().and(0xFFu).shl(8)
                     or data[6].toUInt().and(0xFFu)).compareTo(0u) == 0) {
                 when (i) {
-                    1 -> card.transceive(this.hexStringToByteArray("94a40800042000202A"))
-                    2 -> card.transceive(this.hexStringToByteArray("94a40800042000202B"))
-                    3 -> card.transceive(this.hexStringToByteArray("94a40800042000202C"))
-                    4 -> card.transceive(this.hexStringToByteArray("94a40800042000202D"))
+                    1 -> card.transceive(this.hexStringToByteArray("94a40800092000202A"))
+                    2 -> card.transceive(this.hexStringToByteArray("94a40800092000202B"))
+                    3 -> card.transceive(this.hexStringToByteArray("94a40800092000202C"))
+                    4 -> card.transceive(this.hexStringToByteArray("94a40800092000202D"))
                 }
 
                 val ticketsData = card.transceive(this.hexStringToByteArray("94b2010400"))
@@ -295,8 +295,8 @@ class Parser {
     }
 
     private fun getOpusCardFareTypeId(data: ByteArray): UInt {
-        return (data[0].toUInt().and(0xFFu).shl(8)
-                or data[1].toUInt().and(0xFFu))
+        return (data[2].toUInt().and(0x7Fu).shl(5)
+                or data[3].toUInt().and(0xF8u))
     }
 
     private fun getOpusCardFareOperatorId(data: ByteArray): UInt {
