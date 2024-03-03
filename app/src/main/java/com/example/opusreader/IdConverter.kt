@@ -36,7 +36,7 @@ class IdConverter {
 
         fun getOperatorById(id: UInt): Operator {
             return when (id) {
-                4u -> Operator("ARTM", "#007373", R.drawable.unknown)
+                4u -> Operator("ARTM", "#007373", R.drawable.artm)
                 8u -> Operator("STM", "#00aeef", R.drawable.stm)
                 12u -> Operator("RTL", "#9e2536", R.drawable.rtl)
                 16u -> Operator("exo", "#000000", R.drawable.exo)

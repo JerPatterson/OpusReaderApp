@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.gson.Gson
@@ -86,6 +87,8 @@ class FareFragment : Fragment() {
         if (fromDate != null && untilDate != null) {
             addValidityInterval(fare, fromDate, untilDate)
         }
+        val operator = IdConverter.getOperatorById(fare.operatorId)
+        addFareInfoSectionImages(operator)
     }
 
     private fun addBuyingDate(fare: Fare) {
@@ -121,6 +124,10 @@ class FareFragment : Fragment() {
         }
     }
 
+    private fun addFareInfoSectionImages(operator: Operator) {
+        val operatorImageView = this.mView?.findViewById<ImageView>(R.id.operatorImageView)
+        operatorImageView?.setImageResource(operator.imageId)
+    }
 
     private fun calendarToString(cal: Calendar): String {
         return SimpleDateFormat(
