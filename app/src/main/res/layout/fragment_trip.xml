@@ -38,6 +38,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="11dp"
                 android:src="@drawable/bus"
+                android:contentDescription="@string/image_trip_mode"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +68,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/tripLineIdTv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Fabreville / Métro Cartier" />
+                tools:text="Fabreville / Metro Cartier" />
 
             <TextView
                 android:id="@+id/tripBoardingDateTv"
@@ -119,6 +120,7 @@
                 android:layout_marginEnd="6dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/stl"
+                android:contentDescription="@string/image_operator"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

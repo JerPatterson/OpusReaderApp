@@ -3,7 +3,6 @@ package com.example.opusreader
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -34,23 +33,22 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addCardInfoSectionTitles(cardType: CardType) {
-        val title = findViewById<TextView>(R.id.cardSectionTitleTv)
-        val image = findViewById<ImageView>(R.id.cardImageView)
-        val identifier = findViewById<TextView>(R.id.cardIdTv)
-        val expirationDate = findViewById<TextView>(R.id.cardExpiryDateTv)
+        val cardIdTitleTv = findViewById<TextView>(R.id.cardIdTv)
+        val cardExpirationDateTitleTv = findViewById<TextView>(R.id.cardExpiryDateTv)
+        cardIdTitleTv.text = getString(R.string.card_id_title)
+        cardExpirationDateTitleTv.text = getString(R.string.card_epiry_date_title)
 
-        title.text = when (cardType) {
-            CardType.Opus -> "CARTE OPUS"
-            CardType.Occasional -> "CARTE OCCASIONNELLE"
+        val cardTitleTv = findViewById<TextView>(R.id.cardSectionTitleTv)
+        cardTitleTv.text = when (cardType) {
+            CardType.Opus -> getString(R.string.opus_card_name)
+            CardType.Occasional -> getString(R.string.occaional_card_name)
         }
 
+        val cardImageView = findViewById<ImageView>(R.id.cardImageView)
         when (cardType) {
-            CardType.Opus -> image.setImageResource(R.drawable.opus)
-            CardType.Occasional -> image.setImageResource(R.drawable.occasionnelle)
+            CardType.Opus -> cardImageView.setImageResource(R.drawable.opus)
+            CardType.Occasional -> cardImageView.setImageResource(R.drawable.occasionnelle)
         }
-
-        identifier.text = "Identifiant"
-        expirationDate.text = "Date d'expiration"
     }
 
     private fun addCardInfoSectionValues(id: ULong, date: Calendar?) {
@@ -58,7 +56,7 @@ class CardActivity : AppCompatActivity() {
         val expiryDate = findViewById<TextView>(R.id.cardExpiryDateValueTv)
 
         identifier.text = id.toString()
-        expiryDate.text = if (date != null) this.calendarToString(date) else "Aucune"
+        expiryDate.text = if (date != null) this.calendarToString(date) else getString(R.string.no_expiry_date)
     }
 
     private fun addFareInfoSection(card: Card) {
@@ -67,8 +65,8 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addFareInfoSectionTitles() {
-        val title = findViewById<TextView>(R.id.fareSectionTitleTv)
-        title.text = "Titres de la carte"
+        val fareSectionTitleTv = findViewById<TextView>(R.id.fareSectionTitleTv)
+        fareSectionTitleTv.text = getString(R.string.fare_section_title)
     }
 
     private fun addFareInfoSectionValues(fares: ArrayList<Fare>) {
@@ -107,8 +105,8 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addTripInfoSectionTitles() {
-        val title = findViewById<TextView>(R.id.tripSectionTitleTv)
-        title.text = "Dernières utilisations"
+        val tripSectionTitleTv = findViewById<TextView>(R.id.tripSectionTitleTv)
+        tripSectionTitleTv.text = getString(R.string.trip_section_title)
     }
 
     private fun addTripInfoSectionValues(trips: ArrayList<Trip>) {
@@ -135,10 +133,11 @@ class CardActivity : AppCompatActivity() {
         }
     }
 
+
     private fun calendarToString(cal: Calendar): String {
         return SimpleDateFormat(
             getString(R.string.calendar_pattern),
-            Locale(getString(R.string.language), getString(R.string.country))
+            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
         ).format(cal.time)
     }
 }

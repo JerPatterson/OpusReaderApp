@@ -151,7 +151,7 @@ class IdConverter {
                 169u -> Line("470", "Express Pierrefonds", "#781b7d", "#ffffff", R.drawable.bus)
                 255u -> Line("495", "Express Lachine / LaSalle", "#009ee0", "#ffffff", R.drawable.bus)
                 256u -> Line("496", "Express Victoria", "#009ee0", "#ffffff", R.drawable.bus)
-                219u -> Line("747", "YUL Aéroport  / Centre-Ville", "#009ee0", "#ffffff", R.drawable.bus)
+                219u -> Line("747", "YUL Aéroport / Centre-Ville", "#009ee0", "#ffffff", R.drawable.bus)
 
 
                 517u -> Line("10", "De Lorimier", "#009ee0", "#ffffff", R.drawable.bus)

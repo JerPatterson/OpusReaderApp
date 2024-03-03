@@ -66,16 +66,16 @@ class FareFragment : Fragment() {
         fareTypeTitleTv?.text = IdConverter.getFareProductById(fare.typeId).name
 
         val buyingDateTitleTv = this.mView?.findViewById<TextView>(R.id.fareBuyingDateTv)
-        buyingDateTitleTv?.text = getString(R.string.buying_date_title)
+        buyingDateTitleTv?.text = getString(R.string.fare_buying_date_title)
 
         if (fare.validityFromDate != null) {
             val firstUseDateTitleTv = this.mView?.findViewById<TextView>(R.id.validityFromDateTv)
-            firstUseDateTitleTv?.text = getString(R.string.first_use_date_title)
+            firstUseDateTitleTv?.text = getString(R.string.fare_first_use_date_title)
         }
 
         if (fare.ticketCount != null)  {
             val ticketCountTitleTv = this.mView?.findViewById<TextView>(R.id.ticketCountTv)
-            ticketCountTitleTv?.text = getString(R.string.ticket_count_title)
+            ticketCountTitleTv?.text = getString(R.string.fare_ticket_count_title)
         }
     }
 
@@ -132,25 +132,25 @@ class FareFragment : Fragment() {
     private fun calendarToString(cal: Calendar): String {
         return SimpleDateFormat(
             getString(R.string.calendar_pattern),
-            Locale(getString(R.string.language), getString(R.string.country))
+            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
         ).format(cal.time)
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
         return SimpleDateFormat(
             getString(R.string.calendar_with_time_pattern),
-            Locale(getString(R.string.language), getString(R.string.country))
+            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
         ).format(cal.time)
     }
 
     private fun calendarToStringWithoutYear(cal: Calendar): String {
         return SimpleDateFormat(
             getString(R.string.calendar_without_year_pattern),
-            Locale(getString(R.string.language), getString(R.string.country))
+            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
         ).format(cal.time)
     }
 
     private fun calendarToStringInterval(fromCal: Calendar, untilCal: Calendar): String {
-        return "${calendarToStringWithoutYear(fromCal)} ${getString(R.string.date_interval_linking_word)} ${calendarToString(untilCal)}"
+        return "${calendarToStringWithoutYear(fromCal)} ${getString(R.string.calendar_interval_linking_word)} ${calendarToString(untilCal)}"
     }
 }

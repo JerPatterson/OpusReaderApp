@@ -64,8 +64,8 @@ class TripFragment : Fragment() {
     private fun addTripInfoSectionTitles() {
         val boardingDateTitleTv = this.mView?.findViewById<TextView>(R.id.tripBoardingDateTv)
         val validityFromDateTitleTv = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
-        boardingDateTitleTv?.text = getString(R.string.boarding_date_title)
-        validityFromDateTitleTv?.text = getString(R.string.validity_from_date_title)
+        boardingDateTitleTv?.text = getString(R.string.trip_boarding_date_title)
+        validityFromDateTitleTv?.text = getString(R.string.trip_validity_from_date_title)
     }
 
     private fun addTripInfoSectionValues(trip: Trip) {
@@ -107,7 +107,7 @@ class TripFragment : Fragment() {
     private fun calendarToStringWithTime(cal: Calendar): String {
         return SimpleDateFormat(
             getString(R.string.calendar_with_time_pattern),
-            Locale(getString(R.string.language), getString(R.string.country))
+            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
         ).format(cal.time)
     }
 }
