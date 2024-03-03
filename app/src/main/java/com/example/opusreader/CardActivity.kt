@@ -139,6 +139,9 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun calendarToString(cal: Calendar): String {
-        return SimpleDateFormat("dd MMMM yyyy", Locale.CANADA_FRENCH).format(cal.time)
+        return SimpleDateFormat(
+            getString(R.string.calendar_pattern),
+            Locale(getString(R.string.language), getString(R.string.country))
+        ).format(cal.time)
     }
 }

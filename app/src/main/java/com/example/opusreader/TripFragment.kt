@@ -2,7 +2,6 @@ package com.example.opusreader
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -63,11 +62,10 @@ class TripFragment : Fragment() {
     }
 
     private fun addTripInfoSectionTitles() {
-        val boardingDate = this.mView?.findViewById<TextView>(R.id.tripBoardingDateTv)
-        val validityFromDate = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
-
-        boardingDate?.text = "Embarquement le"
-        validityFromDate?.text = "Valide à partir du"
+        val boardingDateTitleTv = this.mView?.findViewById<TextView>(R.id.tripBoardingDateTv)
+        val validityFromDateTitleTv = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
+        boardingDateTitleTv?.text = getString(R.string.boarding_date_title)
+        validityFromDateTitleTv?.text = getString(R.string.validity_from_date_title)
     }
 
     private fun addTripInfoSectionValues(trip: Trip) {
@@ -103,6 +101,9 @@ class TripFragment : Fragment() {
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
-        return SimpleDateFormat("dd MMMM yyyy à HH:mm", Locale.CANADA_FRENCH).format(cal.time)
+        return SimpleDateFormat(
+            getString(R.string.calendar_with_time_pattern),
+            Locale(getString(R.string.language), getString(R.string.country))
+        ).format(cal.time)
     }
 }

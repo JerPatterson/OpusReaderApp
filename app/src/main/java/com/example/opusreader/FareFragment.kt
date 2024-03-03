@@ -123,15 +123,27 @@ class FareFragment : Fragment() {
 
 
     private fun calendarToString(cal: Calendar): String {
-        return SimpleDateFormat("dd MMMM yyyy", Locale.CANADA_FRENCH).format(cal.time)
+        return SimpleDateFormat(
+            getString(R.string.calendar_pattern),
+            Locale(getString(R.string.language), getString(R.string.country))
+        ).format(cal.time)
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
-        return SimpleDateFormat("dd MMMM yyyy à HH:mm", Locale.CANADA_FRENCH).format(cal.time)
+        return SimpleDateFormat(
+            getString(R.string.calendar_with_time_pattern),
+            Locale(getString(R.string.language), getString(R.string.country))
+        ).format(cal.time)
+    }
+
+    private fun calendarToStringWithoutYear(cal: Calendar): String {
+        return SimpleDateFormat(
+            getString(R.string.calendar_without_year_pattern),
+            Locale(getString(R.string.language), getString(R.string.country))
+        ).format(cal.time)
     }
 
     private fun calendarToStringInterval(fromCal: Calendar, untilCal: Calendar): String {
-        return SimpleDateFormat("dd MMMM", Locale.CANADA_FRENCH).format(fromCal.time) +
-                " " + getString(R.string.date_interval_linking_word) + " " + calendarToString(untilCal)
+        return "${calendarToStringWithoutYear(fromCal)} ${getString(R.string.date_interval_linking_word)} ${calendarToString(untilCal)}"
     }
 }

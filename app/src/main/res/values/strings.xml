@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">OpusReader</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="this_image_show_the_card_that_was_scanned">This image show the card that was scanned</string>
+    <string name="language">French</string>
+    <string name="country">Canada</string>
+    <string name="calendar_pattern">dd MMMM yyyy</string>
+    <string name="calendar_without_year_pattern">dd MMMM</string>
+    <string name="calendar_with_time_pattern">dd MMMM yyyy à HH:mm</string>
     <string name="buying_date_title">Acheté le</string>
     <string name="first_use_date_title">Valide du</string>
     <string name="ticket_count_title">"Passages\nrestants"</string>
     <string name="date_interval_linking_word">au</string>
+    <string name="boarding_date_title">Embarquement le</string>
+    <string name="validity_from_date_title">Valide à partir du</string>
 </resources>
