@@ -71,33 +71,37 @@ class TripFragment : Fragment() {
     private fun addTripInfoSectionValues(trip: Trip) {
         val line = IdConverter.getLineById(trip.operatorId, trip.lineId)
         val operator = IdConverter.getOperatorById(trip.operatorId)
+        addTripLine(line)
+        addTripDates(trip)
+        addTripInfoSectionImages(operator, line)
+    }
 
-        val id = this.mView?.findViewById<TextView>(R.id.tripLineIdTv)
+    private fun addTripLine(line: Line) {
+        val lineIdTv = this.mView?.findViewById<TextView>(R.id.tripLineIdTv)
         val name = this.mView?.findViewById<TextView>(R.id.tripLineNameTv)
-        id?.text = line.id
+        lineIdTv?.text = line.id
         name?.text = line.name
 
-        val color = this.mView?.findViewById<LinearLayout>(R.id.tripColorLayout)
         val textColor = Color.parseColor(line.textColor)
+        lineIdTv?.setTextColor(textColor)
         val background = Color.parseColor(line.color)
-        id?.setTextColor(textColor)
-        id?.setBackgroundColor(background)
-        color?.setBackgroundColor(background)
+        val tripColorLayout = this.mView?.findViewById<LinearLayout>(R.id.tripColorLayout)
+        lineIdTv?.setBackgroundColor(background)
+        tripColorLayout?.setBackgroundColor(background)
+    }
 
+    private fun addTripDates(trip: Trip) {
         val boardingDate = this.mView?.findViewById<TextView>(R.id.tripBoardingDateValueTv)
         val validityFromDate = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateValueTv)
         boardingDate?.text = calendarToStringWithTime(trip.useDate)
         validityFromDate?.text = calendarToStringWithTime(trip.firstUseDate)
-
-        addTripInfoSectionImages(operator, line)
     }
 
     private fun addTripInfoSectionImages(operator: Operator, line: Line) {
-        val modeImage = this.mView?.findViewById<ImageView>(R.id.modeImageView)
-        val operatorImage = this.mView?.findViewById<ImageView>(R.id.operatorImageView)
-
-        modeImage?.setImageResource(line.icon)
-        operatorImage?.setImageResource(operator.imageId)
+        val modeImageView = this.mView?.findViewById<ImageView>(R.id.modeImageView)
+        val operatorImageView = this.mView?.findViewById<ImageView>(R.id.operatorImageView)
+        modeImageView?.setImageResource(line.icon)
+        operatorImageView?.setImageResource(operator.imageId)
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
