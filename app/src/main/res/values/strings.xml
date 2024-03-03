@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">OpusReader</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="this_image_show_the_card_that_was_scanned">This image show the card that was scanned</string>
+    <string name="buying_date_title">Acheté le</string>
+    <string name="first_use_date_title">Valide du</string>
+    <string name="ticket_count_title">"Passages\nrestants"</string>
+    <string name="date_interval_linking_word">au</string>
 </resources>

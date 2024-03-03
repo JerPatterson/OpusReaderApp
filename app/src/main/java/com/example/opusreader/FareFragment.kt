@@ -65,17 +65,16 @@ class FareFragment : Fragment() {
         fareTypeTitleTv?.text = IdConverter.getFareProductById(fare.typeId).name
 
         val buyingDateTitleTv = this.mView?.findViewById<TextView>(R.id.fareBuyingDateTv)
-        buyingDateTitleTv?.text = "Acheté le"
-
+        buyingDateTitleTv?.text = getString(R.string.buying_date_title)
 
         if (fare.validityFromDate != null) {
             val firstUseDateTitleTv = this.mView?.findViewById<TextView>(R.id.validityFromDateTv)
-            firstUseDateTitleTv?.text = "Valide du"
+            firstUseDateTitleTv?.text = getString(R.string.first_use_date_title)
         }
 
         if (fare.ticketCount != null)  {
-            val ticketCountValueTv = this.mView?.findViewById<TextView>(R.id.ticketCountTv)
-            ticketCountValueTv?.text = "Passages\nrestants"
+            val ticketCountTitleTv = this.mView?.findViewById<TextView>(R.id.ticketCountTv)
+            ticketCountTitleTv?.text = getString(R.string.ticket_count_title)
         }
     }
 
@@ -103,7 +102,7 @@ class FareFragment : Fragment() {
         val untilDate = fare.validityUntilDate
         if (fromDate != null && untilDate != null) {
             val validityFromDateTv = this.mView?.findViewById<TextView>(R.id.validityFromDateValueTv)
-            validityFromDateTv?.text = "${this.calendarToStringWithoutYear(fromDate)} au ${this.calendarToString(untilDate)}"
+            validityFromDateTv?.text = calendarToStringInterval(fromDate, untilDate)
 
             val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
             if (untilDate.time < Calendar.getInstance().time) {
@@ -117,11 +116,13 @@ class FareFragment : Fragment() {
     private fun calendarToString(cal: Calendar): String {
         return SimpleDateFormat("dd MMMM yyyy", Locale.CANADA_FRENCH).format(cal.time)
     }
-    private fun calendarToStringWithoutYear(cal: Calendar): String {
-        return SimpleDateFormat("dd MMMM", Locale.CANADA_FRENCH).format(cal.time)
-    }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
         return SimpleDateFormat("dd MMMM yyyy à HH:mm", Locale.CANADA_FRENCH).format(cal.time)
+    }
+
+    private fun calendarToStringInterval(fromCal: Calendar, untilCal: Calendar): String {
+        return SimpleDateFormat("dd MMMM", Locale.CANADA_FRENCH).format(fromCal.time) +
+                " " + getString(R.string.date_interval_linking_word) + " " + calendarToString(untilCal)
     }
 }
