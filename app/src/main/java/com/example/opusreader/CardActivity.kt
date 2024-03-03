@@ -36,12 +36,12 @@ class CardActivity : AppCompatActivity() {
         val cardIdTitleTv = findViewById<TextView>(R.id.cardIdTv)
         val cardExpirationDateTitleTv = findViewById<TextView>(R.id.cardExpiryDateTv)
         cardIdTitleTv.text = getString(R.string.card_id_title)
-        cardExpirationDateTitleTv.text = getString(R.string.card_epiry_date_title)
+        cardExpirationDateTitleTv.text = getString(R.string.card_epiration_date_title)
 
         val cardTitleTv = findViewById<TextView>(R.id.cardSectionTitleTv)
         cardTitleTv.text = when (cardType) {
             CardType.Opus -> getString(R.string.opus_card_name)
-            CardType.Occasional -> getString(R.string.occaional_card_name)
+            CardType.Occasional -> getString(R.string.occasional_card_name)
         }
 
         val cardImageView = findViewById<ImageView>(R.id.cardImageView)

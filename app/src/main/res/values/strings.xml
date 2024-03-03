@@ -4,25 +4,25 @@
     <string name="image_trip_mode">This image show the mode of transportation of the trip</string>
     <string name="image_operator">This image show the logo of the transportation agency</string>
 
-    <string name="calendar_language">French</string>
+    <string name="calendar_language">English</string>
     <string name="calendar_country">Canada</string>
-    <string name="calendar_pattern">dd MMMM yyyy</string>
-    <string name="calendar_without_year_pattern">dd MMMM</string>
-    <string name="calendar_with_time_pattern">dd MMMM yyyy à HH:mm</string>
-    <string name="calendar_interval_linking_word">au</string>
+    <string name="calendar_pattern">MMMM dd, yyyy</string>
+    <string name="calendar_without_year_pattern">MMMM dd</string>
+    <string name="calendar_with_time_pattern">MMMM dd, yyyy at HH:mm</string>
+    <string name="calendar_interval_linking_word">to</string>
 
-    <string name="opus_card_name">CARTE OPUS</string>
-    <string name="occaional_card_name">CARTE OCCASIONNELLE</string>
-    <string name="card_id_title">Identifiant</string>
-    <string name="card_epiry_date_title">Date d\'expiration</string>
-    <string name="no_expiry_date">Aucune</string>
+    <string name="opus_card_name">OPUS CARD</string>
+    <string name="occasional_card_name">OCCASIONAL CARD</string>
+    <string name="card_id_title">Identifier</string>
+    <string name="card_epiration_date_title">Expiration Date</string>
+    <string name="no_expiry_date">None</string>
 
-    <string name="fare_section_title">Titres de la carte</string>
-    <string name="fare_buying_date_title">Acheté le</string>
-    <string name="fare_first_use_date_title">Valide du</string>
-    <string name="fare_ticket_count_title">"Passages\nrestants"</string>
+    <string name="fare_section_title">Fares of the card</string>
+    <string name="fare_buying_date_title">Bought on</string>
+    <string name="fare_first_use_date_title">Validity from</string>
+    <string name="fare_ticket_count_title">"Tickets\nremaining"</string>
 
-    <string name="trip_section_title">Dernières utilisations</string>
-    <string name="trip_boarding_date_title">Embarquement le</string>
-    <string name="trip_validity_from_date_title">Valide à partir du</string>
+    <string name="trip_section_title">Last usages</string>
+    <string name="trip_boarding_date_title">Boarding on</string>
+    <string name="trip_validity_from_date_title">Valid starting on</string>
 </resources>

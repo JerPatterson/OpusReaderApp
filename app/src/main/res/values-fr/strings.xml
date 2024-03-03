@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpusReader</string>
+    <string name="image_card_scanned">Cette image montre la carte qui a été lue</string>
+    <string name="image_trip_mode">Cette image montre le mode de transportation du trajet</string>
+    <string name="image_operator">Cette image montre le logo de l\'agence de transport</string>
+
+    <string name="calendar_language">French</string>
+    <string name="calendar_country">Canada</string>
+    <string name="calendar_pattern">dd MMMM yyyy</string>
+    <string name="calendar_without_year_pattern">dd MMMM</string>
+    <string name="calendar_with_time_pattern">dd MMMM yyyy à HH:mm</string>
+    <string name="calendar_interval_linking_word">au</string>
+
+    <string name="opus_card_name">CARTE OPUS</string>
+    <string name="occasional_card_name">CARTE OCCASIONNELLE</string>
+    <string name="card_id_title">Identifiant</string>
+    <string name="card_epiration_date_title">Date d\'expiration</string>
+    <string name="no_expiry_date">Aucune</string>
+
+    <string name="fare_section_title">Titres de la carte</string>
+    <string name="fare_buying_date_title">Acheté le</string>
+    <string name="fare_first_use_date_title">Valide du</string>
+    <string name="fare_ticket_count_title">"Passages\nrestants"</string>
+
+    <string name="trip_section_title">Dernières utilisations</string>
+    <string name="trip_boarding_date_title">Embarquement le</string>
+    <string name="trip_validity_from_date_title">Valide à partir du</string>
+</resources>
