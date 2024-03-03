@@ -42,6 +42,7 @@ class IdConverter {
                 16u -> Operator("exo", "#000000", R.drawable.exo)
                 20u -> Operator("RTC", "#003878", R.drawable.rtc)
                 24u -> Operator("STL", "#151f6d", R.drawable.stl)
+                60u -> Operator("exo", "#000000", R.drawable.exo)
                 64u -> Operator("STLévis", "#0091b3", R.drawable.stlevis)
                 else -> Operator("Unknown (id: $id)", "#696969", R.drawable.unknown)
             }
@@ -54,6 +55,7 @@ class IdConverter {
                 16u -> this.getEXOLineById(lineId)
                 20u -> this.getRTCLineById(lineId)
                 24u -> this.getSTLLineById(lineId)
+                60u -> this.getEXOLaurentidesLineById(lineId)
                 64u -> this.getSTLevisLineById(lineId)
                 else -> Line("", "Unknown (operatorId: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
             }
@@ -469,6 +471,16 @@ class IdConverter {
                 523u -> Line("14", "Candiac (zone C)", "#5ab6b2", "#ffffff", R.drawable.train)
                 524u -> Line("15", "Mascouche (zone C)", "#ca5898", "#ffffff", R.drawable.train)
                 else -> Line("", "EXO Unknown ($id)", "#000000", "#ffffff", R.drawable.train)
+            }
+        }
+
+        private fun getEXOLaurentidesLineById(id: UInt): Line {
+            // TODO Find ids of all lines
+            //   (Id of the line is on 9bits so higher
+            //   than 512u means it's not known yet)
+            return when (id) {
+                32u -> Line("88", "Terminus Saint-Eustache / Cégep Lionel-Groulx", "#000000", "#ffffff", R.drawable.bus)
+                else -> Line("", "EXO Unknown ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
