@@ -60,7 +60,7 @@ class Parser {
             fares.add(Fare(typeId, operatorId, buyingDate, ticketCount))
         } else if (this.occasionalCardHasPass(data)) {
             val validityFromDate = getOccasionalCardFareValidityFromDate(data[2])
-            val validityUntilDate = getOccasionalCardFareValidityUntilDate(typeId, validityFromDate)
+            val validityUntilDate = if (validityFromDate != null) getOccasionalCardFareValidityUntilDate(typeId, validityFromDate) else null
             fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, validityUntilDate))
         }
 
@@ -118,14 +118,14 @@ class Parser {
         }
     }
 
-    private fun getOccasionalCardFareValidityFromDate(data: ByteArray): Calendar {
+    private fun getOccasionalCardFareValidityFromDate(data: ByteArray): Calendar? {
         val tripFirstUseDays = (data[0].toUInt().and(0x03u).shl(12)
                 or data[1].toUInt().and(0xFFu).shl(4)
                 or data[2].toUInt().and(0xF0u).shr(4))
         val tripUseMinutes = ((data[4].toUInt() and 0xFFu).shl(3)
                 or data[5].toUInt().and(0xE0u).shr(5))
 
-        return this.uIntToDate(tripFirstUseDays, tripUseMinutes)
+        return if (tripFirstUseDays != 0u) this.uIntToDate(tripFirstUseDays, tripUseMinutes) else null
     }
 
     private fun getOccasionalCardFareValidityUntilDate(fareTypeId: UInt, validityFromDate: Calendar): Calendar? {
