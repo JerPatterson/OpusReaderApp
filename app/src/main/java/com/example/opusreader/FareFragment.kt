@@ -79,39 +79,48 @@ class FareFragment : Fragment() {
     }
 
     private fun addFareInfoSectionValues(fare: Fare) {
-        if (fare.ticketCount != null) {
-            val ticketCountTv = this.mView?.findViewById<TextView>(R.id.ticketCountValueTv)
-            ticketCountTv?.text = fare.ticketCount.toString()
-
-            val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
-            if (fare.ticketCount == 0u) {
-                fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#ff0317"))
-            } else {
-                fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#108016"))
-            }
+        addBuyingDate(fare)
+        if (fare.ticketCount != null) addTicketCount(fare)
+        val fromDate = fare.validityFromDate
+        val untilDate = fare.validityUntilDate
+        if (fromDate != null && untilDate != null) {
+            addValidityInterval(fare, fromDate, untilDate)
         }
+    }
 
+    private fun addBuyingDate(fare: Fare) {
         val buyingDateTv = this.mView?.findViewById<TextView>(R.id.fareBuyingDateValueTv)
         if (fare.buyingDateHasMinutes) {
             buyingDateTv?.text = this.calendarToStringWithTime(fare.buyingDate)
         } else {
             buyingDateTv?.text = this.calendarToString(fare.buyingDate)
         }
+    }
 
-        val fromDate = fare.validityFromDate
-        val untilDate = fare.validityUntilDate
-        if (fromDate != null && untilDate != null) {
-            val validityFromDateTv = this.mView?.findViewById<TextView>(R.id.validityFromDateValueTv)
-            validityFromDateTv?.text = calendarToStringInterval(fromDate, untilDate)
+    private fun addTicketCount(fare: Fare) {
+        val ticketCountTv = this.mView?.findViewById<TextView>(R.id.ticketCountValueTv)
+        ticketCountTv?.text = fare.ticketCount.toString()
 
-            val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
-            if (untilDate.time < Calendar.getInstance().time) {
-                fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#ff0317"))
-            } else {
-                fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#108016"))
-            }
+        val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
+        if (fare.ticketCount == 0u) {
+            fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#ff0317"))
+        } else {
+            fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#108016"))
         }
     }
+
+    private fun addValidityInterval(fare: Fare, fromDate: Calendar, untilDate: Calendar) {
+        val validityFromDateTv = this.mView?.findViewById<TextView>(R.id.validityFromDateValueTv)
+        validityFromDateTv?.text = calendarToStringInterval(fromDate, untilDate)
+
+        val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
+        if (untilDate.time < Calendar.getInstance().time) {
+            fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#ff0317"))
+        } else {
+            fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#108016"))
+        }
+    }
+
 
     private fun calendarToString(cal: Calendar): String {
         return SimpleDateFormat("dd MMMM yyyy", Locale.CANADA_FRENCH).format(cal.time)
