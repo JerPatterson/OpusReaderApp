@@ -99,6 +99,6 @@ class FareFragment : Fragment() {
 
 
     private fun calendarToStringWithTime(cal: Calendar): String {
-        return SimpleDateFormat("dd MMMM yyyy à HH:MM", Locale.CANADA_FRENCH).format(cal.time)
+        return SimpleDateFormat("dd MMMM yyyy à HH:mm", Locale.CANADA_FRENCH).format(cal.time)
     }
 }
