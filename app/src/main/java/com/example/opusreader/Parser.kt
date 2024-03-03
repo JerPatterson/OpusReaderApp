@@ -2,7 +2,6 @@ package com.example.opusreader
 
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
-import android.util.Log
 import java.util.Calendar
 
 class Parser {
@@ -60,9 +59,9 @@ class Parser {
 
             fares.add(Fare(typeId, operatorId, buyingDate, ticketCount))
         } else if (this.occasionalCardHasPass(data)) {
-            // TODO Find Validity Start/End Dates
-
-            fares.add(Fare(typeId, operatorId, buyingDate, null))
+            val validityFromDate = getOccasionalCardFareValidityFromDate(data[2])
+            val validityUntilDate = getOccasionalCardFareValidityUntilDate(typeId, validityFromDate)
+            fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, validityUntilDate))
         }
 
         return fares
@@ -117,6 +116,84 @@ class Parser {
             1022u -> 1u
             else -> 0u
         }
+    }
+
+    private fun getOccasionalCardFareValidityFromDate(data: ByteArray): Calendar {
+        val tripFirstUseDays = (data[0].toUInt().and(0x03u).shl(12)
+                or data[1].toUInt().and(0xFFu).shl(4)
+                or data[2].toUInt().and(0xF0u).shr(4))
+        val tripUseMinutes = ((data[4].toUInt() and 0xFFu).shl(3)
+                or data[5].toUInt().and(0xE0u).shr(5))
+
+        return this.uIntToDate(tripFirstUseDays, tripUseMinutes)
+    }
+
+    private fun getOccasionalCardFareValidityUntilDate(fareTypeId: UInt, validityFromDate: Calendar): Calendar? {
+        val date = Calendar.getInstance()
+
+        when (fareTypeId) {
+            3322369u -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE) + 1,
+                    validityFromDate.get(Calendar.HOUR_OF_DAY),
+                    validityFromDate.get(Calendar.MINUTE)
+                )
+                return date
+            }
+            3321601u -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE) + 2,
+                    23,
+                    59
+                )
+                return date
+            }
+            3305921u -> {
+                if (validityFromDate.get(Calendar.HOUR_OF_DAY) >= 18) {
+                    date.set(
+                        validityFromDate.get(Calendar.YEAR),
+                        validityFromDate.get(Calendar.MONTH),
+                        validityFromDate.get(Calendar.DATE) + 1,
+                        5,
+                        0
+                    )
+                } else {
+                    date.set(
+                        validityFromDate.get(Calendar.YEAR),
+                        validityFromDate.get(Calendar.MONTH),
+                        validityFromDate.get(Calendar.DATE),
+                        5,
+                        0
+                    )
+                }
+
+                return date
+            }
+            3305985u -> {
+                val daysToAdd = when (validityFromDate.get(Calendar.DAY_OF_WEEK)) {
+                    Calendar.FRIDAY -> 3
+                    Calendar.SATURDAY -> 2
+                    Calendar.SUNDAY -> 1
+                    else -> 0
+                }
+
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE) + daysToAdd,
+                    5,
+                    0
+                )
+
+                return date
+            }
+            else -> return null
+        }
+
     }
 
 
@@ -342,7 +419,6 @@ class Parser {
     private fun uIntToDate(days: UInt, minutes: UInt): Calendar {
         val date = Calendar.getInstance()
         date.set(1997, Calendar.JANUARY, 1, 0, 0, 0)
-
         date.add(Calendar.DATE, days.toInt())
         date.add(Calendar.MINUTE, minutes.toInt())
 
