@@ -86,7 +86,7 @@ class CardActivity : AppCompatActivity() {
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
 
         for ((i, fare) in fares.withIndex()) {
-            if (fares[i].typeId == 0u) continue
+            if (fare.typeId == 0u) continue
             when (i + 1) {
                 1 -> supportFragmentManager.beginTransaction()
                     .add(R.id.firstFareFragment, FareFragment.newInstance(fare)).commit()
@@ -112,21 +112,18 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addTripInfoSectionValues(trips: ArrayList<Trip>) {
-        if (trips.size < 3 || trips[2].operatorId == 0u) {
-            var fragmentTransaction = supportFragmentManager.beginTransaction()
-            var fragment = supportFragmentManager.findFragmentById(R.id.thirdTripFragment)
-            if (fragment != null) fragmentTransaction.hide(fragment)
-            fragmentTransaction.commit()
-
-            if (trips.size < 2 || trips[1].operatorId == 0u) {
-                fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragment = supportFragmentManager.findFragmentById(R.id.secondTripFragment)
-                if (fragment != null) fragmentTransaction.hide(fragment)
-                fragmentTransaction.commit()
-            }
-        }
+        var fragmentTransaction = supportFragmentManager.beginTransaction()
+        var fragment =supportFragmentManager.findFragmentById(R.id.firstTripFragment)
+        if (fragment != null) fragmentTransaction.hide(fragment).commit()
+        fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragment =supportFragmentManager.findFragmentById(R.id.secondTripFragment)
+        if (fragment != null) fragmentTransaction.hide(fragment).commit()
+        fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragment =supportFragmentManager.findFragmentById(R.id.thirdTripFragment)
+        if (fragment != null) fragmentTransaction.hide(fragment).commit()
 
         for ((i, trip) in trips.withIndex()) {
+            if (trip.operatorId == 0u || (i > 0 && trip.useDate.time == trips[i - 1].useDate.time)) continue
             when (i + 1) {
                 1 -> supportFragmentManager.beginTransaction()
                     .add(R.id.firstTripFragment, TripFragment.newInstance(trip)).commit()
