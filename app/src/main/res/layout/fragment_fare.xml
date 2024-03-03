@@ -21,7 +21,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/fareColorLayout"
+                android:id="@+id/fareValidityColorLayout"
                 android:layout_width="14dp"
                 android:layout_height="0dp"
                 android:background="#0f850e"
