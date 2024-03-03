@@ -159,7 +159,7 @@ class Parser {
                 or data[1].toUInt().and(0xFFu).shl(4)
                 or data[2].toUInt().and(0xF0u).shr(4))
         val tripFirstUseMinutes = (data[2].toUInt().and(0x0Fu).shl(7)
-                or data[3].toUInt().and(0xFEu))
+                or data[3].toUInt().and(0xFEu).shr(1))
 
         return this.uIntToDate(tripFirstUseDays, tripFirstUseMinutes)
     }
