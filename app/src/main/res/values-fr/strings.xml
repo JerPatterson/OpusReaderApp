@@ -35,212 +35,236 @@
     </string>
     <string name="bus_monthly_info">
         Ce titre est valide pour la durée du mois.
-        Il est accepté dans tous les bus circulant dans les zones A, B et C.
-        Il n\'y a aucunes contraintes de correspondance.
+        Il est accepté dans les bus circulant dans les zones A, B et C.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="bus_out_territory_monthly_info">
         Ce titre est valide pour la durée du mois.
-        Il est accepté dans tous les bus circulant dans les zones B, C et D.
-        Il n\'y a aucunes contraintes de correspondance.
+        Il est accepté dans les bus circulant dans les zones B, C et D.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_A_monthly_info">
         Ce titre est valide pour la durée du mois.
         Il est accepté dans le métro, le bus, le train et le REM dans la zone A.
         Il est également accepté dans les navettes fluviales desservant cette zone.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_AB_monthly_info">
         Ce titre est valide pour la durée du mois.
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A et B.
         Il est également accepté dans les navettes fluviales desservant ces zones.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_ABC_monthly_info">
         Ce titre est valide pour la durée du mois.
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
         Il est également accepté dans les navettes fluviales desservant ces zones.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_ABCD_monthly_info">
         Ce titre est valide pour la durée du mois.
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
         Il est également accepté dans les navettes fluviales desservant ces zones.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="bus_one_ticket_info">
         Ce titre contient un seul billet.
-        Ce billet est accepté dans tous les bus circulant dans les zones A, B et C.
-        Un fois utilisé, la correspondance est valide sur n\'importe quelle autres lignes pendant 120 minutes (deux heures).
-        \n\nCe billet n\'est pas accepté dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        Ce billet est accepté dans les bus circulant dans les zones A, B et C.
+        \n\nUn fois utilisé, la correspondance est valide sur n\'importe quelle autres lignes pendant 120 minutes.
+        \n\nCe billet n\'est pas accepté dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="bus_out_territory_one_ticket_info">
         Ce titre contient un seul billet.
-        Ce billet est accepté dans tous les bus circulant dans les zones B, C et D.
-        Un fois utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
+        Ce billet est accepté dans les bus circulant dans les zones B, C et D.
+        \n\nUn fois utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
     </string>
     <string name="all_modes_A_one_ticket_info">
         Ce titre contient un seul billet.
         Ce billet est accepté dans le métro, le bus, le train et le REM dans la zone A.
-        Un fois utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCe billet n\'est pas accepté dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCe billet n\'est pas accepté dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="all_modes_AB_one_ticket_info">
         Ce titre contient un seul billet.
         Ce billet est accepté dans le métro, le bus, le train et le REM
-        Un fois utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCe billet n\'est pas accepté dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCe billet n\'est pas accepté dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="all_modes_ABC_one_ticket_info">
         Ce titre contient un seul billet.
         Ce billet est accepté dans le métro, le bus, le train et le REM
-        Un fois utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCe billet n\'est pas accepté dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCe billet n\'est pas accepté dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="all_modes_ABCD_one_ticket_info">
         Ce titre contient un seul billet.
         Ce billet est accepté dans le métro, le bus, le train et le REM
-        Un fois utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCe billet n\'est pas accepté dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCe billet n\'est pas accepté dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="bus_two_tickets_info">
         Ce titre contient deux billets distincts.
-        Chaque billet est accepté dans tous les bus circulant dans les zones A, B et C.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        Chaque billet est accepté dans les bus circulant dans les zones A, B et C.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="bus_out_territory_two_tickets_info">
         Ce titre contient deux billets distincts.
-        Chaque billet est accepté dans tous les bus circulant dans les zones B, C et D.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
+        Chaque billet est accepté dans les bus circulant dans les zones B, C et D.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
     </string>
     <string name="all_modes_A_two_tickets_info">
         Ce titre contient deux billets distincts.
         Chaque billet est accepté dans le métro, le bus, le train et le REM dans la zone A.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="all_modes_AB_two_tickets_info">
         Ce titre contient deux billets distincts.
         Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A et B.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="all_modes_ABC_two_tickets_info">
         Ce titre contient deux billets distincts.
         Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="all_modes_ABCD_two_tickets_info">
         Ce titre contient deux billets distincts.
         Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="bus_ten_tickets_info">
         Ce titre contient dix billets distincts.
-        Chaque billet est accepté dans tous les bus circulant dans les zones A, B et C.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        Chaque billet est accepté dans les bus circulant dans les zones A, B et C.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="bus_out_territory_ten_tickets_info">
         Ce titre contient dix billets distincts.
-        Ce billet est accepté dans tous les bus circulant dans les zones B, C et D.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
+        Ce billet est accepté dans les bus circulant dans les zones B, C et D.
+        \n\nUn fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
     </string>
     <string name="all_modes_A_ten_tickets_info">
         Ce titre contient dix billets distincts.
         Chaque billet est accepté dans le métro, le bus, le train et le REM dans la zone A.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="all_modes_AB_ten_tickets_info">
         Ce titre contient dix billets distincts.
         Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A et B.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="all_modes_ABC_ten_tickets_info">
         Ce titre contient dix billets distincts.
         Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCes billets ne sont pas acceptés sur la ligne \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="all_modes_ABCD_ten_tickets_info">
         Ce titre contient dix billets distincts.
         Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
-        Un fois un billet utilisé, la correspondance est valide sur n\'importe quelles lignes différentes pendant 120 minutes (deux heures).
-        \n\nCes billets ne sont pas acceptés dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCes billets ne sont pas acceptés sur la ligne \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="bus_24_hours_info">
         Ce titre est valide pour une durée de 24 heures (à partir de la première utilisation).
-        Il est accepté dans tous les bus circulant dans les zones A, B et C.
-        Il n\'y a aucunes contraintes de correspondance.
+        Il est accepté dans les bus circulant dans les zones A, B et C.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="bus_out_territory_24_hours_info">
         Ce titre est valide pour une durée de 24 heures (à partir de la première utilisation).
-        Il est accepté dans tous les bus circulant dans les zones B, C et D.
-        Il n\'y a aucunes contraintes de correspondance.
+        Il est accepté dans les bus circulant dans les zones B, C et D.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_A_24_hours_info">
         Ce titre est valide pour une durée de 24 heures (à partir de la première utilisation).
         Il est accepté dans le métro, le bus, le train et le REM dans la zone A.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_AB_24_hours_info">
         Ce titre est valide pour une durée de 24 heures (à partir de la première utilisation).
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A et B.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_ABC_24_hours_info">
         Ce titre est valide pour une durée de 24 heures (à partir de la première utilisation).
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_ABCD_24_hours_info">
         Ce titre est valide pour une durée de 24 heures (à partir de la première utilisation).
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="bus_three_days_info">
-        Ce titre est valide pour une durée de trois jours (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
-        Il est accepté dans tous les bus circulant dans les zones A, B et C.
-        Il n\'y a aucunes contraintes de correspondance.
+        Ce titre est valide pour une durée de trois jours consécutifs (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
+        Il est accepté dans les bus circulant dans les zones A, B et C.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="bus_out_territory_three_days_info">
-        Ce titre est valide pour une durée de trois jours (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
-        Il est accepté dans tous les bus circulant dans les zones B, C et D.
-        Il n\'y a aucunes contraintes de correspondance.
+        Ce titre est valide pour une durée de trois jours consécutifs (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
+        Il est accepté dans les bus circulant dans les zones B, C et D.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_A_three_days_info">
-        Ce titre est valide pour une durée de trois jours (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
+        Ce titre est valide pour une durée de trois jours consécutifs (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
         Il est accepté dans le métro, le bus, le train et le REM dans la zone A.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_AB_three_days_info">
-        Ce titre est valide pour une durée de trois jours (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
+        Ce titre est valide pour une durée de trois jours consécutifs (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A et B.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_ABC_three_days_info">
-        Ce titre est valide pour une durée de trois jours (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
+        Ce titre est valide pour une durée de trois jours consécutifs (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_ABCD_three_days_info">
-        Ce titre est valide pour une durée de 24 heures (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
+        Ce titre est valide pour une durée de trois jours consécutifs (jusqu\'à 23:59 la troisième journée suivant la première utilisation).
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="evening_unlimited_info">
         Ce titre est valide pour toute la soirée (de 18h au lendemain à 5h).
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
-        Il n\'y a aucunes contraintes de correspondance.
-        \n\nCe titre n\'est pas accepté dans la 747 - YUL Aéroport Montréal-Trudeau / Centre-ville de la STM.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+        \n\nCe titre n\'est pas accepté sur la ligne \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="weekend_unlimited_info">
         Ce titre est valide pour tout le weekend (du vendredi à 16h au lundi à 5h).
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
-        Il n\'y a aucunes contraintes de correspondance.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
 </resources>

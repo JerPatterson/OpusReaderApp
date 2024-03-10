@@ -31,216 +31,240 @@
     </string>
     <string name="old_fare_info">
         This fare can still be used, but it is not possible to bought it anymore.
-        There is no constraints for transfers.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="bus_monthly_info">
         This fare is valid for the whole month.
-        It is accepted on all the buses running in zones A, B and C.
-        There is no constraints for transfers.
+        It is accepted on the buses running in zones A, B and C.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="bus_out_territory_monthly_info">
         This fare is valid for the whole month.
-        It is accepted on all the buses running in zones B, C and D.
-        There is no constraints for transfers.
+        It is accepted on the buses running in zones B, C and D.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_A_monthly_info">
         This fare is valid for the whole month.
-        It is accepted on the subway, the bus, the train and the REM in the zone A.
+        It is accepted on the metro, the bus, the train and the REM in the zone A.
         It is also accepted in the river shuttles running in this zone.
-        There is no constraints for transfers.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_AB_monthly_info">
         This fare is valid for the whole month.
-        It is accepted on the subway, the bus, the train and the REM in the zones A and B.
+        It is accepted on the metro, the bus, the train and the REM in the zones A and B.
         It is also accepted in the river shuttles running in these zones.
-        There is no constraints for transfers.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_ABC_monthly_info">
         This fare is valid for the whole month.
-        It is accepted on the subway, the bus, the train and the REM in the zones A, B and C.
+        It is accepted on the metro, the bus, the train and the REM in the zones A, B and C.
         It is also accepted in the river shuttles running in these zones.
-        There is no constraints for transfers.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_ABCD_monthly_info">
         This fare is valid for the whole month.
-        It is accepted on the subway, the bus, the train and the REM in the zones A, B, C and D.
+        It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
         It is also accepted in the river shuttles running in these zones.
-        There is no constraints for transfers.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="bus_one_ticket_info">
         This fare consists of a single ticket.
-        This ticket is accepted on all the buses running in zones A, B and C.
-        Once used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThis ticket is not valid on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        This ticket is accepted on the buses running in zones A, B and C.
+        \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
+        \n\nThis ticket is not valid on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_out_territory_one_ticket_info">
         This fare consists of a single ticket.
-        This ticket is accepted on all the buses running in zones B, C and D.
-        Once used, the transfer is valid on any different lines inside 120 minutes (two hours).
+        This ticket is accepted on the buses running in zones B, C and D.
+        \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
     </string>
     <string name="all_modes_A_one_ticket_info">
         This fare consists of a single ticket.
-        This ticket is accepted on the subway, the bus, the train and the REM in the zone A.
-        Once used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThis ticket is not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        This ticket is accepted on the metro, the bus, the train and the REM in the zone A.
+        \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThis ticket is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_AB_one_ticket_info">
         This fare consists of a single ticket.
-        This ticket is accepted on the subway, the bus, the train and the REM in the zones A and B.
-        Once used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThis ticket is not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        This ticket is accepted on the metro, the bus, the train and the REM in the zones A and B.
+        \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThis ticket is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABC_one_ticket_info">
         This fare consists of a single ticket.
-        This ticket is accepted on the subway, the bus, the train and the REM in the zones A, B and C.
-        Once used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThis ticket is not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        This ticket is accepted on the metro, the bus, the train and the REM in the zones A, B and C.
+        \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThis ticket is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABCD_one_ticket_info">
         This fare consists of a single ticket.
-        This ticket is accepted on the subway, the bus, the train and the REM in the zones A, B, C and D.
-        Once used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThis ticket is not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        This ticket is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+        \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThis ticket is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_two_tickets_info">
         This fare consists of two distinct tickets.
-        Each ticket is accepted on all the buses running in zones A, B and C.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is accepted on the buses running in zones A, B and C.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_out_territory_two_tickets_info">
         This fare consists of two distinct tickets.
-        Each ticket is accepted on all the buses running in zones B, C and D.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
+        Each ticket is accepted on the buses running in zones B, C and D.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
     </string>
     <string name="all_modes_A_two_tickets_info">
         This fare consists of two distinct tickets.
-        Each ticket is accepted on the subway, the bus, the train and the REM in the zone A.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is accepted on the metro, the bus, the train and the REM in the zone A.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_AB_two_tickets_info">
         This fare consists of two distinct tickets.
-        Each ticket is accepted on the subway, the bus, the train and the REM in the zones A and B.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is accepted on the metro, the bus, the train and the REM in the zones A and B.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABC_two_tickets_info">
         This fare consists of two distinct tickets.
-        Each ticket is are accepted on the subway, the bus, the train and the REM in the zones A, B and C.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is are accepted on the metro, the bus, the train and the REM in the zones A, B and C.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABCD_two_tickets_info">
         This fare consists of two distinct tickets.
-        Each ticket is accepted on the subway, the bus, the train and the REM in the zones A, B, C and D.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_ten_tickets_info">
         This fare consists of ten distinct tickets.
-        Each ticket is accepted on all the buses running in zones A, B and C.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is accepted on the buses running in zones A, B and C.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_out_territory_ten_tickets_info">
         This fare consists of ten distinct tickets.
-        Each ticket is accepted on all the buses running in zones B, C and D.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
+        Each ticket is accepted on the buses running in zones B, C and D.
+        The round trip is allowed by train if it stays inside the two hours.
     </string>
     <string name="all_modes_A_ten_tickets_info">
         This fare consists of ten distinct tickets.
-        Each ticket is accepted on the subway, the bus, the train and the REM in the zone A.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is accepted on the metro, the bus, the train and the REM in the zone A.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_AB_ten_tickets_info">
         This fare consists of ten distinct tickets.
-        Each ticket is accepted on the subway, the bus, the train and the REM in the zones A and B.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is accepted on the metro, the bus, the train and the REM in the zones A and B.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABC_ten_tickets_info">
         This fare consists of ten distinct tickets.
-        Each ticket is are accepted on the subway, the bus, the train and the REM in the zones A, B and C.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is are accepted on the metro, the bus, the train and the REM in the zones A, B and C.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABCD_ten_tickets_info">
         This fare consists of ten distinct tickets.
-        Each ticket is accepted on the subway, the bus, the train and the REM in the zones A, B, C and D.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
-        \n\nThese tickets are not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        Each ticket is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_24_hours_info">
         This fare is valid for 24 hours (starting after the first use).
-        It is accepted on all the buses running in zones A, B and C.
-        There is no constraints for transfers.
+        It is accepted on the buses running in zones A, B and C.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="bus_out_territory_24_hours_info">
         This fare is valid for 24 hours (starting after the first use).
-        It is accepted on all the buses running in zones B, C and D.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
+        It is accepted on the buses running in zones B, C and D.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_A_24_hours_info">
         This fare is valid for 24 hours (starting after the first use).
-        It is accepted on the subway, the bus, the train and the REM in the zone A.
-        There is no constraints for transfers.
+        It is accepted on the metro, the bus, the train and the REM in the zone A.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_AB_24_hours_info">
         This fare is valid for 24 hours (starting after the first use).
-        It is accepted on the subway, the bus, the train and the REM in the zones A and B.
-        There is no constraints for transfers.
+        It is accepted on the metro, the bus, the train and the REM in the zones A and B.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_ABC_24_hours_info">
         This fare is valid for 24 hours (starting after the first use).
-        It is are accepted on the subway, the bus, the train and the REM in the zones A, B and C.
-        There is no constraints for transfers.
+        It is are accepted on the metro, the bus, the train and the REM in the zones A, B and C.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_ABCD_24_hours_info">
         This fare is valid for 24 hours (starting after the first use).
-        It is accepted on the subway, the bus, the train and the REM in the zones A, B, C and D.
-        There is no constraints for transfers.
+        It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="bus_three_days_info">
-        This fare is valid for a three days period (until 11:59 PM on the third day after the first use).
-        It is accepted on all the buses running in zones A, B and C.
-        There is no constraints for transfers.
+        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        It is accepted on the buses running in zones A, B and C.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="bus_out_territory_three_days_info">
-        This fare is valid for a three days period (until 11:59 PM on the third day after the first use).
-        It is accepted on all the buses running in zones B, C and D.
-        Once a ticket is used, the transfer is valid on any different lines inside 120 minutes (two hours).
+        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        It is accepted on the buses running in zones B, C and D.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_A_three_days_info">
-        This fare is valid for a three days period (until 11:59 PM on the third day after the first use).
-        It is accepted on the subway, the bus, the train and the REM in the zone A.
-        There is no constraints for transfers.
+        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        It is accepted on the metro, the bus, the train and the REM in the zone A.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_AB_three_days_info">
-        This fare is valid for a three days period (until 11:59 PM on the third day after the first use).
-        It is accepted on the subway, the bus, the train and the REM in the zones A and B.
-        There is no constraints for transfers.
+        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        It is accepted on the metro, the bus, the train and the REM in the zones A and B.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_ABC_three_days_info">
-        This fare is valid for a three days period (until 11:59 PM on the third day after the first use).
-        It is are accepted on the subway, the bus, the train and the REM in the zones A, B and C.
-        There is no constraints for transfers.
+        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        It is are accepted on the metro, the bus, the train and the REM in the zones A, B and C.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="all_modes_ABCD_three_days_info">
-        This fare is valid for a three days period (until 11:59 PM on the third day after the first use).
-        It is accepted on the subway, the bus, the train and the REM in the zones A, B, C and D.
-        There is no constraints for transfers.
+        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
     <string name="evening_unlimited_info">
         This fare is valid for all the evening (from 6 PM until the next day at 5 AM).
-        It is accepted on the subway, the bus, the train and the REM in the zones A, B, C and D.
-        There is no constraints for transfers.
-        \n\nThis fare is not accepted on STM 747 - YUL Aéroport Montréal-Trudeau / Centre-ville.
+        It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
+        \n\nThis fare is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="weekend_unlimited_info">
         This fare is valid for all the weekend (from Friday at 4 PM until Monday at 5 AM).
-        It is accepted on the subway, the bus, the train and the REM in the zones A, B, C and D.
-        There is no constraints for transfers.
+        It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
 </resources>
