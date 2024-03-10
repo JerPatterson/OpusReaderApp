@@ -61,7 +61,7 @@
 <h2>Upcoming improvements</h2>
 <ul>
   <li>Adding the possibility for user to crowdsource unknown fares, lines and operators</li>
-  <li>Adding information for transfers so users can maximize their usage of one particular fare</li>
+  <li>Improving information for transfers so users can maximize their usage of one particular fare</li>
   <li>Adding an historic of the card scans</li>
 </ul>
 <h2>Documentation</h2>
