@@ -71,7 +71,7 @@
         This fare consists of a single ticket.
         This ticket is accepted on the buses running in zones A, B and C.
         \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
-        \n\nThis ticket is not valid on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThis ticket is not valid on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_out_territory_one_ticket_info">
         This fare consists of a single ticket.
@@ -84,7 +84,7 @@
         \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThis ticket is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThis ticket is not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_AB_one_ticket_info">
         This fare consists of a single ticket.
@@ -92,7 +92,7 @@
         \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThis ticket is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThis ticket is not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABC_one_ticket_info">
         This fare consists of a single ticket.
@@ -100,7 +100,7 @@
         \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThis ticket is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThis ticket is not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABCD_one_ticket_info">
         This fare consists of a single ticket.
@@ -108,13 +108,13 @@
         \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThis ticket is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThis ticket is not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_two_tickets_info">
         This fare consists of two distinct tickets.
         Each ticket is accepted on the buses running in zones A, B and C.
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_out_territory_two_tickets_info">
         This fare consists of two distinct tickets.
@@ -127,7 +127,7 @@
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_AB_two_tickets_info">
         This fare consists of two distinct tickets.
@@ -135,7 +135,7 @@
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABC_two_tickets_info">
         This fare consists of two distinct tickets.
@@ -143,7 +143,7 @@
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABCD_two_tickets_info">
         This fare consists of two distinct tickets.
@@ -151,13 +151,13 @@
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_ten_tickets_info">
         This fare consists of ten distinct tickets.
         Each ticket is accepted on the buses running in zones A, B and C.
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_out_territory_ten_tickets_info">
         This fare consists of ten distinct tickets.
@@ -170,7 +170,7 @@
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_AB_ten_tickets_info">
         This fare consists of ten distinct tickets.
@@ -178,7 +178,7 @@
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABC_ten_tickets_info">
         This fare consists of ten distinct tickets.
@@ -186,7 +186,7 @@
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="all_modes_ABCD_ten_tickets_info">
         This fare consists of ten distinct tickets.
@@ -194,7 +194,7 @@
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
-        \n\nThese tickets are not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_24_hours_info">
         This fare is valid for 24 hours (starting after the first use).
@@ -260,7 +260,7 @@
         This fare is valid for all the evening (from 6 PM until the next day at 5 AM).
         It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
         \n\nThis fare is unlimited. There is no constraints for transfers.
-        \n\nThis fare is not accepted on bus line \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+        \n\nThis fare is not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="weekend_unlimited_info">
         This fare is valid for all the weekend (from Friday at 4 PM until Monday at 5 AM).
