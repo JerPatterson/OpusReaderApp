@@ -2,13 +2,14 @@ package com.example.opusreader
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -59,6 +60,7 @@ class FareFragment : Fragment() {
     private fun addFareInfoSection(fare: Fare) {
         this.addFareInfoSectionTitles(fare)
         this.addFareInfoSectionValues(fare)
+        this.addFareTransferInfoSection()
     }
 
     private fun addFareInfoSectionTitles(fare: Fare) {
@@ -129,6 +131,16 @@ class FareFragment : Fragment() {
         operatorImageView?.setImageResource(operator.imageId)
     }
 
+    private fun addFareTransferInfoSection() {
+        val transferInfoDivider = this.mView?.findViewById<View>(R.id.transferInfoDivider)
+        val transferInfoTv = this.mView?.findViewById<TextView>(R.id.transferInfoTv)
+        transferInfoDivider?.visibility = View.GONE
+        transferInfoTv?.visibility = View.GONE
+
+        val fareLayout = this.mView?.findViewById<ConstraintLayout>(R.id.fareLayout)
+        fareLayout?.setOnClickListener(FareLayoutListener())
+    }
+
     private fun calendarToString(cal: Calendar): String {
         return SimpleDateFormat(
             getString(R.string.calendar_pattern),
@@ -152,5 +164,34 @@ class FareFragment : Fragment() {
 
     private fun calendarToStringInterval(fromCal: Calendar, untilCal: Calendar): String {
         return "${calendarToStringWithoutYear(fromCal)} ${getString(R.string.calendar_interval_linking_word)} ${calendarToString(untilCal)}"
+    }
+
+
+    class FareLayoutListener : View.OnClickListener {
+        private var isShowing: Boolean = false
+
+        override fun onClick(view: View) {
+            if (isShowing) {
+                hideFareTransferInfoSection(view)
+            } else {
+                showFareTransferInfoSection(view)
+            }
+
+            isShowing = !isShowing
+        }
+
+        private fun showFareTransferInfoSection(view: View) {
+            val transferInfoDivider = view.findViewById<View>(R.id.transferInfoDivider)
+            val transferInfoTv = view.findViewById<TextView>(R.id.transferInfoTv)
+            transferInfoDivider?.visibility = View.VISIBLE
+            transferInfoTv?.visibility = View.VISIBLE
+        }
+
+        private fun hideFareTransferInfoSection(view: View) {
+            val transferInfoDivider = view.findViewById<View>(R.id.transferInfoDivider)
+            val transferInfoTv = view.findViewById<TextView>(R.id.transferInfoTv)
+            transferInfoDivider?.visibility = View.GONE
+            transferInfoTv?.visibility = View.GONE
+        }
     }
 }
