@@ -37,33 +37,33 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="11dp"
                 android:contentDescription="@string/image_trip_mode"
                 android:src="@drawable/bus"
+                app:layout_constraintBottom_toBottomOf="@+id/tripLineNameTv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/tripLineNameTv" />
 
             <TextView
                 android:id="@+id/tripLineIdTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="14dp"
                 android:background="#3F51B5"
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
+                android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#ffffff"
+                app:layout_constraintBottom_toBottomOf="@+id/tripLineNameTv"
                 app:layout_constraintStart_toEndOf="@+id/modeImageView"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tripLineNameTv"
                 tools:text="73" />
 
             <TextView
                 android:id="@+id/tripLineNameTv"
                 android:layout_width="318dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="6dp"
                 android:layout_marginTop="14dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
