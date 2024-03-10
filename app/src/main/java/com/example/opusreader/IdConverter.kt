@@ -65,11 +65,11 @@ class IdConverter {
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
-                1u -> Line("1", "Ligne Verte", "#008e4f", "#ffffff", R.drawable.metro)
-                2u -> Line("2", "Ligne Orange", "#ef8122", "#ffffff", R.drawable.metro)
-                224u -> Line("2", "Ligne Orange (zone B)", "#ef8122", "#ffffff", R.drawable.metro)
-                3u -> Line("4", "Ligne Jaune", "#ffe300", "#ffffff", R.drawable.metro)
-                4u -> Line("5", "Ligne Bleue", "#0083c9", "#ffffff", R.drawable.metro)
+                1u -> Line("1", "Ligne Verte", "#008e4f", "#000000", R.drawable.metro)
+                2u -> Line("2", "Ligne Orange", "#ef8122", "#000000", R.drawable.metro)
+                224u -> Line("2", "Ligne Orange (zone B)", "#ef8122", "#000000", R.drawable.metro)
+                3u -> Line("4", "Ligne Jaune", "#ffe300", "#000000", R.drawable.metro)
+                4u -> Line("5", "Ligne Bleue", "#0083c9", "#000000", R.drawable.metro)
                 13u -> Line("18", "Beaubien", "#781b7d", "#ffffff", R.drawable.bus)
                 15u -> Line("24", "Sherbrooke", "#781b7d", "#ffffff", R.drawable.bus)
                 16u -> Line("25", "Angus", "#009ee0", "#ffffff", R.drawable.bus)
@@ -556,6 +556,7 @@ class IdConverter {
             //   than 512u means it's not known yet)
             return when (id) {
                 3u -> Line("17", "Auteuil / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
+                5u -> Line("24", "Métro Cartier / Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus)
                 7u -> Line("26", "Métro Montmorency / Gare Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus)
                 8u -> Line("27", "Gare Vimont / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 10u -> Line("31", "Auteuil / Métro Henri-Bourassa", "#151f6d", "#ffffff", R.drawable.bus)
@@ -587,7 +588,6 @@ class IdConverter {
                 518u -> Line("2", "Métro Henri-Bourassa / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus)
                 519u -> Line("20", "Métro Cartier / Chomedey", "#151f6d", "#ffffff", R.drawable.bus)
                 520u -> Line("22", "Saint-François / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
-                522u -> Line("24", "Métro Cartier / Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus)
                 527u -> Line("313", "Chomedey / Métro Côte-Vertu", "#151f6d", "#ffffff", R.drawable.bus)
                 528u -> Line("33", "Métro Montmorency / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 529u -> Line("345", "Gare Vimont / Métro Henri-Bourassa", "#151f6d", "#ffffff", R.drawable.bus)
