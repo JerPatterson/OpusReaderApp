@@ -88,7 +88,7 @@
     </string>
     <string name="all_modes_AB_one_ticket_info">
         Ce titre contient un seul billet.
-        Ce billet est accepté dans le métro, le bus, le train et le REM
+        Ce billet est accepté dans le métro, le bus, le train et le REM dans les zones A et B.
         \n\nUn fois utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
         Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
         L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
@@ -96,7 +96,7 @@
     </string>
     <string name="all_modes_ABC_one_ticket_info">
         Ce titre contient un seul billet.
-        Ce billet est accepté dans le métro, le bus, le train et le REM
+        Ce billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
         \n\nUn fois utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
         Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
         L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
@@ -104,7 +104,7 @@
     </string>
     <string name="all_modes_ABCD_one_ticket_info">
         Ce titre contient un seul billet.
-        Ce billet est accepté dans le métro, le bus, le train et le REM
+        Ce billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
         \n\nUn fois utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
         Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
         L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
