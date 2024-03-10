@@ -35,7 +35,7 @@
     <td>Occasional Card view in light mode</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/96bbdaa6-3aae-44c9-a0a2-03b852041866" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/bfa461bd-4c73-4fdf-8da2-ba34d76f3405" width=270></td>
     <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/37d6d670-4748-4cbf-be0f-9ba544eb5268" width=270></td>
     <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/9ffaf218-44c4-44b0-b259-b999badb6a91" width=270></td>
   </tr>
@@ -50,7 +50,7 @@
   <tr>
     <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/7de74b5d-5e68-4cc8-82f2-16d13a6712a9" width=270></td>
     <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/0baa42a2-a346-48a4-8844-28c0aeed73b7" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/6aa4217c-2f41-44a3-a46a-5b70cd8e8aa9" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/0ea9768a-0dd8-4621-809e-954530bd40df" width=270></td>
   </tr>
 </table>
 <h2>How to use</h2>
