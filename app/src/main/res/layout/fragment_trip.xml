@@ -61,13 +61,15 @@
 
             <TextView
                 android:id="@+id/tripLineNameTv"
-                android:layout_width="318dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="14dp"
+                android:layout_marginEnd="6dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripLineIdTv"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Fabreville / Metro Cartier" />
