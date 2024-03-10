@@ -464,21 +464,21 @@ class IdConverter {
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
-                2u -> Line("11", "Vaudreuil-Hudson", "#f16179", "#ffffff", R.drawable.train)
-                3u -> Line("12", "Saint-Jérôme", "#fed16d", "#ffffff", R.drawable.train)
-                1u -> Line("13", "Mont-Saint-Hilaire", "#999ac6", "#ffffff", R.drawable.train) // To confirm
-                7u -> Line("15", "Mascouche", "#ca5898", "#ffffff", R.drawable.train)
+                2u -> Line("11", "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train)
+                3u -> Line("12", "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train)
+                1u -> Line("13", "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train) // To confirm
+                7u -> Line("15", "Mascouche", "#ca5898", "#000000", R.drawable.train)
 
-                516u -> Line("14", "Candiac", "#5ab6b2", "#ffffff", R.drawable.train)
-                518u -> Line("12", "Saint-Jérôme (zone B)", "#fed16d", "#ffffff", R.drawable.train)
-                519u -> Line("13", "Mont-Saint-Hilaire (zone B)", "#999ac6", "#ffffff", R.drawable.train)
-                520u -> Line("11", "Vaudreuil-Hudson (zone C)", "#f16179", "#ffffff", R.drawable.train)
-                521u -> Line("12", "Saint-Jérôme (zone C)", "#fed16d", "#ffffff", R.drawable.train)
-                522u -> Line("13", "Mont-Saint-Hilaire (zone C)", "#999ac6", "#ffffff", R.drawable.train)
-                523u -> Line("14", "Candiac (zone C)", "#5ab6b2", "#ffffff", R.drawable.train)
-                524u -> Line("15", "Mascouche (zone C)", "#ca5898", "#ffffff", R.drawable.train)
+                516u -> Line("14", "Candiac", "#5ab6b2", "#000000", R.drawable.train)
+                518u -> Line("12", "Saint-Jérôme (zone B)", "#fed16d", "#000000", R.drawable.train)
+                519u -> Line("13", "Mont-Saint-Hilaire (zone B)", "#999ac6", "#000000", R.drawable.train)
+                520u -> Line("11", "Vaudreuil-Hudson (zone C)", "#f16179", "#000000", R.drawable.train)
+                521u -> Line("12", "Saint-Jérôme (zone C)", "#fed16d", "#000000", R.drawable.train)
+                522u -> Line("13", "Mont-Saint-Hilaire (zone C)", "#999ac6", "#000000", R.drawable.train)
+                523u -> Line("14", "Candiac (zone C)", "#5ab6b2", "#000000", R.drawable.train)
+                524u -> Line("15", "Mascouche (zone C)", "#ca5898", "#000000", R.drawable.train)
 
-                else -> Line("", "EXO Unknown ($id)", "#000000", "#ffffff", R.drawable.train)
+                else -> Line("", "EXO Unknown ($id)", "#000000", "#000000", R.drawable.train)
             }
         }
 
