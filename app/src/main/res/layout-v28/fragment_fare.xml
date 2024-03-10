@@ -131,7 +131,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ticketCountTv" />
 
             <View
-                android:id="@+id/transferInfoDivider"
+                android:id="@+id/fareDescriptionDivider"
                 android:layout_width="395dp"
                 android:layout_height="1dp"
                 android:layout_marginStart="14dp"
@@ -140,18 +140,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/operatorImageView" />
 
             <TextView
-                android:id="@+id/transferInfoTv"
+                android:id="@+id/fareDescriptionTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="8dp"
-                android:text="Ce titre est valide tout le mois. Il est possible de faire autant de correspondances que souhaité."
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/transferInfoDivider" />
+                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionDivider"
+                tools:text="Ce titre est valide tout le mois. Il est possible de faire autant de correspondances que souhaité." />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

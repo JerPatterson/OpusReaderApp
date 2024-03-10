@@ -58,14 +58,14 @@ class FareFragment : Fragment() {
     }
 
     private fun addFareInfoSection(fare: Fare) {
-        this.addFareInfoSectionTitles(fare)
-        this.addFareInfoSectionValues(fare)
-        this.addFareTransferInfoSection()
+        val fareProduct = IdConverter.getFareProductById(fare.typeId)
+        this.addFareInfoSectionTitles(fare, fareProduct)
+        this.addFareInfoSectionValues(fare, fareProduct)
     }
 
-    private fun addFareInfoSectionTitles(fare: Fare) {
+    private fun addFareInfoSectionTitles(fare: Fare, fareProduct: FareProduct) {
         val fareTypeTitleTv = this.mView?.findViewById<TextView>(R.id.fareTypeValueTv)
-        fareTypeTitleTv?.text = IdConverter.getFareProductById(fare.typeId).name
+        fareTypeTitleTv?.text = fareProduct.name
 
         val buyingDateTitleTv = this.mView?.findViewById<TextView>(R.id.fareBuyingDateTv)
         buyingDateTitleTv?.text = getString(R.string.fare_buying_date_title)
@@ -81,16 +81,17 @@ class FareFragment : Fragment() {
         }
     }
 
-    private fun addFareInfoSectionValues(fare: Fare) {
+    private fun addFareInfoSectionValues(fare: Fare, fareProduct: FareProduct) {
         addBuyingDate(fare)
         if (fare.ticketCount != null) addTicketCount(fare)
         val fromDate = fare.validityFromDate
         val untilDate = fare.validityUntilDate
         if (fromDate != null && untilDate != null) {
-            addValidityInterval(fare, fromDate, untilDate)
+            addValidityInterval(fromDate, untilDate)
         }
         val operator = IdConverter.getOperatorById(fare.operatorId)
         addFareInfoSectionImages(operator)
+        addFareDescriptionSection(fareProduct)
     }
 
     private fun addBuyingDate(fare: Fare) {
@@ -114,7 +115,7 @@ class FareFragment : Fragment() {
         }
     }
 
-    private fun addValidityInterval(fare: Fare, fromDate: Calendar, untilDate: Calendar) {
+    private fun addValidityInterval(fromDate: Calendar, untilDate: Calendar) {
         val validityFromDateTv = this.mView?.findViewById<TextView>(R.id.validityFromDateValueTv)
         validityFromDateTv?.text = calendarToStringInterval(fromDate, untilDate)
 
@@ -131,10 +132,11 @@ class FareFragment : Fragment() {
         operatorImageView?.setImageResource(operator.imageId)
     }
 
-    private fun addFareTransferInfoSection() {
-        val transferInfoDivider = this.mView?.findViewById<View>(R.id.transferInfoDivider)
-        val transferInfoTv = this.mView?.findViewById<TextView>(R.id.transferInfoTv)
+    private fun addFareDescriptionSection(fareProduct: FareProduct) {
+        val transferInfoDivider = this.mView?.findViewById<View>(R.id.fareDescriptionDivider)
         transferInfoDivider?.visibility = View.GONE
+        val transferInfoTv = this.mView?.findViewById<TextView>(R.id.fareDescriptionTv)
+        transferInfoTv?.text = getString(fareProduct.descriptionStringId)
         transferInfoTv?.visibility = View.GONE
 
         val fareLayout = this.mView?.findViewById<ConstraintLayout>(R.id.fareLayout)
@@ -181,15 +183,15 @@ class FareFragment : Fragment() {
         }
 
         private fun showFareTransferInfoSection(view: View) {
-            val transferInfoDivider = view.findViewById<View>(R.id.transferInfoDivider)
-            val transferInfoTv = view.findViewById<TextView>(R.id.transferInfoTv)
+            val transferInfoDivider = view.findViewById<View>(R.id.fareDescriptionDivider)
+            val transferInfoTv = view.findViewById<TextView>(R.id.fareDescriptionTv)
             transferInfoDivider?.visibility = View.VISIBLE
             transferInfoTv?.visibility = View.VISIBLE
         }
 
         private fun hideFareTransferInfoSection(view: View) {
-            val transferInfoDivider = view.findViewById<View>(R.id.transferInfoDivider)
-            val transferInfoTv = view.findViewById<TextView>(R.id.transferInfoTv)
+            val transferInfoDivider = view.findViewById<View>(R.id.fareDescriptionDivider)
+            val transferInfoTv = view.findViewById<TextView>(R.id.fareDescriptionTv)
             transferInfoDivider?.visibility = View.GONE
             transferInfoTv?.visibility = View.GONE
         }

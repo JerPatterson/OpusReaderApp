@@ -1,7 +1,6 @@
 package com.example.opusreader
 
-
-data class FareProduct(val name: String)
+data class FareProduct(val name: String, val descriptionStringId: Int)
 data class Operator(val name: String, val color: String, val imageId: Int)
 data class Line(val id: String, val name: String, val color: String, val textColor: String, val icon: Int)
 
@@ -9,28 +8,28 @@ class IdConverter {
     companion object {
         fun getFareProductById(id: UInt): FareProduct {
             return when (id) {
-                32u -> FareProduct("8 passages, STL")
-                16u -> FareProduct("Mensuel, STL")
-                240u -> FareProduct("2 passages, STM")
-                440u -> FareProduct("10 passages, STM")
+                32u -> FareProduct("8 passages, STL", R.string.old_fare_info)
+                16u -> FareProduct("Mensuel, STL", R.string.old_fare_info)
+                240u -> FareProduct("2 passages, STM", R.string.old_fare_info)
+                440u -> FareProduct("10 passages, STM", R.string.old_fare_info)
 
-                728u -> FareProduct("10 passages, Bus")
-                752u -> FareProduct("Mensuel, Tous modes AB")
-                744u -> FareProduct("Soirée illimité")
+                728u -> FareProduct("10 passages, Bus", R.string.bus_monthly_info)
+                752u -> FareProduct("Mensuel, Tous modes AB", R.string.all_modes_AB_monthly_info)
+                744u -> FareProduct("Soirée illimité", R.string.evening_unlimited_info)
 
-                3316801u -> FareProduct("2 passages, Bus")
-                3316865u -> FareProduct("10 passages, Bus")
-                3314625u -> FareProduct("2 passages, Tous modes A")
-                3314689u -> FareProduct("1 passage, Tous modes AB")
-                3314753u -> FareProduct("2 passages, Tous modes AB")
-                3312577u -> FareProduct("10 passages, Tous modes AB")
-                3322369u -> FareProduct("24hrs, Tous modes AB")
-                3321601u -> FareProduct("3 jours, Tous modes AB")
-                3310337u -> FareProduct("1 passage, Tous modes ABC")
-                3305921u -> FareProduct("Soirée illimité")
-                3305985u -> FareProduct("Week-end illimité")
+                3316801u -> FareProduct("2 passages, Bus", R.string.bus_two_tickets_info)
+                3316865u -> FareProduct("10 passages, Bus", R.string.bus_ten_tickets_info)
+                3314625u -> FareProduct("2 passages, Tous modes A", R.string.all_modes_A_two_tickets_info)
+                3314689u -> FareProduct("1 passage, Tous modes AB", R.string.all_modes_AB_one_ticket_info)
+                3314753u -> FareProduct("2 passages, Tous modes AB", R.string.all_modes_AB_two_tickets_info)
+                3312577u -> FareProduct("10 passages, Tous modes AB", R.string.all_modes_AB_ten_tickets_info)
+                3322369u -> FareProduct("24hrs, Tous modes AB", R.string.all_modes_AB_24_hours_info)
+                3321601u -> FareProduct("3 jours, Tous modes AB", R.string.all_modes_AB_three_days_info)
+                3310337u -> FareProduct("1 passage, Tous modes ABC", R.string.all_modes_ABC_one_ticket_info)
+                3305921u -> FareProduct("Soirée illimité", R.string.evening_unlimited_info)
+                3305985u -> FareProduct("Week-end illimité", R.string.weekend_unlimited_info)
 
-                else -> FareProduct("Inconnu (${id})")
+                else -> FareProduct("Inconnu (${id})", R.string.unknown_fare_info)
             }
         }
 
