@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OpusReader</string>
+    <string name="main_page_instruction">Commencez la lecture de votre carte Opus ou Occasionnelle</string>
+
+    <string name="image_main_page">Cette image montre le logo de l\'application pour inviter l\'utilisateur à lire sa carte.</string>
     <string name="image_card_scanned">Cette image montre la carte qui a été lue</string>
     <string name="image_trip_mode">Cette image montre le mode de transportation du trajet</string>
     <string name="image_operator">Cette image montre le logo de l\'agence de transport</string>
