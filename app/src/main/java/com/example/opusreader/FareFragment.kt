@@ -58,7 +58,7 @@ class FareFragment : Fragment() {
     }
 
     private fun addFareInfoSection(fare: Fare) {
-        val fareProduct = IdConverter.getFareProductById(fare.typeId)
+        val fareProduct = CardContentConverter.getFareProductById(fare.typeId)
         this.addFareInfoSectionTitles(fare, fareProduct)
         this.addFareInfoSectionValues(fare, fareProduct)
     }
@@ -89,7 +89,7 @@ class FareFragment : Fragment() {
         if (fromDate != null && untilDate != null) {
             addValidityInterval(fromDate, untilDate)
         }
-        val operator = IdConverter.getOperatorById(fare.operatorId)
+        val operator = CardContentConverter.getOperatorById(fare.operatorId)
         addFareInfoSectionImages(operator)
         addFareDescriptionSection(fareProduct)
     }

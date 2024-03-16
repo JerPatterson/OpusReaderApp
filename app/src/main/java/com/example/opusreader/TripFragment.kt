@@ -69,8 +69,8 @@ class TripFragment : Fragment() {
     }
 
     private fun addTripInfoSectionValues(trip: Trip) {
-        val line = IdConverter.getLineById(trip.operatorId, trip.lineId)
-        val operator = IdConverter.getOperatorById(trip.operatorId)
+        val line = CardContentConverter.getLineById(trip.operatorId, trip.lineId)
+        val operator = CardContentConverter.getOperatorById(trip.operatorId)
         addTripLine(line)
         addTripDates(trip)
         addTripInfoSectionImages(operator, line)

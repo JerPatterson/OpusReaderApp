@@ -4,7 +4,7 @@ data class FareProduct(val name: String, val descriptionStringId: Int)
 data class Operator(val name: String, val color: String, val imageId: Int)
 data class Line(val id: String, val name: String, val color: String, val textColor: String, val icon: Int)
 
-class IdConverter {
+class CardContentConverter {
     companion object {
         fun getFareProductById(id: UInt): FareProduct {
             return when (id) {
