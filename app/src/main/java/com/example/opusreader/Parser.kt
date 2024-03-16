@@ -12,7 +12,7 @@ class Parser {
         val fares = this.getOccasionalCardFare(data)
         val trips = this.getOccasionalCardTrips(data)
 
-        return Card(CardType.Occasional, id, null, fares, trips)
+        return Card(id, CardType.Occasional, Calendar.getInstance(), null, fares, trips)
     }
 
     fun parseOpusCard(card: IsoDep): Card {
@@ -23,7 +23,7 @@ class Parser {
         val fares = this.getOpusCardFares(card)
         val trips = this.getOpusCardTrips(card)
 
-        return Card(CardType.Opus, id.toULong(), expiryDate, fares, trips)
+        return Card(id.toULong(), CardType.Opus, Calendar.getInstance(), expiryDate, fares, trips)
     }
 
 
