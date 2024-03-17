@@ -271,4 +271,5 @@
         It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
         \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
+    <string name="title_activity_history">HistoryActivity</string>
 </resources>

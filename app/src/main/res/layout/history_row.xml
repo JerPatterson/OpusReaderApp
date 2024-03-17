@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorPrimary" >
+
+            <ImageView
+                android:id="@+id/historyCardImageView"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:foreground="@drawable/opus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/historyCardNameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="8dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/historyCardImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="OPUS CARD" />
+
+            <TextView
+                android:id="@+id/historyCardIdTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:textColor="?android:attr/textColorPrimary"
+                app:layout_constraintStart_toEndOf="@+id/historyCardImageView"
+                app:layout_constraintTop_toBottomOf="@+id/historyCardNameTv"
+                tools:text="123456789" />
+
+            <TextView
+                android:id="@+id/historyLastScanTimeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-6dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/historyLastScanTimeValueTv"
+                app:layout_constraintStart_toStartOf="@+id/historyLastScanTimeValueTv"
+                tools:text="Last scanned on" />
+
+            <TextView
+                android:id="@+id/historyLastScanTimeValueTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="4dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="March 17th, 2024 at 5 PM" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
