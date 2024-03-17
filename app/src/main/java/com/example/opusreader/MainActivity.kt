@@ -3,6 +3,10 @@ package com.example.opusreader
 import android.nfc.NfcAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import androidx.room.Room
 
 private const val FLAGS = NfcAdapter.FLAG_READER_NFC_A or NfcAdapter.FLAG_READER_NFC_B
@@ -21,6 +25,8 @@ class MainActivity : AppCompatActivity() {
             "cards"
         ).build()
         reader = Reader(db.dao, this)
+
+        this.findViewById<Button>(R.id.scanHistoryButton).setOnClickListener(HistoryButtonListener())
     }
 
     override fun onPause() {
@@ -41,5 +47,11 @@ class MainActivity : AppCompatActivity() {
     private fun disableReaderMode() {
         val nfc = NfcAdapter.getDefaultAdapter(this) ?: return
         nfc.disableReaderMode(this)
+    }
+
+    class HistoryButtonListener : View.OnClickListener {
+        override fun onClick(view: View) {
+            Log.i("Test", "Clicked")
+        }
     }
 }

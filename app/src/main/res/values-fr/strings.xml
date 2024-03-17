@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">OpusReader</string>
     <string name="main_page_instruction">Commencez la lecture de votre carte Opus ou Occasionnelle</string>
+    <string name="scan_history_button">Historique</string>
 
     <string name="image_main_page">Cette image montre le logo de l\'application pour inviter l\'utilisateur à lire sa carte.</string>
     <string name="image_card_scanned">Cette image montre la carte qui a été lue</string>
