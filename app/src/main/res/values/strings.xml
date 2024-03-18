@@ -4,6 +4,7 @@
 
     <string name="scan_history_button">History</string>
     <string name="scan_time_title">Card scanned on</string>
+    <string name="history_delete_all_button">Delete all</string>
 
     <string name="image_main_page">This image show the app icon to invite the user to scan a card</string>
     <string name="image_card_scanned">This image show the card that was scanned</string>
