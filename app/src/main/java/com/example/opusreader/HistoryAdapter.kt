@@ -5,7 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 
 class HistoryAdapter(private val historyList: ArrayList<Card>): RecyclerView.Adapter<HistoryAdapter.MyViewHolder>() {
@@ -22,16 +26,9 @@ class HistoryAdapter(private val historyList: ArrayList<Card>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.cardIdValueTv.text = historyList[position].id.toString()
-        holder.cardTypeValueTv.setText(getCardTypeValue(historyList[position].type))
+        holder.cardTypeValueTv.text = holder.getCardTypeValue(historyList[position].type)
+        holder.lastScanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
         holder.cardImageView.setImageResource(getImageResource(historyList[position].type))
-    }
-
-
-    private fun getCardTypeValue(type: CardType): Int {
-        return when (type) {
-            CardType.Opus -> R.string.opus_card_name
-            CardType.Occasional -> R.string.occasional_card_name
-        }
     }
 
     private fun getImageResource(type: CardType): Int {
@@ -46,7 +43,21 @@ class HistoryAdapter(private val historyList: ArrayList<Card>): RecyclerView.Ada
         val cardImageView: ImageView = itemView.findViewById(R.id.historyCardImageView)
         val cardTypeValueTv: TextView = itemView.findViewById(R.id.historyCardTypeTv)
         val cardIdValueTv: TextView = itemView.findViewById(R.id.historyCardIdTv)
-        val lastScanTimeTv = itemView.findViewById<TextView>(R.id.historyLastScanTimeTv)
-        val lastScanTimeValueTv = itemView.findViewById<TextView>(R.id.historyLastScanTimeValueTv)
+        val lastScanTimeValueTv: TextView = itemView.findViewById(R.id.historyLastScanTimeValueTv)
+
+        fun getCardTypeValue(type: CardType): String {
+            return when (type) {
+                CardType.Opus -> getString(itemView.context, R.string.opus_card_name)
+                CardType.Occasional -> getString(itemView.context, R.string.occasional_card_name)
+            }
+        }
+
+        fun calendarToStringWithTime(cal: Calendar): String {
+            return SimpleDateFormat(
+                getString(itemView.context, R.string.calendar_with_time_pattern),
+                Locale(getString(itemView.context, R.string.calendar_language),
+                    getString(itemView.context, R.string.calendar_country))
+            ).format(cal.time)
+        }
     }
 }

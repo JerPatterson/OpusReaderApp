@@ -8,18 +8,19 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="10dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/colorPrimary" >
+            android:background="?android:attr/colorPrimary">
 
             <ImageView
                 android:id="@+id/historyCardImageView"
@@ -28,7 +29,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="12dp"
-                android:foreground="@drawable/opus"
+                android:src="@drawable/opus"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -65,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="-6dp"
                 android:layout_marginBottom="2dp"
+                android:text="@string/scan_time_title"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="11sp"
                 android:textStyle="bold"
