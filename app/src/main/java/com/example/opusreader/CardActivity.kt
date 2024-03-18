@@ -13,6 +13,7 @@ import java.util.Locale
 
 private const val ARG_CARD = "card"
 
+
 class CardActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {

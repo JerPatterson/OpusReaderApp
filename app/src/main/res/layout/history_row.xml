@@ -36,7 +36,7 @@
             </ImageView>
 
             <TextView
-                android:id="@+id/historyCardNameTv"
+                android:id="@+id/historyCardTypeTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -56,7 +56,7 @@
                 android:layout_marginTop="4dp"
                 android:textColor="?android:attr/textColorPrimary"
                 app:layout_constraintStart_toEndOf="@+id/historyCardImageView"
-                app:layout_constraintTop_toBottomOf="@+id/historyCardNameTv"
+                app:layout_constraintTop_toBottomOf="@+id/historyCardTypeTv"
                 tools:text="123456789" />
 
             <TextView
