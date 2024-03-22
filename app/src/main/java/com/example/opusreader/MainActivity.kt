@@ -28,11 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        db = Room.databaseBuilder(
-            applicationContext,
-            CardDatabase::class.java,
-            "cards"
-        ).build()
+        db = CardDatabase.getInstance(this)
         reader = Reader(db.dao, this)
 
         this.findViewById<Button>(R.id.scanHistoryButton)
