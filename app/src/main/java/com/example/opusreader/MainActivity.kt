@@ -37,17 +37,18 @@ class MainActivity : AppCompatActivity() {
         nfc.enableReaderMode(this, reader, FLAGS, null)
     }
 
-    private fun disableReaderMode() {
+    fun disableReaderMode() {
         val nfc = NfcAdapter.getDefaultAdapter(this) ?: return
         nfc.disableReaderMode(this)
     }
 
     class HistoryButtonListener(
-        private val context: AppCompatActivity,
+        private val activity: MainActivity,
     ) : View.OnClickListener {
         override fun onClick(view: View) {
-            val intent = Intent(context , HistoryActivity::class.java)
-            context.startActivity(intent)
+            val intent = Intent(activity , HistoryActivity::class.java)
+            activity.disableReaderMode()
+            activity.startActivity(intent)
         }
     }
 }

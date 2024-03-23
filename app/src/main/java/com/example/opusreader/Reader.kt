@@ -53,6 +53,7 @@ class Reader(
         val gson = Gson()
         val intent = Intent(activity, CardActivity::class.java)
         intent.putExtra("card", gson.toJson(cardParsed))
+        activity.disableReaderMode()
         activity.startActivity(intent)
     }
 }

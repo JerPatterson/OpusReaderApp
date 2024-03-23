@@ -14,6 +14,10 @@ interface CardDao {
     @Delete
     suspend fun deleteStoredCard(card: CardEntity)
 
+
+    @Query("DELETE FROM card")
+    suspend fun deleteStoredCards()
+
     @Query("SELECT * FROM card WHERE id = :id")
     fun getStoredCardById(id: String): List<CardEntity>
 

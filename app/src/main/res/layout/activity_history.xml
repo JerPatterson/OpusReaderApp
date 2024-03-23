@@ -20,7 +20,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/scanHistoryButton"
+                android:id="@+id/deleteAllHistoryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"

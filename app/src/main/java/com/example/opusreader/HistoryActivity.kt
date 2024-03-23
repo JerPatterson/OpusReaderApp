@@ -2,6 +2,8 @@ package com.example.opusreader
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -19,6 +21,11 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
 
+        addHistoryItems()
+        enableDeleteAllButton()
+    }
+
+    private fun addHistoryItems() {
         db = CardDatabase.getInstance(this)
         val cards: ArrayList<Card> = getStoredCards()
 
@@ -26,7 +33,6 @@ class HistoryActivity : AppCompatActivity() {
         historyRecyclerView.layoutManager = LinearLayoutManager(this)
         historyRecyclerView.adapter = HistoryAdapter(cards)
     }
-
 
     private fun getStoredCards(): ArrayList<Card> {
         val gson = Gson()
@@ -69,5 +75,23 @@ class HistoryActivity : AppCompatActivity() {
         }
 
         return cards
+    }
+
+    private fun enableDeleteAllButton() {
+        val deleteAllButton: Button = findViewById(R.id.deleteAllHistoryButton)
+        deleteAllButton.setOnClickListener(HistoryDeleteAllListener(db,this))
+    }
+
+    class HistoryDeleteAllListener(
+        private val db: CardDatabase,
+        private val activity: HistoryActivity,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            CoroutineScope(Dispatchers.IO).launch {
+                db.dao.deleteStoredCards()
+            }
+
+            activity.finish()
+        }
     }
 }
