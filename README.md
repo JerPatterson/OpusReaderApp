@@ -62,11 +62,12 @@
 <ul>
   <li>Adding the possibility for user to crowdsource unknown fares, lines and operators</li>
   <li>Improving information for transfers so users can maximize their usage of one particular fare</li>
-  <li>Adding an historic of the card scans</li>
+  <li>Adding notifications to alert the user when the validity of the fare ends and few minutes prior</li>
+  <li><strike>Adding an history of the card scans</strike> <em>Added!</em></li>
 </ul>
 <h2>Documentation</h2>
 <span>
-  In addition to some time analysing the binary content of the cards, here are some link that were used to find how to retreive and parse data from both of the cards.
+  In addition to some time analysing the binary content of the cards, here are some links that were used to find how to retreive and parse data from both of the cards.
 </span>
 <ul>
   <br>
