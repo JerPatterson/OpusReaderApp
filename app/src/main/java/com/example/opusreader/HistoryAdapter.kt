@@ -1,5 +1,7 @@
 package com.example.opusreader
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -29,6 +32,7 @@ class HistoryAdapter(private val historyList: ArrayList<Card>): RecyclerView.Ada
         holder.cardTypeValueTv.text = holder.getCardTypeValue(historyList[position].type)
         holder.lastScanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
         holder.cardImageView.setImageResource(getImageResource(historyList[position].type))
+        holder.itemView.setOnClickListener(HistoryItemListener(historyList[position], holder.itemView.context))
     }
 
     private fun getImageResource(type: CardType): Int {
@@ -58,6 +62,18 @@ class HistoryAdapter(private val historyList: ArrayList<Card>): RecyclerView.Ada
                 Locale(getString(itemView.context, R.string.calendar_language),
                     getString(itemView.context, R.string.calendar_country))
             ).format(cal.time)
+        }
+    }
+
+    class HistoryItemListener(
+        private val card: Card,
+        private val context: Context,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            val gson = Gson()
+            val intent = Intent(context , CardActivity::class.java)
+            intent.putExtra("card", gson.toJson(card))
+            context.startActivity(intent)
         }
     }
 }
