@@ -18,9 +18,9 @@ interface CardDao {
     @Query("DELETE FROM card")
     suspend fun deleteStoredCards()
 
-    @Query("SELECT * FROM card WHERE id = :id")
+    @Query("SELECT * FROM card WHERE id = :id ORDER BY scanDate DESC")
     fun getStoredCardById(id: String): List<CardEntity>
 
-    @Query("SELECT * FROM card ORDER BY scanDate")
+    @Query("SELECT * FROM card WHERE scanDate IN(SELECT max(scanDate) FROM card GROUP BY id) ORDER BY scanDate DESC")
     fun getStoredCards(): List<CardEntity>
 }
