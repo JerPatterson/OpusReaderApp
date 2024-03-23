@@ -3,10 +3,15 @@
     <string name="app_name">OpusReader</string>
     <string name="main_page_instruction">Commencez la lecture de votre carte Opus ou Occasionnelle</string>
 
+    <string name="enable_nfc_title">Fonctionnalité CCP désactivée</string>
+    <string name="enable_nfc_message">La fonctionnalité CCP (communication en champ proche)
+        de votre appareil doit être activée pour que l\'application fonctionne.
+    </string>
     <string name="delete_all_confirmation_message">Voulez-vous vraiment supprimer tout l\'historique définitivement ?</string>
     <string name="delete_confirmation_message">Voulez-vous vraiment supprimer cet élément définitivement ?</string>
     <string name="confirm">Oui</string>
     <string name="cancel">Non</string>
+    <string name="accept">OK</string>
 
     <string name="scan_history_button">Historique</string>
     <string name="scan_time_title">Carte lue le</string>
