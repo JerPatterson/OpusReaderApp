@@ -31,7 +31,7 @@ class HistoryActivity : AppCompatActivity() {
 
         val historyRecyclerView = this.findViewById<RecyclerView>(R.id.historyRecyclerView)
         historyRecyclerView.layoutManager = LinearLayoutManager(this)
-        historyRecyclerView.adapter = HistoryAdapter(cards)
+        historyRecyclerView.adapter = HistoryCardAdapter(cards)
     }
 
     private fun getStoredCards(): ArrayList<Card> {
