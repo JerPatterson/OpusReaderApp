@@ -2,6 +2,10 @@
     <string name="app_name">OpusReader</string>
     <string name="main_page_instruction">Start the reading of your Opus or Occasional card</string>
 
+    <string name="no_nfc_title">NFC functionality unavailable</string>
+    <string name="no_nfc_message">It looks like your phone does not have the
+        NFC (near-field communication) functionality required for the application to work.
+    </string>
     <string name="enable_nfc_title">NFC functionality disabled</string>
     <string name="enable_nfc_message">The NFC (near-field communication) functionality
         of your phone has to be enabled for the application to work.

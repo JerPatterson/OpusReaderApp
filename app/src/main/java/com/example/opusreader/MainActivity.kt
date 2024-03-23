@@ -2,7 +2,6 @@ package com.example.opusreader
 
 import android.content.Intent
 import android.nfc.NfcAdapter
-import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
@@ -37,7 +36,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun enableReaderMode() {
-        val nfc = NfcAdapter.getDefaultAdapter(this) ?: return
+        val nfc = NfcAdapter.getDefaultAdapter(this)
+        if (nfc == null) {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle(R.string.no_nfc_title)
+                .setMessage(R.string.no_nfc_message)
+                .setNeutralButton(R.string.accept) { _, _ -> }
+            val dialog = builder.create()
+            dialog.show()
+            return
+        }
+
         if (!nfc.isEnabled) {
             val builder = AlertDialog.Builder(this)
             builder.setTitle(R.string.enable_nfc_title)
