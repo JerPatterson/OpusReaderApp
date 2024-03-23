@@ -12,8 +12,10 @@ interface CardDao {
     suspend fun insertStoredCard(card: CardEntity)
 
     @Delete
-    suspend fun deleteStoredCardById(card: CardEntity)
+    suspend fun deleteStoredCardScan(card: CardEntity)
 
+    @Query("DELETE FROM card WHERE id = :id")
+    suspend fun deleteStoredCard(id: String)
 
     @Query("DELETE FROM card")
     suspend fun deleteStoredCards()

@@ -93,7 +93,6 @@ class HistoryCardAdapter(
             val scanListRecyclerView: RecyclerView = view.findViewById(R.id.historyScanList)
 
             if (!isInitialized) {
-                Log.i("TEST", "here")
                 scanListRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context)
                 scanListRecyclerView.adapter = HistoryScanAdapter(getScanListItems(card, holder.itemView.context))
                 isInitialized = true
@@ -156,8 +155,6 @@ class HistoryCardAdapter(
                 job.join()
             }
 
-            Log.i("TEST", cards.size.toString())
-
             return cards
         }
     }
@@ -169,7 +166,7 @@ class HistoryCardAdapter(
     ): View.OnClickListener {
         override fun onClick(view: View) {
             CoroutineScope(Dispatchers.IO).launch {
-                CardDatabase.getInstance(view.context).dao.deleteStoredCardById(card.getCardEntity())
+                CardDatabase.getInstance(view.context).dao.deleteStoredCard(card.getCardEntity().id)
             }
             adapter.removeItem(position)
         }

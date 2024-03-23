@@ -1,5 +1,7 @@
 package com.example.opusreader
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +35,7 @@ class HistoryScanAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.scanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
 
-        holder.itemView.setOnClickListener(HistoryScanItemListener())
+        holder.itemView.setOnClickListener(HistoryScanItemListener(historyList[position], holder.itemView.context))
         holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position], position, this))
     }
 
@@ -55,10 +58,15 @@ class HistoryScanAdapter(
         }
     }
 
-    class HistoryScanItemListener : View.OnClickListener {
-
+    class HistoryScanItemListener(
+        private val card: Card,
+        private val context: Context,
+    ) : View.OnClickListener {
         override fun onClick(view: View) {
-
+            val gson = Gson()
+            val intent = Intent(context , CardActivity::class.java)
+            intent.putExtra("card", gson.toJson(card))
+            context.startActivity(intent)
         }
     }
 
@@ -69,7 +77,7 @@ class HistoryScanAdapter(
     ): View.OnClickListener {
         override fun onClick(view: View) {
             CoroutineScope(Dispatchers.IO).launch {
-                CardDatabase.getInstance(view.context).dao.deleteStoredCardById(card.getCardEntity())
+                CardDatabase.getInstance(view.context).dao.deleteStoredCardScan(card.getCardEntity())
             }
             adapter.removeItem(position)
         }
