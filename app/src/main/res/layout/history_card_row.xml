@@ -28,8 +28,8 @@
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/opus"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -53,8 +53,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="2dp"
                 android:textColor="?android:attr/textColorPrimary"
+                android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/historyCardImageView"
                 app:layout_constraintTop_toBottomOf="@+id/historyCardTypeTv"
                 tools:text="123456789" />
@@ -64,35 +64,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="-8dp"
-                android:layout_marginTop="36dp"
-                android:layout_marginBottom="2dp"
                 android:text="@string/last_scan_time_title"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/historyLastScanTimeValueTv"
                 app:layout_constraintStart_toStartOf="@+id/historyLastScanTimeValueTv"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/historyCardIdTv"
                 tools:text="Last scanned on" />
 
             <TextView
                 android:id="@+id/historyLastScanTimeValueTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="25dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="6dp"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="March 17th, 2024 at 5 PM" />
 
             <ImageView
                 android:id="@+id/deleteItemHistoryIcon"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:layout_marginTop="3dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:layout_marginEnd="3dp"
+                app:layout_constraintBottom_toTopOf="@+id/historyLastScanTimeTv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/ic_menu_delete" />

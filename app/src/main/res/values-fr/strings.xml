@@ -4,6 +4,7 @@
     <string name="main_page_instruction">Commencez la lecture de votre carte Opus ou Occasionnelle</string>
 
     <string name="scan_history_button">Historique</string>
+    <string name="scan_time_title">Carte lue le</string>
     <string name="last_scan_time_title">Dernière lecture le</string>
     <string name="history_delete_all_button">Supprimer tout</string>
 

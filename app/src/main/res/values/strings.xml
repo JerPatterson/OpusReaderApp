@@ -3,6 +3,7 @@
     <string name="main_page_instruction">Start the reading of your Opus or Occasional card</string>
 
     <string name="scan_history_button">History</string>
+    <string name="scan_time_title">Card scanned on</string>
     <string name="last_scan_time_title">Last scanned on</string>
     <string name="history_delete_all_button">Delete all</string>
 
