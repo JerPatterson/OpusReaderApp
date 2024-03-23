@@ -5,11 +5,15 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -32,8 +36,16 @@ class HistoryAdapter(private val historyList: ArrayList<Card>): RecyclerView.Ada
         holder.cardTypeValueTv.text = holder.getCardTypeValue(historyList[position].type)
         holder.lastScanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
         holder.cardImageView.setImageResource(getImageResource(historyList[position].type))
+
         holder.itemView.setOnClickListener(HistoryItemListener(historyList[position], holder.itemView.context))
+        holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position], position, this))
     }
+
+    private fun removeItem(position: Int) {
+        historyList.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
 
     private fun getImageResource(type: CardType): Int {
         return when (type) {
@@ -48,6 +60,7 @@ class HistoryAdapter(private val historyList: ArrayList<Card>): RecyclerView.Ada
         val cardTypeValueTv: TextView = itemView.findViewById(R.id.historyCardTypeTv)
         val cardIdValueTv: TextView = itemView.findViewById(R.id.historyCardIdTv)
         val lastScanTimeValueTv: TextView = itemView.findViewById(R.id.historyLastScanTimeValueTv)
+        val deleteItemIcon: ImageView = itemView.findViewById(R.id.deleteItemHistoryIcon)
 
         fun getCardTypeValue(type: CardType): String {
             return when (type) {
@@ -74,6 +87,19 @@ class HistoryAdapter(private val historyList: ArrayList<Card>): RecyclerView.Ada
             val intent = Intent(context , CardActivity::class.java)
             intent.putExtra("card", gson.toJson(card))
             context.startActivity(intent)
+        }
+    }
+
+    class HistoryItemDeleteListener(
+        private val card: Card,
+        private val position: Int,
+        private val adapter: HistoryAdapter
+    ): View.OnClickListener {
+        override fun onClick(view: View) {
+            CoroutineScope(Dispatchers.IO).launch {
+                CardDatabase.getInstance(view.context).dao.deleteStoredCardById(card.getCardEntity())
+            }
+            adapter.removeItem(position)
         }
     }
 }
