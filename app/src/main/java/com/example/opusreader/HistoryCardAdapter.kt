@@ -1,8 +1,6 @@
 package com.example.opusreader
 
 import android.content.Context
-import android.opengl.Visibility
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +27,10 @@ class HistoryCardAdapter(
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.history_card_row, parent, false)
 
         return MyViewHolder(itemView)
+    }
+
+    override fun onViewDetachedFromWindow(holder: MyViewHolder) {
+        holder.scanListRecyclerView.visibility = View.GONE
     }
 
     override fun getItemCount(): Int {
@@ -65,6 +67,7 @@ class HistoryCardAdapter(
         val cardIdValueTv: TextView = itemView.findViewById(R.id.historyCardIdTv)
         val lastScanTimeValueTv: TextView = itemView.findViewById(R.id.historyLastScanTimeValueTv)
         val deleteItemIcon: ImageView = itemView.findViewById(R.id.deleteItemHistoryIcon)
+        val scanListRecyclerView: RecyclerView = itemView.findViewById(R.id.historyScanList)
 
         fun getCardTypeValue(type: CardType): String {
             return when (type) {
