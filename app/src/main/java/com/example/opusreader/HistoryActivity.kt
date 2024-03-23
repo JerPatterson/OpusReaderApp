@@ -5,22 +5,69 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import java.lang.reflect.Type
-
-private const val ARG_CARDS = "cards"
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.util.Calendar
 
 
 class HistoryActivity : AppCompatActivity() {
+    private lateinit var db: CardDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
 
+        db = CardDatabase.getInstance(this)
+        val cards: ArrayList<Card> = getStoredCards()
+
         val historyRecyclerView = this.findViewById<RecyclerView>(R.id.historyRecyclerView)
         historyRecyclerView.layoutManager = LinearLayoutManager(this)
-
-        val cardsType: Type = object : TypeToken<ArrayList<Card>>() {}.type
-        val cards: ArrayList<Card> = Gson().fromJson(intent.getStringExtra(ARG_CARDS), cardsType)
         historyRecyclerView.adapter = HistoryAdapter(cards)
+    }
+
+
+    private fun getStoredCards(): ArrayList<Card> {
+        val gson = Gson()
+        val cards = ArrayList<Card>()
+        val job = CoroutineScope(Dispatchers.IO).launch {
+            val cardEntities = db.dao.getStoredCards()
+            val cardEntityIterator = cardEntities.listIterator()
+            while (cardEntityIterator.hasNext()) {
+                val cardEntity = cardEntityIterator.next()
+                if (cardEntity.type == CardType.Opus.name) {
+                    cards.add(Card(
+                        cardEntity.id.toULong(),
+                        CardType.Opus,
+                        Calendar.getInstance().also { calendar ->
+                            calendar.timeInMillis = cardEntity.scanDate.toLong()
+                        },
+                        Calendar.getInstance().also { calendar ->
+                            calendar.timeInMillis = cardEntity.expiryDate.toLong()
+                        },
+                        gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
+                        gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
+                    ))
+                } else if (cardEntity.type == CardType.Occasional.name) {
+                    cards.add(Card(
+                        cardEntity.id.toULong(),
+                        CardType.Occasional,
+                        Calendar.getInstance().also { calendar ->
+                            calendar.timeInMillis = cardEntity.scanDate.toLong()
+                        },
+                        null,
+                        gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
+                        gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
+                    ))
+                }
+            }
+        }
+
+        runBlocking {
+            job.join()
+        }
+
+        return cards
     }
 }
