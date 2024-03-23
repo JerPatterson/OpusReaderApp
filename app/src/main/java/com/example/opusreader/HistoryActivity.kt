@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -87,11 +88,17 @@ class HistoryActivity : AppCompatActivity() {
         private val activity: HistoryActivity,
     ) : View.OnClickListener {
         override fun onClick(view: View) {
-            CoroutineScope(Dispatchers.IO).launch {
-                db.dao.deleteStoredCards()
-            }
-
-            activity.finish()
+            val builder = AlertDialog.Builder(view.context)
+            builder.setMessage(R.string.delete_all_confirmation_message)
+                .setNegativeButton(R.string.cancel) { _, _ -> }
+                .setPositiveButton(R.string.confirm) { _, _ ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        db.dao.deleteStoredCards()
+                    }
+                    activity.finish()
+                }
+            val dialog = builder.create()
+            dialog.show()
         }
     }
 }

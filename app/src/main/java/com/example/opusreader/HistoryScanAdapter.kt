@@ -1,12 +1,14 @@
 package com.example.opusreader
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -20,6 +22,8 @@ import java.util.Locale
 
 class HistoryScanAdapter(
     private val historyList: ArrayList<Card>,
+    private val historyCardPosition: Int,
+    private val historyCardAdapter: HistoryCardAdapter,
 ): RecyclerView.Adapter<HistoryScanAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -42,6 +46,7 @@ class HistoryScanAdapter(
     private fun removeItem(position: Int) {
         historyList.removeAt(position)
         notifyItemRemoved(position)
+        if (historyList.size == 0) historyCardAdapter.notifyItemRemoved(historyCardPosition)
     }
 
 
@@ -76,10 +81,17 @@ class HistoryScanAdapter(
         private val adapter: HistoryScanAdapter
     ): View.OnClickListener {
         override fun onClick(view: View) {
-            CoroutineScope(Dispatchers.IO).launch {
-                CardDatabase.getInstance(view.context).dao.deleteStoredCardScan(card.getCardEntity())
-            }
-            adapter.removeItem(position)
+            val builder = AlertDialog.Builder(view.context)
+            builder.setMessage(R.string.delete_confirmation_message)
+                .setNegativeButton(R.string.cancel) { _, _ -> }
+                .setPositiveButton(R.string.confirm) { _, _ ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        CardDatabase.getInstance(view.context).dao.deleteStoredCardScan(card.getCardEntity())
+                    }
+                    adapter.removeItem(position)
+                }
+            val dialog = builder.create()
+            dialog.show()
         }
     }
 }

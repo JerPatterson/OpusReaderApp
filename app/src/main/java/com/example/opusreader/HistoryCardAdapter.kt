@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,7 +44,7 @@ class HistoryCardAdapter(
         holder.lastScanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
         holder.cardImageView.setImageResource(getImageResource(historyList[position].type))
 
-        holder.itemView.setOnClickListener(HistoryItemListener(historyList[position], holder))
+        holder.itemView.setOnClickListener(HistoryItemListener(historyList[position], holder, position, this))
         holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position], position, this))
     }
 
@@ -88,6 +89,8 @@ class HistoryCardAdapter(
     class HistoryItemListener(
         private val card: Card,
         private val holder: MyViewHolder,
+        private val historyCardPosition: Int,
+        private val historyCardAdapter: HistoryCardAdapter,
     ) : View.OnClickListener {
         private var isShowing: Boolean = false
         private var isInitialized: Boolean = false
@@ -97,7 +100,11 @@ class HistoryCardAdapter(
 
             if (!isInitialized) {
                 scanListRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context)
-                scanListRecyclerView.adapter = HistoryScanAdapter(getScanListItems(card, holder.itemView.context))
+                scanListRecyclerView.adapter = HistoryScanAdapter(
+                    getScanListItems(card, holder.itemView.context),
+                    historyCardPosition,
+                    historyCardAdapter,
+                )
                 isInitialized = true
             }
 
@@ -168,10 +175,17 @@ class HistoryCardAdapter(
         private val adapter: HistoryCardAdapter
     ): View.OnClickListener {
         override fun onClick(view: View) {
-            CoroutineScope(Dispatchers.IO).launch {
-                CardDatabase.getInstance(view.context).dao.deleteStoredCard(card.getCardEntity().id)
-            }
-            adapter.removeItem(position)
+            val builder = AlertDialog.Builder(view.context)
+            builder.setMessage(R.string.delete_confirmation_message)
+                .setNegativeButton(R.string.cancel) { _, _ -> }
+                .setPositiveButton(R.string.confirm) { _, _ ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        CardDatabase.getInstance(view.context).dao.deleteStoredCard(card.getCardEntity().id)
+                    }
+                    adapter.removeItem(position)
+                }
+            val dialog = builder.create()
+            dialog.show()
         }
     }
 }
