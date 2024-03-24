@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbarSize="8dp"
+    tools:context=".ValidityFragment">
+
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="72dp"
+        android:clickable="false"
+        android:progress="100"
+        android:progressBackgroundTint="@color/accent"
+        android:progressTint="@color/accent"
+        android:thumbTint="@color/accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/validityStartLabelLine"
+        android:layout_width="2dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="-8dp"
+        android:background="@color/accent"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintStart_toStartOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/validityStartingTitleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="-8dp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/validityStartLabelLine"
+        app:layout_constraintTop_toTopOf="@+id/validityStartLabelLine"
+        tools:text="Starting on" />
+
+    <TextView
+        android:id="@+id/validityStartingValueTv"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/validityStartLabelLine"
+        app:layout_constraintTop_toBottomOf="@+id/validityStartingTitleTv"
+        tools:text="September 24th at 19:26" />
+
+    <TextView
+        android:id="@+id/validityTimeRemainingTitleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/validityTimeRemainingValueTv"
+        app:layout_constraintEnd_toStartOf="@+id/validityEndingTitleTv"
+        app:layout_constraintStart_toEndOf="@+id/validityStartingTitleTv"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Still valid for" />
+
+    <TextView
+        android:id="@+id/validityTimeRemainingValueTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="100dp"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/validityTimeRemainingTitleTv"
+        tools:text="1 hr 4 min" />
+
+    <View
+        android:id="@+id/validityEndingLabelLine"
+        android:layout_width="2dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="-18dp"
+        android:layout_marginBottom="-8dp"
+        android:background="@color/accent"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintStart_toEndOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/validityEndingTitleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="-8dp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/validityEndingLabelLine"
+        app:layout_constraintTop_toTopOf="@+id/validityEndingLabelLine"
+        tools:text="Ending on" />
+
+    <TextView
+        android:id="@+id/validityEndingValueTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="3dp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/validityEndingLabelLine"
+        app:layout_constraintTop_toBottomOf="@+id/validityEndingTitleTv"
+        tools:text="September 24th at 21:26" />
+
+    <View
+        android:id="@+id/validityLowerLabelLine"
+        android:layout_width="2dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="-8dp"
+        android:background="@color/accent"
+        app:layout_constraintStart_toStartOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/validityLowerLineIdTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:background="#ef8122"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/validityLowerModeImageView"
+        app:layout_constraintStart_toEndOf="@+id/validityLowerModeImageView"
+        app:layout_constraintTop_toTopOf="@+id/validityLowerModeImageView"
+        tools:text="2" />
+
+    <ImageView
+        android:id="@+id/validityLowerModeImageView"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="-8dp"
+        android:contentDescription="@string/image_trip_mode"
+        app:layout_constraintBottom_toBottomOf="@+id/validityLowerLabelLine"
+        app:layout_constraintStart_toEndOf="@id/validityLowerLabelLine"
+        app:srcCompat="@drawable/metro" />
+
+    <View
+        android:id="@+id/validityMiddleLabelLine"
+        android:layout_width="2dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="-8dp"
+        android:background="@color/accent"
+        app:layout_constraintStart_toStartOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/validityMiddleLineIdTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:background="#3F51B5"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/validityMiddleModeImageView"
+        app:layout_constraintStart_toEndOf="@+id/validityMiddleModeImageView"
+        app:layout_constraintTop_toTopOf="@+id/validityMiddleModeImageView"
+        tools:text="60" />
+
+    <ImageView
+        android:id="@+id/validityMiddleModeImageView"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="-8dp"
+        android:contentDescription="@string/image_trip_mode"
+        app:layout_constraintBottom_toBottomOf="@+id/validityMiddleLabelLine"
+        app:layout_constraintStart_toEndOf="@id/validityMiddleLabelLine"
+        app:srcCompat="@drawable/bus" />
+
+    <View
+        android:id="@+id/validityHigherLabelLine"
+        android:layout_width="2dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="-8dp"
+        android:background="@color/accent"
+        app:layout_constraintStart_toStartOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/validityHigherLineIdTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:background="#3F51B5"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/validityHigherModeImageView"
+        app:layout_constraintStart_toEndOf="@+id/validityHigherModeImageView"
+        app:layout_constraintTop_toTopOf="@+id/validityHigherModeImageView"
+        tools:text="73" />
+
+    <ImageView
+        android:id="@+id/validityHigherModeImageView"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="-8dp"
+        android:contentDescription="@string/image_trip_mode"
+        app:layout_constraintBottom_toBottomOf="@+id/validityHigherLabelLine"
+        app:layout_constraintStart_toEndOf="@id/validityHigherLabelLine"
+        app:srcCompat="@drawable/bus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
