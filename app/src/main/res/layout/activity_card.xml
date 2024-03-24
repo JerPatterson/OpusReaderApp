@@ -108,6 +108,43 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/validitySectionTitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="14dp"
+                android:text="@string/validity_section_title"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expiryDateValueTv"
+                tools:text="VALIDITY INFO" />
+
+            <Space
+                android:id="@+id/validitySpace"
+                android:layout_width="360dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fareSectionTitleTv" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/validityFragment"
+                android:name="com.example.opusreader.ValidityFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="?android:attr/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/faresSpace"
+                tools:layout="@layout/fragment_validity" />
+
+            <TextView
                 android:id="@+id/fareSectionTitleTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -39,6 +39,11 @@
     <string name="card_epiration_date_title">Expiration Date</string>
     <string name="no_expiry_date">None</string>
 
+    <string name="validity_section_title">Validity of the card</string>
+    <string name="validity_starting_on">Starting on</string>
+    <string name="validity_ending_on">Ending on</string>
+    <string name="validity_still_valid_for">Still valid for</string>
+
     <string name="fare_section_title">Fares of the card</string>
     <string name="fare_buying_date_title">Bought on</string>
     <string name="fare_first_use_date_title">Validity from</string>

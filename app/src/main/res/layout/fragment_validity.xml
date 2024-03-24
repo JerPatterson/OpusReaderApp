@@ -9,19 +9,18 @@
 
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/validitySeekBar"
         android:layout_width="0dp"
         android:layout_height="16dp"
-        android:layout_marginTop="48dp"
         android:layout_marginEnd="72dp"
         android:clickable="false"
-        android:progress="100"
+        android:progress="50"
         android:progressBackgroundTint="@color/accent"
         android:progressTint="@color/accent"
         android:thumbTint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/validityTimeRemainingValueTv" />
 
     <View
         android:id="@+id/validityStartLabelLine"
@@ -30,8 +29,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="-8dp"
         android:background="@color/accent"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintStart_toStartOf="@+id/seekBar" />
+        app:layout_constraintBottom_toTopOf="@+id/validitySeekBar"
+        app:layout_constraintStart_toStartOf="@+id/validitySeekBar" />
 
     <TextView
         android:id="@+id/validityStartingTitleTv"
@@ -39,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginTop="-8dp"
+        android:text="@string/validity_starting_on"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="11sp"
         android:textStyle="bold"
@@ -61,8 +61,10 @@
         android:id="@+id/validityTimeRemainingTitleTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/validity_still_valid_for"
         android:textColor="?android:attr/textColorPrimary"
+        android:textSize="13sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/validityTimeRemainingValueTv"
         app:layout_constraintEnd_toStartOf="@+id/validityEndingTitleTv"
@@ -77,6 +79,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginBottom="100dp"
         android:textColor="?android:attr/textColorPrimary"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/validityTimeRemainingTitleTv"
         tools:text="1 hr 4 min" />
@@ -88,8 +91,8 @@
         android:layout_marginStart="-18dp"
         android:layout_marginBottom="-8dp"
         android:background="@color/accent"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintStart_toEndOf="@+id/seekBar" />
+        app:layout_constraintBottom_toTopOf="@+id/validitySeekBar"
+        app:layout_constraintStart_toEndOf="@+id/validitySeekBar" />
 
     <TextView
         android:id="@+id/validityEndingTitleTv"
@@ -97,6 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginTop="-8dp"
+        android:text="@string/validity_ending_on"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="11sp"
         android:textStyle="bold"
@@ -124,8 +128,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="-8dp"
         android:background="@color/accent"
-        app:layout_constraintStart_toStartOf="@+id/seekBar"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintStart_toStartOf="@+id/validitySeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/validitySeekBar" />
 
     <TextView
         android:id="@+id/validityLowerLineIdTv"
@@ -161,8 +165,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="-8dp"
         android:background="@color/accent"
-        app:layout_constraintStart_toStartOf="@+id/seekBar"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintStart_toStartOf="@+id/validitySeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/validitySeekBar" />
 
     <TextView
         android:id="@+id/validityMiddleLineIdTv"
@@ -195,11 +199,11 @@
         android:id="@+id/validityHigherLabelLine"
         android:layout_width="2dp"
         android:layout_height="26dp"
-        android:layout_marginStart="320dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="-8dp"
         android:background="@color/accent"
-        app:layout_constraintStart_toStartOf="@+id/seekBar"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintStart_toStartOf="@+id/validitySeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/validitySeekBar" />
 
     <TextView
         android:id="@+id/validityHigherLineIdTv"
