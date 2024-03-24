@@ -2,7 +2,6 @@ package com.example.opusreader
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -112,8 +111,7 @@ class ValidityFragment: Fragment() {
 
     private fun addOccasionalCardTrips(card: Card, progress: Int, startDate: Calendar, endDate: Calendar) {
         val displayMetrics = context?.resources?.displayMetrics ?: return
-        val dpWidthSeekBar = displayMetrics.widthPixels - (displayMetrics.widthPixels * 0.4F)
-        Log.i("TEST", dpWidthSeekBar.toString())
+        val dpWidthSeekBar = displayMetrics.widthPixels - (displayMetrics.widthPixels * 0.35F)
         val validitySeekBar = this.mView?.findViewById<SeekBar>(R.id.validitySeekBar)
         validitySeekBar?.progress = progress
 
