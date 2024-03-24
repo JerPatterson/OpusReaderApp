@@ -23,6 +23,7 @@ class CardActivity : AppCompatActivity() {
         val card = Gson().fromJson(intent.getStringExtra(ARG_CARD), Card::class.java)
         if (card != null) {
             this.addCardInfoSection(card)
+            this.addValiditySection(card)
             this.addFareInfoSection(card)
             this.addTripInfoSection(card)
         }
@@ -58,6 +59,27 @@ class CardActivity : AppCompatActivity() {
 
         identifier.text = id.toString()
         expiryDate.text = if (date != null) this.calendarToString(date) else getString(R.string.no_expiry_date)
+    }
+
+    private fun addValiditySection(card: Card) {
+        if (this.addValidityInfoSectionValues(card)) this.addValidityInfoSectionTitles()
+    }
+
+    private fun addValidityInfoSectionTitles() {
+        val validitySectionTitleTv = findViewById<TextView>(R.id.validitySectionTitleTv)
+        validitySectionTitleTv.text = getString(R.string.validity_section_title)
+    }
+
+    private fun addValidityInfoSectionValues(card: Card): Boolean {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val fragment = supportFragmentManager.findFragmentById(R.id.validityFragment)
+        if (fragment != null) fragmentTransaction.hide(fragment).commit()
+        if (card.trips.size == 0) return false
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.validityFragment, ValidityFragment.newInstance(card)).commit()
+
+        return true
     }
 
     private fun addFareInfoSection(card: Card) {
