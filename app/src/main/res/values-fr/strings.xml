@@ -32,6 +32,7 @@
     <string name="calendar_pattern">dd MMMM yyyy</string>
     <string name="calendar_without_year_pattern">dd MMMM</string>
     <string name="calendar_with_time_pattern">dd MMMM yyyy à HH:mm</string>
+    <string name="calendar_with_time_pattern_without_year_pattern">dd MMMM à HH:mm</string>
     <string name="calendar_interval_linking_word">au</string>
 
     <string name="opus_card_name">CARTE OPUS</string>

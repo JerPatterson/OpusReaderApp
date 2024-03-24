@@ -3,6 +3,7 @@ package com.example.opusreader
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -62,19 +63,30 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addValiditySection(card: Card) {
-        if (this.addValidityInfoSectionValues(card)) this.addValidityInfoSectionTitles()
+        if (this.addValidityInfoSectionValues(card)) {
+            this.addValidityInfoSectionTitles()
+        }
+        else {
+            hideValidityInfoSectionTitles()
+        }
     }
 
     private fun addValidityInfoSectionTitles() {
         val validitySectionTitleTv = findViewById<TextView>(R.id.validitySectionTitleTv)
+        validitySectionTitleTv.visibility = View.VISIBLE
         validitySectionTitleTv.text = getString(R.string.validity_section_title)
+    }
+
+    private fun hideValidityInfoSectionTitles() {
+        val validitySectionTitleTv = findViewById<TextView>(R.id.validitySectionTitleTv)
+        validitySectionTitleTv.visibility = View.GONE
     }
 
     private fun addValidityInfoSectionValues(card: Card): Boolean {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = supportFragmentManager.findFragmentById(R.id.validityFragment)
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
-        if (card.trips.size == 0) return false
+        if (card.trips.none { trip -> trip.lineId != 0u }) return false
 
         supportFragmentManager.beginTransaction()
             .add(R.id.validityFragment, ValidityFragment.newInstance(card)).commit()
