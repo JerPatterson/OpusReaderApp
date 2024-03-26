@@ -165,10 +165,11 @@ class ValidityFragment: Fragment() {
         val now = Calendar.getInstance()
 
         val mostRecentTrip = card.trips.sortedBy { Trip -> Trip.useDate }[0]
-        val mostRecentUnlimitedFare = card.fares.filter { fare -> fare.validityUntilDate != null }
-            .sortedBy { Fare -> Fare.validityUntilDate }.last()
-        val validityFromDateValue = mostRecentUnlimitedFare.validityFromDate
-        val validityUntilDateValue = mostRecentUnlimitedFare.validityUntilDate
+        val unlimitedFares = card.fares.filter { fare -> fare.validityUntilDate != null }
+            .sortedBy { Fare -> Fare.validityUntilDate }
+        val mostRecentUnlimitedFare = if (unlimitedFares.isNotEmpty()) unlimitedFares.last() else null
+        val validityFromDateValue = mostRecentUnlimitedFare?.validityFromDate
+        val validityUntilDateValue = mostRecentUnlimitedFare?.validityUntilDate
         if (validityFromDateValue == null || validityUntilDateValue == null
             || (validityUntilDateValue.timeInMillis < mostRecentTrip.useDate.timeInMillis)) {
             var usableFromDate = card.trips[0].firstUseDate

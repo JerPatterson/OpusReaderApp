@@ -2,6 +2,7 @@ package com.example.opusreader
 
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
+import android.util.Log
 import java.util.Calendar
 
 class Parser {
@@ -360,8 +361,11 @@ class Parser {
                     null,
                     true))
             } else {
-                val validityFromDate = this.getOpusCardFareValidityFromDate(data)
-                val validityUntilDate = this.getOpusCardFareValidityUntilDate(data)
+                val validityFromDateFromBinary = this.getOpusCardFareValidityFromDate(data)
+                val validityFromDate = getOpusCardFareValidityFromDate(typeId, validityFromDateFromBinary)
+                    ?: validityFromDateFromBinary
+                val validityUntilDate = getOpusCardFareValidityUntilDate(typeId, validityFromDate)
+                    ?: this.getOpusCardFareValidityUntilDate(data)
 
                 fares.add(
                     Fare(
@@ -407,12 +411,61 @@ class Parser {
         return this.uIntToDate(fareValidityFromDays, 0u)
     }
 
+    private fun getOpusCardFareValidityFromDate(fareTypeId: UInt, validityFromDate: Calendar): Calendar? {
+        val date = Calendar.getInstance()
+
+        return when (fareTypeId) {
+            744u -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE),
+                    18,
+                    0
+                )
+                date
+            }
+
+            else -> null
+        }
+
+    }
+
     private fun getOpusCardFareValidityUntilDate(data: ByteArray): Calendar {
         val fareValidityUntilDays = (data[5].toUInt().and(0x01u).shl(13)
                 or data[6].toUInt().and(0xFFu).shl(5)
                 or data[7].toUInt().and(0xF8u).shr(3))
 
         return this.uIntToDate(fareValidityUntilDays, 0u)
+    }
+
+    private fun getOpusCardFareValidityUntilDate(fareTypeId: UInt, validityFromDate: Calendar): Calendar? {
+        val date = Calendar.getInstance()
+
+        when (fareTypeId) {
+            752u -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH) + 1,
+                    1,
+                    23,
+                    59
+                )
+                return date
+            }
+            744u -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE) + 1,
+                    5,
+                    0
+                )
+                return date
+            }
+            else -> return null
+        }
+
     }
 
 
