@@ -1,8 +1,5 @@
 package com.example.opusreader
 
-data class FareProduct(val name: String, val descriptionStringId: Int)
-data class Operator(val name: String, val color: String, val imageId: Int)
-data class Line(val id: String, val name: String, val color: String, val textColor: String, val icon: Int)
 
 class CardContentConverter {
     companion object {
