@@ -1,9 +1,8 @@
 package com.example.opusreader
 
 import com.google.gson.Gson
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
+
 
 class Card(
     var id: ULong,
@@ -22,5 +21,15 @@ class Card(
             Gson().toJson(fares, ArrayList<Fare>()::class.java).toString(),
             Gson().toJson(trips, ArrayList<Fare>()::class.java).toString(),
         )
+    }
+
+    fun getFares(): List<Fare> {
+        return fares.filter { fare -> fare.typeId != 0u }
+    }
+
+    fun getTrips(): List<Trip> {
+        return trips.withIndex().filter { (i, trip) -> trip.operatorId != 0u
+                && (i > 0 && trip.useDate.time != trips[i - 1].useDate.time) }
+            .map { (_, trip) -> trip }
     }
 }

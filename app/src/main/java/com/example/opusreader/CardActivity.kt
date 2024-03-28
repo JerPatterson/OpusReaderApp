@@ -95,7 +95,7 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addFareInfoSection(card: Card) {
-        if (this.addFareInfoSectionValues(card.fares)) this.addFareInfoSectionTitles()
+        if (this.addFareInfoSectionValues(card.getFares())) this.addFareInfoSectionTitles()
     }
 
     private fun addFareInfoSectionTitles() {
@@ -103,7 +103,7 @@ class CardActivity : AppCompatActivity() {
         fareSectionTitleTv.text = getString(R.string.fare_section_title)
     }
 
-    private fun addFareInfoSectionValues(fares: ArrayList<Fare>): Boolean {
+    private fun addFareInfoSectionValues(fares: List<Fare>): Boolean {
         var fragmentTransaction = supportFragmentManager.beginTransaction()
         var fragment = supportFragmentManager.findFragmentById(R.id.fourthFareFragment)
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
@@ -119,7 +119,6 @@ class CardActivity : AppCompatActivity() {
 
         var hasFare = false
         for ((i, fare) in fares.withIndex()) {
-            if (fare.typeId == 0u) continue
             hasFare = true
             when (i + 1) {
                 1 -> supportFragmentManager.beginTransaction()
@@ -138,7 +137,7 @@ class CardActivity : AppCompatActivity() {
 
 
     private fun addTripInfoSection(card: Card) {
-        if (this.addTripInfoSectionValues(card.trips)) this.addTripInfoSectionTitles()
+        if (this.addTripInfoSectionValues(card.getTrips())) this.addTripInfoSectionTitles()
     }
 
     private fun addTripInfoSectionTitles() {
@@ -146,7 +145,7 @@ class CardActivity : AppCompatActivity() {
         tripSectionTitleTv.text = getString(R.string.trip_section_title)
     }
 
-    private fun addTripInfoSectionValues(trips: ArrayList<Trip>): Boolean {
+    private fun addTripInfoSectionValues(trips: List<Trip>): Boolean {
         var fragmentTransaction = supportFragmentManager.beginTransaction()
         var fragment =supportFragmentManager.findFragmentById(R.id.firstTripFragment)
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
@@ -159,7 +158,6 @@ class CardActivity : AppCompatActivity() {
 
         var hasTrip = false
         for ((i, trip) in trips.withIndex()) {
-            if (trip.operatorId == 0u || (i > 0 && trip.useDate.time == trips[i - 1].useDate.time)) continue
             hasTrip = true
             when (i + 1) {
                 1 -> supportFragmentManager.beginTransaction()
