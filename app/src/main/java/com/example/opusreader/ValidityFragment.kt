@@ -1,9 +1,12 @@
 package com.example.opusreader
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.SeekBar
@@ -22,6 +25,7 @@ private const val ARG_CARD = "card"
  * Use the [TripFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@SuppressLint("ClickableViewAccessibility")
 class ValidityFragment: Fragment() {
     private var mView: View? = null
     private var card: Card? = null
@@ -116,6 +120,7 @@ class ValidityFragment: Fragment() {
         val dpWidthSeekBar = displayMetrics.widthPixels - (displayMetrics.widthPixels * 0.35F)
         val validitySeekBar = this.mView?.findViewById<SeekBar>(R.id.validitySeekBar)
         validitySeekBar?.progress = progress
+        validitySeekBar?.setOnTouchListener(OnTouchListener())
 
         val validityHigherLabelLine = this.mView?.findViewById<View>(R.id.validityHigherLabelLine)
         val validityHigherLineIdTv = this.mView?.findViewById<TextView>(R.id.validityHigherLineIdTv)
@@ -188,6 +193,7 @@ class ValidityFragment: Fragment() {
         val dpWidthSeekBar = displayMetrics.widthPixels - (displayMetrics.widthPixels * 0.35F)
         val validitySeekBar = this.mView?.findViewById<SeekBar>(R.id.validitySeekBar)
         validitySeekBar?.progress = progress
+        validitySeekBar?.setOnTouchListener(OnTouchListener())
 
         val validityHigherLabelLine = this.mView?.findViewById<View>(R.id.validityHigherLabelLine)
         val validityHigherLineIdTv = this.mView?.findViewById<TextView>(R.id.validityHigherLineIdTv)
@@ -249,5 +255,12 @@ class ValidityFragment: Fragment() {
             getString(R.string.calendar_with_time_pattern_without_year_pattern),
             Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
         ).format(cal.time)
+    }
+
+    class OnTouchListener(): View.OnTouchListener {
+        override fun onTouch(view: View?, motionEvent: MotionEvent?): Boolean {
+            return true
+        }
+
     }
 }
