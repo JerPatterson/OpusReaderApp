@@ -83,17 +83,16 @@ class ValidityFragment: Fragment() {
         var progress = 100
         val now = Calendar.getInstance()
 
-        val fare = card.fares[0]
+        val fare = card.getFares()[0]
         val validityFromDateValue = fare.validityFromDate
         val validityUntilDateValue = fare.validityUntilDate
         if (validityFromDateValue == null || validityUntilDateValue == null) {
-            var usableFromDate = card.trips[0].firstUseDate
-            for (trip in card.trips) {
-                if (usableFromDate.time < trip.firstUseDate.time) usableFromDate = trip.firstUseDate
-            }
-            validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(usableFromDate)
+            val trips = card.getTrips()
+            val usableFromDate = trips[trips.size - 1].firstUseDate
             val usableUntilDate = usableFromDate.clone() as Calendar
             usableUntilDate.add(Calendar.HOUR_OF_DAY, 2)
+
+            validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(usableFromDate)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(usableUntilDate)
 
             if (usableUntilDate.time > now.time) {
@@ -129,30 +128,19 @@ class ValidityFragment: Fragment() {
         val validityLowerModeImage = this.mView?.findViewById<ImageView>(R.id.validityLowerModeImageView)
 
         hideCardScanEvent(validityLowerLabelLine, validityLowerLineIdTv, validityLowerModeImage)
-        val sortedTrips = card.trips.sortedBy { Trip -> Trip.useDate }
-        for ((i, trip) in sortedTrips.withIndex()) {
+        hideCardScanEvent(validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
+        hideCardScanEvent(validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
+        val trips = card.getTrips()
+        for ((i, trip) in trips.withIndex()) {
             val line = CardContentConverter.getLineById(trip.operatorId, trip.lineId)
-            val hasToBeHidden = (trip.operatorId == 0u || (endDate.timeInMillis - startDate.timeInMillis) <= 0
-                    || (i < sortedTrips.size - 1 && trip.useDate.time == sortedTrips[i + 1].useDate.time))
-            when (i + 1) {
-                1 -> {
-                    if (hasToBeHidden) {
-                        hideCardScanEvent(validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
-                    } else {
-                        val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
-                        addCardScanEvent(line, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
-                        moveCardScanEvent(dpWidthSeekBar * useProgress, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
-                    }
-                }
-                2 -> {
-                    if (hasToBeHidden) {
-                        hideCardScanEvent(validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
-                    } else {
-                        val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
-                        addCardScanEvent(line, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
-                        moveCardScanEvent(dpWidthSeekBar * useProgress, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
-                    }
-                }
+            if (i == 0 && trips.size == 1 || i == 1) {
+                val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
+                addCardScanEvent(line, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
+                moveCardScanEvent(dpWidthSeekBar * useProgress, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
+            } else {
+                val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
+                addCardScanEvent(line, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
+                moveCardScanEvent(dpWidthSeekBar * useProgress, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
             }
         }
     }

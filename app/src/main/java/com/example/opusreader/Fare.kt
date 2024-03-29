@@ -20,12 +20,6 @@ class Fare(
         }
     }
 
-    fun hasValidityDates(): Boolean {
-        val validityFromDateValue = this.validityFromDate
-        val validityUntilDateValue = this.validityUntilDate
-        return validityFromDateValue != null && validityUntilDateValue != null
-    }
-
     private fun setFareValidityFromDate(validityFromDate: Calendar): Calendar? {
         val date = Calendar.getInstance()
 

@@ -2,7 +2,6 @@ package com.example.opusreader
 
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
-import android.util.Log
 import java.util.Calendar
 
 class Parser {
