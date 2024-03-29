@@ -86,7 +86,7 @@ class CardActivity : AppCompatActivity() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = supportFragmentManager.findFragmentById(R.id.validityFragment)
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
-        if (card.trips.none { trip -> trip.lineId != 0u }) return false
+        if (card.getTrips().isEmpty()) return false
 
         supportFragmentManager.beginTransaction()
             .add(R.id.validityFragment, ValidityFragment.newInstance(card)).commit()

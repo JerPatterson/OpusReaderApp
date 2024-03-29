@@ -9,8 +9,8 @@ class Card(
     var type: CardType,
     var scanDate: Calendar,
     var expiryDate: Calendar?,
-    var fares: ArrayList<Fare>,
-    var trips: ArrayList<Trip>
+    private var fares: ArrayList<Fare>,
+    private var trips: ArrayList<Trip>
 ) {
     fun getCardEntity(): CardEntity {
         return CardEntity(
