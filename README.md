@@ -58,6 +58,20 @@
   An history of all the scans that have been made is also available to users. The history is sorted by the latest scan date of a specific card and by clicking on it all scans are listed. 
   All the data is stored on device using the <a href="https://developer.android.com/training/data-storage/room" target="_blank">RoomDatabase</a> provided by Android.
 </span>
+<br>
+<br>
+<table>
+  <tr>
+    <td>History access from main view</td>
+    <td>History view in light mode</td>
+    <td>History view in dark mode</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/5c265e55-fef5-47a8-a949-00b8fad2ba1c" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/6d771217-d257-46e1-b337-1177628c8637" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/ea027d94-e513-47b1-b18e-37225c29ccb8" width=270></td>
+  </tr>
+</table>
 <h2>How to use</h2>
 <span>
   Make sure your device has NFC capailities and that you have enabled them. Then, you simply have to open the app, scan a compatible card and all the information from the card will display.
