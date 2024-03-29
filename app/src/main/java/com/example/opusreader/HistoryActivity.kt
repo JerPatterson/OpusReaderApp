@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,7 @@ class HistoryActivity : AppCompatActivity() {
 
         addHistoryItems()
         enableDeleteAllButton()
+        enableBackButton()
     }
 
     private fun addHistoryItems() {
@@ -99,6 +101,19 @@ class HistoryActivity : AppCompatActivity() {
                 }
             val dialog = builder.create()
             dialog.show()
+        }
+    }
+
+    private fun enableBackButton() {
+        val backButton: ImageView = findViewById(R.id.historyActivityBack)
+        backButton.setOnClickListener(HistoryBackListener(this))
+    }
+
+    class HistoryBackListener(
+        private val activity: HistoryActivity,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            activity.finish()
         }
     }
 }

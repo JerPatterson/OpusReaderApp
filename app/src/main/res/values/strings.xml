@@ -25,7 +25,8 @@
     <string name="image_card_scanned">This image show the card that was scanned</string>
     <string name="image_trip_mode">This image show the mode of transportation of the trip</string>
     <string name="image_operator">This image show the logo of the transportation agency</string>
-    <string name="image_delete">This image show the delete item icon</string>
+    <string name="image_delete">This image show the to delete an item</string>
+    <string name="image_back">This image show the icon to go back to the previous view</string>
 
     <string name="calendar_language">English</string>
     <string name="calendar_country">Canada</string>
@@ -41,7 +42,7 @@
     <string name="card_epiration_date_title">Expiration Date</string>
     <string name="no_expiry_date">None</string>
 
-    <string name="validity_section_title">Validity of the card</string>
+    <string name="validity_section_title">Validity of the fare</string>
     <string name="validity_starting_on">Starting on</string>
     <string name="validity_ending_on">Ending on</string>
 

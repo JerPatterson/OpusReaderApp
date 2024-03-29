@@ -27,6 +27,7 @@
     <string name="image_trip_mode">Cette image montre le mode de transportation du trajet</string>
     <string name="image_operator">Cette image montre le logo de l\'agence de transport</string>
     <string name="image_delete">Cette image montre l\'icône suppression d\'item</string>
+    <string name="image_back">Cette image montre l\'icône pour retourner à la vue précédente</string>
 
     <string name="calendar_language">French</string>
     <string name="calendar_country">Canada</string>
@@ -42,7 +43,7 @@
     <string name="card_epiration_date_title">Date d\'expiration</string>
     <string name="no_expiry_date">Aucune</string>
 
-    <string name="validity_section_title">Validité de la carte</string>
+    <string name="validity_section_title">Validité du titre</string>
     <string name="validity_starting_on">Commence le</string>
     <string name="validity_ending_on">Termine le</string>
 

@@ -21,6 +21,8 @@ class CardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card)
 
+        enableBackButton()
+
         val card = Gson().fromJson(intent.getStringExtra(ARG_CARD), Card::class.java)
         if (card != null) {
             this.addCardInfoSection(card)
@@ -178,5 +180,18 @@ class CardActivity : AppCompatActivity() {
             getString(R.string.calendar_pattern),
             Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
         ).format(cal.time)
+    }
+
+    private fun enableBackButton() {
+        val backButton: ImageView = findViewById(R.id.cardActivityBack)
+        backButton.setOnClickListener(HistoryBackListener(this))
+    }
+
+    class HistoryBackListener(
+        private val activity: CardActivity,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            activity.finish()
+        }
     }
 }
