@@ -35,9 +35,9 @@
     <td>Occasional Card view in light mode</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/bfa461bd-4c73-4fdf-8da2-ba34d76f3405" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/37d6d670-4748-4cbf-be0f-9ba544eb5268" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/9ffaf218-44c4-44b0-b259-b999badb6a91" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/4482b09c-7d95-43c3-b001-c81e22d6d989" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/cd0c4a77-b75f-4006-b93c-391ed2b56f77" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/e52fffcf-1359-45c6-a9ac-5302303034da" width=270></td>
   </tr>
 </table>
 <br>
@@ -48,11 +48,16 @@
     <td>Occasional Card view in dark mode</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/7de74b5d-5e68-4cc8-82f2-16d13a6712a9" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/0baa42a2-a346-48a4-8844-28c0aeed73b7" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/0ea9768a-0dd8-4621-809e-954530bd40df" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/4434d0aa-87db-40f7-b32c-3772301d8cf1" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/a84b6844-99b3-4f2e-bed0-dfe8d6c8d0f1" width=270></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/a5fbc974-a7f6-4bc8-9288-b903f3e0dc35" width=270></td>
   </tr>
 </table>
+<br>
+<span>
+  An history of all the scans that have been made is also available to users. The history is sorted by the latest scan date of a specific card and by clicking on it all scans are listed. 
+  All the data is stored on device using the <a href="https://developer.android.com/training/data-storage/room" target="_blank">RoomDatabase</a> provided by Android.
+</span>
 <h2>How to use</h2>
 <span>
   Make sure your device has NFC capailities and that you have enabled them. Then, you simply have to open the app, scan a compatible card and all the information from the card will display.
@@ -61,7 +66,7 @@
 <h2>Upcoming improvements</h2>
 <ul>
   <li>Adding the possibility for user to crowdsource unknown fares, lines and operators</li>
-  <li>Improving information for transfers so users can maximize their usage of one particular fare</li>
+  <li><strike>Improving information for transfers so users can maximize their usage of one particular fare</strike> <em>Added!</em></li>
   <li>Adding notifications to alert the user when the validity of the fare ends and few minutes prior</li>
   <li><strike>Adding an history of the card scans</strike> <em>Added!</em></li>
 </ul>
