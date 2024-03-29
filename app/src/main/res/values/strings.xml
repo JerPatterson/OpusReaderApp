@@ -25,6 +25,7 @@
     <string name="image_card_scanned">This image show the card that was scanned</string>
     <string name="image_trip_mode">This image show the mode of transportation of the trip</string>
     <string name="image_operator">This image show the logo of the transportation agency</string>
+    <string name="image_delete">This image show the delete item icon</string>
 
     <string name="calendar_language">English</string>
     <string name="calendar_country">Canada</string>
@@ -295,5 +296,4 @@
         It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
         \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
-    <string name="title_activity_history">HistoryActivity</string>
 </resources>

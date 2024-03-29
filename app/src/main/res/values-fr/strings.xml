@@ -26,6 +26,7 @@
     <string name="image_card_scanned">Cette image montre la carte qui a été lue</string>
     <string name="image_trip_mode">Cette image montre le mode de transportation du trajet</string>
     <string name="image_operator">Cette image montre le logo de l\'agence de transport</string>
+    <string name="image_delete">Cette image montre l\'icône suppression d'item</string>
 
     <string name="calendar_language">French</string>
     <string name="calendar_country">Canada</string>
