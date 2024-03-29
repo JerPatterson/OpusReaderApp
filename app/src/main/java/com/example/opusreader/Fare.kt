@@ -45,6 +45,16 @@ class Fare(
                 )
                 date
             }
+            FareProductId.OCC_3DAYS_ALL_MODES_ABC.ID -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE),
+                    0,
+                    0
+                )
+                date
+            }
             FareProductId.OCC_EVENING_UNLIMITED.ID -> {
                 if (validityFromDate.get(Calendar.HOUR_OF_DAY) >= 18) {
                     date.set(
@@ -134,6 +144,16 @@ class Fare(
                 date
             }
             FareProductId.OCC_3DAYS_ALL_MODES_AB.ID -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE) + 2,
+                    23,
+                    59
+                )
+                date
+            }
+            FareProductId.OCC_3DAYS_ALL_MODES_ABC.ID -> {
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH),
