@@ -21,7 +21,7 @@ import java.util.Locale
 
 class HistoryScanAdapter(
     private val historyList: ArrayList<Card>,
-    private val historyCardPosition: Int,
+    private val holder: HistoryCardAdapter.MyViewHolder,
     private val historyCardAdapter: HistoryCardAdapter,
 ): RecyclerView.Adapter<HistoryScanAdapter.MyViewHolder>() {
 
@@ -39,13 +39,15 @@ class HistoryScanAdapter(
         holder.scanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
 
         holder.itemView.setOnClickListener(HistoryScanItemListener(historyList[position], holder.itemView.context))
-        holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position], position, this))
+        holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position], holder, this))
     }
 
     private fun removeItem(position: Int) {
         historyList.removeAt(position)
         notifyItemRemoved(position)
-        if (historyList.size == 0) historyCardAdapter.notifyItemRemoved(historyCardPosition)
+        if (historyList.size == 0) {
+            historyCardAdapter.notifyItemRemoved(holder.adapterPosition)
+        }
     }
 
 
@@ -76,7 +78,7 @@ class HistoryScanAdapter(
 
     class HistoryItemDeleteListener(
         private val card: Card,
-        private val position: Int,
+        private val holder: MyViewHolder,
         private val adapter: HistoryScanAdapter
     ): View.OnClickListener {
         override fun onClick(view: View) {
@@ -87,7 +89,7 @@ class HistoryScanAdapter(
                     CoroutineScope(Dispatchers.IO).launch {
                         CardDatabase.getInstance(view.context).dao.deleteStoredCardScan(card.getCardEntity())
                     }
-                    adapter.removeItem(position)
+                    adapter.removeItem(holder.adapterPosition)
                 }
             val dialog = builder.create()
             dialog.show()

@@ -44,8 +44,8 @@ class HistoryCardAdapter(
         holder.lastScanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
         holder.cardImageView.setImageResource(getImageResource(historyList[position].type))
 
-        holder.itemView.setOnClickListener(HistoryItemListener(historyList[position], holder, position, this))
-        holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position], position, this))
+        holder.itemView.setOnClickListener(HistoryItemListener(historyList[position], holder, this))
+        holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position],holder, this))
     }
 
     private fun removeItem(position: Int) {
@@ -89,8 +89,7 @@ class HistoryCardAdapter(
     class HistoryItemListener(
         private val card: Card,
         private val holder: MyViewHolder,
-        private val historyCardPosition: Int,
-        private val historyCardAdapter: HistoryCardAdapter,
+        private val adapter: HistoryCardAdapter,
     ) : View.OnClickListener {
         private var isShowing: Boolean = false
         private var isInitialized: Boolean = false
@@ -102,8 +101,8 @@ class HistoryCardAdapter(
                 scanListRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context)
                 scanListRecyclerView.adapter = HistoryScanAdapter(
                     getScanListItems(card, holder.itemView.context),
-                    historyCardPosition,
-                    historyCardAdapter,
+                    holder,
+                    adapter,
                 )
                 isInitialized = true
             }
@@ -171,8 +170,8 @@ class HistoryCardAdapter(
 
     class HistoryItemDeleteListener(
         private val card: Card,
-        private val position: Int,
-        private val adapter: HistoryCardAdapter
+        private val holder: MyViewHolder,
+        private val adapter: HistoryCardAdapter,
     ): View.OnClickListener {
         override fun onClick(view: View) {
             val builder = AlertDialog.Builder(view.context)
@@ -182,7 +181,7 @@ class HistoryCardAdapter(
                     CoroutineScope(Dispatchers.IO).launch {
                         CardDatabase.getInstance(view.context).dao.deleteStoredCard(card.getCardEntity().id)
                     }
-                    adapter.removeItem(position)
+                    adapter.removeItem(holder.adapterPosition)
                 }
             val dialog = builder.create()
             dialog.show()
