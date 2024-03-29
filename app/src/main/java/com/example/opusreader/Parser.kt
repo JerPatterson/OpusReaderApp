@@ -122,10 +122,10 @@ class Parser {
         val tripFirstUseDays = (data[0].toUInt().and(0x03u).shl(12)
                 or data[1].toUInt().and(0xFFu).shl(4)
                 or data[2].toUInt().and(0xF0u).shr(4))
-        val tripUseMinutes = ((data[4].toUInt() and 0xFFu).shl(3)
-                or data[5].toUInt().and(0xE0u).shr(5))
+        val tripFirstUseMinutes = (data[2].toUInt().and(0x0Fu).shl(7)
+                or data[3].toUInt().and(0xFEu).shr(1))
 
-        return if (tripFirstUseDays != 0u) this.uIntToDate(tripFirstUseDays, tripUseMinutes) else null
+        return if (tripFirstUseDays != 0u) this.uIntToDate(tripFirstUseDays, tripFirstUseMinutes) else null
     }
 
 
