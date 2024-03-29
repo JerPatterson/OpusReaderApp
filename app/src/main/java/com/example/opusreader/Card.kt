@@ -25,11 +25,14 @@ class Card(
 
     fun getFares(): List<Fare> {
         return fares.filter { fare -> fare.typeId != 0u }
+            .sortedBy { Fare -> Fare.buyingDate.timeInMillis }
+            .asReversed()
     }
 
     fun getTrips(): List<Trip> {
         return trips.withIndex().filter { (i, trip) -> trip.operatorId != 0u
                 && (i == 0 || trip.useDate.time != trips[i - 1].useDate.time) }
+            .sortedBy { Trip -> Trip.value.useDate.timeInMillis }
             .map { (_, trip) -> trip }
     }
 }
