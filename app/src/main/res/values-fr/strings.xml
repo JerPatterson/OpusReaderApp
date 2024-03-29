@@ -26,7 +26,7 @@
     <string name="image_card_scanned">Cette image montre la carte qui a été lue</string>
     <string name="image_trip_mode">Cette image montre le mode de transportation du trajet</string>
     <string name="image_operator">Cette image montre le logo de l\'agence de transport</string>
-    <string name="image_delete">Cette image montre l\'icône suppression d'item</string>
+    <string name="image_delete">Cette image montre l\'icône suppression d\'item</string>
 
     <string name="calendar_language">French</string>
     <string name="calendar_country">Canada</string>
@@ -45,7 +45,6 @@
     <string name="validity_section_title">Validité de la carte</string>
     <string name="validity_starting_on">Commence le</string>
     <string name="validity_ending_on">Termine le</string>
-    <string name="validity_still_valid_for">Toujours valide pour</string>
 
     <string name="fare_section_title">Titres de la carte</string>
     <string name="fare_buying_date_title">Acheté le</string>
