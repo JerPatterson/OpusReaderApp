@@ -98,17 +98,17 @@ class ValidityFragment: Fragment() {
             validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(usableFromDate)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(usableUntilDate)
 
-            if (usableUntilDate.time > now.time) {
-                progress = ((now.timeInMillis - usableFromDate.timeInMillis) /
-                        (usableUntilDate.timeInMillis - usableFromDate.timeInMillis) * 100).toInt()
+            if (usableUntilDate.timeInMillis > now.timeInMillis) {
+                progress = ((now.timeInMillis - usableFromDate.timeInMillis) * 100 /
+                        (usableUntilDate.timeInMillis - usableFromDate.timeInMillis)).toInt()
             }
             addOccasionalCardTrips(card, progress, usableFromDate, usableUntilDate)
         } else {
             validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(validityFromDateValue)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(validityUntilDateValue)
-            if (validityUntilDateValue.time > now.time) {
-                progress = ((now.timeInMillis - validityFromDateValue.timeInMillis) /
-                        (validityUntilDateValue.timeInMillis - validityFromDateValue.timeInMillis) * 100).toInt()
+            if (validityUntilDateValue.timeInMillis > now.timeInMillis) {
+                progress = ((now.timeInMillis - validityFromDateValue.timeInMillis) * 100 /
+                        (validityUntilDateValue.timeInMillis - validityFromDateValue.timeInMillis)).toInt()
             }
             addOccasionalCardTrips(card, progress, validityFromDateValue, validityUntilDateValue)
         }
@@ -171,17 +171,17 @@ class ValidityFragment: Fragment() {
             validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(usableFromDate)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(usableUntilDate)
 
-            if (usableUntilDate.time > now.time) {
-                progress = ((now.timeInMillis - usableFromDate.timeInMillis) /
-                        (usableUntilDate.timeInMillis - usableFromDate.timeInMillis) * 100).toInt()
+            if (usableUntilDate.timeInMillis > now.timeInMillis) {
+                progress = ((now.timeInMillis - usableFromDate.timeInMillis) * 100 /
+                        (usableUntilDate.timeInMillis - usableFromDate.timeInMillis)).toInt()
             }
             addOpusCardTrips(card, progress, usableFromDate, usableUntilDate)
         } else {
             validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(validityFromDateValue)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(validityUntilDateValue)
-            if (validityUntilDateValue.time > now.time) {
-                progress = ((now.timeInMillis - validityFromDateValue.timeInMillis) /
-                        (validityUntilDateValue.timeInMillis - validityFromDateValue.timeInMillis) * 100).toInt()
+            if (validityUntilDateValue.timeInMillis > now.timeInMillis) {
+                progress = ((now.timeInMillis - validityFromDateValue.timeInMillis) * 100 /
+                        (validityUntilDateValue.timeInMillis - validityFromDateValue.timeInMillis)).toInt()
             }
             addOpusCardTrips(card, progress, validityFromDateValue, validityUntilDateValue)
         }
