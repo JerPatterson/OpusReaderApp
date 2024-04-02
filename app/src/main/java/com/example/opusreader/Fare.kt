@@ -1,8 +1,8 @@
 package com.example.opusreader
 
-import android.util.Log
 import java.io.Serializable
 import java.util.Calendar
+
 
 class Fare(
     var typeId: UInt,
