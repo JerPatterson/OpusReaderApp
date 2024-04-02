@@ -118,8 +118,9 @@ class Parser {
     }
 
     private fun getOccasionalCardFareValidityFromDate(data: ByteArray): Calendar? {
-        val tripFirstUseDays = (data[10].toUInt().and(0x7Fu).shl(7)
-                or data[11].toUInt().and(0xFEu).shr(1))
+        val tripFirstUseDays = (data[0].toUInt().and(0x03u).shl(12)
+                or data[1].toUInt().and(0xFFu).shl(4)
+                or data[2].toUInt().and(0xF0u).shr(4))
         val tripFirstUseMinutes = (data[2].toUInt().and(0x0Fu).shl(7)
                 or data[3].toUInt().and(0xFEu).shr(1))
 
