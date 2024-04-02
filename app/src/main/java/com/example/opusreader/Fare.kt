@@ -1,5 +1,6 @@
 package com.example.opusreader
 
+import android.util.Log
 import java.io.Serializable
 import java.util.Calendar
 
@@ -32,6 +33,7 @@ class Fare(
                     18,
                     0
                 )
+
                 date
             }
 
@@ -39,20 +41,42 @@ class Fare(
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE),
+                    validityFromDate.get(Calendar.DATE) - 2,
                     0,
                     0
                 )
+
+                if (date.timeInMillis < buyingDate.timeInMillis) {
+                    date.set(
+                        buyingDate.get(Calendar.YEAR),
+                        buyingDate.get(Calendar.MONTH),
+                        buyingDate.get(Calendar.DATE),
+                        0,
+                        0
+                    )
+                }
+
                 date
             }
             FareProductId.OCC_3DAYS_ALL_MODES_ABC.ID -> {
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE),
+                    validityFromDate.get(Calendar.DATE) - 2,
                     0,
                     0
                 )
+
+                if (date.timeInMillis < buyingDate.timeInMillis) {
+                    date.set(
+                        buyingDate.get(Calendar.YEAR),
+                        buyingDate.get(Calendar.MONTH),
+                        buyingDate.get(Calendar.DATE),
+                        0,
+                        0
+                    )
+                }
+
                 date
             }
             FareProductId.OCC_EVENING_UNLIMITED.ID -> {
@@ -73,6 +97,7 @@ class Fare(
                         0
                     )
                 }
+
                 date
             }
             FareProductId.OCC_WEEKEND_UNLIMITED.ID -> {
@@ -89,6 +114,7 @@ class Fare(
                     16,
                     0
                 )
+
                 date
             }
 
@@ -108,6 +134,7 @@ class Fare(
                     23,
                     59
                 )
+
                 date
             }
 
@@ -119,6 +146,7 @@ class Fare(
                     5,
                     0
                 )
+
                 date
             }
             FareProductId.OPUS_MONTHLY_ALL_MODES_AB.ID -> {
@@ -129,6 +157,7 @@ class Fare(
                     23,
                     59
                 )
+
                 date
             }
 
@@ -141,26 +170,49 @@ class Fare(
                     validityFromDate.get(Calendar.HOUR_OF_DAY),
                     validityFromDate.get(Calendar.MINUTE)
                 )
+
                 date
             }
             FareProductId.OCC_3DAYS_ALL_MODES_AB.ID -> {
                 date.set(
-                    validityFromDate.get(Calendar.YEAR),
-                    validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE) + 2,
+                    buyingDate.get(Calendar.YEAR),
+                    buyingDate.get(Calendar.MONTH),
+                    buyingDate.get(Calendar.DATE) + 2,
                     23,
                     59
                 )
+
+                if (validityFromDate.timeInMillis > date.timeInMillis) {
+                    date.set(
+                        validityFromDate.get(Calendar.YEAR),
+                        validityFromDate.get(Calendar.MONTH),
+                        validityFromDate.get(Calendar.DATE),
+                        23,
+                        59
+                    )
+                }
+
                 date
             }
             FareProductId.OCC_3DAYS_ALL_MODES_ABC.ID -> {
                 date.set(
-                    validityFromDate.get(Calendar.YEAR),
-                    validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE) + 2,
+                    buyingDate.get(Calendar.YEAR),
+                    buyingDate.get(Calendar.MONTH),
+                    buyingDate.get(Calendar.DATE) + 2,
                     23,
                     59
                 )
+
+                if (validityFromDate.timeInMillis > date.timeInMillis) {
+                    date.set(
+                        validityFromDate.get(Calendar.YEAR),
+                        validityFromDate.get(Calendar.MONTH),
+                        validityFromDate.get(Calendar.DATE),
+                        23,
+                        59
+                    )
+                }
+
                 date
             }
             FareProductId.OCC_EVENING_UNLIMITED.ID -> {
@@ -181,6 +233,7 @@ class Fare(
                         0
                     )
                 }
+
                 date
             }
             FareProductId.OCC_WEEKEND_UNLIMITED.ID -> {
@@ -197,6 +250,7 @@ class Fare(
                     5,
                     0
                 )
+
                 date
             }
 
