@@ -60,7 +60,20 @@ class Parser {
             fares.add(Fare(typeId, operatorId, buyingDate, ticketCount))
         } else if (this.occasionalCardHasPass(data)) {
             val validityFromDate = getOccasionalCardFareValidityFromDate(data[2])
-            fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, null))
+            if (occasionalCardHasValidPass(data)) {
+                fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, null))
+            } else if (validityFromDate != null) {
+                val validityUntilDate = Calendar.getInstance()
+                validityFromDate.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE),
+                    validityFromDate.get(Calendar.HOUR_OF_DAY),
+                    validityFromDate.get(Calendar.MINUTE) + 1,
+                )
+
+                fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, validityUntilDate))
+            }
         }
 
         return fares
@@ -96,6 +109,13 @@ class Parser {
 
         return ((hasPassVerificationBits.compareTo(0x0000u) == 0)
             or (hasPassVerificationBits.compareTo(0x8000u) == 0))
+    }
+
+    private fun occasionalCardHasValidPass(data: Array<ByteArray>): Boolean {
+        val hasPassVerificationBits = (data[0][12].toUInt().and(0xFFu).shl(8)
+                or data[0][13].toUInt().and(0xFFu))
+
+        return hasPassVerificationBits.compareTo(0x0000u) == 0
     }
 
     private fun getOccasionalCardFareNbOfTickets(data: Array<ByteArray>): UInt {
