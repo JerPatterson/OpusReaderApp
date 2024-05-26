@@ -74,6 +74,8 @@ class CardContentConverter {
                 224u -> Line("2", "Ligne Orange (zone B)", "#ef8122", "#000000", R.drawable.metro)
                 3u -> Line("4", "Ligne Jaune", "#ffe300", "#000000", R.drawable.metro)
                 4u -> Line("5", "Ligne Bleue", "#0083c9", "#000000", R.drawable.metro)
+                6u -> Line("11", "Parc-du-Mont-Royal / Ridgewood", "#009ee0", "#ffffff", R.drawable.bus)
+                9u -> Line("14", "Atateken", "#009ee0", "#ffffff", R.drawable.bus)
                 13u -> Line("18", "Beaubien", "#781b7d", "#ffffff", R.drawable.bus)
                 15u -> Line("24", "Sherbrooke", "#781b7d", "#ffffff", R.drawable.bus)
                 16u -> Line("25", "Angus", "#009ee0", "#ffffff", R.drawable.bus)
@@ -158,10 +160,8 @@ class CardContentConverter {
 
 
                 517u -> Line("10", "De Lorimier", "#009ee0", "#ffffff", R.drawable.bus)
-                518u -> Line("11", "Parc-du-Mont-Royal / Ridgewood", "#009ee0", "#ffffff", R.drawable.bus)
                 519u -> Line("12", "Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus)
                 520u -> Line("13", "Christophe-Colomb", "#009ee0", "#ffffff", R.drawable.bus)
-                521u -> Line("14", "Atateken", "#009ee0", "#ffffff", R.drawable.bus)
                 522u -> Line("15", "Sainte-Catherine", "#009ee0", "#ffffff", R.drawable.bus)
                 523u -> Line("16", "Graham", "#009ee0", "#ffffff", R.drawable.bus)
                 524u -> Line("17", "Décarie", "#009ee0", "#ffffff", R.drawable.bus)
