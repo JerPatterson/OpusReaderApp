@@ -29,6 +29,8 @@ class CardContentConverter {
                 FareProductId.OCC_EVENING_UNLIMITED.ID -> FareProduct("Soirée illimité", R.string.evening_unlimited_info)
                 FareProductId.OCC_WEEKEND_UNLIMITED.ID -> FareProduct("Week-end illimité", R.string.weekend_unlimited_info)
 
+                FareProductId.OCC_2TICKETS_ALL_MODES_ABC_SPECIAL_ILE_AUX_TOURTES.ID -> FareProduct("2 passages, Tous modes ABC", R.string.all_modes_ABC_two_tickets_info_iat)
+
                 else -> FareProduct("Inconnu (${id})", R.string.unknown_fare_info)
             }
         }

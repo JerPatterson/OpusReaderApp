@@ -55,7 +55,16 @@ class Parser {
         val buyingDate = this.getOccasionalCardFareBuyingDate(data)
 
         if (this.occasionalCardHasTicket(data)) {
-            val ticketCount = this.getOccasionalCardFareNbOfTickets(data)
+            val ticketCount = when (typeId) {
+                FareProductId.OCC_2TICKETS_ALL_MODES_ABC_SPECIAL_ILE_AUX_TOURTES.ID -> {
+                    val validityEndDate = Calendar.getInstance()
+                    validityEndDate.set(2024, 5, 1, 0, 0)
+                    if (Calendar.getInstance().timeInMillis > validityEndDate.timeInMillis)
+                        0u else this.getOccasionalCardFareNbOfTickets(data)
+                }
+                else -> this.getOccasionalCardFareNbOfTickets(data)
+            }
+
 
             fares.add(Fare(typeId, operatorId, buyingDate, ticketCount))
         } else if (this.occasionalCardHasPass(data)) {
