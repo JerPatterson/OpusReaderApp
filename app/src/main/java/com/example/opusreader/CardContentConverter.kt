@@ -43,6 +43,7 @@ class CardContentConverter {
                 24u -> Operator("STL", "#151f6d", R.drawable.stl)
                 60u -> Operator("exo", "#000000", R.drawable.exo)
                 64u -> Operator("STLévis", "#0091b3", R.drawable.stlevis)
+                88u -> Operator("REM", "#034638", R.drawable.rem)
                 else -> Operator("Unknown (id: $id)", "#696969", R.drawable.unknown)
             }
         }
@@ -56,6 +57,7 @@ class CardContentConverter {
                 24u -> this.getSTLLineById(lineId)
                 60u -> this.getEXOLaurentidesLineById(lineId)
                 64u -> this.getSTLevisLineById(lineId)
+                88u -> this.getREMLineById(lineId)
                 else -> Line("", "Unknown (operatorId: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
             }
         }
@@ -677,6 +679,16 @@ class CardContentConverter {
                 572u -> Line("L2", "Lévisien 2", "#1e4289", "#ffffff", R.drawable.bus)
                 573u -> Line("L3", "Lévisien 3", "#1e4289", "#ffffff", R.drawable.bus)
                 else -> Line("", "STLévis Unknown ($id)", "#0091b3", "#ffffff", R.drawable.bus)
+            }
+        }
+
+        private fun getREMLineById(id: UInt): Line {
+            // TODO Find ids of all lines
+            //   (Id of the line is on 9bits so higher
+            //   than 512u means it's not known yet)
+            return when (id) {
+                2u -> Line("A", "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro)
+                else -> Line("", "REM Unknown ($id)", "#82bf00", "#000000", R.drawable.lightmetro)
             }
         }
     }
