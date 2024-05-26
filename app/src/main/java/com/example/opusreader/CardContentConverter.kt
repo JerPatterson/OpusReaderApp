@@ -293,7 +293,9 @@ class CardContentConverter {
                 731u -> Line("777", "Jean-Drapeau / Casino / Bonaventure", "#009ee0", "#ffffff", R.drawable.bus)
                 732u -> Line("811", "Navette Services santé", "#009ee0", "#ffffff", R.drawable.bus)
                 733u -> Line("822", "Navette Longue-Pointe", "#009ee0", "#ffffff", R.drawable.bus)
-                734u -> Line("968", "Trainbus Roxboro / Côte-Vertu", "#009ee0", "#ffffff", R.drawable.bus)
+                734u -> Line("872", "Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus)
+                735u -> Line("874", "Robert-Bourassa", "#009ee0", "#ffffff", R.drawable.bus)
+                736u -> Line("968", "Trainbus Roxboro / Côte-Vertu", "#009ee0", "#ffffff", R.drawable.bus)
 
                 else -> Line("", "STM Unknown ($id)", "#009ee0", "#ffffff", R.drawable.bus)
             }
