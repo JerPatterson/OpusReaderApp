@@ -56,7 +56,7 @@ class Parser {
 
         if (this.occasionalCardHasTicket(data)) {
             val ticketCount = when (typeId) {
-                FareProductId.OCC_2TICKETS_ALL_MODES_ABC_SPECIAL_ILE_AUX_TOURTES.ID -> {
+                FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.ID -> {
                     val validityEndDate = Calendar.getInstance()
                     validityEndDate.set(2024, 5, 1, 0, 0)
                     if (Calendar.getInstance().timeInMillis > validityEndDate.timeInMillis)

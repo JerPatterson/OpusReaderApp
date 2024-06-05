@@ -174,18 +174,18 @@
         The round trip is allowed by train if it stays inside the two hours.
         \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
-    <string name="all_modes_ABC_two_tickets_info_iat">
-        This fare is provided for free as an attenuation measure during l\'Île aux Tourtes bridge construction.
-        It consists of two distinct tickets that have to be used before May 31st, 2024.
-        Each ticket is are accepted on the metro, the bus, the train and the REM in the zones A, B and C.
+    <string name="all_modes_ABCD_two_tickets_info">
+        This fare consists of two distinct tickets.
+        Each ticket is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
         \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
-    <string name="all_modes_ABCD_two_tickets_info">
-        This fare consists of two distinct tickets.
-        Each ticket is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+    <string name="all_modes_ABCD_two_tickets_info_iat">
+        This fare is provided for free as an attenuation measure during l\'Île aux Tourtes bridge construction.
+        It consists of two distinct tickets that have to be used before May 31st, 2024.
+        Each ticket is are accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.

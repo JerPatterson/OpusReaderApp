@@ -18,6 +18,7 @@ class CardContentConverter {
                 FareProductId.OCC_2TICKETS_BUS.ID -> FareProduct("2 passages, Bus", R.string.bus_two_tickets_info)
                 FareProductId.OCC_10TICKETS_BUS.ID -> FareProduct("10 passages, Bus", R.string.bus_ten_tickets_info)
                 FareProductId.OCC_2TICKETS_ALL_MODES_A.ID -> FareProduct("2 passages, Tous modes A", R.string.all_modes_A_two_tickets_info)
+                FareProductId.OCC_24HOURS_ALL_MODES_A.ID -> FareProduct("24hrs, Tous modes A", R.string.all_modes_A_24_hours_info)
                 FareProductId.OCC_1TICKET_ALL_MODES_AB.ID-> FareProduct("1 passage, Tous modes AB", R.string.all_modes_AB_one_ticket_info)
                 FareProductId.OCC_2TICKETS_ALL_MODES_AB.ID -> FareProduct("2 passages, Tous modes AB", R.string.all_modes_AB_two_tickets_info)
                 FareProductId.OCC_10TICKETS_ALL_MODES_AB.ID -> FareProduct("10 passages, Tous modes AB", R.string.all_modes_AB_ten_tickets_info)
@@ -29,7 +30,7 @@ class CardContentConverter {
                 FareProductId.OCC_EVENING_UNLIMITED.ID -> FareProduct("Soirée illimité", R.string.evening_unlimited_info)
                 FareProductId.OCC_WEEKEND_UNLIMITED.ID -> FareProduct("Week-end illimité", R.string.weekend_unlimited_info)
 
-                FareProductId.OCC_2TICKETS_ALL_MODES_ABC_SPECIAL_ILE_AUX_TOURTES.ID -> FareProduct("2 passages, Tous modes ABC", R.string.all_modes_ABC_two_tickets_info_iat)
+                FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.ID -> FareProduct("2 passages, Tous modes ABCD", R.string.all_modes_ABCD_two_tickets_info_iat)
 
                 else -> FareProduct("Inconnu (${id})", R.string.unknown_fare_info)
             }

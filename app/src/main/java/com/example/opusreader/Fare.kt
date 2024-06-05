@@ -162,6 +162,17 @@ class Fare(
             }
 
 
+            FareProductId.OCC_24HOURS_ALL_MODES_A.ID -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE) + 1,
+                    validityFromDate.get(Calendar.HOUR_OF_DAY),
+                    validityFromDate.get(Calendar.MINUTE)
+                )
+
+                date
+            }
             FareProductId.OCC_24HOURS_ALL_MODES_AB.ID -> {
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
