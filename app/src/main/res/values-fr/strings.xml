@@ -191,10 +191,10 @@
         L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
         \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
-    <string name="all_modes_ABCD_ten_tickets_info_iat">
+    <string name="all_modes_ABC_ten_tickets_info_iat">
         Ce titre offre un rabais sur le tarif régulier de 25% comme mesure d\'atténuation à la construction du pont de l\'Île aux Tourtes.
         Il contient dix billets distincts.
-        Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
+        Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
         \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
         Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
         L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.

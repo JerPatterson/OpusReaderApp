@@ -191,10 +191,10 @@
         The round trip is allowed by train if it stays inside the two hours.
         \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
-    <string name="all_modes_ABCD_ten_tickets_info_iat">
+    <string name="all_modes_ABC_ten_tickets_info_iat">
         This fare offers a discount of 25% on the standard price as an attenuation measure during l\'Île aux Tourtes bridge construction.
         It consists of ten distinct tickets.
-        Each ticket is are accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+        Each ticket is are accepted on the metro, the bus, the train and the REM in the zones A, B and C.
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.
