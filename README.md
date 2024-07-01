@@ -12,11 +12,12 @@
 <h4>Partially working for the following agencies</h4>
 <ul>
   <li>exo (Trains and Laurentides sector only)</li>
+  <li>REM (Réseau express métropolitain)</li>
   <li>RTL (Réseau de transport de Longueuil)</li>
   <li>STM (Société de transport de Montréal)</li>
   <li>STL (Société de transport de Laval)</li>
 </ul>
-<h4>Availible in the following languages</h4>
+<h4>Available in the following languages</h4>
 <ul>
   <li>English</li>
   <li>Français</li>
