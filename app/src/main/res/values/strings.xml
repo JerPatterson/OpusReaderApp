@@ -62,6 +62,12 @@
         This fare can still be used, but it is not possible to bought it anymore.
         \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
+    <string name="stl_eng_qual_one_ticket_info">
+        This fare consists of a single ticket.
+        This ticket is accepted on the buses of the STL (Société de Transport de Laval).
+        \n\nIt is provided for free with the Quality Commitment program of the agency.
+        \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
+    </string>
     <string name="bus_monthly_info">
         This fare is valid for the whole month.
         It is accepted on the buses running in zones A, B and C.
