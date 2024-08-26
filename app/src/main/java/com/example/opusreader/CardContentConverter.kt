@@ -230,6 +230,7 @@ class CardContentConverter {
                 165u -> Line("410", "Express Notre-Dame", "#009ee0", "#ffffff", R.drawable.bus)
                 242u -> Line("419", "Express John Abbott", "#009ee0", "#ffffff", R.drawable.bus)
                 218u -> Line("427", "Express Saint-Joseph", "#009ee0", "#ffffff", R.drawable.bus)
+                245u -> Line("439", "Express Pie-IX", "#781b7d", "#ffffff", R.drawable.bus)
                 211u -> Line("467", "Express Saint-Michel", "#009ee0", "#ffffff", R.drawable.bus)
                 169u -> Line("470", "Express Pierrefonds", "#781b7d", "#ffffff", R.drawable.bus)
                 255u -> Line("495", "Express Lachine / LaSalle", "#009ee0", "#ffffff", R.drawable.bus)
@@ -505,7 +506,9 @@ class CardContentConverter {
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
-                32u -> Line("88", "Terminus Saint-Eustache / Cégep Lionel-Groulx", "#000000", "#ffffff", R.drawable.bus)
+                9u -> Line("9", "Saint-Jérôme / Laval", "#000000", "#ffffff", R.drawable.bus)
+                11u -> Line("11", "Laval / Rosemère / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus)
+                32u -> Line("88", "Saint-Eustache / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus)
                 else -> Line("", "EXO Unknown ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
@@ -613,6 +616,7 @@ class CardContentConverter {
                 190u -> Line("222", "Saint-Vincent-De-Paul / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 193u -> Line("925", "Saint-François / Métro Radisson", "#151f6d", "#ffffff", R.drawable.bus)
                 302u -> Line("16", "Métro Montmorency / Laval-des-Rapides / Armand-Frappier", "#151f6d", "#ffffff", R.drawable.bus)
+                270u -> Line("942", "Saint-François / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus)
 
                 520u -> Line("22", "Saint-François / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 527u -> Line("313", "Chomedey / Métro Côte-Vertu", "#151f6d", "#ffffff", R.drawable.bus)
@@ -623,7 +627,6 @@ class CardContentConverter {
                 556u -> Line("744", "Métro Côte-Vertu / Gare Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus)
                 558u -> Line("901", "Saint-François / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 559u -> Line("902", "Terminus Le Carrefour / Métro Côte-Vertu", "#151f6d", "#ffffff", R.drawable.bus)
-                562u -> Line("942", "Saint-François / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus)
 
                 else -> Line("", "STL Unknown ($id)", "#151f6d", "#ffffff", R.drawable.bus)
             }
