@@ -127,18 +127,10 @@ class Fare(
         val date = Calendar.getInstance()
 
         return when (typeId) {
-            FareProductId.OPUS_MONTHLY_STL.ID -> {
-                date.set(
-                    validityFromDate.get(Calendar.YEAR),
-                    validityFromDate.get(Calendar.MONTH) + 1,
-                    validityFromDate.get(Calendar.DATE) - 1,
-                    23,
-                    59
-                )
-
-                date
-            }
-            FareProductId.OPUS_MONTHLY_ALL_MODES_AB.ID -> {
+            (FareProductId.OPUS_MONTHLY_TRAM3.ID or
+                FareProductId.OPUS_MONTHLY_STL_RED.ID or
+                FareProductId.OPUS_MONTHLY_ALL_MODES_AB.ID or
+                FareProductId.OPUS_MONTHLY_ALL_MODES_AB.ID) -> {
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH) + 1,
@@ -175,29 +167,9 @@ class Fare(
             }
 
 
-            FareProductId.OCC_24HOURS_BUS.ID -> {
-                date.set(
-                    validityFromDate.get(Calendar.YEAR),
-                    validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE) + 1,
-                    validityFromDate.get(Calendar.HOUR_OF_DAY),
-                    validityFromDate.get(Calendar.MINUTE)
-                )
-
-                date
-            }
-            FareProductId.OCC_24HOURS_ALL_MODES_A.ID -> {
-                date.set(
-                    validityFromDate.get(Calendar.YEAR),
-                    validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE) + 1,
-                    validityFromDate.get(Calendar.HOUR_OF_DAY),
-                    validityFromDate.get(Calendar.MINUTE)
-                )
-
-                date
-            }
-            FareProductId.OCC_24HOURS_ALL_MODES_AB.ID -> {
+            (FareProductId.OCC_24HOURS_BUS.ID
+                or FareProductId.OCC_24HOURS_ALL_MODES_A.ID
+                or FareProductId.OCC_24HOURS_ALL_MODES_AB.ID) -> {
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH),
@@ -209,28 +181,8 @@ class Fare(
                 date
             }
 
-            FareProductId.OCC_3DAYS_ALL_MODES_AB.ID -> {
-                date.set(
-                    buyingDate.get(Calendar.YEAR),
-                    buyingDate.get(Calendar.MONTH),
-                    buyingDate.get(Calendar.DATE) + 2,
-                    23,
-                    59
-                )
-
-                if (validityFromDate.timeInMillis > date.timeInMillis) {
-                    date.set(
-                        validityFromDate.get(Calendar.YEAR),
-                        validityFromDate.get(Calendar.MONTH),
-                        validityFromDate.get(Calendar.DATE),
-                        23,
-                        59
-                    )
-                }
-
-                date
-            }
-            FareProductId.OCC_3DAYS_ALL_MODES_ABC.ID -> {
+            (FareProductId.OCC_3DAYS_ALL_MODES_AB.ID
+                or FareProductId.OCC_3DAYS_ALL_MODES_ABC.ID) -> {
                 date.set(
                     buyingDate.get(Calendar.YEAR),
                     buyingDate.get(Calendar.MONTH),
