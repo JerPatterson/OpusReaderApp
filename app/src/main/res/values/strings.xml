@@ -309,6 +309,11 @@
         It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
         \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
+    <string name="all_modes_A_weekly_info">
+        This fare is valid for seven days in a row (from Monday until 11:59 PM on Sunday).
+        It is accepted on the metro, the bus, the train and the REM in the zone A.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
+    </string>
     <string name="evening_unlimited_info">
         This fare is valid for all the evening (from 6 PM until the next day at 5 AM).
         It is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.

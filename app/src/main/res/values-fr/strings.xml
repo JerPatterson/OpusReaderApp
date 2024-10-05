@@ -309,6 +309,11 @@
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
+    <string name="all_modes_A_weekly_info">
+        Ce titre est valide pour une durée de sept jours consécutifs (du lundi au dimanche jusqu\'à 23:59).
+        Il est accepté dans le métro, le bus, le train et le REM dans la zone A.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
     <string name="evening_unlimited_info">
         Ce titre est valide pour toute la soirée (de 18h au lendemain à 5h).
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
