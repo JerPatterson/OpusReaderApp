@@ -6,17 +6,24 @@ class CardContentConverter {
         fun getFareProductById(id: UInt): FareProduct {
             return when (id) {
                 FareProductId.OPUS_8TICKETS_STL.ID -> FareProduct("8 passages, STL", R.string.old_fare_info)
-                FareProductId.OPUS_MONTHLY_STL.ID -> FareProduct("Mensuel, STL", R.string.old_fare_info)
-                FareProductId.OPUS_1TICKET_STM.ID -> FareProduct("1 passage, STM", R.string.old_fare_info)
+                FareProductId.OPUS_8TICKETS_STL_RED.ID -> FareProduct("8 passages, STL", R.string.old_fare_info)
+                FareProductId.OPUS_MONTHLY_STL_RED.ID -> FareProduct("Mensuel, STL", R.string.old_fare_info)
+                FareProductId.OPUS_1TICKET_STM_RED.ID -> FareProduct("1 passage, STM", R.string.old_fare_info)
                 FareProductId.OPUS_2TICKETS_STM.ID -> FareProduct("2 passages, STM", R.string.old_fare_info)
+                FareProductId.OPUS_2TICKETS_STM_RED.ID -> FareProduct("2 passages, STM", R.string.old_fare_info)
                 FareProductId.OPUS_10TICKETS_STM.ID -> FareProduct("10 passages, STM", R.string.old_fare_info)
+                FareProductId.OPUS_MONTHLY_TRAM3.ID -> FareProduct("Mensuel, TRAM3", R.string.old_fare_info)
 
-                FareProductId.OPUS_10TICKETS_BUS.ID -> FareProduct("10 passages, Bus", R.string.bus_monthly_info)
-                FareProductId.OPUS_2TICKETS_ALL_MODES_A.ID -> FareProduct("2 passages, Tous modes A", R.string.all_modes_A_two_tickets_info)
+                FareProductId.OPUS_1TICKET_BUS.ID -> FareProduct("1 passage, Bus", R.string.bus_one_ticket_info)
+                FareProductId.OPUS_10TICKETS_BUS.ID -> FareProduct("10 passages, Bus", R.string.bus_ten_tickets_info)
+                FareProductId.OPUS_2TICKETS_ALL_MODES_A_RED.ID -> FareProduct("2 passages, Tous modes A", R.string.all_modes_A_two_tickets_info)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_A.ID -> FareProduct("Mensuel, Tous modes A", R.string.all_modes_A_monthly_info)
                 FareProductId.OPUS_10TICKETS_ALL_MODES_AB.ID -> FareProduct("10 passages, Tous modes AB", R.string.all_modes_AB_ten_tickets_info)
                 FareProductId.OPUS_24HOURS_ALL_MODES_AB.ID -> FareProduct("24hrs, Tous modes AB", R.string.all_modes_AB_24_hours_info)
                 FareProductId.OPUS_MONTHLY_ALL_MODES_AB.ID -> FareProduct("Mensuel, Tous modes AB", R.string.all_modes_AB_monthly_info)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_AB_RED.ID -> FareProduct("Mensuel, Tous modes AB", R.string.all_modes_AB_monthly_info)
                 FareProductId.OPUS_EVENING_UNLIMITED.ID -> FareProduct("Soirée illimité", R.string.evening_unlimited_info)
+
 
                 FareProductId.OCC_6TICKETS_TRAM2.ID -> FareProduct("6 passages, TRAM2", R.string.old_fare_info)
 

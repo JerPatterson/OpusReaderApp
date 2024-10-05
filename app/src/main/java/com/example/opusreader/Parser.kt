@@ -2,6 +2,7 @@ package com.example.opusreader
 
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
+import android.util.Log
 import java.util.Calendar
 
 class Parser {
@@ -341,8 +342,9 @@ class Parser {
     }
 
     private fun getOpusCardFareTypeId(data: ByteArray): UInt {
-        return (data[2].toUInt().and(0x7Fu).shl(5)
-                or data[3].toUInt().and(0xF8u))
+        return (data[2].toUInt().and(0x7Fu).shl(9)
+            or data[3].toUInt().and(0xFFu).shl(1)
+            or data[4].toUInt().and(0x80u).shr(7))
     }
 
     private fun getOpusCardFareOperatorId(data: ByteArray): UInt {
