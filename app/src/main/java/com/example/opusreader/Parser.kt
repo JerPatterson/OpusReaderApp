@@ -2,7 +2,6 @@ package com.example.opusreader
 
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
-import android.util.Log
 import java.util.Calendar
 
 class Parser {
@@ -12,8 +11,10 @@ class Parser {
         val id = this.getOccasionalCardId(data)
         val fares = this.getOccasionalCardFare(data)
         val trips = this.getOccasionalCardTrips(data)
+        val expiryDate = Calendar.getInstance()
+        expiryDate.set(2040, Calendar.DECEMBER, 31)
 
-        return Card(id, CardType.Occasional, Calendar.getInstance(), null, fares, trips)
+        return Card(id, CardType.Occasional, Calendar.getInstance(), expiryDate, fares, trips)
     }
 
     fun parseOpusCard(card: IsoDep): Card {
