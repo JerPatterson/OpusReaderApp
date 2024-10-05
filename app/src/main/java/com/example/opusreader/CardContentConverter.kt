@@ -236,6 +236,7 @@ class CardContentConverter {
                 255u -> Line("495", "Express Lachine / LaSalle", "#009ee0", "#ffffff", R.drawable.bus)
                 256u -> Line("496", "Express Victoria", "#009ee0", "#ffffff", R.drawable.bus)
                 219u -> Line("747", "YUL Aéroport / Centre-Ville", "#009ee0", "#ffffff", R.drawable.bus)
+                281u -> Line("968", "Trainbus Roxboro / Côte-Vertu", "#009ee0", "#ffffff", R.drawable.bus)
 
 
                 527u -> Line("21", "Place du Commerce", "#009ee0", "#ffffff", R.drawable.bus)
@@ -309,7 +310,6 @@ class CardContentConverter {
                 733u -> Line("822", "Navette Longue-Pointe", "#009ee0", "#ffffff", R.drawable.bus)
                 734u -> Line("872", "Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus)
                 735u -> Line("874", "Robert-Bourassa", "#009ee0", "#ffffff", R.drawable.bus)
-                736u -> Line("968", "Trainbus Roxboro / Côte-Vertu", "#009ee0", "#ffffff", R.drawable.bus)
 
                 else -> Line("", "STM Unknown ($id)", "#009ee0", "#ffffff", R.drawable.bus)
             }
@@ -582,6 +582,7 @@ class CardContentConverter {
                 302u -> Line("16", "Métro Montmorency / Laval-des-Rapides / Armand-Frappier", "#151f6d", "#ffffff", R.drawable.bus)
                 3u -> Line("17", "Auteuil / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 4u -> Line("20", "Métro Cartier / Chomedey", "#151f6d", "#ffffff", R.drawable.bus)
+                264u -> Line("22", "Saint-François / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 5u -> Line("24", "Métro Cartier / Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus)
                 7u -> Line("26", "Métro Montmorency / Gare Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus)
                 8u -> Line("27", "Gare Vimont / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
@@ -623,7 +624,6 @@ class CardContentConverter {
                 193u -> Line("925", "Saint-François / Métro Radisson", "#151f6d", "#ffffff", R.drawable.bus)
                 270u -> Line("942", "Saint-François / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus)
 
-                520u -> Line("22", "Saint-François / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 530u -> Line("36", "Métro Montmorency / Chomedey", "#151f6d", "#ffffff", R.drawable.bus)
                 528u -> Line("322", "Duvernay / Métro Henri-Bourassa", "#151f6d", "#ffffff", R.drawable.bus)
                 529u -> Line("345", "Gare Vimont / Métro Henri-Bourassa", "#151f6d", "#ffffff", R.drawable.bus)
