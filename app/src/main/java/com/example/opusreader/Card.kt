@@ -8,7 +8,7 @@ class Card(
     var id: ULong,
     var type: CardType,
     var scanDate: Calendar,
-    var expiryDate: Calendar?,
+    var expiryDate: Calendar,
     private var fares: ArrayList<Fare>,
     private var trips: ArrayList<Trip>
 ) {
@@ -17,7 +17,7 @@ class Card(
             id.toString(),
             type.name,
             scanDate.timeInMillis.toString(),
-            expiryDate?.timeInMillis.toString(),
+            expiryDate.timeInMillis.toString(),
             Gson().toJson(fares, ArrayList<Fare>()::class.java).toString(),
             Gson().toJson(trips, ArrayList<Fare>()::class.java).toString(),
         )
