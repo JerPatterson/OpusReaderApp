@@ -75,7 +75,9 @@ class CardContentConverter {
                 24u -> Operator("STL", "#151f6d", R.drawable.stl)
                 60u -> Operator("exo", "#000000", R.drawable.exo)
                 64u -> Operator("STLévis", "#0091b3", R.drawable.stlevis)
+                80u -> Operator("MRCJoliette", "#81a449", R.drawable.mrcjoliette)
                 88u -> Operator("REM", "#034638", R.drawable.rem)
+
                 else -> Operator("Unknown (id: $id)", "#696969", R.drawable.unknown)
             }
         }
