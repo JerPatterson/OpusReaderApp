@@ -524,7 +524,9 @@ class CardContentConverter {
             return when (id) {
                 9u -> Line("9", "Saint-Jérôme / Laval", "#000000", "#ffffff", R.drawable.bus)
                 11u -> Line("11", "Laval / Rosemère / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus)
+                26u -> Line("51", "Boisbriand Nord vers Boisbriand Sud", "#000000", "#ffffff", R.drawable.bus)
                 32u -> Line("88", "Saint-Eustache / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus)
+
                 else -> Line("", "EXO Unknown ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
