@@ -325,4 +325,10 @@
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
+
+    <string name="sdo_mtl_six_tickets_info">
+        Ce titre contient six billets distincts.
+        Chaque billet est accepté dans la \'125 - Saint-Donat / Chertsey / Montréal\' de la MRC Joliette.
+        \n\nIl peut être utilisé pour un déplacement entre Saint-Donat et Montréal (ou inversement) sur ce parcours.
+    </string>
 </resources>

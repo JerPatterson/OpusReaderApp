@@ -29,6 +29,10 @@ class CardContentConverter {
                 FareProductId.OPUS_EVENING_UNLIMITED.ID -> FareProduct("Soirée illimité", R.string.evening_unlimited_info)
 
 
+                FareProductId.OPUS_6TICKETS_SDO_MTL.ID -> FareProduct("6 passages, SDO-MTL", R.string.sdo_mtl_six_tickets_info)
+
+
+
                 FareProductId.OCC_6TICKETS_TRAM2.ID -> FareProduct("6 passages, TRAM2", R.string.old_fare_info)
 
                 FareProductId.OCC_1TICKET_BUS.ID -> FareProduct("1 passage, Bus", R.string.bus_one_ticket_info)

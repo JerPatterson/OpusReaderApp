@@ -84,6 +84,9 @@ enum class FareProductId(val ID: UInt) {
     OPUS_WEEKEND_UNLIMITED(65536u),
 
 
+    OPUS_6TICKETS_SDO_MTL(4983u),
+
+
 
     OCC_6TICKETS_TRAM2(3150145u),
 
