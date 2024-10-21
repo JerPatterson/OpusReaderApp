@@ -61,7 +61,7 @@ class CardContentConverter {
                 FareProductId.OCC_10TICKETS_ALL_MODES_ABC_SPECIAL_ILE_AUX_TOURTES.ID -> FareProduct("10 passages, Tous modes ABC", R.string.all_modes_ABC_ten_tickets_info_iat)
 
 
-                else -> FareProduct("Inconnu (${id})", R.string.unknown_fare_info)
+                else -> FareProduct("Unknown (fareId: ${id})", R.string.unknown_fare_info)
             }
         }
 
@@ -96,7 +96,7 @@ class CardContentConverter {
                 80u -> this.getMRCJolietteLineById(lineId)
                 88u -> this.getREMLineById(lineId)
 
-                else -> Line("", "Unknown (operatorId: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
+                else -> Line("?", "Unknown (operatorId: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
             }
         }
 
@@ -337,7 +337,7 @@ class CardContentConverter {
                 734u -> Line("872", "Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus)
                 735u -> Line("874", "Robert-Bourassa", "#009ee0", "#ffffff", R.drawable.bus)
 
-                else -> Line("", "STM Unknown ($id)", "#009ee0", "#ffffff", R.drawable.bus)
+                else -> Line("?", "STM ($id)", "#009ee0", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -500,7 +500,7 @@ class CardContentConverter {
                 662u -> Line("696", "École Lucille-Teasdale", "#9e2536", "#ffffff", R.drawable.bus)
                 663u -> Line("697", "École Lucille-Teasdale - Secteur Chevrier", "#9e2536", "#ffffff", R.drawable.bus)
 
-                else -> Line("", "RTL Unknown ($id)", "#9e2536", "#ffffff", R.drawable.bus)
+                else -> Line("?", "RTL ($id)", "#9e2536", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -523,7 +523,7 @@ class CardContentConverter {
                 523u -> Line("14", "Candiac (zone C)", "#5ab6b2", "#000000", R.drawable.train)
                 524u -> Line("15", "Mascouche (zone C)", "#ca5898", "#000000", R.drawable.train)
 
-                else -> Line("", "EXO Unknown ($id)", "#000000", "#000000", R.drawable.train)
+                else -> Line("?", "exo ($id)", "#000000", "#000000", R.drawable.train)
             }
         }
 
@@ -537,7 +537,7 @@ class CardContentConverter {
                 26u -> Line("51", "Boisbriand Nord vers Boisbriand Sud", "#000000", "#ffffff", R.drawable.bus)
                 32u -> Line("88", "Saint-Eustache / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus)
 
-                else -> Line("", "EXO Unknown ($id)", "#000000", "#ffffff", R.drawable.bus)
+                else -> Line("?", "exo Laurentides ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -548,7 +548,7 @@ class CardContentConverter {
             return when (id) {
                 14u -> Line("19", "Terrebonne / Terminus Montmorency", "#000000", "#ffffff", R.drawable.bus)
 
-                else -> Line("", "EXO Unknown ($id)", "#000000", "#ffffff", R.drawable.bus)
+                else -> Line("?", "exo Terrebonne-Mascouche ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -607,7 +607,8 @@ class CardContentConverter {
                 560u -> Line("29", "Parc Colbert Ouest - Place Jacques-Cartier", "#003878", "#ffffff", R.drawable.bus)
                 561u -> Line("290", "Vieux-Québec - Loretteville", "#003878", "#ffffff", R.drawable.bus)
                 562u -> Line("292", "Place Jacques-Cartier - Saint-Augustin", "#003878", "#ffffff", R.drawable.bus)
-                else -> Line("", "RTC Unknown ($id)", "#003878", "#ffffff", R.drawable.bus)
+
+                else -> Line("?", "RTC ($id)", "#003878", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -668,7 +669,7 @@ class CardContentConverter {
                 529u -> Line("345", "Gare Vimont / Métro Henri-Bourassa", "#151f6d", "#ffffff", R.drawable.bus)
                 558u -> Line("901", "Saint-François / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
 
-                else -> Line("", "STL Unknown ($id)", "#151f6d", "#ffffff", R.drawable.bus)
+                else -> Line("?", "STL ($id)", "#151f6d", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -738,7 +739,8 @@ class CardContentConverter {
                 571u -> Line("L1", "Lévisien 1", "#1e4289", "#ffffff", R.drawable.bus)
                 572u -> Line("L2", "Lévisien 2", "#1e4289", "#ffffff", R.drawable.bus)
                 573u -> Line("L3", "Lévisien 3", "#1e4289", "#ffffff", R.drawable.bus)
-                else -> Line("", "STLévis Unknown ($id)", "#0091b3", "#ffffff", R.drawable.bus)
+
+                else -> Line("?", "STLévis ($id)", "#0091b3", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -761,7 +763,7 @@ class CardContentConverter {
             //   than 512u means it's not known yet)
             return when (id) {
                 2u -> Line("A", "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro)
-                else -> Line("", "REM Unknown ($id)", "#82bf00", "#000000", R.drawable.lightmetro)
+                else -> Line("?", "REM ($id)", "#82bf00", "#000000", R.drawable.lightmetro)
             }
         }
     }
