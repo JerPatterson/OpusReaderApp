@@ -91,7 +91,9 @@ class CardContentConverter {
                 24u -> this.getSTLLineById(lineId)
                 60u -> this.getEXOLaurentidesLineById(lineId)
                 64u -> this.getSTLevisLineById(lineId)
+                80u -> this.getMRCJolietteLineById(lineId)
                 88u -> this.getREMLineById(lineId)
+
                 else -> Line("", "Unknown (operatorId: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
             }
         }
@@ -724,6 +726,19 @@ class CardContentConverter {
                 572u -> Line("L2", "Lévisien 2", "#1e4289", "#ffffff", R.drawable.bus)
                 573u -> Line("L3", "Lévisien 3", "#1e4289", "#ffffff", R.drawable.bus)
                 else -> Line("", "STLévis Unknown ($id)", "#0091b3", "#ffffff", R.drawable.bus)
+            }
+        }
+
+        private fun getMRCJolietteLineById(id: UInt): Line {
+            // TODO Find ids of all lines
+            //   (Id of the line is on 9bits so higher
+            //   than 512u means it's not known yet)
+            //   Note: The line id is most likely not relevant...
+            //      (pretty much one fare per line)
+            return when (id) {
+                1u -> Line("125", "Saint-Donat / Chertsey / Montréal", "#81a449", "#ffffff", R.drawable.bus)
+
+                else -> Line("?", "MRC Joliette ($id)", "#81a449", "#ffffff", R.drawable.bus)
             }
         }
 
