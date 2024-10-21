@@ -74,6 +74,7 @@ class CardContentConverter {
                 20u -> Operator("RTC", "#003878", R.drawable.rtc)
                 24u -> Operator("STL", "#151f6d", R.drawable.stl)
                 60u -> Operator("exo", "#000000", R.drawable.exo)
+                72u -> Operator("exo", "#000000", R.drawable.exo)
                 64u -> Operator("STLévis", "#0091b3", R.drawable.stlevis)
                 80u -> Operator("MRCJoliette", "#81a449", R.drawable.mrcjoliette)
                 88u -> Operator("REM", "#034638", R.drawable.rem)
@@ -91,6 +92,7 @@ class CardContentConverter {
                 24u -> this.getSTLLineById(lineId)
                 60u -> this.getEXOLaurentidesLineById(lineId)
                 64u -> this.getSTLevisLineById(lineId)
+                72u -> this.getEXOTerrebonneMascoucheLineById(lineId)
                 80u -> this.getMRCJolietteLineById(lineId)
                 88u -> this.getREMLineById(lineId)
 
@@ -534,6 +536,17 @@ class CardContentConverter {
                 11u -> Line("11", "Laval / Rosemère / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus)
                 26u -> Line("51", "Boisbriand Nord vers Boisbriand Sud", "#000000", "#ffffff", R.drawable.bus)
                 32u -> Line("88", "Saint-Eustache / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus)
+
+                else -> Line("", "EXO Unknown ($id)", "#000000", "#ffffff", R.drawable.bus)
+            }
+        }
+
+        private fun getEXOTerrebonneMascoucheLineById(id: UInt): Line {
+            // TODO Find ids of all lines
+            //   (Id of the line is on 9bits so higher
+            //   than 512u means it's not known yet)
+            return when (id) {
+                14u -> Line("19", "Terrebonne / Terminus Montmorency", "#000000", "#ffffff", R.drawable.bus)
 
                 else -> Line("", "EXO Unknown ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
