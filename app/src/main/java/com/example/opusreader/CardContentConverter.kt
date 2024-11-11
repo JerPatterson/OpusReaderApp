@@ -18,8 +18,10 @@ class CardContentConverter {
                 FareProductId.OPUS_10TICKETS_BUS.ID -> FareProduct("10 passages, Bus", R.string.bus_ten_tickets_info)
 
                 FareProductId.OPUS_2TICKETS_ALL_MODES_A_RED.ID -> FareProduct("2 passages, Tous modes A", R.string.all_modes_A_two_tickets_info)
+                FareProductId.OPUS_10TICKETS_ALL_MODES_A.ID -> FareProduct("10 passages, Tous modes A", R.string.all_modes_A_ten_tickets_info)
                 FareProductId.OPUS_WEEKLY_ALL_MODES_A.ID -> FareProduct("Hebdo, Tous modes A", R.string.all_modes_A_weekly_info)
                 FareProductId.OPUS_MONTHLY_ALL_MODES_A.ID -> FareProduct("Mensuel, Tous modes A", R.string.all_modes_A_monthly_info)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_A_RED.ID -> FareProduct("Mensuel, Tous modes A", R.string.all_modes_A_monthly_info)
 
                 FareProductId.OPUS_10TICKETS_ALL_MODES_AB.ID -> FareProduct("10 passages, Tous modes AB", R.string.all_modes_AB_ten_tickets_info)
                 FareProductId.OPUS_24HOURS_ALL_MODES_AB.ID -> FareProduct("24hrs, Tous modes AB", R.string.all_modes_AB_24_hours_info)
