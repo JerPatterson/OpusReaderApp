@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.devtools.ksp'
 
 android {
     namespace 'com.example.opusreader'
@@ -15,12 +15,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
-            }
-        }
     }
 
     buildTypes {
@@ -29,6 +23,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -36,12 +31,15 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
 }
 
 dependencies {
     implementation 'androidx.core:core-ktx:1.15.0'
     implementation 'androidx.appcompat:appcompat:1.7.0'
-
     implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     implementation 'com.google.android.material:material:1.12.0'
 
