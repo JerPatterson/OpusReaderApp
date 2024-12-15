@@ -376,6 +376,7 @@ class CardContentConverter {
                 65u -> Line("88", "Ch. Chambly / Mountainview", "#9e2536", "#ffffff", R.drawable.bus)
                 147u -> Line("99", "Promenades St-Bruno / Saint-Bruno-de-Montarville", "#9e2536", "#ffffff", R.drawable.bus)
                 70u -> Line("123", "Jacques-Cartier / Parcs industriels", "#9e2536", "#ffffff", R.drawable.bus)
+                270u -> Line("160", "Milan / Gaétan-Boucher / Centre-ville St-Bruno", "#9e2536", "#ffffff", R.drawable.bus)
                 340u -> Line("417", "Express Roland-Therrien / Roberval", "#9e2536", "#ffffff", R.drawable.bus)
 
 
@@ -416,7 +417,6 @@ class CardContentConverter {
                 575u -> Line("125", "Pratt & Whitney / Lumenpulse", "#9e2536", "#ffffff", R.drawable.bus)
                 576u -> Line("128", "Zone aéroportuaire / Parc industriel St-Bruno", "#9e2536", "#ffffff", R.drawable.bus)
                 577u -> Line("132", "DIX30 / Parc de la Cité / Mountainview", "#9e2536", "#ffffff", R.drawable.bus)
-                578u -> Line("160", "Milan / Gaétan-Boucher / Centre-ville St-Bruno", "#9e2536", "#ffffff", R.drawable.bus)
                 579u -> Line("161", "R.-Therrien / J.-Cartier / De Montarville", "#9e2536", "#ffffff", R.drawable.bus)
                 580u -> Line("170", "Station Papineau / Ste-Hélène / J.-Cartier", "#9e2536", "#ffffff", R.drawable.bus)
                 581u -> Line("180", "De Montarville / des Sureaux", "#9e2536", "#ffffff", R.drawable.bus)
@@ -513,17 +513,10 @@ class CardContentConverter {
             return when (id) {
                 2u -> Line("11", "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train)
                 3u -> Line("12", "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train)
-                1u -> Line("13", "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train) // To confirm
+                4u -> Line("13", "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train)
                 7u -> Line("15", "Mascouche", "#ca5898", "#000000", R.drawable.train)
 
-                516u -> Line("14", "Candiac", "#5ab6b2", "#000000", R.drawable.train)
-                518u -> Line("12", "Saint-Jérôme (zone B)", "#fed16d", "#000000", R.drawable.train)
-                519u -> Line("13", "Mont-Saint-Hilaire (zone B)", "#999ac6", "#000000", R.drawable.train)
-                520u -> Line("11", "Vaudreuil-Hudson (zone C)", "#f16179", "#000000", R.drawable.train)
-                521u -> Line("12", "Saint-Jérôme (zone C)", "#fed16d", "#000000", R.drawable.train)
-                522u -> Line("13", "Mont-Saint-Hilaire (zone C)", "#999ac6", "#000000", R.drawable.train)
-                523u -> Line("14", "Candiac (zone C)", "#5ab6b2", "#000000", R.drawable.train)
-                524u -> Line("15", "Mascouche (zone C)", "#ca5898", "#000000", R.drawable.train)
+                512u -> Line("14", "Candiac", "#5ab6b2", "#000000", R.drawable.train)
 
                 else -> Line("?", "exo ($id)", "#000000", "#000000", R.drawable.train)
             }
@@ -635,7 +628,7 @@ class CardContentConverter {
                 14u -> Line("40", "Métro Montmorency / Chomedey", "#151f6d", "#ffffff", R.drawable.bus)
                 15u -> Line("41", "Auteuil / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 16u -> Line("42", "Saint-François / Terminus Le Carrefour", "#151f6d", "#ffffff", R.drawable.bus)
-                17u -> Line("43", "Auteuil / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
+                129u -> Line("43", "Auteuil / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
                 130u -> Line("45", "Auteuil / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus)
                 131u -> Line("46", "Laval-Ouest / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus)
                 132u -> Line("48", "Gare Vimont / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus)
