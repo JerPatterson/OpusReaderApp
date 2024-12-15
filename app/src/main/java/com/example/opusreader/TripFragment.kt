@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Spinner
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -59,6 +62,7 @@ class TripFragment : Fragment() {
     private fun addTripInfoSection(trip: Trip) {
         this.addTripInfoSectionTitles()
         this.addTripInfoSectionValues(trip)
+        this.addTripCrowdSourceSection()
     }
 
     private fun addTripInfoSectionTitles() {
@@ -104,10 +108,65 @@ class TripFragment : Fragment() {
         operatorImageView?.setImageResource(operator.imageId)
     }
 
+    private fun addTripCrowdSourceSection() {
+        val tripCrowdSourceDivider = this.mView?.findViewById<View>(R.id.tripCrowdsourceDivider)
+        tripCrowdSourceDivider?.visibility = View.GONE
+        val tripCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+        tripCrowdSourceSpinner?.visibility = View.GONE
+        addOptionsToCrowdSourceSpinner()
+
+        val tripLayout = this.mView?.findViewById<ConstraintLayout>(R.id.tripLayout)
+        tripLayout?.setOnClickListener(TripLayoutListener())
+    }
+
+    private fun addOptionsToCrowdSourceSpinner() {
+        val options = arrayListOf(
+            "17 — Auteuil / Métro Cartier",
+            "73 — Fabreville / Métro Cartier",
+            "74 — St-François / Métro Cartier",
+        )
+
+        val crowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+        crowdSourceSpinner?.adapter = ArrayAdapter(
+            this.requireContext(),
+            android.R.layout.simple_list_item_1,
+            options
+        )
+    }
+
     private fun calendarToStringWithTime(cal: Calendar): String {
         return SimpleDateFormat(
             getString(R.string.calendar_with_time_pattern),
             Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
         ).format(cal.time)
+    }
+
+
+    class TripLayoutListener : View.OnClickListener {
+        private var isShowing: Boolean = false
+
+        override fun onClick(view: View) {
+            if (isShowing) {
+                hideTripCrowdSourceSection(view)
+            } else {
+                showTripCrowdSourceSection(view)
+            }
+
+            isShowing = !isShowing
+        }
+
+        private fun showTripCrowdSourceSection(view: View) {
+            val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdsourceDivider)
+            val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+            tripCrowdSourceDivider?.visibility = View.VISIBLE
+            tripCrowdSourceSpinner?.visibility = View.VISIBLE
+        }
+
+        private fun hideTripCrowdSourceSection(view: View) {
+            val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdsourceDivider)
+            val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+            tripCrowdSourceDivider?.visibility = View.GONE
+            tripCrowdSourceSpinner?.visibility = View.GONE
+        }
     }
 }
