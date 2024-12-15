@@ -2,7 +2,7 @@ package com.example.opusreader
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +12,9 @@ import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -62,7 +65,7 @@ class TripFragment : Fragment() {
     private fun addTripInfoSection(trip: Trip) {
         this.addTripInfoSectionTitles()
         this.addTripInfoSectionValues(trip)
-        this.addTripCrowdSourceSection()
+        this.addTripCrowdSourceSection(trip)
     }
 
     private fun addTripInfoSectionTitles() {
@@ -108,23 +111,33 @@ class TripFragment : Fragment() {
         operatorImageView?.setImageResource(operator.imageId)
     }
 
-    private fun addTripCrowdSourceSection() {
+    private fun addTripCrowdSourceSection(trip: Trip) {
         val tripCrowdSourceDivider = this.mView?.findViewById<View>(R.id.tripCrowdsourceDivider)
         tripCrowdSourceDivider?.visibility = View.GONE
         val tripCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
         tripCrowdSourceSpinner?.visibility = View.GONE
-        addOptionsToCrowdSourceSpinner()
+        addOptionsToCrowdSourceSpinner(trip)
 
         val tripLayout = this.mView?.findViewById<ConstraintLayout>(R.id.tripLayout)
         tripLayout?.setOnClickListener(TripLayoutListener())
     }
 
-    private fun addOptionsToCrowdSourceSpinner() {
+    private fun addOptionsToCrowdSourceSpinner(trip: Trip) {
         val options = arrayListOf(
-            "17 — Auteuil / Métro Cartier",
-            "73 — Fabreville / Métro Cartier",
-            "74 — St-François / Métro Cartier",
+            "Ligne absente des propositions",
         )
+
+        val db = Firebase.firestore
+        val document = db.collection("operators").document(trip.operatorId.toString())
+
+        try {
+            document.get().addOnSuccessListener { documentSnapshot ->
+                val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
+                operator?.lines?.forEach { line ->
+                    options.add(line.id + " — " + line.name)
+                }
+            }
+        } catch (_: Error) { }
 
         val crowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
         crowdSourceSpinner?.adapter = ArrayAdapter(

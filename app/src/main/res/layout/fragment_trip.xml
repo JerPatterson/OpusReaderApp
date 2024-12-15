@@ -115,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="4dp"
+                android:paddingBottom="14dp"
                 android:textColor="?android:attr/textColorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripValidityFromDateTv"
@@ -126,7 +127,7 @@
                 android:layout_height="35dp"
                 android:layout_marginTop="75dp"
                 android:layout_marginEnd="6dp"
-                android:paddingBottom="10dp"
+                android:layout_marginBottom="10dp"
                 android:contentDescription="@string/image_operator"
                 android:src="@drawable/stl"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -139,7 +140,7 @@
                 android:layout_marginStart="14dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/operatorImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/tripValidityFromDateValueTv" />
 
             <Spinner
                 android:id="@+id/tripCrowdsourceSpinner"
