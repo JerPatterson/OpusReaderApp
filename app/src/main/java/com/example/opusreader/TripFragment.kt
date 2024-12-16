@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.google.firebase.Firebase
+import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
@@ -132,6 +133,7 @@ class TripFragment : Fragment() {
     class TripLayoutListener(private val trip: Trip, private val context: Context) : View.OnClickListener {
         private var isShowing: Boolean = false
         private var hasAddedOptions: Boolean = false
+        private var firestoreSource: Source = Source.DEFAULT
 
         override fun onClick(view: View) {
             if (isShowing) {
@@ -174,7 +176,8 @@ class TripFragment : Fragment() {
             crowdSourceSpinner.onItemSelectedListener = SpinnerSelectListener(view, options)
 
             try {
-                document.get().addOnSuccessListener { documentSnapshot ->
+                document.get(firestoreSource).addOnSuccessListener { documentSnapshot ->
+                    firestoreSource = Source.CACHE
                     val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
                     operator?.lines?.forEachIndexed { i, line ->
                         if (line.idOnCard == trip.lineId.toString()) {
@@ -184,8 +187,6 @@ class TripFragment : Fragment() {
                     }
                 }
             } catch (_: Error) { }
-
-
         }
 
         private class SpinnerSelectListener(
