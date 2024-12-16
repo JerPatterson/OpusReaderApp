@@ -163,14 +163,13 @@ class TripFragment : Fragment() {
         }
 
         private fun addOptionsToCrowdSourceSpinner(view: View) {
-            val options = arrayListOf(
-                LineFirestore("?", "_", "Ligne absente des propositions", "#000000", "#ffffff"),
-            )
-
             val db = Firebase.firestore
             val document = db.collection("operators").document(this.trip.operatorId.toString())
 
-            var selectedItem = 0
+            val options = arrayListOf(
+                LineFirestore("?", "",  this.context.getString(R.string.line_missing_from_proposition), "#000000", "#ffffff"),
+            )
+
             val crowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
             crowdSourceSpinner?.adapter = LineCrowdSrcAdapter(this.context, options)
 

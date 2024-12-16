@@ -16,6 +16,8 @@
     <string name="cancel">No</string>
     <string name="accept">OK</string>
 
+    <string name="line_missing_from_proposition">Route missing from proposals</string>
+
     <string name="scan_history_button">History</string>
     <string name="scan_time_title">Card scanned on</string>
     <string name="last_scan_time_title">Last scanned on</string>
