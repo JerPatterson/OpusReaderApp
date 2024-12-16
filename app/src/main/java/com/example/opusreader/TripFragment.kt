@@ -1,5 +1,6 @@
 package com.example.opusreader
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -116,35 +117,9 @@ class TripFragment : Fragment() {
         tripCrowdSourceDivider?.visibility = View.GONE
         val tripCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
         tripCrowdSourceSpinner?.visibility = View.GONE
-        addOptionsToCrowdSourceSpinner(trip)
 
         val tripLayout = this.mView?.findViewById<ConstraintLayout>(R.id.tripLayout)
-        tripLayout?.setOnClickListener(TripLayoutListener())
-    }
-
-    private fun addOptionsToCrowdSourceSpinner(trip: Trip) {
-        val options = arrayListOf(
-            "Ligne absente des propositions",
-        )
-
-        val db = Firebase.firestore
-        val document = db.collection("operators").document(trip.operatorId.toString())
-
-        try {
-            document.get().addOnSuccessListener { documentSnapshot ->
-                val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
-                operator?.lines?.forEach { line ->
-                    options.add(line.id + " — " + line.name)
-                }
-            }
-        } catch (_: Error) { }
-
-        val crowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
-        crowdSourceSpinner?.adapter = ArrayAdapter(
-            this.requireContext(),
-            android.R.layout.simple_list_item_1,
-            options
-        )
+        tripLayout?.setOnClickListener(TripLayoutListener(trip, this.requireContext()))
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
@@ -155,8 +130,9 @@ class TripFragment : Fragment() {
     }
 
 
-    class TripLayoutListener : View.OnClickListener {
+    class TripLayoutListener(private val trip: Trip, private val context: Context) : View.OnClickListener {
         private var isShowing: Boolean = false
+        private var hasAddedOptions: Boolean = false
 
         override fun onClick(view: View) {
             if (isShowing) {
@@ -169,6 +145,10 @@ class TripFragment : Fragment() {
         }
 
         private fun showTripCrowdSourceSection(view: View) {
+            if (!hasAddedOptions) {
+                addOptionsToCrowdSourceSpinner(view)
+            }
+
             val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdsourceDivider)
             val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
             tripCrowdSourceDivider?.visibility = View.VISIBLE
@@ -180,6 +160,31 @@ class TripFragment : Fragment() {
             val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
             tripCrowdSourceDivider?.visibility = View.GONE
             tripCrowdSourceSpinner?.visibility = View.GONE
+        }
+
+        private fun addOptionsToCrowdSourceSpinner(view: View) {
+            val options = arrayListOf(
+                "Ligne absente des propositions",
+            )
+
+            val db = Firebase.firestore
+            val document = db.collection("operators").document(this.trip.operatorId.toString())
+
+            try {
+                document.get().addOnSuccessListener { documentSnapshot ->
+                    val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
+                    operator?.lines?.forEach { line ->
+                        options.add(line.id + " — " + line.name)
+                    }
+                }
+            } catch (_: Error) { }
+
+            val crowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+            crowdSourceSpinner?.adapter = ArrayAdapter(
+                this.context,
+                android.R.layout.simple_spinner_dropdown_item,
+                options
+            )
         }
     }
 }
