@@ -170,20 +170,22 @@ class TripFragment : Fragment() {
             val db = Firebase.firestore
             val document = db.collection("operators").document(this.trip.operatorId.toString())
 
+            var selectedItem = 0
+            val crowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+            crowdSourceSpinner?.adapter = LineCrowdSrcAdapter(this.context, options)
+
             try {
                 document.get().addOnSuccessListener { documentSnapshot ->
                     val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
-                    operator?.lines?.forEach { line ->
+                    operator?.lines?.forEachIndexed { i, line ->
+                        Log.i("test", line.idOnCard.toString())
+                        if (line.idOnCard == trip.lineId.toString()) {
+                            crowdSourceSpinner.setSelection(i + 1)
+                        }
                         options.add(line)
                     }
                 }
             } catch (_: Error) { }
-
-            val crowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
-            crowdSourceSpinner?.adapter = LineCrowdSrcAdapter(
-                this.context,
-                options
-            )
         }
     }
 }
