@@ -3,11 +3,10 @@ package com.example.opusreader
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Spinner
@@ -172,12 +171,12 @@ class TripFragment : Fragment() {
 
             val crowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
             crowdSourceSpinner?.adapter = LineCrowdSrcAdapter(this.context, options)
+            crowdSourceSpinner.onItemSelectedListener = SpinnerSelectListener(view, options)
 
             try {
                 document.get().addOnSuccessListener { documentSnapshot ->
                     val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
                     operator?.lines?.forEachIndexed { i, line ->
-                        Log.i("test", line.idOnCard.toString())
                         if (line.idOnCard == trip.lineId.toString()) {
                             crowdSourceSpinner.setSelection(i + 1)
                         }
@@ -185,6 +184,32 @@ class TripFragment : Fragment() {
                     }
                 }
             } catch (_: Error) { }
+
+
+        }
+
+        private class SpinnerSelectListener(
+            private val fragmentView: View,
+            private val options: ArrayList<LineFirestore>
+        ): AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (position == 0) return
+
+                val lineIdTv = this.fragmentView.findViewById<TextView>(R.id.tripLineIdTv)
+                val name = this.fragmentView.findViewById<TextView>(R.id.tripLineNameTv)
+                lineIdTv?.text = options[position].id
+                name?.text = options[position].name
+
+                val textColor = Color.parseColor(options[position].textColor)
+                lineIdTv?.setTextColor(textColor)
+                val background = Color.parseColor(options[position].color)
+                val tripColorLayout = this.fragmentView.findViewById<LinearLayout>(R.id.tripColorLayout)
+                lineIdTv?.setBackgroundColor(background)
+                tripColorLayout?.setBackgroundColor(background)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
         }
     }
 }
