@@ -17,6 +17,7 @@
     <string name="cancel">Non</string>
     <string name="accept">OK</string>
 
+    <string name="line_proposition_message">Voulez-vous vraiment partager cette suggestion ?</string>
     <string name="line_missing_from_proposition">Ligne absente des propositions</string>
     <string name="all_lines_proposition_toggle">Toutes les lignes</string>
     <string name="line_proposition_confirmation">Confirmer</string>

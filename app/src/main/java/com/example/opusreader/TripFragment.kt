@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -23,6 +24,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
+private const val ARG_ID = "id"
 private const val ARG_TRIP = "trip"
 
 /**
@@ -32,11 +34,13 @@ private const val ARG_TRIP = "trip"
  */
 class TripFragment : Fragment() {
     private var mView: View? = null
+    private var id: ULong? = null
     private var trip: Trip? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+            this.id = it.getString(ARG_ID)?.toULong()
             this.trip = Gson().fromJson(it.getString(ARG_TRIP), Trip::class.java)
         }
     }
@@ -57,9 +61,10 @@ class TripFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(trip: Trip) =
+        fun newInstance(id: ULong, trip: Trip) =
             TripFragment().apply {
                 arguments = Bundle().apply {
+                    putString(ARG_ID, id.toString())
                     putString(ARG_TRIP, Gson().toJson(trip))
                 }
             }
@@ -125,7 +130,7 @@ class TripFragment : Fragment() {
         tripCrowdSourceConfirmButton?.visibility = View.GONE
 
         val tripLayout = this.mView?.findViewById<ConstraintLayout>(R.id.tripLayout)
-        tripLayout?.setOnClickListener(TripLayoutListener(trip, this.requireContext()))
+        tripLayout?.setOnClickListener(this.id?.let { TripLayoutListener(it, trip, this.requireContext()) })
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
@@ -136,7 +141,11 @@ class TripFragment : Fragment() {
     }
 
 
-    class TripLayoutListener(private val trip: Trip, private val context: Context) : View.OnClickListener {
+    class TripLayoutListener(
+        private val id: ULong,
+        private val trip: Trip,
+        private val context: Context
+    ) : View.OnClickListener {
         private var isShowing: Boolean = false
         private var hasAddedOptions: Boolean = false
         private var firestoreSource: Source = Source.DEFAULT
@@ -167,6 +176,8 @@ class TripFragment : Fragment() {
                 }
                 addOptionsToCrowdSourceSpinner(view, true)
             }
+
+            enableCrowdSourceConfirmButton(view)
         }
 
         private fun hideTripCrowdSourceSection(view: View) {
@@ -235,6 +246,44 @@ class TripFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        private fun enableCrowdSourceConfirmButton(view: View) {
+            val confirmButton: Button = view.findViewById(R.id.tripCrowdSourceConfirmButton)
+            confirmButton.setOnClickListener(CrowdSourceConfirmListener(view, this.id, this.trip))
+        }
+
+        class CrowdSourceConfirmListener(
+            private val parent: View,
+            private val id: ULong,
+            private val trip: Trip,
+        ) : View.OnClickListener {
+            override fun onClick(view: View) {
+                val builder = AlertDialog.Builder(view.context)
+                builder.setMessage(R.string.line_proposition_message)
+                    .setNegativeButton(R.string.cancel) { _, _ -> }
+                    .setPositiveButton(R.string.confirm) { _, _ ->
+                        val db = Firebase.firestore
+                        val document = db.collection("operators")
+                            .document(trip.operatorId.toString())
+                            .collection("propositions")
+                            .document(Calendar.getInstance().timeInMillis.toString() + "_" + id)
+
+                        val tripCrowdSourceSpinner = parent.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
+                        val data = hashMapOf(
+                            "id" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).id,
+                            "idOnCard" to trip.lineId.toString(),
+                            "name" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).name,
+                            "color" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).color,
+                            "textColor" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).textColor,
+                        )
+                        document.set(data)
+
+                        parent.findViewById<ConstraintLayout>(R.id.tripLayout).callOnClick()
+                    }
+                val dialog = builder.create()
+                dialog.show()
+            }
         }
     }
 }

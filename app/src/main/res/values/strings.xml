@@ -16,6 +16,7 @@
     <string name="cancel">No</string>
     <string name="accept">OK</string>
 
+    <string name="line_proposition_message">Do you really want to share this proposal?</string>
     <string name="line_missing_from_proposition">Route missing from proposals</string>
     <string name="all_lines_proposition_toggle">All routes</string>
     <string name="line_proposition_confirmation">Confirm</string>

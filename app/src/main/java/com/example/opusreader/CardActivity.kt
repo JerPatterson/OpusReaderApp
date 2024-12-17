@@ -139,7 +139,8 @@ class CardActivity : AppCompatActivity() {
 
 
     private fun addTripInfoSection(card: Card) {
-        if (this.addTripInfoSectionValues(card.getTrips())) this.addTripInfoSectionTitles()
+        if (this.addTripInfoSectionValues(card.id, card.getTrips()))
+            this.addTripInfoSectionTitles()
     }
 
     private fun addTripInfoSectionTitles() {
@@ -147,7 +148,7 @@ class CardActivity : AppCompatActivity() {
         tripSectionTitleTv.text = getString(R.string.trip_section_title)
     }
 
-    private fun addTripInfoSectionValues(trips: List<Trip>): Boolean {
+    private fun addTripInfoSectionValues(id: ULong, trips: List<Trip>): Boolean {
         var fragmentTransaction = supportFragmentManager.beginTransaction()
         var fragment =supportFragmentManager.findFragmentById(R.id.firstTripFragment)
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
@@ -163,11 +164,11 @@ class CardActivity : AppCompatActivity() {
             hasTrip = true
             when (i + 1) {
                 1 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.firstTripFragment, TripFragment.newInstance(trip)).commit()
+                    .add(R.id.firstTripFragment, TripFragment.newInstance(id, trip)).commit()
                 2 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.secondTripFragment, TripFragment.newInstance(trip)).commit()
+                    .add(R.id.secondTripFragment, TripFragment.newInstance(id, trip)).commit()
                 3 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.thirdTripFragment, TripFragment.newInstance(trip)).commit()
+                    .add(R.id.thirdTripFragment, TripFragment.newInstance(id, trip)).commit()
             }
         }
 
