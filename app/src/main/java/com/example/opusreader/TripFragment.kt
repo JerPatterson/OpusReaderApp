@@ -152,10 +152,6 @@ class TripFragment : Fragment() {
         }
 
         private fun showTripCrowdSourceSection(view: View) {
-            if (!hasAddedOptions) {
-                addOptionsToCrowdSourceSpinner(view)
-            }
-
             val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdSourceDivider)
             val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
             val tripCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
@@ -164,6 +160,13 @@ class TripFragment : Fragment() {
             tripCrowdSourceSpinner?.visibility = View.VISIBLE
             tripCrowdSourceSwitch?.visibility = View.VISIBLE
             tripCrowdSourceConfirmButton?.visibility = View.VISIBLE
+
+            if (!hasAddedOptions) {
+                tripCrowdSourceSwitch.setOnCheckedChangeListener { _, isChecked ->
+                    addOptionsToCrowdSourceSpinner(view, !isChecked)
+                }
+                addOptionsToCrowdSourceSpinner(view, true)
+            }
         }
 
         private fun hideTripCrowdSourceSection(view: View) {
@@ -177,12 +180,18 @@ class TripFragment : Fragment() {
             tripCrowdSourceConfirmButton?.visibility = View.GONE
         }
 
-        private fun addOptionsToCrowdSourceSpinner(view: View) {
+        private fun addOptionsToCrowdSourceSpinner(view: View, filterKnownLines: Boolean) {
             val db = Firebase.firestore
             val document = db.collection("operators").document(this.trip.operatorId.toString())
 
             val options = arrayListOf(
-                LineFirestore("?", "",  this.context.getString(R.string.line_missing_from_proposition), "#000000", "#ffffff"),
+                LineFirestore(
+                    "?",
+                    "",
+                    this.context.getString(R.string.line_missing_from_proposition),
+                    "#000000",
+                    "#ffffff"
+                ),
             )
 
             val crowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
@@ -193,11 +202,13 @@ class TripFragment : Fragment() {
                 document.get(firestoreSource).addOnSuccessListener { documentSnapshot ->
                     firestoreSource = Source.CACHE
                     val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
-                    operator?.lines?.forEachIndexed { i, line ->
+                    operator?.lines?.forEach { line ->
                         if (line.idOnCard == trip.lineId.toString()) {
-                            crowdSourceSpinner.setSelection(i + 1)
+                            crowdSourceSpinner.setSelection(options.size)
+                            options.add(line)
+                        } else if (!filterKnownLines || line.idOnCard == "") {
+                            options.add(line)
                         }
-                        options.add(line)
                     }
                 }
             } catch (_: Error) { }
