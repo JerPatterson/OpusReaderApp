@@ -17,6 +17,8 @@
     <string name="accept">OK</string>
 
     <string name="line_missing_from_proposition">Route missing from proposals</string>
+    <string name="all_lines_proposition_toggle">All routes</string>
+    <string name="line_proposition_confirmation">Confirm</string>
 
     <string name="scan_history_button">History</string>
     <string name="scan_time_title">Card scanned on</string>

@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.google.firebase.Firebase
@@ -113,10 +115,14 @@ class TripFragment : Fragment() {
     }
 
     private fun addTripCrowdSourceSection(trip: Trip) {
-        val tripCrowdSourceDivider = this.mView?.findViewById<View>(R.id.tripCrowdsourceDivider)
+        val tripCrowdSourceDivider = this.mView?.findViewById<View>(R.id.tripCrowdSourceDivider)
         tripCrowdSourceDivider?.visibility = View.GONE
-        val tripCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+        val tripCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
         tripCrowdSourceSpinner?.visibility = View.GONE
+        val tripCrowdSourceSwitch = this.mView?.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
+        tripCrowdSourceSwitch?.visibility = View.GONE
+        val tripCrowdSourceConfirmButton = this.mView?.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
+        tripCrowdSourceConfirmButton?.visibility = View.GONE
 
         val tripLayout = this.mView?.findViewById<ConstraintLayout>(R.id.tripLayout)
         tripLayout?.setOnClickListener(TripLayoutListener(trip, this.requireContext()))
@@ -150,17 +156,25 @@ class TripFragment : Fragment() {
                 addOptionsToCrowdSourceSpinner(view)
             }
 
-            val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdsourceDivider)
-            val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+            val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdSourceDivider)
+            val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
+            val tripCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
+            val tripCrowdSourceConfirmButton = view.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
             tripCrowdSourceDivider?.visibility = View.VISIBLE
             tripCrowdSourceSpinner?.visibility = View.VISIBLE
+            tripCrowdSourceSwitch?.visibility = View.VISIBLE
+            tripCrowdSourceConfirmButton?.visibility = View.VISIBLE
         }
 
         private fun hideTripCrowdSourceSection(view: View) {
-            val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdsourceDivider)
-            val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+            val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdSourceDivider)
+            val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
+            val tripCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
+            val tripCrowdSourceConfirmButton = view.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
             tripCrowdSourceDivider?.visibility = View.GONE
             tripCrowdSourceSpinner?.visibility = View.GONE
+            tripCrowdSourceSwitch?.visibility = View.GONE
+            tripCrowdSourceConfirmButton?.visibility = View.GONE
         }
 
         private fun addOptionsToCrowdSourceSpinner(view: View) {
@@ -171,7 +185,7 @@ class TripFragment : Fragment() {
                 LineFirestore("?", "",  this.context.getString(R.string.line_missing_from_proposition), "#000000", "#ffffff"),
             )
 
-            val crowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdsourceSpinner)
+            val crowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
             crowdSourceSpinner?.adapter = LineCrowdSrcAdapter(this.context, options)
             crowdSourceSpinner.onItemSelectedListener = SpinnerSelectListener(view, options)
 
@@ -210,7 +224,6 @@ class TripFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
-
         }
     }
 }
