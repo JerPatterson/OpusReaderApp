@@ -18,6 +18,7 @@
     <string name="submit">Submit</string>
     <string name="cancel">Submit</string>
     <string name="confirm">Confirm</string>
+    <string name="edit_section_title">Suggest an edit</string>
 
     <string name="line_id_input_hint">Identifier</string>
     <string name="line_name_input_hint">Name of the route</string>
@@ -45,7 +46,8 @@
     <string name="image_card_scanned">This image show the card that was scanned</string>
     <string name="image_trip_mode">This image show the mode of transportation of the trip</string>
     <string name="image_operator">This image show the logo of the transportation agency</string>
-    <string name="image_delete">This image show the to delete an item</string>
+    <string name="image_edit">This image show the icon to edit an item</string>
+    <string name="image_delete">This image show the icon to delete an item</string>
     <string name="image_back">This image show the icon to go back to the previous view</string>
 
     <string name="calendar_language">English</string>

@@ -19,12 +19,13 @@
     <string name="submit">Soumettre</string>
     <string name="cancel">Annuler</string>
     <string name="confirm">Confirmer</string>
+    <string name="edit_section_title">Suggérer une modification</string>
 
     <string name="line_id_input_hint">Identifiant</string>
     <string name="line_name_input_hint">Nom de la ligne</string>
     <string name="line_missing_alert_title">Absente des propositions</string>
     <string name="line_missing_alert_message">
-        S\'il vous plaît entrer les informations manquantes de la ligne.
+        S\'il vous plaît entrer les informations manquantes sur la ligne.
     </string>
     <string name="line_missing_option_name">Ligne absente des propositions</string>
     <string name="lines_proposition_all_toggle">Toutes les lignes</string>
@@ -46,6 +47,7 @@
     <string name="image_card_scanned">Cette image montre la carte qui a été lue</string>
     <string name="image_trip_mode">Cette image montre le mode de transportation du trajet</string>
     <string name="image_operator">Cette image montre le logo de l\'agence de transport</string>
+    <string name="image_edit">Cette image montre l\'icône modification d\'item</string>
     <string name="image_delete">Cette image montre l\'icône suppression d\'item</string>
     <string name="image_back">Cette image montre l\'icône pour retourner à la vue précédente</string>
 
