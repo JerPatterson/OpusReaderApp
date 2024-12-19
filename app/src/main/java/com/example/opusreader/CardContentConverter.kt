@@ -107,11 +107,11 @@ class CardContentConverter {
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
-                1u -> Line("1", "Ligne Verte", "#008e4f", "#000000", R.drawable.metro)
-                2u -> Line("2", "Ligne Orange", "#ef8122", "#000000", R.drawable.metro)
-                224u -> Line("2", "Ligne Orange (zone B)", "#ef8122", "#000000", R.drawable.metro)
-                3u -> Line("4", "Ligne Jaune", "#ffe300", "#000000", R.drawable.metro)
-                4u -> Line("5", "Ligne Bleue", "#0083c9", "#000000", R.drawable.metro)
+                1u -> Line("1", "Ligne Verte", "#00a553", "#ffffff", R.drawable.metro)
+                2u -> Line("2", "Ligne Orange", "#f2832c", "#ffffff", R.drawable.metro)
+                224u -> Line("2", "Ligne Orange (zone B)", "#f2832c", "#ffffff", R.drawable.metro)
+                3u -> Line("4", "Ligne Jaune", "#ffd200", "#000000", R.drawable.metro)
+                4u -> Line("5", "Ligne Bleue", "#0078d0", "#ffffff", R.drawable.metro)
                 5u -> Line("10", "De Lorimier", "#009ee0", "#ffffff", R.drawable.bus)
                 6u -> Line("11", "Parc-du-Mont-Royal / Ridgewood", "#009ee0", "#ffffff", R.drawable.bus)
                 7u -> Line("12", "Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus)
