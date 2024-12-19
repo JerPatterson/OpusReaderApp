@@ -12,14 +12,27 @@
     </string>
     <string name="delete_all_confirmation_message">Do you really want to delete all the history permanently?</string>
     <string name="delete_confirmation_message">Do you really want to delete this item permanently?</string>
-    <string name="confirm">Yes</string>
-    <string name="cancel">No</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="accept">OK</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Submit</string>
+    <string name="confirm">Confirm</string>
 
-    <string name="line_proposition_message">Do you really want to share this proposal?</string>
-    <string name="line_missing_from_proposition">Route missing from proposals</string>
-    <string name="all_lines_proposition_toggle">All routes</string>
-    <string name="line_proposition_confirmation">Confirm</string>
+    <string name="line_id_input_hint">Identifier</string>
+    <string name="line_name_input_hint">Name of the line</string>
+    <string name="line_missing_alert_title">Missing from proposals</string>
+    <string name="line_missing_alert_message">Please enter the missing information.</string>
+    <string name="line_missing_option_name">Route missing from proposals</string>
+    <string name="lines_proposition_all_toggle">All routes</string>
+    <string name="line_proposition_alert_title">Thank you!</string>
+    <string name="line_proposition_alert_message">
+        We will look into your submission and make the changes shortly.
+    </string>
+    <string name="line_proposition_error_title">Error</string>
+    <string name="line_proposition_error_message">
+        An error occurred so your submission was no received. Please try again later.
+    </string>
 
     <string name="scan_history_button">History</string>
     <string name="scan_time_title">Card scanned on</string>

@@ -16,6 +16,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
@@ -23,6 +25,7 @@ import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlin.math.roundToInt
 
 private const val ARG_ID = "id"
 private const val ARG_TRIP = "trip"
@@ -199,7 +202,7 @@ class TripFragment : Fragment() {
                 LineFirestore(
                     "?",
                     "",
-                    this.context.getString(R.string.line_missing_from_proposition),
+                    this.context.getString(R.string.line_missing_option_name),
                     "#000000",
                     "#ffffff"
                 ),
@@ -259,30 +262,91 @@ class TripFragment : Fragment() {
             private val trip: Trip,
         ) : View.OnClickListener {
             override fun onClick(view: View) {
-                val builder = AlertDialog.Builder(view.context)
-                builder.setMessage(R.string.line_proposition_message)
-                    .setNegativeButton(R.string.cancel) { _, _ -> }
-                    .setPositiveButton(R.string.confirm) { _, _ ->
-                        val db = Firebase.firestore
-                        val document = db.collection("operators")
-                            .document(trip.operatorId.toString())
-                            .collection("propositions")
-                            .document(Calendar.getInstance().timeInMillis.toString() + "_" + id)
+                val tripCrowdSourceSpinner = parent.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
+                val selectedLineId = (tripCrowdSourceSpinner.selectedItem as LineFirestore).id
+                val selectedLineName = (tripCrowdSourceSpinner.selectedItem as LineFirestore).name
 
-                        val tripCrowdSourceSpinner = parent.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
-                        val data = hashMapOf(
-                            "id" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).id,
-                            "idOnCard" to trip.lineId.toString(),
-                            "name" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).name,
-                            "color" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).color,
-                            "textColor" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).textColor,
-                        )
-                        document.set(data)
+                if (selectedLineId == "?") {
+                    val linearInputLayout = LinearLayout(view.context)
+                    val lineIdInputLayout = TextInputLayout(view.context)
+                    val lineNameInputLayout = TextInputLayout(view.context)
+                    val lineIdInput = TextInputEditText(view.context)
+                    val lineNameInput = TextInputEditText(view.context)
 
-                        parent.findViewById<ConstraintLayout>(R.id.tripLayout).callOnClick()
-                    }
-                val dialog = builder.create()
-                dialog.show()
+                    val padding = view.context.resources.getDimension(R.dimen.line_missing_input_padding).roundToInt()
+                    lineIdInputLayout.setPadding(padding, 0, padding, 0)
+                    lineIdInputLayout.hint = view.context.getString(R.string.line_id_input_hint)
+                    lineIdInputLayout.addView(lineIdInput)
+                    lineNameInputLayout.setPadding(padding, padding, padding, 0)
+                    lineNameInputLayout.hint = view.context.getString(R.string.line_name_input_hint)
+                    lineNameInputLayout.addView(lineNameInput)
+
+                    linearInputLayout.addView(lineIdInput)
+                    linearInputLayout.addView(lineNameInputLayout)
+
+                    val builder = AlertDialog.Builder(view.context)
+                    builder.setTitle(view.context.getString(R.string.line_missing_alert_title))
+                        .setMessage(view.context.getString(R.string.line_missing_alert_message))
+                        .setView(linearInputLayout)
+                        .setPositiveButton(view.context.getString(R.string.submit)) { _, _ ->
+                            this.completeCrowdSourceEvent(
+                                view,
+                                lineIdInput.text.toString(),
+                                lineNameInput.text.toString()
+                            )
+                        }
+                        .setNegativeButton(view.context.getString(R.string.cancel)) { _, _ -> }
+
+                    val dialog = builder.create()
+                    dialog.show()
+
+                } else if (selectedLineId != null && selectedLineName != null) {
+                    this.completeCrowdSourceEvent(view, selectedLineId, selectedLineName)
+                }
+            }
+
+            private fun completeCrowdSourceEvent(
+                view: View,
+                selectedLineId: String,
+                selectedLineName: String
+            ) {
+                val tripCrowdSourceSpinner = parent.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
+
+                try {
+                    val db = Firebase.firestore
+                    val document = db.collection("operators")
+                        .document(trip.operatorId.toString())
+                        .collection("propositions")
+                        .document(Calendar.getInstance().timeInMillis.toString() + "_" + id)
+
+                    val data = hashMapOf(
+                        "id" to selectedLineId,
+                        "idOnCard" to trip.lineId.toString(),
+                        "name" to selectedLineName,
+                        "color" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).color,
+                        "textColor" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).textColor,
+                    )
+                    document.set(data)
+
+                    val builder = AlertDialog.Builder(view.context)
+                    builder.setTitle(R.string.line_proposition_alert_title)
+                        .setMessage(R.string.line_proposition_alert_message)
+                        .setPositiveButton(R.string.accept) { _, _ ->
+                            parent.findViewById<ConstraintLayout>(R.id.tripLayout).callOnClick()
+                        }
+                    val dialog = builder.create()
+                    dialog.show()
+
+                } catch(_: Error) {
+                    val builder = AlertDialog.Builder(view.context)
+                    builder.setTitle(R.string.line_proposition_error_title)
+                        .setMessage(R.string.line_proposition_error_message)
+                        .setPositiveButton(R.string.accept) { _, _ ->
+                            parent.findViewById<ConstraintLayout>(R.id.tripLayout).callOnClick()
+                        }
+                    val dialog = builder.create()
+                    dialog.show()
+                }
             }
         }
     }

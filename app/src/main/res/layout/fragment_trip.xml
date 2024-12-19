@@ -160,7 +160,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/all_lines_proposition_toggle"
+                android:text="@string/lines_proposition_all_toggle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripCrowdSourceSpinner" />
@@ -172,7 +172,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/line_proposition_confirmation"
+                android:text="@string/confirm"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripCrowdSourceSpinner" />

@@ -178,8 +178,8 @@ class HistoryCardAdapter(
         override fun onClick(view: View) {
             val builder = AlertDialog.Builder(view.context)
             builder.setMessage(R.string.delete_confirmation_message)
-                .setNegativeButton(R.string.cancel) { _, _ -> }
-                .setPositiveButton(R.string.confirm) { _, _ ->
+                .setNegativeButton(R.string.no) { _, _ -> }
+                .setPositiveButton(R.string.yes) { _, _ ->
                     CoroutineScope(Dispatchers.IO).launch {
                         CardDatabase.getInstance(view.context).dao.deleteStoredCard(card.getCardEntity().id)
                     }
