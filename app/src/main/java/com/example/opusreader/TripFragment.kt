@@ -76,7 +76,6 @@ class TripFragment : Fragment() {
     private fun addTripInfoSection(trip: Trip) {
         this.addTripInfoSectionTitles()
         this.addTripInfoSectionValues(trip)
-        this.addTripCrowdSourceSection(trip)
     }
 
     private fun addTripInfoSectionTitles() {
@@ -92,6 +91,7 @@ class TripFragment : Fragment() {
         addTripLine(line)
         addTripDates(trip)
         addTripInfoSectionImages(operator, line)
+        addTripCrowdSourceSection(trip, line)
     }
 
     private fun addTripLine(line: Line) {
@@ -122,7 +122,7 @@ class TripFragment : Fragment() {
         operatorImageView?.setImageResource(operator.imageId)
     }
 
-    private fun addTripCrowdSourceSection(trip: Trip) {
+    private fun addTripCrowdSourceSection(trip: Trip, line: Line) {
         val tripCrowdSourceDivider = this.mView?.findViewById<View>(R.id.tripCrowdSourceDivider)
         tripCrowdSourceDivider?.visibility = View.GONE
         val tripCrowdSourceIcon = this.mView?.findViewById<View>(R.id.tripCrowdSourceImageView)
@@ -137,7 +137,7 @@ class TripFragment : Fragment() {
         tripCrowdSourceConfirmButton?.visibility = View.GONE
 
         val tripLayout = this.mView?.findViewById<ConstraintLayout>(R.id.tripLayout)
-        tripLayout?.setOnClickListener(this.id?.let { TripLayoutListener(it, trip, this.requireContext()) })
+        tripLayout?.setOnClickListener(this.id?.let { TripLayoutListener(it, trip, line, this.requireContext()) })
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
@@ -151,6 +151,7 @@ class TripFragment : Fragment() {
     class TripLayoutListener(
         private val id: ULong,
         private val trip: Trip,
+        private val line: Line,
         private val context: Context
     ) : View.OnClickListener {
         private var isShowing: Boolean = false
@@ -210,14 +211,26 @@ class TripFragment : Fragment() {
             val db = Firebase.firestore
             val document = db.collection("operators").document(this.trip.operatorId.toString())
 
-            val options = arrayListOf(
+            val options = arrayListOf<LineFirestore>()
+            if (line.id != "?") {
+                options.add(
+                    LineFirestore(
+                        line.id,
+                        trip.lineId.toString(),
+                        line.name,
+                        line.color,
+                        line.textColor
+                    )
+                )
+            }
+            options.add(
                 LineFirestore(
                     "?",
                     "",
                     this.context.getString(R.string.line_missing_option_name),
                     "#000000",
-                    "#ffffff"
-                ),
+                    "#ffffff",
+                )
             )
 
             val crowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
@@ -229,10 +242,8 @@ class TripFragment : Fragment() {
                     firestoreSource = Source.CACHE
                     val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
                     operator?.lines?.forEach { line ->
-                        if (line.idOnCard == trip.lineId.toString()) {
-                            crowdSourceSpinner.setSelection(options.size)
-                            options.add(line)
-                        } else if (!filterKnownLines || line.idOnCard == "") {
+                        if (line.idOnCard != trip.lineId.toString()
+                            && !filterKnownLines || line.idOnCard == "") {
                             options.add(line)
                         }
                     }
