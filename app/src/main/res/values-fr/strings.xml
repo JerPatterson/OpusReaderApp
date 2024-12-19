@@ -21,9 +21,11 @@
     <string name="confirm">Confirmer</string>
 
     <string name="line_id_input_hint">Identifiant</string>
-    <string name="line_name_input_hint">Nom</string>
+    <string name="line_name_input_hint">Nom de la ligne</string>
     <string name="line_missing_alert_title">Absente des propositions</string>
-    <string name="line_missing_alert_message">S\'il vous plaît entrer les informations manquantes</string>
+    <string name="line_missing_alert_message">
+        S\'il vous plaît entrer les informations manquantes de la ligne.
+    </string>
     <string name="line_missing_option_name">Ligne absente des propositions</string>
     <string name="lines_proposition_all_toggle">Toutes les lignes</string>
     <string name="line_proposition_alert_title">Merci!</string>

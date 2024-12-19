@@ -268,20 +268,21 @@ class TripFragment : Fragment() {
 
                 if (selectedLineId == "?") {
                     val linearInputLayout = LinearLayout(view.context)
-                    val lineIdInputLayout = TextInputLayout(view.context)
-                    val lineNameInputLayout = TextInputLayout(view.context)
-                    val lineIdInput = TextInputEditText(view.context)
-                    val lineNameInput = TextInputEditText(view.context)
+                    linearInputLayout.orientation = LinearLayout.VERTICAL
+                    val lineIdInputLayout = TextInputLayout(linearInputLayout.context)
+                    val lineNameInputLayout = TextInputLayout(linearInputLayout.context)
+                    val lineIdInput = TextInputEditText(linearInputLayout.context)
+                    val lineNameInput = TextInputEditText(linearInputLayout.context)
 
                     val padding = view.context.resources.getDimension(R.dimen.line_missing_input_padding).roundToInt()
                     lineIdInputLayout.setPadding(padding, 0, padding, 0)
                     lineIdInputLayout.hint = view.context.getString(R.string.line_id_input_hint)
                     lineIdInputLayout.addView(lineIdInput)
-                    lineNameInputLayout.setPadding(padding, padding, padding, 0)
+                    lineNameInputLayout.setPadding(padding, padding / 2, padding, 0)
                     lineNameInputLayout.hint = view.context.getString(R.string.line_name_input_hint)
                     lineNameInputLayout.addView(lineNameInput)
 
-                    linearInputLayout.addView(lineIdInput)
+                    linearInputLayout.addView(lineIdInputLayout)
                     linearInputLayout.addView(lineNameInputLayout)
 
                     val builder = AlertDialog.Builder(view.context)
