@@ -145,7 +145,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/info"
                 app:layout_constraintStart_toStartOf="@+id/fareValidityColorLayout"
@@ -168,36 +168,46 @@
                 android:id="@+id/fareDescriptionTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
+                android:paddingBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTitle"
                 tools:text="Ce titre est valide tout le mois. Il est possible de faire autant de correspondances que souhaité." />
+
+            <View
+                android:id="@+id/fareCrowdSourceDivider"
+                android:layout_width="395dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="14dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTv" />
 
             <ImageView
                 android:id="@+id/fareCrowdSourceImageView"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="8dp"
                 android:contentDescription="@string/image_edit"
                 android:src="@drawable/edit"
                 app:layout_constraintStart_toStartOf="@+id/fareValidityColorLayout"
-                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTv" />
+                app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceDivider" />
 
             <TextView
                 android:id="@+id/fareCrowdSourceTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
                 android:text="@string/edit_section_title"
                 app:layout_constraintStart_toEndOf="@+id/fareCrowdSourceImageView"
-                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTv"
+                app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceDivider"
                 tools:text="Suggest an edit" />
 
             <Spinner

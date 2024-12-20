@@ -159,6 +159,8 @@ class FareFragment : Fragment() {
         transferInfoTv?.text = getString(fareProduct.descriptionStringId)
         transferInfoTv?.visibility = View.GONE
 
+        val fareCrowdSourceDivider = this.mView?.findViewById<View>(R.id.fareCrowdSourceDivider)
+        fareCrowdSourceDivider?.visibility = View.GONE
         val fareCrowdSourceIcon = this.mView?.findViewById<View>(R.id.fareCrowdSourceImageView)
         fareCrowdSourceIcon?.visibility = View.GONE
         val fareCrowdSourceTitle = this.mView?.findViewById<View>(R.id.fareCrowdSourceTitle)
@@ -245,11 +247,13 @@ class FareFragment : Fragment() {
         }
 
         private fun showFareCrowdSourceSection(view: View) {
+            val fareCrowdSourceDivider = view.findViewById<View>(R.id.fareCrowdSourceDivider)
             val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
             val fareCrowdSourceTitle = view.findViewById<View>(R.id.fareCrowdSourceTitle)
             val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
             val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
             val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
+            fareCrowdSourceDivider?.visibility = View.VISIBLE
             fareCrowdSourceIcon?.visibility = View.VISIBLE
             fareCrowdSourceTitle?.visibility = View.VISIBLE
             fareCrowdSourceSpinner?.visibility = View.VISIBLE
@@ -267,11 +271,13 @@ class FareFragment : Fragment() {
         }
 
         private fun hideFareCrowdSourceSection(view: View) {
+            val fareCrowdSourceDivider = view.findViewById<View>(R.id.fareCrowdSourceDivider)
             val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
             val fareCrowdSourceTitle = view.findViewById<View>(R.id.fareCrowdSourceTitle)
             val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
             val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
             val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
+            fareCrowdSourceDivider?.visibility = View.GONE
             fareCrowdSourceIcon?.visibility = View.GONE
             fareCrowdSourceTitle?.visibility = View.GONE
             fareCrowdSourceSpinner?.visibility = View.GONE
@@ -327,7 +333,7 @@ class FareFragment : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if (position == 0) return
 
-                val name = this.fragmentView.findViewById<TextView>(R.id.fareNameTv)
+                val name = this.fragmentView.findViewById<TextView>(R.id.fareTypeValueTv)
                 name?.text = options[position].name
             }
 
@@ -398,10 +404,12 @@ class FareFragment : Fragment() {
                         .collection("fare-propositions")
                         .document(Calendar.getInstance().timeInMillis.toString() + "_" + id)
 
+                    val idOnCard = ((fareCrowdSourceSpinner.selectedItem as FareFirestore).idOnCard ?: listOf()) + fare.typeId.toString()
                     val data = hashMapOf(
-                        "idOnCard" to ((fareCrowdSourceSpinner.selectedItem as FareFirestore).idOnCard ?: listOf()) + fare.typeId.toString(),
+                        "idOnCard" to idOnCard,
                         "name" to selectedFareName,
-                        "nbOfVariations" to (fareCrowdSourceSpinner.selectedItem as FareFirestore).nbOfVariations
+                        "nbOfVariations" to ((fareCrowdSourceSpinner.selectedItem as FareFirestore)
+                            .nbOfVariations?.toInt() ?: 0).coerceAtLeast(idOnCard.size),
                     )
                     document.set(data)
 
