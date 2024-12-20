@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
@@ -143,6 +146,17 @@ class FareFragment : Fragment() {
         transferInfoTv?.text = getString(fareProduct.descriptionStringId)
         transferInfoTv?.visibility = View.GONE
 
+        val fareCrowdSourceIcon = this.mView?.findViewById<View>(R.id.fareCrowdSourceImageView)
+        fareCrowdSourceIcon?.visibility = View.GONE
+        val fareCrowdSourceTitle = this.mView?.findViewById<View>(R.id.fareCrowdSourceTitle)
+        fareCrowdSourceTitle?.visibility = View.GONE
+        val fareCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
+        fareCrowdSourceSpinner?.visibility = View.GONE
+        val fareCrowdSourceSwitch = this.mView?.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
+        fareCrowdSourceSwitch?.visibility = View.GONE
+        val fareCrowdSourceConfirmButton = this.mView?.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
+        fareCrowdSourceConfirmButton?.visibility = View.GONE
+
         val fareLayout = this.mView?.findViewById<ConstraintLayout>(R.id.fareLayout)
         fareLayout?.setOnClickListener(FareLayoutListener())
     }
@@ -195,6 +209,17 @@ class FareFragment : Fragment() {
             transferInfoIcon?.visibility = View.VISIBLE
             transferInfoTitle?.visibility = View.VISIBLE
             transferInfoTv?.visibility = View.VISIBLE
+
+            val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
+            val fareCrowdSourceTitle = view.findViewById<View>(R.id.fareCrowdSourceTitle)
+            val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
+            val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
+            val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
+            fareCrowdSourceIcon?.visibility = View.VISIBLE
+            fareCrowdSourceTitle?.visibility = View.VISIBLE
+            fareCrowdSourceSpinner?.visibility = View.VISIBLE
+            fareCrowdSourceSwitch?.visibility = View.VISIBLE
+            fareCrowdSourceConfirmButton?.visibility = View.VISIBLE
         }
 
         private fun hideFareTransferInfoSection(view: View) {
@@ -206,6 +231,17 @@ class FareFragment : Fragment() {
             transferInfoIcon?.visibility = View.GONE
             transferInfoTitle?.visibility = View.GONE
             transferInfoTv?.visibility = View.GONE
+
+            val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
+            val fareCrowdSourceTitle = view.findViewById<View>(R.id.fareCrowdSourceTitle)
+            val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
+            val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
+            val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
+            fareCrowdSourceIcon?.visibility = View.GONE
+            fareCrowdSourceTitle?.visibility = View.GONE
+            fareCrowdSourceSpinner?.visibility = View.GONE
+            fareCrowdSourceSwitch?.visibility = View.GONE
+            fareCrowdSourceConfirmButton?.visibility = View.GONE
         }
     }
 }

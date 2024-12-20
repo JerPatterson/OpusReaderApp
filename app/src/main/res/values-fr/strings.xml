@@ -28,6 +28,7 @@
 
     <string name="edit_section_title">Suggérer une modification</string>
     <string name="line_missing_option_name">Ligne absente des propositions</string>
+    <string name="fares_proposition_all_toggle">Tous les titres</string>
     <string name="lines_proposition_all_toggle">Toutes les lignes</string>
     <string name="line_missing_alert_title">Absente des propositions</string>
     <string name="line_missing_alert_message">

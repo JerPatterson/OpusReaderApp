@@ -170,7 +170,7 @@ class TripFragment : Fragment() {
 
         private fun showTripCrowdSourceSection(view: View) {
             val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdSourceDivider)
-            val tripCrowdSourceIcon = view.findViewById<View>(R.id.tripCrowdSourceImageView)
+            val tripCrowdSourceIcon = view.findViewById<ImageView>(R.id.tripCrowdSourceImageView)
             val tripCrowdSourceTitle = view.findViewById<View>(R.id.tripCrowdSourceTitle)
             val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
             val tripCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
@@ -194,7 +194,7 @@ class TripFragment : Fragment() {
 
         private fun hideTripCrowdSourceSection(view: View) {
             val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdSourceDivider)
-            val tripCrowdSourceIcon = view.findViewById<View>(R.id.tripCrowdSourceImageView)
+            val tripCrowdSourceIcon = view.findViewById<ImageView>(R.id.tripCrowdSourceImageView)
             val tripCrowdSourceTitle = view.findViewById<View>(R.id.tripCrowdSourceTitle)
             val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
             val tripCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)

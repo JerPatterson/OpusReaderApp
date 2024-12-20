@@ -171,12 +171,69 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTitle"
                 tools:text="Ce titre est valide tout le mois. Il est possible de faire autant de correspondances que souhaité." />
+
+            <ImageView
+                android:id="@+id/fareCrowdSourceImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="14dp"
+                android:contentDescription="@string/image_edit"
+                android:src="@drawable/edit"
+                app:layout_constraintStart_toStartOf="@+id/fareValidityColorLayout"
+                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTv" />
+
+            <TextView
+                android:id="@+id/fareCrowdSourceTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textStyle="bold"
+                android:text="@string/edit_section_title"
+                app:layout_constraintStart_toEndOf="@+id/fareCrowdSourceImageView"
+                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTv"
+                tools:text="Suggest an edit" />
+
+            <Spinner
+                android:id="@+id/fareCrowdSourceSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceTitle" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/fareCrowdSourceSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/fares_proposition_all_toggle"
+                android:textOn="@string/fares_proposition_all_toggle"
+                android:textOff="@string/fares_proposition_all_toggle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceSpinner" />
+
+            <Button
+                android:id="@+id/fareCrowdSourceConfirmButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/confirm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceSpinner" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

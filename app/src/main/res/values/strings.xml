@@ -27,6 +27,7 @@
 
     <string name="edit_section_title">Suggest an edit</string>
     <string name="line_missing_option_name">Route missing from proposals</string>
+    <string name="fares_proposition_all_toggle">All fares</string>
     <string name="lines_proposition_all_toggle">All routes</string>
     <string name="line_missing_alert_title">Missing from proposals</string>
     <string name="line_missing_alert_message">
