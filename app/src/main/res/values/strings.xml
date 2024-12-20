@@ -26,8 +26,14 @@
     <string name="delete_confirmation_message">Do you really want to delete this item permanently?</string>
 
     <string name="edit_section_title">Suggest an edit</string>
+    <string name="fare_missing_option_name">Fare missing from proposals</string>
     <string name="line_missing_option_name">Route missing from proposals</string>
     <string name="fares_proposition_all_toggle">All fares</string>
+    <string name="fare_missing_alert_title">Missing from proposals</string>
+    <string name="fare_missing_alert_message">
+        Please enter the missing information of the fare.
+    </string>
+    <string name="fare_name_input_hint">Name of the fare</string>
     <string name="lines_proposition_all_toggle">All routes</string>
     <string name="line_missing_alert_title">Missing from proposals</string>
     <string name="line_missing_alert_message">
@@ -35,12 +41,12 @@
     </string>
     <string name="line_id_input_hint">Identifier</string>
     <string name="line_name_input_hint">Name of the route</string>
-    <string name="line_proposition_alert_title">Thank you!</string>
-    <string name="line_proposition_alert_message">
+    <string name="proposition_alert_title">Thank you!</string>
+    <string name="proposition_alert_message">
         We will look into your submission and make the changes shortly.
     </string>
-    <string name="line_proposition_error_title">Error</string>
-    <string name="line_proposition_error_message">
+    <string name="proposition_error_title">Error</string>
+    <string name="proposition_error_message">
         An error occurred so your submission was not received. Please try again later.
     </string>
 

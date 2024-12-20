@@ -340,7 +340,7 @@ class TripFragment : Fragment() {
                     val db = Firebase.firestore
                     val document = db.collection("operators")
                         .document(trip.operatorId.toString())
-                        .collection("propositions")
+                        .collection("line-propositions")
                         .document(Calendar.getInstance().timeInMillis.toString() + "_" + id)
 
                     val data = hashMapOf(
@@ -353,8 +353,8 @@ class TripFragment : Fragment() {
                     document.set(data)
 
                     val builder = AlertDialog.Builder(view.context)
-                    builder.setTitle(R.string.line_proposition_alert_title)
-                        .setMessage(R.string.line_proposition_alert_message)
+                    builder.setTitle(R.string.proposition_alert_title)
+                        .setMessage(R.string.proposition_alert_message)
                         .setPositiveButton(R.string.accept) { _, _ ->
                             parent.findViewById<ConstraintLayout>(R.id.tripLayout).callOnClick()
                         }
@@ -363,8 +363,8 @@ class TripFragment : Fragment() {
 
                 } catch(_: Error) {
                     val builder = AlertDialog.Builder(view.context)
-                    builder.setTitle(R.string.line_proposition_error_title)
-                        .setMessage(R.string.line_proposition_error_message)
+                    builder.setTitle(R.string.proposition_error_title)
+                        .setMessage(R.string.proposition_error_message)
                         .setPositiveButton(R.string.accept) { _, _ ->
                             parent.findViewById<ConstraintLayout>(R.id.tripLayout).callOnClick()
                         }

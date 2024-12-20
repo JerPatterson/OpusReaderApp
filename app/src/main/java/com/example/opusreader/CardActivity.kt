@@ -97,7 +97,7 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addFareInfoSection(card: Card) {
-        if (this.addFareInfoSectionValues(card.getFares())) this.addFareInfoSectionTitles()
+        if (this.addFareInfoSectionValues(card.id, card.getFares())) this.addFareInfoSectionTitles()
     }
 
     private fun addFareInfoSectionTitles() {
@@ -105,7 +105,7 @@ class CardActivity : AppCompatActivity() {
         fareSectionTitleTv.text = getString(R.string.fare_section_title)
     }
 
-    private fun addFareInfoSectionValues(fares: List<Fare>): Boolean {
+    private fun addFareInfoSectionValues(id: ULong, fares: List<Fare>): Boolean {
         var fragmentTransaction = supportFragmentManager.beginTransaction()
         var fragment = supportFragmentManager.findFragmentById(R.id.fourthFareFragment)
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
@@ -124,13 +124,13 @@ class CardActivity : AppCompatActivity() {
             hasFare = true
             when (i + 1) {
                 1 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.firstFareFragment, FareFragment.newInstance(fare)).commit()
+                    .add(R.id.firstFareFragment, FareFragment.newInstance(id, fare)).commit()
                 2 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.secondFareFragment, FareFragment.newInstance(fare)).commit()
+                    .add(R.id.secondFareFragment, FareFragment.newInstance(id, fare)).commit()
                 3 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.thirdFareFragment, FareFragment.newInstance(fare)).commit()
+                    .add(R.id.thirdFareFragment, FareFragment.newInstance(id, fare)).commit()
                 4 -> supportFragmentManager.beginTransaction()
-                    .add(R.id.fourthFareFragment, FareFragment.newInstance(fare)).commit()
+                    .add(R.id.fourthFareFragment, FareFragment.newInstance(id, fare)).commit()
             }
         }
 

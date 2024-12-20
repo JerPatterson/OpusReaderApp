@@ -27,8 +27,14 @@
     <string name="delete_confirmation_message">Voulez-vous vraiment supprimer cet élément définitivement ?</string>
 
     <string name="edit_section_title">Suggérer une modification</string>
+    <string name="fare_missing_option_name">Titre absent des propositions</string>
     <string name="line_missing_option_name">Ligne absente des propositions</string>
     <string name="fares_proposition_all_toggle">Tous les titres</string>
+    <string name="fare_missing_alert_title">Absent des propositions</string>
+    <string name="fare_missing_alert_message">
+        S\'il vous plaît entrer les informations manquantes sur le titre.
+    </string>
+    <string name="fare_name_input_hint">Name of the fare</string>
     <string name="lines_proposition_all_toggle">Toutes les lignes</string>
     <string name="line_missing_alert_title">Absente des propositions</string>
     <string name="line_missing_alert_message">
@@ -36,12 +42,12 @@
     </string>
     <string name="line_id_input_hint">Identifiant</string>
     <string name="line_name_input_hint">Nom de la ligne</string>
-    <string name="line_proposition_alert_title">Merci!</string>
-    <string name="line_proposition_alert_message">
+    <string name="proposition_alert_title">Merci!</string>
+    <string name="proposition_alert_message">
         Nous examinerons votre soumission et apporterons les modifications sous peu.
     </string>
-    <string name="line_proposition_error_title">Erreur</string>
-    <string name="line_proposition_error_message">
+    <string name="proposition_error_title">Erreur</string>
+    <string name="proposition_error_message">
         Une erreur s\'est produite donc votre soumission n\'a pas été reçue. Veuillez réessayer plus tard.
     </string>
 

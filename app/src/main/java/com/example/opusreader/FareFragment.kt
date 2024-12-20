@@ -1,23 +1,33 @@
 package com.example.opusreader
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.Source
+import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlin.math.roundToInt
 
+private const val ARG_ID = "id"
 private const val ARG_FARE = "fare"
 
 /**
@@ -27,11 +37,13 @@ private const val ARG_FARE = "fare"
  */
 class FareFragment : Fragment() {
     private var mView: View? = null
+    private var id: ULong? = null
     private var fare: Fare? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+            this.id = it.getString(ARG_ID)?.toULong()
             this.fare = Gson().fromJson(it.getString(ARG_FARE), Fare::class.java)
         }
     }
@@ -52,9 +64,10 @@ class FareFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(fare: Fare) =
+        fun newInstance(id: ULong, fare: Fare) =
             FareFragment().apply {
                 arguments = Bundle().apply {
+                    putString(ARG_ID, id.toString())
                     putString(ARG_FARE, Gson().toJson(fare))
                 }
             }
@@ -94,7 +107,7 @@ class FareFragment : Fragment() {
         }
         val operator = CardContentConverter.getOperatorById(fare.operatorId)
         addFareInfoSectionImages(operator)
-        addFareDescriptionSection(fareProduct)
+        addFareDescriptionSection(fare, fareProduct)
     }
 
     private fun addBuyingDate(fare: Fare) {
@@ -135,7 +148,7 @@ class FareFragment : Fragment() {
         operatorImageView?.setImageResource(operator.imageId)
     }
 
-    private fun addFareDescriptionSection(fareProduct: FareProduct) {
+    private fun addFareDescriptionSection(fare: Fare, fareProduct: FareProduct) {
         val transferInfoDivider = this.mView?.findViewById<View>(R.id.fareDescriptionDivider)
         transferInfoDivider?.visibility = View.GONE
         val transferInfoIcon = this.mView?.findViewById<ImageView>(R.id.fareDescriptionImageView)
@@ -158,7 +171,7 @@ class FareFragment : Fragment() {
         fareCrowdSourceConfirmButton?.visibility = View.GONE
 
         val fareLayout = this.mView?.findViewById<ConstraintLayout>(R.id.fareLayout)
-        fareLayout?.setOnClickListener(FareLayoutListener())
+        fareLayout?.setOnClickListener(this.id?.let { FareLayoutListener(it, fare, fareProduct, this.requireContext()) })
     }
 
     private fun calendarToString(cal: Calendar): String {
@@ -187,14 +200,23 @@ class FareFragment : Fragment() {
     }
 
 
-    class FareLayoutListener : View.OnClickListener {
+    class FareLayoutListener(
+        private val id: ULong,
+        private val fare: Fare,
+        private val fareProduct: FareProduct,
+        private val context: Context
+    ) : View.OnClickListener {
         private var isShowing: Boolean = false
+        private var hasAddedOptions: Boolean = false
+        private var firestoreSource: Source = Source.DEFAULT
 
         override fun onClick(view: View) {
             if (isShowing) {
                 hideFareTransferInfoSection(view)
+                hideFareCrowdSourceSection(view)
             } else {
                 showFareTransferInfoSection(view)
+                showFareCrowdSourceSection(view)
             }
 
             isShowing = !isShowing
@@ -209,17 +231,6 @@ class FareFragment : Fragment() {
             transferInfoIcon?.visibility = View.VISIBLE
             transferInfoTitle?.visibility = View.VISIBLE
             transferInfoTv?.visibility = View.VISIBLE
-
-            val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
-            val fareCrowdSourceTitle = view.findViewById<View>(R.id.fareCrowdSourceTitle)
-            val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
-            val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
-            val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
-            fareCrowdSourceIcon?.visibility = View.VISIBLE
-            fareCrowdSourceTitle?.visibility = View.VISIBLE
-            fareCrowdSourceSpinner?.visibility = View.VISIBLE
-            fareCrowdSourceSwitch?.visibility = View.VISIBLE
-            fareCrowdSourceConfirmButton?.visibility = View.VISIBLE
         }
 
         private fun hideFareTransferInfoSection(view: View) {
@@ -231,7 +242,31 @@ class FareFragment : Fragment() {
             transferInfoIcon?.visibility = View.GONE
             transferInfoTitle?.visibility = View.GONE
             transferInfoTv?.visibility = View.GONE
+        }
 
+        private fun showFareCrowdSourceSection(view: View) {
+            val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
+            val fareCrowdSourceTitle = view.findViewById<View>(R.id.fareCrowdSourceTitle)
+            val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
+            val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
+            val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
+            fareCrowdSourceIcon?.visibility = View.VISIBLE
+            fareCrowdSourceTitle?.visibility = View.VISIBLE
+            fareCrowdSourceSpinner?.visibility = View.VISIBLE
+            fareCrowdSourceSwitch?.visibility = View.VISIBLE
+            fareCrowdSourceConfirmButton?.visibility = View.VISIBLE
+
+            if (!hasAddedOptions) {
+                fareCrowdSourceSwitch.setOnCheckedChangeListener { _, isChecked ->
+                    addOptionsToCrowdSourceSpinner(view, !isChecked)
+                }
+                addOptionsToCrowdSourceSpinner(view, true)
+            }
+
+            enableCrowdSourceConfirmButton(view)
+        }
+
+        private fun hideFareCrowdSourceSection(view: View) {
             val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
             val fareCrowdSourceTitle = view.findViewById<View>(R.id.fareCrowdSourceTitle)
             val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
@@ -242,6 +277,154 @@ class FareFragment : Fragment() {
             fareCrowdSourceSpinner?.visibility = View.GONE
             fareCrowdSourceSwitch?.visibility = View.GONE
             fareCrowdSourceConfirmButton?.visibility = View.GONE
+        }
+
+        private fun addOptionsToCrowdSourceSpinner(view: View, filterKnownFares: Boolean) {
+            val db = Firebase.firestore
+            val document = db.collection("operators").document(this.fare.operatorId.toString())
+
+            val options = arrayListOf<FareFirestore>()
+            if (!fareProduct.name.startsWith("Unknown")) {
+                options.add(
+                    FareFirestore(
+                        null,
+                        fareProduct.name,
+                        null
+                    )
+                )
+            }
+            options.add(
+                FareFirestore(
+                    null,
+                    this.context.getString(R.string.fare_missing_option_name),
+                    null
+                )
+            )
+
+            val crowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
+            crowdSourceSpinner?.adapter = FareCrowdSrcAdapter(this.context, options)
+            crowdSourceSpinner.onItemSelectedListener = SpinnerSelectListener(view, options)
+
+            try {
+                document.get(firestoreSource).addOnSuccessListener { documentSnapshot ->
+                    firestoreSource = Source.CACHE
+                    val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
+                    operator?.fares?.forEach { fare ->
+                        if (fare.name != fareProduct.name && !filterKnownFares
+                            || (fare.idOnCard?.size ?: 0) < (fare.nbOfVariations?.toInt() ?: 0)
+                        ) {
+                            options.add(fare)
+                        }
+                    }
+                }
+            } catch (_: Error) { }
+        }
+
+        private class SpinnerSelectListener(
+            private val fragmentView: View,
+            private val options: ArrayList<FareFirestore>
+        ): AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (position == 0) return
+
+                val name = this.fragmentView.findViewById<TextView>(R.id.fareNameTv)
+                name?.text = options[position].name
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        private fun enableCrowdSourceConfirmButton(view: View) {
+            val confirmButton: Button = view.findViewById(R.id.fareCrowdSourceConfirmButton)
+            confirmButton.setOnClickListener(CrowdSourceConfirmListener(view, this.id, this.fare))
+        }
+
+        class CrowdSourceConfirmListener(
+            private val parent: View,
+            private val id: ULong,
+            private val fare: Fare,
+        ) : View.OnClickListener {
+            override fun onClick(view: View) {
+                val fareCrowdSourceSpinner =
+                    parent.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
+                val selectedFareName = (fareCrowdSourceSpinner.selectedItem as FareFirestore).name
+
+                if (selectedFareName == parent.context.getString(R.string.fare_missing_option_name)) {
+                    val linearInputLayout = LinearLayout(view.context)
+                    linearInputLayout.orientation = LinearLayout.VERTICAL
+                    val fareNameInputLayout = TextInputLayout(linearInputLayout.context)
+                    val fareNameInput = TextInputEditText(linearInputLayout.context)
+
+                    val padding =
+                        view.context.resources.getDimension(R.dimen.fare_missing_input_padding)
+                            .roundToInt()
+                    fareNameInputLayout.setPadding(padding, 0, padding, 0)
+                    fareNameInputLayout.hint = view.context.getString(R.string.fare_name_input_hint)
+                    fareNameInputLayout.addView(fareNameInput)
+
+                    linearInputLayout.addView(fareNameInputLayout)
+
+                    val builder = AlertDialog.Builder(view.context)
+                    builder.setTitle(view.context.getString(R.string.fare_missing_alert_title))
+                        .setMessage(view.context.getString(R.string.fare_missing_alert_message))
+                        .setView(linearInputLayout)
+                        .setPositiveButton(view.context.getString(R.string.submit)) { _, _ ->
+                            this.completeCrowdSourceEvent(
+                                view,
+                                fareNameInput.text.toString()
+                            )
+                        }
+                        .setNegativeButton(view.context.getString(R.string.cancel)) { _, _ -> }
+
+                    val dialog = builder.create()
+                    dialog.show()
+
+                } else if (selectedFareName != null) {
+                    this.completeCrowdSourceEvent(view, selectedFareName)
+                }
+            }
+
+            private fun completeCrowdSourceEvent(
+                view: View,
+                selectedFareName: String
+            ) {
+                val fareCrowdSourceSpinner =
+                    parent.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
+
+                try {
+                    val db = Firebase.firestore
+                    val document = db.collection("operators")
+                        .document(fare.operatorId.toString())
+                        .collection("fare-propositions")
+                        .document(Calendar.getInstance().timeInMillis.toString() + "_" + id)
+
+                    val data = hashMapOf(
+                        "idOnCard" to ((fareCrowdSourceSpinner.selectedItem as FareFirestore).idOnCard ?: listOf()) + fare.typeId.toString(),
+                        "name" to selectedFareName,
+                        "nbOfVariations" to (fareCrowdSourceSpinner.selectedItem as FareFirestore).nbOfVariations
+                    )
+                    document.set(data)
+
+                    val builder = AlertDialog.Builder(view.context)
+                    builder.setTitle(R.string.proposition_alert_title)
+                        .setMessage(R.string.proposition_alert_message)
+                        .setPositiveButton(R.string.accept) { _, _ ->
+                            parent.findViewById<ConstraintLayout>(R.id.fareLayout).callOnClick()
+                        }
+                    val dialog = builder.create()
+                    dialog.show()
+
+                } catch (_: Error) {
+                    val builder = AlertDialog.Builder(view.context)
+                    builder.setTitle(R.string.proposition_error_title)
+                        .setMessage(R.string.proposition_error_message)
+                        .setPositiveButton(R.string.accept) { _, _ ->
+                            parent.findViewById<ConstraintLayout>(R.id.fareLayout).callOnClick()
+                        }
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+            }
         }
     }
 }

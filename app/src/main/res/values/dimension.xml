@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="fare_missing_input_padding">19dp</dimen>
     <dimen name="line_missing_input_padding">19dp</dimen>
 </resources>
