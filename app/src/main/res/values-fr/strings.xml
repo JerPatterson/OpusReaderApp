@@ -11,24 +11,30 @@
     <string name="enable_nfc_message">La fonctionnalité CCP (communication en champ proche)
         de votre appareil doit être activée pour que l\'application fonctionne.
     </string>
-    <string name="delete_all_confirmation_message">Voulez-vous vraiment supprimer tout l\'historique définitivement ?</string>
-    <string name="delete_confirmation_message">Voulez-vous vraiment supprimer cet élément définitivement ?</string>
+
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="accept">OK</string>
     <string name="submit">Soumettre</string>
     <string name="cancel">Annuler</string>
     <string name="confirm">Confirmer</string>
-    <string name="edit_section_title">Suggérer une modification</string>
 
-    <string name="line_id_input_hint">Identifiant</string>
-    <string name="line_name_input_hint">Nom de la ligne</string>
+    <string name="scan_history_button">Historique</string>
+    <string name="scan_time_title">Carte lue le</string>
+    <string name="last_scan_time_title">Dernière lecture le</string>
+    <string name="history_delete_all_button">Supprimer tout</string>
+    <string name="delete_all_confirmation_message">Voulez-vous vraiment supprimer tout l\'historique définitivement ?</string>
+    <string name="delete_confirmation_message">Voulez-vous vraiment supprimer cet élément définitivement ?</string>
+
+    <string name="edit_section_title">Suggérer une modification</string>
+    <string name="line_missing_option_name">Ligne absente des propositions</string>
+    <string name="lines_proposition_all_toggle">Toutes les lignes</string>
     <string name="line_missing_alert_title">Absente des propositions</string>
     <string name="line_missing_alert_message">
         S\'il vous plaît entrer les informations manquantes sur la ligne.
     </string>
-    <string name="line_missing_option_name">Ligne absente des propositions</string>
-    <string name="lines_proposition_all_toggle">Toutes les lignes</string>
+    <string name="line_id_input_hint">Identifiant</string>
+    <string name="line_name_input_hint">Nom de la ligne</string>
     <string name="line_proposition_alert_title">Merci!</string>
     <string name="line_proposition_alert_message">
         Nous examinerons votre soumission et apporterons les modifications sous peu.
@@ -37,11 +43,6 @@
     <string name="line_proposition_error_message">
         Une erreur s\'est produite donc votre soumission n\'a pas été reçue. Veuillez réessayer plus tard.
     </string>
-
-    <string name="scan_history_button">Historique</string>
-    <string name="scan_time_title">Carte lue le</string>
-    <string name="last_scan_time_title">Dernière lecture le</string>
-    <string name="history_delete_all_button">Supprimer tout</string>
 
     <string name="image_main_page">Cette image montre le logo de l\'application pour inviter l\'utilisateur à lire sa carte.</string>
     <string name="image_card_scanned">Cette image montre la carte qui a été lue</string>
@@ -63,7 +64,7 @@
     <string name="opus_card_name">CARTE OPUS</string>
     <string name="occasional_card_name">CARTE OCCASIONNELLE</string>
     <string name="card_id_title">Identifiant</string>
-    <string name="card_epiration_date_title">Date d\'expiration</string>
+    <string name="card_expiration_date_title">Date d\'expiration</string>
     <string name="no_expiry_date">Aucune</string>
 
     <string name="validity_section_title">Validité du titre</string>

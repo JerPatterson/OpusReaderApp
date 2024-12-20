@@ -10,24 +10,30 @@
     <string name="enable_nfc_message">The NFC (near-field communication) functionality
         of your phone has to be enabled for the application to work.
     </string>
-    <string name="delete_all_confirmation_message">Do you really want to delete all the history permanently?</string>
-    <string name="delete_confirmation_message">Do you really want to delete this item permanently?</string>
+
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="accept">OK</string>
     <string name="submit">Submit</string>
     <string name="cancel">Submit</string>
     <string name="confirm">Confirm</string>
-    <string name="edit_section_title">Suggest an edit</string>
 
-    <string name="line_id_input_hint">Identifier</string>
-    <string name="line_name_input_hint">Name of the route</string>
+    <string name="scan_history_button">History</string>
+    <string name="scan_time_title">Card scanned on</string>
+    <string name="last_scan_time_title">Last scanned on</string>
+    <string name="history_delete_all_button">Delete all</string>
+    <string name="delete_all_confirmation_message">Do you really want to delete all the history permanently?</string>
+    <string name="delete_confirmation_message">Do you really want to delete this item permanently?</string>
+
+    <string name="edit_section_title">Suggest an edit</string>
+    <string name="line_missing_option_name">Route missing from proposals</string>
+    <string name="lines_proposition_all_toggle">All routes</string>
     <string name="line_missing_alert_title">Missing from proposals</string>
     <string name="line_missing_alert_message">
         Please enter the missing information of the route.
     </string>
-    <string name="line_missing_option_name">Route missing from proposals</string>
-    <string name="lines_proposition_all_toggle">All routes</string>
+    <string name="line_id_input_hint">Identifier</string>
+    <string name="line_name_input_hint">Name of the route</string>
     <string name="line_proposition_alert_title">Thank you!</string>
     <string name="line_proposition_alert_message">
         We will look into your submission and make the changes shortly.
@@ -36,11 +42,6 @@
     <string name="line_proposition_error_message">
         An error occurred so your submission was not received. Please try again later.
     </string>
-
-    <string name="scan_history_button">History</string>
-    <string name="scan_time_title">Card scanned on</string>
-    <string name="last_scan_time_title">Last scanned on</string>
-    <string name="history_delete_all_button">Delete all</string>
 
     <string name="image_main_page">This image show the app icon to invite the user to scan a card</string>
     <string name="image_card_scanned">This image show the card that was scanned</string>
@@ -62,7 +63,7 @@
     <string name="opus_card_name">OPUS CARD</string>
     <string name="occasional_card_name">OCCASIONAL CARD</string>
     <string name="card_id_title">Identifier</string>
-    <string name="card_epiration_date_title">Expiration Date</string>
+    <string name="card_expiration_date_title">Expiration Date</string>
     <string name="no_expiry_date">None</string>
 
     <string name="validity_section_title">Validity of the fare</string>

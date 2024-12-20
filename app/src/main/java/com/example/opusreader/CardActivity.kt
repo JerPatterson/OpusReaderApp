@@ -41,7 +41,7 @@ class CardActivity : AppCompatActivity() {
         val cardIdTitleTv = findViewById<TextView>(R.id.cardIdTv)
         val cardExpirationDateTitleTv = findViewById<TextView>(R.id.cardExpiryDateTv)
         cardIdTitleTv.text = getString(R.string.card_id_title)
-        cardExpirationDateTitleTv.text = getString(R.string.card_epiration_date_title)
+        cardExpirationDateTitleTv.text = getString(R.string.card_expiration_date_title)
 
         val cardTitleTv = findViewById<TextView>(R.id.cardSectionTitleTv)
         cardTitleTv.text = when (cardType) {
