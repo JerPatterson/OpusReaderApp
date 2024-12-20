@@ -47,6 +47,7 @@
     <string name="image_trip_mode">This image show the mode of transportation of the trip</string>
     <string name="image_operator">This image show the logo of the transportation agency</string>
     <string name="image_edit">This image show the icon to edit an item</string>
+    <string name="image_info">This image show the icon of information being presented</string>
     <string name="image_delete">This image show the icon to delete an item</string>
     <string name="image_back">This image show the icon to go back to the previous view</string>
 
@@ -77,6 +78,7 @@
     <string name="trip_boarding_date_title">Boarding on</string>
     <string name="trip_validity_from_date_title">Valid starting on</string>
 
+    <string name="fare_info_section_title">Information about the fare</string>
     <string name="unknown_fare_info">
         This fare is currently unknown by the application.
     </string>

@@ -135,6 +135,10 @@ class FareFragment : Fragment() {
     private fun addFareDescriptionSection(fareProduct: FareProduct) {
         val transferInfoDivider = this.mView?.findViewById<View>(R.id.fareDescriptionDivider)
         transferInfoDivider?.visibility = View.GONE
+        val transferInfoIcon = this.mView?.findViewById<ImageView>(R.id.fareDescriptionImageView)
+        transferInfoIcon?.visibility = View.GONE
+        val transferInfoTitle = this.mView?.findViewById<TextView>(R.id.fareDescriptionTitle)
+        transferInfoTitle?.visibility = View.GONE
         val transferInfoTv = this.mView?.findViewById<TextView>(R.id.fareDescriptionTv)
         transferInfoTv?.text = getString(fareProduct.descriptionStringId)
         transferInfoTv?.visibility = View.GONE
@@ -184,15 +188,23 @@ class FareFragment : Fragment() {
 
         private fun showFareTransferInfoSection(view: View) {
             val transferInfoDivider = view.findViewById<View>(R.id.fareDescriptionDivider)
+            val transferInfoIcon = view.findViewById<ImageView>(R.id.fareDescriptionImageView)
+            val transferInfoTitle = view.findViewById<TextView>(R.id.fareDescriptionTitle)
             val transferInfoTv = view.findViewById<TextView>(R.id.fareDescriptionTv)
             transferInfoDivider?.visibility = View.VISIBLE
+            transferInfoIcon?.visibility = View.VISIBLE
+            transferInfoTitle?.visibility = View.VISIBLE
             transferInfoTv?.visibility = View.VISIBLE
         }
 
         private fun hideFareTransferInfoSection(view: View) {
             val transferInfoDivider = view.findViewById<View>(R.id.fareDescriptionDivider)
+            val transferInfoIcon = view.findViewById<ImageView>(R.id.fareDescriptionImageView)
+            val transferInfoTitle = view.findViewById<TextView>(R.id.fareDescriptionTitle)
             val transferInfoTv = view.findViewById<TextView>(R.id.fareDescriptionTv)
             transferInfoDivider?.visibility = View.GONE
+            transferInfoIcon?.visibility = View.GONE
+            transferInfoTitle?.visibility = View.GONE
             transferInfoTv?.visibility = View.GONE
         }
     }

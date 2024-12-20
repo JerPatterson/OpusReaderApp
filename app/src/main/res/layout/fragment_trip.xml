@@ -147,11 +147,11 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:contentDescription="@string/image_edit"
                 android:src="@drawable/edit"
                 app:layout_constraintStart_toStartOf="@+id/tripColorLayout"
-                app:layout_constraintTop_toBottomOf="@+id/tripValidityFromDateValueTv" />
+                app:layout_constraintTop_toBottomOf="@+id/tripCrowdSourceDivider" />
 
             <TextView
                 android:id="@+id/tripCrowdSourceTitle"
@@ -160,7 +160,6 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="14sp"
                 android:textStyle="bold"
                 android:text="@string/edit_section_title"
                 app:layout_constraintStart_toEndOf="@+id/tripCrowdSourceImageView"
@@ -172,7 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

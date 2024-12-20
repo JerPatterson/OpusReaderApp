@@ -140,6 +140,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/operatorImageView" />
 
+            <ImageView
+                android:id="@+id/fareDescriptionImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/image_info"
+                android:src="@drawable/info"
+                app:layout_constraintStart_toStartOf="@+id/fareValidityColorLayout"
+                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionDivider" />
+
+            <TextView
+                android:id="@+id/fareDescriptionTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textStyle="bold"
+                android:text="@string/fare_info_section_title"
+                app:layout_constraintStart_toEndOf="@+id/fareDescriptionImageView"
+                app:layout_constraintTop_toTopOf="@+id/fareDescriptionDivider"
+                tools:text="Information about the fare" />
+
             <TextView
                 android:id="@+id/fareDescriptionTv"
                 android:layout_width="match_parent"
@@ -151,7 +175,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionDivider"
+                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTitle"
                 tools:text="Ce titre est valide tout le mois. Il est possible de faire autant de correspondances que souhaité." />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

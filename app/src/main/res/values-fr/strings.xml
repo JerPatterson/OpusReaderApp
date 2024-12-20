@@ -48,6 +48,7 @@
     <string name="image_trip_mode">Cette image montre le mode de transportation du trajet</string>
     <string name="image_operator">Cette image montre le logo de l\'agence de transport</string>
     <string name="image_edit">Cette image montre l\'icône modification d\'item</string>
+    <string name="image_info">Cette image montre l\'icône d\'information qui est présentée</string>
     <string name="image_delete">Cette image montre l\'icône suppression d\'item</string>
     <string name="image_back">Cette image montre l\'icône pour retourner à la vue précédente</string>
 
@@ -78,6 +79,7 @@
     <string name="trip_boarding_date_title">Embarquement le</string>
     <string name="trip_validity_from_date_title">Valide à partir du</string>
 
+    <string name="fare_info_section_title">Information sur le titre</string>
     <string name="unknown_fare_info">
         Ce titre est présentement inconnu par l\'application.
     </string>
