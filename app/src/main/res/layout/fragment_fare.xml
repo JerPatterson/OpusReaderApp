@@ -145,11 +145,11 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/info"
+                app:layout_constraintBottom_toBottomOf="@+id/fareDescriptionTitle"
                 app:layout_constraintStart_toStartOf="@+id/fareValidityColorLayout"
-                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionDivider" />
+                app:layout_constraintTop_toTopOf="@+id/fareDescriptionTitle" />
 
             <TextView
                 android:id="@+id/fareDescriptionTitle"
@@ -191,11 +191,11 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
                 android:contentDescription="@string/image_edit"
                 android:src="@drawable/edit"
+                app:layout_constraintBottom_toBottomOf="@+id/fareCrowdSourceTitle"
                 app:layout_constraintStart_toStartOf="@+id/fareValidityColorLayout"
-                app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceDivider" />
+                app:layout_constraintTop_toTopOf="@+id/fareCrowdSourceTitle" />
 
             <TextView
                 android:id="@+id/fareCrowdSourceTitle"
