@@ -348,7 +348,7 @@ class TripFragment : Fragment() {
                     val document = db.collection("operators")
                         .document(trip.operatorId.toString())
                         .collection("line-propositions")
-                        .document(Calendar.getInstance().timeInMillis.toString() + "_" + id)
+                        .document(id.toString() + "_" + trip.lineId)
 
                     val data = hashMapOf(
                         "id" to selectedLineId,

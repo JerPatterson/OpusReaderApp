@@ -409,7 +409,7 @@ class FareFragment : Fragment() {
                     val document = db.collection("operators")
                         .document(fare.operatorId.toString())
                         .collection("fare-propositions")
-                        .document(Calendar.getInstance().timeInMillis.toString() + "_" + id)
+                        .document(id.toString() + "_" + fare.typeId)
 
                     val idOnCard = ((fareCrowdSourceSpinner.selectedItem as FareFirestore).idOnCard ?: listOf()) + fare.typeId.toString()
                     val data = hashMapOf(
