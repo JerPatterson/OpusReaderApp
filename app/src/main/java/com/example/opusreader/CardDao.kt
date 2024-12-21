@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 
+
 @Dao
 interface CardDao {
     @Upsert

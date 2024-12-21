@@ -4,6 +4,7 @@ import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
 import java.util.Calendar
 
+
 class Parser {
     fun parseOccasionalCard(card: MifareUltralight): Card {
         val data = this.getDataFromMifareUltralight(card)
@@ -58,7 +59,7 @@ class Parser {
 
         if (this.occasionalCardHasTicket(data)) {
             val ticketCount = when (typeId) {
-                FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.ID -> {
+                FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.id -> {
                     val validityEndDate = Calendar.getInstance()
                     validityEndDate.set(2024, 5, 1, 0, 0)
                     if (Calendar.getInstance().timeInMillis > validityEndDate.timeInMillis)

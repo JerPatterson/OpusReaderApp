@@ -30,6 +30,7 @@ import kotlin.math.roundToInt
 private const val ARG_ID = "id"
 private const val ARG_FARE = "fare"
 
+
 /**
  * A simple [Fragment] subclass.
  * Use the [FareFragment.newInstance] factory method to

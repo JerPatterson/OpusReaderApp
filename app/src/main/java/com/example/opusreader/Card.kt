@@ -25,19 +25,19 @@ class Card(
 
     fun getFares(): List<Fare> {
         return fares.filter { fare -> fare.typeId != 0u }
-            .sortedBy { Fare -> Fare.buyingDate.timeInMillis }
+            .sortedBy { fare -> fare.buyingDate.timeInMillis }
             .asReversed()
     }
 
     fun getUnlimitedFares(): List<Fare> {
         return getFares().filter { fare -> fare.validityUntilDate != null }
-            .sortedBy { Fare -> Fare.validityUntilDate }
+            .sortedBy { fare -> fare.validityUntilDate }
     }
 
     fun getTrips(): List<Trip> {
         return trips.withIndex().filter { (i, trip) -> trip.operatorId != 0u
                 && (i == 0 || trip.useDate.time != trips[i - 1].useDate.time) }
-            .sortedBy { Trip -> Trip.value.useDate.timeInMillis }
+            .sortedBy { trip -> trip.value.useDate.timeInMillis }
             .map { (_, trip) -> trip }
     }
 }

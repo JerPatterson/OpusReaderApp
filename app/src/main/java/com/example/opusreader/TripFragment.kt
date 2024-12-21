@@ -30,6 +30,7 @@ import kotlin.math.roundToInt
 private const val ARG_ID = "id"
 private const val ARG_TRIP = "trip"
 
+
 /**
  * A simple [Fragment] subclass.
  * Use the [TripFragment.newInstance] factory method to

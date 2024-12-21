@@ -16,8 +16,8 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-
 private const val ARG_CARD = "card"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -266,6 +266,5 @@ class ValidityFragment: Fragment() {
         override fun onTouch(view: View?, motionEvent: MotionEvent?): Boolean {
             return true
         }
-
     }
 }

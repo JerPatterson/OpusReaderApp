@@ -1,6 +1,7 @@
 package com.example.opusreader
 
-enum class FareProductId(val ID: UInt) {
+
+enum class FareProductId(val id: UInt) {
     OPUS_8TICKETS_STL(67u),
     OPUS_8TICKETS_STL_RED(75u),
     OPUS_MONTHLY_STL_RED(47u),

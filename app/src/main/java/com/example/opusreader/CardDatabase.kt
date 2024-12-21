@@ -29,7 +29,5 @@ abstract class CardDatabase: RoomDatabase() {
                 this.DB_NAME
             ).build()
         }
-
     }
-
 }
