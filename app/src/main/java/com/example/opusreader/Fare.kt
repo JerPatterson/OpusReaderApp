@@ -160,6 +160,28 @@ class Fare(
 
                 date
             }
+            FareProductId.OPUS_MONTHLY_ALL_MODES_A_STU.id -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH) + 1,
+                    validityFromDate.get(Calendar.DATE) - 1,
+                    23,
+                    59
+                )
+
+                date
+            }
+            FareProductId.OPUS_MONTHLY_ALL_MODES_A_RED.id -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH) + 1,
+                    validityFromDate.get(Calendar.DATE) - 1,
+                    23,
+                    59
+                )
+
+                date
+            }
             FareProductId.OPUS_MONTHLY_ALL_MODES_AB.id -> {
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
@@ -171,7 +193,7 @@ class Fare(
 
                 date
             }
-            FareProductId.OPUS_MONTHLY_ALL_MODES_AB_RED.id -> {
+            FareProductId.OPUS_MONTHLY_ALL_MODES_AB_STU.id -> {
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH) + 1,

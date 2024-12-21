@@ -21,12 +21,13 @@ class CardContentConverter {
                 FareProductId.OPUS_10TICKETS_ALL_MODES_A.id -> FareProduct("10 passages, Tous modes A", R.string.all_modes_A_ten_tickets_info)
                 FareProductId.OPUS_WEEKLY_ALL_MODES_A.id -> FareProduct("Hebdo, Tous modes A", R.string.all_modes_A_weekly_info)
                 FareProductId.OPUS_MONTHLY_ALL_MODES_A.id -> FareProduct("Mensuel, Tous modes A", R.string.all_modes_A_monthly_info)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_A_STU.id -> FareProduct("Mensuel, Tous modes A", R.string.all_modes_A_monthly_info)
                 FareProductId.OPUS_MONTHLY_ALL_MODES_A_RED.id -> FareProduct("Mensuel, Tous modes A", R.string.all_modes_A_monthly_info)
 
                 FareProductId.OPUS_10TICKETS_ALL_MODES_AB.id -> FareProduct("10 passages, Tous modes AB", R.string.all_modes_AB_ten_tickets_info)
                 FareProductId.OPUS_24HOURS_ALL_MODES_AB.id -> FareProduct("24hrs, Tous modes AB", R.string.all_modes_AB_24_hours_info)
                 FareProductId.OPUS_MONTHLY_ALL_MODES_AB.id -> FareProduct("Mensuel, Tous modes AB", R.string.all_modes_AB_monthly_info)
-                FareProductId.OPUS_MONTHLY_ALL_MODES_AB_RED.id -> FareProduct("Mensuel, Tous modes AB", R.string.all_modes_AB_monthly_info)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_AB_STU.id -> FareProduct("Mensuel, Tous modes AB", R.string.all_modes_AB_monthly_info)
 
                 FareProductId.OPUS_EVENING_UNLIMITED.id -> FareProduct("Soirée illimitée", R.string.evening_unlimited_info)
 
