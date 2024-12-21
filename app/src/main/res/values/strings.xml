@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">OpusReader</string>
     <string name="main_page_instruction">Start the reading of your Opus or Occasional card</string>
+    <string name="main_page_copyright">
+        ARTM (Autorité régionale de transport métropolitain), exo, Opus, REM (Réseau express métropolitain),
+        RTC (Réseau de transport de la Capitale), RTL (Réseau de transport de Longueuil), STM (Société de transport de Montréal),
+        STL (Société de transport de Laval) et STLévis (Société de transport de Lévis) are registered trademarks.
+        <b>This application is not affiliated with, endorsed or sponsored by these entities.</b>
+    </string>
 
     <string name="no_nfc_title">NFC functionality unavailable</string>
     <string name="no_nfc_message">It looks like your phone does not have the

@@ -2,6 +2,12 @@
 <resources>
     <string name="app_name">OpusReader</string>
     <string name="main_page_instruction">Commencez la lecture de votre carte Opus ou Occasionnelle</string>
+    <string name="main_page_copyright">
+        ARTM (Autorité régionale de transport métropolitain), exo, Opus, REM (Réseau express métropolitain),
+        RTC (Réseau de transport de la Capitale), RTL (Réseau de transport de Longueuil), STM (Société de transport de Montréal),
+        STL (Société de transport de Laval) et STLévis (Société de transport de Lévis) sont des marques déposées.
+        <b>Cette application n\'est ni affiliée, ni approuvée, ni sponsorisée par ces entités.</b>
+    </string>
 
     <string name="no_nfc_title">Fonctionnalité CCP indisponible</string>
     <string name="no_nfc_message">Il semble que votre appareil ne dispose pas de la
