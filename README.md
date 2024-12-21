@@ -6,17 +6,21 @@
 </span>
 <h2>Project state</h2>
 <span>
-  Currently, as this project is still in development, a lot of fares, operators and lines are missing and won't be recognize.
+  Currently, as this project is still in development, a lot of fares, operators and lines are missing and won't be recognize. However, users now have the possibility to contribute within the application by providing fares and lines from their cards as they use them.
 </span>
 <br>
 <h4>Partially working for the following agencies</h4>
 <ul>
-  <li>exo (Trains and Laurentides sector only)</li>
+  <li>exo (Trains, Laurentides and Terrebonne-Mascouche only)</li>
   <li>REM (Réseau express métropolitain)</li>
   <li>RTL (Réseau de transport de Longueuil)</li>
   <li>STM (Société de transport de Montréal)</li>
   <li>STL (Société de transport de Laval)</li>
+  <li>MRC de Joliette</li>
 </ul>
+<span>
+  <em><b>Note:</b> This application is not affiliated with, endorsed or sponsored by these entities.</em>
+</span>
 <h4>Available in the following languages</h4>
 <ul>
   <li>English</li>
@@ -76,11 +80,12 @@
 <h2>How to use</h2>
 <span>
   Make sure your device has NFC capailities and that you have enabled them. Then, you simply have to open the app, scan a compatible card and all the information from the card will display.
-  As stated above, some fares, operators and lines are missing and they will show as unknown for the moment. On the content view, you can use Android's back gesture to scan another card.
+  As stated above, some fares, operators and lines are missing and they will show as unknown for the moment. It is possible to contribute by using the suggestion form available. 
+  On the content view, you can use Android's back gesture or the arrow at the top left of the screen to scan another card.
 </span>
 <h2>Upcoming improvements</h2>
 <ul>
-  <li>Adding the possibility for user to crowdsource unknown fares, lines and operators</li>
+  <li><strike>Adding the possibility for user to crowdsource unknown fares, lines and operators</strike> <em>Added!</em></li>
   <li><strike>Improving information for transfers so users can maximize their usage of one particular fare</strike> <em>Added!</em></li>
   <li>Adding notifications to alert the user when the validity of the fare ends and few minutes prior</li>
   <li><strike>Adding an history of the card scans</strike> <em>Added!</em></li>
