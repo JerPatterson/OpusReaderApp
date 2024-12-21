@@ -128,8 +128,10 @@ class TripFragment : Fragment() {
         tripCrowdSourceDivider?.visibility = View.GONE
         val tripCrowdSourceIcon = this.mView?.findViewById<View>(R.id.tripCrowdSourceImageView)
         tripCrowdSourceIcon?.visibility = View.GONE
-        val tripCrowdSourceTitle = this.mView?.findViewById<View>(R.id.tripCrowdSourceTitle)
+        val tripCrowdSourceTitle = this.mView?.findViewById<TextView>(R.id.tripCrowdSourceTitle)
         tripCrowdSourceTitle?.visibility = View.GONE
+        val tripCrowdSourceDescription = this.mView?.findViewById<TextView>(R.id.tripCrowdSourceDescription)
+        tripCrowdSourceDescription?.visibility = View.GONE
         val tripCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
         tripCrowdSourceSpinner?.visibility = View.GONE
         val tripCrowdSourceSwitch = this.mView?.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
@@ -172,13 +174,15 @@ class TripFragment : Fragment() {
         private fun showTripCrowdSourceSection(view: View) {
             val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdSourceDivider)
             val tripCrowdSourceIcon = view.findViewById<ImageView>(R.id.tripCrowdSourceImageView)
-            val tripCrowdSourceTitle = view.findViewById<View>(R.id.tripCrowdSourceTitle)
+            val tripCrowdSourceTitle = view.findViewById<TextView>(R.id.tripCrowdSourceTitle)
+            val tripCrowdSourceDescription = view.findViewById<TextView>(R.id.tripCrowdSourceDescription)
             val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
             val tripCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
             val tripCrowdSourceConfirmButton = view.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
             tripCrowdSourceDivider?.visibility = View.VISIBLE
             tripCrowdSourceIcon?.visibility = View.VISIBLE
             tripCrowdSourceTitle?.visibility = View.VISIBLE
+            tripCrowdSourceDescription?.visibility = View.VISIBLE
             tripCrowdSourceSpinner?.visibility = View.VISIBLE
             tripCrowdSourceSwitch?.visibility = View.VISIBLE
             tripCrowdSourceConfirmButton?.visibility = View.VISIBLE
@@ -196,13 +200,15 @@ class TripFragment : Fragment() {
         private fun hideTripCrowdSourceSection(view: View) {
             val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdSourceDivider)
             val tripCrowdSourceIcon = view.findViewById<ImageView>(R.id.tripCrowdSourceImageView)
-            val tripCrowdSourceTitle = view.findViewById<View>(R.id.tripCrowdSourceTitle)
+            val tripCrowdSourceTitle = view.findViewById<TextView>(R.id.tripCrowdSourceTitle)
+            val tripCrowdSourceDescription = view.findViewById<TextView>(R.id.tripCrowdSourceDescription)
             val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
             val tripCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
             val tripCrowdSourceConfirmButton = view.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
             tripCrowdSourceDivider?.visibility = View.GONE
             tripCrowdSourceIcon?.visibility = View.GONE
             tripCrowdSourceTitle?.visibility = View.GONE
+            tripCrowdSourceDescription?.visibility = View.GONE
             tripCrowdSourceSpinner?.visibility = View.GONE
             tripCrowdSourceSwitch?.visibility = View.GONE
             tripCrowdSourceConfirmButton?.visibility = View.GONE

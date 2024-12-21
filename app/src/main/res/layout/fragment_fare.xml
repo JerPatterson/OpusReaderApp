@@ -210,6 +210,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceDivider"
                 tools:text="Suggest an edit" />
 
+            <TextView
+                android:id="@+id/fareCrowdSourceDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/edit_section_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceTitle"
+                tools:text="@string/edit_section_description" />
+
             <Spinner
                 android:id="@+id/fareCrowdSourceSpinner"
                 android:layout_width="match_parent"
@@ -219,7 +232,7 @@
                 android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/fareCrowdSourceDescription" />
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/fareCrowdSourceSwitch"

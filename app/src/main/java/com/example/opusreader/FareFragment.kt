@@ -164,8 +164,10 @@ class FareFragment : Fragment() {
         fareCrowdSourceDivider?.visibility = View.GONE
         val fareCrowdSourceIcon = this.mView?.findViewById<View>(R.id.fareCrowdSourceImageView)
         fareCrowdSourceIcon?.visibility = View.GONE
-        val fareCrowdSourceTitle = this.mView?.findViewById<View>(R.id.fareCrowdSourceTitle)
+        val fareCrowdSourceTitle = this.mView?.findViewById<TextView>(R.id.fareCrowdSourceTitle)
         fareCrowdSourceTitle?.visibility = View.GONE
+        val fareCrowdSourceDescription = this.mView?.findViewById<TextView>(R.id.fareCrowdSourceDescription)
+        fareCrowdSourceDescription?.visibility = View.GONE
         val fareCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
         fareCrowdSourceSpinner?.visibility = View.GONE
         val fareCrowdSourceSwitch = this.mView?.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
@@ -250,13 +252,15 @@ class FareFragment : Fragment() {
         private fun showFareCrowdSourceSection(view: View) {
             val fareCrowdSourceDivider = view.findViewById<View>(R.id.fareCrowdSourceDivider)
             val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
-            val fareCrowdSourceTitle = view.findViewById<View>(R.id.fareCrowdSourceTitle)
+            val fareCrowdSourceTitle = view.findViewById<TextView>(R.id.fareCrowdSourceTitle)
+            val fareCrowdSourceDescription = view.findViewById<TextView>(R.id.fareCrowdSourceDescription)
             val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
             val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
             val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
             fareCrowdSourceDivider?.visibility = View.VISIBLE
             fareCrowdSourceIcon?.visibility = View.VISIBLE
             fareCrowdSourceTitle?.visibility = View.VISIBLE
+            fareCrowdSourceDescription?.visibility = View.VISIBLE
             fareCrowdSourceSpinner?.visibility = View.VISIBLE
             fareCrowdSourceSwitch?.visibility = View.VISIBLE
             fareCrowdSourceConfirmButton?.visibility = View.VISIBLE
@@ -274,13 +278,15 @@ class FareFragment : Fragment() {
         private fun hideFareCrowdSourceSection(view: View) {
             val fareCrowdSourceDivider = view.findViewById<View>(R.id.fareCrowdSourceDivider)
             val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
-            val fareCrowdSourceTitle = view.findViewById<View>(R.id.fareCrowdSourceTitle)
+            val fareCrowdSourceTitle = view.findViewById<TextView>(R.id.fareCrowdSourceTitle)
+            val fareCrowdSourceDescription = view.findViewById<TextView>(R.id.fareCrowdSourceDescription)
             val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
             val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
             val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
             fareCrowdSourceDivider?.visibility = View.GONE
             fareCrowdSourceIcon?.visibility = View.GONE
             fareCrowdSourceTitle?.visibility = View.GONE
+            fareCrowdSourceDescription?.visibility = View.GONE
             fareCrowdSourceSpinner?.visibility = View.GONE
             fareCrowdSourceSwitch?.visibility = View.GONE
             fareCrowdSourceConfirmButton?.visibility = View.GONE

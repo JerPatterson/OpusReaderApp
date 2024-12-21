@@ -27,6 +27,9 @@
     <string name="delete_confirmation_message">Voulez-vous vraiment supprimer cet élément définitivement ?</string>
 
     <string name="edit_section_title">Suggérer une modification</string>
+    <string name="edit_section_description">
+        Contribuer à améliorer l\'application en corrigeant les données erronées ou en ajoutant les données manquantes.
+    </string>
     <string name="fare_missing_option_name">Titre absent des propositions</string>
     <string name="line_missing_option_name">Ligne absente des propositions</string>
     <string name="fares_proposition_all_toggle">Tous les titres</string>

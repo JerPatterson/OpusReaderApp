@@ -26,6 +26,9 @@
     <string name="delete_confirmation_message">Do you really want to delete this item permanently?</string>
 
     <string name="edit_section_title">Suggest an edit</string>
+    <string name="edit_section_description">
+        Contribute to improve the application by fixing wrong data or by providing missing data.
+    </string>
     <string name="fare_missing_option_name">Fare missing from proposals</string>
     <string name="line_missing_option_name">Route missing from proposals</string>
     <string name="fares_proposition_all_toggle">All fares</string>
