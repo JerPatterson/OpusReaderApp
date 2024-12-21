@@ -78,7 +78,7 @@ class FareFragment : Fragment() {
     }
 
     private fun addFareInfoSection(fare: Fare) {
-        val fareProduct = CardContentConverter.getFareProductById(fare.typeId)
+        val fareProduct = CardContentConverter.getFareProductById(requireContext(), fare.operatorId, fare.typeId)
         this.addFareInfoSectionTitles(fare, fareProduct)
         this.addFareInfoSectionValues(fare, fareProduct)
     }

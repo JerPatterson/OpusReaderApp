@@ -9,7 +9,7 @@ import kotlinx.coroutines.runBlocking
 
 class CardContentConverter {
     companion object {
-        fun getFareProductById(id: UInt): FareProduct {
+        fun getFareProductById(context: Context, operatorId: UInt, id: UInt): FareProduct {
             return when (id) {
                 FareProductId.OPUS_8TICKETS_STL.id -> FareProduct("8 passages, STL", R.string.old_fare_info)
                 FareProductId.OPUS_8TICKETS_STL_RED.id -> FareProduct("8 passages, STL", R.string.old_fare_info)
@@ -70,7 +70,15 @@ class CardContentConverter {
                 FareProductId.OCC_10TICKETS_ALL_MODES_ABC_SPECIAL_ILE_AUX_TOURTES.id -> FareProduct("10 passages, Tous modes ABC", R.string.all_modes_ABC_ten_tickets_info_iat)
 
 
-                else -> FareProduct("Unknown (fareId: ${id})", R.string.unknown_fare_info)
+                else -> {
+                    val proposition: FareProduct? = lookForFareProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString()
+                    )
+
+                    return proposition ?: FareProduct("Unknown (fareId: ${id})", R.string.unknown_fare_info)
+                }
             }
         }
 
@@ -979,6 +987,33 @@ class CardContentConverter {
                         proposition!!.color,
                         proposition!!.textColor,
                         icon
+                    )
+                }
+            } catch (_: Error) {}
+
+            return null
+        }
+
+        private fun lookForFareProposition(
+            context: Context,
+            operatorId: String,
+            id: String
+        ): FareProduct? {
+            var proposition: CardPropositionEntity? = null
+            try {
+                val job = CoroutineScope(Dispatchers.IO).launch {
+                    val localDb = CardDatabase.getInstance(context)
+                    proposition = localDb.daoProposition.getStoredPropositionById(operatorId, id, "fare")
+                }
+
+                runBlocking {
+                    job.join()
+                }
+
+                if (proposition != null) {
+                    return FareProduct(
+                        proposition!!.name,
+                        R.string.unknown_fare_info
                     )
                 }
             } catch (_: Error) {}
