@@ -150,13 +150,13 @@ class CardActivity : AppCompatActivity() {
 
     private fun addTripInfoSectionValues(id: ULong, trips: List<Trip>): Boolean {
         var fragmentTransaction = supportFragmentManager.beginTransaction()
-        var fragment =supportFragmentManager.findFragmentById(R.id.firstTripFragment)
+        var fragment = supportFragmentManager.findFragmentById(R.id.firstTripFragment)
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
         fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragment =supportFragmentManager.findFragmentById(R.id.secondTripFragment)
+        fragment = supportFragmentManager.findFragmentById(R.id.secondTripFragment)
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
         fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragment =supportFragmentManager.findFragmentById(R.id.thirdTripFragment)
+        fragment = supportFragmentManager.findFragmentById(R.id.thirdTripFragment)
         if (fragment != null) fragmentTransaction.hide(fragment).commit()
 
         var hasTrip = false

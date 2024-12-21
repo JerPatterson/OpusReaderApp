@@ -11,7 +11,12 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -141,11 +146,13 @@ class ValidityFragment: Fragment() {
             if (i == 0 && trips.size == 1 || i == 1) {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue
+                listenForLineProposition(trip, validityHigherLabelLine, validityHigherLineIdTv)
                 addCardScanEvent(line, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
                 moveCardScanEvent(dpWidthSeekBar * useProgress, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
             } else {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue
+                listenForLineProposition(trip, validityMiddleLabelLine, validityMiddleLineIdTv)
                 addCardScanEvent(line, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
                 moveCardScanEvent(dpWidthSeekBar * useProgress, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
             }
@@ -217,16 +224,19 @@ class ValidityFragment: Fragment() {
             if ((i == 0 && trips.size == 1) || (i == 1 && trips.size == 2) || i == 2) {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue
+                listenForLineProposition(trip, validityHigherLabelLine, validityHigherLineIdTv)
                 addCardScanEvent(line, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
                 moveCardScanEvent(dpWidthSeekBar * useProgress, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
             } else if ((i == 0 && trips.size == 2) || i == 1) {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue
+                listenForLineProposition(trip, validityMiddleLabelLine, validityMiddleLineIdTv)
                 addCardScanEvent(line, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
                 moveCardScanEvent(dpWidthSeekBar * useProgress, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
             } else if (i == 0) {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue
+                listenForLineProposition(trip, validityLowerLabelLine, validityLowerLineIdTv)
                 addCardScanEvent(line, validityLowerLabelLine, validityLowerLineIdTv, validityLowerModeImage)
                 moveCardScanEvent(dpWidthSeekBar * useProgress, validityLowerLabelLine, validityLowerLineIdTv, validityLowerModeImage)
             }
@@ -241,6 +251,32 @@ class ValidityFragment: Fragment() {
         validityLineIdTv?.setTextColor(Color.parseColor(line.textColor))
         validityLineIdTv?.setBackgroundColor(Color.parseColor(line.color))
         validityModeImage?.setImageResource(line.icon)
+    }
+
+    private fun listenForLineProposition(trip: Trip, validityLabelLine: View?, validityLineIdTv: TextView?) {
+        var liveProposition: LiveData<CardPropositionEntity?>? = null
+        val db = CardDatabase.getInstance(requireContext())
+        val job = CoroutineScope(Dispatchers.IO).launch {
+            liveProposition = db.daoProposition.getLiveStoredPropositionById(
+                trip.operatorId.toString(),
+                trip.lineId.toString(),
+                "line"
+            )
+        }
+
+        runBlocking {
+            job.join()
+        }
+
+        liveProposition?.observe(viewLifecycleOwner) { proposition ->
+            if (proposition != null) {
+                validityLabelLine?.visibility = View.VISIBLE
+                validityLineIdTv?.visibility = View.VISIBLE
+                validityLineIdTv?.text = proposition.id
+                validityLineIdTv?.setTextColor(Color.parseColor(proposition.textColor))
+                validityLineIdTv?.setBackgroundColor(Color.parseColor(proposition.color))
+            }
+        }
     }
 
     private fun hideCardScanEvent(validityLabelLine: View?, validityLineIdTv: TextView?, validityModeImage: ImageView?) {
