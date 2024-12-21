@@ -22,6 +22,9 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -87,7 +90,7 @@ class TripFragment : Fragment() {
     }
 
     private fun addTripInfoSectionValues(trip: Trip) {
-        val line = CardContentConverter.getLineById(trip.operatorId, trip.lineId)
+        val line = CardContentConverter.getLineById(requireContext(), trip.operatorId, trip.lineId)
         val operator = CardContentConverter.getOperatorById(trip.operatorId)
         addTripLine(line)
         addTripDates(trip)
@@ -358,6 +361,21 @@ class TripFragment : Fragment() {
                         "textColor" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).textColor,
                     )
                     document.set(data)
+
+                    val localDb = CardDatabase.getInstance(view.context)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        localDb.daoProposition.insertStoredProposition(
+                            CardPropositionEntity(
+                                trip.operatorId.toString(),
+                                trip.lineId.toString(),
+                                "line",
+                                selectedLineId,
+                                selectedLineName,
+                                (tripCrowdSourceSpinner.selectedItem as LineFirestore).color ?: "#000000",
+                                (tripCrowdSourceSpinner.selectedItem as LineFirestore).textColor ?: "#ffffff",
+                            )
+                        )
+                    }
 
                     val builder = AlertDialog.Builder(view.context)
                     builder.setTitle(R.string.proposition_alert_title)

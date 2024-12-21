@@ -98,6 +98,7 @@ class HistoryActivity : AppCompatActivity() {
                 .setPositiveButton(R.string.yes) { _, _ ->
                     CoroutineScope(Dispatchers.IO).launch {
                         db.dao.deleteStoredCards()
+                        db.daoProposition.deleteStoredPropositions()
                     }
                     activity.finish()
                 }

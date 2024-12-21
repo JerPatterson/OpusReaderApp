@@ -22,6 +22,9 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -419,6 +422,21 @@ class FareFragment : Fragment() {
                             .nbOfVariations?.toInt() ?: 0).coerceAtLeast(idOnCard.size),
                     )
                     document.set(data)
+
+                    val localDb = CardDatabase.getInstance(view.context)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        localDb.daoProposition.insertStoredProposition(
+                            CardPropositionEntity(
+                                fare.operatorId.toString(),
+                                fare.typeId.toString(),
+                                "fare",
+                                "",
+                                selectedFareName,
+                                "",
+                                "",
+                            )
+                        )
+                    }
 
                     val builder = AlertDialog.Builder(view.context)
                     builder.setTitle(R.string.proposition_alert_title)

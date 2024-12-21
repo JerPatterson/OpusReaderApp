@@ -1,5 +1,11 @@
 package com.example.opusreader
 
+import android.content.Context
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 
 class CardContentConverter {
     companion object {
@@ -86,24 +92,33 @@ class CardContentConverter {
             }
         }
 
-        fun getLineById(operatorId: UInt, lineId: UInt): Line {
+        fun getLineById(context: Context, operatorId: UInt, lineId: UInt): Line {
             return when (operatorId) {
-                8u -> this.getSTMLineById(lineId)
-                12u -> this.getRTLLineById(lineId)
-                16u -> this.getEXOLineById(lineId)
-                20u -> this.getRTCLineById(lineId)
-                24u -> this.getSTLLineById(lineId)
-                60u -> this.getEXOLaurentidesLineById(lineId)
-                64u -> this.getSTLevisLineById(lineId)
-                72u -> this.getEXOTerrebonneMascoucheLineById(lineId)
-                80u -> this.getMRCJolietteLineById(lineId)
-                88u -> this.getREMLineById(lineId)
+                8u -> this.getSTMLineById(context, operatorId, lineId)
+                12u -> this.getRTLLineById(context, operatorId, lineId)
+                16u -> this.getEXOLineById(context, operatorId, lineId)
+                20u -> this.getRTCLineById(context, operatorId, lineId)
+                24u -> this.getSTLLineById(context, operatorId, lineId)
+                60u -> this.getEXOLaurentidesLineById(context, operatorId, lineId)
+                64u -> this.getSTLevisLineById(context, operatorId, lineId)
+                72u -> this.getEXOTerrebonneMascoucheLineById(context, operatorId, lineId)
+                80u -> this.getMRCJolietteLineById(context, operatorId, lineId)
+                88u -> this.getREMLineById(context, operatorId, lineId)
 
-                else -> Line("?", "Unknown (operatorId: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        lineId.toString(),
+                        R.drawable.bus
+                    )
+
+                    return proposition ?: Line("?", "Unknown (operatorId: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
+                }
             }
         }
 
-        private fun getSTMLineById(id: UInt): Line {
+        private fun getSTMLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
@@ -345,11 +360,20 @@ class CardContentConverter {
                 734u -> Line("872", "Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus)
                 735u -> Line("874", "Robert-Bourassa", "#009ee0", "#ffffff", R.drawable.bus)
 
-                else -> Line("?", "STM ($id)", "#009ee0", "#ffffff", R.drawable.bus)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.bus
+                    )
+
+                    return proposition ?: Line("?", "STM ($id)", "#009ee0", "#ffffff", R.drawable.bus)
+                }
             }
         }
 
-        private fun getRTLLineById(id: UInt): Line {
+        private fun getRTLLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
@@ -514,11 +538,20 @@ class CardContentConverter {
                 664u -> Line("T48", "Brossard M.-Victorin / St-Laurent", "#9e2536", "#ffffff", R.drawable.bus)
                 665u -> Line("T89", "Parc ind. Boucherville / Eiffel", "#9e2536", "#ffffff", R.drawable.bus)
 
-                else -> Line("?", "RTL ($id)", "#9e2536", "#ffffff", R.drawable.bus)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.bus
+                    )
+
+                    return proposition ?: Line("?", "RTL ($id)", "#9e2536", "#ffffff", R.drawable.bus)
+                }
             }
         }
 
-        private fun getEXOLineById(id: UInt): Line {
+        private fun getEXOLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
@@ -530,11 +563,20 @@ class CardContentConverter {
 
                 512u -> Line("14", "Candiac", "#5ab6b2", "#000000", R.drawable.train)
 
-                else -> Line("?", "exo ($id)", "#000000", "#000000", R.drawable.train)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.train
+                    )
+
+                    return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.train)
+                }
             }
         }
 
-        private fun getEXOLaurentidesLineById(id: UInt): Line {
+        private fun getEXOLaurentidesLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
@@ -544,22 +586,40 @@ class CardContentConverter {
                 26u -> Line("51", "Boisbriand Nord vers Boisbriand Sud", "#000000", "#ffffff", R.drawable.bus)
                 32u -> Line("88", "Saint-Eustache / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus)
 
-                else -> Line("?", "exo Laurentides ($id)", "#000000", "#ffffff", R.drawable.bus)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.bus
+                    )
+
+                    return proposition ?: Line("?", "exo Laurentides ($id)", "#000000", "#ffffff", R.drawable.bus)
+                }
             }
         }
 
-        private fun getEXOTerrebonneMascoucheLineById(id: UInt): Line {
+        private fun getEXOTerrebonneMascoucheLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
                 14u -> Line("19", "Terrebonne / Terminus Montmorency", "#000000", "#ffffff", R.drawable.bus)
 
-                else -> Line("?", "exo Terrebonne-Mascouche ($id)", "#000000", "#ffffff", R.drawable.bus)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.bus
+                    )
+
+                    return proposition ?: Line("?", "exo Terrebonne-Mascouche ($id)", "#000000", "#ffffff", R.drawable.bus)
+                }
             }
         }
 
-        private fun getRTCLineById(id: UInt): Line {
+        private fun getRTCLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
@@ -615,11 +675,20 @@ class CardContentConverter {
                 561u -> Line("290", "Vieux-Québec - Loretteville", "#003878", "#ffffff", R.drawable.bus)
                 562u -> Line("292", "Place Jacques-Cartier - Saint-Augustin", "#003878", "#ffffff", R.drawable.bus)
 
-                else -> Line("?", "RTC ($id)", "#003878", "#ffffff", R.drawable.bus)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.bus
+                    )
+
+                    return proposition ?: Line("?", "RTC ($id)", "#003878", "#ffffff", R.drawable.bus)
+                }
             }
         }
 
-        private fun getSTLLineById(id: UInt): Line {
+        private fun getSTLLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
@@ -751,11 +820,20 @@ class CardContentConverter {
                 526u -> Line("T28", "Stationnement Gare Ste-Dorothée", "#151f6d", "#ffffff", R.drawable.bus)
                 527u -> Line("T29", "Rue Étienne-Lavoie / Boul Notre-Dame", "#151f6d", "#ffffff", R.drawable.bus)
 
-                else -> Line("?", "STL ($id)", "#151f6d", "#ffffff", R.drawable.bus)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.bus
+                    )
+
+                    return proposition ?: Line("?", "STL ($id)", "#151f6d", "#ffffff", R.drawable.bus)
+                }
             }
         }
 
-        private fun getSTLevisLineById(id: UInt): Line {
+        private fun getSTLevisLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
@@ -822,11 +900,20 @@ class CardContentConverter {
                 572u -> Line("L2", "Lévisien 2", "#1e4289", "#ffffff", R.drawable.bus)
                 573u -> Line("L3", "Lévisien 3", "#1e4289", "#ffffff", R.drawable.bus)
 
-                else -> Line("?", "STLévis ($id)", "#0091b3", "#ffffff", R.drawable.bus)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.bus
+                    )
+
+                    return proposition ?: Line("?", "STLévis ($id)", "#0091b3", "#ffffff", R.drawable.bus)
+                }
             }
         }
 
-        private fun getMRCJolietteLineById(id: UInt): Line {
+        private fun getMRCJolietteLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
@@ -835,18 +922,68 @@ class CardContentConverter {
             return when (id) {
                 1u -> Line("125", "Saint-Donat / Chertsey / Montréal", "#81a449", "#ffffff", R.drawable.bus)
 
-                else -> Line("?", "MRC Joliette ($id)", "#81a449", "#ffffff", R.drawable.bus)
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.bus
+                    )
+
+                    return proposition ?: Line("?", "MRC Joliette ($id)", "#81a449", "#ffffff", R.drawable.bus)
+                }
             }
         }
 
-        private fun getREMLineById(id: UInt): Line {
+        private fun getREMLineById(context: Context, operatorId: UInt, id: UInt): Line {
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
                 2u -> Line("A", "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro)
-                else -> Line("?", "REM ($id)", "#82bf00", "#000000", R.drawable.lightmetro)
+
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        id.toString(),
+                        R.drawable.lightmetro
+                    )
+
+                    return proposition ?: Line("?", "REM ($id)", "#82bf00", "#000000", R.drawable.lightmetro)
+                }
             }
+        }
+
+        private fun lookForLineProposition(
+            context: Context,
+            operatorId: String,
+            id: String,
+            icon: Int = R.drawable.unknown
+        ): Line? {
+            var proposition: CardPropositionEntity? = null
+            try {
+                val job = CoroutineScope(Dispatchers.IO).launch {
+                    val localDb = CardDatabase.getInstance(context)
+                    proposition = localDb.daoProposition.getStoredPropositionById(operatorId, id, "line")
+                }
+
+                runBlocking {
+                    job.join()
+                }
+
+                if (proposition != null) {
+                    return Line(
+                        proposition!!.id,
+                        proposition!!.name,
+                        proposition!!.color,
+                        proposition!!.textColor,
+                        icon
+                    )
+                }
+            } catch (_: Error) {}
+
+            return null
         }
     }
 }
