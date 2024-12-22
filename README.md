@@ -40,9 +40,9 @@
     <td>Occasional Card view in light mode</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/4482b09c-7d95-43c3-b001-c81e22d6d989" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/cd0c4a77-b75f-4006-b93c-391ed2b56f77" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/e52fffcf-1359-45c6-a9ac-5302303034da" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/a2b3fdca-e069-4fa7-af07-dacdd7409fb1" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/70193a0f-b242-434c-b75b-d096c51b946f" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/d3820bfc-a5fd-471f-92d2-4288f9307e40" width=270></td>
   </tr>
 </table>
 <br>
@@ -53,12 +53,12 @@
     <td>Occasional Card view in dark mode</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/4434d0aa-87db-40f7-b32c-3772301d8cf1" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/a84b6844-99b3-4f2e-bed0-dfe8d6c8d0f1" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/a5fbc974-a7f6-4bc8-9288-b903f3e0dc35" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/c0880f10-8d97-400f-91fa-ba854bd52860" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/df3645c5-c95b-4cab-9f31-c4ed7abd4b78" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/b8800629-2707-470b-b8e0-30fc35489fa6" width=270></td>
   </tr>
 </table>
-<br>
+<h4>History feature</h4>
 <span>
   An history of all the scans that have been made is also available to users. The history is sorted by the latest scan date of a specific card and by clicking on it all scans are listed. 
   All the data is stored on device using the <a href="https://developer.android.com/training/data-storage/room" target="_blank">RoomDatabase</a> provided by Android.
@@ -72,9 +72,29 @@
     <td>History view in dark mode</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/5c265e55-fef5-47a8-a949-00b8fad2ba1c" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/ad1a19a3-d8e4-489b-ae38-942fbb69c4b5" width=270></td>
     <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/6d771217-d257-46e1-b337-1177628c8637" width=270></td>
     <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/ea027d94-e513-47b1-b18e-37225c29ccb8" width=270></td>
+  </tr>
+</table>
+<h4>CrowdSource feature</h4>
+<span>
+  In order to speed up the discovery of missing lines and fares, the possibility for users to make suggestions was added.
+  A section with a dropdown menu of possible options appear after clicking on each fare or trip for a given scanned card (in case it's missing, it can also be specified manually).
+  After confirmation, all the data is then sent to a <a href="https://firebase.google.com/docs/firestore" target="_blank">Firestore</a> database provided by Firebase
+</span>
+<br>
+<br>
+<table>
+  <tr>
+    <td>Suggestion of a missing line</td>
+    <td>Suggestion of change to a fare</td>
+    <td>Selection from missing lines menu</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/c6ced704-0de8-4829-ab24-3974ed7acdf6" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/aaa1f4c8-12ff-4359-a22a-975168600472" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/10766780-2bbd-4733-add8-b4420ecfe49f" width=270></td>
   </tr>
 </table>
 <h2>How to use</h2>
