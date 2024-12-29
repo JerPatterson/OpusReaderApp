@@ -345,6 +345,7 @@ class CardContentConverter {
                 218u -> Line("427", "Express Saint-Joseph", "#009ee0", "#ffffff", R.drawable.bus)
                 167u -> Line("430", "Express Pointe-aux-Trembles", "#009ee0", "#ffffff", R.drawable.bus)
                 243u -> Line("432", "Express Lacordaire", "#009ee0", "#ffffff", R.drawable.bus)
+                244u -> Line("435", "Express Du Parc / Côte-des-Neiges", "#009ee0", "#ffffff", R.drawable.bus)
                 245u -> Line("439", "Express Pie-IX", "#781b7d", "#ffffff", R.drawable.bus)
                 246u -> Line("440", "Express Charleroi", "#009ee0", "#ffffff", R.drawable.bus)
                 247u -> Line("444", "Express Cégep Marie-Victorin", "#009ee0", "#ffffff", R.drawable.bus)
@@ -370,9 +371,9 @@ class CardContentConverter {
                 172u -> Line("506", "Voie réservée Newman", "#009ee0", "#ffffff", R.drawable.bus)
                 173u -> Line("535", "Voie réservée Du Parc / Côte-des-Neiges", "#009ee0", "#ffffff", R.drawable.bus)
                 257u -> Line("715", "Vieux-Montréal / Vieux-Port", "#009ee0", "#ffffff", R.drawable.bus)
+                219u -> Line("747", "YUL Aéroport / Centre-Ville", "#009ee0", "#ffffff", R.drawable.bus)
                 258u -> Line("767", "La Ronde / Station Jean-Drapeau", "#009ee0", "#ffffff", R.drawable.bus)
                 259u -> Line("769", "La Ronde / Station Papineau", "#009ee0", "#ffffff", R.drawable.bus)
-                219u -> Line("747", "YUL Aéroport / Centre-Ville", "#009ee0", "#ffffff", R.drawable.bus)
                 260u -> Line("777", "Jean-Drapeau / Casino / Bonaventure", "#009ee0", "#ffffff", R.drawable.bus)
                 336u -> Line("872", "Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus)
                 281u -> Line("968", "Trainbus Roxboro / Côte-Vertu", "#009ee0", "#ffffff", R.drawable.bus)
@@ -380,9 +381,7 @@ class CardContentConverter {
                 512u -> Line("19", "Chabanel / Marché Central", "#009ee0", "#ffffff", R.drawable.bus)
                 513u -> Line("21", "Place du Commerce", "#009ee0", "#ffffff", R.drawable.bus)
                 514u -> Line("81", "Saint-Jean-Baptiste", "#009ee0", "#ffffff", R.drawable.bus)
-
                 702u -> Line("428", "Express Parcs industriels de l'Est", "#009ee0", "#ffffff", R.drawable.bus)
-
                 725u -> Line("711", "Parc-du-Mont-Royal / Oratoire", "#009ee0", "#ffffff", R.drawable.bus)
                 729u -> Line("768", "Plage Jean-Doré / Station Jean-Drapeau", "#009ee0", "#ffffff", R.drawable.bus)
                 732u -> Line("811", "Navette Services santé", "#009ee0", "#ffffff", R.drawable.bus)
