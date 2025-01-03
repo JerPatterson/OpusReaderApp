@@ -4,11 +4,11 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.devtools.ksp'
 
 android {
-    namespace 'com.example.opusreader'
+    namespace 'com.transition.ora'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.example.opusreader"
+        applicationId "com.transition.ora"
         minSdk 24
         targetSdk 35
         versionCode 1

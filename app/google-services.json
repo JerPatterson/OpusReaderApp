@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "38176113651",
+    "firebase_url": "https://opusreaderapp-default-rtdb.firebaseio.com",
     "project_id": "opusreaderapp",
     "storage_bucket": "opusreaderapp.firebasestorage.app"
   },
@@ -10,6 +11,25 @@
         "mobilesdk_app_id": "1:38176113651:android:c9356b2326b25c3c150886",
         "android_client_info": {
           "package_name": "com.example.opusreader"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3jgYmh4gw2D3tZC3Ml2Ya0Xg602-djao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38176113651:android:e76bfa3b8bcbe535150886",
+        "android_client_info": {
+          "package_name": "com.transition.ora"
         }
       },
       "oauth_client": [],
