@@ -77,7 +77,7 @@ class CardContentConverter {
                         id.toString()
                     )
 
-                    return proposition ?: FareProduct("Unknown (fareId: ${id})", R.string.unknown_fare_info)
+                    return proposition ?: FareProduct("Unknown (fareID: ${id})", R.string.unknown_fare_info)
                 }
             }
         }
@@ -121,7 +121,7 @@ class CardContentConverter {
                         R.drawable.bus
                     )
 
-                    return proposition ?: Line("?", "Unknown (operatorId: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
+                    return proposition ?: Line("?", "Unknown (operatorID: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
                 }
             }
         }
@@ -355,9 +355,9 @@ class CardContentConverter {
                 168u -> Line("460", "Express Métropolitaine", "#009ee0", "#ffffff", R.drawable.bus)
                 283u -> Line("465", "Express Côte-des-Neiges", "#009ee0", "#ffffff", R.drawable.bus)
                 211u -> Line("467", "Express Saint-Michel", "#009ee0", "#ffffff", R.drawable.bus)
-                169u -> Line("470", "Express Pierrefonds", "#781b7d", "#ffffff", R.drawable.bus)
                 250u -> Line("468", "Express Pierrefonds / Gouin", "#009ee0", "#ffffff", R.drawable.bus)
                 251u -> Line("469", "Express Henri-Bourassa", "#009ee0", "#ffffff", R.drawable.bus)
+                169u -> Line("470", "Express Pierrefonds", "#781b7d", "#ffffff", R.drawable.bus)
                 263u -> Line("475", "Express Dollard-des-Ormeaux", "#009ee0", "#ffffff", R.drawable.bus)
                 170u -> Line("480", "Pointe-Nord / Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus)
                 284u -> Line("480", "Express du Parc", "#009ee0", "#ffffff", R.drawable.bus)
