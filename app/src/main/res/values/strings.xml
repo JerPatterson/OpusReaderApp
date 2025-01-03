@@ -72,8 +72,8 @@
     <string name="calendar_country">Canada</string>
     <string name="calendar_pattern">MMMM dd, yyyy</string>
     <string name="calendar_without_year_pattern">MMMM dd</string>
-    <string name="calendar_with_time_pattern">MMMM dd, yyyy at HH:mm</string>
-    <string name="calendar_with_time_pattern_without_year_pattern">MMMM dd at HH:mm</string>
+    <string name="calendar_with_time_pattern">MMMM dd, yyyy \'at\' HH:mm</string>
+    <string name="calendar_with_time_pattern_without_year_pattern">MMMM dd \'at\' HH:mm</string>
     <string name="calendar_interval_linking_word">to</string>
 
     <string name="opus_card_name">OPUS CARD</string>
