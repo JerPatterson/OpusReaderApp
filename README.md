@@ -118,6 +118,8 @@
   <br>
   <li><a href="https://www.nxp.com/docs/en/data-sheet/MF0ICU1.pdf">MiFare Ultralight</a> (Occasional Card)</li>
   <li><a href="https://calypsonet.org/" target="_blank">Calypso</a> [Calypso Prime Spec] (Opus Card)</li>
-  <li><a href="https://github.com/etiennedub/LecteurOPUS?tab=readme-ov-file" target="_blank">LecteurOPUS</a> (both Opus and Occasional Card)</li>
-  <li><a href="https://github.com/metrodroid/metrodroid/tree/bbd61960b260c314a2c891bd0d54ac96ae654c16" target="_blank">Metrodroid</a> (both Opus and Occasional Card)</li>
+  <li><a href="https://github.com/etiennedub/LecteurOPUS" target="_blank">LecteurOPUS</a> (both Opus and Occasional Card)</li>
+  <li><a href="https://github.com/metrodroid/metrodroid" target="_blank">Metrodroid</a> (both Opus and Occasional Card)</li>
 </ul>
+<h2>Availability</h2>
+<a href="https://www.amazon.com/dp/B0DS6N3HWC"><img alt="Amazon Appstore" src="https://github.com/user-attachments/assets/eec33db9-84ed-467d-8341-e32d331d263e" width=150></a>
