@@ -122,4 +122,4 @@
   <li><a href="https://github.com/metrodroid/metrodroid" target="_blank">Metrodroid</a> (both Opus and Occasional Card)</li>
 </ul>
 <h2>Availability</h2>
-<a href="https://www.amazon.com/dp/B0DS6N3HWC"><img alt="Amazon Appstore" src="https://github.com/user-attachments/assets/eec33db9-84ed-467d-8341-e32d331d263e" width=150></a>
+<a href="https://www.amazon.com/dp/B0DS6N3HWC" target="_blank"><img alt="Amazon Appstore" src="https://github.com/user-attachments/assets/eec33db9-84ed-467d-8341-e32d331d263e" width=150></a>
