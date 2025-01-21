@@ -105,10 +105,10 @@
 </span>
 <h2>Upcoming improvements</h2>
 <ul>
+  <li><strike>Adding an history of the card scans</strike> <em>Added!</em></li>
   <li><strike>Adding the possibility for user to crowdsource unknown fares, lines and operators</strike> <em>Added!</em></li>
   <li><strike>Improving information for transfers so users can maximize their usage of one particular fare</strike> <em>Added!</em></li>
   <li>Adding notifications to alert the user when the validity of the fare ends and few minutes prior</li>
-  <li><strike>Adding an history of the card scans</strike> <em>Added!</em></li>
 </ul>
 <h2>Documentation</h2>
 <span>
