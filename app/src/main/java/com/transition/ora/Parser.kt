@@ -92,9 +92,9 @@ class Parser {
     }
 
     private fun getOccasionalCardFareTypeId(data: Array<ByteArray>): UInt {
-        return (data[1][4].toUInt().and(0xFFu).shl(16)
-                or data[1][5].toUInt().and(0xFFu).shl(8)
-                or data[1][6].toUInt().and(0xFFu))
+        return (data[1][4].toUInt().and(0x03u).shl(10)
+                or data[1][5].toUInt().and(0xFFu).shl(2)
+                or data[1][6].toUInt().and(0xC0u).shr(6))
     }
 
     private fun getOccasionalCardFareOperatorId(data: Array<ByteArray>): UInt {
@@ -344,9 +344,8 @@ class Parser {
     }
 
     private fun getOpusCardFareTypeId(data: ByteArray): UInt {
-        return (data[2].toUInt().and(0x7Fu).shl(9)
-            or data[3].toUInt().and(0xFFu).shl(1)
-            or data[4].toUInt().and(0x80u).shr(7))
+        return (data[2].toUInt().and(0x7Fu).shl(7)
+            or data[3].toUInt().and(0xFEu).shr(1))
     }
 
     private fun getOpusCardFareOperatorId(data: ByteArray): UInt {

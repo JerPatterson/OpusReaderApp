@@ -143,6 +143,18 @@
         It is also accepted in the river shuttles running in these zones.
         \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
+    <string name="train_lula_monthly_info">
+        This fare is valid for the whole month.
+        It is accepted on the train and the metro because of construction at Lucien L\'Allier station.
+        It is not possible to buy it anymore as construction work is finished.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
+    </string>
+    <string name="all_modes_A_four_months_info">
+        This fare is valid for four consecutive months.
+        It is accepted on the metro, the bus, the train and the REM in the zone A.
+        It is also accepted in the river shuttles running in this zone.
+        \n\nThis fare is unlimited. There is no constraints for transfers.
+    </string>
     <string name="bus_one_ticket_info">
         This fare consists of a single ticket.
         This ticket is accepted on the buses running in zones A, B and C.
@@ -238,15 +250,6 @@
         The round trip is allowed by train if it stays inside the two hours.
         \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
-    <string name="all_modes_ABC_ten_tickets_info_iat">
-        This fare offers a discount of 25% on the standard price as an attenuation measure during l\'Île aux Tourtes bridge construction.
-        It consists of ten distinct tickets.
-        Each ticket is accepted on the metro, the bus, the train and the REM in the zones A, B and C.
-        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
-        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
-        The round trip is allowed by train if it stays inside the two hours.
-        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
-    </string>
     <string name="bus_ten_tickets_info">
         This fare consists of ten distinct tickets.
         Each ticket is accepted on the buses running in zones A, B and C.
@@ -285,6 +288,15 @@
     <string name="all_modes_ABCD_ten_tickets_info">
         This fare consists of ten distinct tickets.
         Each ticket is accepted on the metro, the bus, the train and the REM in the zones A, B, C and D.
+        \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
+        The gates or turnstiles from the metro or the REM can only be passed once per ticket.
+        The round trip is allowed by train if it stays inside the two hours.
+        \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
+    </string>
+    <string name="all_modes_ABC_ten_tickets_info_iat">
+        This fare offers a discount of 25% on the standard price as an attenuation measure during l\'Île aux Tourtes bridge construction.
+        It consists of ten distinct tickets.
+        Each ticket is accepted on the metro, the bus, the train and the REM in the zones A, B and C.
         \n\nOnce a ticket is used, the transfer is possible with different bus routes during 120 minutes.
         The gates or turnstiles from the metro or the REM can only be passed once per ticket.
         The round trip is allowed by train if it stays inside the two hours.

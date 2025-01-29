@@ -143,6 +143,18 @@
         Il est également accepté dans les navettes fluviales desservant ces zones.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
+    <string name="train_lula_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il est accepté dans le train et le métro à cause des travaux à la gare Lucien L\'Allier.
+        Il n\'est plus possible de l\'acheter comme les travaux sont terminés.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="all_modes_A_four_months_info">
+        Ce titre est valide pour quatre mois consécutifs.
+        Il est accepté dans le métro, le bus, le train et le REM dans la zone A.
+        Il est également accepté dans les navettes fluviales desservant cette zone.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
     <string name="bus_one_ticket_info">
         Ce titre contient un seul billet.
         Ce billet est accepté dans les bus circulant dans les zones A, B et C.
@@ -238,15 +250,6 @@
         L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
         \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
-    <string name="all_modes_ABC_ten_tickets_info_iat">
-        Ce titre offre un rabais sur le tarif régulier de 25% comme mesure d\'atténuation à la construction du pont de l\'Île aux Tourtes.
-        Il contient dix billets distincts.
-        Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
-        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
-        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
-        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
-        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
-    </string>
     <string name="bus_ten_tickets_info">
         Ce titre contient dix billets distincts.
         Chaque billet est accepté dans les bus circulant dans les zones A, B et C.
@@ -289,6 +292,15 @@
         Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
         L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
         \n\nCes billets ne sont pas acceptés sur la ligne \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
+    </string>
+    <string name="all_modes_ABC_ten_tickets_info_iat">
+        Ce titre offre un rabais sur le tarif régulier de 25% comme mesure d\'atténuation à la construction du pont de l\'Île aux Tourtes.
+        Il contient dix billets distincts.
+        Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du métro et du REM peuvent être franchis qu\'une seule fois par billet.
+        L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
+        \n\nCes billets ne sont pas acceptés dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="bus_24_hours_info">
         Ce titre est valide pour une durée de 24 heures (à partir de la première utilisation).
