@@ -53,7 +53,16 @@ class Fare(
             }
 
 
-            FareProductId.OPUS_EVENING_UNLIMITED.id,
+            FareProductId.OPUS_EVENING_UNLIMITED.id -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE),
+                    18,
+                    0
+                )
+                date
+            }
             FareProductId.OCC_EVENING_UNLIMITED.id -> {
                 if (validityFromDate.get(Calendar.HOUR_OF_DAY) >= 18) {
                     date.set(
@@ -76,7 +85,6 @@ class Fare(
                 date
             }
 
-            FareProductId.OPUS_WEEKEND_UNLIMITED.id,
             FareProductId.OCC_WEEKEND_UNLIMITED.id -> {
                 val daysToRemove = when (validityFromDate.get(Calendar.DAY_OF_WEEK)) {
                     Calendar.SATURDAY -> 1
@@ -228,7 +236,16 @@ class Fare(
             }
 
 
-            FareProductId.OPUS_EVENING_UNLIMITED.id,
+            FareProductId.OPUS_EVENING_UNLIMITED.id -> {
+                date.set(
+                    validityFromDate.get(Calendar.YEAR),
+                    validityFromDate.get(Calendar.MONTH),
+                    validityFromDate.get(Calendar.DATE) + 1,
+                    5,
+                    0
+                )
+                date
+            }
             FareProductId.OCC_EVENING_UNLIMITED.id -> {
                 if (validityFromDate.get(Calendar.HOUR_OF_DAY) >= 18) {
                     date.set(
@@ -251,7 +268,6 @@ class Fare(
                 date
             }
 
-            FareProductId.OPUS_WEEKEND_UNLIMITED.id,
             FareProductId.OCC_WEEKEND_UNLIMITED.id -> {
                 val daysToAdd = when (validityFromDate.get(Calendar.DAY_OF_WEEK)) {
                     Calendar.FRIDAY -> 3
