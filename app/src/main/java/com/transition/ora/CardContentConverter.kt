@@ -150,6 +150,7 @@ class CardContentConverter {
                 FareProductId.OPUS_6TICKETS_RTL_RED.id -> FareProduct("6 passages, RTL", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_RTL.id -> FareProduct("Mensuel, RTL", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_RTL_STU.id -> FareProduct("Mensuel, RTL", R.string.old_fare_info)
+                FareProductId.OPUS_4MONTHS_RTL_RED.id -> FareProduct("4 mois, RTL", R.string.old_fare_info)
 
                 FareProductId.OPUS_1TICKET_STL_CASH.id -> FareProduct("1 passage, STL", R.string.old_fare_info)
                 FareProductId.OPUS_1TICKET_STL_ENG_QUAL.id -> FareProduct("1 passage, STL Eng. Qualité", R.string.stl_eng_qual_one_ticket_info)
@@ -317,10 +318,14 @@ class CardContentConverter {
                 FareProductId.OCC_6TICKETS_TRAIN7.id -> FareProduct("6 passages, TRAIN 7", R.string.old_fare_info)
 
 
+                FareProductId.OCC_1TICKET_RTL.id -> FareProduct("1 passage, RTL", R.string.old_fare_info)
+                FareProductId.OCC_2TICKETS_RTL.id -> FareProduct("2 passages, RTL", R.string.old_fare_info)
                 FareProductId.OCC_6TICKETS_RTL.id -> FareProduct("6 passages, RTL", R.string.old_fare_info)
                 FareProductId.OCC_12TICKETS_RTL.id -> FareProduct("12 passages, RTL", R.string.old_fare_info)
                 FareProductId.OCC_18TICKETS_RTL.id -> FareProduct("18 passages, RTL", R.string.old_fare_info)
                 FareProductId.OCC_24TICKETS_RTL.id -> FareProduct("24 passages, RTL", R.string.old_fare_info)
+                FareProductId.OCC_EVENING_RTL.id -> FareProduct("Soirée illimitée, RTL", R.string.old_fare_info)
+                FareProductId.OCC_24HOURS_RTL.id -> FareProduct("24hrs, RTL", R.string.old_fare_info)
 
                 FareProductId.OCC_1TICKET_STL_ENG_QUAL.id -> FareProduct("1 passage, STL Eng. Qualité", R.string.stl_eng_qual_one_ticket_info)
 
