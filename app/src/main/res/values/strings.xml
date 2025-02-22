@@ -103,6 +103,9 @@
         This fare can still be used, but it is not possible to bought it anymore.
         \n\nThis fare is unlimited. There is no constraints for transfers.
     </string>
+    <string name="fare_unavailable_info">
+        Unknown description for this fare.
+    </string>
     <string name="stl_eng_qual_one_ticket_info">
         This fare consists of a single ticket.
         This ticket is accepted on the buses of the STL (Société de Transport de Laval).

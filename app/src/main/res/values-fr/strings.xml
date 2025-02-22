@@ -103,6 +103,9 @@
     <string name="old_fare_info">
         Ce titre peut toujours être utilisé, mais il n\'est plus possible de l\'acheter.
     </string>
+    <string name="fare_unavailable_info">
+        La description de ce titre est inconnue.
+    </string>
     <string name="stl_eng_qual_one_ticket_info">
         Ce titre contient un seul billet.
         Ce billet est accepté dans les bus de la STL (Société de Transport de Laval).
