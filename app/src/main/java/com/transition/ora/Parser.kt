@@ -76,7 +76,7 @@ class Parser {
                 fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, null))
             } else if (validityFromDate != null) {
                 val validityUntilDate = Calendar.getInstance()
-                validityFromDate.set(
+                validityUntilDate.set(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH),
                     validityFromDate.get(Calendar.DATE),

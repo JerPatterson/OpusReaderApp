@@ -65,6 +65,10 @@ class ValidityFragment: Fragment() {
             }
     }
 
+    private fun getDefaultValidityMinutes(fare: Fare?): Int {
+        return if (fare?.operatorId == 20u || fare?.operatorId == 64u) 90 else 120
+    }
+
     private fun addValidityInfoSection(card: Card) {
         this.addValidityInfoSectionTitles()
         this.addValidityInfoSectionValues(card)
@@ -98,7 +102,7 @@ class ValidityFragment: Fragment() {
             val trips = card.getTrips()
             val usableFromDate = trips[trips.size - 1].firstUseDate
             val usableUntilDate = usableFromDate.clone() as Calendar
-            usableUntilDate.add(Calendar.HOUR_OF_DAY, 2)
+            usableUntilDate.add(Calendar.MINUTE, getDefaultValidityMinutes(fare))
 
             validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(usableFromDate)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(usableUntilDate)
@@ -169,14 +173,17 @@ class ValidityFragment: Fragment() {
         val trips = card.getTrips()
         val mostRecentTrip = trips[trips.size - 1]
         val unlimitedFares = card.getUnlimitedFares()
-        val mostRecentUnlimitedFare = if (unlimitedFares.isNotEmpty()) unlimitedFares.last() else null
+        val mostRecentUnlimitedFare = if (unlimitedFares.isNotEmpty()) {
+            val unlimitedFaresForLastTrip = unlimitedFares.filter { fare -> fare.validityUntilDate?.timeInMillis!! > mostRecentTrip.useDate.timeInMillis }
+            if (unlimitedFaresForLastTrip.isNotEmpty()) unlimitedFaresForLastTrip.first() else unlimitedFares.last()
+        } else null
         val validityFromDateValue = mostRecentUnlimitedFare?.validityFromDate
         val validityUntilDateValue = mostRecentUnlimitedFare?.validityUntilDate
         if (validityFromDateValue == null || validityUntilDateValue == null
             || (validityUntilDateValue.timeInMillis < mostRecentTrip.useDate.timeInMillis)) {
             val usableFromDate = mostRecentTrip.firstUseDate
             val usableUntilDate = usableFromDate.clone() as Calendar
-            usableUntilDate.add(Calendar.HOUR_OF_DAY, 2)
+            usableUntilDate.add(Calendar.MINUTE, getDefaultValidityMinutes(mostRecentUnlimitedFare))
 
             validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(usableFromDate)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(usableUntilDate)
