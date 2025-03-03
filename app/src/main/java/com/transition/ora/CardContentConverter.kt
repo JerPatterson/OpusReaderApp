@@ -1851,9 +1851,6 @@ class CardContentConverter {
         }
 
         private fun getEXOLineById(context: Context, operatorId: UInt, id: UInt): Line {
-            // TODO Find ids of all lines
-            //   (Id of the line is on 9bits so higher
-            //   than 512u means it's not known yet)
             return when (id) {
                 2u -> Line("11", "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train)
                 3u -> Line("12", "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train)
@@ -2099,7 +2096,7 @@ class CardContentConverter {
                 172u -> Line("803", "Terminus Beauport - Terminus Les Saules", "#97BF0D", "#000000", R.drawable.bus)
                 318u -> Line("804", "Sainte-Foy Centre - Loretteville", "#97BF0D", "#000000", R.drawable.bus)
                 317u -> Line("807", "Place D'Youville - Pointe-de-Sainte-Foy", "#97BF0D", "#000000", R.drawable.bus)
-                208u -> Line("950", "Terminus Chute-Montmorency -", "#1A171B", "#FFFFFF", R.drawable.bus)
+                208u -> Line("950", "Terminus Chute-Montmorency", "#1A171B", "#FFFFFF", R.drawable.bus)
 
                 512u -> Line("3A","Saint-Jean-Eudes - Des Lilas Ouest / du Colisée", "#013888", "#FFFFFF", R.drawable.bus)
                 513u -> Line("11G","C.-Laforte / McCartney", "#013888", "#FFFFFF", R.drawable.bus)
@@ -2177,6 +2174,8 @@ class CardContentConverter {
                 583u -> Line("581","Lebourgneuf / Sainte-Foy Centre - Lebourgneuf / Neufchâtel", "#E04503", "#000000", R.drawable.bus)
                 584u -> Line("582","Lebourgneuf / Sainte-Foy Centre - Lebourgneuf / Saint-Émile", "#E04503", "#000000", R.drawable.bus)
                 585u -> Line("584","Sainte-Foy Centre - Loretteville", "#E04503", "#000000", R.drawable.bus)
+                598u -> Line("630","Terminus de la Faune - Terminus de Marly", "#E04503", "#000000", R.drawable.bus)
+                599u -> Line("650","Terminus de Beauport - Terminus de Marly", "#E04503", "#000000", R.drawable.bus)
                 586u -> Line("904","Loretteville", "#1A171B", "#FFFFFF", R.drawable.bus)
                 587u -> Line("907","Place D'Youville - Pointe-de-Sainte-Foy", "#1A171B", "#FFFFFF", R.drawable.bus)
                 588u -> Line("915","Cap-Rouge", "#1A171B", "#FFFFFF", R.drawable.bus)
@@ -2326,6 +2325,7 @@ class CardContentConverter {
                 512u -> Line("T01", "Rue Gaumont / Boul De la Concorde", "#151f6d", "#ffffff", R.drawable.bus)
                 513u -> Line("T02", "Rue Gaumont / Boul De la Concorde", "#151f6d", "#ffffff", R.drawable.bus)
                 514u -> Line("T03", "Plastiques Balcan / Boul des Laurentides", "#151f6d", "#ffffff", R.drawable.bus)
+                531u -> Line("T06", "Secteur John-Molson / Voie de desserte sud A440", "#151f6d", "#ffffff", R.drawable.bus)
                 515u -> Line("T07", "Montée Saint-François / Boul Dagenais", "#151f6d", "#ffffff", R.drawable.bus)
                 516u -> Line("T10", "Avenue des Perron / Boul Sainte-Rose", "#151f6d", "#ffffff", R.drawable.bus)
                 517u -> Line("T11", "Rue Louis-B.-Mayer / Boul Saint-Elzéar", "#151f6d", "#ffffff", R.drawable.bus)
@@ -2339,6 +2339,7 @@ class CardContentConverter {
                 525u -> Line("T27", "Stationnement Gare Ste-Dorothée", "#151f6d", "#ffffff", R.drawable.bus)
                 526u -> Line("T28", "Stationnement Gare Ste-Dorothée", "#151f6d", "#ffffff", R.drawable.bus)
                 527u -> Line("T29", "Rue Étienne-Lavoie / Boul Notre-Dame", "#151f6d", "#ffffff", R.drawable.bus)
+                532u -> Line("T36", "Secteur John-Molson / Voie de desserte sud A440", "#151f6d", "#ffffff", R.drawable.bus)
 
                 else -> {
                     val proposition: Line? = lookForLineProposition(
@@ -2472,9 +2473,6 @@ class CardContentConverter {
         }
 
         private fun getREMLineById(context: Context, operatorId: UInt, id: UInt): Line {
-            // TODO Find ids of all lines
-            //   (Id of the line is on 9bits so higher
-            //   than 512u means it's not known yet)
             return when (id) {
                 2u -> Line("A", "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro)
 
