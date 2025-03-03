@@ -106,12 +106,222 @@
     <string name="fare_unavailable_info">
         La description de ce titre est inconnue.
     </string>
+
+    <string name="citla_passe_atout_info">
+        Ce titre est valide pour la durée du mois.
+        Ce titre est offert aux aînés (65 ans et plus)
+        Il permet d\'utiliser toutes les lignes de bus d\'exo du secteur Laurentides.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="citla_passe_temps_info">
+        Ce titre est valide pour la durée du mois.
+        Il peut être utilisé en semaine après 18 h, ainsi qu\'en tout temps la fin de semaine et les jours fériés;
+        utilisable également du 24 décembre au 2 janvier et lors de la semaine de relâche de la CSSMI.
+        Il permet d\'utiliser toutes les lignes de bus d\'exo du secteur Laurentides.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="citla_passe_soleil_info">
+        Ce titre est valide du 1er juillet au 31 août.
+        Il permet d\'utiliser toutes les lignes de bus d\'exo du secteur Laurentides.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="citlr_brossard_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus d\'exo du secteur Le Richelain-Roussillon depuis/vers Brossard.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="citpi_express_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus d\'exo du secteur La Pesqu\'Île.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="citpi_express_one_ticket_info">
+        Ce titre contient un seul billet.
+        Ce billet est accepté dans toutes les lignes de bus d\'exo du secteur La Pesqu\'Île.
+        \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelles autres lignes pendant 120 minutes.
+    </string>
+    <string name="citpi_express_ten_tickets_info">
+        Ce titre contient dix billets distincts.
+        Chaque billet est accepté dans toutes les lignes de bus d\'exo du secteur La Pesqu\'Île.
+        \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelles autres lignes pendant 120 minutes.
+    </string>
+    <string name="citso_lery_chateauguay_kahnawake_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus d\'exo de Léry, Châteauguay et Kahnawake.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="citso_salaberry_angrignon_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus d\'exo du secteur Sud-Ouest depuis/vers la station Angrignon.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="citvr_carte_integree_yearly_info">
+        Ce titre est valide pour une année complète.
+        Il permet d’utiliser toutes les lignes de bus locales d\'exo du secteur Vallée-du-Richelieu.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="lasso_internal_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus locales d\'exo du secteur L\'Assomption (incluant L\'Épiphanie).
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="lasso_platine_info">
+        Ce titre est offert gratuitement aux aînés (65 ans et plus) qui sont résidents de la MRC L\'Assomption.
+        Il permet d\'utiliser toutes les lignes de bus locales d\'exo du secteur L\'Assomption (incluant L\'Épiphanie).
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="mrclm_internal_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus locales d\'exo du secteur Terrebonne-Mascouche.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="mrclm_passe_futee_internal_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus locales d\'exo du secteur Terrebonne-Mascouche.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="mrclm_passe_futee_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus d\'exo du secteur Terrebonne-Mascouche.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="mrclm_eco_passe_info">
+        Ce titre est valide du 23 juin au 31 août.
+        Il permet d\'utiliser toutes les lignes de bus d\'exo du secteur Terrebonne-Mascouche.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="mrclm_internal_six_tickets_info">
+        Ce titre contient six billets distincts.
+        Chaque billet est accepté dans toutes les lignes de bus d\'exo du secteur Terrebonne-Mascouche.
+        \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelles autres lignes pendant 120 minutes.
+    </string>
+    <string name="omitsju_student_summer_pass_info">
+        Ce titre est valide du 1er juin au 20 août.
+        Il permet d\'utiliser toutes les lignes de bus d\'exo du secteur Sainte-Julie.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="rtl_acces65_off_peak_info">
+        Ce titre est offert gratuitement aux aînés (65 ans et plus) des villes suivantes : Boucherville, Brossard, Longueuil et Saint-Lambert.
+        Il est accepté sur toutes les lignes d\'autobus du RTL (Réseau de transport de Longueuil) en dehors des heures de pointe,
+        soit de 9 à 15:30 et à partir de 18:30 en semaine, ainsi que toutes les fins de semaine et les jours fériés.
+        \n\nCe titre est illimité. Il n\'y a aucune contrainte pour les correspondances.
+    </string>
+    <string name="stl_csswl_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus de la STL (Société de Transport de Laval).
+        \n\nIl est réservé aux élèves des écoles Laval Junior Academy et Laval Senior Academy.
+        Il est disponible pour tous les mois de l\'année scolaire en cours (1er septembre au 30 juin).
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="stl_xtra_info">
+        Ce titre est valide du 1er juillet au 31 août.
+        Il permet d\'utiliser toutes les lignes de bus de la STL (Société de Transport de Laval).
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
     <string name="stl_eng_qual_one_ticket_info">
         Ce titre contient un seul billet.
         Ce billet est accepté dans les bus de la STL (Société de Transport de Laval).
         \n\nIl est fourni gratuitement dans le cadre du programme Engagement Qualité de l\'agence.
-        \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelle autres lignes pendant 120 minutes.
+        \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelles autres lignes pendant 120 minutes.
     </string>
+    <string name="stl_eng_qual_multiple_tickets_info">
+        Ce titre contient plusieurs billets.
+        Chaque billet est accepté dans les bus de la STL (Société de Transport de Laval).
+        \n\nIls sont fournis gratuitement dans le cadre du programme Engagement Qualité de l\'agence.
+        \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelles autres lignes pendant 120 minutes.
+    </string>
+    <string name="stl_horizon65plus_info">
+        Ce titre est offert gratuitement aux aînés (65 ans et plus) de Laval.
+        Il permet d\'utiliser toutes les lignes de bus de la STL (Société de Transport de Laval).
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="transit_rtl_rem_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus du RTL (Réseau de transport de Longueuil) ainsi que l’antenne Rive-Sud du REM.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="transit_rtl_rem_ten_tickets_info">
+        Ce titre contient dix billets distincts.
+        Chaque billet permet d’utiliser toutes les lignes de bus du RTL (Réseau de transport de Longueuil) ainsi que l’antenne Rive-Sud du REM.
+        \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
+        Les portiques ou les tourniquets du REM peuvent être franchis qu\'une seule fois par billet.
+    </string>
+    <string name="crc_sju_vr_rem_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus des secteurs Chambly-Richelieu-Carignan, Sainte-Julie et Vallée-du-Richelieu
+        (sauf pour les trajets passant par les municipalités de Marieville, Saint-Hyacinthe, Sainte-Madeleine et Sainte-Marie-Madeleine),
+        ainsi que l’antenne Rive-Sud du REM.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="crc_marieville_rem_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus du secteur Chambly-Richelieu-Carignan ainsi que l’antenne Rive-Sud du REM.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="lr_rous_rem_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus du secteur Le Richelain-Roussillon ainsi que l’antenne Rive-Sud du REM.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="vr_sthyacinthe_rem_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il permet d\'utiliser toutes les lignes de bus du secteur Vallée-du-Richelieu ainsi que l’antenne Rive-Sud du REM.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="tram_4_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il est accepté dans le métro, le bus, le train et le REM dans les zones 1 à 4 (anciennes zones tarifaires).
+        Il est également accepté dans les navettes fluviales desservant ces zones.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="tram_6_hsl_crc_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il est accepté dans le métro, le bus, le train et le REM dans les zones 1 à 6 (anciennes zones tarifaires).
+        Il est également accepté dans les navettes fluviales desservant ces zones.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="train_3_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il est accepté dans le train dans les zones 1 à 3 (anciennes zones tarifaires).
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="train_4_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il est accepté dans le train dans les zones 1 à 4 (anciennes zones tarifaires).
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="train_5_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il est accepté dans le train dans les zones 1 à 5 (anciennes zones tarifaires).
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="train_3_lula_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il est accepté dans le train dans les zones 1 à 3 (anciennes zones tarifaires)
+        et le métro à cause des travaux à la gare Lucien L\'Allier.
+        Il n\'est plus possible de l\'acheter comme les travaux sont terminés.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="train_4_lula_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il est accepté dans le train dans les zones 1 à 4 (anciennes zones tarifaires)
+        et le métro à cause des travaux à la gare Lucien L\'Allier.
+        Il n\'est plus possible de l\'acheter comme les travaux sont terminés.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="train_5_lula_monthly_info">
+        Ce titre est valide pour la durée du mois.
+        Il est accepté dans le train dans les zones 1 à 5 (anciennes zones tarifaires)
+        et le métro à cause des travaux à la gare Lucien L\'Allier.
+        Il n\'est plus possible de l\'acheter comme les travaux sont terminés.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
+    </string>
+    <string name="train_4_six_tickets_info">
+        Ce titre contient six billets distincts.
+        Chaque billet est accepté dans le train dans les zones 1 à 4 (anciennes zones tarifaires).
+        \n\nL\'aller-retour en train est possible s\'il demeure à l\'intérieur de 120 minutes.
+    </string>
+
     <string name="bus_monthly_info">
         Ce titre est valide pour la durée du mois.
         Il est accepté dans les bus circulant dans les zones A, B et C.
@@ -146,12 +356,6 @@
         Il est également accepté dans les navettes fluviales desservant ces zones.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
-    <string name="train_lula_monthly_info">
-        Ce titre est valide pour la durée du mois.
-        Il est accepté dans le train et le métro à cause des travaux à la gare Lucien L\'Allier.
-        Il n\'est plus possible de l\'acheter comme les travaux sont terminés.
-        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
-    </string>
     <string name="all_modes_A_four_months_info">
         Ce titre est valide pour quatre mois consécutifs.
         Il est accepté dans le métro, le bus, le train et le REM dans la zone A.
@@ -161,7 +365,7 @@
     <string name="bus_one_ticket_info">
         Ce titre contient un seul billet.
         Ce billet est accepté dans les bus circulant dans les zones A, B et C.
-        \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelle autres lignes pendant 120 minutes.
+        \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelles autres lignes pendant 120 minutes.
         \n\nCe billet n\'est pas accepté dans la \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
     <string name="bus_out_territory_one_ticket_info">
