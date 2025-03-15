@@ -983,14 +983,14 @@ class CardContentConverter {
                 FareProductId.OPUS_YEARLY_VR_REM.id -> FareProduct("Abonnement, VR Saint-Hyacinthe-REM", R.string.vr_sthyacinthe_rem_monthly_info)
                 FareProductId.OPUS_YEARLY_VR_REM_RED.id -> FareProduct("Abonnement, VR Saint-Hyacinthe-REM", R.string.vr_sthyacinthe_rem_monthly_info)
 
-                FareProductId.OPUS_MONTHLY_REM_ABC.id -> FareProduct("Mensuel, Tous modes ABC", R.string.old_fare_info)
-                FareProductId.OPUS_MONTHLY_REM_ABC_RED.id -> FareProduct("Mensuel, Tous modes ABC", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_MTLREM.id -> FareProduct("Mensuel, MTLREM", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_MTLREM_STU.id -> FareProduct("Mensuel, MTLREM", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_MTLREM_RED.id -> FareProduct("Mensuel, MTLREM", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_TRAMREM.id -> FareProduct("Mensuel, TRAMREM", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_TRAMREM_STU.id -> FareProduct("Mensuel, TRAMREM", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_TRAMREM_RED.id -> FareProduct("Mensuel, TRAMREM", R.string.old_fare_info)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_ABC_REM.id -> FareProduct("Mensuel, Tous modes ABC", R.string.old_fare_info)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_ABC_REM_RED.id -> FareProduct("Mensuel, Tous modes ABC", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_LAU_REM404.id -> FareProduct("LAU404", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_LAU_REM404_STU.id -> FareProduct("LAU404", R.string.old_fare_info)
                 FareProductId.OPUS_YEARLY_LAU_REM404.id -> FareProduct("LAU404", R.string.old_fare_info)
@@ -1062,7 +1062,6 @@ class CardContentConverter {
                 FareProductId.OPUS_MONTHLY_TRAIN6_DEUX_MONTAGNES.id -> FareProduct("Mensuel, TRAIN6", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_TRAIN6_DEUX_MONTAGNES_STU.id -> FareProduct("Mensuel, TRAIN6", R.string.old_fare_info)
                 FareProductId.OPUS_MONTHLY_TRAIN6_DEUX_MONTAGNES_RED.id -> FareProduct("Mensuel, TRAIN6", R.string.old_fare_info)
-
                 FareProductId.OPUS_WEEKEND_UNLIMITED_TRAM.id -> FareProduct("Week-end illimité (multimois)", R.string.old_fare_info)
 
                 FareProductId.OPUS_MONTHLY_TRAIN3_SPECIAL_LULA.id -> FareProduct("Mensuel, TRAIN 3", R.string.train_3_lula_monthly_info)
@@ -1071,6 +1070,17 @@ class CardContentConverter {
                 FareProductId.OPUS_MONTHLY_TRAIN4_SPECIAL_LULA_RED.id -> FareProduct("Mensuel, TRAIN 4", R.string.train_4_lula_monthly_info)
                 FareProductId.OPUS_MONTHLY_TRAIN5_SPECIAL_LULA.id -> FareProduct("Mensuel, TRAIN 5", R.string.train_5_lula_monthly_info)
                 FareProductId.OPUS_MONTHLY_TRAIN5_SPECIAL_LULA_RED.id -> FareProduct("Mensuel, TRAIN 5", R.string.train_5_lula_monthly_info)
+
+                FareProductId.OPUS_MONTHLY_TRAM4_REM_DISCOUNT.id -> FareProduct("Mensuel, TRAM 4", R.string.tram_4_monthly_info_rem_discount)
+                FareProductId.OPUS_MONTHLY_TRAM4_REM_DISCOUNT_RED.id -> FareProduct("Mensuel, TRAM 4", R.string.tram_4_monthly_info_rem_discount)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_A_REM_DISCOUNT.id -> FareProduct("Mensuel, Tous modes A", R.string.all_modes_A_monthly_info_rem_discount)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_A_REM_DISCOUNT_RED.id -> FareProduct("Mensuel, Tous modes A", R.string.all_modes_A_monthly_info_rem_discount)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_AB_REM_DISCOUNT.id -> FareProduct("Mensuel, Tous modes AB", R.string.all_modes_AB_monthly_info_rem_discount)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_AB_REM_DISCOUNT_RED.id -> FareProduct("Mensuel, Tous modes AB", R.string.all_modes_AB_monthly_info_rem_discount)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_ABC_REM_DISCOUNT.id -> FareProduct("Mensuel, Tous modes ABC", R.string.all_modes_ABC_monthly_info_rem_discount)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_ABC_REM_DISCOUNT_RED.id -> FareProduct("Mensuel, Tous modes ABC", R.string.all_modes_ABC_monthly_info_rem_discount)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_ABCD_REM_DISCOUNT.id -> FareProduct("Mensuel, Tous modes ABCD", R.string.all_modes_ABCD_monthly_info_rem_discount)
+                FareProductId.OPUS_MONTHLY_ALL_MODES_ABCD_REM_DISCOUNT_RED.id -> FareProduct("Mensuel, Tous modes ABCD", R.string.all_modes_ABCD_monthly_info_rem_discount)
 
 
 
