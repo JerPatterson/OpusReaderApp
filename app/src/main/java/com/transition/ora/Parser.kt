@@ -281,7 +281,7 @@ class Parser {
     private fun getOpusCardTripFirstUseDate(data: ByteArray, byteOffset: Int = 0): Calendar {
         val tripFirstUseDays = (data[14 + byteOffset].toUInt().and(0x7Fu).shl(7)
                 or data[15 + byteOffset].toUInt().and(0xFEu).shr(1))
-        val tripFirstUseMinutes = (data[15].toUInt().and(0x01u).shl(10)
+        val tripFirstUseMinutes = (data[15 + byteOffset].toUInt().and(0x01u).shl(10)
                 or data[16 + byteOffset].toUInt().and(0xFFu).shl(2)
                 or data[17 + byteOffset].toUInt().and(0xC0u).shr(6))
 
