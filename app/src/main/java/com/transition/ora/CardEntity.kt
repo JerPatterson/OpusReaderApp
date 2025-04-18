@@ -14,6 +14,8 @@ data class CardEntity(
     val scanDate: String,
     @ColumnInfo(name = "expiryDate")
     val expiryDate: String,
+    @ColumnInfo(name = "birthDate")
+    val birthDate: String?,
     @ColumnInfo(name = "fares")
     val fares: String,
     @ColumnInfo(name = "trips")

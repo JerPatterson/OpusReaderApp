@@ -14,8 +14,14 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
     }
 }
 
+val MIGRATION_2_3 = object : Migration(2, 3) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE card ADD COLUMN birthDate TEXT")
+    }
+}
 
-@Database(entities = [CardEntity::class, CardPropositionEntity::class], version = 2)
+
+@Database(entities = [CardEntity::class, CardPropositionEntity::class], version = 3)
 abstract class CardDatabase: RoomDatabase() {
     abstract val dao: CardDao
     abstract val daoProposition: CardPropositionDao
@@ -37,7 +43,7 @@ abstract class CardDatabase: RoomDatabase() {
                 context,
                 CardDatabase::class.java,
                 this.DB_NAME
-            ).addMigrations(MIGRATION_1_2).build()
+            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()
         }
     }
 }

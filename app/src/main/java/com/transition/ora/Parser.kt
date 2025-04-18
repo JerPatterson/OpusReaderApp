@@ -15,18 +15,22 @@ class Parser {
         val expiryDate = Calendar.getInstance()
         expiryDate.set(2040, Calendar.DECEMBER, 31)
 
-        return Card(id, CardType.Occasional, Calendar.getInstance(), expiryDate, fares, trips)
+        return Card(id, CardType.Occasional, Calendar.getInstance(), expiryDate, null, fares, trips)
     }
 
     fun parseOpusCard(card: IsoDep): Card {
         card.connect()
 
+        card.transceive(this.hexStringToByteArray("94A408000420002001"))
+        val data = card.transceive(this.hexStringToByteArray("94B2010400"))
+        val expiryDate = this.getOpusCardExpiryDate(data)
+        val birthDate = this.getOpusCardBirthDate(data)
+
         val id = this.getOpusCardId(card)
-        val expiryDate = this.getOpusCardExpiryDate(card)
         val fares = this.getOpusCardFares(card)
         val trips = this.getOpusCardTrips(card)
 
-        return Card(id.toULong(), CardType.Opus, Calendar.getInstance(), expiryDate, fares, trips)
+        return Card(id.toULong(), CardType.Opus, Calendar.getInstance(), expiryDate, birthDate, fares, trips)
     }
 
 
@@ -215,14 +219,41 @@ class Parser {
                 or data[19].toUInt().and(0xFFu))
     }
 
-    private fun getOpusCardExpiryDate(card: IsoDep): Calendar {
-        card.transceive(this.hexStringToByteArray("94A408000420002001"))
-        val data = card.transceive(this.hexStringToByteArray("94B2010400"))
+    private fun getOpusCardExpiryDate(data: ByteArray): Calendar {
         val daysUntilExpiry = (data[5].toUInt().and(0x07u).shl(11)
                 or data[6].toUInt().and(0xFFu).shl(3)
                 or data[7].toUInt().and(0xE0u).shr(5))
 
         return uIntToDate(daysUntilExpiry, 0u)
+    }
+
+    private fun getOpusCardBirthDate(data: ByteArray): Calendar? {
+        val yearThousand = data[9].toUInt().and(0x1Eu).shr(1)
+        val yearHundred = (data[9].toUInt().and(0x01u).shl(3)
+                or data[10].toUInt().and(0xE0u).shr(5))
+        val yearTen = data[10].toUInt().and(0x1Eu).shr(1)
+        val yearUnit = (data[10].toUInt().and(0x01u).shl(3)
+                or data[11].toUInt().and(0xE0u).shr(5))
+        val year = (yearThousand * 1000u + yearHundred * 100u + yearTen * 10u + yearUnit).toInt()
+
+        val monthTen = data[11].toUInt().and(0x1Eu).shr(1)
+        val monthUnit = (data[11].toUInt().and(0x01u).shl(3)
+                or data[12].toUInt().and(0xE0u).shr(5))
+        val month = (monthTen * 10u + monthUnit).toInt()
+
+        val dateTen = data[12].toUInt().and(0x1Eu).shr(1)
+        val dateUnit = (data[12].toUInt().and(0x01u).shl(3)
+                or data[13].toUInt().and(0xE0u).shr(5))
+        val date = (dateTen * 10u + dateUnit).toInt()
+
+        if (year == 0) {
+            return null
+        }
+
+        val birthDate = Calendar.getInstance()
+        birthDate.set(year, month - 1, date, 0, 0, 0)
+
+        return birthDate
     }
 
 

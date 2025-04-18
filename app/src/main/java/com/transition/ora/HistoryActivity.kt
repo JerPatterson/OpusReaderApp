@@ -55,6 +55,10 @@ class HistoryActivity : AppCompatActivity() {
                         Calendar.getInstance().also { calendar ->
                             calendar.timeInMillis = cardEntity.expiryDate.toLong()
                         },
+                        Calendar.getInstance().also { calendar ->
+                            if (cardEntity.birthDate != null)
+                                calendar.timeInMillis = cardEntity.birthDate.toLong()
+                        },
                         gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
                         gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
                     ))
@@ -68,6 +72,7 @@ class HistoryActivity : AppCompatActivity() {
                         Calendar.getInstance().also { calendar ->
                             calendar.timeInMillis = cardEntity.expiryDate.toLong()
                         },
+                        null,
                         gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
                         gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
                     ))
