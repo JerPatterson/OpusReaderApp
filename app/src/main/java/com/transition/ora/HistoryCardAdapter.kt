@@ -136,15 +136,14 @@ class HistoryCardAdapter(
                         cards.add(Card(
                             cardEntity.id.toULong(),
                             CardType.Opus,
-                            Calendar.getInstance().also { calendar ->
-                                calendar.timeInMillis = cardEntity.scanDate.toLong()
+                            Calendar.getInstance().apply {
+                                timeInMillis = cardEntity.scanDate.toLong()
                             },
-                            Calendar.getInstance().also { calendar ->
-                                calendar.timeInMillis = cardEntity.expiryDate.toLong()
+                            Calendar.getInstance().apply {
+                                timeInMillis = cardEntity.expiryDate.toLong()
                             },
-                            Calendar.getInstance().also { calendar ->
-                                if (cardEntity.birthDate != null)
-                                    calendar.timeInMillis = cardEntity.birthDate.toLong()
+                            cardEntity.birthDate?.let { millis ->
+                                Calendar.getInstance().apply { timeInMillis = millis.toLong() }
                             },
                             gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
                             gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)

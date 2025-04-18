@@ -81,6 +81,8 @@
     <string name="card_id_title">Identifier</string>
     <string name="card_expiration_date_title">Expiration Date</string>
     <string name="no_expiry_date">None</string>
+    <string name="card_birth_date_title">Date of Birth</string>
+    <string name="no_birth_date">Unknown</string>
 
     <string name="validity_section_title">Validity of the fare</string>
     <string name="validity_starting_on">Starting on</string>

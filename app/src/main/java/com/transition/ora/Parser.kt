@@ -21,12 +21,12 @@ class Parser {
     fun parseOpusCard(card: IsoDep): Card {
         card.connect()
 
+        val id = this.getOpusCardId(card)
         card.transceive(this.hexStringToByteArray("94A408000420002001"))
         val data = card.transceive(this.hexStringToByteArray("94B2010400"))
         val expiryDate = this.getOpusCardExpiryDate(data)
         val birthDate = this.getOpusCardBirthDate(data)
 
-        val id = this.getOpusCardId(card)
         val fares = this.getOpusCardFares(card)
         val trips = this.getOpusCardTrips(card)
 

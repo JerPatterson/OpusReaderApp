@@ -82,6 +82,8 @@
     <string name="card_id_title">Identifiant</string>
     <string name="card_expiration_date_title">Date d\'expiration</string>
     <string name="no_expiry_date">Aucune</string>
+    <string name="card_birth_date_title">Date de naissance</string>
+    <string name="no_birth_date">Inconnue</string>
 
     <string name="validity_section_title">Validité du titre</string>
     <string name="validity_starting_on">Commence le</string>

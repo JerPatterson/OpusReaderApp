@@ -9,7 +9,7 @@ class Card(
     var type: CardType,
     var scanDate: Calendar,
     var expiryDate: Calendar,
-    private val birthDate: Calendar?,
+    val birthDate: Calendar?,
     private var fares: ArrayList<Fare>,
     private var trips: ArrayList<Trip>
 ) {

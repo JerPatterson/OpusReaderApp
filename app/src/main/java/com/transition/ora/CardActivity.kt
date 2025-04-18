@@ -34,14 +34,21 @@ class CardActivity : AppCompatActivity() {
 
     private fun addCardInfoSection(card: Card) {
         this.addCardInfoSectionTitles(card.type)
-        this.addCardInfoSectionValues(card.id, card.expiryDate)
+        this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
     }
 
     private fun addCardInfoSectionTitles(cardType: CardType) {
         val cardIdTitleTv = findViewById<TextView>(R.id.cardIdTv)
         val cardExpirationDateTitleTv = findViewById<TextView>(R.id.cardExpiryDateTv)
+        val cardBirthDateTitleTv = findViewById<TextView>(R.id.cardBirthDateTv)
         cardIdTitleTv.text = getString(R.string.card_id_title)
         cardExpirationDateTitleTv.text = getString(R.string.card_expiration_date_title)
+        cardBirthDateTitleTv.text = getString(R.string.card_birth_date_title)
+
+        if (cardType == CardType.Occasional) {
+            cardBirthDateTitleTv.visibility = View.GONE
+            findViewById<TextView>(R.id.cardBirthDateValueTv).visibility = View.GONE
+        }
 
         val cardTitleTv = findViewById<TextView>(R.id.cardSectionTitleTv)
         cardTitleTv.text = when (cardType) {
@@ -56,12 +63,14 @@ class CardActivity : AppCompatActivity() {
         }
     }
 
-    private fun addCardInfoSectionValues(id: ULong, date: Calendar?) {
+    private fun addCardInfoSectionValues(id: ULong, expiryDate: Calendar?, birthDate: Calendar?) {
         val identifier = findViewById<TextView>(R.id.cardIdValueTv)
-        val expiryDate = findViewById<TextView>(R.id.cardExpiryDateValueTv)
+        val expiry = findViewById<TextView>(R.id.cardExpiryDateValueTv)
+        val birth = findViewById<TextView>(R.id.cardBirthDateValueTv)
 
         identifier.text = id.toString()
-        expiryDate.text = if (date != null) this.calendarToString(date) else getString(R.string.no_expiry_date)
+        expiry.text = if (expiryDate != null) this.calendarToString(expiryDate) else getString(R.string.no_expiry_date)
+        birth.text = if (birthDate != null) this.calendarToString(birthDate) else getString(R.string.no_birth_date)
     }
 
     private fun addValiditySection(card: Card) {

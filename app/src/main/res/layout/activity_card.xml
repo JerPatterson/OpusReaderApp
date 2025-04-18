@@ -89,6 +89,33 @@
             app:layout_constraintTop_toBottomOf="@+id/cardExpiryDateTv"
             tools:text="October 31st 2023" />
 
+        <TextView
+            android:id="@+id/cardBirthDateTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            app:layout_constraintStart_toEndOf="@+id/cardImageView"
+            app:layout_constraintTop_toBottomOf="@+id/cardExpiryDateValueTv"
+            tools:text="Birthday" />
+
+        <TextView
+            android:id="@+id/cardBirthDateValueTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="16sp"
+            android:textColor="?android:attr/textColorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardImageView"
+            app:layout_constraintTop_toBottomOf="@+id/cardBirthDateTv"
+            tools:text="October 11th 2010" />
+
         <ImageView
             android:id="@+id/cardImageView"
             android:layout_width="180dp"
@@ -100,8 +127,7 @@
             android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardSectionTitleTv"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/cardSectionTitleTv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
