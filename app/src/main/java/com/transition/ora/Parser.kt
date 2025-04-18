@@ -246,7 +246,7 @@ class Parser {
                 or data[13].toUInt().and(0xE0u).shr(5))
         val date = (dateTen * 10u + dateUnit).toInt()
 
-        if (year == 0) {
+        if (date == 0) {
             return null
         }
 
