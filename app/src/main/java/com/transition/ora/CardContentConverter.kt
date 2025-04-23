@@ -1364,34 +1364,34 @@ class CardContentConverter {
 
         fun getOperatorById(id: UInt): Operator {
             return when (id) {
-                4u -> Operator("ARTM", "#007373", R.drawable.artm)
-                8u -> Operator("STM", "#00aeef", R.drawable.stm)
-                12u -> Operator("RTL", "#9e2536", R.drawable.rtl)
-                16u -> Operator("exo", "#000000", R.drawable.exo)
-                20u -> Operator("RTC", "#003878", R.drawable.rtc)
-                24u -> Operator("STL", "#151f6d", R.drawable.stl)
-                60u -> Operator("exo", "#000000", R.drawable.exo)
-                72u -> Operator("exo", "#000000", R.drawable.exo)
-                64u -> Operator("STLévis", "#0091b3", R.drawable.stlevis)
-                80u -> Operator("MRCJoliette", "#81a449", R.drawable.mrcjoliette)
-                88u -> Operator("REM", "#034638", R.drawable.rem)
+                1u -> Operator("ARTM", "#007373", R.drawable.artm)
+                2u -> Operator("STM", "#00aeef", R.drawable.stm)
+                3u -> Operator("RTL", "#9e2536", R.drawable.rtl)
+                4u -> Operator("exo", "#000000", R.drawable.exo)
+                5u -> Operator("RTC", "#003878", R.drawable.rtc)
+                6u -> Operator("STL", "#151f6d", R.drawable.stl)
+                15u -> Operator("exo", "#000000", R.drawable.exo)
+                16u -> Operator("STLévis", "#0091b3", R.drawable.stlevis)
+                18u -> Operator("exo", "#000000", R.drawable.exo)
+                20u -> Operator("MRCJoliette", "#81a449", R.drawable.mrcjoliette)
+                22u -> Operator("REM", "#034638", R.drawable.rem)
 
                 else -> Operator("Unknown (id: $id)", "#696969", R.drawable.unknown)
             }
         }
 
-        fun getLineById(context: Context, operatorId: UInt, lineId: UInt): Line {
+        fun getLineById(context: Context, zoneId: UInt, operatorId: UInt, lineId: UInt): Line {
             return when (operatorId) {
-                8u -> this.getSTMLineById(context, operatorId, lineId)
-                12u -> this.getRTLLineById(context, operatorId, lineId)
-                16u -> this.getEXOLineById(context, operatorId, lineId)
-                20u -> this.getRTCLineById(context, operatorId, lineId)
-                24u -> this.getSTLLineById(context, operatorId, lineId)
-                60u -> this.getEXOLaurentidesLineById(context, operatorId, lineId)
-                64u -> this.getSTLevisLineById(context, operatorId, lineId)
-                72u -> this.getEXOTerrebonneMascoucheLineById(context, operatorId, lineId)
-                80u -> this.getMRCJolietteLineById(context, operatorId, lineId)
-                88u -> this.getREMLineById(context, operatorId, lineId)
+                2u -> this.getSTMLineById(context, zoneId, operatorId, lineId)
+                3u -> this.getRTLLineById(context, operatorId, lineId)
+                4u -> this.getEXOLineById(context, zoneId, operatorId, lineId)
+                5u -> this.getRTCLineById(context, operatorId, lineId)
+                6u -> this.getSTLLineById(context, operatorId, lineId)
+                15u -> this.getEXOLaurentidesLineById(context, operatorId, lineId)
+                16u -> this.getSTLevisLineById(context, operatorId, lineId)
+                18u -> this.getEXOTerrebonneMascoucheLineById(context, operatorId, lineId)
+                20u -> this.getMRCJolietteLineById(context, operatorId, lineId)
+                22u -> this.getREMLineById(context, zoneId, operatorId, lineId)
 
                 else -> {
                     val proposition: Line? = lookForLineProposition(
@@ -1406,15 +1406,30 @@ class CardContentConverter {
             }
         }
 
-        private fun getSTMLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getZoneById(id: UInt): String {
+            return when (id) {
+                0x65u -> "A"
+                0xC9u -> "A"
+                0x67u -> "B"
+                0xCBu -> "B"
+                0x69u -> "C"
+                0x6Bu -> "C"
+
+                else -> ""
+            }
+        }
+
+        private fun getSTMLineById(context: Context, zoneId: UInt, operatorId: UInt, id: UInt): Line {
+            val zone = getZoneById(zoneId)
+
             // TODO Find ids of all lines
             //   (Id of the line is on 9bits so higher
             //   than 512u means it's not known yet)
             return when (id) {
                 1u -> Line("1", "Ligne Verte", "#00a553", "#ffffff", R.drawable.metro)
                 2u -> Line("2", "Ligne Orange", "#f2832c", "#ffffff", R.drawable.metro)
-                224u -> Line("2", "Ligne Orange (zone B)", "#f2832c", "#ffffff", R.drawable.metro)
-                3u -> Line("4", "Ligne Jaune", "#ffd200", "#000000", R.drawable.metro)
+                224u -> Line("2", "Ligne Orange (B)", "#f2832c", "#ffffff", R.drawable.metro)
+                3u -> Line("4", if (zone == "B") "Ligne Jaune (B)" else "Ligne Jaune", "#ffd200", "#000000", R.drawable.metro)
                 4u -> Line("5", "Ligne Bleue", "#0078d0", "#ffffff", R.drawable.metro)
                 5u -> Line("10", "De Lorimier", "#009ee0", "#ffffff", R.drawable.bus)
                 6u -> Line("11", "Parc-du-Mont-Royal / Ridgewood", "#009ee0", "#ffffff", R.drawable.bus)
@@ -1630,7 +1645,7 @@ class CardContentConverter {
                 167u -> Line("430", "Express Pointe-aux-Trembles", "#009ee0", "#ffffff", R.drawable.bus)
                 243u -> Line("432", "Express Lacordaire", "#009ee0", "#ffffff", R.drawable.bus)
                 244u -> Line("435", "Express Du Parc / Côte-des-Neiges", "#009ee0", "#ffffff", R.drawable.bus)
-                245u -> Line("439", "Express Pie-IX", "#781b7d", "#ffffff", R.drawable.bus)
+                245u -> Line("439", if (zone == "B") "Express Pie-IX (zone B)" else "Express Pie-IX", "#781b7d", "#ffffff", R.drawable.bus)
                 246u -> Line("440", "Express Charleroi", "#009ee0", "#ffffff", R.drawable.bus)
                 247u -> Line("444", "Express Cégep Marie-Victorin", "#009ee0", "#ffffff", R.drawable.bus)
                 282u -> Line("445", "Express Papineau", "#009ee0", "#ffffff", R.drawable.bus)
@@ -1861,13 +1876,15 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getEXOLineById(context: Context, zoneId: UInt, operatorId: UInt, id: UInt): Line {
+            val zone = getZoneById(zoneId)
+
             return when (id) {
-                2u -> Line("11", "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train)
-                3u -> Line("12", "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train)
-                4u -> Line("13", "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train)
-                5u -> Line("14", "Candiac", "#5ab6b2", "#000000", R.drawable.train)
-                7u -> Line("15", "Mascouche", "#ca5898", "#000000", R.drawable.train)
+                2u -> Line("11", if (zone != "") "Vaudreuil-Hudson ($zone)" else "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train)
+                3u -> Line("12", if (zone != "") "Saint-Jérôme ($zone)" else "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train)
+                4u -> Line("13", if (zone != "") "Mont-Saint-Hilaire ($zone)" else "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train)
+                5u -> Line("14", if (zone != "") "Candiac ($zone)" else "Candiac", "#5ab6b2", "#000000", R.drawable.train)
+                7u -> Line("15", if (zone != "") "Mascouche ($zone)" else "Mascouche", "#ca5898", "#000000", R.drawable.train)
 
                 else -> {
                     val proposition: Line? = lookForLineProposition(
@@ -2483,9 +2500,11 @@ class CardContentConverter {
             }
         }
 
-        private fun getREMLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getREMLineById(context: Context, zoneId: UInt, operatorId: UInt, id: UInt): Line {
+            val zone = getZoneById(zoneId)
+
             return when (id) {
-                2u -> Line("A", "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro)
+                2u -> Line("A", if (zone != "") "Ligne A ($zone)" else "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro)
 
                 else -> {
                     val proposition: Line? = lookForLineProposition(

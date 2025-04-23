@@ -102,7 +102,7 @@ class Parser {
     }
 
     private fun getOccasionalCardFareOperatorId(data: Array<ByteArray>): UInt {
-        return data[0][0].toUInt().and(0xFFu)
+        return data[1][6].toUInt().and(0x3Fu)
     }
 
     private fun getOccasionalCardFareBuyingDate(data: Array<ByteArray>): Calendar {
@@ -169,10 +169,11 @@ class Parser {
         for (i in 2..3) {
             val lineId = this.getOccasionalCardTripLineId(data[i])
             val operatorId = this.getOccasionalCardTripOperatorId(data[i])
+            val zoneId = this.getOccasionalCardTripZoneId(data[i])
             val useDate = this.getOccasionalCardTripUseDate(data[i])
             val firstUseDate = this.getOccasionalCardTripFirstUseDate(data[i])
 
-            trips.add(Trip(lineId, operatorId, useDate, firstUseDate))
+            trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate))
         }
 
         return trips
@@ -184,8 +185,12 @@ class Parser {
     }
 
     private fun getOccasionalCardTripOperatorId(data: ByteArray): UInt {
-        return (data[12].toUInt().and(0x01u).shl(7)
-                or data[13].toUInt().and(0xFEu).shr(1))
+        return (data[12].toUInt().and(0x01u).shl(5)
+                or data[13].toUInt().and(0xF8u).shr(3))
+    }
+
+    private fun getOccasionalCardTripZoneId(data: ByteArray): UInt {
+        return data[8].toUInt().and(0xFFu)
     }
 
     private fun getOccasionalCardTripUseDate(data: ByteArray): Calendar {
@@ -276,9 +281,10 @@ class Parser {
                 firstUseDate = this.getOpusCardTripFirstUseDate(data)
             }
 
+            val zoneId = this.getOpusCardTripZoneId(data)
             val useDate = this.getOpusCardTripUseDate(data)
 
-            trips.add(Trip(lineId, operatorId, useDate, firstUseDate))
+            trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate))
         }
 
         return trips
@@ -295,8 +301,13 @@ class Parser {
     }
 
     private fun getOpusCardTripOperatorId(data: ByteArray, byteOffset: Int = 0): UInt {
-        return (data[7 + byteOffset].toUInt().and(0x01u).shl(7)
-                or data[8 + byteOffset].toUInt().and(0xFEu).shr(1))
+        return (data[7 + byteOffset].toUInt().and(0x01u).shl(5)
+                or data[8 + byteOffset].toUInt().and(0xF8u).shr(3))
+    }
+
+    private fun getOpusCardTripZoneId(data: ByteArray): UInt {
+        return (data[9].toUInt().and(0x07u).shl(5)
+                or data[10].toUInt().and(0xF8u).shr(3))
     }
 
     private fun getOpusCardTripUseDate(data: ByteArray): Calendar {
@@ -380,8 +391,7 @@ class Parser {
     }
 
     private fun getOpusCardFareOperatorId(data: ByteArray): UInt {
-        return (data[1].toUInt().and(0x7Fu).shl(1)
-                or data[2].toUInt().and(0x10u).shr(7))
+        return data[1].toUInt().and(0x7Eu).shr(1)
     }
 
     private fun getOpusCardFareBuyingDate(data: ByteArray): Calendar {

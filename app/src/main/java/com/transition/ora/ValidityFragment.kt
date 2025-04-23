@@ -146,7 +146,7 @@ class ValidityFragment: Fragment() {
 
         val trips = card.getTrips()
         for ((i, trip) in trips.withIndex().reversed()) {
-            val line = CardContentConverter.getLineById(requireContext(), trip.operatorId, trip.lineId)
+            val line = CardContentConverter.getLineById(requireContext(), trip.zoneId, trip.operatorId, trip.lineId)
             if (i == 0 && trips.size == 1 || i == 1) {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue
@@ -227,7 +227,7 @@ class ValidityFragment: Fragment() {
 
         val trips = card.getTrips()
         for ((i, trip) in trips.withIndex().reversed()) {
-            val line = CardContentConverter.getLineById(requireContext(), trip.operatorId, trip.lineId)
+            val line = CardContentConverter.getLineById(requireContext(), trip.zoneId, trip.operatorId, trip.lineId)
             if ((i == 0 && trips.size == 1) || (i == 1 && trips.size == 2) || i == 2) {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue

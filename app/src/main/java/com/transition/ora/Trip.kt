@@ -7,6 +7,7 @@ import java.util.Calendar
 class Trip(
     var lineId: UInt,
     var operatorId: UInt,
+    var zoneId: UInt,
     var useDate: Calendar,
     var firstUseDate: Calendar
 ): Serializable {
