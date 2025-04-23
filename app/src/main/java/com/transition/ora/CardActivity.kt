@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -33,23 +34,22 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addCardInfoSection(card: Card) {
+        val registeredCardButton = findViewById<CardView>(R.id.registeredButtonLayout)
+        if (card.type == CardType.Occasional || card.birthDate == null) {
+            registeredCardButton.visibility = View.GONE
+        } else {
+            registeredCardButton.visibility = View.VISIBLE
+            registeredCardButton.setOnClickListener(RegisteredCardListener(this))
+        }
+
+        val cardTypeButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
+        cardTypeButton.visibility = View.GONE
+
         this.addCardInfoSectionTitles(card.type)
         this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
     }
 
     private fun addCardInfoSectionTitles(cardType: CardType) {
-        val cardIdTitleTv = findViewById<TextView>(R.id.cardIdTv)
-        val cardExpirationDateTitleTv = findViewById<TextView>(R.id.cardExpiryDateTv)
-        val cardBirthDateTitleTv = findViewById<TextView>(R.id.cardBirthDateTv)
-        cardIdTitleTv.text = getString(R.string.card_id_title)
-        cardExpirationDateTitleTv.text = getString(R.string.card_expiration_date_title)
-        cardBirthDateTitleTv.text = getString(R.string.card_birth_date_title)
-
-        if (cardType == CardType.Occasional) {
-            cardBirthDateTitleTv.visibility = View.GONE
-            findViewById<TextView>(R.id.cardBirthDateValueTv).visibility = View.GONE
-        }
-
         val cardTitleTv = findViewById<TextView>(R.id.cardSectionTitleTv)
         cardTitleTv.text = when (cardType) {
             CardType.Opus -> getString(R.string.opus_card_name)
@@ -202,6 +202,19 @@ class CardActivity : AppCompatActivity() {
     ) : View.OnClickListener {
         override fun onClick(view: View) {
             activity.finish()
+        }
+    }
+
+    class RegisteredCardListener(
+        private val activity: CardActivity,
+    ) : View.OnClickListener {
+        private var isOpened = false
+
+        override fun onClick(view: View) {
+            isOpened = !isOpened
+
+            val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+            registeredCardLayout.visibility = if (isOpened) View.VISIBLE else View.GONE
         }
     }
 }

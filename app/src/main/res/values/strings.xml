@@ -83,6 +83,60 @@
     <string name="no_expiry_date">None</string>
     <string name="card_birth_date_title">Date of Birth</string>
     <string name="no_birth_date">Unknown</string>
+    <string name="registered_card_title">Registered</string>
+    <string name="registered_card_info">Registration information</string>
+    <string name="registered_card_description">
+        Since this OPUS card is registered, it offers a guarantee in case of loss or theft.
+        It can be replaced and the tickets stored on it can be recovered.
+        \n\nThis guarantee does not apply to an OPUS card that has expired for more than six months.
+    </string>
+
+    <string name="standard_card_info">
+        This Opus can contain the following fares:\n\n
+        <ol>
+            <li>All monthly fares\n</li>
+            <li>All modes A: 1, 2, or 10 tickets, 24hrs, 3 days\n</li>
+            <li>Bus: 1, 2, or 10 trips, 24hrs, 3 days\n</li>
+            <li>Unlimited evening\n</li>
+            <li>Unlimited weekend</li>
+        </ol>
+    </string>
+    <string name="all_modes_AB_card_info">
+        This Opus can contain the following fares:\n\n
+        <ol>
+            <li>All monthly fares\n</li>
+            <li>All modes AB: 1, 2, or 10 tickets, 24hrs, 3 days\n</li>
+            <li>Unlimited evening\n</li>
+            <li>Unlimited weekend</li>
+        </ol>
+    </string>
+    <string name="all_modes_ABC_card_info">
+        This Opus can contain the following fares:\n\n
+        <ol>
+            <li>All monthly fares\n</li>
+            <li>All modes ABC: 1, 2, or 10 tickets, 24hrs, 3 days\n</li>
+            <li>Unlimited evening\n</li>
+            <li>Unlimited weekend</li>
+        </ol>
+    </string>
+    <string name="all_modes_ABCD_card_info">
+        This Opus can contain the following fares:\n\n
+        <ol>
+            <li>All monthly fares\n</li>
+            <li>All modes ABCD: 1, 2, or 10 tickets, 24hrs, 3 days\n</li>
+            <li>Unlimited evening\n</li>
+            <li>Unlimited weekend</li>
+        </ol>
+    </string>
+    <string name="bus_out_territory_card_info">
+        This Opus can contain the following fares:\n\n
+        <ol>
+            <li>All monthly fares\n</li>
+            <li>Bus out of territory: 1, 2, or 10 tickets, 24hrs, 3 days\n</li>
+            <li>Unlimited evening\n</li>
+            <li>Unlimited weekend</li>
+        </ol>
+    </string>
 
     <string name="validity_section_title">Validity of the fare</string>
     <string name="validity_starting_on">Starting on</string>
