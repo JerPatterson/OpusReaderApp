@@ -1645,7 +1645,7 @@ class CardContentConverter {
                 167u -> Line("430", "Express Pointe-aux-Trembles", "#009ee0", "#ffffff", R.drawable.bus)
                 243u -> Line("432", "Express Lacordaire", "#009ee0", "#ffffff", R.drawable.bus)
                 244u -> Line("435", "Express Du Parc / Côte-des-Neiges", "#009ee0", "#ffffff", R.drawable.bus)
-                245u -> Line("439", if (zone == "B") "Express Pie-IX (zone B)" else "Express Pie-IX", "#781b7d", "#ffffff", R.drawable.bus)
+                245u -> Line("439", if (zone == "B") "Express Pie-IX (B)" else "Express Pie-IX", "#781b7d", "#ffffff", R.drawable.bus)
                 246u -> Line("440", "Express Charleroi", "#009ee0", "#ffffff", R.drawable.bus)
                 247u -> Line("444", "Express Cégep Marie-Victorin", "#009ee0", "#ffffff", R.drawable.bus)
                 282u -> Line("445", "Express Papineau", "#009ee0", "#ffffff", R.drawable.bus)
@@ -1674,16 +1674,29 @@ class CardContentConverter {
                 258u -> Line("767", "La Ronde / Station Jean-Drapeau", "#009ee0", "#ffffff", R.drawable.bus)
                 259u -> Line("769", "La Ronde / Station Papineau", "#009ee0", "#ffffff", R.drawable.bus)
                 260u -> Line("777", "Jean-Drapeau / Casino / Bonaventure", "#009ee0", "#ffffff", R.drawable.bus)
+                296u -> Line("806", "Navette", "#009ee0", "#ffffff", R.drawable.bus)
                 207u -> Line("811", "Navette Services santé", "#009ee0", "#ffffff", R.drawable.bus)
                 300u -> Line("822", "Navette Longue-Pointe", "#009ee0", "#ffffff", R.drawable.bus)
                 336u -> Line("872", "Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus)
-                296u -> Line("930", "Navette des Alouettes", "#009ee0", "#ffffff", R.drawable.bus)
                 281u -> Line("968", "Trainbus Roxboro / Côte-Vertu", "#009ee0", "#ffffff", R.drawable.bus)
 
 
                 725u -> Line("711", "Parc-du-Mont-Royal / Oratoire", "#009ee0", "#ffffff", R.drawable.bus)
                 729u -> Line("768", "Plage Jean-Doré / Station Jean-Drapeau", "#009ee0", "#ffffff", R.drawable.bus)
+                512u -> Line("804", "Navette de la Montagne", "#009ee0", "#ffffff", R.drawable.bus)
                 735u -> Line("874", "Robert-Bourassa", "#009ee0", "#ffffff", R.drawable.bus)
+
+                513u -> Line("501", "Service provisoire Ligne Verte", "#009ee0", "#ffffff", R.drawable.bus)
+                514u -> Line("502", "Service provisoire Ligne Orange", "#009ee0", "#ffffff", R.drawable.bus)
+                515u -> Line("505", "Service provisoire Ligne Bleue", "#009ee0", "#ffffff", R.drawable.bus)
+                516u -> Line("555", "Service provisoire", "#009ee0", "#ffffff", R.drawable.bus)
+                517u -> Line("568", "Navette REM - Île-des-Soeurs / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus)
+                518u -> Line("721", "Navette REM - Brossard / Du Quartier / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus)
+
+                519u -> Line("709", "Navette des Canadiens", "#009ee0", "#ffffff", R.drawable.bus)
+                520u -> Line("809", "Navette", "#009ee0", "#ffffff", R.drawable.bus)
+                521u -> Line("813", "Navette", "#009ee0", "#ffffff", R.drawable.bus)
+                522u -> Line("930", "Navette des Alouettes", "#009ee0", "#ffffff", R.drawable.bus)
 
                 else -> {
                     val proposition: Line? = lookForLineProposition(
@@ -1862,6 +1875,10 @@ class CardContentConverter {
 
                 664u -> Line("T48", "Brossard M.-Victorin / St-Laurent", "#9e2536", "#ffffff", R.drawable.bus)
                 665u -> Line("T89", "Parc ind. Boucherville / Eiffel", "#9e2536", "#ffffff", R.drawable.bus)
+
+                670u -> Line("720", "Navette REM - Interstation Rive-Sud", "#72a300", "#ffffff", R.drawable.bus)
+                671u -> Line("721", "Navette REM - Brossard / Du Quartier / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus)
+                672u -> Line("722", "Navette REM - Panama / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus)
 
                 else -> {
                     val proposition: Line? = lookForLineProposition(
