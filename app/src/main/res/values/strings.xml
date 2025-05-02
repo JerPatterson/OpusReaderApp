@@ -277,7 +277,7 @@
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="tram_4_monthly_info_rem_discount">
-        This fare offers a discount of 25% on the standard price because of the instability of the REM service.
+        This fare offers a discount on the standard price because of the instability of the REM service.
         This fare is valid for the whole month.
         It is accepted on the metro, the bus, the train and the REM in zones 1 to 4 (old fare zones).
         It is also accepted in the river shuttles running in these zones.
@@ -348,7 +348,7 @@
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_A_monthly_info_rem_discount">
-        This fare offers a discount of 25% on the standard price because of the instability of the REM service.
+        This fare offers a discount on the standard price because of the instability of the REM service.
         This fare is valid for the whole month.
         It is accepted on the metro, the bus, the train and the REM in the zone A.
         It is also accepted in the river shuttles running in this zone.
@@ -361,7 +361,7 @@
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_AB_monthly_info_rem_discount">
-        This fare offers a discount of 25% on the standard price because of the instability of the REM service.
+        This fare offers a discount on the standard price because of the instability of the REM service.
         This fare is valid for the whole month.
         It is accepted on the metro, the bus, the train and the REM in zones A and B.
         It is also accepted in the river shuttles running in these zones.
@@ -374,7 +374,7 @@
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_ABC_monthly_info_rem_discount">
-        This fare offers a discount of 25% on the standard price because of the instability of the REM service.
+        This fare offers a discount on the standard price because of the instability of the REM service.
         This fare is valid for the whole month.
         It is accepted on the metro, the bus, the train and the REM in zones A, B and C.
         It is also accepted in the river shuttles running in these zones.
@@ -387,7 +387,7 @@
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_ABCD_monthly_info_rem_discount">
-        This fare offers a discount of 25% on the standard price because of the instability of the REM service.
+        This fare offers a discount on the standard price because of the instability of the REM service.
         This fare is valid for the whole month.
         It is accepted on the metro, the bus, the train and the REM in zones A, B, C and D.
         It is also accepted in the river shuttles running in these zones.

@@ -277,7 +277,7 @@
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="tram_4_monthly_info_rem_discount">
-        Ce titre offre un rabais sur le tarif régulier de 25% à cause de l\'instabilité du service du REM.
+        Ce titre offre un rabais sur le tarif régulier à cause de l\'instabilité du service du REM.
         Ce titre est valide pour la durée du mois.
         Il est accepté dans le métro, le bus, le train et le REM dans les zones 1 à 4 (anciennes zones tarifaires).
         Il est également accepté dans les navettes fluviales desservant ces zones.
@@ -348,7 +348,7 @@
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_A_monthly_info_rem_discount">
-        Ce titre offre un rabais sur le tarif régulier de 25% à cause de l\'instabilité du service du REM.
+        Ce titre offre un rabais sur le tarif régulier à cause de l\'instabilité du service du REM.
         This fare is valid for the whole month.
         It is accepted on the metro, the bus, the train and the REM in the zone A.
         It is also accepted in the river shuttles running in this zone.
@@ -361,7 +361,7 @@
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_AB_monthly_info_rem_discount">
-        Ce titre offre un rabais sur le tarif régulier de 25% à cause de l\'instabilité du service du REM.
+        Ce titre offre un rabais sur le tarif régulier à cause de l\'instabilité du service du REM.
         Ce titre est valide pour la durée du mois.
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A et B.
         Il est également accepté dans les navettes fluviales desservant ces zones.
@@ -374,7 +374,7 @@
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_ABC_monthly_info_rem_discount">
-        Ce titre offre un rabais sur le tarif régulier de 25% à cause de l\'instabilité du service du REM.
+        Ce titre offre un rabais sur le tarif régulier à cause de l\'instabilité du service du REM.
         Ce titre est valide pour la durée du mois.
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A et B.
         Il est également accepté dans les navettes fluviales desservant ces zones.
@@ -387,7 +387,7 @@
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="all_modes_ABCD_monthly_info_rem_discount">
-        Ce titre offre un rabais sur le tarif régulier de 25% à cause de l\'instabilité du service du REM.
+        Ce titre offre un rabais sur le tarif régulier à cause de l\'instabilité du service du REM.
         Ce titre est valide pour la durée du mois.
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
         Il est également accepté dans les navettes fluviales desservant ces zones.
