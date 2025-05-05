@@ -91,6 +91,7 @@
         \n\nThis guarantee does not apply to an OPUS card that has expired for more than six months.
     </string>
 
+    <string name="card_type_variant_info">Information about this type of card</string>
     <string name="standard_card">Standard</string>
     <string name="all_modes_AB_card">All modes AB</string>
     <string name="all_modes_ABC_card">TAll modes ABC</string>

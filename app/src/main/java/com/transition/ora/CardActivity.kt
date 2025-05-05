@@ -34,19 +34,62 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addCardInfoSection(card: Card) {
+        this.addCardInfoSectionTitles(card.type)
+        this.addCardRegisteredInfo(card.type, card.birthDate)
+        this.addCardTypeVariantInfo(card.typeVariant)
+        this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
+    }
+
+    private fun addCardRegisteredInfo(cardType: CardType, birthDate: Calendar?) {
         val registeredCardButton = findViewById<CardView>(R.id.registeredButtonLayout)
-        if (card.type == CardType.Occasional || card.birthDate == null) {
+        if (cardType == CardType.Occasional || birthDate == null) {
             registeredCardButton.visibility = View.GONE
         } else {
             registeredCardButton.visibility = View.VISIBLE
             registeredCardButton.setOnClickListener(RegisteredCardListener(this))
         }
+    }
 
-        val cardTypeButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
-        cardTypeButton.visibility = View.GONE
+    private fun addCardTypeVariantInfo(cardTypeVariantId: UInt?) {
+        val cardTypeVariant = CardContentConverter.getCardTypeVariantById(cardTypeVariantId)
+        when (cardTypeVariant) {
+            CardTypeVariant.Standard,
+            CardTypeVariant.StandardReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.standard_card, R.string.standard_card_info)
+            }
+            CardTypeVariant.AllModesAB,
+            CardTypeVariant.AllModesABReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.all_modes_AB_card, R.string.all_modes_AB_card_info)
+            }
+            CardTypeVariant.AllModesABC,
+            CardTypeVariant.AllModesABCReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.all_modes_ABC_card, R.string.all_modes_ABC_card_info)
+            }
+            CardTypeVariant.AllModesABCD,
+            CardTypeVariant.AllModesABCDReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.all_modes_ABCD_card, R.string.all_modes_ABCD_card_info)
+            }
+            CardTypeVariant.BusOutOfTerritory,
+            CardTypeVariant.BusOutOfTerritoryReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.bus_out_territory_card, R.string.bus_out_territory_card_info)
+            }
 
-        this.addCardInfoSectionTitles(card.type)
-        this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
+            else -> {
+                val cardVariantTypeButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
+                cardVariantTypeButton.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun addSpecificCardTypeVariantInfo(buttonText: Int, descriptionText: Int) {
+        val cardVariantTypeTv = findViewById<TextView>(R.id.cardTypeValueTv)
+        val cardVariantTypeDescriptionTv = findViewById<TextView>(R.id.cardTypeDescriptionTv)
+        cardVariantTypeTv.text = getString(buttonText)
+        cardVariantTypeDescriptionTv.text = getString(descriptionText)
+
+        val cardVariantTypeButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
+        cardVariantTypeButton.visibility = View.VISIBLE
+        cardVariantTypeButton.setOnClickListener(CardTypeVariantListener(this))
     }
 
     private fun addCardInfoSectionTitles(cardType: CardType) {
@@ -208,13 +251,23 @@ class CardActivity : AppCompatActivity() {
     class RegisteredCardListener(
         private val activity: CardActivity,
     ) : View.OnClickListener {
-        private var isOpened = false
-
         override fun onClick(view: View) {
-            isOpened = !isOpened
-
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
             val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
-            registeredCardLayout.visibility = if (isOpened) View.VISIBLE else View.GONE
+
+            cardTypeVariantLayout.visibility = View.GONE
+            registeredCardLayout.visibility = if (registeredCardLayout.visibility != View.VISIBLE) View.VISIBLE else View.GONE
+        }
+    }
+
+    class CardTypeVariantListener(
+        private val activity: CardActivity,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
+            val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+            cardTypeVariantLayout.visibility = if (cardTypeVariantLayout.visibility != View.VISIBLE) View.VISIBLE else View.GONE
+            registeredCardLayout.visibility = View.GONE
         }
     }
 }

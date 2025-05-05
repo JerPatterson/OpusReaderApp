@@ -9,6 +9,16 @@ import kotlinx.coroutines.runBlocking
 
 class CardContentConverter {
     companion object {
+        fun getCardTypeVariantById(id: UInt?): CardTypeVariant? {
+            return when (id) {
+                392u -> CardTypeVariant.Standard
+                705u -> CardTypeVariant.StandardReduced
+                762u -> CardTypeVariant.AllModesAB
+
+                else -> null
+            }
+        }
+
         fun getFareProductById(context: Context, operatorId: UInt, id: UInt): FareProduct {
             return when (id) {
                 FareProductId.OPUS_1TICKET_TRAM1.id -> FareProduct("1 passage, TRAM 1", R.string.old_fare_info)

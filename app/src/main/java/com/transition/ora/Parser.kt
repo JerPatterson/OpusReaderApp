@@ -15,7 +15,7 @@ class Parser {
         val expiryDate = Calendar.getInstance()
         expiryDate.set(2040, Calendar.DECEMBER, 31)
 
-        return Card(id, CardType.Occasional, Calendar.getInstance(), expiryDate, null, fares, trips)
+        return Card(id, CardType.Occasional, Calendar.getInstance(), expiryDate, null, null, fares, trips)
     }
 
     fun parseOpusCard(card: IsoDep): Card {
@@ -26,11 +26,12 @@ class Parser {
         val data = card.transceive(this.hexStringToByteArray("94B2010400"))
         val expiryDate = this.getOpusCardExpiryDate(data)
         val birthDate = this.getOpusCardBirthDate(data)
+        val typeVariant = this.getOpusCardTypeVariant(data)
 
         val fares = this.getOpusCardFares(card)
         val trips = this.getOpusCardTrips(card)
 
-        return Card(id.toULong(), CardType.Opus, Calendar.getInstance(), expiryDate, birthDate, fares, trips)
+        return Card(id.toULong(), CardType.Opus, Calendar.getInstance(), expiryDate, birthDate, typeVariant, fares, trips)
     }
 
 
@@ -259,6 +260,11 @@ class Parser {
         birthDate.set(year, month - 1, date, 0, 0, 0)
 
         return birthDate
+    }
+
+    private fun getOpusCardTypeVariant(data: ByteArray): UInt {
+        return (data[13].toUInt().and(0x03u).shl(8)
+                or data[14].toUInt().and(0xFFu))
     }
 
 

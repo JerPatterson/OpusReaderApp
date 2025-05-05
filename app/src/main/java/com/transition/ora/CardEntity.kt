@@ -16,6 +16,8 @@ data class CardEntity(
     val expiryDate: String,
     @ColumnInfo(name = "birthDate")
     val birthDate: String?,
+    @ColumnInfo(name = "typeVariant")
+    val typeVariant: String?,
     @ColumnInfo(name = "fares")
     val fares: String,
     @ColumnInfo(name = "trips")

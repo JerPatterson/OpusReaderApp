@@ -12,7 +12,6 @@
         android:id="@+id/cardSectionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -84,8 +83,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="2dp"
-            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
             android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/cardTypeButtonLayout"
             app:layout_constraintStart_toEndOf="@+id/cardImageView"
             app:layout_constraintTop_toBottomOf="@+id/cardExpiryDateTv"
             tools:text="October 31st 2023" />
@@ -106,8 +107,8 @@
             android:id="@+id/registeredButtonLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="8dp"
@@ -156,9 +157,9 @@
             android:id="@+id/cardTypeButtonLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="8dp"
@@ -218,6 +219,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="6dp"
             android:paddingBottom="12dp"
             android:orientation="vertical">
 
@@ -406,8 +408,9 @@
         android:id="@+id/registeredLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="32dp"
         android:visibility="gone"
         app:cardCornerRadius="8dp"
         app:cardElevation="6dp"
@@ -441,9 +444,9 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
+                android:text="@string/registered_card_info"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
-                android:text="@string/registered_card_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/registeredInfoImageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -512,6 +515,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
+        android:layout_marginTop="-4dp"
         android:layout_marginStart="32dp"
         android:visibility="gone"
         app:cardCornerRadius="8dp"
@@ -548,7 +552,7 @@
                 android:layout_marginEnd="10dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
-                android:text="@string/registered_card_info"
+                android:text="@string/card_type_variant_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardTypeInfoImageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -561,10 +565,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
                 android:paddingBottom="8dp"
-                android:text="@string/all_modes_AB_card_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardTypeInfoTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/cardTypeInfoTitle"
+                tools:text="@string/all_modes_AB_card_info" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
