@@ -2,6 +2,7 @@ package com.transition.ora
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -30,11 +31,24 @@ class NotificationReceiver : BroadcastReceiver() {
         val card = Gson().fromJson(intent.getStringExtra(ARG_CARD), Card::class.java)
         val message = intent.getStringExtra(ARG_MESSAGE)
 
+        val notificationClickIntent = Intent(context, CardActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        notificationClickIntent.putExtra(ARG_CARD, intent.getStringExtra(ARG_CARD))
+
+        val notificationPendingIntent = PendingIntent.getActivity(
+            context,
+            0,
+            notificationClickIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setContentTitle(context.getString(R.string.validity_notification_title))
             .setContentText(message)
             .setStyle(NotificationCompat.BigTextStyle().bigText(message))
             .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentIntent(notificationPendingIntent)
             .build()
 
         notificationManager.notify(card.id.hashCode(), notification)
