@@ -90,6 +90,14 @@
         It can be replaced and the tickets stored on it can be recovered.
         \n\nThis guarantee does not apply to an OPUS card that has expired for more than six months.
     </string>
+    <string name="expired_card_title">Expired</string>
+    <string name="expired_card_info">Information about expiration</string>
+    <string name="expired_card_description">
+        This OPUS card is no longer usable since it has passed its expiration date.
+        The card will no longer work even if you still have valid tickets loaded on it.
+        \n\nA new card is required to purchase of new transit fares (issuance fees apply).
+        The restitution of unexpired transit fares is possible on the new card.
+    </string>
 
     <string name="card_type_variant_info">Information about this type of card</string>
     <string name="standard_card">Standard</string>

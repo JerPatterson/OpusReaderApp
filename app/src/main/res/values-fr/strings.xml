@@ -89,7 +89,15 @@
     <string name="registered_card_description">
         Cette carte OPUS étant enregistrée, elle offre une garantie en cas de perte ou de vol.
         Il est possible de la remplacer et récupérer les titres qui s\'y trouvent.
-        \n\nCette garantie ne peut s’appliquer sur une carte OPUS expirée depuis plus de six mois.
+        \n\nCette garantie ne peut pas s\'appliquer sur une carte OPUS expirée depuis plus de six mois.
+    </string>
+    <string name="expired_card_title">Expirée</string>
+    <string name="expired_card_info">Information sur l\'expiration</string>
+    <string name="expired_card_description">
+        Cette carte OPUS n\'est plus utilisable puisqu\'elle a dépassé sa date d\'expiration.
+        La carte ne fonctionnera plus même si vous avez encore des titres valides chargés sur celle-ci.
+        \n\nUne nouvelle carte est nécessaire pour l\'achat des prochains titres de transport (des frais d\'émission sont applicables).
+        La restitution des titres de transport non expirés est possible sur la nouvelle carte.
     </string>
 
     <string name="card_type_variant_info">Information sur ce type de carte</string>

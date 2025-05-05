@@ -4,7 +4,7 @@
     <color name="secondary">#313c52</color>
     <color name="accent">#ffffff</color>
 
-    <color name="registered_card">#faf0ca</color>
+    <color name="card_status">#fcefc5</color>
     <color name="card_type_variant">#a3d2f8</color>
     <color name="valid_fare">#108016</color>
     <color name="invalid_fare">#ff0317</color>

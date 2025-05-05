@@ -130,9 +130,9 @@ class FareFragment : Fragment() {
 
         val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
         if (fare.ticketCount == 0u) {
-            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.valid_fare)))
-        } else {
             fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.invalid_fare)))
+        } else {
+            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.valid_fare)))
         }
     }
 

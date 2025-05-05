@@ -13,6 +13,7 @@ import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlin.math.exp
 
 private const val ARG_CARD = "card"
 
@@ -36,7 +37,7 @@ class CardActivity : AppCompatActivity() {
 
     private fun addCardInfoSection(card: Card) {
         this.addCardInfoSectionTitles(card.type)
-        this.addCardRegisteredInfo(card.type, card.birthDate)
+        this.addCardRegisteredInfo(card.type, card.expiryDate, card.birthDate)
         this.addCardTypeVariantInfo(card.typeVariant)
         this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
 
@@ -45,13 +46,31 @@ class CardActivity : AppCompatActivity() {
         overlayLayout.visibility = View.GONE
     }
 
-    private fun addCardRegisteredInfo(cardType: CardType, birthDate: Calendar?) {
-        val registeredCardButton = findViewById<CardView>(R.id.registeredButtonLayout)
-        if (cardType == CardType.Occasional || birthDate == null) {
-            registeredCardButton.visibility = View.GONE
-        } else {
-            registeredCardButton.visibility = View.VISIBLE
-            registeredCardButton.setOnClickListener(RegisteredCardListener(this))
+    private fun addCardRegisteredInfo(cardType: CardType, expiryDate: Calendar?, birthDate: Calendar?) {
+        val cardStatusButton = findViewById<CardView>(R.id.cardStatusButtonLayout)
+        cardStatusButton.setOnClickListener(RegisteredCardListener(this))
+
+        if (cardType == CardType.Occasional) {
+            cardStatusButton.visibility = View.GONE
+        } else if (cardType == CardType.Opus) {
+            val now = Calendar.getInstance()
+            val cardStatusTv = findViewById<TextView>(R.id.cardStatusTv)
+            val cardStatusInfoTitleTv = findViewById<TextView>(R.id.cardStatusInfoTitleTv)
+            val cardStatusDescriptionTv = findViewById<TextView>(R.id.cardStatusDescriptionTv)
+
+            if (birthDate != null && expiryDate != null && expiryDate.timeInMillis >= now.timeInMillis) {
+                cardStatusTv.text = getString(R.string.registered_card_title)
+                cardStatusInfoTitleTv.text = getString(R.string.registered_card_info)
+                cardStatusDescriptionTv.text = getString(R.string.registered_card_description)
+                cardStatusButton.visibility = View.VISIBLE
+            } else if (expiryDate != null && expiryDate.timeInMillis < now.timeInMillis) {
+                cardStatusTv.text = getString(R.string.expired_card_title)
+                cardStatusInfoTitleTv.text = getString(R.string.expired_card_info)
+                cardStatusDescriptionTv.text = getString(R.string.expired_card_description)
+                cardStatusButton.visibility = View.VISIBLE
+            } else {
+                cardStatusButton.visibility = View.GONE
+            }
         }
     }
 

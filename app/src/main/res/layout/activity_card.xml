@@ -86,7 +86,7 @@
             android:layout_marginBottom="8dp"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/cardTypeButtonLayout"
+            app:layout_constraintBottom_toTopOf="@+id/cardStatusButtonLayout"
             app:layout_constraintStart_toEndOf="@+id/cardImageView"
             app:layout_constraintTop_toBottomOf="@+id/cardExpiryDateTv"
             tools:text="October 31st 2023" />
@@ -104,7 +104,7 @@
             tools:src="@drawable/opus" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/registeredButtonLayout"
+            android:id="@+id/cardStatusButtonLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -120,10 +120,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/registered_card">
+                android:background="@color/card_status">
 
                 <TextView
-                    android:id="@+id/registeredTv"
+                    android:id="@+id/cardStatusTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="6dp"
@@ -134,21 +134,22 @@
                     android:textColor="#122840"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/registeredDescriptionImageView"
+                    android:id="@+id/cardStatusDescriptionImageView"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginEnd="6dp"
                     android:contentDescription="@string/image_info"
                     android:src="@drawable/info"
                     app:tint="#122840"
-                    app:layout_constraintBottom_toBottomOf="@+id/registeredTv"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardStatusTv"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/registeredTv"
-                    app:layout_constraintTop_toTopOf="@+id/registeredTv" />
+                    app:layout_constraintStart_toEndOf="@+id/cardStatusTv"
+                    app:layout_constraintTop_toTopOf="@+id/cardStatusTv" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -166,7 +167,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/registeredButtonLayout"
+            app:layout_constraintStart_toEndOf="@+id/cardStatusButtonLayout"
             app:layout_constraintTop_toBottomOf="@+id/cardImageView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -185,6 +186,7 @@
                     android:textColor="#122840"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Tous Modes AB" />
@@ -222,7 +224,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="6dp"
             android:paddingBottom="12dp"
             android:orientation="vertical">
 
@@ -439,19 +440,19 @@
             android:paddingBottom="8dp">
 
             <ImageView
-                android:id="@+id/registeredInfoImageView"
+                android:id="@+id/cardStatusInfoImageView"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/info"
                 app:tint="#122840"
-                app:layout_constraintBottom_toBottomOf="@+id/registeredInfoTitle"
+                app:layout_constraintBottom_toBottomOf="@+id/cardStatusInfoTitleTv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/registeredInfoTitle" />
+                app:layout_constraintTop_toTopOf="@+id/cardStatusInfoTitleTv" />
 
             <TextView
-                android:id="@+id/registeredInfoTitle"
+                android:id="@+id/cardStatusInfoTitleTv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -461,11 +462,11 @@
                 android:textColor="#122840"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/registeredInfoImageView"
+                app:layout_constraintStart_toEndOf="@+id/cardStatusInfoImageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/registeredDescriptionTv"
+                android:id="@+id/cardStatusDescriptionTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -476,18 +477,18 @@
                 android:textColor="#122840"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registeredInfoTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/cardStatusInfoTitleTv" />
 
             <View
-                android:id="@+id/registeredInfoDivider"
+                android:id="@+id/cardStatusInfoDivider"
                 android:layout_width="395dp"
                 android:layout_height="1dp"
-                android:background="#DFDFDF"
+                android:background="#dfdfdf"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registeredDescriptionTv" />
+                app:layout_constraintTop_toBottomOf="@+id/cardStatusDescriptionTv" />
 
             <ImageView
-                android:id="@+id/birthDateImageView"
+                android:id="@+id/cardBirthDateImageView"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="10dp"
@@ -507,8 +508,8 @@
                 android:text="@string/card_birth_date_title"
                 android:textColor="#122840"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/birthDateImageView"
-                app:layout_constraintTop_toBottomOf="@+id/registeredInfoDivider" />
+                app:layout_constraintStart_toEndOf="@+id/cardBirthDateImageView"
+                app:layout_constraintTop_toBottomOf="@+id/cardStatusInfoDivider" />
 
             <TextView
                 android:id="@+id/cardBirthDateValueTv"
@@ -517,7 +518,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="2dp"
                 android:textColor="#122840"
-                app:layout_constraintStart_toStartOf="@+id/birthDateImageView"
+                app:layout_constraintStart_toStartOf="@+id/cardBirthDateImageView"
                 app:layout_constraintTop_toBottomOf="@+id/cardBirthDateTv"
                 tools:text="October 11th 2010" />
 
@@ -542,7 +543,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#a5d4f4"
+            android:background="@color/card_type_variant"
             android:clickable="true"
             android:focusable="true"
             android:paddingBottom="8dp">
