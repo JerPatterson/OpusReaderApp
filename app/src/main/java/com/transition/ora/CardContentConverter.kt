@@ -1095,6 +1095,9 @@ class CardContentConverter {
                 FareProductId.OPUS_MONTHLY_ALL_MODES_ABCD_REM_DISCOUNT.id -> FareProduct("Mensuel, Tous modes ABCD", R.string.all_modes_ABCD_monthly_info_rem_discount)
                 FareProductId.OPUS_MONTHLY_ALL_MODES_ABCD_REM_DISCOUNT_RED.id -> FareProduct("Mensuel, Tous modes ABCD", R.string.all_modes_ABCD_monthly_info_rem_discount)
 
+                FareProductId.OPUS_EMPLOYEE_OPT.id -> FareProduct("Employé", R.string.fare_unavailable_info)
+                FareProductId.OPUS_EMPLOYEE_AMT.id -> FareProduct("Employé", R.string.fare_unavailable_info)
+                FareProductId.OPUS_EMPLOYEE_CIT.id -> FareProduct("Employé", R.string.fare_unavailable_info)
 
 
                 FareProductId.OCC_1TICKET_TRAM1.id -> FareProduct("1 passage, TRAM 1", R.string.old_fare_info)
@@ -1691,6 +1694,7 @@ class CardContentConverter {
                 171u -> Line("505", "Voie réservée Pie-IX", "#009ee0", "#ffffff", R.drawable.bus)
                 172u -> Line("506", "Voie réservée Newman", "#009ee0", "#ffffff", R.drawable.bus)
                 173u -> Line("535", "Voie réservée Du Parc / Côte-des-Neiges", "#009ee0", "#ffffff", R.drawable.bus)
+                277u -> Line("711", "Parc-du-Mont-Royal / Oratoire", "#009ee0", "#ffffff", R.drawable.bus)
                 257u -> Line("715", "Vieux-Montréal / Vieux-Port", "#009ee0", "#ffffff", R.drawable.bus)
                 219u -> Line("747", "YUL Aéroport / Centre-Ville", "#009ee0", "#ffffff", R.drawable.bus)
                 258u -> Line("767", "La Ronde / Station Jean-Drapeau", "#009ee0", "#ffffff", R.drawable.bus)
@@ -1703,7 +1707,6 @@ class CardContentConverter {
                 281u -> Line("968", "Trainbus Roxboro / Côte-Vertu", "#009ee0", "#ffffff", R.drawable.bus)
 
 
-                725u -> Line("711", "Parc-du-Mont-Royal / Oratoire", "#009ee0", "#ffffff", R.drawable.bus)
                 729u -> Line("768", "Plage Jean-Doré / Station Jean-Drapeau", "#009ee0", "#ffffff", R.drawable.bus)
                 512u -> Line("804", "Navette de la Montagne", "#009ee0", "#ffffff", R.drawable.bus)
                 735u -> Line("874", "Robert-Bourassa", "#009ee0", "#ffffff", R.drawable.bus)
@@ -2565,7 +2568,7 @@ class CardContentConverter {
             val zone = getZoneById(zoneId)
 
             return when (id) {
-                2u -> Line("A", if (zone != "") "Ligne A ($zone)" else "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro)
+                2u -> Line("A", if (zone != "") "Ligne A (zone $zone)" else "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro)
 
                 else -> {
                     val proposition: Line? = lookForLineProposition(
