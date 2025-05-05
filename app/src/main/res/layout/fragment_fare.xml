@@ -30,7 +30,7 @@
                 android:id="@+id/fareValidityColorLayout"
                 android:layout_width="14dp"
                 android:layout_height="0dp"
-                android:background="#0f850e"
+                android:background="@color/valid_fare"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

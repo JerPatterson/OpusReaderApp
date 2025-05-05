@@ -112,7 +112,7 @@
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="8dp"
-            app:cardElevation="5dp"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/cardImageView"
             app:layout_constraintTop_toBottomOf="@+id/cardImageView">
@@ -120,7 +120,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#fcf0c8">
+                android:background="@color/registered_card">
 
                 <TextView
                     android:id="@+id/registeredTv"
@@ -131,7 +131,7 @@
                     android:paddingEnd="6dp"
                     android:paddingBottom="4dp"
                     android:text="@string/registered_card_title"
-                    android:textColor="?android:attr/textColorPrimary"
+                    android:textColor="#122840"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -144,6 +144,7 @@
                     android:layout_marginEnd="6dp"
                     android:contentDescription="@string/image_info"
                     android:src="@drawable/info"
+                    app:tint="#122840"
                     app:layout_constraintBottom_toBottomOf="@+id/registeredTv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/registeredTv"
@@ -163,7 +164,7 @@
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="8dp"
-            app:cardElevation="5dp"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/registeredButtonLayout"
             app:layout_constraintTop_toBottomOf="@+id/cardImageView">
@@ -171,7 +172,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#a5d4f4">
+                android:background="@color/card_type_variant">
 
                 <TextView
                     android:id="@+id/cardTypeValueTv"
@@ -181,13 +182,13 @@
                     android:paddingTop="4dp"
                     android:paddingEnd="6dp"
                     android:paddingBottom="4dp"
-                    android:textColor="?android:attr/textColorPrimary"
+                    android:textColor="#122840"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Tous Modes AB" />
+
 
                 <ImageView
                     android:id="@+id/cardTypeDescriptionImageView"
@@ -196,6 +197,7 @@
                     android:layout_marginEnd="6dp"
                     android:contentDescription="@string/image_info"
                     android:src="@drawable/info"
+                    app:tint="#122840"
                     app:layout_constraintBottom_toBottomOf="@+id/cardTypeValueTv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/cardTypeValueTv"
@@ -413,7 +415,7 @@
         android:layout_marginEnd="32dp"
         android:visibility="gone"
         app:cardCornerRadius="8dp"
-        app:cardElevation="6dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardSectionLayout">
@@ -433,6 +435,7 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/info"
+                app:tint="#122840"
                 app:layout_constraintBottom_toBottomOf="@+id/registeredInfoTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/registeredInfoTitle" />
@@ -445,7 +448,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
                 android:text="@string/registered_card_info"
-                android:textColor="?android:attr/textColorPrimary"
+                android:textColor="#122840"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/registeredInfoImageView"
@@ -460,6 +463,7 @@
                 android:layout_marginEnd="20dp"
                 android:paddingBottom="8dp"
                 android:text="@string/registered_card_description"
+                android:textColor="#122840"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/registeredInfoTitle" />
@@ -468,7 +472,7 @@
                 android:id="@+id/registeredInfoDivider"
                 android:layout_width="395dp"
                 android:layout_height="1dp"
-                android:background="?android:attr/listDivider"
+                android:background="#DFDFDF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/registeredDescriptionTv" />
 
@@ -479,6 +483,7 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/baseline_cake_24"
+                app:tint="#122840"
                 app:layout_constraintBottom_toBottomOf="@+id/cardBirthDateTv"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/cardBirthDateTv" />
@@ -490,7 +495,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/card_birth_date_title"
-                android:textColor="?android:attr/textColorPrimary"
+                android:textColor="#122840"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/birthDateImageView"
                 app:layout_constraintTop_toBottomOf="@+id/registeredInfoDivider" />
@@ -501,7 +506,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="2dp"
-                android:textColor="?android:attr/textColorPrimary"
+                android:textColor="#122840"
                 app:layout_constraintStart_toStartOf="@+id/birthDateImageView"
                 app:layout_constraintTop_toBottomOf="@+id/cardBirthDateTv"
                 tools:text="October 11th 2010" />
@@ -539,6 +544,7 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/info"
+                app:tint="#122840"
                 app:layout_constraintBottom_toBottomOf="@+id/cardTypeInfoTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/cardTypeInfoTitle" />
@@ -550,7 +556,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
-                android:textColor="?android:attr/textColorPrimary"
+                android:textColor="#122840"
                 android:textStyle="bold"
                 android:text="@string/card_type_variant_info"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -565,6 +571,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
                 android:paddingBottom="8dp"
+                android:textColor="#122840"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardTypeInfoTitle"

@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -129,9 +130,9 @@ class FareFragment : Fragment() {
 
         val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
         if (fare.ticketCount == 0u) {
-            fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#ff0317"))
+            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.valid_fare)))
         } else {
-            fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#108016"))
+            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.invalid_fare)))
         }
     }
 
@@ -141,9 +142,9 @@ class FareFragment : Fragment() {
 
         val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
         if (untilDate.time < Calendar.getInstance().time) {
-            fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#ff0317"))
+            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.invalid_fare)))
         } else {
-            fareValidityColorLayout?.setBackgroundColor(Color.parseColor("#108016"))
+            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.valid_fare)))
         }
     }
 

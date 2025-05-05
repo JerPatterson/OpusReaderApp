@@ -93,7 +93,7 @@
     </string>
 
     <string name="card_type_variant_info">Information sur ce type de carte</string>
-    <string name="standard_card">Régulière</string>
+    <string name="standard_card">Standard</string>
     <string name="all_modes_AB_card">Tous modes AB</string>
     <string name="all_modes_ABC_card">Tous modes ABC</string>
     <string name="all_modes_ABCD_card">Tous modes ABCD</string>
@@ -101,50 +101,39 @@
 
     <string name="standard_card_info">
         Cette carte Opus peut contenir les titres suivants:\n\n
-        <ol>
-            <li>Tous les titres mensuels\n</li>
-            <li>Tous modes A: 1, 2 ou 10 passages, 24hrs, 3 jours, Hebdo\n</li>
-            <li>Bus: 1, 2 ou 10 passages, 24hrs, 3 jours\n</li>
-            <li>Anciens titres TRAIN, TRAM ou bus locaux d\'exo\n</li>
-            <li>Soirée illimitée\n</li>
-            <li>Weekend illimité</li>
-        </ol>
+        • Tous les titres mensuels\n
+        • Tous modes A: 1, 2 ou 10 passages, 24hrs, 3 jours, Hebdo\n
+        • Bus: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
     </string>
     <string name="all_modes_AB_card_info">
         Cette carte Opus peut contenir les titres suivants:\n\n
-        <ol>
-            <li>Tous les titres mensuels\n</li>
-            <li>Tous modes AB: 1, 2 ou 10 passages, 24hrs, 3 jours\n</li>
-            <li>Soirée illimitée\n</li>
-            <li>Weekend illimité</li>
-        </ol>
+        • Tous les titres mensuels\n
+        • Tous modes AB: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
     </string>
     <string name="all_modes_ABC_card_info">
         Cette carte Opus peut contenir les titres suivants:\n\n
-        <ol>
-            <li>Tous les titres mensuels\n</li>
-            <li>Tous modes ABC: 1, 2 ou 10 passages, 24hrs, 3 jours\n</li>
-            <li>Soirée illimitée\n</li>
-            <li>Weekend illimité</li>
-        </ol>
+        • Tous les titres mensuels\n
+        • Tous modes ABC: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
     </string>
     <string name="all_modes_ABCD_card_info">
         Cette carte Opus peut contenir les titres suivants:\n\n
-        <ol>
-            <li>Tous les titres mensuels\n</li>
-            <li>Tous modes ABCD: 1, 2 ou 10 passages, 24hrs, 3 jours\n</li>
-            <li>Soirée illimitée\n</li>
-            <li>Weekend illimité</li>
-        </ol>
+        • Tous les titres mensuels\n
+        • Tous modes ABCD: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
     </string>
     <string name="bus_out_territory_card_info">
         Cette carte Opus peut contenir les titres suivants:\n\n
-        <ol>
-            <li>Tous les titres mensuels\n</li>
-            <li>Bus hors territoire: 1, 2 ou 10 passages, 24hrs, 3 jours\n</li>
-            <li>Soirée illimitée\n</li>
-            <li>Weekend illimité</li>
-        </ol>
+        • Tous les titres mensuels\n
+        • Bus hors territoire: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
     </string>
 
     <string name="validity_section_title">Validité du titre</string>
