@@ -91,6 +91,12 @@
         \n\nThis guarantee does not apply to an OPUS card that has expired for more than six months.
     </string>
 
+    <string name="standard_card">Standard</string>
+    <string name="all_modes_AB_card">All modes AB</string>
+    <string name="all_modes_ABC_card">TAll modes ABC</string>
+    <string name="all_modes_ABCD_card">All modes ABCD</string>
+    <string name="bus_out_territory_card">Bus out of territory</string>
+
     <string name="standard_card_info">
         This Opus can contain the following fares:\n\n
         <ol>

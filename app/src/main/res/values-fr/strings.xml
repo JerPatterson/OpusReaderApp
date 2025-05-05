@@ -92,6 +92,12 @@
         \n\nCette garantie ne peut s’appliquer sur une carte OPUS expirée depuis plus de six mois.
     </string>
 
+    <string name="standard_card">Régulière</string>
+    <string name="all_modes_AB_card">Tous modes AB</string>
+    <string name="all_modes_ABC_card">Tous modes ABC</string>
+    <string name="all_modes_ABCD_card">Tous modes ABCD</string>
+    <string name="bus_out_territory_card">Bus hors territoire</string>
+
     <string name="standard_card_info">
         Cette carte Opus peut contenir les titres suivants:\n\n
         <ol>

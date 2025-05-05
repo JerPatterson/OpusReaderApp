@@ -107,17 +107,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="8dp"
             app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/cardImageView"
             app:layout_constraintTop_toBottomOf="@+id/cardImageView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#fcf0c8" >
+                android:background="#fcf0c8">
 
                 <TextView
                     android:id="@+id/registeredTv"
@@ -154,12 +156,14 @@
             android:id="@+id/cardTypeButtonLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/registeredButtonLayout"
             app:layout_constraintTop_toBottomOf="@+id/cardImageView">
 
@@ -179,6 +183,7 @@
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Tous Modes AB" />
@@ -504,12 +509,14 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTypeLayout"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:visibility="gone"
         app:cardCornerRadius="8dp"
-        app:cardElevation="0dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardSectionLayout">
 
@@ -521,18 +528,43 @@
             android:focusable="true"
             android:paddingBottom="8dp">
 
+            <ImageView
+                android:id="@+id/cardTypeInfoImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/image_info"
+                android:src="@drawable/info"
+                app:layout_constraintBottom_toBottomOf="@+id/cardTypeInfoTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cardTypeInfoTitle" />
+
+            <TextView
+                android:id="@+id/cardTypeInfoTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textStyle="bold"
+                android:text="@string/registered_card_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardTypeInfoImageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/cardTypeDescriptionTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="20dp"
                 android:paddingBottom="8dp"
                 android:text="@string/all_modes_AB_card_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/cardTypeInfoTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
