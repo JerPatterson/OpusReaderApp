@@ -148,6 +148,29 @@
     <string name="validity_starting_on">Commence le</string>
     <string name="validity_ending_on">Termine le</string>
 
+    <string name="validity_notification_channel">Validité des titres</string>
+    <string name="validity_notification_title">Un titre expire bientôt</string>
+    <string name="validity_minutes">%1$d minutes</string>
+    <string name="validity_hours">%1$d heures</string>
+    <string name="validity_day">une journée</string>
+    <string name="validity_notification_ticket_fare_plural_message">
+        La validité d\'un passage du titre de transport \'%1$s\' va se terminer dans %2$s.
+        Cependant, il reste encore %3$d passages disponibles pour ce titre.
+    </string>
+    <string name="validity_notification_ticket_fare_singular_message">
+        La validité d\'un passage du titre de transport \'%1$s\' va se terminer dans %2$s.
+        Cependant, il reste encore un dernier passage pour ce titre.
+    </string>
+    <string name="validity_notification_ticket_fare_empty_message">
+        La validité d\'un passage du titre de transport \'%1$s\' va se terminer dans %2$s.
+        Il ne reste plus de passage pour ce titre.
+        Pensez à prévoir vos déplacements en conséquences.
+    </string>
+    <string name="validity_notification_unlimited_fare_message">
+        La validité du titre de transport \'%1$s\' va se terminer dans %2$s.
+        Pensez à prévoir vos déplacements en conséquences.
+    </string>
+
     <string name="fare_section_title">Titres de la carte</string>
     <string name="fare_buying_date_title">Acheté le</string>
     <string name="fare_first_use_date_title">Valide du</string>

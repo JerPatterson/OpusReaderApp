@@ -147,6 +147,29 @@
     <string name="validity_starting_on">Starting on</string>
     <string name="validity_ending_on">Ending on</string>
 
+    <string name="validity_notification_channel">Transit fare validity</string>
+    <string name="validity_notification_title">A transit fare expires soon</string>
+    <string name="validity_minutes">%1$d minutes</string>
+    <string name="validity_hours">%1$d hours</string>
+    <string name="validity_day">one day</string>
+    <string name="validity_notification_ticket_fare_plural_message">
+        The validity of a trip from the \'%1$s\' transit fare will end in %2$s.
+        However, there are still %3$d trips available for this fare.
+    </string>
+    <string name="validity_notification_ticket_fare_singular_message">
+        The validity of a trip from the \'%1$s\' transit fare will end in %2$s.
+        However, there is still one last trip remaining for this fare.
+    </string>
+    <string name="validity_notification_ticket_fare_empty_message">
+        The validity of a trip from the \'%1$s\' transit fare will end in %2$s.
+        There are no more trip left for this fare.
+        Remember to plan your trips accordingly.
+    </string>
+    <string name="validity_notification_unlimited_fare_message">
+        The validity of a trip from the \'%1$s\' transit fare will end in %2$s.
+        Remember to plan your trips accordingly.
+    </string>
+
     <string name="fare_section_title">Fares of the card</string>
     <string name="fare_buying_date_title">Bought on</string>
     <string name="fare_first_use_date_title">Validity from</string>

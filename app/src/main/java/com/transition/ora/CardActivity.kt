@@ -1,25 +1,21 @@
 package com.transition.ora
 
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-import kotlin.math.exp
 
 private const val ARG_CARD = "card"
 
 
 class CardActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card)
@@ -32,6 +28,8 @@ class CardActivity : AppCompatActivity() {
             this.addValiditySection(card)
             this.addFareInfoSection(card)
             this.addTripInfoSection(card)
+
+            NotificationScheduler().scheduleNotification(card, this)
         }
     }
 

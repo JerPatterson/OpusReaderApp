@@ -66,7 +66,7 @@ class ValidityFragment: Fragment() {
     }
 
     private fun getDefaultValidityMinutes(fare: Fare?): Int {
-        return if (fare?.operatorId == 20u || fare?.operatorId == 64u) 90 else 120
+        return if (fare?.operatorId == 5u || fare?.operatorId == 16u) 90 else 120
     }
 
     private fun addValidityInfoSection(card: Card) {
