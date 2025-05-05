@@ -85,7 +85,7 @@
     <string name="card_birth_date_title">Date de naissance</string>
     <string name="no_birth_date">Inconnue</string>
     <string name="registered_card_title">Enregistrée</string>
-    <string name="registered_card_info">Information de l\'enregistrement</string>
+    <string name="registered_card_info">Information sur l\'enregistrement</string>
     <string name="registered_card_description">
         Cette carte OPUS étant enregistrée, elle offre une garantie en cas de perte ou de vol.
         Il est possible de la remplacer et récupérer les titres qui s\'y trouvent.
