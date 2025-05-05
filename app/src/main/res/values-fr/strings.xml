@@ -100,7 +100,7 @@
     <string name="bus_out_territory_card">Bus hors territoire</string>
 
     <string name="standard_card_info">
-        Cette carte Opus peut contenir les titres suivants:\n\n
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
         • Tous les titres mensuels\n
         • Tous modes A: 1, 2 ou 10 passages, 24hrs, 3 jours, Hebdo\n
         • Bus: 1, 2 ou 10 passages, 24hrs, 3 jours\n
@@ -108,28 +108,28 @@
         • Weekend illimité
     </string>
     <string name="all_modes_AB_card_info">
-        Cette carte Opus peut contenir les titres suivants:\n\n
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
         • Tous les titres mensuels\n
         • Tous modes AB: 1, 2 ou 10 passages, 24hrs, 3 jours\n
         • Soirée illimitée\n
         • Weekend illimité
     </string>
     <string name="all_modes_ABC_card_info">
-        Cette carte Opus peut contenir les titres suivants:\n\n
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
         • Tous les titres mensuels\n
         • Tous modes ABC: 1, 2 ou 10 passages, 24hrs, 3 jours\n
         • Soirée illimitée\n
         • Weekend illimité
     </string>
     <string name="all_modes_ABCD_card_info">
-        Cette carte Opus peut contenir les titres suivants:\n\n
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
         • Tous les titres mensuels\n
         • Tous modes ABCD: 1, 2 ou 10 passages, 24hrs, 3 jours\n
         • Soirée illimitée\n
         • Weekend illimité
     </string>
     <string name="bus_out_territory_card_info">
-        Cette carte Opus peut contenir les titres suivants:\n\n
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
         • Tous les titres mensuels\n
         • Bus hors territoire: 1, 2 ou 10 passages, 24hrs, 3 jours\n
         • Soirée illimitée\n

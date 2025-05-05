@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -38,6 +39,10 @@ class CardActivity : AppCompatActivity() {
         this.addCardRegisteredInfo(card.type, card.birthDate)
         this.addCardTypeVariantInfo(card.typeVariant)
         this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
+
+        val overlayLayout = findViewById<FrameLayout>(R.id.overlay)
+        overlayLayout.setOnClickListener(OverlayListener(this))
+        overlayLayout.visibility = View.GONE
     }
 
     private fun addCardRegisteredInfo(cardType: CardType, birthDate: Calendar?) {
@@ -252,11 +257,13 @@ class CardActivity : AppCompatActivity() {
         private val activity: CardActivity,
     ) : View.OnClickListener {
         override fun onClick(view: View) {
+            val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
             val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
             val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
 
+            overlayLayout.visibility = View.VISIBLE
             cardTypeVariantLayout.visibility = View.GONE
-            registeredCardLayout.visibility = if (registeredCardLayout.visibility != View.VISIBLE) View.VISIBLE else View.GONE
+            registeredCardLayout.visibility = View.VISIBLE
         }
     }
 
@@ -264,9 +271,26 @@ class CardActivity : AppCompatActivity() {
         private val activity: CardActivity,
     ) : View.OnClickListener {
         override fun onClick(view: View) {
+            val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
             val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
             val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
-            cardTypeVariantLayout.visibility = if (cardTypeVariantLayout.visibility != View.VISIBLE) View.VISIBLE else View.GONE
+
+            overlayLayout.visibility = View.VISIBLE
+            cardTypeVariantLayout.visibility = View.VISIBLE
+            registeredCardLayout.visibility = View.GONE
+        }
+    }
+
+    class OverlayListener(
+        private val activity: CardActivity,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
+            val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+
+            overlayLayout.visibility = View.GONE
+            cardTypeVariantLayout.visibility = View.GONE
             registeredCardLayout.visibility = View.GONE
         }
     }
