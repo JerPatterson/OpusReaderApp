@@ -10,6 +10,7 @@ class Card(
     var scanDate: Calendar,
     var expiryDate: Calendar,
     val birthDate: Calendar?,
+    val typeVariant: UInt?,
     private var fares: ArrayList<Fare>,
     private var trips: ArrayList<Trip>
 ) {
@@ -20,6 +21,7 @@ class Card(
             scanDate.timeInMillis.toString(),
             expiryDate.timeInMillis.toString(),
             birthDate?.timeInMillis?.toString(),
+            typeVariant?.toString(),
             Gson().toJson(fares, ArrayList<Fare>()::class.java).toString(),
             Gson().toJson(trips, ArrayList<Fare>()::class.java).toString(),
         )

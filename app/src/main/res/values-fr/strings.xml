@@ -84,6 +84,57 @@
     <string name="no_expiry_date">Aucune</string>
     <string name="card_birth_date_title">Date de naissance</string>
     <string name="no_birth_date">Inconnue</string>
+    <string name="registered_card_title">Enregistrée</string>
+    <string name="registered_card_info">Information sur l\'enregistrement</string>
+    <string name="registered_card_description">
+        Cette carte OPUS étant enregistrée, elle offre une garantie en cas de perte ou de vol.
+        Il est possible de la remplacer et récupérer les titres qui s\'y trouvent.
+        \n\nCette garantie ne peut s’appliquer sur une carte OPUS expirée depuis plus de six mois.
+    </string>
+
+    <string name="card_type_variant_info">Information sur ce type de carte</string>
+    <string name="standard_card">Standard</string>
+    <string name="all_modes_AB_card">Tous modes AB</string>
+    <string name="all_modes_ABC_card">Tous modes ABC</string>
+    <string name="all_modes_ABCD_card">Tous modes ABCD</string>
+    <string name="bus_out_territory_card">Bus hors territoire</string>
+
+    <string name="standard_card_info">
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
+        • Tous les titres mensuels\n
+        • Tous modes A: 1, 2 ou 10 passages, 24hrs, 3 jours, Hebdo\n
+        • Bus: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
+    </string>
+    <string name="all_modes_AB_card_info">
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
+        • Tous les titres mensuels\n
+        • Tous modes AB: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
+    </string>
+    <string name="all_modes_ABC_card_info">
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
+        • Tous les titres mensuels\n
+        • Tous modes ABC: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
+    </string>
+    <string name="all_modes_ABCD_card_info">
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
+        • Tous les titres mensuels\n
+        • Tous modes ABCD: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
+    </string>
+    <string name="bus_out_territory_card_info">
+        Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
+        • Tous les titres mensuels\n
+        • Bus hors territoire: 1, 2 ou 10 passages, 24hrs, 3 jours\n
+        • Soirée illimitée\n
+        • Weekend illimité
+    </string>
 
     <string name="validity_section_title">Validité du titre</string>
     <string name="validity_starting_on">Commence le</string>

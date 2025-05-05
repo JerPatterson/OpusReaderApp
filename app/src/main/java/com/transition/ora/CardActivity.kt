@@ -4,9 +4,11 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -34,22 +36,68 @@ class CardActivity : AppCompatActivity() {
 
     private fun addCardInfoSection(card: Card) {
         this.addCardInfoSectionTitles(card.type)
+        this.addCardRegisteredInfo(card.type, card.birthDate)
+        this.addCardTypeVariantInfo(card.typeVariant)
         this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
+
+        val overlayLayout = findViewById<FrameLayout>(R.id.overlay)
+        overlayLayout.setOnClickListener(OverlayListener(this))
+        overlayLayout.visibility = View.GONE
+    }
+
+    private fun addCardRegisteredInfo(cardType: CardType, birthDate: Calendar?) {
+        val registeredCardButton = findViewById<CardView>(R.id.registeredButtonLayout)
+        if (cardType == CardType.Occasional || birthDate == null) {
+            registeredCardButton.visibility = View.GONE
+        } else {
+            registeredCardButton.visibility = View.VISIBLE
+            registeredCardButton.setOnClickListener(RegisteredCardListener(this))
+        }
+    }
+
+    private fun addCardTypeVariantInfo(cardTypeVariantId: UInt?) {
+        val cardTypeVariant = CardContentConverter.getCardTypeVariantById(cardTypeVariantId)
+        when (cardTypeVariant) {
+            CardTypeVariant.Standard,
+            CardTypeVariant.StandardReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.standard_card, R.string.standard_card_info)
+            }
+            CardTypeVariant.AllModesAB,
+            CardTypeVariant.AllModesABReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.all_modes_AB_card, R.string.all_modes_AB_card_info)
+            }
+            CardTypeVariant.AllModesABC,
+            CardTypeVariant.AllModesABCReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.all_modes_ABC_card, R.string.all_modes_ABC_card_info)
+            }
+            CardTypeVariant.AllModesABCD,
+            CardTypeVariant.AllModesABCDReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.all_modes_ABCD_card, R.string.all_modes_ABCD_card_info)
+            }
+            CardTypeVariant.BusOutOfTerritory,
+            CardTypeVariant.BusOutOfTerritoryReduced -> {
+                addSpecificCardTypeVariantInfo(R.string.bus_out_territory_card, R.string.bus_out_territory_card_info)
+            }
+
+            else -> {
+                val cardVariantTypeButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
+                cardVariantTypeButton.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun addSpecificCardTypeVariantInfo(buttonText: Int, descriptionText: Int) {
+        val cardVariantTypeTv = findViewById<TextView>(R.id.cardTypeValueTv)
+        val cardVariantTypeDescriptionTv = findViewById<TextView>(R.id.cardTypeDescriptionTv)
+        cardVariantTypeTv.text = getString(buttonText)
+        cardVariantTypeDescriptionTv.text = getString(descriptionText)
+
+        val cardVariantTypeButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
+        cardVariantTypeButton.visibility = View.VISIBLE
+        cardVariantTypeButton.setOnClickListener(CardTypeVariantListener(this))
     }
 
     private fun addCardInfoSectionTitles(cardType: CardType) {
-        val cardIdTitleTv = findViewById<TextView>(R.id.cardIdTv)
-        val cardExpirationDateTitleTv = findViewById<TextView>(R.id.cardExpiryDateTv)
-        val cardBirthDateTitleTv = findViewById<TextView>(R.id.cardBirthDateTv)
-        cardIdTitleTv.text = getString(R.string.card_id_title)
-        cardExpirationDateTitleTv.text = getString(R.string.card_expiration_date_title)
-        cardBirthDateTitleTv.text = getString(R.string.card_birth_date_title)
-
-        if (cardType == CardType.Occasional) {
-            cardBirthDateTitleTv.visibility = View.GONE
-            findViewById<TextView>(R.id.cardBirthDateValueTv).visibility = View.GONE
-        }
-
         val cardTitleTv = findViewById<TextView>(R.id.cardSectionTitleTv)
         cardTitleTv.text = when (cardType) {
             CardType.Opus -> getString(R.string.opus_card_name)
@@ -202,6 +250,48 @@ class CardActivity : AppCompatActivity() {
     ) : View.OnClickListener {
         override fun onClick(view: View) {
             activity.finish()
+        }
+    }
+
+    class RegisteredCardListener(
+        private val activity: CardActivity,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
+            val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+
+            overlayLayout.visibility = View.VISIBLE
+            cardTypeVariantLayout.visibility = View.GONE
+            registeredCardLayout.visibility = View.VISIBLE
+        }
+    }
+
+    class CardTypeVariantListener(
+        private val activity: CardActivity,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
+            val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+
+            overlayLayout.visibility = View.VISIBLE
+            cardTypeVariantLayout.visibility = View.VISIBLE
+            registeredCardLayout.visibility = View.GONE
+        }
+    }
+
+    class OverlayListener(
+        private val activity: CardActivity,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
+            val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+
+            overlayLayout.visibility = View.GONE
+            cardTypeVariantLayout.visibility = View.GONE
+            registeredCardLayout.visibility = View.GONE
         }
     }
 }

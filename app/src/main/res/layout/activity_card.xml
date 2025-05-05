@@ -44,13 +44,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="14dp"
+            android:text="@string/card_id_title"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintStart_toEndOf="@+id/cardImageView"
-            app:layout_constraintTop_toBottomOf="@+id/cardSectionTitleTv"
-            tools:text="Identifier" />
+            app:layout_constraintTop_toBottomOf="@+id/cardSectionTitleTv" />
 
         <TextView
             android:id="@+id/cardIdValueTv"
@@ -70,12 +70,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="6dp"
+            android:text="@string/card_expiration_date_title"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintStart_toEndOf="@+id/cardImageView"
-            app:layout_constraintTop_toBottomOf="@+id/cardIdValueTv"
-            tools:text="Expiration" />
+            app:layout_constraintTop_toBottomOf="@+id/cardIdValueTv" />
 
         <TextView
             android:id="@+id/cardExpiryDateValueTv"
@@ -83,55 +83,134 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="2dp"
-            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
             android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/cardTypeButtonLayout"
             app:layout_constraintStart_toEndOf="@+id/cardImageView"
             app:layout_constraintTop_toBottomOf="@+id/cardExpiryDateTv"
             tools:text="October 31st 2023" />
 
-        <TextView
-            android:id="@+id/cardBirthDateTv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="?android:attr/textColorPrimary"
-            app:layout_constraintStart_toEndOf="@+id/cardImageView"
-            app:layout_constraintTop_toBottomOf="@+id/cardExpiryDateValueTv"
-            tools:text="Birthday" />
-
-        <TextView
-            android:id="@+id/cardBirthDateValueTv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="8dp"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardImageView"
-            app:layout_constraintTop_toBottomOf="@+id/cardBirthDateTv"
-            tools:text="October 11th 2010" />
-
         <ImageView
             android:id="@+id/cardImageView"
-            android:layout_width="180dp"
-            android:layout_height="98dp"
+            android:layout_width="160dp"
+            android:layout_height="0dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="14dp"
             android:contentDescription="@string/image_card_scanned"
             android:textColor="?android:attr/textColorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/cardExpiryDateValueTv"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardSectionTitleTv" />
+            app:layout_constraintTop_toTopOf="@+id/cardIdTv"
+            tools:src="@drawable/opus" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/registeredButtonLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardImageView"
+            app:layout_constraintTop_toBottomOf="@+id/cardImageView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/registered_card">
+
+                <TextView
+                    android:id="@+id/registeredTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="6dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="6dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/registered_card_title"
+                    android:textColor="#122840"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/registeredDescriptionImageView"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="6dp"
+                    android:contentDescription="@string/image_info"
+                    android:src="@drawable/info"
+                    app:tint="#122840"
+                    app:layout_constraintBottom_toBottomOf="@+id/registeredTv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/registeredTv"
+                    app:layout_constraintTop_toTopOf="@+id/registeredTv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTypeButtonLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/registeredButtonLayout"
+            app:layout_constraintTop_toBottomOf="@+id/cardImageView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/card_type_variant">
+
+                <TextView
+                    android:id="@+id/cardTypeValueTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="6dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="6dp"
+                    android:paddingBottom="4dp"
+                    android:textColor="#122840"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Tous Modes AB" />
+
+
+                <ImageView
+                    android:id="@+id/cardTypeDescriptionImageView"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="6dp"
+                    android:contentDescription="@string/image_info"
+                    android:src="@drawable/info"
+                    app:tint="#122840"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardTypeValueTv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cardTypeValueTv"
+                    app:layout_constraintTop_toTopOf="@+id/cardTypeValueTv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+        android:id="@+id/cardContentScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="false"
@@ -143,8 +222,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp">
+            android:paddingTop="6dp"
+            android:paddingBottom="12dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/validitySectionTitleTv"
@@ -152,12 +232,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="4dp"
+                android:text="@string/validity_section_title"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/expiryDateValueTv"
-                tools:text="VALIDITY INFO" />
+                app:layout_constraintTop_toBottomOf="@+id/expiryDateValueTv" />
 
             <Space
                 android:id="@+id/validitySpace"
@@ -189,12 +269,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
+                android:text="@string/fare_section_title"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/expiryDateValueTv"
-                tools:text="FARES INFO" />
+                app:layout_constraintTop_toBottomOf="@+id/expiryDateValueTv" />
 
             <Space
                 android:id="@+id/faresSpace"
@@ -228,7 +308,6 @@
                 android:layout_marginRight="20dp"
                 android:background="?android:attr/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/firstFareFragment"
                 tools:layout="@layout/fragment_fare" />
@@ -242,7 +321,6 @@
                 android:layout_marginRight="20dp"
                 android:background="?android:attr/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/secondFareFragment"
                 tools:layout="@layout/fragment_fare" />
@@ -256,7 +334,6 @@
                 android:layout_marginRight="20dp"
                 android:background="?android:attr/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/thirdFareFragment"
                 tools:layout="@layout/fragment_fare" />
@@ -267,12 +344,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
+                android:text="@string/trip_section_title"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/expiryDateValueTv"
-                tools:text="TRIPS INFO" />
+                app:layout_constraintTop_toBottomOf="@+id/expiryDateValueTv" />
 
             <Space
                 android:id="@+id/tripsSpace"
@@ -307,7 +384,6 @@
                 android:layout_marginRight="20dp"
                 android:background="?android:attr/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/firstTripFragment"
                 tools:layout="@layout/fragment_trip" />
@@ -323,11 +399,196 @@
                 android:layout_marginBottom="200dp"
                 android:background="?android:attr/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/secondTripFragment"
                 tools:layout="@layout/fragment_trip" />
 
         </LinearLayout>
+
     </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/registeredLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="32dp"
+        android:visibility="gone"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardSectionLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fcf0c8"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:id="@+id/registeredInfoImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/image_info"
+                android:src="@drawable/info"
+                app:tint="#122840"
+                app:layout_constraintBottom_toBottomOf="@+id/registeredInfoTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/registeredInfoTitle" />
+
+            <TextView
+                android:id="@+id/registeredInfoTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/registered_card_info"
+                android:textColor="#122840"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/registeredInfoImageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/registeredDescriptionTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:paddingBottom="8dp"
+                android:text="@string/registered_card_description"
+                android:textColor="#122840"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registeredInfoTitle" />
+
+            <View
+                android:id="@+id/registeredInfoDivider"
+                android:layout_width="395dp"
+                android:layout_height="1dp"
+                android:background="#DFDFDF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registeredDescriptionTv" />
+
+            <ImageView
+                android:id="@+id/birthDateImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/image_info"
+                android:src="@drawable/baseline_cake_24"
+                app:tint="#122840"
+                app:layout_constraintBottom_toBottomOf="@+id/cardBirthDateTv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cardBirthDateTv" />
+
+            <TextView
+                android:id="@+id/cardBirthDateTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/card_birth_date_title"
+                android:textColor="#122840"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/birthDateImageView"
+                app:layout_constraintTop_toBottomOf="@+id/registeredInfoDivider" />
+
+            <TextView
+                android:id="@+id/cardBirthDateValueTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:textColor="#122840"
+                app:layout_constraintStart_toStartOf="@+id/birthDateImageView"
+                app:layout_constraintTop_toBottomOf="@+id/cardBirthDateTv"
+                tools:text="October 11th 2010" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTypeLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginStart="32dp"
+        android:visibility="gone"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardSectionLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#a5d4f4"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:id="@+id/cardTypeInfoImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/image_info"
+                android:src="@drawable/info"
+                app:tint="#122840"
+                app:layout_constraintBottom_toBottomOf="@+id/cardTypeInfoTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cardTypeInfoTitle" />
+
+            <TextView
+                android:id="@+id/cardTypeInfoTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="#122840"
+                android:textStyle="bold"
+                android:text="@string/card_type_variant_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardTypeInfoImageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/cardTypeDescriptionTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:paddingBottom="8dp"
+                android:textColor="#122840"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardTypeInfoTitle"
+                tools:text="@string/all_modes_AB_card_info" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
