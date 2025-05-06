@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Build
 import com.google.gson.Gson
 import java.util.Calendar
+import java.util.UUID
 import kotlin.math.abs
 
 private const val ARG_CARD = "card"
@@ -25,6 +26,26 @@ class NotificationScheduler {
         if (card.type == CardType.Opus) {
             scheduleCardNotificationAtTime(card, context, card.expiryDate.timeInMillis)
         }
+    }
+
+    fun removeScheduleNotification(card: Card, context: Context) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        val cardNotificationPendingIntent = PendingIntent.getBroadcast(
+            context,
+            UUID.nameUUIDFromBytes("${card.id}:card".toByteArray()).hashCode(),
+            Intent(context, CardNotificationReceiver::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        val fareNotificationPendingIntent = PendingIntent.getBroadcast(
+            context,
+            UUID.nameUUIDFromBytes("${card.id}:fare".toByteArray()).hashCode(),
+            Intent(context, FareNotificationReceiver::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        alarmManager.cancel(cardNotificationPendingIntent)
+        alarmManager.cancel(fareNotificationPendingIntent)
     }
 
     private fun scheduleCardNotificationAtTime(card: Card, context: Context, triggerTimeInMillis: Long) {
@@ -52,7 +73,7 @@ class NotificationScheduler {
 
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            card.id.hashCode(),
+            UUID.nameUUIDFromBytes("${card.id}:card".toByteArray()).hashCode(),
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
@@ -121,7 +142,7 @@ class NotificationScheduler {
 
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            card.id.hashCode(),
+            UUID.nameUUIDFromBytes("${card.id}:fare".toByteArray()).hashCode(),
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )

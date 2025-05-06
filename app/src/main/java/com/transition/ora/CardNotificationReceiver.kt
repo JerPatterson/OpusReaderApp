@@ -9,6 +9,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.google.gson.Gson
+import java.util.UUID
 
 private const val ARG_CARD = "card"
 private const val ARG_TITLE = "title"
@@ -55,6 +56,9 @@ class CardNotificationReceiver : BroadcastReceiver() {
             .setContentIntent(notificationPendingIntent)
             .build()
 
-        notificationManager.notify(card.id.hashCode(), notification)
+        notificationManager.notify(
+            UUID.nameUUIDFromBytes("${card.id}:card".toByteArray()).hashCode(),
+            notification
+        )
     }
 }

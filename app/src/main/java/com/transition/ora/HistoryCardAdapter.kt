@@ -187,6 +187,7 @@ class HistoryCardAdapter(
                 .setNegativeButton(R.string.no) { _, _ -> }
                 .setPositiveButton(R.string.yes) { _, _ ->
                     CoroutineScope(Dispatchers.IO).launch {
+                        NotificationScheduler().removeScheduleNotification(card, view.context)
                         CardDatabase.getInstance(view.context).dao.deleteStoredCard(card.getCardEntity().id)
                     }
                     adapter.removeItem(holder.adapterPosition)

@@ -152,8 +152,8 @@
     <string name="validity_notification_channel_description">Notifications envoyées quand la validité d\'un titre de transport vient de se terminer ou se termine bientôt</string>
     <string name="validity_notification_opus_channel">Validité des cartes OPUS</string>
     <string name="validity_notification_opus_channel_description">Notifications envoyées quand une carte OPUS vient d\'expirer ou expire bientôt</string>
-    <string name="validity_ended_notification_title">Un titre a expiré</string>
-    <string name="validity_notification_title">Un titre expire bientôt</string>
+    <string name="validity_ended_notification_title">Un titre de transport a expiré</string>
+    <string name="validity_notification_title">Un titre de transport expire bientôt</string>
     <string name="validity_ended_notification_opus_title">Une carte OPUS a expirée</string>
     <string name="validity_notification_opus_title">Une carte OPUS expire bientôt</string>
     <string name="validity_minutes">%1$d minutes</string>
