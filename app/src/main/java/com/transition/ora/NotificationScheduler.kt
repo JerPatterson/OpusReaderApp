@@ -8,6 +8,7 @@ import android.os.Build
 import android.provider.Settings
 import com.google.gson.Gson
 import java.util.Calendar
+import kotlin.math.abs
 
 private const val ARG_CARD = "card"
 private const val ARG_MESSAGE = "message"
@@ -49,9 +50,8 @@ class NotificationScheduler {
             triggerTimeUpdated = triggerTimeInMillis - MILLIS_IN_20MIN
         }
 
-        var message = ""
         val fareName = CardContentConverter.getFareProductById(context, fare.operatorId, fare.typeId).name
-        message = if (fare.ticketCount != null) {
+        val message = if (fare.ticketCount != null) {
             when (fare.ticketCount) {
                 0u -> context.getString(R.string.validity_notification_ticket_fare_empty_message, fareName, remainingTimeString)
                 1u -> context.getString(R.string.validity_notification_ticket_fare_singular_message, fareName, remainingTimeString)
@@ -108,6 +108,9 @@ class NotificationScheduler {
         if (fares.isEmpty() || trips.isEmpty()) return null
 
         val now = Calendar.getInstance()
+        val nearestValidityUntilInterval = fares.filter { it.ticketCount == null }
+            .minOfOrNull { abs(now.timeInMillis - (it.validityUntilDate?.timeInMillis ?: 0)) }
+
         var nearestValidityUntil: Calendar? = null
         var fareToNotifyAbout: Fare? = null
 
@@ -122,9 +125,11 @@ class NotificationScheduler {
                     validityUntil.get(Calendar.MINUTE) + getDefaultValidityMinutes(it)
                 )
 
-                if (isCloserFutureToNow(now, validityUntil, nearestValidityUntil)) {
-                    nearestValidityUntil = validityUntil
-                    fareToNotifyAbout = it
+                if (nearestValidityUntilInterval == null || nearestValidityUntilInterval > getDefaultValidityMillis(it)) {
+                    if (isCloserFutureToNow(now, validityUntil, nearestValidityUntil)) {
+                        nearestValidityUntil = validityUntil
+                        fareToNotifyAbout = it
+                    }
                 }
             }
 
@@ -145,5 +150,9 @@ class NotificationScheduler {
 
     private fun getDefaultValidityMinutes(fare: Fare?): Int {
         return if (fare?.operatorId == 5u || fare?.operatorId == 16u) 90 else 120
+    }
+
+    private fun getDefaultValidityMillis(fare: Fare?): Long {
+        return getDefaultValidityMinutes(fare).toLong() * 60 * 1000
     }
 }
