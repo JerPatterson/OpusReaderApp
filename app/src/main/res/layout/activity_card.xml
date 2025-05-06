@@ -491,7 +491,7 @@
                 android:layout_height="16dp"
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_info"
-                android:src="@drawable/baseline_cake_24"
+                android:src="@drawable/birthday"
                 app:tint="#122840"
                 app:layout_constraintBottom_toBottomOf="@+id/cardBirthDateTv"
                 app:layout_constraintStart_toStartOf="parent"

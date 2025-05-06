@@ -47,7 +47,7 @@ class NotificationReceiver : BroadcastReceiver() {
             .setContentTitle(context.getString(R.string.validity_notification_title))
             .setContentText(message)
             .setStyle(NotificationCompat.BigTextStyle().bigText(message))
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.opusreader)
             .setContentIntent(notificationPendingIntent)
             .build()
 
