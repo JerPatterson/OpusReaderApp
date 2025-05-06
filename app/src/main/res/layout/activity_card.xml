@@ -43,7 +43,7 @@
             android:id="@+id/cardIdTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="14dp"
             android:text="@string/card_id_title"
             android:textColor="?android:attr/textColorPrimary"
@@ -56,11 +56,11 @@
             android:id="@+id/cardIdValueTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="2dp"
-            android:textSize="16sp"
             android:textColor="?android:attr/textColorPrimary"
-            app:layout_constraintStart_toEndOf="@+id/cardImageView"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/cardIdTv"
             app:layout_constraintTop_toBottomOf="@+id/cardIdTv"
             tools:text="0123456789" />
 
@@ -68,26 +68,24 @@
             android:id="@+id/cardExpiryDateTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="6dp"
             android:text="@string/card_expiration_date_title"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="?android:attr/textColorPrimary"
-            app:layout_constraintStart_toEndOf="@+id/cardImageView"
+            app:layout_constraintStart_toStartOf="@+id/cardIdTv"
             app:layout_constraintTop_toBottomOf="@+id/cardIdValueTv" />
 
         <TextView
             android:id="@+id/cardExpiryDateValueTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="8dp"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/cardStatusButtonLayout"
-            app:layout_constraintStart_toEndOf="@+id/cardImageView"
+            app:layout_constraintStart_toStartOf="@+id/cardIdValueTv"
             app:layout_constraintTop_toBottomOf="@+id/cardExpiryDateTv"
             tools:text="October 31st 2023" />
 
