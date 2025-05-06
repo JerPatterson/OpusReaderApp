@@ -149,7 +149,13 @@
     <string name="validity_ending_on">Termine le</string>
 
     <string name="validity_notification_channel">Validité des titres</string>
+    <string name="validity_notification_channel_description">Notifications envoyées quand la validité d\'un titre de transport vient de se terminer ou se termine bientôt</string>
+    <string name="validity_notification_opus_channel">Validité des cartes OPUS</string>
+    <string name="validity_notification_opus_channel_description">Notifications envoyées quand une carte OPUS vient d\'expirer ou expire bientôt</string>
+    <string name="validity_ended_notification_title">Un titre a expiré</string>
     <string name="validity_notification_title">Un titre expire bientôt</string>
+    <string name="validity_ended_notification_opus_title">Une carte OPUS a expirée</string>
+    <string name="validity_notification_opus_title">Une carte OPUS expire bientôt</string>
     <string name="validity_minutes">%1$d minutes</string>
     <string name="validity_hours">%1$d heures</string>
     <string name="validity_day">une journée</string>
@@ -169,6 +175,27 @@
     <string name="validity_notification_unlimited_fare_message">
         La validité du titre de transport \'%1$s\' va se terminer dans %2$s.
         Pensez à prévoir vos déplacements en conséquences.
+    </string>
+    <string name="validity_ended_notification_ticket_fare_plural_message">
+        La validité d\'un passage du titre de transport \'%1$s\' s\'est terminée.
+        Cependant, il reste encore %2$d passages disponibles pour ce titre.
+    </string>
+    <string name="validity_ended_notification_ticket_fare_singular_message">
+        La validité d\'un passage du titre de transport \'%1$s\' s\'est terminée.
+        Cependant, il reste encore un dernier passage pour ce titre.
+    </string>
+    <string name="validity_ended_notification_ticket_fare_empty_message">
+        La validité d\'un passage du titre de transport \'%1$s\' s\'est terminée.
+        Il ne reste plus de passage pour ce titre.
+    </string>
+    <string name="validity_ended_notification_unlimited_fare_message">
+        La validité du titre de transport \'%1$s\' s\'est terminée.
+    </string>
+    <string name="validity_notification_opus_message">
+        La carte OPUS #%1$s expire demain.
+    </string>
+    <string name="validity_ended_notification_opus_message">
+        La carte OPUS #%1$s expire aujourd\'hui.
     </string>
 
     <string name="fare_section_title">Titres de la carte</string>

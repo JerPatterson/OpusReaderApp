@@ -11,24 +11,28 @@ import androidx.core.app.NotificationCompat
 import com.google.gson.Gson
 
 private const val ARG_CARD = "card"
+private const val ARG_TITLE = "title"
 private const val ARG_MESSAGE = "message"
-private const val CHANNEL_ID = "fare_validity"
+private const val CHANNEL_ID = "opus_validity"
 
 
-class NotificationReceiver : BroadcastReceiver() {
+class CardNotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                context.getString(R.string.validity_notification_channel),
+                context.getString(R.string.validity_notification_opus_channel),
                 NotificationManager.IMPORTANCE_DEFAULT
-            )
+            ).apply {
+                description = context.getString(R.string.validity_notification_opus_channel_description)
+            }
             notificationManager.createNotificationChannel(channel)
         }
 
         val card = Gson().fromJson(intent.getStringExtra(ARG_CARD), Card::class.java)
+        val title = intent.getStringExtra(ARG_TITLE)
         val message = intent.getStringExtra(ARG_MESSAGE)
 
         val notificationClickIntent = Intent(context, CardActivity::class.java).apply {
@@ -44,7 +48,7 @@ class NotificationReceiver : BroadcastReceiver() {
         )
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setContentTitle(context.getString(R.string.validity_notification_title))
+            .setContentTitle(title)
             .setContentText(message)
             .setStyle(NotificationCompat.BigTextStyle().bigText(message))
             .setSmallIcon(R.drawable.opusreader)

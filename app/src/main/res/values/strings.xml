@@ -147,8 +147,14 @@
     <string name="validity_starting_on">Starting on</string>
     <string name="validity_ending_on">Ending on</string>
 
-    <string name="validity_notification_channel">Transit fare validity</string>
+    <string name="validity_notification_channel">Transit Fare Validity</string>
+    <string name="validity_notification_channel_description">Notifications sent when a transit fare validity has just ended or is about to end soon</string>
+    <string name="validity_notification_opus_channel">OPUS Cards Validity</string>
+    <string name="validity_notification_opus_channel_description">Notifications sent when an OPUS card has just expired or is about to expire soon</string>
+    <string name="validity_ended_notification_title">A transit fare has expired</string>
     <string name="validity_notification_title">A transit fare expires soon</string>
+    <string name="validity_ended_notification_opus_title">An OPUS card has expired</string>
+    <string name="validity_notification_opus_title">An OPUS card expires soon</string>
     <string name="validity_minutes">%1$d minutes</string>
     <string name="validity_hours">%1$d hours</string>
     <string name="validity_day">one day</string>
@@ -168,6 +174,27 @@
     <string name="validity_notification_unlimited_fare_message">
         The validity of a trip from the \'%1$s\' transit fare will end in %2$s.
         Remember to plan your trips accordingly.
+    </string>
+    <string name="validity_ended_notification_ticket_fare_plural_message">
+        The validity of a trip from the \'%1$s\' transit fare has ended.
+        However, there are still %2$d trips available for this fare.
+    </string>
+    <string name="validity_ended_notification_ticket_fare_singular_message">
+        The validity of a trip from the \'%1$s\' transit fare has ended.
+        However, there is still one last trip remaining for this fare.
+    </string>
+    <string name="validity_ended_notification_ticket_fare_empty_message">
+        The validity of a trip from the \'%1$s\' transit fare has ended.
+        There are no more trip left for this fare.
+    </string>
+    <string name="validity_ended_notification_unlimited_fare_message">
+        The validity of a trip from the \'%1$s\' transit fare has ended.
+    </string>
+    <string name="validity_notification_opus_message">
+        The OPUS card #%1$s expires tomorrow.
+    </string>
+    <string name="validity_ended_notification_opus_message">
+        The OPUS card #%1$s expires today.
     </string>
 
     <string name="fare_section_title">Fares of the card</string>

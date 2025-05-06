@@ -34,7 +34,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".NotificationReceiver" android:enabled="true" />
+        <receiver android:name=".CardNotificationReceiver" android:enabled="true" />
+        <receiver android:name=".FareNotificationReceiver" android:enabled="true" />
     </application>
 
 </manifest>
