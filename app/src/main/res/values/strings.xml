@@ -8,14 +8,14 @@
         <b>This application is not affiliated with, endorsed or sponsored by these entities.</b>
     </string>
 
-    <string name="no_nfc_title">NFC functionality unavailable</string>
-    <string name="no_nfc_message">It looks like your phone does not have the
-        NFC (near-field communication) functionality required for the application to work.
-    </string>
-    <string name="enable_nfc_title">NFC functionality disabled</string>
-    <string name="enable_nfc_message">The NFC (near-field communication) functionality
-        of your phone has to be enabled for the application to work.
-    </string>
+    <string name="no_nfc_title">NFC Feature Unavailable</string>
+    <string name="no_nfc_message">This device does not appear to support NFC (Near Field Communication), which is required for the app to function properly.</string>
+    <string name="enable_nfc_title">NFC Feature Disabled</string>
+    <string name="enable_nfc_message">The NFC (Near Field Communication) feature must be enabled to use the app correctly.</string>
+    <string name="enable_notification_title">Notifications Disabled</string>
+    <string name="enable_notification_message">Notification permission is required to receive alerts before the transit fares expire.</string>
+    <string name="enable_alert_title">Alarms and Reminders Disabled</string>
+    <string name="enable_alert_message">Permission to use the device\'s alarms and reminders is needed to receive precise alerts about fares validity.</string>
 
     <string name="yes">Yes</string>
     <string name="no">No</string>

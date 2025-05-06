@@ -38,7 +38,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
         val notificationPendingIntent = PendingIntent.getActivity(
             context,
-            0,
+            card.id.hashCode(),
             notificationClickIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )

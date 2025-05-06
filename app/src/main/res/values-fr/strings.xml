@@ -10,13 +10,13 @@
     </string>
 
     <string name="no_nfc_title">Fonctionnalité CCP indisponible</string>
-    <string name="no_nfc_message">Il semble que votre appareil ne dispose pas de la
-        fonctionnalité CCP (communication en champ proche) requise pour que l\'application fonctionne.
-    </string>
+    <string name="no_nfc_message">L\'appareil ne semble pas disposer de la fonctionnalité CCP (communication en champ proche), requise pour le bon fonctionnement de l\'application.</string>
     <string name="enable_nfc_title">Fonctionnalité CCP désactivée</string>
-    <string name="enable_nfc_message">La fonctionnalité CCP (communication en champ proche)
-        de votre appareil doit être activée pour que l\'application fonctionne.
-    </string>
+    <string name="enable_nfc_message">La fonctionnalité CCP (communication en champ proche) doit être activée pour utiliser correctement l\'application.</string>
+    <string name="enable_notification_title">Notifications désactivées</string>
+    <string name="enable_notification_message">L\'autorisation d\'envoyer des notifications est nécessaire pour recevoir des alertes avant l\'expiration des titres de transport.</string>
+    <string name="enable_alert_title">Alarmes et rappels désactivés</string>
+    <string name="enable_alert_message">L\'autorisation d\'utiliser les alarmes et rappels de l\'appareil est requise pour recevoir des alertes précises concernant la validité des titres.</string>
 
     <string name="yes">Oui</string>
     <string name="no">Non</string>
@@ -241,7 +241,7 @@
     </string>
     <string name="citvr_carte_integree_yearly_info">
         Ce titre est valide pour une année complète.
-        Il permet d’utiliser toutes les lignes de bus locales d\'exo du secteur Vallée-du-Richelieu.
+        Il permet d\'utiliser toutes les lignes de bus locales d\'exo du secteur Vallée-du-Richelieu.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="lasso_internal_monthly_info">
@@ -321,12 +321,12 @@
     </string>
     <string name="transit_rtl_rem_monthly_info">
         Ce titre est valide pour la durée du mois.
-        Il permet d\'utiliser toutes les lignes de bus du RTL (Réseau de transport de Longueuil) ainsi que l’antenne Rive-Sud du REM.
+        Il permet d\'utiliser toutes les lignes de bus du RTL (Réseau de transport de Longueuil) ainsi que l\'antenne Rive-Sud du REM.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="transit_rtl_rem_ten_tickets_info">
         Ce titre contient dix billets distincts.
-        Chaque billet permet d’utiliser toutes les lignes de bus du RTL (Réseau de transport de Longueuil) ainsi que l’antenne Rive-Sud du REM.
+        Chaque billet permet d\'utiliser toutes les lignes de bus du RTL (Réseau de transport de Longueuil) ainsi que l\'antenne Rive-Sud du REM.
         \n\nUn fois un billet utilisé, la correspondance est possible avec des lignes de bus différentes pendant 120 minutes.
         Les portiques ou les tourniquets du REM peuvent être franchis qu\'une seule fois par billet.
     </string>
@@ -334,22 +334,22 @@
         Ce titre est valide pour la durée du mois.
         Il permet d\'utiliser toutes les lignes de bus des secteurs Chambly-Richelieu-Carignan, Sainte-Julie et Vallée-du-Richelieu
         (sauf pour les trajets passant par les municipalités de Marieville, Saint-Hyacinthe, Sainte-Madeleine et Sainte-Marie-Madeleine),
-        ainsi que l’antenne Rive-Sud du REM.
+        ainsi que l\'antenne Rive-Sud du REM.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="crc_marieville_rem_monthly_info">
         Ce titre est valide pour la durée du mois.
-        Il permet d\'utiliser toutes les lignes de bus du secteur Chambly-Richelieu-Carignan ainsi que l’antenne Rive-Sud du REM.
+        Il permet d\'utiliser toutes les lignes de bus du secteur Chambly-Richelieu-Carignan ainsi que l\'antenne Rive-Sud du REM.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="lr_rous_rem_monthly_info">
         Ce titre est valide pour la durée du mois.
-        Il permet d\'utiliser toutes les lignes de bus du secteur Le Richelain-Roussillon ainsi que l’antenne Rive-Sud du REM.
+        Il permet d\'utiliser toutes les lignes de bus du secteur Le Richelain-Roussillon ainsi que l\'antenne Rive-Sud du REM.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="vr_sthyacinthe_rem_monthly_info">
         Ce titre est valide pour la durée du mois.
-        Il permet d\'utiliser toutes les lignes de bus du secteur Vallée-du-Richelieu ainsi que l’antenne Rive-Sud du REM.
+        Il permet d\'utiliser toutes les lignes de bus du secteur Vallée-du-Richelieu ainsi que l\'antenne Rive-Sud du REM.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="tram_4_monthly_info">
