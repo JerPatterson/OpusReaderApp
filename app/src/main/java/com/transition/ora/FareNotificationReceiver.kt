@@ -60,5 +60,7 @@ class FareNotificationReceiver : BroadcastReceiver() {
             UUID.nameUUIDFromBytes("${card.id}:fare".toByteArray()).hashCode(),
             notification
         )
+
+        NotificationScheduler().scheduleNotification(card, context)
     }
 }
