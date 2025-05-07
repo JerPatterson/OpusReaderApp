@@ -19,6 +19,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
+import com.transition.ora.enums.CardType
+import com.transition.ora.enums.CardTypeVariant
+import com.transition.ora.services.CardContentConverter
+import com.transition.ora.services.NotificationScheduler
+import com.transition.ora.types.Card
+import com.transition.ora.types.Fare
+import com.transition.ora.types.Trip
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale

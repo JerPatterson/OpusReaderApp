@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,6 +11,13 @@ import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.transition.ora.CardDatabase
+import com.transition.ora.R
+import com.transition.ora.enums.CardType
+import com.transition.ora.services.NotificationScheduler
+import com.transition.ora.types.Card
+import com.transition.ora.types.Fare
+import com.transition.ora.types.Trip
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

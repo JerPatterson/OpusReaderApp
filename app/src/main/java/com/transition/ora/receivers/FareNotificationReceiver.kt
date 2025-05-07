@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.receivers
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,25 +9,28 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.google.gson.Gson
+import com.transition.ora.CardActivity
+import com.transition.ora.R
+import com.transition.ora.types.Card
 import java.util.UUID
 
 private const val ARG_CARD = "card"
 private const val ARG_TITLE = "title"
 private const val ARG_MESSAGE = "message"
-private const val CHANNEL_ID = "opus_validity"
+private const val CHANNEL_ID = "fare_validity"
 
 
-class CardNotificationReceiver : BroadcastReceiver() {
+class FareNotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                context.getString(R.string.validity_notification_opus_channel),
+                context.getString(R.string.validity_notification_channel),
                 NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
-                description = context.getString(R.string.validity_notification_opus_channel_description)
+                description = context.getString(R.string.validity_notification_channel_description)
             }
             notificationManager.createNotificationChannel(channel)
         }
@@ -57,7 +60,7 @@ class CardNotificationReceiver : BroadcastReceiver() {
             .build()
 
         notificationManager.notify(
-            UUID.nameUUIDFromBytes("${card.id}:card".toByteArray()).hashCode(),
+            UUID.nameUUIDFromBytes("${card.id}:fare".toByteArray()).hashCode(),
             notification
         )
     }

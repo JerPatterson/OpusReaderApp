@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.services
 
 import android.content.Intent
 import android.nfc.NfcAdapter
@@ -7,6 +7,10 @@ import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
 import android.util.Log
 import com.google.gson.Gson
+import com.transition.ora.CardActivity
+import com.transition.ora.MainActivity
+import com.transition.ora.daos.CardDao
+import com.transition.ora.types.Card
 import java.io.IOException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,5 +1,6 @@
-package com.transition.ora
+package com.transition.ora.types
 
+import com.transition.ora.enums.FareProductId
 import java.io.Serializable
 import java.util.Calendar
 

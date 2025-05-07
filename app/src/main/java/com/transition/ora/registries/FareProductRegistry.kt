@@ -1,7 +1,7 @@
 package com.transition.ora.registries
 
-import com.transition.ora.FareProduct
-import com.transition.ora.FareProductId
+import com.transition.ora.types.FareProduct
+import com.transition.ora.enums.FareProductId
 import com.transition.ora.R
 
 object FareProductRegistry {

@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.services
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -6,6 +6,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import com.google.gson.Gson
+import com.transition.ora.R
+import com.transition.ora.enums.CardType
+import com.transition.ora.receivers.CardNotificationReceiver
+import com.transition.ora.receivers.FareNotificationReceiver
+import com.transition.ora.types.Card
+import com.transition.ora.types.Fare
 import java.util.Calendar
 import java.util.UUID
 import kotlin.math.abs

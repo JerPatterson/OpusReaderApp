@@ -22,6 +22,14 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
+import com.transition.ora.adapters.LineCrowdSrcAdapter
+import com.transition.ora.entities.CardPropositionEntity
+import com.transition.ora.firestore.LineFirestore
+import com.transition.ora.firestore.OperatorFirestore
+import com.transition.ora.services.CardContentConverter
+import com.transition.ora.types.Line
+import com.transition.ora.types.Operator
+import com.transition.ora.types.Trip
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

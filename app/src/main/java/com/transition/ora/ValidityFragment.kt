@@ -13,6 +13,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import com.google.gson.Gson
+import com.transition.ora.entities.CardPropositionEntity
+import com.transition.ora.enums.CardType
+import com.transition.ora.services.CardContentConverter
+import com.transition.ora.types.Card
+import com.transition.ora.types.Fare
+import com.transition.ora.types.Line
+import com.transition.ora.types.Trip
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

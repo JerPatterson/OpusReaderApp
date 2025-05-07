@@ -1,4 +1,5 @@
-package com.transition.ora
+package com.transition.ora.enums
+
 
 enum class CardTypeVariant {
     Standard,

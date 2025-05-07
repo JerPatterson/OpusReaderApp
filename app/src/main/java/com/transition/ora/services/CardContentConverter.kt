@@ -1,9 +1,16 @@
-package com.transition.ora
+package com.transition.ora.services
 
 import android.content.Context
+import com.transition.ora.CardDatabase
+import com.transition.ora.R
+import com.transition.ora.entities.CardPropositionEntity
+import com.transition.ora.enums.CardTypeVariant
 import com.transition.ora.registries.FareProductRegistry
 import com.transition.ora.registries.LineRegistry
 import com.transition.ora.registries.OperatorRegistry
+import com.transition.ora.types.FareProduct
+import com.transition.ora.types.Line
+import com.transition.ora.types.Operator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

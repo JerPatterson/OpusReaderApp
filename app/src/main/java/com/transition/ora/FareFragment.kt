@@ -23,6 +23,14 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
+import com.transition.ora.adapters.FareCrowdSrcAdapter
+import com.transition.ora.entities.CardPropositionEntity
+import com.transition.ora.firestore.FareFirestore
+import com.transition.ora.firestore.OperatorFirestore
+import com.transition.ora.services.CardContentConverter
+import com.transition.ora.types.Fare
+import com.transition.ora.types.FareProduct
+import com.transition.ora.types.Operator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.types
 
 import java.io.Serializable
 import java.util.Calendar

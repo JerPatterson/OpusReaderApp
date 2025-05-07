@@ -1,7 +1,12 @@
-package com.transition.ora
+package com.transition.ora.services
 
 import android.nfc.tech.IsoDep
 import android.nfc.tech.MifareUltralight
+import com.transition.ora.enums.CardType
+import com.transition.ora.enums.FareProductId
+import com.transition.ora.types.Card
+import com.transition.ora.types.Fare
+import com.transition.ora.types.Trip
 import java.util.Calendar
 
 

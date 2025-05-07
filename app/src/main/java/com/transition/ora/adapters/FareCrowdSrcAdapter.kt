@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.transition.ora.R
+import com.transition.ora.firestore.FareFirestore
 
 
 class FareCrowdSrcAdapter (

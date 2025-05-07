@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.enums
 
 
 enum class FareProductId(val id: UInt) {

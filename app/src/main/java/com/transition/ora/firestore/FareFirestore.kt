@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.firestore
 
 
 data class FareFirestore(

@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
