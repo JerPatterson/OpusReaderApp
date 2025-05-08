@@ -10,7 +10,7 @@ import com.transition.ora.types.Trip
 import java.util.Calendar
 
 
-class Parser {
+class CardContentParser {
     fun parseOccasionalCard(card: MifareUltralight): Card {
         val data = this.getDataFromMifareUltralight(card)
 

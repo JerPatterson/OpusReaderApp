@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "Reader"
 
-class Reader(
+class CardContentReader(
     private var dao: CardDao,
     private var activity: MainActivity,
 ) : NfcAdapter.ReaderCallback {
@@ -30,7 +30,7 @@ class Reader(
             || tag.toString().contains("NfcA")) {
             try {
                 val card = MifareUltralight.get(tag)
-                cardParsed = Parser().parseOccasionalCard(card)
+                cardParsed = CardContentParser().parseOccasionalCard(card)
                 CoroutineScope(Dispatchers.IO).launch {
                     dao.insertStoredCard(cardParsed.getCardEntity())
                 }
@@ -42,7 +42,7 @@ class Reader(
             || tag.toString().contains("NfcB")) {
             try {
                 val card = IsoDep.get(tag)
-                cardParsed = Parser().parseOpusCard(card)
+                cardParsed = CardContentParser().parseOpusCard(card)
                 CoroutineScope(Dispatchers.IO).launch {
                     dao.insertStoredCard(cardParsed.getCardEntity())
                 }

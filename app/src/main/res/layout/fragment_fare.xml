@@ -37,12 +37,12 @@
 
             <TextView
                 android:id="@+id/fareTypeValueTv"
-                android:ellipsize="end"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
                 android:maxLines="2"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
@@ -117,6 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="4dp"
+                android:paddingBottom="14dp"
                 android:textColor="?android:attr/textColorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/validityFromDateTv"
@@ -125,8 +126,8 @@
             <ImageView
                 android:id="@+id/operatorImageView"
                 android:layout_width="70dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="60dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="75dp"
                 android:layout_marginEnd="10dp"
                 android:contentDescription="@string/image_operator"
                 android:src="@drawable/artm"
@@ -140,7 +141,7 @@
                 android:layout_marginStart="14dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/operatorImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/validityFromDateValueTv" />
 
             <ImageView
                 android:id="@+id/fareDescriptionImageView"

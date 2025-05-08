@@ -8,19 +8,19 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.transition.ora.services.Reader
+import com.transition.ora.services.CardContentReader
 
 
 private const val FLAGS = NfcAdapter.FLAG_READER_NFC_A or NfcAdapter.FLAG_READER_NFC_B
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var reader: Reader
+    private lateinit var reader: CardContentReader
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        reader = Reader(CardDatabase.getInstance(this).dao, this)
+        reader = CardContentReader(CardDatabase.getInstance(this).dao, this)
 
         this.findViewById<Button>(R.id.scanHistoryButton)
             .setOnClickListener(HistoryButtonListener(this))

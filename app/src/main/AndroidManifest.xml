@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature android:name="android.hardware.nfc" android:required="true"/>
+    <uses-feature android:name="android.hardware.wifi" android:required="false" />
+
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
@@ -15,15 +17,15 @@
         android:dataExtractionRules="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/Theme.ORA"
-        tools:targetApi="31">
+        tools:targetApi="35">
 
         <activity
-            android:name=".HistoryActivity"
+            android:name=".CardActivity"
             android:exported="false" />
         <activity
-            android:name=".CardActivity"
+            android:name=".HistoryActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -34,8 +36,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".CardNotificationReceiver" android:enabled="true" />
-        <receiver android:name=".FareNotificationReceiver" android:enabled="true" />
+        <receiver android:name=".receivers.CardNotificationReceiver" android:enabled="true" />
+        <receiver android:name=".receivers.FareNotificationReceiver" android:enabled="true" />
     </application>
 
 </manifest>
