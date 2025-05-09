@@ -1,7 +1,8 @@
 package com.transition.ora.registries
 
-import com.transition.ora.Line
+import com.transition.ora.types.Line
 import com.transition.ora.R
+
 
 object LineRegistry {
     private val lineMapForSTM: Map<UInt, (zone: String) -> Line> = mapOf(

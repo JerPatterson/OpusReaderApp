@@ -1,7 +1,8 @@
 package com.transition.ora.registries
 
-import com.transition.ora.Operator
+import com.transition.ora.types.Operator
 import com.transition.ora.R
+
 
 object OperatorRegistry {
     private val operatorMap: Map<UInt, Operator> = mapOf(
