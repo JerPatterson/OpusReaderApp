@@ -175,7 +175,6 @@ class CardActivity : AppCompatActivity() {
     private fun addValidityInfoSectionTitles() {
         val validitySectionTitleTv = findViewById<TextView>(R.id.validitySectionTitleTv)
         validitySectionTitleTv.visibility = View.VISIBLE
-        validitySectionTitleTv.text = getString(R.string.validity_section_title)
     }
 
     private fun hideValidityInfoSectionTitles() {
@@ -196,12 +195,21 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addFareInfoSection(card: Card) {
-        if (this.addFareInfoSectionValues(card.id, card.getFares())) this.addFareInfoSectionTitles()
+        if (this.addFareInfoSectionValues(card.id, card.getFares())) {
+            this.addFareInfoSectionTitles()
+        } else {
+            this.hideFareInfoSectionTitles()
+        }
     }
 
     private fun addFareInfoSectionTitles() {
         val fareSectionTitleTv = findViewById<TextView>(R.id.fareSectionTitleTv)
-        fareSectionTitleTv.text = getString(R.string.fare_section_title)
+        fareSectionTitleTv.visibility = View.VISIBLE
+    }
+
+    private fun hideFareInfoSectionTitles() {
+        val fareSectionTitleTv = findViewById<TextView>(R.id.fareSectionTitleTv)
+        fareSectionTitleTv.visibility = View.GONE
     }
 
     private fun addFareInfoSectionValues(id: ULong, fares: List<Fare>): Boolean {
@@ -295,13 +303,21 @@ class CardActivity : AppCompatActivity() {
 
 
     private fun addTripInfoSection(card: Card) {
-        if (this.addTripInfoSectionValues(card.id, card.getTrips()))
+        if (this.addTripInfoSectionValues(card.id, card.getTrips())) {
             this.addTripInfoSectionTitles()
+        } else {
+             this.hideTripInfoSectionTitles()
+        }
     }
 
     private fun addTripInfoSectionTitles() {
         val tripSectionTitleTv = findViewById<TextView>(R.id.tripSectionTitleTv)
-        tripSectionTitleTv.text = getString(R.string.trip_section_title)
+        tripSectionTitleTv.visibility = View.VISIBLE
+    }
+
+    private fun hideTripInfoSectionTitles() {
+        val tripSectionTitleTv = findViewById<TextView>(R.id.tripSectionTitleTv)
+        tripSectionTitleTv.visibility = View.GONE
     }
 
     private fun addTripInfoSectionValues(id: ULong, trips: List<Trip>): Boolean {
