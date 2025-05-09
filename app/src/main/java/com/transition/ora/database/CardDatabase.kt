@@ -1,4 +1,4 @@
-package com.transition.ora
+package com.transition.ora.database
 
 import android.content.Context
 import androidx.room.Database
@@ -6,10 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.transition.ora.daos.CardDao
-import com.transition.ora.daos.CardPropositionDao
-import com.transition.ora.entities.CardEntity
-import com.transition.ora.entities.CardPropositionEntity
+import com.transition.ora.database.daos.CardDao
+import com.transition.ora.database.daos.CardPropositionDao
+import com.transition.ora.database.entities.CardEntity
+import com.transition.ora.database.entities.CardPropositionEntity
 
 private val MIGRATION_1_2 = object : Migration(1, 2) {
     override fun migrate(db: SupportSQLiteDatabase) {

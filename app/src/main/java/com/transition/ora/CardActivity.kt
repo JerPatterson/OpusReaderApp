@@ -21,6 +21,9 @@ import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import com.transition.ora.enums.CardType
 import com.transition.ora.enums.CardTypeVariant
+import com.transition.ora.fragments.FareFragment
+import com.transition.ora.fragments.TripFragment
+import com.transition.ora.fragments.ValidityFragment
 import com.transition.ora.services.CardContentConverter
 import com.transition.ora.services.NotificationScheduler
 import com.transition.ora.types.Card

@@ -9,7 +9,7 @@ import android.util.Log
 import com.google.gson.Gson
 import com.transition.ora.CardActivity
 import com.transition.ora.MainActivity
-import com.transition.ora.daos.CardDao
+import com.transition.ora.database.daos.CardDao
 import com.transition.ora.types.Card
 import java.io.IOException
 import kotlinx.coroutines.CoroutineScope

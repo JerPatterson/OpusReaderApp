@@ -249,7 +249,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/validityFragment"
-                android:name="com.transition.ora.ValidityFragment"
+                android:name="com.transition.ora.fragments.ValidityFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -286,7 +286,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/firstFareFragment"
-                android:name="com.transition.ora.FareFragment"
+                android:name="com.transition.ora.fragments.FareFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -300,7 +300,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/secondFareFragment"
-                android:name="com.transition.ora.FareFragment"
+                android:name="com.transition.ora.fragments.FareFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -313,7 +313,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/thirdFareFragment"
-                android:name="com.transition.ora.FareFragment"
+                android:name="com.transition.ora.fragments.FareFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -326,7 +326,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fourthFareFragment"
-                android:name="com.transition.ora.FareFragment"
+                android:name="com.transition.ora.fragments.FareFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -361,7 +361,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/firstTripFragment"
-                android:name="com.transition.ora.TripFragment"
+                android:name="com.transition.ora.fragments.TripFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -375,7 +375,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/secondTripFragment"
-                android:name="com.transition.ora.TripFragment"
+                android:name="com.transition.ora.fragments.TripFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -389,7 +389,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/thirdTripFragment"
-                android:name="com.transition.ora.TripFragment"
+                android:name="com.transition.ora.fragments.TripFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

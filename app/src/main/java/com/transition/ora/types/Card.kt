@@ -1,7 +1,7 @@
 package com.transition.ora.types
 
 import com.google.gson.Gson
-import com.transition.ora.entities.CardEntity
+import com.transition.ora.database.entities.CardEntity
 import com.transition.ora.enums.CardType
 import java.util.Calendar
 

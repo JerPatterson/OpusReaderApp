@@ -1,10 +1,10 @@
-package com.transition.ora.daos
+package com.transition.ora.database.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import com.transition.ora.entities.CardPropositionEntity
+import com.transition.ora.database.entities.CardPropositionEntity
 
 
 @Dao

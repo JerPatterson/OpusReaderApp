@@ -1,9 +1,9 @@
 package com.transition.ora.services
 
 import android.content.Context
-import com.transition.ora.CardDatabase
+import com.transition.ora.database.CardDatabase
 import com.transition.ora.R
-import com.transition.ora.entities.CardPropositionEntity
+import com.transition.ora.database.entities.CardPropositionEntity
 import com.transition.ora.enums.CardTypeVariant
 import com.transition.ora.registries.FareProductRegistry
 import com.transition.ora.registries.LineRegistry

@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.transition.ora.database.CardDatabase
 import com.transition.ora.services.CardContentReader
 
 

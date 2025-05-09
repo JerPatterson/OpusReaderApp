@@ -1,10 +1,10 @@
-package com.transition.ora.daos
+package com.transition.ora.database.daos
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
-import com.transition.ora.entities.CardEntity
+import com.transition.ora.database.entities.CardEntity
 
 
 @Dao

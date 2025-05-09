@@ -1,7 +1,6 @@
-package com.transition.ora
+package com.transition.ora.fragments
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,8 +22,10 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
+import com.transition.ora.R
 import com.transition.ora.adapters.FareCrowdSrcAdapter
-import com.transition.ora.entities.CardPropositionEntity
+import com.transition.ora.database.CardDatabase
+import com.transition.ora.database.entities.CardPropositionEntity
 import com.transition.ora.firestore.FareFirestore
 import com.transition.ora.firestore.OperatorFirestore
 import com.transition.ora.services.CardContentConverter

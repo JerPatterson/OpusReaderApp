@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
-import com.transition.ora.CardDatabase
+import com.transition.ora.database.CardDatabase
 import com.transition.ora.R
 import com.transition.ora.enums.CardType
 import com.transition.ora.services.NotificationScheduler

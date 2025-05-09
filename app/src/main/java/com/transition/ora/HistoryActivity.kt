@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.transition.ora.adapters.HistoryCardAdapter
+import com.transition.ora.database.CardDatabase
 import com.transition.ora.enums.CardType
 import com.transition.ora.types.Card
 import com.transition.ora.types.Fare

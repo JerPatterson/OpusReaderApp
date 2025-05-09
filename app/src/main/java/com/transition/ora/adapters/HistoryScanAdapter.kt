@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.transition.ora.CardActivity
-import com.transition.ora.CardDatabase
+import com.transition.ora.database.CardDatabase
 import com.transition.ora.R
 import com.transition.ora.types.Card
 import kotlinx.coroutines.CoroutineScope
