@@ -61,6 +61,7 @@
 
     <string name="image_main_page">This image show the app icon to invite the user to scan a card</string>
     <string name="image_card_scanned">This image show the card that was scanned</string>
+    <string name="image_fare_zones">This image shows the area(s) where the title is valid</string>
     <string name="image_trip_mode">This image show the mode of transportation of the trip</string>
     <string name="image_operator">This image show the logo of the transportation agency</string>
     <string name="image_edit">This image show the icon to edit an item</string>

@@ -62,6 +62,7 @@
 
     <string name="image_main_page">Cette image montre le logo de l\'application pour inviter l\'utilisateur à lire sa carte.</string>
     <string name="image_card_scanned">Cette image montre la carte qui a été lue</string>
+    <string name="image_fare_zones">Cette image montre la ou les zones où le titre est valable</string>
     <string name="image_trip_mode">Cette image montre le mode de transportation du trajet</string>
     <string name="image_operator">Cette image montre le logo de l\'agence de transport</string>
     <string name="image_edit">Cette image montre l\'icône modification d\'item</string>

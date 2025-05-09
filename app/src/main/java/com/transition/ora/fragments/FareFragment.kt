@@ -26,6 +26,7 @@ import com.transition.ora.R
 import com.transition.ora.adapters.FareCrowdSrcAdapter
 import com.transition.ora.database.CardDatabase
 import com.transition.ora.database.entities.CardPropositionEntity
+import com.transition.ora.enums.FareZones
 import com.transition.ora.firestore.FareFirestore
 import com.transition.ora.firestore.OperatorFirestore
 import com.transition.ora.services.CardContentConverter
@@ -173,6 +174,20 @@ class FareFragment : Fragment() {
         transferInfoTv?.text = getString(fareProduct.descriptionStringId)
         transferInfoTv?.visibility = View.GONE
 
+        val zonesIncludedImageView = this.mView?.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
+        if (fareProduct.includedZones != null) {
+            zonesIncludedImageView?.setImageResource(
+                when (fareProduct.includedZones) {
+                    FareZones.ARTM_A -> R.drawable.zone_artm_a
+                    FareZones.ARTM_AB -> R.drawable.zone_artm_ab
+                    FareZones.ARTM_CD -> R.drawable.zone_artm_cd
+                    FareZones.ARTM_ABC -> R.drawable.zone_artm_abc
+                    FareZones.ARTM_ABCD -> R.drawable.zone_artm_abcd
+                }
+            )
+        }
+        zonesIncludedImageView?.visibility = View.GONE
+
         val fareCrowdSourceDivider = this.mView?.findViewById<View>(R.id.fareCrowdSourceDivider)
         fareCrowdSourceDivider?.visibility = View.GONE
         val fareCrowdSourceIcon = this.mView?.findViewById<View>(R.id.fareCrowdSourceImageView)
@@ -249,6 +264,9 @@ class FareFragment : Fragment() {
             transferInfoIcon?.visibility = View.VISIBLE
             transferInfoTitle?.visibility = View.VISIBLE
             transferInfoTv?.visibility = View.VISIBLE
+
+            val zonesIncludedImageView = view.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
+            zonesIncludedImageView?.visibility = View.VISIBLE
         }
 
         private fun hideFareTransferInfoSection(view: View) {
@@ -260,6 +278,9 @@ class FareFragment : Fragment() {
             transferInfoIcon?.visibility = View.GONE
             transferInfoTitle?.visibility = View.GONE
             transferInfoTv?.visibility = View.GONE
+
+            val zonesIncludedImageView = view.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
+            zonesIncludedImageView?.visibility = View.GONE
         }
 
         private fun showFareCrowdSourceSection(view: View) {

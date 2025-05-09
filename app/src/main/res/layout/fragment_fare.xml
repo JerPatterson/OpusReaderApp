@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/colorPrimaryDark"
     android:layout_marginTop="10dp"
-    tools:context=".FareFragment">
+    tools:context=".fragments.FareFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -136,11 +136,11 @@
 
             <View
                 android:id="@+id/fareDescriptionDivider"
-                android:layout_width="395dp"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="14dp"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fareValidityColorLayout"
                 app:layout_constraintTop_toBottomOf="@+id/validityFromDateValueTv" />
 
             <ImageView
@@ -180,14 +180,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTitle"
                 tools:text="Ce titre est valide tout le mois. Il est possible de faire autant de correspondances que souhaité." />
 
+            <ImageView
+                android:id="@+id/fareIncludedZonesImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/image_fare_zones"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fareValidityColorLayout"
+                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTv"
+                tools:src="@drawable/zone_artm_ab" />
+
             <View
                 android:id="@+id/fareCrowdSourceDivider"
-                android:layout_width="395dp"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="14dp"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fareDescriptionTv" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fareValidityColorLayout"
+                app:layout_constraintTop_toBottomOf="@+id/fareIncludedZonesImageView" />
 
             <ImageView
                 android:id="@+id/fareCrowdSourceImageView"
