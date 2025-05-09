@@ -16,6 +16,8 @@
   <li>RTL (Réseau de transport de Longueuil)</li>
   <li>STM (Société de transport de Montréal)</li>
   <li>STL (Société de transport de Laval)</li>
+  <li>RTC (Réseau de transport de la Capitale)</li>
+  <li>STLévis (Société de transport de Lévis)</li>
   <li>MRC de Joliette</li>
 </ul>
 <span>
@@ -108,7 +110,7 @@
   <li><strike>Adding an history of the card scans</strike> <em>Added!</em></li>
   <li><strike>Adding the possibility for user to crowdsource unknown fares, lines and operators</strike> <em>Added!</em></li>
   <li><strike>Improving information for transfers so users can maximize their usage of one particular fare</strike> <em>Added!</em></li>
-  <li>Adding notifications to alert the user when the validity of the fare ends and few minutes prior</li>
+  <li><strike>Adding notifications to alert the user when the validity of the fare ends and few minutes prior</strike> <em>Added!</em></li>
 </ul>
 <h2>Documentation</h2>
 <span>
