@@ -30,14 +30,14 @@ class CardContentConverter {
         }
 
         fun getFareProductById(context: Context, operatorId: UInt, id: UInt): FareProduct {
-            return FareProductRegistry.get(id) ?: run {
+            return FareProductRegistry.get(context, id) ?: run {
                 val proposition: FareProduct? = lookForFareProposition(
                     context,
                     operatorId.toString(),
                     id.toString()
                 )
 
-                proposition ?: FareProduct("Unknown (fareID: ${id})", R.string.unknown_fare_info)
+                proposition ?: FareProduct(context.getString(R.string.unknown_fare, id), R.string.unknown_fare_info)
             }
         }
 
