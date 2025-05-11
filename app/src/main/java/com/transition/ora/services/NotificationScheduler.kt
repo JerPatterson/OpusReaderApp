@@ -200,8 +200,9 @@ class NotificationScheduler {
 
         fares.filter { it.ticketCount != null }
             .forEach {
+                val endValidity = Calendar.getInstance()
                 val validityUntil = trips.last().firstUseDate
-                validityUntil.set(
+                endValidity.set(
                     validityUntil.get(Calendar.YEAR),
                     validityUntil.get(Calendar.MONTH),
                     validityUntil.get(Calendar.DATE),
@@ -210,8 +211,8 @@ class NotificationScheduler {
                 )
 
                 if (nearestValidityUntilInterval == null || nearestValidityUntilInterval > getDefaultValidityMillis(it)) {
-                    if (isCloserFutureToNow(now, validityUntil, nearestValidityUntil)) {
-                        nearestValidityUntil = validityUntil
+                    if (isCloserFutureToNow(now, endValidity, nearestValidityUntil)) {
+                        nearestValidityUntil = endValidity
                         fareToNotifyAbout = it
                     }
                 }
