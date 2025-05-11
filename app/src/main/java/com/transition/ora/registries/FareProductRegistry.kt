@@ -888,7 +888,7 @@ object FareProductRegistry {
         FareProductId.OPUS_10TICKETS_ALL_MODES_A_RED.id to FareProduct("10 passages, Tous modes A", R.string.all_modes_A_ten_tickets_info, FareZones.ARTM_A),
         FareProductId.OPUS_10TICKETS_ALL_MODES_A_ELDER.id to FareProduct("10 passages, Tous modes A", R.string.all_modes_A_ten_tickets_info, FareZones.ARTM_A),
         FareProductId.OPUS_24HOURS_ALL_MODES_A.id to FareProduct("24hrs, Tous modes A", R.string.all_modes_A_24_hours_info, FareZones.ARTM_A),
-        FareProductId.OPUS_3DAYS_ALL_MODES_A.id to FareProduct("24 jours, Tous modes A", R.string.all_modes_A_three_days_info, FareZones.ARTM_A),
+        FareProductId.OPUS_3DAYS_ALL_MODES_A.id to FareProduct("3 jours, Tous modes A", R.string.all_modes_A_three_days_info, FareZones.ARTM_A),
         FareProductId.OPUS_WEEKLY_ALL_MODES_A.id to FareProduct("Hebdo, Tous modes A", R.string.all_modes_A_weekly_info, FareZones.ARTM_A),
         FareProductId.OPUS_WEEKLY_ALL_MODES_A_RED.id to FareProduct("Hebdo, Tous modes A", R.string.all_modes_A_weekly_info, FareZones.ARTM_A),
         FareProductId.OPUS_WEEKLY_ALL_MODES_A_ELDER.id to FareProduct("Hebdo, Tous modes A", R.string.all_modes_A_weekly_info, FareZones.ARTM_A),
