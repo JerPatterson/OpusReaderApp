@@ -192,30 +192,33 @@ class NotificationScheduler {
         if (fares.isEmpty() || trips.isEmpty()) return null
 
         val now = Calendar.getInstance()
-        val nearestValidityUntilInterval = fares.filter { it.ticketCount == null }
-            .minOfOrNull { abs(now.timeInMillis - (it.validityUntilDate?.timeInMillis ?: 0)) }
+        val nearestValidityUntilInterval = fares.filter { fare -> fare.ticketCount == null }
+            .minOfOrNull { fare -> abs(now.timeInMillis - (fare.validityUntilDate?.timeInMillis ?: 0)) }
 
         var nearestValidityUntil: Calendar? = null
         var fareToNotifyAbout: Fare? = null
 
-        fares.filter { it.ticketCount != null }
-            .forEach {
-                val endValidity = Calendar.getInstance()
-                val validityUntil = trips.last().firstUseDate
-                endValidity.set(
-                    validityUntil.get(Calendar.YEAR),
-                    validityUntil.get(Calendar.MONTH),
-                    validityUntil.get(Calendar.DATE),
-                    validityUntil.get(Calendar.HOUR_OF_DAY),
-                    validityUntil.get(Calendar.MINUTE) + getDefaultValidityMinutes(it)
-                )
+        fares.filter { fare -> fare.ticketCount != null }
+            .forEach { fare ->
+                trips.filter { trip -> trip.fareIndex == fare.fareIndex }
+                    .forEach { trip ->
+                        val tripFirstUseDate = trip.firstUseDate
+                        val endValidity = Calendar.getInstance()
+                        endValidity.set(
+                            tripFirstUseDate.get(Calendar.YEAR),
+                            tripFirstUseDate.get(Calendar.MONTH),
+                            tripFirstUseDate.get(Calendar.DATE),
+                            tripFirstUseDate.get(Calendar.HOUR_OF_DAY),
+                            tripFirstUseDate.get(Calendar.MINUTE) + getDefaultValidityMinutes(fare)
+                        )
 
-                if (nearestValidityUntilInterval == null || nearestValidityUntilInterval > getDefaultValidityMillis(it)) {
-                    if (isCloserFutureToNow(now, endValidity, nearestValidityUntil)) {
-                        nearestValidityUntil = endValidity
-                        fareToNotifyAbout = it
+                        if (nearestValidityUntilInterval == null || nearestValidityUntilInterval > getDefaultValidityMillis(fare)) {
+                            if (isCloserFutureToNow(now, endValidity, nearestValidityUntil)) {
+                                nearestValidityUntil = endValidity
+                                fareToNotifyAbout = fare
+                            }
+                        }
                     }
-                }
             }
 
         if (fareToNotifyAbout != null) {

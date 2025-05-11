@@ -9,7 +9,8 @@ class Trip(
     var operatorId: UInt,
     var zoneId: UInt,
     var useDate: Calendar,
-    var firstUseDate: Calendar
+    var firstUseDate: Calendar,
+    var fareIndex: UInt = 1u
 ): Serializable {
     init {
         val date = Calendar.getInstance()

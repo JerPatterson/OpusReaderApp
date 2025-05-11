@@ -12,7 +12,8 @@ class Fare(
     var ticketCount: UInt?,
     var validityFromDate: Calendar? = null,
     var validityUntilDate: Calendar? = null,
-    var buyingDateHasMinutes: Boolean = false
+    var buyingDateHasMinutes: Boolean = false,
+    var fareIndex: UInt = 1u
 ) : Serializable {
     init {
         val validityFromDateValue = this.validityFromDate

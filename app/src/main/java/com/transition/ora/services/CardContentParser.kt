@@ -279,23 +279,26 @@ class CardContentParser {
         for (i in 1..3) {
             val data = card.transceive(this.hexStringToByteArray("94b20${i}0400"))
 
-            var lineId: UInt
-            var operatorId: UInt
-            var firstUseDate: Calendar
+            val lineId: UInt
+            val operatorId: UInt
+            val firstUseDate: Calendar
+            val fareIndex: UInt
             if (this.opusCardHasToUseByteOffset(data)) {
                 lineId = this.getOpusCardTripLineId(data, 1)
                 operatorId = this.getOpusCardTripOperatorId(data, 1)
                 firstUseDate = this.getOpusCardTripFirstUseDate(data, 5)
+                fareIndex = this.getOpusCardTripFareIndex(data, 5)
             } else {
                 lineId = this.getOpusCardTripLineId(data)
                 operatorId = this.getOpusCardTripOperatorId(data)
                 firstUseDate = this.getOpusCardTripFirstUseDate(data)
+                fareIndex = this.getOpusCardTripFareIndex(data)
             }
 
             val zoneId = this.getOpusCardTripZoneId(data)
             val useDate = this.getOpusCardTripUseDate(data)
 
-            trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate))
+            trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate, fareIndex))
         }
 
         return trips
@@ -329,6 +332,11 @@ class CardContentParser {
                 or data[3].toUInt().and(0x80u).shr(7))
 
         return this.uIntToDate(tripUseDays, tripUseMinutes)
+    }
+
+    private fun getOpusCardTripFareIndex(data: ByteArray, byteOffset: Int = 0): UInt {
+        return (data[12 + byteOffset].toUInt().and(0x01u).shl(2)
+                or data[13 + byteOffset].toUInt().and(0xC0u).shr(6))
     }
 
     private fun getOpusCardTripFirstUseDate(data: ByteArray, byteOffset: Int = 0): Calendar {
@@ -367,14 +375,18 @@ class CardContentParser {
                     or data[6].toUInt().and(0xFFu)).compareTo(0u) == 0) {
                 val ticketCount = ticketsData[i - 1][2].toUInt()
 
-                fares.add(Fare(
-                    typeId,
-                    operatorId,
-                    buyingDate,
-                    ticketCount,
-                    null,
-                    null,
-                    true))
+                fares.add(
+                    Fare(
+                        typeId,
+                        operatorId,
+                        buyingDate,
+                        ticketCount,
+                        null,
+                        null,
+                        true,
+                        i.toUInt()
+                    )
+                )
             } else {
                 val validityFromDate = this.getOpusCardFareValidityFromDate(data)
                 val validityUntilDate = this.getOpusCardFareValidityUntilDate(data)
@@ -387,7 +399,8 @@ class CardContentParser {
                         null,
                         validityFromDate,
                         validityUntilDate,
-                        true
+                        true,
+                        i.toUInt()
                     )
                 )
             }
