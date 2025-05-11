@@ -141,20 +141,44 @@ class CardContentParser {
     }
 
     private fun getOccasionalCardFareNbOfTickets(data: Array<ByteArray>): UInt {
-        val ticketBits = (data[0][14].toUInt().and(0x03u).shl(8)
+        val ticketBits = (data[0][12].toUInt().and(0xFFu).shl(24)
+                or data[0][13].toUInt().and(0xFFu).shl(16)
+                or data[0][14].toUInt().and(0xFFu).shl(8)
                 or data[0][15].toUInt().and(0xFFu))
 
         return when (ticketBits) {
-            0u -> 10u
-            512u -> 9u
-            768u -> 8u
-            896u -> 7u
-            960u -> 6u
-            992u -> 5u
-            1008u -> 4u
-            1016u -> 3u
-            1020u -> 2u
-            1022u -> 1u
+            0xC0000000u -> 30u
+            0xE0000000u -> 29u
+            0xF0000000u -> 28u
+            0xF8000000u -> 27u
+            0xFC000000u -> 26u
+            0xFE000000u -> 25u
+            0xFF000000u -> 24u
+            0xFF800000u -> 23u
+            0xFFC00000u -> 22u
+            0xFFE00000u -> 21u
+            0xFFF00000u -> 20u
+            0xFFF80000u -> 19u
+            0xFFFC0000u -> 18u
+            0xFFFE0000u -> 17u
+            0xFFFF0000u -> 16u
+            0xFFFF8000u -> 15u
+            0xFFFFC000u -> 14u
+            0xFFFFE000u -> 13u
+            0xFFFFF000u -> 12u
+            0xFFFFF800u -> 11u
+            0xFFFFFC00u -> 10u
+            0xFFFFFE00u -> 9u
+            0xFFFFFF00u -> 8u
+            0xFFFFFF80u -> 7u
+            0xFFFFFFC0u -> 6u
+            0xFFFFFFE0u -> 5u
+            0xFFFFFFF0u -> 4u
+            0xFFFFFFF8u -> 3u
+            0xFFFFFFFCu -> 2u
+            0xFFFFFFFEu -> 1u
+            0xFFFFFFFFu -> 0u
+
             else -> 0u
         }
     }
