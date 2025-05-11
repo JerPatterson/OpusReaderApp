@@ -32,6 +32,8 @@
     <string name="delete_all_confirmation_message">Voulez-vous vraiment supprimer tout l\'historique définitivement ?</string>
     <string name="delete_confirmation_message">Voulez-vous vraiment supprimer cet élément définitivement ?</string>
 
+    <string name="fare_used_section_title">Titre utilisé pour embarquer</string>
+
     <string name="edit_section_title">Suggérer une modification</string>
     <string name="edit_section_description">
         Contribuer à améliorer l\'application en corrigeant les données erronées ou en ajoutant les données manquantes.

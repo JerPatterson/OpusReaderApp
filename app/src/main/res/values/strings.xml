@@ -31,6 +31,8 @@
     <string name="delete_all_confirmation_message">Do you really want to delete all the history permanently?</string>
     <string name="delete_confirmation_message">Do you really want to delete this item permanently?</string>
 
+    <string name="fare_used_section_title">Fare used to board</string>
+
     <string name="edit_section_title">Suggest an edit</string>
     <string name="edit_section_description">
         Contribute to improve the application by fixing wrong data or by providing missing data.

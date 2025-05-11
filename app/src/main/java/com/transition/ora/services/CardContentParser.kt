@@ -34,7 +34,7 @@ class CardContentParser {
         val typeVariant = this.getOpusCardTypeVariant(data)
 
         val fares = this.getOpusCardFares(card)
-        val trips = this.getOpusCardTrips(card)
+        val trips = this.getOpusCardTrips(card, fares)
 
         return Card(id.toULong(), CardType.Opus, Calendar.getInstance(), expiryDate, birthDate, typeVariant, fares, trips)
     }
@@ -273,7 +273,7 @@ class CardContentParser {
     }
 
 
-    private fun getOpusCardTrips(card: IsoDep): ArrayList<Trip> {
+    private fun getOpusCardTrips(card: IsoDep, fares: ArrayList<Fare>): ArrayList<Trip> {
         val trips = ArrayList<Trip>()
         card.transceive(this.hexStringToByteArray("94a408000420002010"))
         for (i in 1..3) {
@@ -298,7 +298,7 @@ class CardContentParser {
             val zoneId = this.getOpusCardTripZoneId(data)
             val useDate = this.getOpusCardTripUseDate(data)
 
-            trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate, fareIndex))
+            trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate, fareIndex, fares[fareIndex.toInt() - 1].typeId))
         }
 
         return trips
