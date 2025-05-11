@@ -35,11 +35,6 @@ class Card(
             .asReversed()
     }
 
-    fun getUnlimitedFares(): List<Fare> {
-        return getFares().filter { fare -> fare.validityUntilDate != null }
-            .sortedBy { fare -> fare.validityUntilDate }
-    }
-
     fun getTrips(): List<Trip> {
         return trips.withIndex().filter { (i, trip) -> trip.operatorId != 0u
                 && (i == 0 || trip.useDate.time != trips[i - 1].useDate.time) }
