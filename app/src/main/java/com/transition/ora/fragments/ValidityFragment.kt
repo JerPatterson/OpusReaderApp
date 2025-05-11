@@ -313,9 +313,13 @@ class ValidityFragment: Fragment() {
     }
 
     private fun calendarToStringWithTimeWithoutYear(cal: Calendar): String {
+        val locale = Locale.Builder()
+            .setLanguage(getString(R.string.calendar_language))
+            .setRegion(getString(R.string.calendar_country))
+            .build()
+
         return SimpleDateFormat(
-            getString(R.string.calendar_with_time_pattern_without_year_pattern),
-            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
+            getString(R.string.calendar_with_time_without_year_pattern), locale
         ).format(cal.time)
     }
 

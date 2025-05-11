@@ -29,8 +29,6 @@ import com.transition.ora.database.entities.CardPropositionEntity
 import com.transition.ora.firestore.LineFirestore
 import com.transition.ora.firestore.OperatorFirestore
 import com.transition.ora.services.CardContentConverter
-import com.transition.ora.types.Fare
-import com.transition.ora.types.FareProduct
 import com.transition.ora.types.Line
 import com.transition.ora.types.Operator
 import com.transition.ora.types.Trip
@@ -174,9 +172,13 @@ class TripFragment : Fragment() {
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
+        val locale = Locale.Builder()
+            .setLanguage(getString(R.string.calendar_language))
+            .setRegion(getString(R.string.calendar_country))
+            .build()
+
         return SimpleDateFormat(
-            getString(R.string.calendar_with_time_pattern),
-            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
+            getString(R.string.calendar_with_time_pattern), locale
         ).format(cal.time)
     }
 
