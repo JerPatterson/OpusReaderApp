@@ -56,7 +56,7 @@ class NotificationScheduler {
 
     private fun scheduleCardNotificationAtTime(card: Card, context: Context, triggerTimeInMillis: Long) {
         val now = Calendar.getInstance()
-        val timeUntilTrigger = triggerTimeInMillis - now.timeInMillis
+        val timeUntilTrigger = triggerTimeInMillis - (now.timeInMillis + 60 * 1000)
         if (timeUntilTrigger < 0) return
 
         val title: String
@@ -96,7 +96,7 @@ class NotificationScheduler {
 
     private fun scheduleFareNotificationAtTime(card: Card, fare: Fare, context: Context, triggerTimeInMillis: Long) {
         val now = Calendar.getInstance()
-        val timeUntilTrigger = triggerTimeInMillis - now.timeInMillis
+        val timeUntilTrigger = triggerTimeInMillis - (now.timeInMillis + 60 * 1000)
         if (timeUntilTrigger < 0) return
 
         val title: String
