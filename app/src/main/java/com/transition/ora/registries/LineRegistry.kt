@@ -988,9 +988,20 @@ object LineRegistry {
     fun getLineForEXO(id: UInt, zone: String): Line? = lineMapForEXO[id]?.invoke(zone)
     fun getLineForRTC(id: UInt): Line? = lineMapForRTC[id]
     fun getLineForSTL(id: UInt): Line? = lineMapForSTL[id]
+    fun getLineForExoChamblyRichelieuCarignan(id: UInt): Line? = null
+    fun getLineForExoValleeRichelieu(id: UInt): Line? = null
+    fun getLineForExoHautSaintLaurent(id: UInt): Line? = null
+    fun getLineForExoSudOuest(id: UInt): Line? = null
+    fun getLineForExoLeRichelain(id: UInt): Line? = null
+    fun getLineForExoRoussillon(id: UInt): Line? = null
+    fun getLineForExoSorelVarennes(id: UInt): Line? = null
+    fun getLineForExoPresquIle(id: UInt): Line? = null
     fun getLineForEXOLaurentides(id: UInt): Line? = lineMapForEXOLaurentides[id]
     fun getLineForSTLevis(id: UInt): Line? = lineMapForSTLevis[id]
+    fun getLineForExoSainteJulie(id: UInt): Line? = null
     fun getLineForEXOTerrebonneMascouche(id: UInt): Line? = lineMapForEXOTerrebonneMascouche[id]
+    fun getLineForEXOLassomption(id: UInt): Line? = null
     fun getLineForMRCJoliette(id: UInt): Line? = lineMapForMRCJoliette[id]
+    fun getLineForSTQ(id: UInt): Line? = null
     fun getLineForREM(id: UInt, zone: String): Line? = lineMapForREM[id]?.invoke(zone)
 }
