@@ -36,11 +36,11 @@
                 android:layout_height="28dp"
                 android:layout_marginStart="20dp"
                 android:contentDescription="@string/image_trip_mode"
-                android:padding="2dp"
+                android:padding="1dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tripLineNameTv"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tripLineNameTv"
-                tools:src="@drawable/bus"/>
+                tools:src="@drawable/bus" />
 
             <TextView
                 android:id="@+id/tripLineIdTv"
