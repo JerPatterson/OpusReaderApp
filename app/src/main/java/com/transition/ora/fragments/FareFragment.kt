@@ -340,7 +340,8 @@ class FareFragment : Fragment() {
 
         private fun addOptionsToCrowdSourceSpinner(view: View, filterKnownFares: Boolean) {
             val db = Firebase.firestore
-            val document = db.collection("operators").document(this.fare.operatorId.toString())
+            val document = db.collection(view.context.getString(R.string.operator_collection))
+                .document(this.fare.operatorId.toString())
 
             val options = arrayListOf<FareFirestore>()
             if (fareProduct.nameStringId != R.string.unknown_fare) {
@@ -414,9 +415,7 @@ class FareFragment : Fragment() {
                     val fareNameInputLayout = TextInputLayout(linearInputLayout.context)
                     val fareNameInput = TextInputEditText(linearInputLayout.context)
 
-                    val padding =
-                        view.context.resources.getDimension(R.dimen.fare_missing_input_padding)
-                            .roundToInt()
+                    val padding = view.context.resources.getDimension(R.dimen.fare_missing_input_padding).roundToInt()
                     fareNameInputLayout.setPadding(padding, 0, padding, 0)
                     fareNameInputLayout.hint = view.context.getString(R.string.fare_name_input_hint)
                     fareNameInputLayout.addView(fareNameInput)
@@ -452,7 +451,7 @@ class FareFragment : Fragment() {
 
                 try {
                     val db = Firebase.firestore
-                    val document = db.collection("operators")
+                    val document = db.collection(view.context.getString(R.string.proposition_collection))
                         .document(fare.operatorId.toString())
                         .collection("fare-propositions")
                         .document(id.toString() + "_" + fare.typeId)

@@ -272,7 +272,8 @@ class TripFragment : Fragment() {
 
         private fun addOptionsToCrowdSourceSpinner(view: View, filterKnownLines: Boolean) {
             val db = Firebase.firestore
-            val document = db.collection("operators").document(this.trip.operatorId.toString())
+            val document = db.collection(view.context.getString(R.string.operator_collection))
+                .document(this.trip.operatorId.toString())
 
             val options = arrayListOf<LineFirestore>()
             if (line.id != "?") {
@@ -401,7 +402,7 @@ class TripFragment : Fragment() {
 
                 try {
                     val db = Firebase.firestore
-                    val document = db.collection("operators")
+                    val document = db.collection(view.context.getString(R.string.proposition_collection))
                         .document(trip.operatorId.toString())
                         .collection("line-propositions")
                         .document(id.toString() + "_" + trip.lineId)

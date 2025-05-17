@@ -61,6 +61,8 @@
     <string name="proposition_error_message">
         Une erreur s\'est produite donc votre soumission n\'a pas été reçue. Veuillez réessayer plus tard.
     </string>
+    <string name="operator_collection">operators-fr</string>
+    <string name="proposition_collection">propositions</string>
 
     <string name="image_main_page">Cette image montre le logo de l\'application pour inviter l\'utilisateur à lire sa carte.</string>
     <string name="image_card_scanned">Cette image montre la carte qui a été lue</string>
