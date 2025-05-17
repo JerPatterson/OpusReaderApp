@@ -146,8 +146,8 @@ class TripFragment : Fragment() {
         val tripFareUsedTitle = this.mView?.findViewById<TextView>(R.id.tripFareUsedTitleTv)
         tripFareUsedTitle?.visibility = View.GONE
         val tripFareUsedValue = this.mView?.findViewById<TextView>(R.id.tripFareUsedValueTv)
-        tripFareUsedValue?.text = context?.let {
-            CardContentConverter.getFareProductById(it, 0u, trip.fareTypeId!!).name }
+        tripFareUsedValue?.text = context?.let { ctx ->
+            CardContentConverter.getFareProductById(ctx, 0u, trip.fareTypeId!!).getName(ctx) }
         tripFareUsedValue?.visibility = View.GONE
     }
 

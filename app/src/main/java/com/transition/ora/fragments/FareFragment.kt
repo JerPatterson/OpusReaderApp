@@ -96,7 +96,7 @@ class FareFragment : Fragment() {
 
     private fun addFareInfoSectionTitles(fare: Fare, fareProduct: FareProduct) {
         val fareTypeTitleTv = this.mView?.findViewById<TextView>(R.id.fareTypeValueTv)
-        fareTypeTitleTv?.text = fareProduct.name
+        fareTypeTitleTv?.text = this.mView?.let { fareProduct.getName(it.context) }
 
         val buyingDateTitleTv = this.mView?.findViewById<TextView>(R.id.fareBuyingDateTv)
         buyingDateTitleTv?.text = getString(R.string.fare_buying_date_title)
@@ -343,11 +343,11 @@ class FareFragment : Fragment() {
             val document = db.collection("operators").document(this.fare.operatorId.toString())
 
             val options = arrayListOf<FareFirestore>()
-            if (!fareProduct.name.startsWith("Unknown")) {
+            if (fareProduct.nameStringId != R.string.unknown_fare) {
                 options.add(
                     FareFirestore(
                         null,
-                        fareProduct.name,
+                        fareProduct.getName(view.context),
                         null
                     )
                 )
@@ -369,7 +369,7 @@ class FareFragment : Fragment() {
                     firestoreSource = Source.CACHE
                     val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
                     operator?.fares?.forEach { fare ->
-                        if (fare.name != fareProduct.name && !filterKnownFares
+                        if (fare.name != fareProduct.getName(view.context) && !filterKnownFares
                             || (fare.idOnCard?.size ?: 0) < (fare.nbOfVariations?.toInt() ?: 0)
                         ) {
                             options.add(fare)

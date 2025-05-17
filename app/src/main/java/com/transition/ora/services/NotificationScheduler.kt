@@ -102,7 +102,7 @@ class NotificationScheduler {
         val title: String
         val message: String
         var triggerTimeUpdated = triggerTimeInMillis
-        val fareName = CardContentConverter.getFareProductById(context, fare.operatorId, fare.typeId).name
+        val fareName = CardContentConverter.getFareProductById(context, fare.operatorId, fare.typeId).getName(context)
 
         if (timeUntilTrigger >= MILLIS_IN_20MIN) {
             title = context.getString(R.string.validity_notification_title)

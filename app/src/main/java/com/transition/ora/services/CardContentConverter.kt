@@ -30,14 +30,14 @@ class CardContentConverter {
         }
 
         fun getFareProductById(context: Context, operatorId: UInt, id: UInt): FareProduct {
-            return FareProductRegistry.get(context, id) ?: run {
+            return FareProductRegistry.get(id) ?: run {
                 val proposition: FareProduct? = lookForFareProposition(
                     context,
                     operatorId.toString(),
                     id.toString()
                 )
 
-                proposition ?: FareProduct(context.getString(R.string.unknown_fare, id), R.string.unknown_fare_info)
+                proposition ?: FareProduct(R.string.unknown_fare, R.string.unknown_fare_info)
             }
         }
 
@@ -419,10 +419,13 @@ class CardContentConverter {
                 }
 
                 if (proposition != null) {
-                    return FareProduct(
-                        proposition!!.name,
+                    val fareProduct = FareProduct(
+                        R.string.unknown_fare,
                         R.string.unknown_fare_info
                     )
+                    fareProduct.setName(proposition!!.name)
+
+                    return fareProduct
                 }
             } catch (_: Error) {}
 
