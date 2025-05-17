@@ -744,7 +744,7 @@
     </string>
 
     <string name="employee_fare">Employé</string>
-    <string name="unknown_fare">"Inconnu (fareID: %1$d)"</string>
+    <string name="unknown_fare">"Inconnu"</string>
 
     <string name="tram_1_one_ticket">1 passage, TRAM 1</string>
     <string name="tram_1_six_tickets">6 passages, TRAM 1</string>
@@ -1212,7 +1212,7 @@
     <string name="all_modes_A_one_ticket">1 passage, Tous modes A</string>
     <string name="all_modes_A_two_tickets">2 passages, Tous modes A</string>
     <string name="all_modes_A_ten_tickets">10 passages, Tous modes A</string>
-    <string name="all_modes_A_24_hours">24 hrs, Tous modes A</string>
+    <string name="all_modes_A_24_hours">24hrs, Tous modes A</string>
     <string name="all_modes_A_three_days">3 jours, Tous modes A</string>
     <string name="all_modes_A_weekly">Hebdo, Tous modes A</string>
     <string name="all_modes_A_monthly">Mensuel, Tous modes A</string>
@@ -1221,21 +1221,21 @@
     <string name="all_modes_AB_one_ticket">1 passage, Tous modes AB</string>
     <string name="all_modes_AB_two_tickets">2 passages, Tous modes AB</string>
     <string name="all_modes_AB_ten_tickets">10 passages, Tous modes AB</string>
-    <string name="all_modes_AB_24_hours">24 hrs, Tous modes AB</string>
+    <string name="all_modes_AB_24_hours">24hrs, Tous modes AB</string>
     <string name="all_modes_AB_three_days">3 jours, Tous modes AB</string>
     <string name="all_modes_AB_monthly">Mensuel, Tous modes AB</string>
     <string name="all_modes_AB_yearly">Abonnement, Tous modes AB</string>
     <string name="all_modes_ABC_one_ticket">1 passage, Tous modes ABC</string>
     <string name="all_modes_ABC_two_tickets">2 passages, Tous modes ABC</string>
     <string name="all_modes_ABC_ten_tickets">10 passages, Tous modes ABC</string>
-    <string name="all_modes_ABC_24_hours">24 hrs, Tous modes ABC</string>
+    <string name="all_modes_ABC_24_hours">24hrs, Tous modes ABC</string>
     <string name="all_modes_ABC_three_days">3 jours, Tous modes ABC</string>
     <string name="all_modes_ABC_monthly">Mensuel, Tous modes ABC</string>
     <string name="all_modes_ABC_yearly">Abonnement, Tous modes ABC</string>
     <string name="all_modes_ABCD_one_ticket">1 passage, Tous modes ABCD</string>
     <string name="all_modes_ABCD_two_tickets">2 passages, Tous modes ABCD</string>
     <string name="all_modes_ABCD_ten_tickets">10 passages, Tous modes ABCD</string>
-    <string name="all_modes_ABCD_24_hours">24 hrs, Tous modes ABCD</string>
+    <string name="all_modes_ABCD_24_hours">24hrs, Tous modes ABCD</string>
     <string name="all_modes_ABCD_three_days">3 jours, Tous modes ABCD</string>
     <string name="all_modes_ABCD_monthly">Mensuel, Tous modes ABCD</string>
     <string name="all_modes_ABCD_yearly">Abonnement, Tous modes ABCD</string>

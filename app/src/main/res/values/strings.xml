@@ -77,8 +77,8 @@
     <string name="calendar_country">CA</string>
     <string name="calendar_pattern">MMMM dd, yyyy</string>
     <string name="calendar_without_year_pattern">MMMM dd</string>
-    <string name="calendar_with_time_pattern">MMMM dd, yyyy \'at\' HH:mm</string>
-    <string name="calendar_with_time_without_year_pattern">MMMM dd \'at\' HH:mm</string>
+    <string name="calendar_with_time_pattern">MMMM dd, yyyy \'at\' hh:mm a</string>
+    <string name="calendar_with_time_without_year_pattern">MMMM dd \'at\' hh:mm a</string>
     <string name="calendar_interval_linking_word">to</string>
 
     <string name="opus_card_name">OPUS CARD</string>
@@ -319,7 +319,7 @@
     <string name="rtl_acces65_off_peak_info">
         This fare is offered free of charge to seniors (65 years and older) in the following cities: Boucherville, Brossard, Longueuil and Saint-Lambert.
         It is accepted on all bus lines of the RTL (Réseau de transport de Longueuil) outside peak periods,
-        i.e. from 9 AM to 3:30 PM and from 6:30 PM on weekdays, as well as all weekends and public holidays.
+        i.e. from 9 a.m to 3:30 p.m. and from 6:30 p.m. on weekdays, as well as all weekends and public holidays.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="stl_csswl_monthly_info">
@@ -661,78 +661,78 @@
         \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="bus_24_hours_info">
-        This fare is valid for 24 hours (starting after the first use).
+        This fare is valid for 24hours (starting after the first use).
         It is accepted on the buses running in zones A, B and C.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="bus_out_territory_24_hours_info">
-        This fare is valid for 24 hours (starting after the first use).
+        This fare is valid for 24hours (starting after the first use).
         It is accepted on the buses running in zones B, C and D.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_A_24_hours_info">
-        This fare is valid for 24 hours (starting after the first use).
+        This fare is valid for 24hours (starting after the first use).
         It is accepted on the metro, the bus, the train and the REM in the zone A.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_AB_24_hours_info">
-        This fare is valid for 24 hours (starting after the first use).
+        This fare is valid for 24hours (starting after the first use).
         It is accepted on the metro, the bus, the train and the REM in zones A and B.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_ABC_24_hours_info">
-        This fare is valid for 24 hours (starting after the first use).
+        This fare is valid for 24hours (starting after the first use).
         It is accepted on the metro, the bus, the train and the REM in zones A, B and C.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_ABCD_24_hours_info">
-        This fare is valid for 24 hours (starting after the first use).
+        This fare is valid for 24hours (starting after the first use).
         It is accepted on the metro, the bus, the train and the REM in zones A, B, C and D.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="bus_three_days_info">
-        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        This fare is valid for three days in a row (until 11:59 p.m. on the third day after the first use).
         It is accepted on the buses running in zones A, B and C.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="bus_out_territory_three_days_info">
-        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        This fare is valid for three days in a row (until 11:59 p.m. on the third day after the first use).
         It is accepted on the buses running in zones B, C and D.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_A_three_days_info">
-        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        This fare is valid for three days in a row (until 11:59 p.m. on the third day after the first use).
         It is accepted on the metro, the bus, the train and the REM in the zone A.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_AB_three_days_info">
-        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        This fare is valid for three days in a row (until 11:59 p.m. on the third day after the first use).
         It is accepted on the metro, the bus, the train and the REM in zones A and B.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_ABC_three_days_info">
-        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        This fare is valid for three days in a row (until 11:59 p.m. on the third day after the first use).
         It is accepted on the metro, the bus, the train and the REM in zones A, B and C.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_ABCD_three_days_info">
-        This fare is valid for three days in a row (until 11:59 PM on the third day after the first use).
+        This fare is valid for three days in a row (until 11:59 p.m. on the third day after the first use).
         It is accepted on the metro, the bus, the train and the REM in zones A, B, C and D.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="all_modes_A_weekly_info">
-        This fare is valid for seven days in a row (from Monday until 11:59 PM on Sunday).
+        This fare is valid for seven days in a row (from Monday until 11:59 p.m. on Sunday).
         It is accepted on the metro, the bus, the train and the REM in the zone A.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="evening_unlimited_info">
-        This fare is valid for all the evening (from 6 PM until the next day at 5 AM).
+        This fare is valid for all the evening (from 6 p.m. until the next day at 5 a.m.).
         It is accepted on the metro, the bus, the train and the REM in zones A, B, C and D.
         \n\nThis fare is unlimited. There are no transfer constraints.
         \n\nThis fare is not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
     <string name="weekend_unlimited_info">
-        This fare is valid for all the weekend (from Friday at 4 PM until Monday at 5 AM).
+        This fare is valid for all the weekend (from Friday at 4 p.m. until Monday at 5 a.m.).
         It is accepted on the metro, the bus, the train and the REM in zones A, B, C and D.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
@@ -744,7 +744,7 @@
     </string>
 
     <string name="employee_fare">Employee</string>
-    <string name="unknown_fare">"Unknown (fareID: %1$d)"</string>
+    <string name="unknown_fare">"Unknown"</string>
 
     <string name="tram_1_one_ticket">1 trip, TRAM 1</string>
     <string name="tram_1_six_tickets">6 trips, TRAM 1</string>
@@ -1138,7 +1138,7 @@
     <string name="rtc_ten_tickets_off_peak">10 trips off-peak, RTC"</string>
     <string name="rtc_twenty_tickets">20 trips, RTC"</string>
     <string name="rtc_twenty_tickets_metropolitain">"20 Metropolitain trips"</string>
-    <string name="rtc_24_hours">24 H, RTC"</string>
+    <string name="rtc_24_hours">24H, RTC"</string>
     <string name="rtc_five_days">5 days, RTC"</string>
     <string name="rtc_festibus_unlimited">Ulimited FestiBUS"</string>
     <string name="rtc_evening_and_weekend_unlimited">Unlimited evenings and weekends, RTC"</string>
@@ -1157,7 +1157,7 @@
     <string name="rtl_eighteen_tickets">18 trips, RTL"</string>
     <string name="rtl_twentyfour_tickets">24 trips, RTL"</string>
     <string name="rtl_evening_unlimited">Unlimited Evening, RTL"</string>
-    <string name="rtl_24_hours">24 H, RTL"</string>
+    <string name="rtl_24_hours">24H, RTL"</string>
     <string name="rtl_monthly">Monthly, RTL"</string>
     <string name="rtl_acces_65_off_peak">Monthly, Access 65 off-peak"</string>
     <string name="rtl_four_months">4 month, RTL"</string>
@@ -1198,21 +1198,21 @@
     <string name="bus_one_ticket">1 trip, Bus</string>
     <string name="bus_two_tickets">2 trips, Bus</string>
     <string name="bus_ten_tickets">10 trips, Bus</string>
-    <string name="bus_24_hours">24 H, Bus</string>
+    <string name="bus_24_hours">24H, Bus</string>
     <string name="bus_three_days">3 days, Bus</string>
     <string name="bus_monthly">Monthly, Bus</string>
     <string name="bus_yearly">Subscription, Bus</string>
     <string name="bus_out_territory_one_ticket">1 trip, Out-of-Territory Bus</string>
     <string name="bus_out_territory_two_tickets">2 trips, Out-of-Territory Bus</string>
     <string name="bus_out_territory_ten_tickets">10 trips, Out-of-Territory Bus</string>
-    <string name="bus_out_territory_24_hours">24 H, Out-of-Territory Bus</string>
+    <string name="bus_out_territory_24_hours">24H, Out-of-Territory Bus</string>
     <string name="bus_out_territory_three_days">3 days, Out-of-Territory Bus</string>
     <string name="bus_out_territory_monthly">Monthly, Out-of-Territory Bus</string>
     <string name="bus_out_territory_yearly">Subscription, Out-of-Territory Bus</string>
     <string name="all_modes_A_one_ticket">1 trip, All Modes A</string>
     <string name="all_modes_A_two_tickets">2 trips, All Modes A</string>
     <string name="all_modes_A_ten_tickets">10 trips, All Modes A</string>
-    <string name="all_modes_A_24_hours">24 H, All Modes A</string>
+    <string name="all_modes_A_24_hours">24H, All Modes A</string>
     <string name="all_modes_A_three_days">3 days, All Modes A</string>
     <string name="all_modes_A_weekly">Weekly, All Modes A</string>
     <string name="all_modes_A_monthly">Monthly, All Modes A</string>
@@ -1221,21 +1221,21 @@
     <string name="all_modes_AB_one_ticket">1 trip, All Modes AB</string>
     <string name="all_modes_AB_two_tickets">2 trips, All Modes AB</string>
     <string name="all_modes_AB_ten_tickets">10 trips, All Modes AB</string>
-    <string name="all_modes_AB_24_hours">24 H, All Modes AB</string>
+    <string name="all_modes_AB_24_hours">24H, All Modes AB</string>
     <string name="all_modes_AB_three_days">3 days, All Modes AB</string>
     <string name="all_modes_AB_monthly">Monthly, All Modes AB</string>
     <string name="all_modes_AB_yearly">Subscription, All Modes AB</string>
     <string name="all_modes_ABC_one_ticket">1 trip, All Modes ABC</string>
     <string name="all_modes_ABC_two_tickets">2 trips, All Modes ABC</string>
     <string name="all_modes_ABC_ten_tickets">10 trips, All Modes ABC</string>
-    <string name="all_modes_ABC_24_hours">24 H, All Modes ABC</string>
+    <string name="all_modes_ABC_24_hours">24H, All Modes ABC</string>
     <string name="all_modes_ABC_three_days">3 days, All Modes ABC</string>
     <string name="all_modes_ABC_monthly">Monthly, All Modes ABC</string>
     <string name="all_modes_ABC_yearly">Subscription, All Modes ABC</string>
     <string name="all_modes_ABCD_one_ticket">1 trip, All Modes ABCD</string>
     <string name="all_modes_ABCD_two_tickets">2 trips, All Modes ABCD</string>
     <string name="all_modes_ABCD_ten_tickets">10 trips, All Modes ABCD</string>
-    <string name="all_modes_ABCD_24_hours">24 H, All Modes ABCD</string>
+    <string name="all_modes_ABCD_24_hours">24H, All Modes ABCD</string>
     <string name="all_modes_ABCD_three_days">3 days, All Modes ABCD</string>
     <string name="all_modes_ABCD_monthly">Monthly, All Modes ABCD</string>
     <string name="all_modes_ABCD_yearly">Subscription, All Modes ABCD</string>
