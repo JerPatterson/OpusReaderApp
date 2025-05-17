@@ -106,6 +106,8 @@ class TripFragment : Fragment() {
         addTripDates(trip)
         addTripInfoSectionImages(operator, line)
         addTripCrowdSourceSection(trip, line)
+
+        if (trip.fareTypeId != null) addTripFareUsedSection(trip)
     }
 
     private fun addTripLine(line: Line) {
@@ -136,6 +138,19 @@ class TripFragment : Fragment() {
         operatorImageView?.setImageResource(operator.imageId)
     }
 
+    private fun addTripFareUsedSection(trip: Trip) {
+        val tripFareUsedDivider = this.mView?.findViewById<View>(R.id.tripFareUsedDivider)
+        tripFareUsedDivider?.visibility = View.GONE
+        val tripFareUsedIcon = this.mView?.findViewById<View>(R.id.tripFareUsedImageView)
+        tripFareUsedIcon?.visibility = View.GONE
+        val tripFareUsedTitle = this.mView?.findViewById<TextView>(R.id.tripFareUsedTitleTv)
+        tripFareUsedTitle?.visibility = View.GONE
+        val tripFareUsedValue = this.mView?.findViewById<TextView>(R.id.tripFareUsedValueTv)
+        tripFareUsedValue?.text = context?.let {
+            CardContentConverter.getFareProductById(it, 0u, trip.fareTypeId!!).name }
+        tripFareUsedValue?.visibility = View.GONE
+    }
+
     private fun addTripCrowdSourceSection(trip: Trip, line: Line) {
         val tripCrowdSourceDivider = this.mView?.findViewById<View>(R.id.tripCrowdSourceDivider)
         tripCrowdSourceDivider?.visibility = View.GONE
@@ -157,9 +172,13 @@ class TripFragment : Fragment() {
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
+        val locale = Locale.Builder()
+            .setLanguage(getString(R.string.calendar_language))
+            .setRegion(getString(R.string.calendar_country))
+            .build()
+
         return SimpleDateFormat(
-            getString(R.string.calendar_with_time_pattern),
-            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
+            getString(R.string.calendar_with_time_pattern), locale
         ).format(cal.time)
     }
 
@@ -176,12 +195,36 @@ class TripFragment : Fragment() {
 
         override fun onClick(view: View) {
             if (isShowing) {
+                if (trip.fareTypeId != null) hideTripFareUsedSection(view)
                 hideTripCrowdSourceSection(view)
             } else {
+                if (trip.fareTypeId != null) showTripFareUsedSection(view)
                 showTripCrowdSourceSection(view)
             }
 
             isShowing = !isShowing
+        }
+
+        private fun showTripFareUsedSection(view: View) {
+            val tripFareUsedDivider = view.findViewById<View>(R.id.tripFareUsedDivider)
+            tripFareUsedDivider?.visibility = View.VISIBLE
+            val tripFareUsedIcon = view.findViewById<View>(R.id.tripFareUsedImageView)
+            tripFareUsedIcon?.visibility = View.VISIBLE
+            val tripFareUsedTitle = view.findViewById<TextView>(R.id.tripFareUsedTitleTv)
+            tripFareUsedTitle?.visibility = View.VISIBLE
+            val tripFareUsedValue = view.findViewById<TextView>(R.id.tripFareUsedValueTv)
+            tripFareUsedValue?.visibility = View.VISIBLE
+        }
+
+        private fun hideTripFareUsedSection(view: View) {
+            val tripFareUsedDivider = view.findViewById<View>(R.id.tripFareUsedDivider)
+            tripFareUsedDivider?.visibility = View.GONE
+            val tripFareUsedIcon = view.findViewById<View>(R.id.tripFareUsedImageView)
+            tripFareUsedIcon?.visibility = View.GONE
+            val tripFareUsedTitle = view.findViewById<TextView>(R.id.tripFareUsedTitleTv)
+            tripFareUsedTitle?.visibility = View.GONE
+            val tripFareUsedValue = view.findViewById<TextView>(R.id.tripFareUsedValueTv)
+            tripFareUsedValue?.visibility = View.GONE
         }
 
         private fun showTripCrowdSourceSection(view: View) {

@@ -56,7 +56,7 @@ class NotificationScheduler {
 
     private fun scheduleCardNotificationAtTime(card: Card, context: Context, triggerTimeInMillis: Long) {
         val now = Calendar.getInstance()
-        val timeUntilTrigger = triggerTimeInMillis - now.timeInMillis
+        val timeUntilTrigger = triggerTimeInMillis - (now.timeInMillis + 60 * 1000)
         if (timeUntilTrigger < 0) return
 
         val title: String
@@ -96,7 +96,7 @@ class NotificationScheduler {
 
     private fun scheduleFareNotificationAtTime(card: Card, fare: Fare, context: Context, triggerTimeInMillis: Long) {
         val now = Calendar.getInstance()
-        val timeUntilTrigger = triggerTimeInMillis - now.timeInMillis
+        val timeUntilTrigger = triggerTimeInMillis - (now.timeInMillis + 60 * 1000)
         if (timeUntilTrigger < 0) return
 
         val title: String
@@ -192,29 +192,33 @@ class NotificationScheduler {
         if (fares.isEmpty() || trips.isEmpty()) return null
 
         val now = Calendar.getInstance()
-        val nearestValidityUntilInterval = fares.filter { it.ticketCount == null }
-            .minOfOrNull { abs(now.timeInMillis - (it.validityUntilDate?.timeInMillis ?: 0)) }
+        val nearestValidityUntilInterval = fares.filter { fare -> fare.ticketCount == null }
+            .minOfOrNull { fare -> abs(now.timeInMillis - (fare.validityUntilDate?.timeInMillis ?: 0)) }
 
         var nearestValidityUntil: Calendar? = null
         var fareToNotifyAbout: Fare? = null
 
-        fares.filter { it.ticketCount != null }
-            .forEach {
-                val validityUntil = trips.last().firstUseDate
-                validityUntil.set(
-                    validityUntil.get(Calendar.YEAR),
-                    validityUntil.get(Calendar.MONTH),
-                    validityUntil.get(Calendar.DATE),
-                    validityUntil.get(Calendar.HOUR_OF_DAY),
-                    validityUntil.get(Calendar.MINUTE) + getDefaultValidityMinutes(it)
-                )
+        fares.filter { fare -> fare.ticketCount != null }
+            .forEach { fare ->
+                trips.filter { trip -> trip.fareIndex == fare.fareIndex }
+                    .forEach { trip ->
+                        val tripFirstUseDate = trip.firstUseDate
+                        val endValidity = Calendar.getInstance()
+                        endValidity.set(
+                            tripFirstUseDate.get(Calendar.YEAR),
+                            tripFirstUseDate.get(Calendar.MONTH),
+                            tripFirstUseDate.get(Calendar.DATE),
+                            tripFirstUseDate.get(Calendar.HOUR_OF_DAY),
+                            tripFirstUseDate.get(Calendar.MINUTE) + getDefaultValidityMinutes(fare)
+                        )
 
-                if (nearestValidityUntilInterval == null || nearestValidityUntilInterval > getDefaultValidityMillis(it)) {
-                    if (isCloserFutureToNow(now, validityUntil, nearestValidityUntil)) {
-                        nearestValidityUntil = validityUntil
-                        fareToNotifyAbout = it
+                        if (nearestValidityUntilInterval == null || nearestValidityUntilInterval > getDefaultValidityMillis(fare)) {
+                            if (isCloserFutureToNow(now, endValidity, nearestValidityUntil)) {
+                                nearestValidityUntil = endValidity
+                                fareToNotifyAbout = fare
+                            }
+                        }
                     }
-                }
             }
 
         if (fareToNotifyAbout != null) {
@@ -226,7 +230,7 @@ class NotificationScheduler {
 
     private fun isCloserFutureToNow(now: Calendar, challenger: Calendar?, currentBest: Calendar?): Boolean {
         if (challenger == null) return false
-        if (currentBest == null) return true
+        if (currentBest == null) return challenger.timeInMillis > now.timeInMillis
 
         return (challenger.timeInMillis < currentBest.timeInMillis
                 && challenger.timeInMillis > now.timeInMillis)

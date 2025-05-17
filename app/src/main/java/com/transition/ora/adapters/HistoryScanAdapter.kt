@@ -60,10 +60,13 @@ class HistoryScanAdapter(
         val deleteItemIcon: ImageView = itemView.findViewById(R.id.deleteItemHistoryIcon)
 
         fun calendarToStringWithTime(cal: Calendar): String {
+            val locale = Locale.Builder()
+                .setLanguage(getString(itemView.context, R.string.calendar_language))
+                .setRegion(getString(itemView.context, R.string.calendar_country))
+                .build()
+
             return SimpleDateFormat(
-                getString(itemView.context, R.string.calendar_with_time_pattern),
-                Locale(getString(itemView.context, R.string.calendar_language),
-                    getString(itemView.context, R.string.calendar_country))
+                getString(itemView.context, R.string.calendar_with_time_pattern), locale
             ).format(cal.time)
         }
     }

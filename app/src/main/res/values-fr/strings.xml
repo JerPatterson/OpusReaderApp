@@ -32,6 +32,8 @@
     <string name="delete_all_confirmation_message">Voulez-vous vraiment supprimer tout l\'historique définitivement ?</string>
     <string name="delete_confirmation_message">Voulez-vous vraiment supprimer cet élément définitivement ?</string>
 
+    <string name="fare_used_section_title">Titre utilisé pour embarquer</string>
+
     <string name="edit_section_title">Suggérer une modification</string>
     <string name="edit_section_description">
         Contribuer à améliorer l\'application en corrigeant les données erronées ou en ajoutant les données manquantes.
@@ -70,12 +72,12 @@
     <string name="image_delete">Cette image montre l\'icône suppression d\'item</string>
     <string name="image_back">Cette image montre l\'icône pour retourner à la vue précédente</string>
 
-    <string name="calendar_language">French</string>
-    <string name="calendar_country">Canada</string>
+    <string name="calendar_language">fr</string>
+    <string name="calendar_country">CA</string>
     <string name="calendar_pattern">dd MMMM yyyy</string>
     <string name="calendar_without_year_pattern">dd MMMM</string>
     <string name="calendar_with_time_pattern">dd MMMM yyyy à HH:mm</string>
-    <string name="calendar_with_time_pattern_without_year_pattern">dd MMMM à HH:mm</string>
+    <string name="calendar_with_time_without_year_pattern">dd MMMM à HH:mm</string>
     <string name="calendar_interval_linking_word">au</string>
 
     <string name="opus_card_name">CARTE OPUS</string>

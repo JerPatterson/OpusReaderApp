@@ -31,6 +31,8 @@
     <string name="delete_all_confirmation_message">Do you really want to delete all the history permanently?</string>
     <string name="delete_confirmation_message">Do you really want to delete this item permanently?</string>
 
+    <string name="fare_used_section_title">Fare used to board</string>
+
     <string name="edit_section_title">Suggest an edit</string>
     <string name="edit_section_description">
         Contribute to improve the application by fixing wrong data or by providing missing data.
@@ -69,12 +71,12 @@
     <string name="image_delete">This image show the icon to delete an item</string>
     <string name="image_back">This image show the icon to go back to the previous view</string>
 
-    <string name="calendar_language">English</string>
-    <string name="calendar_country">Canada</string>
+    <string name="calendar_language">en</string>
+    <string name="calendar_country">CA</string>
     <string name="calendar_pattern">MMMM dd, yyyy</string>
     <string name="calendar_without_year_pattern">MMMM dd</string>
     <string name="calendar_with_time_pattern">MMMM dd, yyyy \'at\' HH:mm</string>
-    <string name="calendar_with_time_pattern_without_year_pattern">MMMM dd \'at\' HH:mm</string>
+    <string name="calendar_with_time_without_year_pattern">MMMM dd \'at\' HH:mm</string>
     <string name="calendar_interval_linking_word">to</string>
 
     <string name="opus_card_name">OPUS CARD</string>

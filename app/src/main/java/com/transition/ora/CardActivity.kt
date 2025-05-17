@@ -349,9 +349,13 @@ class CardActivity : AppCompatActivity() {
 
 
     private fun calendarToString(cal: Calendar): String {
+        val locale = Locale.Builder()
+            .setLanguage(getString(R.string.calendar_language))
+            .setRegion(getString(R.string.calendar_country))
+            .build()
+
         return SimpleDateFormat(
-            getString(R.string.calendar_pattern),
-            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
+            getString(R.string.calendar_pattern), locale
         ).format(cal.time)
     }
 

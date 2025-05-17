@@ -26,7 +26,7 @@ object OperatorRegistry {
         18u to Operator("exo", "#000000", R.drawable.exo),
         19u to Operator("exo", "#000000", R.drawable.exo),
         20u to Operator("MRCJoliette", "#81a449", R.drawable.mrcjoliette),
-        21u to Operator("exo", "#000000", R.drawable.exo),
+        21u to Operator("STQ", "#002e46", R.drawable.stq),
         22u to Operator("REM", "#034638", R.drawable.rem)
     )
 

@@ -34,7 +34,7 @@ class CardContentParser {
         val typeVariant = this.getOpusCardTypeVariant(data)
 
         val fares = this.getOpusCardFares(card)
-        val trips = this.getOpusCardTrips(card)
+        val trips = this.getOpusCardTrips(card, fares)
 
         return Card(id.toULong(), CardType.Opus, Calendar.getInstance(), expiryDate, birthDate, typeVariant, fares, trips)
     }
@@ -141,20 +141,44 @@ class CardContentParser {
     }
 
     private fun getOccasionalCardFareNbOfTickets(data: Array<ByteArray>): UInt {
-        val ticketBits = (data[0][14].toUInt().and(0x03u).shl(8)
+        val ticketBits = (data[0][12].toUInt().and(0xFFu).shl(24)
+                or data[0][13].toUInt().and(0xFFu).shl(16)
+                or data[0][14].toUInt().and(0xFFu).shl(8)
                 or data[0][15].toUInt().and(0xFFu))
 
         return when (ticketBits) {
-            0u -> 10u
-            512u -> 9u
-            768u -> 8u
-            896u -> 7u
-            960u -> 6u
-            992u -> 5u
-            1008u -> 4u
-            1016u -> 3u
-            1020u -> 2u
-            1022u -> 1u
+            0xC0000000u -> 30u
+            0xE0000000u -> 29u
+            0xF0000000u -> 28u
+            0xF8000000u -> 27u
+            0xFC000000u -> 26u
+            0xFE000000u -> 25u
+            0xFF000000u -> 24u
+            0xFF800000u -> 23u
+            0xFFC00000u -> 22u
+            0xFFE00000u -> 21u
+            0xFFF00000u -> 20u
+            0xFFF80000u -> 19u
+            0xFFFC0000u -> 18u
+            0xFFFE0000u -> 17u
+            0xFFFF0000u -> 16u
+            0xFFFF8000u -> 15u
+            0xFFFFC000u -> 14u
+            0xFFFFE000u -> 13u
+            0xFFFFF000u -> 12u
+            0xFFFFF800u -> 11u
+            0xFFFFFC00u -> 10u
+            0xFFFFFE00u -> 9u
+            0xFFFFFF00u -> 8u
+            0xFFFFFF80u -> 7u
+            0xFFFFFFC0u -> 6u
+            0xFFFFFFE0u -> 5u
+            0xFFFFFFF0u -> 4u
+            0xFFFFFFF8u -> 3u
+            0xFFFFFFFCu -> 2u
+            0xFFFFFFFEu -> 1u
+            0xFFFFFFFFu -> 0u
+
             else -> 0u
         }
     }
@@ -273,29 +297,32 @@ class CardContentParser {
     }
 
 
-    private fun getOpusCardTrips(card: IsoDep): ArrayList<Trip> {
+    private fun getOpusCardTrips(card: IsoDep, fares: ArrayList<Fare>): ArrayList<Trip> {
         val trips = ArrayList<Trip>()
         card.transceive(this.hexStringToByteArray("94a408000420002010"))
         for (i in 1..3) {
             val data = card.transceive(this.hexStringToByteArray("94b20${i}0400"))
 
-            var lineId: UInt
-            var operatorId: UInt
-            var firstUseDate: Calendar
+            val lineId: UInt
+            val operatorId: UInt
+            val firstUseDate: Calendar
+            val fareIndex: UInt
             if (this.opusCardHasToUseByteOffset(data)) {
                 lineId = this.getOpusCardTripLineId(data, 1)
                 operatorId = this.getOpusCardTripOperatorId(data, 1)
                 firstUseDate = this.getOpusCardTripFirstUseDate(data, 5)
+                fareIndex = this.getOpusCardTripFareIndex(data, 5)
             } else {
                 lineId = this.getOpusCardTripLineId(data)
                 operatorId = this.getOpusCardTripOperatorId(data)
                 firstUseDate = this.getOpusCardTripFirstUseDate(data)
+                fareIndex = this.getOpusCardTripFareIndex(data)
             }
 
             val zoneId = this.getOpusCardTripZoneId(data)
             val useDate = this.getOpusCardTripUseDate(data)
 
-            trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate))
+            trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate, fareIndex, fares[fareIndex.toInt() - 1].typeId))
         }
 
         return trips
@@ -329,6 +356,11 @@ class CardContentParser {
                 or data[3].toUInt().and(0x80u).shr(7))
 
         return this.uIntToDate(tripUseDays, tripUseMinutes)
+    }
+
+    private fun getOpusCardTripFareIndex(data: ByteArray, byteOffset: Int = 0): UInt {
+        return (data[12 + byteOffset].toUInt().and(0x01u).shl(2)
+                or data[13 + byteOffset].toUInt().and(0xC0u).shr(6))
     }
 
     private fun getOpusCardTripFirstUseDate(data: ByteArray, byteOffset: Int = 0): Calendar {
@@ -367,14 +399,18 @@ class CardContentParser {
                     or data[6].toUInt().and(0xFFu)).compareTo(0u) == 0) {
                 val ticketCount = ticketsData[i - 1][2].toUInt()
 
-                fares.add(Fare(
-                    typeId,
-                    operatorId,
-                    buyingDate,
-                    ticketCount,
-                    null,
-                    null,
-                    true))
+                fares.add(
+                    Fare(
+                        typeId,
+                        operatorId,
+                        buyingDate,
+                        ticketCount,
+                        null,
+                        null,
+                        true,
+                        i.toUInt()
+                    )
+                )
             } else {
                 val validityFromDate = this.getOpusCardFareValidityFromDate(data)
                 val validityUntilDate = this.getOpusCardFareValidityUntilDate(data)
@@ -387,7 +423,8 @@ class CardContentParser {
                         null,
                         validityFromDate,
                         validityUntilDate,
-                        true
+                        true,
+                        i.toUInt()
                     )
                 )
             }

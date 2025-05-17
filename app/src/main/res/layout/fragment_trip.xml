@@ -24,11 +24,11 @@
                 android:id="@+id/tripColorLayout"
                 android:layout_width="14dp"
                 android:layout_height="0dp"
-                android:background="#3F51B5"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="#3F51B5" />
 
             <ImageView
                 android:id="@+id/modeImageView"
@@ -36,25 +36,26 @@
                 android:layout_height="28dp"
                 android:layout_marginStart="20dp"
                 android:contentDescription="@string/image_trip_mode"
-                android:src="@drawable/bus"
+                android:padding="2dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tripLineNameTv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tripLineNameTv" />
+                app:layout_constraintTop_toTopOf="@+id/tripLineNameTv"
+                tools:src="@drawable/bus"/>
 
             <TextView
                 android:id="@+id/tripLineIdTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:background="#3F51B5"
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
-                android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tripLineNameTv"
                 app:layout_constraintStart_toEndOf="@+id/modeImageView"
                 app:layout_constraintTop_toTopOf="@+id/tripLineNameTv"
+                tools:background="#3F51B5"
+                tools:textColor="#ffffff"
                 tools:text="73" />
 
             <TextView
@@ -129,9 +130,62 @@
                 android:layout_marginEnd="6dp"
                 android:layout_marginBottom="10dp"
                 android:contentDescription="@string/image_operator"
-                android:src="@drawable/stl"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tripLineNameTv" />
+                app:layout_constraintTop_toBottomOf="@+id/tripLineNameTv"
+                tools:src="@drawable/stl"/>
+
+            <View
+                android:id="@+id/tripFareUsedDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tripColorLayout"
+                app:layout_constraintTop_toBottomOf="@+id/tripValidityFromDateValueTv"
+                tools:visibility="visible"/>
+
+            <ImageView
+                android:id="@+id/tripFareUsedImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="20dp"
+                android:contentDescription="@string/image_edit"
+                android:src="@drawable/fare"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tripFareUsedTitleTv"
+                app:layout_constraintStart_toStartOf="@+id/tripColorLayout"
+                app:layout_constraintTop_toTopOf="@+id/tripFareUsedTitleTv"
+                tools:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/tripFareUsedTitleTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textStyle="bold"
+                android:text="@string/fare_used_section_title"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/tripCrowdSourceImageView"
+                app:layout_constraintTop_toTopOf="@+id/tripFareUsedDivider"
+                tools:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/tripFareUsedValueTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:paddingBottom="8dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tripFareUsedTitleTv"
+                tools:text="Tous modes AB"
+                tools:visibility="visible"/>
 
             <View
                 android:id="@+id/tripCrowdSourceDivider"
@@ -140,7 +194,7 @@
                 android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripColorLayout"
-                app:layout_constraintTop_toBottomOf="@+id/tripValidityFromDateValueTv" />
+                app:layout_constraintTop_toBottomOf="@+id/tripFareUsedValueTv" />
 
             <ImageView
                 android:id="@+id/tripCrowdSourceImageView"
@@ -163,8 +217,7 @@
                 android:textStyle="bold"
                 android:text="@string/edit_section_title"
                 app:layout_constraintStart_toEndOf="@+id/tripCrowdSourceImageView"
-                app:layout_constraintTop_toTopOf="@+id/tripCrowdSourceDivider"
-                tools:text="Suggest an edit" />
+                app:layout_constraintTop_toTopOf="@+id/tripCrowdSourceDivider" />
 
             <TextView
                 android:id="@+id/tripCrowdSourceDescription"
@@ -176,8 +229,7 @@
                 android:text="@string/edit_section_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tripCrowdSourceTitle"
-                tools:text="@string/edit_section_description" />
+                app:layout_constraintTop_toBottomOf="@+id/tripCrowdSourceTitle" />
 
             <Spinner
                 android:id="@+id/tripCrowdSourceSpinner"

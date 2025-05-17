@@ -780,6 +780,7 @@ object LineRegistry {
         29u to Line("61", "Sainte-Thérèse - secteur Bas Sainte-Thérèse", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         30u to Line("62", "Sainte-Thérèse - secteur des Mille-Îles", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         31u to Line("80", "Saint-Eustache - Pointe-Calumet", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        116u to Line("81", "Saint-Eustache - Pointe-Calumet", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         32u to Line("88", "Saint-Eustache / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus),
         33u to Line("89", "Saint-Eustache - secteur Dubois", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         34u to Line("90", "Saint-Eustache - Arthur-Sauvé et Industriel", "#1F1F1F", "#FFFFFF", R.drawable.bus),
@@ -794,7 +795,6 @@ object LineRegistry {
         528u to Line("72", "Blainville - secteur ouest", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         529u to Line("73", "Blainville - secteur Fontainebleau", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         530u to Line("74", "Blainville - secteur Fontainebleau", "#1F1F1F", "#FFFFFF", R.drawable.bus),
-        532u to Line("81", "Saint-Eustache - Pointe-Calumet", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         538u to Line("100", "Saint-Jérôme - secteur Bellefeuille sud", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         539u to Line("101", "Saint-Jérôme - secteur Saint-Antoine", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         540u to Line("102", "Saint-Jérôme - secteur Lafontaine", "#1F1F1F", "#FFFFFF", R.drawable.bus),
@@ -988,9 +988,20 @@ object LineRegistry {
     fun getLineForEXO(id: UInt, zone: String): Line? = lineMapForEXO[id]?.invoke(zone)
     fun getLineForRTC(id: UInt): Line? = lineMapForRTC[id]
     fun getLineForSTL(id: UInt): Line? = lineMapForSTL[id]
+    fun getLineForExoChamblyRichelieuCarignan(id: UInt): Line? = null
+    fun getLineForExoValleeRichelieu(id: UInt): Line? = null
+    fun getLineForExoHautSaintLaurent(id: UInt): Line? = null
+    fun getLineForExoSudOuest(id: UInt): Line? = null
+    fun getLineForExoLeRichelain(id: UInt): Line? = null
+    fun getLineForExoRoussillon(id: UInt): Line? = null
+    fun getLineForExoSorelVarennes(id: UInt): Line? = null
+    fun getLineForExoPresquIle(id: UInt): Line? = null
     fun getLineForEXOLaurentides(id: UInt): Line? = lineMapForEXOLaurentides[id]
     fun getLineForSTLevis(id: UInt): Line? = lineMapForSTLevis[id]
+    fun getLineForExoSainteJulie(id: UInt): Line? = null
     fun getLineForEXOTerrebonneMascouche(id: UInt): Line? = lineMapForEXOTerrebonneMascouche[id]
+    fun getLineForEXOLassomption(id: UInt): Line? = null
     fun getLineForMRCJoliette(id: UInt): Line? = lineMapForMRCJoliette[id]
+    fun getLineForSTQ(id: UInt): Line? = null
     fun getLineForREM(id: UInt, zone: String): Line? = lineMapForREM[id]?.invoke(zone)
 }

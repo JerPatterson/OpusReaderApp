@@ -120,14 +120,17 @@ class ValidityFragment: Fragment() {
                 progress = ((now.timeInMillis - usableFromDate.timeInMillis) * 100 /
                         (usableUntilDate.timeInMillis - usableFromDate.timeInMillis)).toInt()
             }
+
             addOccasionalCardTrips(card, progress, usableFromDate, usableUntilDate)
         } else {
             validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(validityFromDateValue)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(validityUntilDateValue)
+
             if (validityUntilDateValue.timeInMillis > now.timeInMillis) {
                 progress = ((now.timeInMillis - validityFromDateValue.timeInMillis) * 100 /
                         (validityUntilDateValue.timeInMillis - validityFromDateValue.timeInMillis)).toInt()
             }
+
             addOccasionalCardTrips(card, progress, validityFromDateValue, validityUntilDateValue)
         }
     }
@@ -180,19 +183,18 @@ class ValidityFragment: Fragment() {
         val now = Calendar.getInstance()
 
         val trips = card.getTrips()
+        val fares = card.getFares()
+
         val mostRecentTrip = trips[trips.size - 1]
-        val unlimitedFares = card.getUnlimitedFares()
-        val mostRecentUnlimitedFare = if (unlimitedFares.isNotEmpty()) {
-            val unlimitedFaresForLastTrip = unlimitedFares.filter { fare -> fare.validityUntilDate?.timeInMillis!! > mostRecentTrip.useDate.timeInMillis }
-            if (unlimitedFaresForLastTrip.isNotEmpty()) unlimitedFaresForLastTrip.first() else unlimitedFares.last()
-        } else null
-        val validityFromDateValue = mostRecentUnlimitedFare?.validityFromDate
-        val validityUntilDateValue = mostRecentUnlimitedFare?.validityUntilDate
+        val mostRecentFare = fares.find { fare -> fare.fareIndex == mostRecentTrip.fareIndex }
+        val validityFromDateValue = mostRecentFare?.validityFromDate
+        val validityUntilDateValue = mostRecentFare?.validityUntilDate
+
         if (validityFromDateValue == null || validityUntilDateValue == null
             || (validityUntilDateValue.timeInMillis < mostRecentTrip.useDate.timeInMillis)) {
             val usableFromDate = mostRecentTrip.firstUseDate
             val usableUntilDate = usableFromDate.clone() as Calendar
-            usableUntilDate.add(Calendar.MINUTE, getDefaultValidityMinutes(mostRecentUnlimitedFare))
+            usableUntilDate.add(Calendar.MINUTE, getDefaultValidityMinutes(mostRecentFare))
 
             validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(usableFromDate)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(usableUntilDate)
@@ -201,14 +203,17 @@ class ValidityFragment: Fragment() {
                 progress = ((now.timeInMillis - usableFromDate.timeInMillis) * 100 /
                         (usableUntilDate.timeInMillis - usableFromDate.timeInMillis)).toInt()
             }
+
             addOpusCardTrips(card, progress, usableFromDate, usableUntilDate)
         } else {
             validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(validityFromDateValue)
             validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(validityUntilDateValue)
+
             if (validityUntilDateValue.timeInMillis > now.timeInMillis) {
                 progress = ((now.timeInMillis - validityFromDateValue.timeInMillis) * 100 /
                         (validityUntilDateValue.timeInMillis - validityFromDateValue.timeInMillis)).toInt()
             }
+
             addOpusCardTrips(card, progress, validityFromDateValue, validityUntilDateValue)
         }
     }
@@ -308,9 +313,13 @@ class ValidityFragment: Fragment() {
     }
 
     private fun calendarToStringWithTimeWithoutYear(cal: Calendar): String {
+        val locale = Locale.Builder()
+            .setLanguage(getString(R.string.calendar_language))
+            .setRegion(getString(R.string.calendar_country))
+            .build()
+
         return SimpleDateFormat(
-            getString(R.string.calendar_with_time_pattern_without_year_pattern),
-            Locale(getString(R.string.calendar_language), getString(R.string.calendar_country))
+            getString(R.string.calendar_with_time_without_year_pattern), locale
         ).format(cal.time)
     }
 
