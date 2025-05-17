@@ -36,6 +36,7 @@
                 android:layout_height="28dp"
                 android:layout_marginStart="20dp"
                 android:contentDescription="@string/image_trip_mode"
+                android:padding="2dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tripLineNameTv"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tripLineNameTv"
