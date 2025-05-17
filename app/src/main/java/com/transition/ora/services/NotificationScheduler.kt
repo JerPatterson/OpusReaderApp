@@ -230,7 +230,7 @@ class NotificationScheduler {
 
     private fun isCloserFutureToNow(now: Calendar, challenger: Calendar?, currentBest: Calendar?): Boolean {
         if (challenger == null) return false
-        if (currentBest == null) return true
+        if (currentBest == null) return challenger.timeInMillis > now.timeInMillis
 
         return (challenger.timeInMillis < currentBest.timeInMillis
                 && challenger.timeInMillis > now.timeInMillis)
