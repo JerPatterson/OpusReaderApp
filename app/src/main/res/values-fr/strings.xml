@@ -33,6 +33,8 @@
     <string name="delete_confirmation_message">Voulez-vous vraiment supprimer cet élément définitivement ?</string>
 
     <string name="fare_used_section_title">Titre utilisé pour embarquer</string>
+    <string name="fare_zone_used_section_title">Zone d\'utilisation du titre</string>
+    <string name="fare_zone_used_value">Zone %1$s</string>
 
     <string name="edit_section_title">Suggérer une modification</string>
     <string name="edit_section_description">

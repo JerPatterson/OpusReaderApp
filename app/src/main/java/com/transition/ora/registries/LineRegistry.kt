@@ -447,11 +447,11 @@ object LineRegistry {
 
     private val lineMapForEXO: Map<UInt, (zone: String) -> Line> = mapOf(
         1u to { Line("6", "Deux-Montagnes", "#f79e91", "#ffffff", R.drawable.train) },
-        2u to { zone -> Line("11", if (zone != "") "Vaudreuil-Hudson (zone $zone)" else "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train) },
-        3u to { zone -> Line("12", if (zone != "") "Saint-Jérôme (zone $zone)" else "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train) },
-        4u to { zone -> Line("13", if (zone != "") "Mont-Saint-Hilaire (zone $zone)" else "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train) },
-        5u to { zone -> Line("14", if (zone != "") "Candiac (zone $zone)" else "Candiac", "#5ab6b2", "#000000", R.drawable.train) },
-        7u to { zone -> Line("15", if (zone != "") "Mascouche (zone $zone)" else "Mascouche", "#ca5898", "#000000", R.drawable.train) }
+        2u to { zone -> Line("11", if (zone != "" && zone != "A") "Vaudreuil-Hudson (zone $zone)" else "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train) },
+        3u to { zone -> Line("12", if (zone != "" && zone != "A") "Saint-Jérôme (zone $zone)" else "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train) },
+        4u to { zone -> Line("13", if (zone != "" && zone != "A") "Mont-Saint-Hilaire (zone $zone)" else "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train) },
+        5u to { zone -> Line("14", if (zone != "" && zone != "A") "Candiac (zone $zone)" else "Candiac", "#5ab6b2", "#000000", R.drawable.train) },
+        7u to { zone -> Line("15", if (zone != "" && zone != "A") "Mascouche (zone $zone)" else "Mascouche", "#ca5898", "#000000", R.drawable.train) }
     )
 
     private val lineMapForRTC: Map<UInt, Line> = mapOf(
@@ -979,7 +979,7 @@ object LineRegistry {
     )
 
     private val lineMapForREM: Map<UInt, (zone: String) -> Line> = mapOf(
-        2u to { zone -> Line("A", if (zone != "") "Ligne A (zone $zone)" else "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro) }
+        2u to { zone -> Line("A", if (zone != "" && zone != "A") "Ligne A (zone $zone)" else "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro) }
     )
 
 

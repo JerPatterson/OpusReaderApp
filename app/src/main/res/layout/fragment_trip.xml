@@ -168,7 +168,7 @@
                 android:textStyle="bold"
                 android:text="@string/fare_used_section_title"
                 android:visibility="gone"
-                app:layout_constraintStart_toEndOf="@+id/tripCrowdSourceImageView"
+                app:layout_constraintStart_toEndOf="@+id/tripFareUsedImageView"
                 app:layout_constraintTop_toTopOf="@+id/tripFareUsedDivider"
                 tools:visibility="visible"/>
 
@@ -188,13 +188,66 @@
                 tools:visibility="visible"/>
 
             <View
+                android:id="@+id/tripFareZoneUsedDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tripColorLayout"
+                app:layout_constraintTop_toBottomOf="@+id/tripFareUsedValueTv"
+                tools:visibility="visible"/>
+
+            <ImageView
+                android:id="@+id/tripFareZoneUsedImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="20dp"
+                android:contentDescription="@string/image_edit"
+                android:src="@drawable/zone"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tripFareZoneUsedTitleTv"
+                app:layout_constraintStart_toStartOf="@+id/tripColorLayout"
+                app:layout_constraintTop_toTopOf="@+id/tripFareZoneUsedTitleTv"
+                tools:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/tripFareZoneUsedTitleTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textStyle="bold"
+                android:text="@string/fare_zone_used_section_title"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/tripFareZoneUsedImageView"
+                app:layout_constraintTop_toBottomOf="@+id/tripFareUsedValueTv"
+                tools:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/tripFareZoneUsedValueTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:paddingBottom="8dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tripFareZoneUsedTitleTv"
+                tools:text="Zone B"
+                tools:visibility="visible"/>
+
+            <View
                 android:id="@+id/tripCrowdSourceDivider"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripColorLayout"
-                app:layout_constraintTop_toBottomOf="@+id/tripFareUsedValueTv" />
+                app:layout_constraintTop_toBottomOf="@+id/tripFareZoneUsedValueTv" />
 
             <ImageView
                 android:id="@+id/tripCrowdSourceImageView"

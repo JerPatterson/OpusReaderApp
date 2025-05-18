@@ -82,7 +82,7 @@ class CardContentConverter {
             }
         }
 
-        private fun getZoneById(id: UInt): String {
+        fun getZoneById(id: UInt): String {
             return when (id) {
                 0x65u -> "A"
                 0xC9u -> "A"
@@ -91,7 +91,7 @@ class CardContentConverter {
                 0x69u -> "C"
                 0x6Bu -> "C"
 
-                else -> ""
+                else -> "? ($id)"
             }
         }
 

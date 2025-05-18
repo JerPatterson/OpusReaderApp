@@ -108,6 +108,7 @@ class TripFragment : Fragment() {
         addTripCrowdSourceSection(trip, line)
 
         if (trip.fareTypeId != null) addTripFareUsedSection(trip)
+        if (trip.zoneId != 0u) addTripFareZoneUsedSection(trip)
     }
 
     private fun addTripLine(line: Line) {
@@ -149,6 +150,18 @@ class TripFragment : Fragment() {
         tripFareUsedValue?.text = context?.let { ctx ->
             CardContentConverter.getFareProductById(ctx, 0u, trip.fareTypeId!!).getName(ctx) }
         tripFareUsedValue?.visibility = View.GONE
+    }
+
+    private fun addTripFareZoneUsedSection(trip: Trip) {
+        val tripFareZoneUsedDivider = this.mView?.findViewById<View>(R.id.tripFareZoneUsedDivider)
+        tripFareZoneUsedDivider?.visibility = View.GONE
+        val tripFareZoneUsedIcon = this.mView?.findViewById<View>(R.id.tripFareZoneUsedImageView)
+        tripFareZoneUsedIcon?.visibility = View.GONE
+        val tripFareZoneUsedTitle = this.mView?.findViewById<TextView>(R.id.tripFareZoneUsedTitleTv)
+        tripFareZoneUsedTitle?.visibility = View.GONE
+        val tripFareZoneUsedValue = this.mView?.findViewById<TextView>(R.id.tripFareZoneUsedValueTv)
+        tripFareZoneUsedValue?.text = context?.getString(R.string.fare_zone_used_value, CardContentConverter.getZoneById(trip.zoneId))
+        tripFareZoneUsedValue?.visibility = View.GONE
     }
 
     private fun addTripCrowdSourceSection(trip: Trip, line: Line) {
@@ -196,9 +209,11 @@ class TripFragment : Fragment() {
         override fun onClick(view: View) {
             if (isShowing) {
                 if (trip.fareTypeId != null) hideTripFareUsedSection(view)
+                if (trip.zoneId != 0u) hideTripFareZoneUsedSection(view)
                 hideTripCrowdSourceSection(view)
             } else {
                 if (trip.fareTypeId != null) showTripFareUsedSection(view)
+                if (trip.zoneId != 0u) showTripFareZoneUsedSection(view)
                 showTripCrowdSourceSection(view)
             }
 
@@ -216,6 +231,17 @@ class TripFragment : Fragment() {
             tripFareUsedValue?.visibility = View.VISIBLE
         }
 
+        private fun showTripFareZoneUsedSection(view: View) {
+            val tripFareZoneUsedDivider = view.findViewById<View>(R.id.tripFareZoneUsedDivider)
+            tripFareZoneUsedDivider?.visibility = View.VISIBLE
+            val tripFareZoneUsedIcon = view.findViewById<View>(R.id.tripFareZoneUsedImageView)
+            tripFareZoneUsedIcon?.visibility = View.VISIBLE
+            val tripFareZoneUsedTitle = view.findViewById<TextView>(R.id.tripFareZoneUsedTitleTv)
+            tripFareZoneUsedTitle?.visibility = View.VISIBLE
+            val tripFareZoneUsedValue = view.findViewById<TextView>(R.id.tripFareZoneUsedValueTv)
+            tripFareZoneUsedValue?.visibility = View.VISIBLE
+        }
+
         private fun hideTripFareUsedSection(view: View) {
             val tripFareUsedDivider = view.findViewById<View>(R.id.tripFareUsedDivider)
             tripFareUsedDivider?.visibility = View.GONE
@@ -225,6 +251,17 @@ class TripFragment : Fragment() {
             tripFareUsedTitle?.visibility = View.GONE
             val tripFareUsedValue = view.findViewById<TextView>(R.id.tripFareUsedValueTv)
             tripFareUsedValue?.visibility = View.GONE
+        }
+
+        private fun hideTripFareZoneUsedSection(view: View) {
+            val tripFareZoneUsedDivider = view.findViewById<View>(R.id.tripFareZoneUsedDivider)
+            tripFareZoneUsedDivider?.visibility = View.GONE
+            val tripFareZoneUsedIcon = view.findViewById<View>(R.id.tripFareZoneUsedImageView)
+            tripFareZoneUsedIcon?.visibility = View.GONE
+            val tripFareZoneUsedTitle = view.findViewById<TextView>(R.id.tripFareZoneUsedTitleTv)
+            tripFareZoneUsedTitle?.visibility = View.GONE
+            val tripFareZoneUsedValue = view.findViewById<TextView>(R.id.tripFareZoneUsedValueTv)
+            tripFareZoneUsedValue?.visibility = View.GONE
         }
 
         private fun showTripCrowdSourceSection(view: View) {
