@@ -11,7 +11,8 @@ class Trip(
     var useDate: Calendar,
     var firstUseDate: Calendar,
     var fareIndex: UInt = 1u,
-    var fareTypeId: UInt? = null
+    var fareTypeId: UInt? = null,
+    var isValid: Boolean? = true
 ): Serializable {
     init {
         val date = Calendar.getInstance()

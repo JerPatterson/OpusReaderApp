@@ -746,7 +746,8 @@
     </string>
 
     <string name="employee_fare">Employee</string>
-    <string name="unknown_fare">"Unknown"</string>
+    <string name="unknown_fare">Unknown</string>
+    <string name="invalid_fare">None (Invalid usage)</string>
 
     <string name="tram_1_one_ticket">1 trip, TRAM 1</string>
     <string name="tram_1_six_tickets">6 trips, TRAM 1</string>

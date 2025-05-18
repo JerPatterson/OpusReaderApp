@@ -148,7 +148,12 @@ class TripFragment : Fragment() {
         tripFareUsedTitle?.visibility = View.GONE
         val tripFareUsedValue = this.mView?.findViewById<TextView>(R.id.tripFareUsedValueTv)
         tripFareUsedValue?.text = context?.let { ctx ->
-            CardContentConverter.getFareProductById(ctx, 0u, trip.fareTypeId!!).getName(ctx) }
+            if (trip.isValid == true) {
+                CardContentConverter.getFareProductById(ctx, 0u, trip.fareTypeId!!).getName(ctx)
+            } else {
+                ctx.getString(R.string.invalid_fare)
+            }
+        }
         tripFareUsedValue?.visibility = View.GONE
     }
 

@@ -35,9 +35,10 @@ class Card(
             .asReversed()
     }
 
-    fun getTrips(): List<Trip> {
+    fun getTrips(filterOutInvalid: Boolean = true): List<Trip> {
         return trips.withIndex().filter { (i, trip) -> trip.operatorId != 0u
-                && (i == 0 || trip.useDate.time != trips[i - 1].useDate.time) }
+                && (i == 0 || trip.useDate.time != trips[i - 1].useDate.time)
+                && (!filterOutInvalid || trip.isValid ?: false) }
             .sortedBy { trip -> trip.value.useDate.timeInMillis }
             .map { (_, trip) -> trip }
     }

@@ -303,7 +303,7 @@ class CardActivity : AppCompatActivity() {
 
 
     private fun addTripInfoSection(card: Card) {
-        if (this.addTripInfoSectionValues(card.id, card.getTrips())) {
+        if (this.addTripInfoSectionValues(card.id, card.getTrips(false))) {
             this.addTripInfoSectionTitles()
         } else {
              this.hideTripInfoSectionTitles()

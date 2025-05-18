@@ -747,6 +747,7 @@
 
     <string name="employee_fare">Employé</string>
     <string name="unknown_fare">"Inconnu"</string>
+    <string name="invalid_fare">Aucun (Utilisation invalide)</string>
 
     <string name="tram_1_one_ticket">1 passage, TRAM 1</string>
     <string name="tram_1_six_tickets">6 passages, TRAM 1</string>
