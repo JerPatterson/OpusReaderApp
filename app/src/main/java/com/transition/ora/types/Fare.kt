@@ -110,7 +110,8 @@ class Fare(
                 date
             }
 
-            FareProductId.OCC_WEEKEND_UNLIMITED.id -> {
+            FareProductId.OCC_WEEKEND_UNLIMITED.id,
+            FareProductId.OPUS_WEEKEND_UNLIMITED.id -> {
                 val daysToRemove = when (validityFromDate.get(Calendar.DAY_OF_WEEK)) {
                     Calendar.SATURDAY -> 1
                     Calendar.SUNDAY -> 2
@@ -798,7 +799,8 @@ class Fare(
                 date
             }
 
-            FareProductId.OCC_WEEKEND_UNLIMITED.id -> {
+            FareProductId.OCC_WEEKEND_UNLIMITED.id,
+            FareProductId.OPUS_WEEKEND_UNLIMITED.id-> {
                 val daysToAdd = when (validityFromDate.get(Calendar.DAY_OF_WEEK)) {
                     Calendar.FRIDAY -> 3
                     Calendar.SATURDAY -> 2
