@@ -11,14 +11,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import android.widget.AdapterView
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
+import com.transition.ora.adapters.TypeCrowdSrcAdapter
+import com.transition.ora.database.CardDatabase
+import com.transition.ora.database.entities.CardPropositionEntity
 import com.transition.ora.enums.CardType
 import com.transition.ora.enums.CardTypeVariant
 import com.transition.ora.fragments.FareFragment
@@ -29,6 +39,9 @@ import com.transition.ora.services.NotificationScheduler
 import com.transition.ora.types.Card
 import com.transition.ora.types.Fare
 import com.transition.ora.types.Trip
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -61,7 +74,7 @@ class CardActivity : AppCompatActivity() {
     private fun addCardInfoSection(card: Card) {
         this.addCardInfoSectionTitles(card.type)
         this.addCardRegisteredInfo(card.type, card.expiryDate, card.birthDate)
-        this.addCardTypeVariantInfo(card.typeVariant)
+        this.addCardTypeVariantInfo(card.id, card.typeVariant)
         this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
 
         val overlayLayout = findViewById<FrameLayout>(R.id.overlay)
@@ -97,8 +110,14 @@ class CardActivity : AppCompatActivity() {
         }
     }
 
-    private fun addCardTypeVariantInfo(cardTypeVariantId: UInt?) {
-        val cardTypeVariant = CardContentConverter.getCardTypeVariantById(cardTypeVariantId)
+    private fun addCardTypeVariantInfo(cardId: ULong, cardTypeVariantId: UInt?) {
+        if (cardTypeVariantId == null || cardTypeVariantId == 0u) {
+            val cardTypeVariantButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
+            cardTypeVariantButton.visibility = View.GONE
+            return
+        }
+
+        val cardTypeVariant = CardContentConverter.getCardTypeVariantById(this, cardTypeVariantId)
         when (cardTypeVariant) {
             CardTypeVariant.Standard,
             CardTypeVariant.StandardReduced -> {
@@ -122,10 +141,11 @@ class CardActivity : AppCompatActivity() {
             }
 
             else -> {
-                val cardVariantTypeButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
-                cardVariantTypeButton.visibility = View.GONE
+                addSpecificCardTypeVariantInfo(R.string.unknown_card, R.string.unknown_card_info)
             }
         }
+
+        enableCrowdSourceConfirmButton(cardId, cardTypeVariantId)
     }
 
     private fun addSpecificCardTypeVariantInfo(buttonText: Int, descriptionText: Int) {
@@ -137,6 +157,38 @@ class CardActivity : AppCompatActivity() {
         val cardVariantTypeButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
         cardVariantTypeButton.visibility = View.VISIBLE
         cardVariantTypeButton.setOnClickListener(CardTypeVariantListener(this))
+
+        val cardTypeVariantCrowdSourceSwitch = findViewById<SwitchCompat>(R.id.cardTypeCrowdSourceSwitch)
+        cardTypeVariantCrowdSourceSwitch.setOnCheckedChangeListener { _, isChecked ->
+            addOptionsToCrowdSourceSpinner(!isChecked)
+        }
+        addOptionsToCrowdSourceSpinner(true)
+    }
+
+    private fun addOptionsToCrowdSourceSpinner(filterKnownTypes: Boolean) {
+        val cardTypeVariantValueTv = findViewById<TextView>(R.id.cardTypeValueTv)
+        val cardTypeVariantName = cardTypeVariantValueTv.text.toString()
+
+        val possibleOptions = arrayListOf<String>()
+        if (!filterKnownTypes) possibleOptions.add(getString(R.string.standard_card))
+        possibleOptions.add(getString(R.string.all_modes_AB_card))
+        possibleOptions.add(getString(R.string.all_modes_ABC_card))
+        possibleOptions.add(getString(R.string.all_modes_ABCD_card))
+        possibleOptions.add(getString(R.string.bus_out_territory_card))
+
+        val options = arrayListOf(cardTypeVariantName)
+        possibleOptions.forEach { option ->
+            if (cardTypeVariantName != option) options.add(option)
+        }
+
+        val crowdSourceSpinner = findViewById<Spinner>(R.id.cardTypeCrowdSourceSpinner)
+        crowdSourceSpinner?.adapter = TypeCrowdSrcAdapter(this, options)
+        crowdSourceSpinner.onItemSelectedListener = SpinnerSelectListener(this, options)
+    }
+
+    private fun enableCrowdSourceConfirmButton(cardId: ULong, cardTypeVariantId: UInt) {
+        val confirmButton: Button = findViewById(R.id.cardTypeCrowdSourceConfirmButton)
+        confirmButton.setOnClickListener(CrowdSourceConfirmListener(this, cardId, cardTypeVariantId))
     }
 
     private fun addCardInfoSectionTitles(cardType: CardType) {
@@ -397,6 +449,79 @@ class CardActivity : AppCompatActivity() {
             overlayLayout.visibility = View.VISIBLE
             cardTypeVariantLayout.visibility = View.VISIBLE
             registeredCardLayout.visibility = View.GONE
+        }
+    }
+
+    private class SpinnerSelectListener(
+        private val activity: CardActivity,
+        private val options: ArrayList<String>
+    ): AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            if (position == 0) return
+
+            val cardTypeValueTv = this.activity.findViewById<TextView>(R.id.cardTypeValueTv)
+            cardTypeValueTv?.text = options[position]
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {}
+    }
+
+    class CrowdSourceConfirmListener(
+        private val activity: CardActivity,
+        private val id: ULong,
+        private val cardTypeVariantId: UInt
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            val cardTypeCrowdSourceSpinner = activity.findViewById<Spinner>(R.id.cardTypeCrowdSourceSpinner)
+            val selectedCardType = cardTypeCrowdSourceSpinner.selectedItem as String
+
+            try {
+                val db = Firebase.firestore
+                val document = db.collection(view.context.getString(R.string.proposition_collection))
+                    .document(CardType.Opus.name)
+                    .collection("type-propositions")
+                    .document(id.toString())
+
+                val data = hashMapOf(
+                    "idOnCard" to cardTypeVariantId.toString(),
+                    "name" to selectedCardType
+                )
+                document.set(data)
+
+                val localDb = CardDatabase.getInstance(view.context)
+                CoroutineScope(Dispatchers.IO).launch {
+                    localDb.daoProposition.insertStoredProposition(
+                        CardPropositionEntity(
+                            CardType.Opus.name,
+                            cardTypeVariantId.toString(),
+                            "type",
+                            "",
+                            selectedCardType,
+                            "",
+                            "",
+                        )
+                    )
+                }
+
+                val builder = AlertDialog.Builder(view.context)
+                builder.setTitle(R.string.proposition_alert_title)
+                    .setMessage(R.string.proposition_alert_message)
+                    .setPositiveButton(R.string.accept) { _, _ ->
+                        activity.findViewById<ConstraintLayout>(R.id.tripLayout).callOnClick()
+                    }
+                val dialog = builder.create()
+                dialog.show()
+
+            } catch(_: Error) {
+                val builder = AlertDialog.Builder(view.context)
+                builder.setTitle(R.string.proposition_error_title)
+                    .setMessage(R.string.proposition_error_message)
+                    .setPositiveButton(R.string.accept) { _, _ ->
+                        activity.findViewById<ConstraintLayout>(R.id.tripLayout).callOnClick()
+                    }
+                val dialog = builder.create()
+                dialog.show()
+            }
         }
     }
 

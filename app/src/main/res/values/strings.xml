@@ -21,7 +21,7 @@
     <string name="no">No</string>
     <string name="accept">OK</string>
     <string name="submit">Submit</string>
-    <string name="cancel">Submit</string>
+    <string name="cancel">Cancel</string>
     <string name="confirm">Confirm</string>
 
     <string name="scan_history_button">History</string>
@@ -107,12 +107,17 @@
     </string>
 
     <string name="card_type_variant_info">Information about this type of card</string>
+    <string name="card_type_proposition_all_toggle">All types</string>
+    <string name="unknown_card">Unknown</string>
     <string name="standard_card">Standard</string>
     <string name="all_modes_AB_card">All modes AB</string>
-    <string name="all_modes_ABC_card">TAll modes ABC</string>
+    <string name="all_modes_ABC_card">All modes ABC</string>
     <string name="all_modes_ABCD_card">All modes ABCD</string>
     <string name="bus_out_territory_card">Bus out of territory</string>
 
+    <string name="unknown_card_info">
+        This type of Opus card is currently unknown by the application.
+    </string>
     <string name="standard_card_info">
         On ARTM territory, this Opus can contain the following fares:\n\n
         • All monthly fares\n

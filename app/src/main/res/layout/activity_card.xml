@@ -527,7 +527,8 @@
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardSectionLayout">
+        app:layout_constraintTop_toBottomOf="@+id/cardSectionLayout"
+        tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -576,6 +577,86 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardTypeInfoTitle"
                 tools:text="@string/all_modes_AB_card_info" />
+
+            <View
+                android:id="@+id/cardTypeCrowdSourceDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardTypeDescriptionTv" />
+
+            <ImageView
+                android:id="@+id/cardTypeCrowdSourceImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/image_edit"
+                android:src="@drawable/edit"
+                app:layout_constraintBottom_toBottomOf="@+id/cardTypeCrowdSourceTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cardTypeCrowdSourceTitle" />
+
+            <TextView
+                android:id="@+id/cardTypeCrowdSourceTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textStyle="bold"
+                android:text="@string/edit_section_title"
+                app:layout_constraintStart_toEndOf="@+id/cardTypeCrowdSourceImageView"
+                app:layout_constraintTop_toBottomOf="@+id/cardTypeCrowdSourceDivider"
+                tools:text="Suggest an edit" />
+
+            <TextView
+                android:id="@+id/cardTypeCrowdSourceDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/edit_section_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardTypeCrowdSourceTitle" />
+
+            <Spinner
+                android:id="@+id/cardTypeCrowdSourceSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardTypeCrowdSourceDescription" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/cardTypeCrowdSourceSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="26dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/card_type_proposition_all_toggle"
+                android:textOn="@string/card_type_proposition_all_toggle"
+                android:textOff="@string/card_type_proposition_all_toggle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardTypeCrowdSourceSpinner" />
+
+            <Button
+                android:id="@+id/cardTypeCrowdSourceConfirmButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/confirm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardTypeCrowdSourceSpinner" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,6 +4,7 @@ import android.content.Context
 import com.transition.ora.database.CardDatabase
 import com.transition.ora.R
 import com.transition.ora.database.entities.CardPropositionEntity
+import com.transition.ora.enums.CardType
 import com.transition.ora.enums.CardTypeVariant
 import com.transition.ora.registries.FareProductRegistry
 import com.transition.ora.registries.LineRegistry
@@ -19,13 +20,13 @@ import kotlinx.coroutines.runBlocking
 
 class CardContentConverter {
     companion object {
-        fun getCardTypeVariantById(id: UInt?): CardTypeVariant? {
+        fun getCardTypeVariantById(context: Context, id: UInt): CardTypeVariant? {
             return when (id) {
                 392u -> CardTypeVariant.Standard
                 705u -> CardTypeVariant.StandardReduced
                 762u -> CardTypeVariant.AllModesAB
 
-                else -> null
+                else -> lookForCardTypeVariantProposition(context, id.toString())
             }
         }
 
@@ -426,6 +427,36 @@ class CardContentConverter {
                     fareProduct.setName(proposition!!.name)
 
                     return fareProduct
+                }
+            } catch (_: Error) {}
+
+            return null
+        }
+
+        private fun lookForCardTypeVariantProposition(
+            context: Context,
+            id: String
+        ): CardTypeVariant? {
+            var proposition: CardPropositionEntity? = null
+            try {
+                val job = CoroutineScope(Dispatchers.IO).launch {
+                    val localDb = CardDatabase.getInstance(context)
+                    proposition = localDb.daoProposition.getStoredPropositionById(CardType.Opus.name, id, "type")
+                }
+
+                runBlocking {
+                    job.join()
+                }
+
+                if (proposition != null) {
+                    return when (proposition!!.name) {
+                        context.getString(R.string.standard_card) -> CardTypeVariant.Standard
+                        context.getString(R.string.all_modes_AB_card) -> CardTypeVariant.AllModesAB
+                        context.getString(R.string.all_modes_ABC_card) -> CardTypeVariant.AllModesABC
+                        context.getString(R.string.all_modes_ABCD_card) -> CardTypeVariant.AllModesABCD
+                        context.getString(R.string.bus_out_territory_card) -> CardTypeVariant.BusOutOfTerritory
+                        else -> null
+                    }
                 }
             } catch (_: Error) {}
 

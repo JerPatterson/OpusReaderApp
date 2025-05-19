@@ -108,12 +108,17 @@
     </string>
 
     <string name="card_type_variant_info">Information sur ce type de carte</string>
+    <string name="card_type_proposition_all_toggle">Tous les types</string>
+    <string name="unknown_card">Inconnue</string>
     <string name="standard_card">Standard</string>
     <string name="all_modes_AB_card">Tous modes AB</string>
     <string name="all_modes_ABC_card">Tous modes ABC</string>
     <string name="all_modes_ABCD_card">Tous modes ABCD</string>
     <string name="bus_out_territory_card">Bus hors territoire</string>
 
+    <string name="unknown_card_info">
+        Ce type de carte Opus est présentement inconnu par l\'application.
+    </string>
     <string name="standard_card_info">
         Sur le territoire de l\'ARTM, cette carte Opus peut contenir les titres suivants:\n\n
         • Tous les titres mensuels\n
