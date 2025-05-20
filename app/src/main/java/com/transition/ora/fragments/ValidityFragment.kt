@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import com.google.gson.Gson
@@ -136,8 +137,6 @@ class ValidityFragment: Fragment() {
     }
 
     private fun addOccasionalCardTrips(card: Card, progress: Int, startDate: Calendar, endDate: Calendar) {
-        val displayMetrics = context?.resources?.displayMetrics ?: return
-        val dpWidthSeekBar = displayMetrics.widthPixels - (displayMetrics.widthPixels * 0.35F)
         val validitySeekBar = this.mView?.findViewById<SeekBar>(R.id.validitySeekBar)
         validitySeekBar?.progress = progress
         validitySeekBar?.setOnTouchListener(OnTouchListener())
@@ -164,13 +163,26 @@ class ValidityFragment: Fragment() {
                 if (useProgress < 0) continue
                 listenForLineProposition(trip, validityHigherLabelLine, validityHigherLineIdTv)
                 addCardScanEvent(line, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
-                moveCardScanEvent(dpWidthSeekBar * useProgress, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
             } else {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue
                 listenForLineProposition(trip, validityMiddleLabelLine, validityMiddleLineIdTv)
                 addCardScanEvent(line, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
-                moveCardScanEvent(dpWidthSeekBar * useProgress, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
+            }
+        }
+
+        validitySeekBar?.doOnLayout {
+            val dpWidthSeekBar = validitySeekBar.measuredWidth
+            for ((i, trip) in trips.withIndex().reversed()) {
+                if (i == 0 && trips.size == 1 || i == 1) {
+                    val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
+                    if (useProgress < 0) continue
+                    moveCardScanEvent(dpWidthSeekBar * useProgress, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
+                } else {
+                    val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
+                    if (useProgress < 0) continue
+                    moveCardScanEvent(dpWidthSeekBar * useProgress, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
+                }
             }
         }
     }
@@ -219,8 +231,6 @@ class ValidityFragment: Fragment() {
     }
 
     private fun addOpusCardTrips(card: Card, progress: Int, startDate: Calendar, endDate: Calendar) {
-        val displayMetrics = context?.resources?.displayMetrics ?: return
-        val dpWidthSeekBar = displayMetrics.widthPixels - (displayMetrics.widthPixels * 0.35F)
         val validitySeekBar = this.mView?.findViewById<SeekBar>(R.id.validitySeekBar)
         validitySeekBar?.progress = progress
         validitySeekBar?.setOnTouchListener(OnTouchListener())
@@ -247,19 +257,35 @@ class ValidityFragment: Fragment() {
                 if (useProgress < 0) continue
                 listenForLineProposition(trip, validityHigherLabelLine, validityHigherLineIdTv)
                 addCardScanEvent(line, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
-                moveCardScanEvent(dpWidthSeekBar * useProgress, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
             } else if ((i == 0 && trips.size == 2) || i == 1) {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue
                 listenForLineProposition(trip, validityMiddleLabelLine, validityMiddleLineIdTv)
                 addCardScanEvent(line, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
-                moveCardScanEvent(dpWidthSeekBar * useProgress, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
             } else if (i == 0) {
                 val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
                 if (useProgress < 0) continue
                 listenForLineProposition(trip, validityLowerLabelLine, validityLowerLineIdTv)
                 addCardScanEvent(line, validityLowerLabelLine, validityLowerLineIdTv, validityLowerModeImage)
-                moveCardScanEvent(dpWidthSeekBar * useProgress, validityLowerLabelLine, validityLowerLineIdTv, validityLowerModeImage)
+            }
+        }
+
+        validitySeekBar?.doOnLayout {
+            val dpWidthSeekBar = validitySeekBar.measuredWidth
+            for ((i, trip) in trips.withIndex().reversed()) {
+                if ((i == 0 && trips.size == 1) || (i == 1 && trips.size == 2) || i == 2) {
+                    val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
+                    if (useProgress < 0) continue
+                    moveCardScanEvent(dpWidthSeekBar * useProgress, validityHigherLabelLine, validityHigherLineIdTv, validityHigherModeImage)
+                } else if ((i == 0 && trips.size == 2) || i == 1) {
+                    val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
+                    if (useProgress < 0) continue
+                    moveCardScanEvent(dpWidthSeekBar * useProgress, validityMiddleLabelLine, validityMiddleLineIdTv, validityMiddleModeImage)
+                } else if (i == 0) {
+                    val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
+                    if (useProgress < 0) continue
+                    moveCardScanEvent(dpWidthSeekBar * useProgress, validityLowerLabelLine, validityLowerLineIdTv, validityLowerModeImage)
+                }
             }
         }
     }
