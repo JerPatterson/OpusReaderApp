@@ -7,6 +7,8 @@
         RTC (Réseau de transport de la Capitale), RTL (Réseau de transport de Longueuil), STM (Société de transport de Montréal),
         STL (Société de transport de Laval) et STLévis (Société de transport de Lévis) sont des marques déposées.
         <b>Cette application n\'est ni affiliée, ni approuvée, ni sponsorisée par ces entités.</b>
+        Tout le contenu qui est affiché provient uniquement des données binaires de la carte de transport.
+        Il n\'y a aucune garantie de l\'exactitude de celui-ci.
     </string>
 
     <string name="no_nfc_title">Fonctionnalité CCP indisponible</string>
