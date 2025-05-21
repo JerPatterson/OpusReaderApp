@@ -17,8 +17,7 @@ class CardContentParser {
         val id = this.getOccasionalCardId(data)
         val fares = this.getOccasionalCardFare(data)
         val trips = this.getOccasionalCardTrips(data)
-        val expiryDate = Calendar.getInstance()
-        expiryDate.set(2040, Calendar.DECEMBER, 31)
+        val expiryDate = this.getOccasionalCardExpiryDate(data)
 
         return Card(id, CardType.Occasional, Calendar.getInstance(), expiryDate, null, null, fares, trips)
     }
@@ -59,6 +58,37 @@ class CardContentParser {
                 or data[0][1].toULong().and(0xFFu))
     }
 
+    private fun getOccasionalCardExpiryDate(data: Array<ByteArray>): Calendar {
+        val expiryDateDays = (data[2][10].toUInt().and(0x7Fu).shl(7)
+                or data[2][11].toUInt().and(0xFEu).shr(1))
+        val expiryDate = this.uIntToDate(if (expiryDateDays != 0u) expiryDateDays else 16070u, 1439u)
+
+        when (this.getOccasionalCardFareTypeId(data)) {
+            FareProductId.OCC_24HOURS_BUS.id,
+            FareProductId.OCC_24HOURS_BUS_OOT.id,
+            FareProductId.OCC_24HOURS_ALL_MODES_A.id,
+            FareProductId.OCC_24HOURS_ALL_MODES_AB.id,
+            FareProductId.OCC_24HOURS_ALL_MODES_ABC.id,
+            FareProductId.OCC_24HOURS_ALL_MODES_ABCD.id -> {
+                expiryDate.add(Calendar.DATE, 1)
+            }
+
+            FareProductId.OCC_EVENING_UNLIMITED.id -> {
+                expiryDate.add(Calendar.DATE, 1)
+            }
+
+            FareProductId.OCC_WEEKEND_UNLIMITED.id -> {
+                expiryDate.add(Calendar.DATE, -1)
+            }
+
+            FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.id -> {
+                expiryDate.set(2024, 4, 31, 23, 59)
+            }
+        }
+
+        return expiryDate
+    }
+
 
     private fun getOccasionalCardFare(data: Array<ByteArray>): ArrayList<Fare> {
         val fares = ArrayList<Fare>()
@@ -69,15 +99,9 @@ class CardContentParser {
 
         if (this.occasionalCardHasTicket(data)) {
             val ticketCount = when (typeId) {
-                FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.id -> {
-                    val validityEndDate = Calendar.getInstance()
-                    validityEndDate.set(2024, 5, 1, 0, 0)
-                    if (Calendar.getInstance().timeInMillis > validityEndDate.timeInMillis)
-                        0u else this.getOccasionalCardFareNbOfTickets(data)
-                }
+                FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.id -> 0u
                 else -> this.getOccasionalCardFareNbOfTickets(data)
             }
-
 
             fares.add(Fare(typeId, operatorId, buyingDate, ticketCount))
         } else if (this.occasionalCardHasPass(data)) {
