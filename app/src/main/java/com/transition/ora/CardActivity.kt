@@ -72,7 +72,7 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addCardInfoSection(card: Card) {
-        this.addCardInfoSectionTitles(card.type)
+        this.addCardInfoSectionTitles(card.type, card.getFares())
         this.addCardRegisteredInfo(card.type, card.expiryDate, card.birthDate)
         this.addCardTypeVariantInfo(card.id, card.typeVariant)
         this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
@@ -191,7 +191,7 @@ class CardActivity : AppCompatActivity() {
         confirmButton.setOnClickListener(CrowdSourceConfirmListener(this, cardId, cardTypeVariantId))
     }
 
-    private fun addCardInfoSectionTitles(cardType: CardType) {
+    private fun addCardInfoSectionTitles(cardType: CardType, fares: List<Fare>) {
         val cardTitleTv = findViewById<TextView>(R.id.cardSectionTitleTv)
         cardTitleTv.text = when (cardType) {
             CardType.Opus -> getString(R.string.opus_card_name)
@@ -201,7 +201,11 @@ class CardActivity : AppCompatActivity() {
         val cardImageView = findViewById<ImageView>(R.id.cardImageView)
         when (cardType) {
             CardType.Opus -> cardImageView.setImageResource(R.drawable.opus)
-            CardType.Occasional -> cardImageView.setImageResource(R.drawable.occasionnelle)
+            CardType.Occasional -> when (if (fares.isNotEmpty()) fares.first().operatorId else null) {
+                5u -> cardImageView.setImageResource(R.drawable.occasionnelle_rtc)
+                16u -> cardImageView.setImageResource(R.drawable.occasionnelle_stlevis)
+                else -> cardImageView.setImageResource(R.drawable.occasionnelle)
+            }
         }
     }
 
