@@ -172,7 +172,7 @@ class ValidityFragment: Fragment() {
         }
 
         validitySeekBar?.doOnLayout {
-            val dpWidthSeekBar = validitySeekBar.measuredWidth
+            val dpWidthSeekBar = validitySeekBar.measuredWidth - (validitySeekBar.paddingLeft + validitySeekBar.paddingRight)
             for ((i, trip) in trips.withIndex().reversed()) {
                 if (i == 0 && trips.size == 1 || i == 1) {
                     val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
@@ -271,7 +271,7 @@ class ValidityFragment: Fragment() {
         }
 
         validitySeekBar?.doOnLayout {
-            val dpWidthSeekBar = validitySeekBar.measuredWidth
+            val dpWidthSeekBar = validitySeekBar.measuredWidth - (validitySeekBar.paddingLeft + validitySeekBar.paddingRight)
             for ((i, trip) in trips.withIndex().reversed()) {
                 if ((i == 0 && trips.size == 1) || (i == 1 && trips.size == 2) || i == 2) {
                     val useProgress = (trip.useDate.timeInMillis - startDate.timeInMillis).toFloat() / (endDate.timeInMillis - startDate.timeInMillis).toFloat()
