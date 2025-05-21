@@ -17,13 +17,14 @@ class Fare(
 ) : Serializable {
     init {
         val validityFromDateValue = this.validityFromDate
-        if (validityFromDateValue != null) {
-            this.validityFromDate = setFareValidityFromDate(validityFromDateValue)
-            this.validityUntilDate = setFareValidityUntilDate(validityFromDateValue)
+        val validityUntilDateValue = this.validityUntilDate
+        if (validityFromDateValue != null && validityUntilDateValue != null) {
+            this.validityFromDate = setFareValidityFromDate(validityFromDateValue, validityUntilDateValue)
+            this.validityUntilDate = setFareValidityUntilDate(validityFromDateValue, validityUntilDateValue)
         }
     }
 
-    private fun setFareValidityFromDate(validityFromDate: Calendar): Calendar? {
+    private fun setFareValidityFromDate(validityFromDate: Calendar, validityUntilDate: Calendar): Calendar? {
         val date = Calendar.getInstance()
 
         return when (typeId) {
@@ -32,24 +33,21 @@ class Fare(
             FareProductId.OCC_3DAYS_ALL_MODES_A.id,
             FareProductId.OCC_3DAYS_ALL_MODES_AB.id,
             FareProductId.OCC_3DAYS_ALL_MODES_ABC.id,
-            FareProductId.OCC_3DAYS_ALL_MODES_ABCD.id -> {
+            FareProductId.OCC_3DAYS_ALL_MODES_ABCD.id,
+
+            FareProductId.OPUS_3DAYS_BUS.id,
+            FareProductId.OPUS_3DAYS_BUS_OOT.id,
+            FareProductId.OPUS_3DAYS_ALL_MODES_A.id,
+            FareProductId.OPUS_3DAYS_ALL_MODES_AB.id,
+            FareProductId.OPUS_3DAYS_ALL_MODES_ABC.id,
+            FareProductId.OPUS_3DAYS_ALL_MODES_ABCD.id -> {
                 date.set(
-                    validityFromDate.get(Calendar.YEAR),
-                    validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE) - 2,
+                    validityUntilDate.get(Calendar.YEAR),
+                    validityUntilDate.get(Calendar.MONTH),
+                    validityUntilDate.get(Calendar.DATE) - 2,
                     0,
                     0
                 )
-
-                if (date.timeInMillis < buyingDate.timeInMillis) {
-                    date.set(
-                        buyingDate.get(Calendar.YEAR),
-                        buyingDate.get(Calendar.MONTH),
-                        buyingDate.get(Calendar.DATE),
-                        0,
-                        0
-                    )
-                }
 
                 date
             }
@@ -112,16 +110,10 @@ class Fare(
 
             FareProductId.OCC_WEEKEND_UNLIMITED.id,
             FareProductId.OPUS_WEEKEND_UNLIMITED.id -> {
-                val daysToRemove = when (validityFromDate.get(Calendar.DAY_OF_WEEK)) {
-                    Calendar.SATURDAY -> 1
-                    Calendar.SUNDAY -> 2
-                    Calendar.MONDAY -> 3
-                    else -> 0
-                }
                 date.set(
-                    validityFromDate.get(Calendar.YEAR),
-                    validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE) - daysToRemove,
+                    validityUntilDate.get(Calendar.YEAR),
+                    validityUntilDate.get(Calendar.MONTH),
+                    validityUntilDate.get(Calendar.DATE) - 4,
                     16,
                     0
                 )
@@ -133,7 +125,7 @@ class Fare(
         }
     }
 
-    private fun setFareValidityUntilDate(validityFromDate: Calendar): Calendar? {
+    private fun setFareValidityUntilDate(validityFromDate: Calendar, validityUntilDate: Calendar): Calendar? {
         val date = Calendar.getInstance()
 
         return when (typeId) {
@@ -697,9 +689,9 @@ class Fare(
             FareProductId.OPUS_EMPLOYEE_AMT.id,
             FareProductId.OPUS_EMPLOYEE_CIT.id -> {
                 date.set(
-                    validityUntilDate!!.get(Calendar.YEAR),
-                    validityUntilDate!!.get(Calendar.MONTH),
-                    validityUntilDate!!.get(Calendar.DATE),
+                    validityUntilDate.get(Calendar.YEAR),
+                    validityUntilDate.get(Calendar.MONTH),
+                    validityUntilDate.get(Calendar.DATE),
                     23,
                     59
                 )
@@ -730,24 +722,21 @@ class Fare(
             FareProductId.OCC_3DAYS_ALL_MODES_A.id,
             FareProductId.OCC_3DAYS_ALL_MODES_AB.id,
             FareProductId.OCC_3DAYS_ALL_MODES_ABC.id,
-            FareProductId.OCC_3DAYS_ALL_MODES_ABCD.id -> {
+            FareProductId.OCC_3DAYS_ALL_MODES_ABCD.id,
+
+            FareProductId.OPUS_3DAYS_BUS.id,
+            FareProductId.OPUS_3DAYS_BUS_OOT.id,
+            FareProductId.OPUS_3DAYS_ALL_MODES_A.id,
+            FareProductId.OPUS_3DAYS_ALL_MODES_AB.id,
+            FareProductId.OPUS_3DAYS_ALL_MODES_ABC.id,
+            FareProductId.OPUS_3DAYS_ALL_MODES_ABCD.id -> {
                 date.set(
-                    buyingDate.get(Calendar.YEAR),
-                    buyingDate.get(Calendar.MONTH),
-                    buyingDate.get(Calendar.DATE) + 2,
+                    validityUntilDate.get(Calendar.YEAR),
+                    validityUntilDate.get(Calendar.MONTH),
+                    validityUntilDate.get(Calendar.DATE),
                     23,
                     59
                 )
-
-                if (validityFromDate.timeInMillis > date.timeInMillis) {
-                    date.set(
-                        validityFromDate.get(Calendar.YEAR),
-                        validityFromDate.get(Calendar.MONTH),
-                        validityFromDate.get(Calendar.DATE),
-                        23,
-                        59
-                    )
-                }
 
                 date
             }
@@ -755,10 +744,19 @@ class Fare(
             FareProductId.OPUS_WEEKLY_ALL_MODES_A.id,
             FareProductId.OPUS_WEEKLY_ALL_MODES_A_RED.id,
             FareProductId.OPUS_WEEKLY_ALL_MODES_A_ELDER.id -> {
+                val daysToAdd = when (validityFromDate.get(Calendar.DAY_OF_WEEK)) {
+                    Calendar.TUESDAY -> 6
+                    Calendar.WEDNESDAY -> 5
+                    Calendar.THURSDAY -> 4
+                    Calendar.FRIDAY -> 3
+                    Calendar.SATURDAY -> 2
+                    Calendar.SUNDAY -> 1
+                    else -> 0
+                }
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE) + 6,
+                    validityFromDate.get(Calendar.DATE) + daysToAdd,
                     23,
                     59
                 )
@@ -800,17 +798,11 @@ class Fare(
             }
 
             FareProductId.OCC_WEEKEND_UNLIMITED.id,
-            FareProductId.OPUS_WEEKEND_UNLIMITED.id-> {
-                val daysToAdd = when (validityFromDate.get(Calendar.DAY_OF_WEEK)) {
-                    Calendar.FRIDAY -> 3
-                    Calendar.SATURDAY -> 2
-                    Calendar.SUNDAY -> 1
-                    else -> 0
-                }
+            FareProductId.OPUS_WEEKEND_UNLIMITED.id -> {
                 date.set(
-                    validityFromDate.get(Calendar.YEAR),
-                    validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE) + daysToAdd,
+                    validityUntilDate.get(Calendar.YEAR),
+                    validityUntilDate.get(Calendar.MONTH),
+                    validityUntilDate.get(Calendar.DATE) - 1,
                     5,
                     0
                 )
