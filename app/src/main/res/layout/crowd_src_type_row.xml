@@ -11,18 +11,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="6dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:scrollHorizontally="true"
         android:ellipsize="end"
         android:maxLines="1"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:scrollHorizontally="true"
+        android:textColor="#122840"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Mensuel, Tous Modes A" />
+        tools:text="Tous Modes AB" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
