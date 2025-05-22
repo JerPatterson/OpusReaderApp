@@ -84,6 +84,21 @@ class CardContentParser {
             FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.id -> {
                 expiryDate.set(2024, 4, 31, 23, 59)
             }
+
+            else -> {
+                if (this.occasionalCardHasTicket(data) && this.getOccasionalCardFareNbOfTickets(data) == 0u) {
+                    val first = this.getOccasionalCardTripFirstUseDate(data[2])
+                    val second = this.getOccasionalCardTripFirstUseDate(data[3])
+
+                    val lastValidityUntilDate = if (first.timeInMillis > second.timeInMillis) first else second
+                    lastValidityUntilDate.add(Calendar.HOUR_OF_DAY, 2)
+                    expiryDate.set(
+                        lastValidityUntilDate.get(Calendar.YEAR),
+                        lastValidityUntilDate.get(Calendar.MONTH),
+                        lastValidityUntilDate.get(Calendar.DATE)
+                    )
+                }
+            }
         }
 
         return expiryDate
