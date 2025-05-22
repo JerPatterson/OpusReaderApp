@@ -24,6 +24,7 @@ class CardContentConverter {
             return when (id) {
                 392u -> CardTypeVariant.Standard
                 705u -> CardTypeVariant.StandardReduced
+                757u -> CardTypeVariant.StandardSubscription
                 762u -> CardTypeVariant.AllModesAB
 
                 else -> lookForCardTypeVariantProposition(context, id.toString())

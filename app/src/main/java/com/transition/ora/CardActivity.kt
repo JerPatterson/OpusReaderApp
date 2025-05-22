@@ -131,23 +131,28 @@ class CardActivity : AppCompatActivity() {
         val cardTypeVariant = CardContentConverter.getCardTypeVariantById(this, cardTypeVariantId)
         when (cardTypeVariant) {
             CardTypeVariant.Standard,
-            CardTypeVariant.StandardReduced -> {
+            CardTypeVariant.StandardReduced,
+            CardTypeVariant.StandardSubscription -> {
                 addSpecificCardTypeVariantInfo(R.string.standard_card, R.string.standard_card_info)
             }
             CardTypeVariant.AllModesAB,
-            CardTypeVariant.AllModesABReduced -> {
+            CardTypeVariant.AllModesABReduced,
+            CardTypeVariant.AllModesABSubscription -> {
                 addSpecificCardTypeVariantInfo(R.string.all_modes_AB_card, R.string.all_modes_AB_card_info)
             }
             CardTypeVariant.AllModesABC,
-            CardTypeVariant.AllModesABCReduced -> {
+            CardTypeVariant.AllModesABCReduced,
+            CardTypeVariant.AllModesABCSubscription -> {
                 addSpecificCardTypeVariantInfo(R.string.all_modes_ABC_card, R.string.all_modes_ABC_card_info)
             }
             CardTypeVariant.AllModesABCD,
-            CardTypeVariant.AllModesABCDReduced -> {
+            CardTypeVariant.AllModesABCDReduced,
+            CardTypeVariant.AllModesABCDSubscription -> {
                 addSpecificCardTypeVariantInfo(R.string.all_modes_ABCD_card, R.string.all_modes_ABCD_card_info)
             }
             CardTypeVariant.BusOutOfTerritory,
-            CardTypeVariant.BusOutOfTerritoryReduced -> {
+            CardTypeVariant.BusOutOfTerritoryReduced,
+            CardTypeVariant.BusOutOfTerritorySubscription -> {
                 addSpecificCardTypeVariantInfo(R.string.bus_out_territory_card, R.string.bus_out_territory_card_info)
             }
 
@@ -169,19 +174,15 @@ class CardActivity : AppCompatActivity() {
         cardVariantTypeButton.visibility = View.VISIBLE
         cardVariantTypeButton.setOnClickListener(CardTypeVariantListener(this))
 
-        val cardTypeVariantCrowdSourceSwitch = findViewById<SwitchCompat>(R.id.cardTypeCrowdSourceSwitch)
-        cardTypeVariantCrowdSourceSwitch.setOnCheckedChangeListener { _, isChecked ->
-            addOptionsToCrowdSourceSpinner(!isChecked)
-        }
-        addOptionsToCrowdSourceSpinner(true)
+        addOptionsToCrowdSourceSpinner()
     }
 
-    private fun addOptionsToCrowdSourceSpinner(filterKnownTypes: Boolean) {
+    private fun addOptionsToCrowdSourceSpinner() {
         val cardTypeVariantValueTv = findViewById<TextView>(R.id.cardTypeValueTv)
         val cardTypeVariantName = cardTypeVariantValueTv.text.toString()
 
         val possibleOptions = arrayListOf<String>()
-        if (!filterKnownTypes) possibleOptions.add(getString(R.string.standard_card))
+        possibleOptions.add(getString(R.string.standard_card))
         possibleOptions.add(getString(R.string.all_modes_AB_card))
         possibleOptions.add(getString(R.string.all_modes_ABC_card))
         possibleOptions.add(getString(R.string.all_modes_ABCD_card))
