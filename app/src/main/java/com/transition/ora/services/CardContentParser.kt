@@ -71,14 +71,22 @@ class CardContentParser {
             FareProductId.OCC_24HOURS_ALL_MODES_ABC.id,
             FareProductId.OCC_24HOURS_ALL_MODES_ABCD.id -> {
                 expiryDate.add(Calendar.DATE, 1)
+
+                val validityFrom = getOccasionalCardFareValidityFromDate(data[2])
+                if (validityFrom != null) {
+                    expiryDate.set(Calendar.HOUR_OF_DAY, validityFrom.get(Calendar.HOUR_OF_DAY))
+                    expiryDate.set(Calendar.MINUTE, validityFrom.get(Calendar.MINUTE))
+                }
             }
 
             FareProductId.OCC_EVENING_UNLIMITED.id -> {
                 expiryDate.add(Calendar.DATE, 1)
+                expiryDate.set(Calendar.HOUR_OF_DAY, 5)
             }
 
             FareProductId.OCC_WEEKEND_UNLIMITED.id -> {
                 expiryDate.add(Calendar.DATE, -1)
+                expiryDate.set(Calendar.HOUR_OF_DAY, 5)
             }
 
             FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.id -> {
