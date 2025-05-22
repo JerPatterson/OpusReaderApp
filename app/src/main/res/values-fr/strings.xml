@@ -108,6 +108,9 @@
         \n\nUne nouvelle carte est nécessaire pour l\'achat des prochains titres de transport (des frais d\'émission sont applicables).
         La restitution des titres de transport non expirés est possible sur la nouvelle carte.
     </string>
+    <string name="expired_occasional_card_description">
+        Cette carte n\'est plus utilisable car elle n\'est pas rechargeable et le titre qu\'elle contenait a été utilisé.
+    </string>
 
     <string name="card_type_variant_info">Information sur ce type de carte</string>
     <string name="card_type_proposition_all_toggle">Tous les types</string>

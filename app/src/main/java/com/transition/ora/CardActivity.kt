@@ -86,14 +86,25 @@ class CardActivity : AppCompatActivity() {
         val cardStatusButton = findViewById<CardView>(R.id.cardStatusButtonLayout)
         cardStatusButton.setOnClickListener(RegisteredCardListener(this))
 
+        val now = Calendar.getInstance()
+        val cardStatusTv = findViewById<TextView>(R.id.cardStatusTv)
+        val cardStatusInfoTitleTv = findViewById<TextView>(R.id.cardStatusInfoTitleTv)
+        val cardStatusDescriptionTv = findViewById<TextView>(R.id.cardStatusDescriptionTv)
+
         if (cardType == CardType.Occasional) {
             cardStatusButton.visibility = View.GONE
-        } else if (cardType == CardType.Opus) {
-            val now = Calendar.getInstance()
-            val cardStatusTv = findViewById<TextView>(R.id.cardStatusTv)
-            val cardStatusInfoTitleTv = findViewById<TextView>(R.id.cardStatusInfoTitleTv)
-            val cardStatusDescriptionTv = findViewById<TextView>(R.id.cardStatusDescriptionTv)
+            if (expiryDate != null && expiryDate.timeInMillis < now.timeInMillis) {
+                cardStatusTv.text = getString(R.string.expired_card_title)
+                cardStatusInfoTitleTv.text = getString(R.string.expired_card_info)
+                cardStatusDescriptionTv.text = getString(R.string.expired_occasional_card_description)
+                cardStatusButton.visibility = View.VISIBLE
 
+                findViewById<View>(R.id.cardStatusInfoDivider).visibility = View.GONE
+                findViewById<ImageView>(R.id.cardBirthDateImageView).visibility = View.GONE
+                findViewById<TextView>(R.id.cardBirthDateTv).visibility = View.GONE
+                findViewById<TextView>(R.id.cardBirthDateValueTv).visibility = View.GONE
+            }
+        } else if (cardType == CardType.Opus) {
             if (birthDate != null && expiryDate != null && expiryDate.timeInMillis >= now.timeInMillis) {
                 cardStatusTv.text = getString(R.string.registered_card_title)
                 cardStatusInfoTitleTv.text = getString(R.string.registered_card_info)
