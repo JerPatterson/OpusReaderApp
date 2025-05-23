@@ -103,7 +103,9 @@ class CardContentParser {
                     expiryDate.set(
                         lastValidityUntilDate.get(Calendar.YEAR),
                         lastValidityUntilDate.get(Calendar.MONTH),
-                        lastValidityUntilDate.get(Calendar.DATE)
+                        lastValidityUntilDate.get(Calendar.DATE),
+                        lastValidityUntilDate.get(Calendar.HOUR_OF_DAY),
+                        lastValidityUntilDate.get(Calendar.MINUTE)
                     )
                 }
             }
