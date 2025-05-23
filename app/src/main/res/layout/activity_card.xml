@@ -522,7 +522,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginTop="-4dp"
         android:layout_marginStart="32dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
