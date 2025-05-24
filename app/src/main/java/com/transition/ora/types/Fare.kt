@@ -18,7 +18,7 @@ class Fare(
     init {
         val validityFromDateValue = this.validityFromDate
         val validityUntilDateValue = this.validityUntilDate
-        if (validityFromDateValue != null && validityUntilDateValue != null) {
+        if (validityFromDateValue != null && validityUntilDateValue != null && validityUntilDateValue.timeInMillis != 0L) {
             this.validityFromDate = setFareValidityFromDate(validityFromDateValue, validityUntilDateValue)
             this.validityUntilDate = setFareValidityUntilDate(validityFromDateValue, validityUntilDateValue)
         }
@@ -110,10 +110,17 @@ class Fare(
 
             FareProductId.OCC_WEEKEND_UNLIMITED.id,
             FareProductId.OPUS_WEEKEND_UNLIMITED.id -> {
+                val daysToRemove = when (validityUntilDate.get(Calendar.DAY_OF_WEEK)) {
+                    Calendar.SATURDAY -> 1
+                    Calendar.SUNDAY -> 2
+                    Calendar.MONDAY -> 3
+                    Calendar.TUESDAY -> 4
+                    else -> 0
+                }
                 date.set(
                     validityUntilDate.get(Calendar.YEAR),
                     validityUntilDate.get(Calendar.MONTH),
-                    validityUntilDate.get(Calendar.DATE) - 4,
+                    validityUntilDate.get(Calendar.DATE) - daysToRemove,
                     16,
                     0
                 )
@@ -798,11 +805,18 @@ class Fare(
             }
 
             FareProductId.OCC_WEEKEND_UNLIMITED.id,
-            FareProductId.OPUS_WEEKEND_UNLIMITED.id -> {
+            FareProductId.OPUS_WEEKEND_UNLIMITED.id-> {
+                val daysToAdd = when (validityUntilDate.get(Calendar.DAY_OF_WEEK)) {
+                    Calendar.FRIDAY -> 3
+                    Calendar.SATURDAY -> 2
+                    Calendar.SUNDAY -> 1
+                    Calendar.TUESDAY -> -1
+                    else -> 0
+                }
                 date.set(
                     validityUntilDate.get(Calendar.YEAR),
                     validityUntilDate.get(Calendar.MONTH),
-                    validityUntilDate.get(Calendar.DATE) - 1,
+                    validityUntilDate.get(Calendar.DATE) + daysToAdd,
                     5,
                     0
                 )
