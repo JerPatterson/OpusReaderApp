@@ -249,6 +249,7 @@ object LineRegistry {
         171u to { Line("505", "Voie réservée Pie-IX", "#009ee0", "#ffffff", R.drawable.bus) },
         172u to { Line("506", "Voie réservée Newman", "#009ee0", "#ffffff", R.drawable.bus) },
         173u to { Line("535", "Voie réservée Du Parc / Côte-des-Neiges", "#009ee0", "#ffffff", R.drawable.bus) },
+        340u to { Line("568", "Navette REM - Île-des-Soeurs / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus) },
         277u to { Line("711", "Parc-du-Mont-Royal / Oratoire", "#009ee0", "#ffffff", R.drawable.bus) },
         257u to { Line("715", "Vieux-Montréal / Vieux-Port", "#009ee0", "#ffffff", R.drawable.bus) },
         219u to { Line("747", "YUL Aéroport / Centre-Ville", "#009ee0", "#ffffff", R.drawable.bus) },
@@ -270,7 +271,6 @@ object LineRegistry {
         514u to { Line("502", "Service provisoire Ligne Orange", "#009ee0", "#ffffff", R.drawable.bus) },
         515u to { Line("505", "Service provisoire Ligne Bleue", "#009ee0", "#ffffff", R.drawable.bus) },
         516u to { Line("555", "Service provisoire", "#009ee0", "#ffffff", R.drawable.bus) },
-        517u to { Line("568", "Navette REM - Île-des-Soeurs / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus) },
         518u to { Line("721", "Navette REM - Brossard / Du Quartier / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus) },
 
         519u to { Line("709", "Navette des Canadiens", "#009ee0", "#ffffff", R.drawable.bus) },
@@ -338,6 +338,7 @@ object LineRegistry {
         71u to Line("132", "DIX30 / Parc de la Cité / Mountainview", "#9e2536", "#ffffff", R.drawable.bus),
         270u to Line("160", "Milan / Gaétan-Boucher / Centre-ville St-Bruno", "#9e2536", "#ffffff", R.drawable.bus),
         340u to Line("417", "Express Roland-Therrien / Roberval", "#9e2536", "#ffffff", R.drawable.bus),
+        263u to Line("720", "Navette REM - Interstation Rive-Sud", "#72a300", "#ffffff", R.drawable.bus),
 
 
         529u to Line("22", "Gare Longueuil - St-Hubert / Sect. B Vieux-Longueuil", "#9e2536", "#ffffff", R.drawable.bus),
@@ -440,7 +441,6 @@ object LineRegistry {
         664u to Line("T48", "Brossard M.-Victorin / St-Laurent", "#9e2536", "#ffffff", R.drawable.bus),
         665u to Line("T89", "Parc ind. Boucherville / Eiffel", "#9e2536", "#ffffff", R.drawable.bus),
 
-        670u to Line("720", "Navette REM - Interstation Rive-Sud", "#72a300", "#ffffff", R.drawable.bus),
         671u to Line("721", "Navette REM - Brossard / Du Quartier / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus),
         672u to Line("722", "Navette REM - Panama / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus)
     )
