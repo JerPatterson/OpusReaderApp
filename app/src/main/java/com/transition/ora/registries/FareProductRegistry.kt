@@ -760,6 +760,9 @@ object FareProductRegistry {
 
         FareProductId.OPUS_1TICKET_EQUIMOBILITE_RTC.id to FareProduct(R.string.rtc_one_ticket, R.string.fare_unavailable_info),
         FareProductId.OPUS_1TICKET_EQUIMOBILITE_RTC_2.id to FareProduct(R.string.rtc_one_ticket, R.string.fare_unavailable_info),
+        FareProductId.OPUS_2TICKETS_RTC.id to FareProduct(R.string.rtc_two_tickets, R.string.fare_unavailable_info),
+        FareProductId.OPUS_2TICKETS_RTC_STU.id to FareProduct(R.string.rtc_two_tickets, R.string.fare_unavailable_info),
+        FareProductId.OPUS_2TICKETS_RTC_ELDER.id to FareProduct(R.string.rtc_two_tickets, R.string.fare_unavailable_info),
         FareProductId.OPUS_10TICKETS_FESTIBUS_RTC.id to FareProduct(R.string.rtc_ten_tickets_festibus, R.string.fare_unavailable_info),
         FareProductId.OPUS_10TICKETS_OFF_PEAK_65PLUS_RTC.id to FareProduct(R.string.rtc_ten_tickets_off_peak, R.string.fare_unavailable_info),
         FareProductId.OPUS_20TICKETS_RTC.id to FareProduct(R.string.rtc_twenty_tickets, R.string.fare_unavailable_info),

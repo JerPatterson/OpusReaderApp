@@ -1147,6 +1147,7 @@
     <string name="omitsju_Z35_yearly">Yearly, OMITSJU (Longueuil)"</string>
 
     <string name="rtc_one_ticket">1 trip, RTC"</string>
+    <string name="rtc_two_tickets">2 trips, RTC"</string>
     <string name="rtc_ten_tickets_festibus">10 trips, FestiBUS"</string>
     <string name="rtc_ten_tickets_off_peak">10 trips off-peak, RTC"</string>
     <string name="rtc_twenty_tickets">20 trips, RTC"</string>

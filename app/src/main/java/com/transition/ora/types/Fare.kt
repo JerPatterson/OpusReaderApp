@@ -712,7 +712,14 @@ class Fare(
             FareProductId.OCC_24HOURS_ALL_MODES_A.id,
             FareProductId.OCC_24HOURS_ALL_MODES_AB.id,
             FareProductId.OCC_24HOURS_ALL_MODES_ABC.id,
-            FareProductId.OCC_24HOURS_ALL_MODES_ABCD.id -> {
+            FareProductId.OCC_24HOURS_ALL_MODES_ABCD.id,
+
+            FareProductId.OPUS_24HOURS_BUS.id,
+            FareProductId.OPUS_24HOURS_BUS_OOT.id,
+            FareProductId.OPUS_24HOURS_ALL_MODES_A.id,
+            FareProductId.OPUS_24HOURS_ALL_MODES_AB.id,
+            FareProductId.OPUS_24HOURS_ALL_MODES_ABC.id,
+            FareProductId.OPUS_24HOURS_ALL_MODES_ABCD.id -> {
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH),
