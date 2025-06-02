@@ -25,8 +25,8 @@ private const val MILLIS_IN_A_DAY = 86400000
 
 class NotificationScheduler {
     fun scheduleNotification(card: Card, context: Context) {
-        val fareNotifiedAbout: Fare? = checkForUnlimitedFares(card, context)
-        if (fareNotifiedAbout == null) checkForTicketFares(card, context)
+        val fareNotifiedAbout: Fare? = checkForTicketFares(card, context)
+        if (fareNotifiedAbout == null) checkForUnlimitedFares(card, context)
 
         if (card.type == CardType.Opus) {
             scheduleCardNotificationAtTime(card, context, card.expiryDate.timeInMillis)
