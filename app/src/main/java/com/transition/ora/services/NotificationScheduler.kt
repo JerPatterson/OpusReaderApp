@@ -20,7 +20,6 @@ private const val ARG_CARD = "card"
 private const val ARG_TITLE = "title"
 private const val ARG_MESSAGE = "message"
 private const val MILLIS_IN_20MIN = 1200000
-private const val MILLIS_IN_6HOURS = 21600000
 private const val MILLIS_IN_A_DAY = 86400000
 
 
@@ -111,10 +110,12 @@ class NotificationScheduler {
             if (timeUntilTrigger >= MILLIS_IN_A_DAY) {
                 remainingTimeString = context.getString(R.string.validity_day)
                 triggerTimeUpdated = triggerTimeInMillis - MILLIS_IN_A_DAY
-            } else if (timeUntilTrigger >= MILLIS_IN_6HOURS) {
-                remainingTimeString = context.getString(R.string.validity_hours, 6)
-                triggerTimeUpdated = triggerTimeInMillis - MILLIS_IN_6HOURS
             } else {
+                val fareValidityPeriod = fare.validityFromDate?.timeInMillis?.let {
+                    fare.validityUntilDate?.timeInMillis?.minus(it)
+                } ?: 0L
+                if (fareValidityPeriod > 7 * MILLIS_IN_A_DAY) return
+
                 remainingTimeString = context.getString(R.string.validity_minutes, 20)
                 triggerTimeUpdated = triggerTimeInMillis - MILLIS_IN_20MIN
             }
