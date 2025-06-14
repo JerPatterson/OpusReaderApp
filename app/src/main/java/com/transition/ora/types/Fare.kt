@@ -706,7 +706,8 @@ class Fare(
                 date
             }
 
-
+            FareProductId.OCC_24HOURS_RTC.id,
+            FareProductId.OCC_24HOURS_RTL.id,
             FareProductId.OCC_24HOURS_BUS.id,
             FareProductId.OCC_24HOURS_BUS_OOT.id,
             FareProductId.OCC_24HOURS_ALL_MODES_A.id,
@@ -714,6 +715,7 @@ class Fare(
             FareProductId.OCC_24HOURS_ALL_MODES_ABC.id,
             FareProductId.OCC_24HOURS_ALL_MODES_ABCD.id,
 
+            FareProductId.OPUS_24HOURS_RTC.id,
             FareProductId.OPUS_24HOURS_BUS.id,
             FareProductId.OPUS_24HOURS_BUS_OOT.id,
             FareProductId.OPUS_24HOURS_ALL_MODES_A.id,

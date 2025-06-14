@@ -18,6 +18,7 @@ import com.transition.ora.R
 import com.transition.ora.database.CardDatabase
 import com.transition.ora.database.entities.CardPropositionEntity
 import com.transition.ora.enums.CardType
+import com.transition.ora.enums.FareProductId
 import com.transition.ora.services.CardContentConverter
 import com.transition.ora.types.Card
 import com.transition.ora.types.Fare
@@ -202,7 +203,27 @@ class ValidityFragment: Fragment() {
         val validityFromDateValue = mostRecentFare?.validityFromDate
         val validityUntilDateValue = mostRecentFare?.validityUntilDate
 
-        if (validityFromDateValue == null || validityUntilDateValue == null
+        if (mostRecentFare?.typeId == FareProductId.OPUS_24HOURS_RTC.id
+            || mostRecentFare?.typeId == FareProductId.OPUS_24HOURS_BUS.id
+            || mostRecentFare?.typeId == FareProductId.OPUS_24HOURS_BUS_OOT.id
+            || mostRecentFare?.typeId == FareProductId.OPUS_24HOURS_ALL_MODES_A.id
+            || mostRecentFare?.typeId == FareProductId.OPUS_24HOURS_ALL_MODES_AB.id
+            || mostRecentFare?.typeId == FareProductId.OPUS_24HOURS_ALL_MODES_ABC.id
+            || mostRecentFare?.typeId == FareProductId.OPUS_24HOURS_ALL_MODES_ABCD.id) {
+            val usableFromDate = mostRecentTrip.firstUseDate
+            val usableUntilDate = usableFromDate.clone() as Calendar
+            usableUntilDate.add(Calendar.DATE, 1)
+
+            validityStartingValueTv?.text = calendarToStringWithTimeWithoutYear(usableFromDate)
+            validityEndingValueTv?.text = calendarToStringWithTimeWithoutYear(usableUntilDate)
+
+            if (usableUntilDate.timeInMillis > now.timeInMillis) {
+                progress = ((now.timeInMillis - usableFromDate.timeInMillis) * 100 /
+                        (usableUntilDate.timeInMillis - usableFromDate.timeInMillis)).toInt()
+            }
+
+            addOpusCardTrips(card, progress, usableFromDate, usableUntilDate)
+        } else if (validityFromDateValue == null || validityUntilDateValue == null
             || (validityUntilDateValue.timeInMillis < mostRecentTrip.useDate.timeInMillis)) {
             val usableFromDate = mostRecentTrip.firstUseDate
             val usableUntilDate = usableFromDate.clone() as Calendar
