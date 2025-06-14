@@ -91,6 +91,7 @@ class CardContentConverter {
                 0x67u -> "B"
                 0xCBu -> "B"
                 0x69u -> "C"
+                0x6Au -> "C"
                 0x6Bu -> "C"
 
                 else -> "? ($id)"
