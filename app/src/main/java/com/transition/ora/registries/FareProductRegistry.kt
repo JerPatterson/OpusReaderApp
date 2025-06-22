@@ -1346,6 +1346,7 @@ object FareProductRegistry {
 
         FareProductId.OCC_EVENING_UNLIMITED.id to FareProduct(R.string.evening_unlimited, R.string.evening_unlimited_info, FareZones.ARTM_ABCD),
         FareProductId.OCC_WEEKEND_UNLIMITED.id to FareProduct(R.string.weekend_unlimited, R.string.weekend_unlimited_info, FareZones.ARTM_ABCD),
+        FareProductId.OCC_WEEKEND_UNLIMITED_SPECIAL.id to FareProduct(R.string.weekend_unlimited, R.string.weekend_unlimited_info, FareZones.ARTM_ABCD),
 
 
         FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.id to FareProduct(R.string.all_modes_ABCD_two_tickets, R.string.all_modes_ABCD_two_tickets_info_iat, FareZones.ARTM_ABCD),
