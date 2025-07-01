@@ -6,7 +6,7 @@
 </span>
 <h2>Project state</h2>
 <span>
-  Currently, as this project is still in development, a lot of fares, operators and lines are missing and won't be recognize. However, users now have the possibility to contribute within the application by providing fares and lines from their cards as they use them.
+  Currently, a lot of fares, operators and lines are missing and won't be recognize. However, users now have the possibility to contribute within the application by providing fares and lines from their cards as they use them.
 </span>
 <br>
 <h4>Partially working for the following agencies</h4>
