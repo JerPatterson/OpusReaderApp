@@ -472,10 +472,25 @@ object LineRegistry {
         270u to Line("942", "Saint-François / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus)
     )
 
+    private val lineMapForEXOSudOuest: Map<UInt, Line> = mapOf(
+        1u to Line("1", "Valleyfield - Beauharnois - Châteauguay - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        2u to Line("20", "Beauharnois", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        3u to Line("21", "Châteauguay - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        4u to Line("22", "Châteauguay", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        5u to Line("23", "Châteauguay - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        6u to Line("24", "Châteauguay", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        7u to Line("26", "Châteauguay - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        8u to Line("27", "Châteauguay", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        9u to Line("28", "Châteauguay - Montréal (Centre-Ville)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        10u to Line("31", "Châteauguay - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        11u to Line("32", "Châteauguay - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        12u to Line("33", "Châteauguay", "#1F1F1F", "#FFFFFF", R.drawable.bus)
+    )
+
     private val lineMapForEXOLaurentides: Map<UInt, Line> = mapOf(
         8u to Line("8", "Saint-Eustache - Laval (métro Montmorency)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
-        9u to Line("9", "Saint-Jérôme / Laval", "#000000", "#ffffff", R.drawable.bus),
-        11u to Line("11", "Laval / Rosemère / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus),
+        9u to Line("9", "Saint-Jérôme / Laval", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        11u to Line("11", "Laval / Rosemère / Sainte-Thérèse", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         12u to Line("12", "Direction Bois-des-Filion", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         14u to Line("15", "Rosemère - Gare Rosemère", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         16u to Line("17", "Terrebonne - Gare Rosemère", "#1F1F1F", "#FFFFFF", R.drawable.bus),
@@ -484,14 +499,14 @@ object LineRegistry {
         22u to Line("23", "Sainte-Anne-des-Plaines - Sainte-Thérèse", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         23u to Line("24", "Sainte-Anne-des-Plaines - Laval (métro Cartier)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         24u to Line("27", "Lorraine - Sainte-Thérèse", "#1F1F1F", "#FFFFFF", R.drawable.bus),
-        26u to Line("51", "Boisbriand Nord vers Boisbriand Sud", "#000000", "#ffffff", R.drawable.bus),
+        26u to Line("51", "Boisbriand Nord vers Boisbriand Sud", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         27u to Line("52", "Boisbriand Sud vers Boisbriand Nord", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         28u to Line("60", "Sainte-Thérèse", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         29u to Line("61", "Sainte-Thérèse - secteur Bas Sainte-Thérèse", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         30u to Line("62", "Sainte-Thérèse - secteur des Mille-Îles", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         31u to Line("80", "Saint-Eustache - Pointe-Calumet", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         116u to Line("81", "Saint-Eustache - Pointe-Calumet", "#1F1F1F", "#FFFFFF", R.drawable.bus),
-        32u to Line("88", "Saint-Eustache / Sainte-Thérèse", "#000000", "#ffffff", R.drawable.bus),
+        32u to Line("88", "Saint-Eustache / Sainte-Thérèse", "#1F1F1F", "#ffffff", R.drawable.bus),
         33u to Line("89", "Saint-Eustache - secteur Dubois", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         34u to Line("90", "Saint-Eustache - Arthur-Sauvé et Industriel", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         35u to Line("91", "Saint-Eustache - secteur est (Saint-Laurent)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
@@ -546,11 +561,11 @@ object LineRegistry {
     fun getLineForExoChamblyRichelieuCarignan(id: UInt): Line? = null
     fun getLineForExoValleeRichelieu(id: UInt): Line? = null
     fun getLineForExoHautSaintLaurent(id: UInt): Line? = null
-    fun getLineForExoSudOuest(id: UInt): Line? = null
+    fun getLineForExoPresquIle(id: UInt): Line? = null
     fun getLineForExoLeRichelain(id: UInt): Line? = null
     fun getLineForExoRoussillon(id: UInt): Line? = null
     fun getLineForExoSorelVarennes(id: UInt): Line? = null
-    fun getLineForExoPresquIle(id: UInt): Line? = null
+    fun getLineForExoSudOuest(id: UInt): Line? = lineMapForEXOSudOuest[id]
     fun getLineForEXOLaurentides(id: UInt): Line? = lineMapForEXOLaurentides[id]
     fun getLineForSTLevis(id: UInt): Line? = lineMapForSTLevis[id]
     fun getLineForExoSainteJulie(id: UInt): Line? = null

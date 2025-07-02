@@ -25,7 +25,12 @@ class CardContentConverter {
                 392u -> CardTypeVariant.Standard
                 705u -> CardTypeVariant.StandardReduced
                 757u -> CardTypeVariant.StandardSubscription
+
+                767u -> CardTypeVariant.Standard
                 762u -> CardTypeVariant.AllModesAB
+                763u -> CardTypeVariant.AllModesABC
+                764u -> CardTypeVariant.AllModesABCD
+                765u -> CardTypeVariant.BusOutOfTerritory
 
                 else -> lookForCardTypeVariantProposition(context, id.toString())
             }
@@ -57,11 +62,11 @@ class CardContentConverter {
                 7u -> this.getEXOChamblyRichelieuCarignanLineById(context, operatorId, lineId)
                 8u -> this.getEXOValleeRichelieuLineById(context, operatorId, lineId)
                 9u -> this.getEXOHautSaintLaurentLineById(context, operatorId, lineId)
-                10u -> this.getEXOSudOuestLineById(context, operatorId, lineId)
+                10u -> this.getEXOPresquIleLineById(context, operatorId, lineId)
                 11u -> this.getEXOLeRichelainLineById(context, operatorId, lineId)
                 12u -> this.getEXORoussillonLineById(context, operatorId, lineId)
                 13u -> this.getEXOSorelVarennesLineById(context, operatorId, lineId)
-                14u -> this.getEXOPresquIleLineById(context, operatorId, lineId)
+                14u -> this.getEXOSudOuestLineById(context, operatorId, lineId)
                 15u -> this.getEXOLaurentidesLineById(context, operatorId, lineId)
                 16u -> this.getSTLevisLineById(context, operatorId, lineId)
                 17u -> this.getEXOSainteJulieLineById(context, operatorId, lineId)

@@ -748,6 +748,11 @@
         It is accepted on the metro, the bus, the train and the REM in zones A, B, C and D.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
+    <string name="weekend_unlimited_special_info">
+        This fare is valid for all the weekend (until Monday at 5 a.m.).
+        It is accepted on the metro, the bus, the train and the REM in zones A, B, C and D.
+        \n\nThis fare is unlimited. There are no transfer constraints.
+    </string>
 
     <string name="sdo_mtl_six_tickets_info">
         This fare consists of six distinct tickets.
@@ -1089,24 +1094,49 @@
     <string name="citvr_Z36_yearly">Yearly, CITVR (Beloeil/Mont-St-Hilaire/Longueuil)"</string>
     <string name="citvr_SEC_yearly">Yearly, CITVR (Carte intégrée)"</string>
 
-    <string name="crtl_sdo_ch_six_tickets">6 trips, Saint-Donat/Chertsey/Entrelacs"</string>
-    <string name="crtl_sdo_rw_six_tickets">6 trips, Saint-Donat/Rawdon"</string>
-    <string name="crtl_sdo_sj_six_tickets">6 trips, Saint-Donat/Sainte-Julienne"</string>
-    <string name="crtl_sdo_se_six_tickets">6 trips, Saint-Donat/Saint-Esprit"</string>
-    <string name="crtl_sdo_sr_six_tickets">6 trips, Saint-Donat/Saint-Roch"</string>
-    <string name="crtl_sdo_mtl_six_tickets">6 trips, Saint-Donat/Montréal"</string>
-    <string name="crtl_nd_ch_six_tickets">6 trips, Notre-Dame-de-la-Merci/Chertsey/Entrelacs"</string>
-    <string name="crtl_nd_rw_six_tickets">6 trips, Notre-Dame-de-la-Merci/Rawdon"</string>
-    <string name="crtl_nd_sj_six_tickets">6 trips, Notre-Dame-de-la-Merci/Sainte-Julienne"</string>
-    <string name="crtl_nd_se_six_tickets">6 trips, Notre-Dame-de-la-Merci/Saint-Esprit"</string>
-    <string name="crtl_nd_sr_six_tickets">6 trips, Notre-Dame-de-la-Merci/Saint-Roch"</string>
-    <string name="crtl_nd_mtl_six_tickets">6 trips, Notre-Dame-de-la-Merci/Montréal"</string>
-    <string name="crtl_ch_sr_six_tickets">6 trips, Chertsey/Entrelacs/Saint-Roch"</string>
-    <string name="crtl_rw_se_six_tickets">6 trips, Rawdon/Saint-Esprit"</string>
-    <string name="crtl_rw_sr_six_tickets">6 trips, Rawdon/Saint-Roch"</string>
-    <string name="crtl_sj_mtl_six_tickets">6 trips, Sainte-Julienne/Montréal"</string>
-    <string name="crtl_se_mtl_six_tickets">6 trips, Saint-Esprit/Montréal"</string>
-    <string name="crtl_sr_mtl_six_tickets">6 trips, Saint-Roch/Montréal"</string>
+    <string name="crtl_sdo_ch_six_tickets">6 trips, Saint-Donat/Chertsey/Entrelacs</string>
+    <string name="crtl_sdo_rw_six_tickets">6 trips, Saint-Donat/Rawdon</string>
+    <string name="crtl_sdo_sj_six_tickets">6 trips, Saint-Donat/Sainte-Julienne</string>
+    <string name="crtl_sdo_se_six_tickets">6 trips, Saint-Donat/Saint-Esprit</string>
+    <string name="crtl_sdo_sr_six_tickets">6 trips, Saint-Donat/Saint-Roch</string>
+    <string name="crtl_sdo_mtl_six_tickets">6 trips, Saint-Donat/Montréal</string>
+    <string name="crtl_nd_ch_six_tickets">6 trips, Notre-Dame-de-la-Merci/Chertsey/Entrelacs</string>
+    <string name="crtl_nd_rw_six_tickets">6 trips, Notre-Dame-de-la-Merci/Rawdon</string>
+    <string name="crtl_nd_sj_six_tickets">6 trips, Notre-Dame-de-la-Merci/Sainte-Julienne</string>
+    <string name="crtl_nd_se_six_tickets">6 trips, Notre-Dame-de-la-Merci/Saint-Esprit</string>
+    <string name="crtl_nd_sr_six_tickets">6 trips, Notre-Dame-de-la-Merci/Saint-Roch</string>
+    <string name="crtl_nd_mtl_six_tickets">6 trips, Notre-Dame-de-la-Merci/Montréal</string>
+    <string name="crtl_ch_sr_six_tickets">6 trips, Chertsey/Entrelacs/Saint-Roch</string>
+    <string name="crtl_rw_se_six_tickets">6 trips, Rawdon/Saint-Esprit</string>
+    <string name="crtl_rw_sr_six_tickets">6 trips, Rawdon/Saint-Roch</string>
+    <string name="crtl_rw_mtl_six_tickets">6 trips, Rawdon/Montréal</string>
+    <string name="crtl_sj_mtl_six_tickets">6 trips, Sainte-Julienne/Montréal</string>
+    <string name="crtl_se_mtl_six_tickets">6 trips, Saint-Esprit/Montréal</string>
+    <string name="crtl_sr_mtl_six_tickets">6 trips, Saint-Roch/Montréal</string>
+    <string name="crtl_jol_loc_six_tickets">6 trips, Joliette</string>
+    <string name="crtl_jol_smc_six_tickets">6 trips, Joliette/Sainte-Marie et Crabtree</string>
+    <string name="crtl_jol_rpy_six_tickets">6 trips, Joliette/Repentigny</string>
+    <string name="crtl_jol_mtl_six_tickets">6 trips, Joliette/Montréal</string>
+    <string name="crtl_smc_loc_six_tickets">6 trips, Sainte-Marie et Crabtree</string>
+    <string name="crtl_smc_mtl_six_tickets">6 trips, Sainte-Marie et Crabtree/Montréal</string>
+    <string name="crtl_lav_mtl_six_tickets">6 trips, Lavaltrie/Montréal</string>
+    <string name="crtl_sm_ndl_six_tickets">6 trips, Saint-Michel-des-Saints/Notre-Dame-de-Lourdes</string>
+    <string name="crtl_sm_sz_six_tickets">6 trips, Saint-Michel-des-Saints/Saint-Zénon</string>
+    <string name="crtl_sm_see_six_tickets">6 trips, Saint-Michel-des-Saints/Sainte-Émilie-de-l\'Énergie</string>
+    <string name="crtl_sm_sfv_six_tickets">6 trips, Saint-Michel-des-Saints/Saint-Félix-de-Valois</string>
+    <string name="crtl_sm_sjm_six_tickets">6 trips, Saint-Michel-des-Saints/Saint-Jean-de-Matha</string>
+    <string name="crtl_sm_jol_six_tickets">6 trips, Saint-Michel-des-Saints/Joliette</string>
+    <string name="crtl_sz_see_six_tickets">6 trips, Saint-Zénon/Sainte-Émilie-de-l\'Énergie</string>
+    <string name="crtl_sz_sjm_six_tickets">6 trips, Saint-Zénon/Saint-Jean-de-Matha</string>
+    <string name="crtl_sz_sfv_six_tickets">6 trips, Saint-Zénon/Saint-Félix-de-Valois</string>
+    <string name="crtl_sz_ndl_six_tickets">6 trips, Saint-Zénon/Notre-Dame-de-Lourdes</string>
+    <string name="crtl_sz_jol_six_tickets">6 trips, Saint-Zénon/Joliette</string>
+    <string name="crtl_see_sjm_six_tickets">6 trips, Sainte-Émilie-de-l\'Énergie/Saint-Jean-de-Matha</string>
+    <string name="crtl_see_sfv_six_tickets">6 trips, Sainte-Émilie-de-l\'Énergie/Saint-Félix-de-Valois</string>
+    <string name="crtl_see_ndl_six_tickets">6 trips, Sainte-Émilie-de-l\'Énergie/Notre-Dame-de-Lourdes</string>
+    <string name="crtl_see_jol_six_tickets">6 trips, Sainte-Émilie-de-l\'Énergie/Joliette</string>
+    <string name="crtl_sjm_jol_six_tickets">6 trips, Saint-Jean-de-Matha/Joliette</string>
+    <string name="crtl_ndl_jol_six_tickets">6 trips, Notre-Dame-de-Lourdes/Joliette</string>
 
     <string name="lasso_Z27_one_ticket">1 trip, L\'Assomption (External)"</string>
     <string name="lasso_Z57_one_ticket">1 trip, L\'Assomption (Internal)"</string>
