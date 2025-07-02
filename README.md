@@ -6,7 +6,7 @@
 </span>
 <h2>Project state</h2>
 <span>
-  Currently, as this project is still in development, a lot of fares, operators and lines are missing and won't be recognize. However, users now have the possibility to contribute within the application by providing fares and lines from their cards as they use them.
+  Currently, a lot of fares, operators and lines are missing and won't be recognize. However, users now have the possibility to contribute within the application by providing fares and lines from their cards as they use them.
 </span>
 <br>
 <h4>Partially working for the following agencies</h4>
@@ -124,4 +124,7 @@
   <li><a href="https://github.com/metrodroid/metrodroid" target="_blank">Metrodroid</a> (both Opus and Occasional Card)</li>
 </ul>
 <h2>Availability</h2>
+<a href="https://forms.gle/3FCGVHFZdMyuu8Js5" target="_blank"><img alt="Google Play Store" src="https://github.com/user-attachments/assets/dcea2391-f0e9-43a9-986f-e1c4be0c7f77" width=150></a>
 <a href="https://www.amazon.com/dp/B0DS6N3HWC" target="_blank"><img alt="Amazon Appstore" src="https://github.com/user-attachments/assets/eec33db9-84ed-467d-8341-e32d331d263e" width=150></a>
+
+
