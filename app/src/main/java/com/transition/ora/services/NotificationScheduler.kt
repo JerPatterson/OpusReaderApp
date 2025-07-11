@@ -124,7 +124,7 @@ class NotificationScheduler {
                 when (fare.ticketCount) {
                     0u -> context.getString(R.string.validity_notification_ticket_fare_empty_message, fareName, remainingTimeString)
                     1u -> context.getString(R.string.validity_notification_ticket_fare_singular_message, fareName, remainingTimeString)
-                    else -> context.getString(R.string.validity_notification_ticket_fare_plural_message, fareName, remainingTimeString, fare.ticketCount!!)
+                    else -> context.getString(R.string.validity_notification_ticket_fare_plural_message, fareName, remainingTimeString, fare.ticketCount!!.toInt())
                 }
             } else {
                 context.getString(R.string.validity_notification_unlimited_fare_message, fareName, remainingTimeString)
@@ -135,7 +135,7 @@ class NotificationScheduler {
                 when (fare.ticketCount) {
                     0u -> context.getString(R.string.validity_ended_notification_ticket_fare_empty_message, fareName)
                     1u -> context.getString(R.string.validity_ended_notification_ticket_fare_singular_message, fareName)
-                    else -> context.getString(R.string.validity_ended_notification_ticket_fare_plural_message, fareName, fare.ticketCount!!)
+                    else -> context.getString(R.string.validity_ended_notification_ticket_fare_plural_message, fareName, fare.ticketCount!!.toInt())
                 }
             } else {
                 context.getString(R.string.validity_ended_notification_unlimited_fare_message, fareName)
