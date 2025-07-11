@@ -153,7 +153,7 @@ class CardContentConverter {
                     R.drawable.bus
                 )
 
-                return proposition ?: Line("?", "exo Chambly-Richelieu-Carignan ($id)", "#000000", "#ffffff", R.drawable.bus)
+                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -166,7 +166,7 @@ class CardContentConverter {
                     R.drawable.bus
                 )
 
-                return proposition ?: Line("?", "exo Vallée du Richelieu ($id)", "#000000", "#ffffff", R.drawable.bus)
+                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -179,7 +179,7 @@ class CardContentConverter {
                     R.drawable.bus
                 )
 
-                return proposition ?: Line("?", "exo Haut-Saint-Laurent ($id)", "#000000", "#ffffff", R.drawable.bus)
+                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -205,7 +205,7 @@ class CardContentConverter {
                     R.drawable.bus
                 )
 
-                return proposition ?: Line("?", "exo Le Richelain ($id)", "#000000", "#ffffff", R.drawable.bus)
+                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -218,7 +218,7 @@ class CardContentConverter {
                     R.drawable.bus
                 )
 
-                return proposition ?: Line("?", "exo Roussillon ($id)", "#000000", "#ffffff", R.drawable.bus)
+                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -231,7 +231,7 @@ class CardContentConverter {
                     R.drawable.bus
                 )
 
-                return proposition ?: Line("?", "exo Sorel-Varennes ($id)", "#000000", "#ffffff", R.drawable.bus)
+                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -244,7 +244,7 @@ class CardContentConverter {
                     R.drawable.bus
                 )
 
-                return proposition ?: Line("?", "exo La Presqu'Île ($id)", "#000000", "#ffffff", R.drawable.bus)
+                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -270,7 +270,7 @@ class CardContentConverter {
                     R.drawable.bus
                 )
 
-                return proposition ?: Line("?", "exo Sainte-Julie ($id)", "#000000", "#ffffff", R.drawable.bus)
+                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
@@ -296,7 +296,7 @@ class CardContentConverter {
                     R.drawable.bus
                 )
 
-                return proposition ?: Line("?", "exo L'assomption ($id)", "#000000", "#ffffff", R.drawable.bus)
+                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
             }
         }
 
