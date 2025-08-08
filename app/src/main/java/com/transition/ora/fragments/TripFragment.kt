@@ -452,6 +452,7 @@ class TripFragment : Fragment() {
                     val data = hashMapOf(
                         "id" to selectedLineId,
                         "idOnCard" to trip.lineId.toString(),
+                        "zoneOnCard" to trip.zoneId.toString(),
                         "name" to selectedLineName,
                         "color" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).color,
                         "textColor" to (tripCrowdSourceSpinner.selectedItem as LineFirestore).textColor,
