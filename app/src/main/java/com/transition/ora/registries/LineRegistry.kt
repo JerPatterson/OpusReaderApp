@@ -472,6 +472,79 @@ object LineRegistry {
         270u to Line("942", "Saint-François / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus)
     )
 
+    private val lineMapForExoSorelVarennes: Map<UInt, Line> = mapOf(
+        1u to Line("700", "Sorel-Tracy - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        22u to Line("701", "Contrecoeur - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        2u to Line("705", "Sorel - Tracy - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        3u to Line("720", "Varennes - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        4u to Line("721", "Varennes - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        5u to Line("722", "Varennes - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        6u to Line("723", "Varennes (IREQ) - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        7u to Line("724", "Varennes - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        8u to Line("730AM", "Saint-Amable - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        9u to Line("730PM", "Saint-Amable - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus)
+    )
+
+    private val lineMapForExoValleeRichelieu: Map<UInt, Line> = mapOf(
+        1u to Line("7-SO", "McMasterville - Service local", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        2u to Line("8-NE", "Beloeil - Service local", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        3u to Line("8-SE", "Beloeil - Service local", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        4u to Line("7-NO", "McMasterville - Service local", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        5u to Line("11", "Mont-Saint-Hilaire", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        6u to Line("12", "Otterburn Park", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        7u to Line("20", "Beloeil - McMasterville", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        9u to Line("22", "Mont-Saint-Hilaire (des Patriotes)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        8u to Line("21", "Mont-Saint-Hilaire (La Pommeraie)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        10u to Line("23", "Otterburn Park", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        11u to Line("24", "Saint-Basile-le-Grand (sud)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        12u to Line("200", "Saint-Hyacinthe - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        12u to Line("300", "Saint-Hyacinthe - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus)
+    )
+
+    private val lineMapForExoChamblyRichelieuCarignan: Map<UInt, Line> = mapOf(
+        1u to Line("1", "Chambly - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        2u to Line("2", "Chambly - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        3u to Line("3", "Chambly - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        4u to Line("4", "Marieville - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        5u to Line("5", "Marieville - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        6u to Line("6", "Richelieu - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        7u to Line("7", "Marieville - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        8u to Line("8", "Richelieu - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        9u to Line("9", "Saint-Mathias-sur-Richelieu - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        10u to Line("11", "Marieville - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        11u to Line("12", "Richelieu - Longueuil - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        12u to Line("14", "Chambly - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        13u to Line("15", "Marieville - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        14u to Line("16", "Chambly - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        15u to Line("17", "Chambly - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        16u to Line("18", "Chambly - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        17u to Line("19", "Carignan - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        18u to Line("T19", "Taxibus Carignan (sur réservation)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        19u to Line("20", "Richelieu - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        20u to Line("21", "Richelieu - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        21u to Line("22", "Saint-Mathias-sur-Richelieu - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        22u to Line("23", "Saint-Mathias-sur-Richelieu - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        23u to Line("24", "Longueuil - Richelieu", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        24u to Line("45", "Richelieu - St-Jean-sur-Richelieu", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        25u to Line("T45", "Taxibus Carignan (sur réservation)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        26u to Line("100", "Chambly - Montréal (Express)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        27u to Line("101", "Richelieu - Montréal (Express)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        28u to Line("103", "Marieville - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        29u to Line("104", "Chambly - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        30u to Line("120", "Chambly - Longueuil (Express)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        49u to Line("481", "Chambly - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        50u to Line("482", "Chambly (Franquet - Fréchette) - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        51u to Line("483", "Carignan (Bellerive-Henriette) - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        52u to Line("484", "Carignan (Île aux Lièvres) - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        53u to Line("485", "Chambly (Lebel - Fréchette) - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        54u to Line("486", "Marieville - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        55u to Line("487", "Chambly (Industriel) - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        56u to Line("488", "Chambly (Daigneault - Martel) - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        57u to Line("680", "Chambly - Terminus Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        58u to Line("681", "Chambly - Terminus Longueuil - Cégep É.-Montpetit", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        59u to Line("685", "Carignan - Chambly - Saint-Jean-sur-Richelieu", "#1F1F1F", "#FFFFFF", R.drawable.bus)
+    )
+
     private val lineMapForEXOSudOuest: Map<UInt, Line> = mapOf(
         1u to Line("1", "Valleyfield - Beauharnois - Châteauguay - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         2u to Line("20", "Beauharnois", "#1F1F1F", "#FFFFFF", R.drawable.bus),
@@ -504,6 +577,8 @@ object LineRegistry {
         28u to Line("60", "Sainte-Thérèse", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         29u to Line("61", "Sainte-Thérèse - secteur Bas Sainte-Thérèse", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         30u to Line("62", "Sainte-Thérèse - secteur des Mille-Îles", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        104u to Line("71", "Blainville - secteur est", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        105u to Line("72", "Blainville - secteur ouest", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         31u to Line("80", "Saint-Eustache - Pointe-Calumet", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         116u to Line("81", "Saint-Eustache - Pointe-Calumet", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         32u to Line("88", "Saint-Eustache / Sainte-Thérèse", "#1F1F1F", "#ffffff", R.drawable.bus),
@@ -517,12 +592,9 @@ object LineRegistry {
         127u to Line("102", "Saint-Jérôme - secteur Lafontaine", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         128u to Line("103", "Saint-Jérôme - secteur Centre", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         129u to Line("105", "Saint-Jérôme - secteur Bellefeuille nord", "#1F1F1F", "#FFFFFF", R.drawable.bus),
-        130u to Line("107", "Saint-Jérôme - Bellefeuille sud (Lajeunesse)", "#1F1F1F", "#FFFFFF", R.drawable.bus)
-    )
-
-    private val lineMapForSTLevis: Map<UInt, Line> = mapOf(
-        45u to Line("L2", "Lévisien 2", "#1E4289", "#FFFFFF", R.drawable.bus),
-        89u to Line("L3,", "Lévisien 3", "#1E4289", "#FFFFFF", R.drawable.bus)
+        130u to Line("107", "Saint-Jérôme - Bellefeuille sud (Lajeunesse)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        138u to Line("499", "Service Express Côte-Vertu / Deux-Montagnes", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        171u to Line("709", "Saint-Jérôme / Laval", "#1F1F1F", "#FFFFFF", R.drawable.bus),
     )
 
     private val lineMapForEXOTerrebonneMascouche: Map<UInt, Line> = mapOf(
@@ -544,6 +616,26 @@ object LineRegistry {
         21u to Line("40", "Lachenaie - Montréal - Terminus Radisson", "#1F1F1F", "#FFFFFF", R.drawable.bus)
     )
 
+    private val lineMapForExoLassomption: Map<UInt, Line> = mapOf(
+        1u to Line("1", "Repentigny secteur Nord - Cégep", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        2u to Line("2", "Repentigny - Saint-Sulpice - Lavaltrie", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        3u to Line("3", "Repentigny - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        4u to Line("4", "Express Repentigny - Montréal", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        5u to Line("6", "L'Épiphanie - L'Assomption", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        6u to Line("7", "Repentigny - Charlemagne - CHPLG", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        7u to Line("8", "Repentigny secteur Centre - Cégep", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        8u to Line("9", "Charlemagne - CHPLG - Terrebonne", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        10u to Line("11", "Repentigny secteur Le Gardeur - Cégep", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        13u to Line("14", "L'Assomption - Repentigny-Le Gardeur - Charlemagne", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        14u to Line("15", "Repentigny secteur sud (rue Notre-Dame)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
+        21u to Line("400", "Repentigny - Montréal via Sherbrooke", "#1F1F1F", "#FFFFFF", R.drawable.bus)
+    )
+
+    private val lineMapForSTLevis: Map<UInt, Line> = mapOf(
+        45u to Line("L2", "Lévisien 2", "#1E4289", "#FFFFFF", R.drawable.bus),
+        89u to Line("L3,", "Lévisien 3", "#1E4289", "#FFFFFF", R.drawable.bus)
+    )
+
     private val lineMapForMRCJoliette: Map<UInt, Line> = mapOf(
         1u to Line("125", "Saint-Donat / Chertsey / Montréal", "#81a449", "#ffffff", R.drawable.bus)
     )
@@ -558,19 +650,19 @@ object LineRegistry {
     fun getLineForEXO(id: UInt, zone: String): Line? = lineMapForEXO[id]?.invoke(zone)
     fun getLineForRTC(id: UInt): Line? = lineMapForRTC[id]
     fun getLineForSTL(id: UInt): Line? = lineMapForSTL[id]
-    fun getLineForExoChamblyRichelieuCarignan(id: UInt): Line? = null
-    fun getLineForExoValleeRichelieu(id: UInt): Line? = null
-    fun getLineForExoHautSaintLaurent(id: UInt): Line? = null
-    fun getLineForExoPresquIle(id: UInt): Line? = null
+    fun getLineForExoSorelVarennes(id: UInt): Line? = lineMapForExoSorelVarennes[id]
+    fun getLineForExoSainteJulie(id: UInt): Line? = null
+    fun getLineForExoValleeRichelieu(id: UInt): Line? = lineMapForExoValleeRichelieu[id]
+    fun getLineForExoChamblyRichelieuCarignan(id: UInt): Line? = lineMapForExoChamblyRichelieuCarignan[id]
     fun getLineForExoLeRichelain(id: UInt): Line? = null
     fun getLineForExoRoussillon(id: UInt): Line? = null
-    fun getLineForExoSorelVarennes(id: UInt): Line? = null
+    fun getLineForExoHautSaintLaurent(id: UInt): Line? = null
     fun getLineForExoSudOuest(id: UInt): Line? = lineMapForEXOSudOuest[id]
     fun getLineForEXOLaurentides(id: UInt): Line? = lineMapForEXOLaurentides[id]
     fun getLineForSTLevis(id: UInt): Line? = lineMapForSTLevis[id]
-    fun getLineForExoSainteJulie(id: UInt): Line? = null
+    fun getLineForExoPresquIle(id: UInt): Line? = null
     fun getLineForEXOTerrebonneMascouche(id: UInt): Line? = lineMapForEXOTerrebonneMascouche[id]
-    fun getLineForEXOLassomption(id: UInt): Line? = null
+    fun getLineForEXOLassomption(id: UInt): Line? = lineMapForExoLassomption[id]
     fun getLineForMRCJoliette(id: UInt): Line? = lineMapForMRCJoliette[id]
     fun getLineForSTQ(id: UInt): Line? = null
     fun getLineForREM(id: UInt, zone: String): Line? = lineMapForREM[id]?.invoke(zone)
