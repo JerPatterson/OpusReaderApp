@@ -323,6 +323,9 @@ class CardActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val notificationPermission = android.Manifest.permission.POST_NOTIFICATIONS
             if (ContextCompat.checkSelfPermission(this, notificationPermission) != PackageManager.PERMISSION_GRANTED) {
+                if (sharedPreferences.getBoolean("reminder_to_enable_notifications_for_alerts", false)) return
+                sharedPreferences.edit().putBoolean("reminder_to_enable_notifications_for_alerts", true).apply()
+
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle(R.string.enable_notification_title)
                     .setMessage(R.string.enable_notification_message)
