@@ -498,7 +498,7 @@ object LineRegistry {
         10u to Line("23", "Otterburn Park", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         11u to Line("24", "Saint-Basile-le-Grand (sud)", "#1F1F1F", "#FFFFFF", R.drawable.bus),
         12u to Line("200", "Saint-Hyacinthe - Longueuil", "#1F1F1F", "#FFFFFF", R.drawable.bus),
-        12u to Line("300", "Saint-Hyacinthe - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus)
+        13u to Line("300", "Saint-Hyacinthe - Terminus Brossard", "#1F1F1F", "#FFFFFF", R.drawable.bus)
     )
 
     private val lineMapForExoChamblyRichelieuCarignan: Map<UInt, Line> = mapOf(
