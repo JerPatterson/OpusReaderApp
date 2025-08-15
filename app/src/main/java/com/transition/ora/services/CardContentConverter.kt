@@ -92,12 +92,20 @@ class CardContentConverter {
         fun getZoneById(id: UInt): String {
             return when (id) {
                 0x65u -> "A"
-                0xC9u -> "A"
+                0x66u -> "A"
                 0x67u -> "B"
-                0xCBu -> "B"
+                0x68u -> "C"
                 0x69u -> "C"
                 0x6Au -> "C"
                 0x6Bu -> "C"
+
+                0xC9u -> "A"
+                0xCAu -> "A"
+                0xCBu -> "B"
+                0xCCu -> "C"
+                0xCDu -> "C"
+                0xCEu -> "C"
+                0xCFu -> "C"
 
                 else -> "? ($id)"
             }
