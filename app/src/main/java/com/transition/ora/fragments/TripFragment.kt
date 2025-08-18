@@ -347,9 +347,10 @@ class TripFragment : Fragment() {
                 document.get(firestoreSource).addOnSuccessListener { documentSnapshot ->
                     firestoreSource = Source.CACHE
                     val operator = documentSnapshot.toObject(OperatorFirestore::class.java)
+                    val unavailableInApp = line.id == "?"
                     operator?.lines?.forEach { line ->
                         if (line.idOnCard != trip.lineId.toString()
-                            && !filterKnownLines || line.idOnCard == "") {
+                            && !filterKnownLines || line.idOnCard == "" || unavailableInApp) {
                             options.add(line)
                         }
                     }

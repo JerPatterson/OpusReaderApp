@@ -217,6 +217,19 @@ class CardContentConverter {
             }
         }
 
+        private fun getEXOPresquIleLineById(context: Context, operatorId: UInt, id: UInt): Line {
+            return LineRegistry.getLineForExoPresquIle(id) ?: run {
+                val proposition: Line? = lookForLineProposition(
+                    context,
+                    operatorId.toString(),
+                    id.toString(),
+                    R.drawable.bus
+                )
+
+                return proposition ?: Line("?", "exo La Presqu'île ($id)", "#000000", "#ffffff", R.drawable.bus)
+            }
+        }
+
         private fun getEXOTerrebonneMascoucheLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForEXOTerrebonneMascouche(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
@@ -271,19 +284,6 @@ class CardContentConverter {
 
         private fun getEXORoussillonLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoRoussillon(id) ?: run {
-                val proposition: Line? = lookForLineProposition(
-                    context,
-                    operatorId.toString(),
-                    id.toString(),
-                    R.drawable.bus
-                )
-
-                return proposition ?: Line("?", "exo ($id)", "#000000", "#ffffff", R.drawable.bus)
-            }
-        }
-
-        private fun getEXOPresquIleLineById(context: Context, operatorId: UInt, id: UInt): Line {
-            return LineRegistry.getLineForExoPresquIle(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
                     operatorId.toString(),
