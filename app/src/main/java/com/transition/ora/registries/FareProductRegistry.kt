@@ -1323,6 +1323,7 @@ object FareProductRegistry {
         FareProductId.OCC_6TICKETS_Z56_MRCLM.id to FareProduct(R.string.mrclm_Z56_six_tickets, R.string.mrclm_internal_six_tickets_info),
         FareProductId.OCC_6TICKETS_Z235_MRCLM.id to FareProduct(R.string.mrclm_Z235_six_tickets, R.string.old_fare_info),
 
+        FareProductId.OCC_2TICKETS_RTC.id to FareProduct(R.string.rtc_two_tickets, R.string.fare_unavailable_info),
         FareProductId.OCC_10TICKETS_FESTIBUS_RTC.id to FareProduct(R.string.rtc_ten_tickets_festibus, R.string.fare_unavailable_info),
         FareProductId.OCC_20TICKETS_RTC.id to FareProduct(R.string.rtc_twenty_tickets, R.string.fare_unavailable_info),
         FareProductId.OCC_20TICKETS_METROPOLITAN_RTC.id to FareProduct(R.string.rtc_twenty_tickets_metropolitain, R.string.fare_unavailable_info),

@@ -64,6 +64,7 @@ class CardContentParser {
         val expiryDate = this.uIntToDate(if (expiryDateDays != 0u) expiryDateDays else 16070u, 1439u)
 
         when (this.getOccasionalCardFareTypeId(data)) {
+            FareProductId.OCC_24HOURS_RTC.id,
             FareProductId.OCC_24HOURS_BUS.id,
             FareProductId.OCC_24HOURS_BUS_OOT.id,
             FareProductId.OCC_24HOURS_ALL_MODES_A.id,
