@@ -49,7 +49,7 @@ class HistoryCardAdapter(
         holder.cardIdValueTv.text = historyList[position].id.toString()
         holder.cardTypeValueTv.text = holder.getCardTypeValue(historyList[position].type)
         holder.lastScanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
-        holder.cardImageView.setImageResource(getImageResource(historyList[position].type))
+        holder.cardImageView.setImageResource(getImageResource(historyList[position].type, historyList[position].getFares()))
 
         holder.itemView.setOnClickListener(HistoryItemListener(historyList[position], holder, this))
         holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position],holder, this))
@@ -61,10 +61,14 @@ class HistoryCardAdapter(
     }
 
 
-    private fun getImageResource(type: CardType): Int {
+    private fun getImageResource(type: CardType, fares: List<Fare>): Int {
         return when (type) {
             CardType.Opus -> R.drawable.opus
-            CardType.Occasional -> R.drawable.occasionnelle
+            CardType.Occasional -> when (if (fares.isNotEmpty()) fares.first().operatorId else null) {
+                5u -> R.drawable.occasionnelle_rtc
+                16u -> R.drawable.occasionnelle_stlevis
+                else -> R.drawable.occasionnelle
+            }
         }
     }
 
