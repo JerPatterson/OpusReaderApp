@@ -49,7 +49,7 @@ class HistoryCardAdapter(
         holder.cardIdValueTv.text = historyList[position].id.toString()
         holder.cardTypeValueTv.text = holder.getCardTypeValue(historyList[position].type)
         holder.lastScanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
-        holder.cardImageView.setImageResource(getImageResource(historyList[position].type, historyList[position].getFares()))
+        holder.cardImageView.setImageResource(getImageResource(historyList[position].type))
 
         holder.itemView.setOnClickListener(HistoryItemListener(historyList[position], holder, this))
         holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position],holder, this))
@@ -61,14 +61,12 @@ class HistoryCardAdapter(
     }
 
 
-    private fun getImageResource(type: CardType, fares: List<Fare>): Int {
+    private fun getImageResource(type: CardType): Int {
         return when (type) {
             CardType.Opus -> R.drawable.opus
-            CardType.Occasional -> when (if (fares.isNotEmpty()) fares.first().operatorId else null) {
-                5u -> R.drawable.occasionnelle_rtc
-                16u -> R.drawable.occasionnelle_stlevis
-                else -> R.drawable.occasionnelle
-            }
+            CardType.Occasional -> R.drawable.occasionnelle
+            CardType.OccasionalRTC -> R.drawable.occasionnelle_rtc
+            CardType.OccasionalSTLevis -> R.drawable.occasionnelle_stlevis
         }
     }
 
@@ -85,6 +83,8 @@ class HistoryCardAdapter(
             return when (type) {
                 CardType.Opus -> getString(itemView.context, R.string.opus_card_name)
                 CardType.Occasional -> getString(itemView.context, R.string.occasional_card_name)
+                CardType.OccasionalRTC -> getString(itemView.context, R.string.occasional_card_name)
+                CardType.OccasionalSTLevis -> getString(itemView.context, R.string.occasional_card_name)
             }
         }
 
@@ -163,10 +163,16 @@ class HistoryCardAdapter(
                             gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
                             gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
                         ))
-                    } else if (cardEntity.type == CardType.Occasional.name) {
+                    } else if (cardEntity.type == CardType.Occasional.name
+                        || cardEntity.type == CardType.OccasionalRTC.name
+                        || cardEntity.type == CardType.OccasionalSTLevis.name) {
                         cards.add(Card(
                             cardEntity.id.toULong(),
-                            CardType.Occasional,
+                            when (cardEntity.type) {
+                                CardType.OccasionalRTC.name -> CardType.OccasionalRTC
+                                CardType.OccasionalSTLevis.name -> CardType.OccasionalSTLevis
+                                else -> CardType.Occasional
+                            },
                             Calendar.getInstance().also { calendar ->
                                 calendar.timeInMillis = cardEntity.scanDate.toLong()
                             },

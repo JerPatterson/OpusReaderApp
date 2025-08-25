@@ -68,10 +68,16 @@ class HistoryActivity : AppCompatActivity() {
                         gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
                         gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
                     ))
-                } else if (cardEntity.type == CardType.Occasional.name) {
+                } else if (cardEntity.type == CardType.Occasional.name
+                    || cardEntity.type == CardType.OccasionalRTC.name
+                    || cardEntity.type == CardType.OccasionalSTLevis.name) {
                     cards.add(Card(
                         cardEntity.id.toULong(),
-                        CardType.Occasional,
+                        when (cardEntity.type) {
+                            CardType.OccasionalRTC.name -> CardType.OccasionalRTC
+                            CardType.OccasionalSTLevis.name -> CardType.OccasionalSTLevis
+                            else -> CardType.Occasional
+                        },
                         Calendar.getInstance().also { calendar ->
                             calendar.timeInMillis = cardEntity.scanDate.toLong()
                         },

@@ -90,7 +90,10 @@ class CardActivity : AppCompatActivity() {
         val cardStatusInfoTitleTv = findViewById<TextView>(R.id.cardStatusInfoTitleTv)
         val cardStatusDescriptionTv = findViewById<TextView>(R.id.cardStatusDescriptionTv)
 
-        if (cardType == CardType.Occasional) {
+        if (cardType == CardType.Occasional
+            || cardType == CardType.OccasionalRTC
+            || cardType == CardType.OccasionalSTLevis) {
+
             cardStatusButton.visibility = View.GONE
             if (expiryDate != null && expiryDate.timeInMillis < now.timeInMillis) {
                 cardStatusTv.text = getString(R.string.expired_card_title)
@@ -207,16 +210,16 @@ class CardActivity : AppCompatActivity() {
         cardTitleTv.text = when (cardType) {
             CardType.Opus -> getString(R.string.opus_card_name)
             CardType.Occasional -> getString(R.string.occasional_card_name)
+            CardType.OccasionalRTC -> getString(R.string.occasional_card_name)
+            CardType.OccasionalSTLevis -> getString(R.string.occasional_card_name)
         }
 
         val cardImageView = findViewById<ImageView>(R.id.cardImageView)
         when (cardType) {
             CardType.Opus -> cardImageView.setImageResource(R.drawable.opus)
-            CardType.Occasional -> when (if (fares.isNotEmpty()) fares.first().operatorId else null) {
-                5u -> cardImageView.setImageResource(R.drawable.occasionnelle_rtc)
-                16u -> cardImageView.setImageResource(R.drawable.occasionnelle_stlevis)
-                else -> cardImageView.setImageResource(R.drawable.occasionnelle)
-            }
+            CardType.Occasional -> cardImageView.setImageResource(R.drawable.occasionnelle)
+            CardType.OccasionalRTC -> cardImageView.setImageResource(R.drawable.occasionnelle_rtc)
+            CardType.OccasionalSTLevis -> cardImageView.setImageResource(R.drawable.occasionnelle_stlevis)
         }
     }
 

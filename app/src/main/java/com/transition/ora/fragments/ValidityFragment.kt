@@ -94,8 +94,10 @@ class ValidityFragment: Fragment() {
 
     private fun addValidityInfoSectionValues(card: Card) {
         when (card.type) {
-            CardType.Occasional -> addOccasionalCardValidityInfoSectionValues(card)
             CardType.Opus -> addOpusCardValidityInfoSectionValues(card)
+            CardType.Occasional -> addOccasionalCardValidityInfoSectionValues(card)
+            CardType.OccasionalRTC -> addOccasionalCardValidityInfoSectionValues(card)
+            CardType.OccasionalSTLevis -> addOccasionalCardValidityInfoSectionValues(card)
         }
     }
 

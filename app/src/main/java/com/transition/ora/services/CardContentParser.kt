@@ -19,7 +19,13 @@ class CardContentParser {
         val trips = this.getOccasionalCardTrips(data)
         val expiryDate = this.getOccasionalCardExpiryDate(data)
 
-        return Card(id, CardType.Occasional, Calendar.getInstance(), expiryDate, null, null, fares, trips)
+        val cardType = when (if (fares.isNotEmpty()) fares.first().operatorId else null) {
+            5u -> CardType.OccasionalRTC
+            16u -> CardType.OccasionalSTLevis
+            else -> CardType.Occasional
+        }
+
+        return Card(id, cardType, Calendar.getInstance(), expiryDate, null, null, fares, trips)
     }
 
     fun parseOpusCard(card: IsoDep): Card {
