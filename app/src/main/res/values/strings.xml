@@ -1,13 +1,12 @@
 <resources>
     <string name="app_name">ORA</string>
     <string name="main_page_instruction">Start the reading of your Opus or Occasional card</string>
-    <string name="main_page_copyright">
-        ARTM (Autorité régionale de transport métropolitain), exo, Opus, REM (Réseau express métropolitain),
-        RTC (Réseau de transport de la Capitale), RTL (Réseau de transport de Longueuil), STM (Société de transport de Montréal),
-        STL (Société de transport de Laval) et STLévis (Société de transport de Lévis) are registered trademarks.
-        <b>This application is not affiliated with, endorsed or sponsored by these entities.</b>
-        All content displayed is derived solely from the binary data of the transit card.
-        There is no guarantee of its accuracy.
+    <string name="main_page_disclaimer">
+        This application is independent and is not affiliated with, endorsed, or sponsored by any of the public transit entities mentioned.
+        The information displayed after reading the card comes exclusively from the binary content of the user’s transit card.
+        The accuracy of the information presented cannot be guaranteed.
+        \n\n
+        <a href="https://sites.google.com/view/opusreader/privacy-policy">Privacy policy</a>
     </string>
 
     <string name="no_nfc_title">NFC Feature Unavailable</string>

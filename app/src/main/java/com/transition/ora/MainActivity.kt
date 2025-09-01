@@ -4,8 +4,10 @@ import android.content.Intent
 import android.nfc.NfcAdapter
 import android.os.Bundle
 import android.provider.Settings
+import android.text.method.LinkMovementMethod
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.transition.ora.database.CardDatabase
@@ -25,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         this.findViewById<Button>(R.id.scanHistoryButton)
             .setOnClickListener(HistoryButtonListener(this))
+
+        this.findViewById<TextView>(R.id.disclaimerTextView)
+            .movementMethod = LinkMovementMethod.getInstance()
     }
 
     override fun onPause() {

@@ -2,13 +2,12 @@
 <resources>
     <string name="app_name">ORA</string>
     <string name="main_page_instruction">Commencez la lecture de votre carte Opus ou Occasionnelle</string>
-    <string name="main_page_copyright">
-        ARTM (Autorité régionale de transport métropolitain), exo, Opus, REM (Réseau express métropolitain),
-        RTC (Réseau de transport de la Capitale), RTL (Réseau de transport de Longueuil), STM (Société de transport de Montréal),
-        STL (Société de transport de Laval) et STLévis (Société de transport de Lévis) sont des marques déposées.
-        <b>Cette application n\'est ni affiliée, ni approuvée, ni sponsorisée par ces entités.</b>
-        Tout le contenu qui est affiché provient uniquement des données binaires de la carte de transport.
-        Il n\'y a aucune garantie de l\'exactitude de celui-ci.
+    <string name="main_page_disclaimer">
+        Cette application est indépendante et n\'est pas affiliée, approuvée ni sponsorisée par aucune des entités de transport en commun mentionnées.
+        Les informations affichées lors de la lecture proviennent exclusivement du contenu binaire des cartes de transport de l\'utilisateur.
+        L\'exactitude des informations présentées ne peut être garantie.
+        \n\n
+        <a href="https://sites.google.com/view/opusreader/privacy-policy-fr">Politique de confidentialité</a>
     </string>
 
     <string name="no_nfc_title">Fonctionnalité CCP indisponible</string>

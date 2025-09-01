@@ -43,7 +43,7 @@
         android:layout_marginBottom="50dp"
         android:contentDescription="@string/image_main_page"
         android:src="@drawable/opusreader"
-        app:layout_constraintBottom_toTopOf="@+id/copyrightTextView"
+        app:layout_constraintBottom_toTopOf="@+id/disclaimerTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/navigationView"
@@ -64,14 +64,14 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/copyrightTextView"
+        android:id="@+id/disclaimerTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
         android:paddingBottom="16dp"
-        android:text="@string/main_page_copyright"
+        android:text="@string/main_page_disclaimer"
         android:textColor="@color/accent"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
