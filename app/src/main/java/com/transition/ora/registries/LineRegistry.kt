@@ -323,7 +323,9 @@ object LineRegistry {
         71u to Line("132", "DIX30 / Parc de la Cité / Mountainview", "#ce0037", "#ffe9d1", R.drawable.bus),
         270u to Line("160", "Milan / Gaétan-Boucher / Centre-ville St-Bruno", "#ce0037", "#ffe9d1", R.drawable.bus),
         340u to Line("417", "Express Roland-Therrien / Roberval", "#ce0037", "#ffe9d1", R.drawable.bus),
-        263u to Line("720", "Navette REM - Interstation Rive-Sud", "#72a300", "#ffffff", R.drawable.bus)
+        263u to Line("720", "Navette REM - Interstation Rive-Sud", "#72a300", "#ffffff", R.drawable.bus),
+        264u to Line("721", "Navette REM - Brossard / Du Quartier / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus),
+        265u to Line("722", "Navette REM - Panama / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus)
     )
 
     private val lineMapForExo: Map<UInt, (zone: String) -> Line> = mapOf(
