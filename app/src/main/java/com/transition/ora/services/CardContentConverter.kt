@@ -23,11 +23,14 @@ class CardContentConverter {
         fun getCardTypeVariantById(context: Context, id: UInt): CardTypeVariant? {
             return when (id) {
                 392u -> CardTypeVariant.Standard
+                707u -> CardTypeVariant.Standard
+                767u -> CardTypeVariant.Standard
                 705u -> CardTypeVariant.StandardReduced
                 757u -> CardTypeVariant.StandardSubscription
 
-                767u -> CardTypeVariant.Standard
+                727u -> CardTypeVariant.AllModesAB
                 762u -> CardTypeVariant.AllModesAB
+
                 763u -> CardTypeVariant.AllModesABC
                 764u -> CardTypeVariant.AllModesABCD
                 765u -> CardTypeVariant.BusOutOfTerritory
