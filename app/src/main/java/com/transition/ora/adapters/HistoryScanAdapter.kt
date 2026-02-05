@@ -49,8 +49,11 @@ class HistoryScanAdapter(
     private fun removeItem(position: Int) {
         historyList.removeAt(position)
         notifyItemRemoved(position)
-        if (historyList.size == 0) {
-            historyCardAdapter.notifyItemRemoved(holder.adapterPosition)
+        if (historyList.isEmpty()) {
+            val position = holder.bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                historyCardAdapter.notifyItemRemoved(position)
+            }
         }
     }
 
@@ -96,7 +99,10 @@ class HistoryScanAdapter(
                     CoroutineScope(Dispatchers.IO).launch {
                         CardDatabase.getInstance(view.context).dao.deleteStoredCardScan(card.getCardEntity())
                     }
-                    adapter.removeItem(holder.adapterPosition)
+                    val position = holder.bindingAdapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        adapter.removeItem(position)
+                    }
                 }
             val dialog = builder.create()
             dialog.show()

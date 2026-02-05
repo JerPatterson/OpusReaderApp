@@ -210,7 +210,10 @@ class HistoryCardAdapter(
                         NotificationScheduler().removeScheduleNotification(card, view.context)
                         CardDatabase.getInstance(view.context).dao.deleteStoredCard(card.getCardEntity().id)
                     }
-                    adapter.removeItem(holder.adapterPosition)
+                    val position = holder.bindingAdapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        adapter.removeItem(position)
+                    }
                 }
             val dialog = builder.create()
             dialog.show()
