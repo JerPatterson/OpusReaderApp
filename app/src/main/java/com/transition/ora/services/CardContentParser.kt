@@ -169,16 +169,23 @@ class CardContentParser {
     private fun occasionalCardHasTicket(data: Array<ByteArray>): Boolean {
         val hasTicketVerificationBits = (data[0][12].toUInt().and(0xFFu).shl(8)
             or data[0][13].toUInt().and(0xFFu))
+        val expiryDateDays = (data[2][10].toUInt().and(0x7Fu).shl(7)
+                or data[2][11].toUInt().and(0xFEu).shr(1))
 
         return hasTicketVerificationBits.compareTo(0xFFFFu) == 0
+                || (hasTicketVerificationBits.compareTo(0x0000u) == 0
+                    && expiryDateDays == 16070u)
     }
 
     private fun occasionalCardHasPass(data: Array<ByteArray>): Boolean {
         val hasPassVerificationBits = (data[0][12].toUInt().and(0xFFu).shl(8)
                 or data[0][13].toUInt().and(0xFFu))
+        val expiryDateDays = (data[2][10].toUInt().and(0x7Fu).shl(7)
+                or data[2][11].toUInt().and(0xFEu).shr(1))
 
-        return ((hasPassVerificationBits.compareTo(0x0000u) == 0)
-            or (hasPassVerificationBits.compareTo(0x8000u) == 0))
+        return (hasPassVerificationBits.compareTo(0x8000u) == 0)
+                || (hasPassVerificationBits.compareTo(0x0000u) == 0
+                    && expiryDateDays < 16070u)
     }
 
     private fun occasionalCardHasValidPass(data: Array<ByteArray>): Boolean {
@@ -194,7 +201,8 @@ class CardContentParser {
                 or data[0][14].toUInt().and(0xFFu).shl(8)
                 or data[0][15].toUInt().and(0xFFu))
 
-        return when (ticketBits) {
+        var ticketCount = when (ticketBits) {
+            0x80000000u -> 31u
             0xC0000000u -> 30u
             0xE0000000u -> 29u
             0xF0000000u -> 28u
@@ -227,8 +235,22 @@ class CardContentParser {
             0xFFFFFFFEu -> 1u
             0xFFFFFFFFu -> 0u
 
-            else -> 0u
+            else -> 32u
         }
+
+        if (data[2][8].toUInt().and(0xFFu) != 0u) {
+            val tripTicketsRemaining = (data[2][9].toUInt().and(0x0Fu).shl(1)
+                    or data[2][10].toUInt().and(0x80u).shr(7))
+            if (tripTicketsRemaining < ticketCount) ticketCount = tripTicketsRemaining
+        }
+
+        if (data[3][8].toUInt().and(0xFFu) != 0u) {
+            val tripTicketsRemaining = (data[3][9].toUInt().and(0x0Fu).shl(1)
+                    or data[3][10].toUInt().and(0x80u).shr(7))
+            if (tripTicketsRemaining < ticketCount) ticketCount = tripTicketsRemaining
+        }
+
+        return ticketCount
     }
 
     private fun getOccasionalCardFareValidityFromDate(data: ByteArray): Calendar? {
