@@ -3,10 +3,9 @@
     <string name="app_name">ORA</string>
     <string name="main_page_instruction">Commencez la lecture de votre carte Opus ou Occasionnelle</string>
     <string name="main_page_disclaimer">
-        Cette application est indépendante et n\'est pas affiliée, approuvée ni sponsorisée par aucune des entités de transport en commun mentionnées.
-        Les informations affichées lors de la lecture proviennent exclusivement du contenu binaire des cartes de transport de l\'utilisateur.
-        L\'exactitude des informations présentées ne peut être garantie.
-        Par précaution, <a href="https://sites.google.com/view/opusreader/source-fr">toujours se référer aux applications officielles</a>.
+        Notez que cette application ne représente aucune entité gouvernementale.
+        Référez-vous toujours aux applications officielles pour obtenir des informations exactes.
+        Pour accéder aux applications officielles, veuillez <a href="https://sites.google.com/view/opusreader/source-fr">consulter les sites des sociétés de transport</a>.
         \n\n
         <a href="https://sites.google.com/view/opusreader/privacy-policy-fr">Politique de confidentialité</a>
     </string>
