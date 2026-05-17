@@ -1378,7 +1378,9 @@ object FareProductRegistry {
         FareProductId.OCC_3DAYS_ALL_MODES_A.id to FareProduct(R.string.all_modes_A_three_days, R.string.all_modes_A_three_days_info, FareZones.ARTM_A),
 
         FareProductId.OCC_1TICKET_ALL_MODES_AB.id to FareProduct(R.string.all_modes_AB_one_ticket, R.string.all_modes_AB_one_ticket_info, FareZones.ARTM_AB),
+        FareProductId.OCC_1TICKET_ALL_MODES_AB_2.id to FareProduct(R.string.all_modes_AB_one_ticket, R.string.all_modes_AB_one_ticket_info, FareZones.ARTM_AB),
         FareProductId.OCC_1TICKET_ALL_MODES_AB_RED.id to FareProduct(R.string.all_modes_AB_one_ticket, R.string.all_modes_AB_one_ticket_info, FareZones.ARTM_AB),
+        FareProductId.OCC_1TICKET_ALL_MODES_AB_RED_2.id to FareProduct(R.string.all_modes_AB_one_ticket, R.string.all_modes_AB_one_ticket_info, FareZones.ARTM_AB),
         FareProductId.OCC_2TICKETS_ALL_MODES_AB.id to FareProduct(R.string.all_modes_AB_two_tickets, R.string.all_modes_AB_two_tickets_info, FareZones.ARTM_AB),
         FareProductId.OCC_2TICKETS_ALL_MODES_AB_RED.id to FareProduct(R.string.all_modes_AB_two_tickets, R.string.all_modes_AB_two_tickets_info, FareZones.ARTM_AB),
         FareProductId.OCC_10TICKETS_ALL_MODES_AB.id to FareProduct(R.string.all_modes_AB_ten_tickets, R.string.all_modes_AB_ten_tickets_info, FareZones.ARTM_AB),
