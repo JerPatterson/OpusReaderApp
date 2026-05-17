@@ -916,7 +916,10 @@ object LineRegistry {
     )
 
     private val lineMapForREM: Map<UInt, (zone: String) -> Line> = mapOf(
-        2u to { zone -> Line("A", if (zone != "" && zone != "A") "Ligne A (zone $zone)" else "Ligne A", "#82bf00", "#000000", R.drawable.lightmetro) }
+        2u to { zone -> Line("A1", if (zone != "" && zone != "A") "Brossard (zone $zone)" else "Brossard", "#82bf00", "#000000", R.drawable.lightmetro) },
+        3u to { _ -> Line("A2", "YUL-Aéroport-Montréal-Trudeau", "#82bf00", "#000000", R.drawable.lightmetro) },
+        4u to { _ -> Line("A3", "Anse-à-l'Orme", "#82bf00", "#000000", R.drawable.lightmetro) },
+        5u to { zone -> Line("A4", if (zone != "" && zone != "A") "Deux-Montagnes (zone $zone)" else "Deux-Montagnes", "#82bf00", "#000000", R.drawable.lightmetro) }
     )
 
 
