@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ORA</string>
     <string name="main_page_instruction">Start the reading of your Opus or Occasional card</string>
     <string name="main_page_disclaimer">
@@ -171,10 +171,9 @@
     <string name="validity_notification_title">A transit fare expires soon</string>
     <string name="validity_ended_notification_opus_title">An OPUS card has expired</string>
     <string name="validity_notification_opus_title">An OPUS card expires soon</string>
-    <string name="validity_minutes">%1$d minutes</string>
-    <string name="validity_hours">%1$d hours</string>
+    <string name="validity_minutes" tools:ignore="PluralsCandidate">%1$d minutes</string>
     <string name="validity_day">one day</string>
-    <string name="validity_notification_ticket_fare_plural_message">
+    <string name="validity_notification_ticket_fare_plural_message" tools:ignore="PluralsCandidate">
         The validity of a trip from the \'%1$s\' transit fare will end in %2$s.
         However, there are still %3$d trips available for this fare.
     </string>
@@ -191,7 +190,7 @@
         The validity of a trip from the \'%1$s\' transit fare will end in %2$s.
         Remember to plan your trips accordingly.
     </string>
-    <string name="validity_ended_notification_ticket_fare_plural_message">
+    <string name="validity_ended_notification_ticket_fare_plural_message" tools:ignore="PluralsCandidate">
         The validity of a trip from the \'%1$s\' transit fare has ended.
         However, there are still %2$d trips available for this fare.
     </string>
@@ -662,7 +661,7 @@
         The round trip is allowed by train if it stays inside the two hours.
         \n\nThese tickets are not accepted on bus route \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' from the STM.
     </string>
-    <string name="all_modes_ABC_ten_tickets_info_iat">
+    <string name="all_modes_ABC_ten_tickets_info_iat" formatted="false">
         This fare offers a discount of 25% on the standard price as an attenuation measure during l\'Île aux Tourtes bridge construction.
         It consists of ten distinct tickets.
         Each ticket is accepted on the metro, the bus, the train and the REM in zones A, B and C.
@@ -775,24 +774,14 @@
     <string name="tram_3_six_tickets">6 trips, TRAM 3</string>
     <string name="tram_3_monthly">Monthly, TRAM 3</string>
     <string name="tram_3_yearly">Subscription, TRAM 3</string>
-    <string name="tram_4_one_ticket">1 trip, TRAM 4</string>
-    <string name="tram_4_six_tickets">6 trips, TRAM 4</string>
     <string name="tram_4_monthly">Monthly, TRAM 4</string>
     <string name="tram_4_yearly">Subscription, TRAM 4</string>
-    <string name="tram_5_one_ticket">1 trip, TRAM 5</string>
-    <string name="tram_5_six_tickets">6 trips, TRAM 5</string>
     <string name="tram_5_monthly">Monthly, TRAM 5</string>
     <string name="tram_5_yearly">Subscription, TRAM 5</string>
-    <string name="tram_6_one_ticket">1 trip, TRAM 6</string>
-    <string name="tram_6_six_tickets">6 trips, TRAM 6</string>
     <string name="tram_6_monthly">Monthly, TRAM 6</string>
     <string name="tram_6_yearly">Subscription, TRAM 6</string>
-    <string name="tram_7_one_ticket">1 trip, TRAM 7</string>
-    <string name="tram_7_six_tickets">6 trips, TRAM 7</string>
     <string name="tram_7_monthly">Monthly, TRAM 7</string>
     <string name="tram_7_yearly">Subscription, TRAM 7</string>
-    <string name="tram_8_one_ticket">1 trip, TRAM 8</string>
-    <string name="tram_8_six_tickets">6 trips, TRAM 8</string>
     <string name="tram_8_monthly">Monthly, TRAM 8</string>
     <string name="tram_8_yearly">Subscription, TRAM 8</string>
     <string name="train_1_one_ticket">1 trip, TRAIN 1</string>
@@ -973,7 +962,6 @@
     <string name="citsv_Z35678_one_ticket">1 trip, CITSV (Sorel-Tracy/Boucherville/Longueuil)</string>
     <string name="citsv_Z5_one_ticket">1 trip, CITSV (Varennes)</string>
     <string name="citsv_Z56_one_ticket">1 trip, CITSV (Verchères/Saint-Amable/Varennes)</string>
-    <string name="citsv_Z567_one_ticket">1 trip, CITSV (Contrecoeur/Varennes)</string>
     <string name="citsv_Z5678_one_ticket">1 trip, CITSV (Sorel-Tracy/Varennes)</string>
     <string name="citsv_Z6_one_ticket">1 trip, CITSV (Verchères/Saint-Amable)</string>
     <string name="citsv_Z67_one_ticket">1 trip, CITSV (Contrecoeur/Verchères/Saint-Amable)</string>
@@ -987,7 +975,6 @@
     <string name="citsv_Z35678_ten_tickets">10 trips, CITSV (Sorel-Tracy/Boucherville/Longueuil)</string>
     <string name="citsv_Z5_ten_tickets">10 trips, CITSV (Varennes)</string>
     <string name="citsv_Z56_ten_tickets">10 trips, CITSV (Verchères/Saint-Amable/Varennes)</string>
-    <string name="citsv_Z567_ten_tickets">10 trips, CITSV (Contrecoeur/Varennes)</string>
     <string name="citsv_Z5678_ten_tickets">10 trips, CITSV (Sorel-Tracy/Varennes)</string>
     <string name="citsv_Z6_ten_tickets">10 trips, CITSV (Verchères/Saint-Amable)</string>
     <string name="citsv_Z67_ten_tickets">10 trips, CITSV (Contrecoeur/Verchères/Saint-Amable)</string>
@@ -1087,8 +1074,6 @@
     <string name="citvr_Z8_monthly">Monthly, CITVR (St-Hyacinthe)"</string>
     <string name="citvr_Z15_yearly">Yearly, CITVR (St-Bruno/St-Basile-le-Grand/Centre-Ville)"</string>
     <string name="citvr_Z16_yearly">Yearly, CITVR (Beloeil/Mont-St-Hilaire/Centre-Ville)"</string>
-    <string name="citvr_Z17_yearly">Yearly, CITVR (St-Bruno/St-Basile-le-Grand/Longueuil)"</string>
-    <string name="citvr_Z18_yearly">Yearly, CITVR (Beloeil/Mont-St-Hilaire/Longueuil)"</string>
     <string name="citvr_Z35_yearly">Yearly, CITVR (St-Bruno/St-Basile-le-Grand/Longueuil)"</string>
     <string name="citvr_Z36_yearly">Yearly, CITVR (Beloeil/Mont-St-Hilaire/Longueuil)"</string>
     <string name="citvr_SEC_yearly">Yearly, CITVR (Carte intégrée)"</string>

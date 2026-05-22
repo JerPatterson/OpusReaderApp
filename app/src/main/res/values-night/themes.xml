@@ -1,9 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="Theme.ORA" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorAccent">@color/accent</item>
         <item name="android:colorPrimary">@color/secondary</item>
         <item name="android:colorPrimaryDark">@color/primary</item>
         <item name="android:textColorPrimary">@color/accent</item>
+        <item name="android:windowBackground">@color/primary</item>
     </style>
 </resources>

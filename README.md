@@ -31,7 +31,7 @@
 <h2>User interface</h2>
 <span>
   The application is using a layout similar to the one of <a href="https://play.google.com/store/apps/details?id=quebec.artm.chrono" target="_blank">Chrono</a> card reader module but adding missing information like the buying date or the last trips section.
-  It is availible in both light and dark modes matching the system default.
+  It is available in both light and dark modes matching the system default.
 </span>
 <br>
 <br>
@@ -42,9 +42,9 @@
     <td>Occasional Card view in light mode</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/a2b3fdca-e069-4fa7-af07-dacdd7409fb1" width=270></td>
-    <td><img src="https://github.com/user-attachments/assets/70193a0f-b242-434c-b75b-d096c51b946f" width=270></td>
-    <td><img src="https://github.com/user-attachments/assets/d3820bfc-a5fd-471f-92d2-4288f9307e40" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/a2b3fdca-e069-4fa7-af07-dacdd7409fb1" width=270 alt="Opus Card fares screen"></td>
+    <td><img src="https://github.com/user-attachments/assets/70193a0f-b242-434c-b75b-d096c51b946f" width=270 alt="Opus Card trips screen"></td>
+    <td><img src="https://github.com/user-attachments/assets/d3820bfc-a5fd-471f-92d2-4288f9307e40" width=270 alt="Occasional Card screen"></td>
   </tr>
 </table>
 <br>
@@ -55,9 +55,9 @@
     <td>Occasional Card view in dark mode</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/c0880f10-8d97-400f-91fa-ba854bd52860" width=270></td>
-    <td><img src="https://github.com/user-attachments/assets/df3645c5-c95b-4cab-9f31-c4ed7abd4b78" width=270></td>
-    <td><img src="https://github.com/user-attachments/assets/b8800629-2707-470b-b8e0-30fc35489fa6" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/c0880f10-8d97-400f-91fa-ba854bd52860" width=270 alt="Opus Card fares screen"></td>
+    <td><img src="https://github.com/user-attachments/assets/df3645c5-c95b-4cab-9f31-c4ed7abd4b78" width=270 alt="Opus Card trips screen"></td>
+    <td><img src="https://github.com/user-attachments/assets/b8800629-2707-470b-b8e0-30fc35489fa6" width=270 alt="Occasional Card screen"></td>
   </tr>
 </table>
 <h4>History feature</h4>
@@ -74,9 +74,9 @@
     <td>History view in dark mode</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/ad1a19a3-d8e4-489b-ae38-942fbb69c4b5" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/6d771217-d257-46e1-b337-1177628c8637" width=270></td>
-    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/ea027d94-e513-47b1-b18e-37225c29ccb8" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/ad1a19a3-d8e4-489b-ae38-942fbb69c4b5" width=270 alt="Main screen"></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/6d771217-d257-46e1-b337-1177628c8637" width=270 alt="History screen"></td>
+    <td><img src="https://github.com/JerPatterson/OpusReaderApp/assets/89818093/ea027d94-e513-47b1-b18e-37225c29ccb8" width=270 alt="History screen"></td>
   </tr>
 </table>
 <h4>CrowdSource feature</h4>
@@ -94,27 +94,27 @@
     <td>Selection from missing lines menu</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/c6ced704-0de8-4829-ab24-3974ed7acdf6" width=270></td>
-    <td><img src="https://github.com/user-attachments/assets/aaa1f4c8-12ff-4359-a22a-975168600472" width=270></td>
-    <td><img src="https://github.com/user-attachments/assets/10766780-2bbd-4733-add8-b4420ecfe49f" width=270></td>
+    <td><img src="https://github.com/user-attachments/assets/c6ced704-0de8-4829-ab24-3974ed7acdf6" width=270 alt="Suggestion for a line screen"></td>
+    <td><img src="https://github.com/user-attachments/assets/aaa1f4c8-12ff-4359-a22a-975168600472" width=270 alt="Suggestion for a fare screen"></td>
+    <td><img src="https://github.com/user-attachments/assets/10766780-2bbd-4733-add8-b4420ecfe49f" width=270 alt="Suggestion for a line screen"></td>
   </tr>
 </table>
 <h2>How to use</h2>
 <span>
-  Make sure your device has NFC capailities and that you have enabled them. Then, you simply have to open the app, scan a compatible card and all the information from the card will display.
+  Make sure your device has NFC capabilities and that you have enabled them. Then, you simply have to open the app, scan a compatible card and all the information from the card will display.
   As stated above, some fares, operators and lines are missing and they will show as unknown for the moment. It is possible to contribute by using the suggestion form available. 
   On the content view, you can use Android's back gesture or the arrow at the top left of the screen to scan another card.
 </span>
 <h2>Upcoming improvements</h2>
 <ul>
-  <li><strike>Adding an history of the card scans</strike> <em>Added!</em></li>
-  <li><strike>Adding the possibility for user to crowdsource unknown fares, lines and operators</strike> <em>Added!</em></li>
-  <li><strike>Improving information for transfers so users can maximize their usage of one particular fare</strike> <em>Added!</em></li>
-  <li><strike>Adding notifications to alert the user when the validity of the fare ends and few minutes prior</strike> <em>Added!</em></li>
+  <li><span style="text-decoration: line-through;">Adding an history of the card scans</span> <em>Added!</em></li>
+  <li><span style="text-decoration: line-through;">Adding the possibility for user to crowdsource unknown fares, lines and operators</span> <em>Added!</em></li>
+  <li><span style="text-decoration: line-through;">Improving information for transfers so users can maximize their usage of one particular fare</span> <em>Added!</em></li>
+  <li><span style="text-decoration: line-through;">Adding notifications to alert the user when the validity of the fare ends and few minutes prior</span> <em>Added!</em></li>
 </ul>
 <h2>Documentation</h2>
 <span>
-  In addition to some time analysing the binary content of the cards, here are some links that were used to find how to retreive and parse data from both of the cards.
+  In addition to some time analysing the binary content of the cards, here are some links that were used to find how to retrieve and parse data from both of the cards.
 </span>
 <ul>
   <br>

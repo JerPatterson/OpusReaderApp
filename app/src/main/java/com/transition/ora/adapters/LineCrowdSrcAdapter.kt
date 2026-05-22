@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.transition.ora.R
 import com.transition.ora.firestore.LineFirestore
+import androidx.core.graphics.toColorInt
 
 
 class LineCrowdSrcAdapter (
@@ -43,9 +44,18 @@ class LineCrowdSrcAdapter (
         holder.lineIdTv.text = line.id
         holder.lineNameTv.text = line.name
 
-        val textColor = Color.parseColor(line.textColor)
+        val textColor = try {
+            line.textColor?.toColorInt() ?: Color.WHITE
+        } catch (_: IllegalArgumentException) {
+            Color.WHITE
+        }
         holder.lineIdTv.setTextColor(textColor)
-        val background = Color.parseColor(line.color)
+
+        val background = try {
+            line.color?.toColorInt() ?: Color.BLACK
+        } catch (_: IllegalArgumentException) {
+            Color.BLACK
+        }
         holder.lineIdTv.setBackgroundColor(background)
 
         return holder.itemView

@@ -921,6 +921,10 @@ object LineRegistry {
         1u to Line("125", "Saint-Donat / Chertsey / Montréal", "#81a449", "#ffffff", R.drawable.bus)
     )
 
+    private val lineMapForSTQ: Map<UInt, Line> = mapOf(
+        1u to Line("QL", "Traverse Québec-Lévis", "#002b56", "#ffffff", R.drawable.ferry)
+    )
+
     private val lineMapForREM: Map<UInt, (zone: String) -> Line> = mapOf(
         2u to { zone -> Line("A1", if (zone != "" && zone != "A") "Brossard (zone $zone)" else "Brossard", "#82bf00", "#000000", R.drawable.lightmetro) },
         3u to { _ -> Line("A2", "YUL-Aéroport-Montréal-Trudeau", "#82bf00", "#000000", R.drawable.lightmetro) },
@@ -948,6 +952,6 @@ object LineRegistry {
     fun getLineForEXOTerrebonneMascouche(id: UInt): Line? = lineMapForExoTerrebonneMascouche[id]
     fun getLineForEXOLassomption(id: UInt): Line? = lineMapForExoLassomption[id]
     fun getLineForMRCJoliette(id: UInt): Line? = lineMapForMRCJoliette[id]
-    fun getLineForSTQ(id: UInt): Line? = null
+    fun getLineForSTQ(id: UInt): Line? = lineMapForSTQ[id]
     fun getLineForREM(id: UInt, zone: String): Line? = lineMapForREM[id]?.invoke(zone)
 }

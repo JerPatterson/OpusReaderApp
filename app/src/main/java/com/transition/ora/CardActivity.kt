@@ -1,11 +1,9 @@
 package com.transition.ora
 
 import android.app.AlarmManager
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,6 +20,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
+import androidx.core.net.toUri
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
@@ -71,7 +71,7 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addCardInfoSection(card: Card) {
-        this.addCardInfoSectionTitles(card.type, card.getFares())
+        this.addCardInfoSectionTitles(card.type)
         this.addCardRegisteredInfo(card.type, card.expiryDate, card.birthDate)
         this.addCardTypeVariantInfo(card.id, card.typeVariant)
         this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
@@ -205,7 +205,7 @@ class CardActivity : AppCompatActivity() {
         confirmButton.setOnClickListener(CrowdSourceConfirmListener(this, cardId, cardTypeVariantId))
     }
 
-    private fun addCardInfoSectionTitles(cardType: CardType, fares: List<Fare>) {
+    private fun addCardInfoSectionTitles(cardType: CardType) {
         val cardTitleTv = findViewById<TextView>(R.id.cardSectionTitleTv)
         cardTitleTv.text = when (cardType) {
             CardType.Opus -> getString(R.string.opus_card_name)
@@ -327,7 +327,9 @@ class CardActivity : AppCompatActivity() {
             val notificationPermission = android.Manifest.permission.POST_NOTIFICATIONS
             if (ContextCompat.checkSelfPermission(this, notificationPermission) != PackageManager.PERMISSION_GRANTED) {
                 if (sharedPreferences.getBoolean("reminder_to_enable_notifications_for_alerts", false)) return
-                sharedPreferences.edit().putBoolean("reminder_to_enable_notifications_for_alerts", true).apply()
+                sharedPreferences.edit {
+                    putBoolean("reminder_to_enable_notifications_for_alerts", true)
+                }
 
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle(R.string.enable_notification_title)
@@ -353,23 +355,26 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun requestExactAlarmPermission() {
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             if (!alarmManager.canScheduleExactAlarms()) {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle(R.string.enable_alert_title)
                     .setMessage(R.string.enable_alert_message)
                     .setNeutralButton(R.string.accept) { _, _ ->
+                        val uriString = "package:com.transition.ora"
                         val settingsIntent = Intent(
                             Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,
-                            Uri.parse("package:com.transition.ora")
+                            uriString.toUri()
                         )
                         startActivity(settingsIntent)
                     }
                 val dialog = builder.create()
                 dialog.show()
 
-                sharedPreferences.edit().putBoolean("exact_alarm_permission_requested", true).apply()
+                sharedPreferences.edit {
+                    putBoolean("exact_alarm_permission_requested", true)
+                }
             }
         }
     }

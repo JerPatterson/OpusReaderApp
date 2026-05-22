@@ -173,7 +173,6 @@
     <string name="validity_ended_notification_opus_title">Une carte OPUS a expirée</string>
     <string name="validity_notification_opus_title">Une carte OPUS expire bientôt</string>
     <string name="validity_minutes">%1$d minutes</string>
-    <string name="validity_hours">%1$d heures</string>
     <string name="validity_day">une journée</string>
     <string name="validity_notification_ticket_fare_plural_message">
         La validité d\'un passage du titre de transport \'%1$s\' va se terminer dans %2$s.
@@ -662,7 +661,7 @@
         L\'aller-retour en train est possible s\'il demeure à l\'intérieur des deux heures.
         \n\nCes billets ne sont pas acceptés sur la ligne \'747 - YUL Aéroport Montréal-Trudeau / Centre-ville\' de la STM.
     </string>
-    <string name="all_modes_ABC_ten_tickets_info_iat">
+    <string name="all_modes_ABC_ten_tickets_info_iat" formatted="false">
         Ce titre offre un rabais sur le tarif régulier de 25% comme mesure d\'atténuation à la construction du pont de l\'Île aux Tourtes.
         Il contient dix billets distincts.
         Chaque billet est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
@@ -775,24 +774,14 @@
     <string name="tram_3_six_tickets">6 passages, TRAM 3</string>
     <string name="tram_3_monthly">Mensuel, TRAM 3</string>
     <string name="tram_3_yearly">Abonnement, TRAM 3</string>
-    <string name="tram_4_one_ticket">1 passage, TRAM 4</string>
-    <string name="tram_4_six_tickets">6 passages, TRAM 4</string>
     <string name="tram_4_monthly">Mensuel, TRAM 4</string>
     <string name="tram_4_yearly">Abonnement, TRAM 4</string>
-    <string name="tram_5_one_ticket">1 passage, TRAM 5</string>
-    <string name="tram_5_six_tickets">6 passages, TRAM 5</string>
     <string name="tram_5_monthly">Mensuel, TRAM 5</string>
     <string name="tram_5_yearly">Abonnement, TRAM 5</string>
-    <string name="tram_6_one_ticket">1 passage, TRAM 6</string>
-    <string name="tram_6_six_tickets">6 passages, TRAM 6</string>
     <string name="tram_6_monthly">Mensuel, TRAM 6</string>
     <string name="tram_6_yearly">Abonnement, TRAM 6</string>
-    <string name="tram_7_one_ticket">1 passage, TRAM 7</string>
-    <string name="tram_7_six_tickets">6 passages, TRAM 7</string>
     <string name="tram_7_monthly">Mensuel, TRAM 7</string>
     <string name="tram_7_yearly">Abonnement, TRAM 7</string>
-    <string name="tram_8_one_ticket">1 passage, TRAM 8</string>
-    <string name="tram_8_six_tickets">6 passages, TRAM 8</string>
     <string name="tram_8_monthly">Mensuel, TRAM 8</string>
     <string name="tram_8_yearly">Abonnement, TRAM 8</string>
     <string name="train_1_one_ticket">1 passage, TRAIN 1</string>
@@ -973,7 +962,6 @@
     <string name="citsv_Z35678_one_ticket">1 passage, CITSV (Sorel-Tracy/Boucherville/Longueuil)</string>
     <string name="citsv_Z5_one_ticket">1 passage, CITSV (Varennes)</string>
     <string name="citsv_Z56_one_ticket">1 passage, CITSV (Verchères/Saint-Amable/Varennes)</string>
-    <string name="citsv_Z567_one_ticket">1 passage, CITSV (Contrecoeur/Varennes)</string>
     <string name="citsv_Z5678_one_ticket">1 passage, CITSV (Sorel-Tracy/Varennes)</string>
     <string name="citsv_Z6_one_ticket">1 passage, CITSV (Verchères/Saint-Amable)</string>
     <string name="citsv_Z67_one_ticket">1 passage, CITSV (Contrecoeur/Verchères/Saint-Amable)</string>
@@ -987,7 +975,6 @@
     <string name="citsv_Z35678_ten_tickets">10 passages, CITSV (Sorel-Tracy/Boucherville/Longueuil)</string>
     <string name="citsv_Z5_ten_tickets">10 passages, CITSV (Varennes)</string>
     <string name="citsv_Z56_ten_tickets">10 passages, CITSV (Verchères/Saint-Amable/Varennes)</string>
-    <string name="citsv_Z567_ten_tickets">10 passages, CITSV (Contrecoeur/Varennes)</string>
     <string name="citsv_Z5678_ten_tickets">10 passages, CITSV (Sorel-Tracy/Varennes)</string>
     <string name="citsv_Z6_ten_tickets">10 passages, CITSV (Verchères/Saint-Amable)</string>
     <string name="citsv_Z67_ten_tickets">10 passages, CITSV (Contrecoeur/Verchères/Saint-Amable)</string>
@@ -1087,8 +1074,6 @@
     <string name="citvr_Z8_monthly">Mensuel, CITVR (St-Hyacinthe)"</string>
     <string name="citvr_Z15_yearly">Annuel, CITVR (St-Bruno/St-Basile-le-Grand/Centre-Ville)"</string>
     <string name="citvr_Z16_yearly">Annuel, CITVR (Beloeil/Mont-St-Hilaire/Centre-Ville)"</string>
-    <string name="citvr_Z17_yearly">Annuel, CITVR (St-Bruno/St-Basile-le-Grand/Longueuil)"</string>
-    <string name="citvr_Z18_yearly">Annuel, CITVR (Beloeil/Mont-St-Hilaire/Longueuil)"</string>
     <string name="citvr_Z35_yearly">Annuel, CITVR (St-Bruno/St-Basile-le-Grand/Longueuil)"</string>
     <string name="citvr_Z36_yearly">Annuel, CITVR (Beloeil/Mont-St-Hilaire/Longueuil)"</string>
     <string name="citvr_SEC_yearly">Annuel, CITVR (Carte intégrée)"</string>

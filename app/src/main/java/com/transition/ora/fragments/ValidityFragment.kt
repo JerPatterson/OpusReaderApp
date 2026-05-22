@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.core.graphics.toColorInt
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -314,12 +315,23 @@ class ValidityFragment: Fragment() {
     }
 
     private fun addCardScanEvent(line: Line, validityLabelLine: View?, validityLineIdTv: TextView?, validityModeImage: ImageView?) {
+        val textColor = try {
+            line.textColor.toColorInt()
+        } catch (_: IllegalArgumentException) {
+            Color.WHITE
+        }
+        val background = try {
+            line.color.toColorInt()
+        } catch (_: IllegalArgumentException) {
+            Color.BLACK
+        }
+
         validityLabelLine?.visibility = View.VISIBLE
         validityLineIdTv?.visibility = View.VISIBLE
         validityModeImage?.visibility = View.VISIBLE
         validityLineIdTv?.text = line.id
-        validityLineIdTv?.setTextColor(Color.parseColor(line.textColor))
-        validityLineIdTv?.setBackgroundColor(Color.parseColor(line.color))
+        validityLineIdTv?.setTextColor(textColor)
+        validityLineIdTv?.setBackgroundColor(background)
         validityModeImage?.setImageResource(line.icon)
     }
 
@@ -340,11 +352,22 @@ class ValidityFragment: Fragment() {
 
         liveProposition?.observe(viewLifecycleOwner) { proposition ->
             if (proposition != null) {
+                val textColor = try {
+                    proposition.textColor.toColorInt()
+                } catch (_: IllegalArgumentException) {
+                    Color.WHITE
+                }
+                val background = try {
+                    proposition.color.toColorInt()
+                } catch (_: IllegalArgumentException) {
+                    Color.BLACK
+                }
+
                 validityLabelLine?.visibility = View.VISIBLE
                 validityLineIdTv?.visibility = View.VISIBLE
                 validityLineIdTv?.text = proposition.id
-                validityLineIdTv?.setTextColor(Color.parseColor(proposition.textColor))
-                validityLineIdTv?.setBackgroundColor(Color.parseColor(proposition.color))
+                validityLineIdTv?.setTextColor(textColor)
+                validityLineIdTv?.setBackgroundColor(background)
             }
         }
     }

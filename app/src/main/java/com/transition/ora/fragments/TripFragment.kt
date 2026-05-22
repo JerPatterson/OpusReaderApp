@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.toColorInt
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -117,9 +118,18 @@ class TripFragment : Fragment() {
         lineIdTv?.text = line.id
         name?.text = line.name
 
-        val textColor = Color.parseColor(line.textColor)
+        val textColor = try {
+            line.textColor.toColorInt()
+        } catch (_: IllegalArgumentException) {
+            Color.WHITE
+        }
         lineIdTv?.setTextColor(textColor)
-        val background = Color.parseColor(line.color)
+
+        val background = try {
+            line.color.toColorInt()
+        } catch (_: IllegalArgumentException) {
+            Color.BLACK
+        }
         val tripColorLayout = this.mView?.findViewById<LinearLayout>(R.id.tripColorLayout)
         lineIdTv?.setBackgroundColor(background)
         tripColorLayout?.setBackgroundColor(background)
@@ -370,9 +380,18 @@ class TripFragment : Fragment() {
                 lineIdTv?.text = options[position].id
                 name?.text = options[position].name
 
-                val textColor = Color.parseColor(options[position].textColor)
+                val textColor = try {
+                    options[position].textColor?.toColorInt() ?: Color.WHITE
+                } catch (_: IllegalArgumentException) {
+                    Color.WHITE
+                }
                 lineIdTv?.setTextColor(textColor)
-                val background = Color.parseColor(options[position].color)
+
+                val background = try {
+                    options[position].color?.toColorInt() ?: Color.BLACK
+                } catch (_: IllegalArgumentException) {
+                    Color.BLACK
+                }
                 val tripColorLayout = this.fragmentView.findViewById<LinearLayout>(R.id.tripColorLayout)
                 lineIdTv?.setBackgroundColor(background)
                 tripColorLayout?.setBackgroundColor(background)

@@ -23,7 +23,6 @@
             android:background="?android:attr/colorPrimary">
 
             <TextView
-                android:id="@+id/historyScanTimeTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
