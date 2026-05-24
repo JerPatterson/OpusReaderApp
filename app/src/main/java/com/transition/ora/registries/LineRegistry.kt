@@ -21,6 +21,7 @@ object LineRegistry {
         12u to { Line("17", "Décarie", "#009ee0", "#ffffff", R.drawable.bus) },
         13u to { Line("18", "Beaubien", "#781b7d", "#ffffff", R.drawable.bus) },
         220u to { Line("19", "Chabanel / Marché Central", "#009ee0", "#ffffff", R.drawable.bus) },
+        349u to { Line("20", "Chabanel / Marché Central", "#009ee0", "#ffffff", R.drawable.bus) },
         213u to { Line("21", "Place du Commerce", "#009ee0", "#ffffff", R.drawable.bus) },
         14u to { Line("22", "Notre-Dame", "#009ee0", "#ffffff", R.drawable.bus) },
         15u to { Line("24", "Sherbrooke", "#781b7d", "#ffffff", R.drawable.bus) },
@@ -73,6 +74,7 @@ object LineRegistry {
         56u to { Line("76", "McArthur", "#009ee0", "#ffffff", R.drawable.bus) },
         57u to { Line("77", "Cégep Marie-Victorin", "#009ee0", "#ffffff", R.drawable.bus) },
         58u to { Line("78", "Laurendeau", "#009ee0", "#ffffff", R.drawable.bus) },
+        350u to { Line("79", "Gouin", "#009ee0", "#ffffff", R.drawable.bus) },
         59u to { Line("80", "Avenue du Parc", "#781b7d", "#ffffff", R.drawable.bus) },
         280u to { Line("81", "Saint-Jean-Baptiste", "#009ee0", "#ffffff", R.drawable.bus) },
         60u to { Line("85", "Hochelaga", "#009ee0", "#ffffff", R.drawable.bus) },
@@ -108,6 +110,7 @@ object LineRegistry {
         89u to { Line("124", "Victoria", "#009ee0", "#ffffff", R.drawable.bus) },
         90u to { Line("125", "Ontario", "#009ee0", "#ffffff", R.drawable.bus) },
         91u to { Line("126", "Thimens / Grenet", "#009ee0", "#ffffff", R.drawable.bus) },
+        352u to { Line("127", "Alexis-Nihon", "#009ee0", "#ffffff", R.drawable.bus) },
         92u to { Line("128", "Saint-Laurent", "#009ee0", "#ffffff", R.drawable.bus) },
         93u to { Line("129", "Côte-Sainte-Catherine", "#009ee0", "#ffffff", R.drawable.bus) },
         94u to { Line("131", "De l'Assomption", "#009ee0", "#ffffff", R.drawable.bus) },
@@ -530,7 +533,8 @@ object LineRegistry {
         155u to Line("903", "Station Sainte-Dorothée / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus),
         193u to Line("925", "Saint-François / Métro Radisson", "#151f6d", "#ffffff", R.drawable.bus),
         270u to Line("942", "Saint-François / Métro Montmorency", "#151f6d", "#ffffff", R.drawable.bus),
-        304u to Line("45C", "Horizon-Jeunesse", "#151f6d", "#ffffff", R.drawable.bus)
+        304u to Line("45C", "Horizon-Jeunesse", "#151f6d", "#ffffff", R.drawable.bus),
+        191u to Line("285C", "Collège Laval", "#151f6d", "#ffffff", R.drawable.bus)
     )
 
     private val lineMapForExoSorelVarennes: Map<UInt, Line> = mapOf(
@@ -894,7 +898,8 @@ object LineRegistry {
         19u to Line("25", "Terrebonne - Montréal", "#1f1f1f", "#ffffff", R.drawable.bus),
         25u to Line("25B", "Terrebonne - Montréal", "#1f1f1f", "#ffffff", R.drawable.bus),
         20u to Line("35", "Terrebonne - Montréal", "#1f1f1f", "#ffffff", R.drawable.bus),
-        21u to Line("40", "Lachenaie - Montréal - Terminus Radisson", "#1f1f1f", "#ffffff", R.drawable.bus)
+        21u to Line("40", "Lachenaie - Montréal - Terminus Radisson", "#1f1f1f", "#ffffff", R.drawable.bus),
+        58u to Line("512", "Terrebonne (Ouest) - Laval", "#1f1f1f", "#ffffff", R.drawable.bus)
     )
 
     private val lineMapForExoLassomption: Map<UInt, Line> = mapOf(
