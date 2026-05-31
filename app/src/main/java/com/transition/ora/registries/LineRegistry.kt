@@ -888,7 +888,26 @@ object LineRegistry {
         22u to Line("61", "Gare Vaudreuil / Rigaud", "#1f1f1f", "#ffffff", R.drawable.bus),
         23u to Line("91", "Gérald-Godin / Pointe-Claire", "#1f1f1f", "#ffffff", R.drawable.bus),
         25u to Line("115", "Gare Vaudreuil / Dorion (Av. de la Fabrique)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        29u to Line("188", "Terminus Vaudreuil - Hudson", "#1f1f1f", "#ffffff", R.drawable.bus),
+        30u to Line("189", "Terminus Vaudreuil - Saint-Lazare", "#1f1f1f", "#ffffff", R.drawable.bus),
+        31u to Line("190", "Terminus Vaudreuil - St-Charles - Gare Dorion", "#1f1f1f", "#ffffff", R.drawable.bus),
+        32u to Line("191", "Terminus Vaudreuil - Valois - Gare Dorion", "#1f1f1f", "#ffffff", R.drawable.bus),
+        33u to Line("192", "Terminus Vaudreuil - Joseph-Carrier", "#1f1f1f", "#ffffff", R.drawable.bus),
+        34u to Line("193", "Terminus Vaudreuil - Ouimet - Floralies", "#1f1f1f", "#ffffff", R.drawable.bus),
+        35u to Line("194", "Terminus Vaudreuil - Émile-Bouchard - Floralies", "#1f1f1f", "#ffffff", R.drawable.bus),
+        36u to Line("200", "Gare Dorion - Chicoine", "#1f1f1f", "#ffffff", R.drawable.bus),
+        37u to Line("210", "Gare Île-Perrot - Pointe-aux-Renards", "#1f1f1f", "#ffffff", R.drawable.bus),
+        38u to Line("211", "Gare Île-Perrot - Pointe-du-Moulin", "#1f1f1f", "#ffffff", R.drawable.bus),
+        39u to Line("212", "Gare Île-Perrot - Perrot", "#1f1f1f", "#ffffff", R.drawable.bus),
         26u to Line("335", "Gare Pincourt T-V / Ste-Anne-de-Bellevue", "#1f1f1f", "#ffffff", R.drawable.bus),
+        40u to Line("490", "Terminus Vaudreuil - Bourget - REM", "#1f1f1f", "#ffffff", R.drawable.bus),
+        41u to Line("491", "Terminus Vaudreuil - REM", "#1f1f1f", "#ffffff", R.drawable.bus),
+        42u to Line("493", "Terminus Vaudreuil - Cégep John Abbott", "#1f1f1f", "#ffffff", R.drawable.bus),
+        43u to Line("591", "Gare Dorion - Île Perrot - REM", "#1f1f1f", "#ffffff", R.drawable.bus),
+        44u to Line("593", "Notre-Dame-de-l'Île-Perrot - Terminus Macdonald", "#1f1f1f", "#ffffff", R.drawable.bus),
+        45u to Line("695", "Rigaud - Terminus Vaudreuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        46u to Line("790", "Dorion - Île Perrot - REM", "#1f1f1f", "#ffffff", R.drawable.bus),
+        47u to Line("793", "Gare Dorion - Île Perrot - Terminus Macdonald", "#1f1f1f", "#ffffff", R.drawable.bus)
     )
 
     private val lineMapForExoTerrebonneMascouche: Map<UInt, Line> = mapOf(
