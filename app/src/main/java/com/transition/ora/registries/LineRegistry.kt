@@ -548,16 +548,24 @@ object LineRegistry {
 
     private val lineMapForExoSorelVarennes: Map<UInt, Line> = mapOf(
         18u to Line("370", "Saint-Amable - Sainte-Julie", "#1f1f1f", "#ffffff", R.drawable.bus),
+        20u to Line("532", "Express Varennes / Radisson", "#1f1f1f", "#ffffff", R.drawable.bus),
         1u to Line("700", "Sorel-Tracy - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         22u to Line("701", "Contrecoeur - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
-        2u to Line("705", "Sorel - Tracy - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        2u to Line("705", "Sorel-Tracy - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        12u to Line("706", "Sorel-Tracy - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        13u to Line("707", "Contrecoeur - Varennes (Jean-Coutu) - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        14u to Line("708", "Contrecoeur - Varennes (Jean-Coutu) - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        15u to Line("709", "Contrecoeur - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        16u to Line("710", "Verchères - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         3u to Line("720", "Varennes - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         4u to Line("721", "Varennes - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         5u to Line("722", "Varennes - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         6u to Line("723", "Varennes (IREQ) - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         7u to Line("724", "Varennes - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
-        8u to Line("730AM", "Saint-Amable - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
-        9u to Line("730PM", "Saint-Amable - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus)
+        8u to Line("730", "Saint-Amable - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        9u to Line("731", "Saint-Amable - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        10u to Line("732", "Saint-Amable - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        11u to Line("733", "Saint-Amable - Longueuil (express)", "#1f1f1f", "#ffffff", R.drawable.bus)
     )
     
     private val lineMapForExoSainteJulie: Map<UInt, Line> = mapOf(
