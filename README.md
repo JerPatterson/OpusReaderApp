@@ -6,12 +6,12 @@
 </span>
 <h2>Project state</h2>
 <span>
-  Currently, a lot of fares, operators and lines are missing and won't be recognize. However, users now have the possibility to contribute within the application by providing fares and lines from their cards as they use them.
+  Currently, some fares, operators and lines are missing and won't be recognize. However, users have the possibility to contribute within the application by providing fares and lines from their cards as they use them.
 </span>
 <br>
 <h4>Partially working for the following agencies</h4>
 <ul>
-  <li>exo (Trains, Laurentides and Terrebonne-Mascouche only)</li>
+  <li>exo (Trains and buses of all sectors)</li>
   <li>REM (Réseau express métropolitain)</li>
   <li>RTL (Réseau de transport de Longueuil)</li>
   <li>STM (Société de transport de Montréal)</li>
@@ -107,24 +107,29 @@
 </span>
 <h2>Upcoming improvements</h2>
 <ul>
-  <li><span style="text-decoration: line-through;">Adding an history of the card scans</span> <em>Added!</em></li>
-  <li><span style="text-decoration: line-through;">Adding the possibility for user to crowdsource unknown fares, lines and operators</span> <em>Added!</em></li>
-  <li><span style="text-decoration: line-through;">Improving information for transfers so users can maximize their usage of one particular fare</span> <em>Added!</em></li>
-  <li><span style="text-decoration: line-through;">Adding notifications to alert the user when the validity of the fare ends and few minutes prior</span> <em>Added!</em></li>
+  <li><strike>Adding an history of the card scans</strike> <em>Added!</em></li>
+  <li><strike>Adding the possibility for user to crowdsource unknown fares, lines and operators</strike> <em>Added!</em></li>
+  <li><strike>Improving information for transfers so users can maximize their usage of one particular fare</strike> <em>Added!</em></li>
+  <li><strike>Adding notifications to alert the user when the validity of the fare ends and few minutes prior</strike> <em>Added!</em></li>
 </ul>
 <h2>Documentation</h2>
 <span>
   In addition to some time analysing the binary content of the cards, here are some links that were used to find how to retrieve and parse data from both of the cards.
 </span>
 <ul>
-  <br>
   <li><a href="https://www.nxp.com/docs/en/data-sheet/MF0ICU1.pdf">MiFare Ultralight</a> (Occasional Card)</li>
   <li><a href="https://calypsonet.org/" target="_blank">Calypso</a> [Calypso Prime Spec] (Opus Card)</li>
   <li><a href="https://github.com/etiennedub/LecteurOPUS" target="_blank">LecteurOPUS</a> (both Opus and Occasional Card)</li>
   <li><a href="https://github.com/metrodroid/metrodroid" target="_blank">Metrodroid</a> (both Opus and Occasional Card)</li>
 </ul>
+<span>
+  Here is another link that while not useful directly for the project is still interesting to better understand the technology.
+</span>
+<ul>
+  <li><a href="https://www.righto.com/2024/06/montreal-mifare-ultralight-nfc.html">Inside the tiny chip that powers Montreal subway tickets</a> (Occasional Card)</li>
+</ul>
 <h2>Availability</h2>
-<a href="https://forms.gle/3FCGVHFZdMyuu8Js5" target="_blank"><img alt="Google Play Store" src="https://github.com/user-attachments/assets/dcea2391-f0e9-43a9-986f-e1c4be0c7f77" width=150></a>
+<a href="https://play.google.com/apps/testing/com.transition.ora" target="_blank"><img alt="Google Play Store" src="https://github.com/user-attachments/assets/dcea2391-f0e9-43a9-986f-e1c4be0c7f77" width=150></a>
 <a href="https://www.amazon.com/dp/B0DS6N3HWC" target="_blank"><img alt="Amazon Appstore" src="https://github.com/user-attachments/assets/eec33db9-84ed-467d-8341-e32d331d263e" width=150></a>
 
 
