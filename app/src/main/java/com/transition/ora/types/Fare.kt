@@ -18,7 +18,7 @@ class Fare(
     init {
         val validityFromDateValue = this.validityFromDate
         val validityUntilDateValue = this.validityUntilDate
-        if (validityFromDateValue != null && validityUntilDateValue != null && validityUntilDateValue.timeInMillis != 0L) {
+        if (validityFromDateValue != null && validityUntilDateValue != null) {
             this.validityFromDate = setFareValidityFromDate(validityFromDateValue, validityUntilDateValue)
             this.validityUntilDate = setFareValidityUntilDate(validityFromDateValue, validityUntilDateValue)
         }
