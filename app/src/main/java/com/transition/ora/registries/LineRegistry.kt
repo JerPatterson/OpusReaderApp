@@ -570,17 +570,22 @@ object LineRegistry {
     
     private val lineMapForExoSainteJulie: Map<UInt, Line> = mapOf(
         1u to Line("100", "Sainte-Julie (Secteur Sud) - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
-        2u to Line("T110", "Sainte-Julie (Parc industriel)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        12u to Line("200", "Sainte-Julie (N.P.-Lapierre)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        13u to Line("220", "Sainte-Julie (Principale)", "#1f1f1f", "#ffffff", R.drawable.bus),
         3u to Line("250", "Sainte-Julie (Secteur Centre-Ouest) - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        14u to Line("325", "Express Longueuil - Cégep", "#1f1f1f", "#ffffff", R.drawable.bus),
+        15u to Line("330", "Express Longueuil - CFP - Cégep", "#1f1f1f", "#ffffff", R.drawable.bus),
         16u to Line("340", "Express Longueuil - Promenades Saint-Bruno", "#1f1f1f", "#ffffff", R.drawable.bus),
         4u to Line("350", "Express Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         5u to Line("400", "Sainte-Julie (Secteur Sud et Nord) - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         6u to Line("450", "Sainte-Julie - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         7u to Line("500", "Sainte-Julie (Secteur Centre-Est) - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
-        8u to Line("T510", "Sainte-Julie (Secteur rurale)", "#1f1f1f", "#ffffff", R.drawable.bus),
         9u to Line("600", "Sainte-Julie - Terminus Brossard", "#1f1f1f", "#ffffff", R.drawable.bus),
         10u to Line("800", "Sainte-Julie (Secteur Centre-Ouest) - Montréal", "#1f1f1f", "#ffffff", R.drawable.bus),
-        11u to Line("900", "Sainte-Julie (Secteur Sud) - Montréal", "#1f1f1f", "#ffffff", R.drawable.bus)
+        11u to Line("900", "Sainte-Julie (Secteur Sud) - Montréal", "#1f1f1f", "#ffffff", R.drawable.bus),
+        2u to Line("T110", "Sainte-Julie (Parc industriel)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        17u to Line("T120", "Sainte-Julie (du Liseron)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        8u to Line("T510", "Sainte-Julie (Secteur rurale)", "#1f1f1f", "#ffffff", R.drawable.bus)
     )
 
     private val lineMapForExoValleeRichelieu: Map<UInt, Line> = mapOf(
