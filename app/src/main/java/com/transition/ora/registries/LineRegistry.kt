@@ -589,18 +589,22 @@ object LineRegistry {
     )
 
     private val lineMapForExoValleeRichelieu: Map<UInt, Line> = mapOf(
-        1u to Line("7-SO", "McMasterville - Service local", "#1f1f1f", "#ffffff", R.drawable.bus),
-        2u to Line("8-NE", "Beloeil - Service local", "#1f1f1f", "#ffffff", R.drawable.bus),
-        3u to Line("8-SE", "Beloeil - Service local", "#1f1f1f", "#ffffff", R.drawable.bus),
-        4u to Line("7-NO", "McMasterville - Service local", "#1f1f1f", "#ffffff", R.drawable.bus),
-        5u to Line("11", "Mont-Saint-Hilaire", "#1f1f1f", "#ffffff", R.drawable.bus),
-        6u to Line("12", "Otterburn Park", "#1f1f1f", "#ffffff", R.drawable.bus),
-        7u to Line("20", "Beloeil - McMasterville", "#1f1f1f", "#ffffff", R.drawable.bus),
-        9u to Line("22", "Mont-Saint-Hilaire (des Patriotes)", "#1f1f1f", "#ffffff", R.drawable.bus),
-        8u to Line("21", "Mont-Saint-Hilaire (La Pommeraie)", "#1f1f1f", "#ffffff", R.drawable.bus),
-        10u to Line("23", "Otterburn Park", "#1f1f1f", "#ffffff", R.drawable.bus),
-        11u to Line("24", "Saint-Basile-le-Grand (sud)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        1u to Line("7", "McMasterville - Service local", "#1f1f1f", "#ffffff", R.drawable.bus),
+        2u to Line("8", "Beloeil - Service local", "#1f1f1f", "#ffffff", R.drawable.bus),
+        3u to Line("11", "Mont-Saint-Hilaire", "#1f1f1f", "#ffffff", R.drawable.bus),
+        4u to Line("12", "Otterburn Park", "#1f1f1f", "#ffffff", R.drawable.bus),
+        5u to Line("20B", "Beloeil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        6u to Line("20M", "McMasterville", "#1f1f1f", "#ffffff", R.drawable.bus),
+        7u to Line("21", "Mont-Saint-Hilaire (La Pommeraie)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        8u to Line("22", "Mont-Saint-Hilaire (des Patriotes)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        9u to Line("23", "Otterburn Park", "#1f1f1f", "#ffffff", R.drawable.bus),
+        10u to Line("24", "Saint-Basile-le-Grand (sud)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        11u to Line("25", "Saint-Hyacinthe - Mont-Saint-Hilaire", "#1f1f1f", "#ffffff", R.drawable.bus),
+        16u to Line("26", "Saint-Basile-le-Grand (nord)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        17u to Line("27", "Beloeil (Richelieu)", "#1f1f1f", "#ffffff", R.drawable.bus),
+        14u to Line("30", "Sainte-Julie - Saint-Hyacinthe", "#1f1f1f", "#ffffff", R.drawable.bus),
         12u to Line("200", "Saint-Hyacinthe - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
+        15u to Line("201", "ExpressO - Mont-Saint-Hilaire - Longueuil", "#1f1f1f", "#ffffff", R.drawable.bus),
         13u to Line("300", "Saint-Hyacinthe - Terminus Brossard", "#1f1f1f", "#ffffff", R.drawable.bus)
     )
 
