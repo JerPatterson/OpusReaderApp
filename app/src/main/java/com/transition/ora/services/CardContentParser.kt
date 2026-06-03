@@ -422,7 +422,7 @@ class CardContentParser {
             val zoneId = this.getOpusCardTripZoneId(data)
             val useDate = this.getOpusCardTripUseDate(data)
 
-            if (fareIndex.toInt() in 1..3) {
+            if (fareIndex.toInt() in 1..4) {
                 trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate, fareIndex, fares[fareIndex.toInt() - 1].typeId, isValid))
             }
         }
