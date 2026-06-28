@@ -191,6 +191,7 @@ object LineRegistry {
         158u to { Line("219", "Chemin Sainte-Marie", "#009ee0", "#ffffff", R.drawable.bus) },
         159u to { Line("220", "Kieran", "#009ee0", "#ffffff", R.drawable.bus) },
         160u to { Line("221", "Métrobus Lionel-Groulx", "#009ee0", "#ffffff", R.drawable.bus) },
+        356u to { Line("221", "Saint-Jean", "#009ee0", "#ffffff", R.drawable.bus) },
         357u to { Line("222", "Senneville", "#009ee0", "#ffffff", R.drawable.bus) },
         358u to { Line("223", "Parc Industriel Baie d'Urfé", "#009ee0", "#ffffff", R.drawable.bus) },
         161u to { Line("225", "Hymus", "#009ee0", "#ffffff", R.drawable.bus) },
@@ -263,6 +264,13 @@ object LineRegistry {
         172u to { Line("506", "Voie réservée Newman", "#009ee0", "#ffffff", R.drawable.bus) },
         173u to { Line("535", "Voie réservée Du Parc / Côte-des-Neiges", "#009ee0", "#ffffff", R.drawable.bus) },
         340u to { Line("568", "Navette REM - Île-des-Soeurs / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus) },
+        341u to { Line("721", "Navette REM - Brossard / Du Quartier / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus) },
+        342u to { Line("521", "Navette REM - Anse-à-l'Orme / Côte-Vertu", "#72a300", "#ffffff", R.drawable.bus) },
+        343u to { Line("522", "Navette REM - Bois-Franc / Du Collège", "#72a300", "#ffffff", R.drawable.bus) },
+        344u to { Line("523", "Navette REM - Anse-à-l’Orme / Fairview-Pointe-Claire", "#72a300", "#ffffff", R.drawable.bus) },
+        345u to { Line("524", "Navette REM - Anse-à-l’Orme / Bois-Franc", "#72a300", "#ffffff", R.drawable.bus) },
+        346u to { Line("525", "Navette REM - Anse-à-l’Orme / Côte-Vertu", "#72a300", "#ffffff", R.drawable.bus) },
+        347u to { Line("526", "Navette REM - Côte-de-Liesse / Du Collège", "#72a300", "#ffffff", R.drawable.bus) },
         277u to { Line("711", "Parc-du-Mont-Royal / Oratoire", "#009ee0", "#ffffff", R.drawable.bus) },
         257u to { Line("715", "Vieux-Montréal / Vieux-Port", "#009ee0", "#ffffff", R.drawable.bus) },
         219u to { Line("747", "YUL Aéroport / Centre-Ville", "#009ee0", "#ffffff", R.drawable.bus) },
@@ -1000,10 +1008,10 @@ object LineRegistry {
     )
 
     private val lineMapForREM: Map<UInt, (zone: String) -> Line> = mapOf(
-        2u to { zone -> Line("A1", if (zone != "" && zone != "A") "Brossard (zone $zone)" else "Brossard", "#82bf00", "#000000", R.drawable.lightmetro) },
-        3u to { _ -> Line("A2", "YUL-Aéroport-Montréal-Trudeau", "#82bf00", "#000000", R.drawable.lightmetro) },
-        4u to { _ -> Line("A3", "Anse-à-l'Orme", "#82bf00", "#000000", R.drawable.lightmetro) },
-        5u to { zone -> Line("A4", if (zone != "" && zone != "A") "Deux-Montagnes (zone $zone)" else "Deux-Montagnes", "#82bf00", "#000000", R.drawable.lightmetro) }
+        2u to { zone -> Line("A1", if (zone != "" && zone != "A") "Brossard (zone $zone)" else "Brossard", "#72a300", "#ffffff", R.drawable.lightmetro) },
+        3u to { _ -> Line("A2", "YUL-Aéroport-Montréal-Trudeau", "#72a300", "#ffffff", R.drawable.lightmetro) },
+        4u to { _ -> Line("A3", "Anse-à-l'Orme", "#72a300", "#ffffff", R.drawable.lightmetro) },
+        5u to { zone -> Line("A4", if (zone != "" && zone != "A") "Deux-Montagnes (zone $zone)" else "Deux-Montagnes", "#72a300", "#ffffff", R.drawable.lightmetro) }
     )
 
 
