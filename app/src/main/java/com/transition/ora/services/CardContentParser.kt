@@ -64,7 +64,7 @@ class CardContentParser {
                 or data[0][1].toULong().and(0xFFu))
     }
 
-    private fun getOccasionalCardExpiryDate(data: Array<ByteArray>): Calendar {
+    private fun getOccasionalCardExpiryDate(data: Array<ByteArray>, takeFareValidityIntoAccount: Boolean = true): Calendar {
         var usageDeadlineDateDays = (data[1][9].toUInt().and(0x03u).shl(12)
                 or data[1][10].toUInt().and(0xFFu).shl(4)
                 or data[1][11].toUInt().and(0xF0u).shr(4))
@@ -75,6 +75,9 @@ class CardContentParser {
         expiryDateDays = if (expiryDateDays != 0u) expiryDateDays else usageDeadlineDateDays
 
         val expiryDate = this.uIntToDate(expiryDateDays, 1439u)
+        if (!takeFareValidityIntoAccount) {
+            return expiryDate
+        }
 
         when (this.getOccasionalCardFareTypeId(data)) {
             FareProductId.OCC_24HOURS_RTC.id,
@@ -210,7 +213,7 @@ class CardContentParser {
                 or data[0][13].toUInt().and(0xFFu))
 
         val now = Calendar.getInstance()
-        val expiryDate = this.getOccasionalCardExpiryDate(data)
+        val expiryDate = this.getOccasionalCardExpiryDate(data, false)
 
         return hasPassVerificationBits.compareTo(0x0000u) == 0 && expiryDate.after(now)
     }
