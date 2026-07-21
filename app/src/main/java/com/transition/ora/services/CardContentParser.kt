@@ -152,20 +152,12 @@ class CardContentParser {
         val buyingDate = this.getOccasionalCardFareBuyingDate(data)
 
         if (this.occasionalCardHasTicket(data)) {
-            val ticketCount = when (typeId) {
-                FareProductId.OCC_2TICKETS_ALL_MODES_ABCD_SPECIAL_ILE_AUX_TOURTES.id -> 0u
-                else -> this.getOccasionalCardFareNbOfTickets(data)
-            }
-
+            val ticketCount = this.getOccasionalCardFareNbOfTickets(data)
             fares.add(Fare(typeId, operatorId, buyingDate, ticketCount))
         } else if (this.occasionalCardHasPass(data)) {
             val validityFromDate = getOccasionalCardFareValidityFromDate(data[2])
-            if (occasionalCardHasValidPass(data)) {
-                fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, null))
-            } else if (validityFromDate != null) {
-                val validityUntilDate = getOccasionalCardFareValidityUntilDate(data[2])
-                fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, validityUntilDate))
-            }
+            val validityUntilDate = getOccasionalCardFareValidityUntilDate(data[2])
+            fares.add(Fare(typeId, operatorId, buyingDate, null, validityFromDate, validityUntilDate))
         }
 
         return fares
@@ -206,16 +198,6 @@ class CardContentParser {
 
         return (hasPassVerificationBits.compareTo(0x8000u) == 0)
                 || (hasPassVerificationBits.compareTo(0x0000u) == 0 && expiryDateDays < 16070u)
-    }
-
-    private fun occasionalCardHasValidPass(data: Array<ByteArray>): Boolean {
-        val hasPassVerificationBits = (data[0][12].toUInt().and(0xFFu).shl(8)
-                or data[0][13].toUInt().and(0xFFu))
-
-        val now = Calendar.getInstance()
-        val expiryDate = this.getOccasionalCardExpiryDate(data, false)
-
-        return hasPassVerificationBits.compareTo(0x0000u) == 0 && expiryDate.after(now)
     }
 
     private fun getOccasionalCardFareNbOfTickets(data: Array<ByteArray>): UInt {
