@@ -108,7 +108,13 @@
         La restitution des titres de transport non expirés est possible sur la nouvelle carte.
     </string>
     <string name="expired_occasional_card_description">
-        Cette carte n\'est plus utilisable car elle n\'est pas rechargeable et le titre qu\'elle contenait a été utilisé.
+        Cette carte n\'est plus utilisable car elle n\'est pas rechargeable et le titre qu\'elle contenait a été utilisé ou a expiré.
+    </string>
+
+    <string name="invalid_card_title">Invalide</string>
+    <string name="invalid_card_info">Information sur la validité</string>
+    <string name="invalid_occasional_card_description">
+        Cette carte Occasionnelle est marquée invalide. Toutefois, les valideurs pourraient tout de même l\'accepter si elle contient un titre valide.
     </string>
 
     <string name="card_type_variant_info">Information sur ce type de carte</string>

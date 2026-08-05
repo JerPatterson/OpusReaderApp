@@ -82,46 +82,49 @@ class CardActivity : AppCompatActivity() {
     }
 
     private fun addCardRegisteredInfo(cardType: CardType, expiryDate: Calendar?, birthDate: Calendar?) {
-        val cardStatusButton = findViewById<CardView>(R.id.cardStatusButtonLayout)
-        cardStatusButton.setOnClickListener(RegisteredCardListener(this))
-
         val now = Calendar.getInstance()
-        val cardStatusTv = findViewById<TextView>(R.id.cardStatusTv)
-        val cardStatusInfoTitleTv = findViewById<TextView>(R.id.cardStatusInfoTitleTv)
-        val cardStatusDescriptionTv = findViewById<TextView>(R.id.cardStatusDescriptionTv)
 
         if (cardType == CardType.Occasional
             || cardType == CardType.OccasionalRTC
             || cardType == CardType.OccasionalSTLevis) {
 
-            cardStatusButton.visibility = View.GONE
             if (expiryDate != null && expiryDate.timeInMillis < now.timeInMillis) {
-                cardStatusTv.text = getString(R.string.expired_card_title)
-                cardStatusInfoTitleTv.text = getString(R.string.expired_card_info)
-                cardStatusDescriptionTv.text = getString(R.string.expired_occasional_card_description)
-                cardStatusButton.visibility = View.VISIBLE
-
-                findViewById<View>(R.id.cardStatusInfoDivider).visibility = View.GONE
-                findViewById<ImageView>(R.id.cardBirthDateImageView).visibility = View.GONE
-                findViewById<TextView>(R.id.cardBirthDateTv).visibility = View.GONE
-                findViewById<TextView>(R.id.cardBirthDateValueTv).visibility = View.GONE
+                addSpecificCardRegisteredInfo(R.string.expired_card_title, R.string.expired_card_info, R.string.expired_occasional_card_description, true)
+                return
             }
         } else if (cardType == CardType.Opus) {
             if (birthDate != null && expiryDate != null && expiryDate.timeInMillis >= now.timeInMillis) {
-                cardStatusTv.text = getString(R.string.registered_card_title)
-                cardStatusInfoTitleTv.text = getString(R.string.registered_card_info)
-                cardStatusDescriptionTv.text = getString(R.string.registered_card_description)
-                cardStatusButton.visibility = View.VISIBLE
+                addSpecificCardRegisteredInfo(R.string.registered_card_title, R.string.registered_card_info, R.string.registered_card_description)
+                return
             } else if (expiryDate != null && expiryDate.timeInMillis < now.timeInMillis) {
-                cardStatusTv.text = getString(R.string.expired_card_title)
-                cardStatusInfoTitleTv.text = getString(R.string.expired_card_info)
-                cardStatusDescriptionTv.text = getString(R.string.expired_card_description)
-                cardStatusButton.visibility = View.VISIBLE
-            } else {
-                cardStatusButton.visibility = View.GONE
+                addSpecificCardRegisteredInfo(R.string.expired_card_title, R.string.expired_card_info, R.string.expired_card_description)
+                return
             }
         }
+
+        val cardStatusButton = findViewById<CardView>(R.id.cardStatusButtonLayout)
+        cardStatusButton.visibility = View.GONE
     }
+
+    private fun addSpecificCardRegisteredInfo(buttonText: Int, titleText: Int, descriptionText: Int, hideBirthday: Boolean = false) {
+        val cardStatusTv = findViewById<TextView>(R.id.cardStatusTv)
+        val cardStatusInfoTitleTv = findViewById<TextView>(R.id.cardStatusInfoTitleTv)
+        val cardStatusDescriptionTv = findViewById<TextView>(R.id.cardStatusDescriptionTv)
+        cardStatusTv.text = getString(buttonText)
+        cardStatusInfoTitleTv.text = getString(titleText)
+        cardStatusDescriptionTv.text = getString(descriptionText)
+
+        val cardStatusButton = findViewById<CardView>(R.id.cardStatusButtonLayout)
+        cardStatusButton.visibility = View.VISIBLE
+        cardStatusButton.setOnClickListener(RegisteredCardListener(this))
+
+        if (!hideBirthday) return
+        findViewById<View>(R.id.cardStatusInfoDivider).visibility = View.GONE
+        findViewById<ImageView>(R.id.cardBirthDateImageView).visibility = View.GONE
+        findViewById<TextView>(R.id.cardBirthDateTv).visibility = View.GONE
+        findViewById<TextView>(R.id.cardBirthDateValueTv).visibility = View.GONE
+    }
+
 
     private fun addCardTypeVariantInfo(cardId: ULong, cardTypeVariantId: UInt?) {
         if (cardTypeVariantId == null || cardTypeVariantId == 0u) {
@@ -132,6 +135,15 @@ class CardActivity : AppCompatActivity() {
 
         val cardTypeVariant = CardContentConverter.getCardTypeVariantById(this, cardTypeVariantId)
         when (cardTypeVariant) {
+            CardTypeVariant.ValidOccasional,
+            CardTypeVariant.InvalidOccasional -> {
+                val cardTypeVariantButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
+                cardTypeVariantButton.visibility = View.GONE
+                if (cardTypeVariant == CardTypeVariant.ValidOccasional) return
+                addSpecificCardRegisteredInfo(R.string.invalid_card_title, R.string.invalid_card_info, R.string.invalid_occasional_card_description, true)
+                return
+            }
+
             CardTypeVariant.Standard,
             CardTypeVariant.StandardReduced,
             CardTypeVariant.StandardSubscription -> {

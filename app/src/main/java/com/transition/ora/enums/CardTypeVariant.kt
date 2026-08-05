@@ -16,5 +16,8 @@ enum class CardTypeVariant {
     AllModesABSubscription,
     AllModesABCSubscription,
     AllModesABCDSubscription,
-    BusOutOfTerritorySubscription
+    BusOutOfTerritorySubscription,
+
+    ValidOccasional,
+    InvalidOccasional
 }

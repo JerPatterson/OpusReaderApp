@@ -35,7 +35,9 @@ class CardContentConverter {
                 764u -> CardTypeVariant.AllModesABCD
                 765u -> CardTypeVariant.BusOutOfTerritory
 
-                else -> lookForCardTypeVariantProposition(context, id.toString())
+                1024u -> CardTypeVariant.InvalidOccasional
+                in 0u..1023u -> lookForCardTypeVariantProposition(context, id.toString())
+                else -> CardTypeVariant.ValidOccasional
             }
         }
 

@@ -107,7 +107,13 @@
         The restitution of unexpired transit fares is possible on the new card.
     </string>
     <string name="expired_occasional_card_description">
-        This card is no longer usable since it is non-rechargeable and the fare on it was used.
+        This card is no longer usable since it is non-rechargeable and the fare on it was used or expired.
+    </string>
+
+    <string name="invalid_card_title">Invalid</string>
+    <string name="invalid_card_info">Information about validity</string>
+    <string name="invalid_occasional_card_description">
+        This Occasional card is marked as invalid. However, validators might still accept it if it contains a valid fare.
     </string>
 
     <string name="card_type_variant_info">Information about this type of card</string>
