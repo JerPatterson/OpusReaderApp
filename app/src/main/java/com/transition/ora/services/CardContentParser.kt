@@ -243,13 +243,13 @@ class CardContentParser {
             else -> 32u
         }
 
-        if (data[2][8].toUInt().and(0xFFu) != 0u) {
+        if (data[2][12].toUInt().and(0x20u).shr(5) == 1u) {
             val tripTicketsRemaining = (data[2][9].toUInt().and(0x0Fu).shl(1)
                     or data[2][10].toUInt().and(0x80u).shr(7))
             if (tripTicketsRemaining < ticketCount) ticketCount = tripTicketsRemaining
         }
 
-        if (data[3][8].toUInt().and(0xFFu) != 0u) {
+        if (data[3][12].toUInt().and(0x20u).shr(5) == 1u) {
             val tripTicketsRemaining = (data[3][9].toUInt().and(0x0Fu).shl(1)
                     or data[3][10].toUInt().and(0x80u).shr(7))
             if (tripTicketsRemaining < ticketCount) ticketCount = tripTicketsRemaining
