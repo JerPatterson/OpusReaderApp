@@ -180,7 +180,7 @@ class HistoryCardAdapter(
                                 calendar.timeInMillis = cardEntity.expiryDate.toLong()
                             },
                             null,
-                            null,
+                            cardEntity.typeVariant?.toUInt(),
                             gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
                             gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
                         ))
