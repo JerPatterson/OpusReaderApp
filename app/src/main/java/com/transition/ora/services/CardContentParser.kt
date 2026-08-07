@@ -320,7 +320,8 @@ class CardContentParser {
     }
 
     private fun getOccasionalCardTripZoneId(data: ByteArray): UInt {
-        return data[8].toUInt().and(0xFFu)
+        return (data[7].toUInt().and(0xFFu).shl(8)
+                or data[8].toUInt().and(0xFFu))
     }
 
     private fun getOccasionalCardTripUseDate(data: ByteArray): Calendar {
@@ -499,24 +500,26 @@ class CardContentParser {
 
             val lineId: UInt
             val operatorId: UInt
+            val zoneId: UInt
             val firstUseDate: Calendar
             val fareIndex: UInt
             val isValid: Boolean
             if (this.opusCardHasToUseByteOffset(data)) {
                 lineId = this.getOpusCardTripLineId(data, 1)
                 operatorId = this.getOpusCardTripOperatorId(data, 1)
+                zoneId = this.getOpusCardTripZoneId(data, 1)
                 firstUseDate = this.getOpusCardTripFirstUseDate(data, 5)
                 fareIndex = this.getOpusCardTripFareIndex(data, 5)
                 isValid = this.isValidOpusCardTrip(data, 1)
             } else {
                 lineId = this.getOpusCardTripLineId(data)
                 operatorId = this.getOpusCardTripOperatorId(data)
+                zoneId = this.getOpusCardTripZoneId(data)
                 firstUseDate = this.getOpusCardTripFirstUseDate(data)
                 fareIndex = this.getOpusCardTripFareIndex(data)
                 isValid = this.isValidOpusCardTrip(data)
             }
 
-            val zoneId = this.getOpusCardTripZoneId(data)
             val useDate = this.getOpusCardTripUseDate(data)
 
             if (fareIndex.toInt() in 1..4) {
@@ -542,9 +545,10 @@ class CardContentParser {
                 or data[8 + byteOffset].toUInt().and(0xF8u).shr(3))
     }
 
-    private fun getOpusCardTripZoneId(data: ByteArray): UInt {
-        return (data[9].toUInt().and(0x07u).shl(5)
-                or data[10].toUInt().and(0xF8u).shr(3))
+    private fun getOpusCardTripZoneId(data: ByteArray, byteOffset: Int = 0): UInt {
+        return (data[8 + byteOffset].toUInt().and(0x07u).shl(13)
+                or data[9 + byteOffset].toUInt().and(0xFFu).shl(5)
+                or data[10 + byteOffset].toUInt().and(0xF8u).shr(3))
     }
 
     private fun getOpusCardTripUseDate(data: ByteArray): Calendar {

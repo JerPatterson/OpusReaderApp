@@ -34,7 +34,9 @@
 
     <string name="fare_used_section_title">Fare used to board</string>
     <string name="fare_zone_used_section_title">Zone of fare usage</string>
+    <string name="fare_stop_used_section_title">Stop of fare usage</string>
     <string name="fare_zone_used_value">Zone %1$s</string>
+    <string name="fare_stop_used_value">Stop %1$s</string>
 
     <string name="edit_section_title">Suggest an edit</string>
     <string name="edit_section_description">

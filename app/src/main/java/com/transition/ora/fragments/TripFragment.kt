@@ -174,8 +174,15 @@ class TripFragment : Fragment() {
         tripFareZoneUsedIcon?.visibility = View.GONE
         val tripFareZoneUsedTitle = this.mView?.findViewById<TextView>(R.id.tripFareZoneUsedTitleTv)
         tripFareZoneUsedTitle?.visibility = View.GONE
+        when (trip.operatorId) {
+            5u -> tripFareZoneUsedTitle?.text = context?.getString(R.string.fare_stop_used_section_title)
+            else -> tripFareZoneUsedTitle?.text = context?.getString(R.string.fare_zone_used_section_title)
+        }
         val tripFareZoneUsedValue = this.mView?.findViewById<TextView>(R.id.tripFareZoneUsedValueTv)
-        tripFareZoneUsedValue?.text = context?.getString(R.string.fare_zone_used_value, CardContentConverter.getZoneById(trip.zoneId))
+        when (trip.operatorId) {
+            5u -> tripFareZoneUsedValue?.text = context?.getString(R.string.fare_stop_used_value, CardContentConverter.getZoneById(trip.zoneId))
+            else -> tripFareZoneUsedValue?.text = context?.getString(R.string.fare_zone_used_value, CardContentConverter.getZoneById(trip.zoneId))
+        }
         tripFareZoneUsedValue?.visibility = View.GONE
     }
 

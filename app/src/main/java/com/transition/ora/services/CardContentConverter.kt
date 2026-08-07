@@ -89,7 +89,7 @@ class CardContentConverter {
                         R.drawable.bus
                     )
 
-                    return proposition ?: Line("?", "Unknown (operatorID: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
+                    proposition ?: Line("?", "Unknown (operatorID: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
                 }
             }
         }
@@ -112,7 +112,8 @@ class CardContentConverter {
                 0xCEu -> "C"
                 0xCFu -> "C"
 
-                else -> "? ($id)"
+                in 0x00u..0xFFu -> "? ($id)"
+                else -> id.toString()
             }
         }
 
