@@ -75,35 +75,15 @@ class Fare(
                 date
             }
 
-
+            FareProductId.OCC_EVENING_UNLIMITED.id,
             FareProductId.OPUS_EVENING_UNLIMITED.id -> {
                 date.set(
-                    validityFromDate.get(Calendar.YEAR),
-                    validityFromDate.get(Calendar.MONTH),
-                    validityFromDate.get(Calendar.DATE),
+                    validityUntilDate.get(Calendar.YEAR),
+                    validityUntilDate.get(Calendar.MONTH),
+                    validityUntilDate.get(Calendar.DATE),
                     18,
                     0
                 )
-                date
-            }
-            FareProductId.OCC_EVENING_UNLIMITED.id -> {
-                if (validityFromDate.get(Calendar.HOUR_OF_DAY) >= 18) {
-                    date.set(
-                        validityFromDate.get(Calendar.YEAR),
-                        validityFromDate.get(Calendar.MONTH),
-                        validityFromDate.get(Calendar.DATE),
-                        18,
-                        0
-                    )
-                } else {
-                    date.set(
-                        validityFromDate.get(Calendar.YEAR),
-                        validityFromDate.get(Calendar.MONTH),
-                        validityFromDate.get(Calendar.DATE) - 1,
-                        18,
-                        0
-                    )
-                }
 
                 date
             }
@@ -140,14 +120,16 @@ class Fare(
                     validityUntilDate.get(Calendar.MONTH),
                     validityUntilDate.get(Calendar.DATE) - daysToRemove,
                     when (validityUntilDate.get(Calendar.MONTH)) {
-                        Calendar.MAY -> 5
+                        Calendar.MAY,
                         Calendar.JUNE -> 5
+                        Calendar.JULY,
+                        Calendar.AUGUST,
+                        Calendar.SEPTEMBER -> when (validityUntilDate.get(Calendar.YEAR)) {
+                            in 2022..2024 -> 10
+                            else -> 5
+                        }
 
-                        Calendar.JULY -> 10
-                        Calendar.AUGUST -> 10
-                        Calendar.SEPTEMBER -> 10
-
-                        else -> 0
+                        else -> 16
                     },
                     0
                 )
@@ -810,6 +792,7 @@ class Fare(
             }
 
 
+            FareProductId.OCC_EVENING_UNLIMITED.id,
             FareProductId.OPUS_EVENING_UNLIMITED.id -> {
                 date.set(
                     validityFromDate.get(Calendar.YEAR),
@@ -818,27 +801,6 @@ class Fare(
                     5,
                     0
                 )
-                date
-            }
-            FareProductId.OCC_EVENING_UNLIMITED.id -> {
-                if (validityFromDate.get(Calendar.HOUR_OF_DAY) >= 18) {
-                    date.set(
-                        validityFromDate.get(Calendar.YEAR),
-                        validityFromDate.get(Calendar.MONTH),
-                        validityFromDate.get(Calendar.DATE) + 1,
-                        5,
-                        0
-                    )
-                } else {
-                    date.set(
-                        validityFromDate.get(Calendar.YEAR),
-                        validityFromDate.get(Calendar.MONTH),
-                        validityFromDate.get(Calendar.DATE),
-                        5,
-                        0
-                    )
-                }
-
                 date
             }
 

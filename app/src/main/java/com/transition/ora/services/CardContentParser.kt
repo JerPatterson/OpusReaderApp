@@ -96,6 +96,19 @@ class CardContentParser {
                 }
             }
 
+            FareProductId.OCC_3DAYS_BUS.id,
+            FareProductId.OCC_3DAYS_BUS_OOT.id,
+            FareProductId.OCC_3DAYS_ALL_MODES_A.id,
+            FareProductId.OCC_3DAYS_ALL_MODES_AB.id,
+            FareProductId.OCC_3DAYS_ALL_MODES_ABC.id,
+            FareProductId.OCC_3DAYS_ALL_MODES_ABCD.id -> {
+                val validityFrom = getOccasionalCardFareValidityFromDate(data[2])
+                if (validityFrom != null) {
+                    expiryDate.set(Calendar.HOUR_OF_DAY, 23)
+                    expiryDate.set(Calendar.MINUTE, 59)
+                }
+            }
+
             FareProductId.OCC_EVENING_UNLIMITED.id -> {
                 val validityFrom = getOccasionalCardFareValidityFromDate(data[2])
                 if (validityFrom != null) {
@@ -107,7 +120,7 @@ class CardContentParser {
             FareProductId.OCC_WEEKEND_UNLIMITED.id -> {
                 val validityFrom = getOccasionalCardFareValidityFromDate(data[2])
                 if (validityFrom != null) {
-                    val daysToAdd = when (validityFrom.get(Calendar.DAY_OF_WEEK)) {
+                    val daysToAdd = when (expiryDate.get(Calendar.DAY_OF_WEEK)) {
                         Calendar.FRIDAY -> 3
                         Calendar.SATURDAY -> 2
                         Calendar.SUNDAY -> 1
