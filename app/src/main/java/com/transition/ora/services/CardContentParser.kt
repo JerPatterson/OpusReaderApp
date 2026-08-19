@@ -300,10 +300,11 @@ class CardContentParser {
             val lineId = this.getOccasionalCardTripLineId(data[i])
             val operatorId = this.getOccasionalCardTripOperatorId(data[i])
             val zoneId = this.getOccasionalCardTripZoneId(data[i])
+            val directionId = this.getOccasionalCardTripDirectionId(data[i])
             val useDate = this.getOccasionalCardTripUseDate(data[i])
             val firstUseDate = this.getOccasionalCardTripFirstUseDate(data[i])
 
-            trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate))
+            trips.add(Trip(lineId, operatorId, zoneId, directionId, useDate, firstUseDate))
         }
 
         return trips
@@ -322,6 +323,10 @@ class CardContentParser {
     private fun getOccasionalCardTripZoneId(data: ByteArray): UInt {
         return (data[7].toUInt().and(0xFFu).shl(8)
                 or data[8].toUInt().and(0xFFu))
+    }
+
+    private fun getOccasionalCardTripDirectionId(data: ByteArray): UInt {
+        return data[6].toUInt().and(0x0Fu)
     }
 
     private fun getOccasionalCardTripUseDate(data: ByteArray): Calendar {
@@ -501,6 +506,7 @@ class CardContentParser {
             val lineId: UInt
             val operatorId: UInt
             val zoneId: UInt
+            val directionId: UInt
             val firstUseDate: Calendar
             val fareIndex: UInt
             val isValid: Boolean
@@ -508,6 +514,7 @@ class CardContentParser {
                 lineId = this.getOpusCardTripLineId(data, 1)
                 operatorId = this.getOpusCardTripOperatorId(data, 1)
                 zoneId = this.getOpusCardTripZoneId(data, 1)
+                directionId = this.getOpusCardTripDirectionId(data, 5)
                 firstUseDate = this.getOpusCardTripFirstUseDate(data, 5)
                 fareIndex = this.getOpusCardTripFareIndex(data, 5)
                 isValid = this.isValidOpusCardTrip(data, 1)
@@ -515,6 +522,7 @@ class CardContentParser {
                 lineId = this.getOpusCardTripLineId(data)
                 operatorId = this.getOpusCardTripOperatorId(data)
                 zoneId = this.getOpusCardTripZoneId(data)
+                directionId = this.getOpusCardTripDirectionId(data)
                 firstUseDate = this.getOpusCardTripFirstUseDate(data)
                 fareIndex = this.getOpusCardTripFareIndex(data)
                 isValid = this.isValidOpusCardTrip(data)
@@ -523,7 +531,7 @@ class CardContentParser {
             val useDate = this.getOpusCardTripUseDate(data)
 
             if (fareIndex.toInt() in 1..4) {
-                trips.add(Trip(lineId, operatorId, zoneId, useDate, firstUseDate, fareIndex, fares[fareIndex.toInt() - 1].typeId, isValid))
+                trips.add(Trip(lineId, operatorId, zoneId, directionId, useDate, firstUseDate, fareIndex, fares[fareIndex.toInt() - 1].typeId, isValid))
             }
         }
 
@@ -549,6 +557,10 @@ class CardContentParser {
         return (data[8 + byteOffset].toUInt().and(0x07u).shl(13)
                 or data[9 + byteOffset].toUInt().and(0xFFu).shl(5)
                 or data[10 + byteOffset].toUInt().and(0xF8u).shr(3))
+    }
+
+    private fun getOpusCardTripDirectionId(data: ByteArray, byteOffset: Int = 0): UInt {
+        return data[17 + byteOffset].toUInt().and(0x1Eu).shr(1)
     }
 
     private fun getOpusCardTripUseDate(data: ByteArray): Calendar {

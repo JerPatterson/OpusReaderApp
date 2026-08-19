@@ -542,9 +542,9 @@ object LineRegistry {
         64u to Line("313", "Chomedey / Métro Côte-Vertu", "#151f6d", "#ffffff", R.drawable.bus),
         27u to Line("322", "Duvernay / Métro Henri-Bourassa", "#151f6d", "#ffffff", R.drawable.bus),
         76u to Line("335", "Vimont / Métro Henri-Bourassa", "#151f6d", "#ffffff", R.drawable.bus),
-        151u to Line("402", "Sainte-Rose / Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus),
-        152u to Line("404", "Sainte-Dorothée / Station Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus),
-        299u to Line("713", "Sainte-Dorothée / Métro Côte-Vertu", "#151f6d", "#ffffff", R.drawable.bus),
+        151u to Line("402", "Sainte-Rose / Gare Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus),
+        152u to Line("404", "Sainte-Dorothée / Gare Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus),
+        299u to Line("713", "Station Sainte-Dorothée / Métro Côte-Vertu", "#151f6d", "#ffffff", R.drawable.bus),
         290u to Line("730", "Station Sainte-Dorothée / Montréal", "#151f6d", "#ffffff", R.drawable.bus),
         295u to Line("744", "Métro Côte-Vertu / Station Sainte-Dorothée", "#151f6d", "#ffffff", R.drawable.bus),
         153u to Line("901", "Saint-François / Métro Cartier", "#151f6d", "#ffffff", R.drawable.bus),
@@ -1017,7 +1017,7 @@ object LineRegistry {
 
     fun getLineForSTM(id: UInt, zone: String): Line? = lineMapForSTM[id]?.invoke(zone)
     fun getLineForRTL(id: UInt): Line? = lineMapForRTL[id]
-    fun getLineForEXO(id: UInt, zone: String): Line? = lineMapForExo[id]?.invoke(zone)
+    fun getLineForExo(id: UInt, zone: String): Line? = lineMapForExo[id]?.invoke(zone)
     fun getLineForRTC(id: UInt): Line? = lineMapForRTC[id]
     fun getLineForSTL(id: UInt): Line? = lineMapForSTL[id]
     fun getLineForExoSorelVarennes(id: UInt): Line? = lineMapForExoSorelVarennes[id]
@@ -1028,11 +1028,11 @@ object LineRegistry {
     fun getLineForExoRoussillon(id: UInt): Line? = lineMapForExoRoussillon[id]
     fun getLineForExoHautSaintLaurent(id: UInt): Line? = lineMapForExoHautSaintLaurent[id]
     fun getLineForExoSudOuest(id: UInt): Line? = lineMapForExoSudOuest[id]
-    fun getLineForEXOLaurentides(id: UInt): Line? = lineMapForExoLaurentides[id]
+    fun getLineForExoLaurentides(id: UInt): Line? = lineMapForExoLaurentides[id]
     fun getLineForSTLevis(id: UInt): Line? = lineMapForSTLevis[id]
     fun getLineForExoPresquIle(id: UInt): Line? = lineMapForExoPresquIle[id]
-    fun getLineForEXOTerrebonneMascouche(id: UInt): Line? = lineMapForExoTerrebonneMascouche[id]
-    fun getLineForEXOLassomption(id: UInt): Line? = lineMapForExoLassomption[id]
+    fun getLineForExoTerrebonneMascouche(id: UInt): Line? = lineMapForExoTerrebonneMascouche[id]
+    fun getLineForExoLassomption(id: UInt): Line? = lineMapForExoLassomption[id]
     fun getLineForMRCJoliette(id: UInt): Line? = lineMapForMRCJoliette[id]
     fun getLineForSTQ(id: UInt): Line? = lineMapForSTQ[id]
     fun getLineForREM(id: UInt, zone: String): Line? = lineMapForREM[id]?.invoke(zone)

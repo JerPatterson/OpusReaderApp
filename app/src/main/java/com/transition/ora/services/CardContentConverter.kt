@@ -7,6 +7,7 @@ import com.transition.ora.database.entities.CardPropositionEntity
 import com.transition.ora.enums.CardType
 import com.transition.ora.enums.CardTypeVariant
 import com.transition.ora.registries.FareProductRegistry
+import com.transition.ora.registries.HeadsignRegistry
 import com.transition.ora.registries.LineRegistry
 import com.transition.ora.registries.OperatorRegistry
 import com.transition.ora.types.FareProduct
@@ -53,47 +54,6 @@ class CardContentConverter {
             }
         }
 
-        fun getOperatorById(id: UInt): Operator {
-            return OperatorRegistry.get(id) ?: Operator("Unknown (id: $id)", "#696969", R.drawable.unknown)
-        }
-
-        fun getLineById(context: Context, zoneId: UInt, operatorId: UInt, lineId: UInt): Line {
-            return when (operatorId) {
-                2u -> this.getSTMLineById(context, zoneId, operatorId, lineId)
-                3u -> this.getRTLLineById(context, operatorId, lineId)
-                4u -> this.getEXOLineById(context, zoneId, operatorId, lineId)
-                5u -> this.getRTCLineById(context, operatorId, lineId)
-                6u -> this.getSTLLineById(context, operatorId, lineId)
-                7u -> this.getEXOSorelVarennesLineById(context, operatorId, lineId)
-                8u -> this.getEXOSainteJulieLineById(context, operatorId, lineId)
-                9u -> this.getEXOValleeRichelieuLineById(context, operatorId, lineId)
-                10u -> this.getEXOChamblyRichelieuCarignanLineById(context, operatorId, lineId)
-                11u -> this.getEXOLeRichelainLineById(context, operatorId, lineId)
-                12u -> this.getEXORoussillonLineById(context, operatorId, lineId)
-                13u -> this.getEXOHautSaintLaurentLineById(context, operatorId, lineId)
-                14u -> this.getEXOSudOuestLineById(context, operatorId, lineId)
-                15u -> this.getEXOLaurentidesLineById(context, operatorId, lineId)
-                16u -> this.getSTLevisLineById(context, operatorId, lineId)
-                17u -> this.getEXOPresquIleLineById(context, operatorId, lineId)
-                18u -> this.getEXOTerrebonneMascoucheLineById(context, operatorId, lineId)
-                19u -> this.getEXOLassomptionLineById(context, operatorId, lineId)
-                20u -> this.getMRCJolietteLineById(context, operatorId, lineId)
-                21u -> this.getSTQLineById(context, operatorId, lineId)
-                22u -> this.getREMLineById(context, zoneId, operatorId, lineId)
-
-                else -> {
-                    val proposition: Line? = lookForLineProposition(
-                        context,
-                        operatorId.toString(),
-                        lineId.toString(),
-                        R.drawable.bus
-                    )
-
-                    proposition ?: Line("?", "Unknown (operatorID: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
-                }
-            }
-        }
-
         fun getZoneById(id: UInt): String {
             return when (id) {
                 0x65u -> "A"
@@ -117,6 +77,71 @@ class CardContentConverter {
             }
         }
 
+        fun getOperatorById(id: UInt): Operator {
+            return OperatorRegistry.get(id) ?: Operator("Unknown (id: $id)", "#696969", R.drawable.unknown)
+        }
+
+        fun getLineById(context: Context, zoneId: UInt, operatorId: UInt, lineId: UInt): Line {
+            return when (operatorId) {
+                2u -> this.getSTMLineById(context, zoneId, operatorId, lineId)
+                3u -> this.getRTLLineById(context, operatorId, lineId)
+                4u -> this.getExoLineById(context, zoneId, operatorId, lineId)
+                5u -> this.getRTCLineById(context, operatorId, lineId)
+                6u -> this.getSTLLineById(context, operatorId, lineId)
+                7u -> this.getExoSorelVarennesLineById(context, operatorId, lineId)
+                8u -> this.getExoSainteJulieLineById(context, operatorId, lineId)
+                9u -> this.getExoValleeRichelieuLineById(context, operatorId, lineId)
+                10u -> this.getExoChamblyRichelieuCarignanLineById(context, operatorId, lineId)
+                11u -> this.getExoLeRichelainLineById(context, operatorId, lineId)
+                12u -> this.getExoRoussillonLineById(context, operatorId, lineId)
+                13u -> this.getExoHautSaintLaurentLineById(context, operatorId, lineId)
+                14u -> this.getExoSudOuestLineById(context, operatorId, lineId)
+                15u -> this.getExoLaurentidesLineById(context, operatorId, lineId)
+                16u -> this.getSTLevisLineById(context, operatorId, lineId)
+                17u -> this.getExoPresquIleLineById(context, operatorId, lineId)
+                18u -> this.getExoTerrebonneMascoucheLineById(context, operatorId, lineId)
+                19u -> this.getExoLassomptionLineById(context, operatorId, lineId)
+                20u -> this.getMRCJolietteLineById(context, operatorId, lineId)
+                21u -> this.getSTQLineById(context, operatorId, lineId)
+                22u -> this.getREMLineById(context, zoneId, operatorId, lineId)
+
+                else -> {
+                    val proposition: Line? = lookForLineProposition(
+                        context,
+                        operatorId.toString(),
+                        lineId.toString(),
+                        R.drawable.bus
+                    )
+
+                    proposition ?: Line("?", "Unknown (operatorID: $operatorId)", "#696969", "#ffffff", R.drawable.unknown)
+                }
+            }
+        }
+
+        fun getHeadsignById(operatorId: UInt, lineId: UInt, directionId: UInt): String {
+            return when (operatorId) {
+                2u -> this.getSTMHeadsignById(lineId, directionId)
+                3u -> this.getRTLHeadsignById(lineId, directionId)
+                5u -> this.getRTCHeadsignById(lineId, directionId)
+                6u -> this.getSTLHeadsignById(lineId, directionId)
+                7u -> this.getExoSorelVarennesHeadsignById(lineId, directionId)
+                8u -> this.getExoSainteJulieHeadsignById(lineId, directionId)
+                9u -> this.getExoValleeRichelieuHeadsignById(lineId, directionId)
+                10u -> this.getExoChamblyRichelieuCarignanHeadsignById(lineId, directionId)
+                11u -> this.getExoLeRichelainHeadsignById(lineId, directionId)
+                14u -> this.getExoSudOuestHeadsignById(lineId, directionId)
+                15u -> this.getExoLaurentidesHeadsignById(lineId, directionId)
+                16u -> this.getSTLevisHeadsignById(lineId, directionId)
+                17u -> this.getExoPresquIleHeadsignById(lineId, directionId)
+                18u -> this.getExoTerrebonneMascoucheHeadsignById(lineId, directionId)
+                19u -> this.getExoLassomptionHeadsignById(lineId, directionId)
+                20u -> this.getMRCJolietteHeadsignById(lineId, directionId)
+                21u -> this.getSTQHeadsignById(lineId, directionId)
+
+                else -> "? ($directionId)"
+            }
+        }
+
         private fun getSTMLineById(context: Context, zoneId: UInt, operatorId: UInt, id: UInt): Line {
             val zone = getZoneById(zoneId)
             return LineRegistry.getLineForSTM(id, zone) ?: run {
@@ -128,6 +153,16 @@ class CardContentConverter {
                 )
 
                 return proposition ?: Line("?", "STM ($id)", "#009ee0", "#ffffff", R.drawable.bus)
+            }
+        }
+
+        private fun getSTMHeadsignById(lineId: UInt, directionId: UInt): String {
+            if (lineId == 3u) {
+                return "Berri-UQAM"
+            }
+
+            return HeadsignRegistry.getHeadsignForSTM(directionId) ?: run {
+                return "? ($directionId)"
             }
         }
 
@@ -144,9 +179,9 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOLineById(context: Context, zoneId: UInt, operatorId: UInt, id: UInt): Line {
+        private fun getExoLineById(context: Context, zoneId: UInt, operatorId: UInt, id: UInt): Line {
             val zone = getZoneById(zoneId)
-            return LineRegistry.getLineForEXO(id, zone) ?: run {
+            return LineRegistry.getLineForExo(id, zone) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
                     operatorId.toString(),
@@ -155,6 +190,12 @@ class CardContentConverter {
                 )
 
                 return proposition ?: Line("?", "exo ($id)", "#1f1f1f", "#ffffff", R.drawable.train)
+            }
+        }
+
+        private fun getRTLHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForRTL(lineId, directionId) ?: run {
+                return "? ($directionId)"
             }
         }
 
@@ -171,6 +212,12 @@ class CardContentConverter {
             }
         }
 
+        private fun getRTCHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForRTC(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
         private fun getSTLLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForSTL(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
@@ -184,7 +231,13 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOSorelVarennesLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getSTLHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForSTL(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoSorelVarennesLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoSorelVarennes(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
@@ -197,7 +250,13 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOSainteJulieLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getExoSorelVarennesHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoSorelVarennes(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoSainteJulieLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoSainteJulie(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
@@ -210,7 +269,13 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOValleeRichelieuLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getExoSainteJulieHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoSainteJulie(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoValleeRichelieuLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoValleeRichelieu(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
@@ -223,7 +288,13 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOChamblyRichelieuCarignanLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getExoValleeRichelieuHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoValleeRichelieu(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoChamblyRichelieuCarignanLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoChamblyRichelieuCarignan(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
@@ -236,7 +307,13 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOLeRichelainLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getExoChamblyRichelieuCarignanHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoChamblyRichelieuCarignan(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoLeRichelainLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoLeRichelain(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
@@ -249,7 +326,13 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXORoussillonLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getExoLeRichelainHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoLeRichelain(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoRoussillonLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoRoussillon(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
@@ -262,7 +345,7 @@ class CardContentConverter {
             }
         }
  
-        private fun getEXOSudOuestLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getExoSudOuestLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoSudOuest(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
@@ -275,8 +358,14 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOLaurentidesLineById(context: Context, operatorId: UInt, id: UInt): Line {
-            return LineRegistry.getLineForEXOLaurentides(id) ?: run {
+        private fun getExoSudOuestHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoSudOuest(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoLaurentidesLineById(context: Context, operatorId: UInt, id: UInt): Line {
+            return LineRegistry.getLineForExoLaurentides(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
                     operatorId.toString(),
@@ -285,6 +374,12 @@ class CardContentConverter {
                 )
 
                 return proposition ?: Line("?", "exo Laurentides ($id)", "#1f1f1f", "#ffffff", R.drawable.bus)
+            }
+        }
+
+        private fun getExoLaurentidesHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoLaurentides(lineId, directionId) ?: run {
+                return "? ($directionId)"
             }
         }
 
@@ -301,7 +396,13 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOPresquIleLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getSTLevisHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForSTLevis(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoPresquIleLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoPresquIle(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
@@ -314,8 +415,14 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOTerrebonneMascoucheLineById(context: Context, operatorId: UInt, id: UInt): Line {
-            return LineRegistry.getLineForEXOTerrebonneMascouche(id) ?: run {
+        private fun getExoPresquIleHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoPresquIle(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoTerrebonneMascoucheLineById(context: Context, operatorId: UInt, id: UInt): Line {
+            return LineRegistry.getLineForExoTerrebonneMascouche(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
                     operatorId.toString(),
@@ -327,8 +434,14 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOLassomptionLineById(context: Context, operatorId: UInt, id: UInt): Line {
-            return LineRegistry.getLineForEXOLassomption(id) ?: run {
+        private fun getExoTerrebonneMascoucheHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoTerrebonneMascouche(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoLassomptionLineById(context: Context, operatorId: UInt, id: UInt): Line {
+            return LineRegistry.getLineForExoLassomption(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
                     operatorId.toString(),
@@ -340,7 +453,13 @@ class CardContentConverter {
             }
         }
 
-        private fun getEXOHautSaintLaurentLineById(context: Context, operatorId: UInt, id: UInt): Line {
+        private fun getExoLassomptionHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForExoLassomption(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
+        private fun getExoHautSaintLaurentLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForExoHautSaintLaurent(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
                     context,
@@ -366,6 +485,12 @@ class CardContentConverter {
             }
         }
 
+        private fun getSTQHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForSTQ(lineId, directionId) ?: run {
+                return "? ($directionId)"
+            }
+        }
+
         private fun getMRCJolietteLineById(context: Context, operatorId: UInt, id: UInt): Line {
             return LineRegistry.getLineForMRCJoliette(id) ?: run {
                 val proposition: Line? = lookForLineProposition(
@@ -376,6 +501,12 @@ class CardContentConverter {
                 )
 
                 return proposition ?: Line("?", "MRC Joliette ($id)", "#81a449", "#ffffff", R.drawable.bus)
+            }
+        }
+
+        private fun getMRCJolietteHeadsignById(lineId: UInt, directionId: UInt): String {
+            return HeadsignRegistry.getHeadsignForMRCJoliette(lineId, directionId) ?: run {
+                return "? ($directionId)"
             }
         }
 

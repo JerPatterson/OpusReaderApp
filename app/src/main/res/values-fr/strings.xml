@@ -34,8 +34,8 @@
     <string name="delete_confirmation_message">Voulez-vous vraiment supprimer cet élément définitivement ?</string>
 
     <string name="fare_used_section_title">Titre utilisé pour embarquer</string>
-    <string name="fare_zone_used_section_title">Zone d\'utilisation du titre</string>
-    <string name="fare_stop_used_section_title">Arrêt d\'utilisation du titre</string>
+    <string name="fare_zone_used_section_title">Emplacement d\'utilisation du titre</string>
+    <string name="fare_direction_used_section_title">Direction empruntée</string>
     <string name="fare_zone_used_value">Zone %1$s</string>
     <string name="fare_stop_used_value">Arrêt %1$s</string>
 

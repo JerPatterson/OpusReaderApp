@@ -30,6 +30,7 @@ import com.transition.ora.database.entities.CardPropositionEntity
 import com.transition.ora.firestore.LineFirestore
 import com.transition.ora.firestore.OperatorFirestore
 import com.transition.ora.services.CardContentConverter
+import com.transition.ora.services.CardContentConverter.Companion.getZoneById
 import com.transition.ora.types.Line
 import com.transition.ora.types.Operator
 import com.transition.ora.types.Trip
@@ -110,6 +111,7 @@ class TripFragment : Fragment() {
 
         if (trip.fareTypeId != null) addTripFareUsedSection(trip)
         if (trip.zoneId != 0u) addTripFareZoneUsedSection(trip)
+        if (trip.directionId != 0u) addTripDirectionUsedSection(trip)
     }
 
     private fun addTripLine(line: Line) {
@@ -174,16 +176,30 @@ class TripFragment : Fragment() {
         tripFareZoneUsedIcon?.visibility = View.GONE
         val tripFareZoneUsedTitle = this.mView?.findViewById<TextView>(R.id.tripFareZoneUsedTitleTv)
         tripFareZoneUsedTitle?.visibility = View.GONE
-        when (trip.operatorId) {
-            5u -> tripFareZoneUsedTitle?.text = context?.getString(R.string.fare_stop_used_section_title)
-            else -> tripFareZoneUsedTitle?.text = context?.getString(R.string.fare_zone_used_section_title)
-        }
+        tripFareZoneUsedTitle?.text = context?.getString(R.string.fare_zone_used_section_title)
         val tripFareZoneUsedValue = this.mView?.findViewById<TextView>(R.id.tripFareZoneUsedValueTv)
         when (trip.operatorId) {
-            5u -> tripFareZoneUsedValue?.text = context?.getString(R.string.fare_stop_used_value, CardContentConverter.getZoneById(trip.zoneId))
-            else -> tripFareZoneUsedValue?.text = context?.getString(R.string.fare_zone_used_value, CardContentConverter.getZoneById(trip.zoneId))
+            5u -> tripFareZoneUsedValue?.text = context?.getString(R.string.fare_stop_used_value,
+                getZoneById(trip.zoneId)
+            )
+            else -> tripFareZoneUsedValue?.text = context?.getString(R.string.fare_zone_used_value,
+                getZoneById(trip.zoneId)
+            )
         }
         tripFareZoneUsedValue?.visibility = View.GONE
+    }
+
+    private fun addTripDirectionUsedSection(trip: Trip) {
+        val tripDirectionUsedDivider = this.mView?.findViewById<View>(R.id.tripDirectionUsedDivider)
+        tripDirectionUsedDivider?.visibility = View.GONE
+        val tripDirectionUsedIcon = this.mView?.findViewById<View>(R.id.tripDirectionUsedImageView)
+        tripDirectionUsedIcon?.visibility = View.GONE
+        val tripDirectionUsedTitle = this.mView?.findViewById<TextView>(R.id.tripDirectionUsedTitleTv)
+        tripDirectionUsedTitle?.visibility = View.GONE
+
+        val tripDirectionUsedValue = this.mView?.findViewById<TextView>(R.id.tripDirectionUsedValueTv)
+        tripDirectionUsedValue?.text = CardContentConverter.getHeadsignById(trip.operatorId, trip.lineId, trip.directionId)
+        tripDirectionUsedValue?.visibility = View.GONE
     }
 
     private fun addTripCrowdSourceSection(trip: Trip, line: Line) {
@@ -230,16 +246,43 @@ class TripFragment : Fragment() {
 
         override fun onClick(view: View) {
             if (isShowing) {
-                if (trip.fareTypeId != null) hideTripFareUsedSection(view)
-                if (trip.zoneId != 0u) hideTripFareZoneUsedSection(view)
+                if (hasTripFareUsed(trip)) hideTripFareUsedSection(view)
+                if (hasTripFareZoneUsed(trip)) hideTripFareZoneUsedSection(view)
+                if (hasTripDirectionUsed(trip)) hideTripDirectionUsedSection(view)
                 hideTripCrowdSourceSection(view)
             } else {
-                if (trip.fareTypeId != null) showTripFareUsedSection(view)
-                if (trip.zoneId != 0u) showTripFareZoneUsedSection(view)
+                if (hasTripFareUsed(trip)) showTripFareUsedSection(view)
+                if (hasTripFareZoneUsed(trip)) showTripFareZoneUsedSection(view)
+                if (hasTripDirectionUsed(trip)) showTripDirectionUsedSection(view)
                 showTripCrowdSourceSection(view)
             }
 
             isShowing = !isShowing
+        }
+
+        private fun hasTripFareUsed(trip: Trip): Boolean {
+            return trip.fareTypeId != null
+        }
+
+        private fun hasTripFareZoneUsed(trip: Trip): Boolean {
+            return when (trip.operatorId) {
+                20u -> false
+                else -> trip.zoneId != 0u
+            }
+        }
+
+        private fun hasTripDirectionUsed(trip: Trip): Boolean {
+            return when (trip.operatorId) {
+                2u -> {
+                    when(trip.lineId) {
+                        3u -> getZoneById(trip.zoneId) == "B"
+                        in 1u..4u, 224u -> false
+                        else -> trip.directionId != 0u
+                    }
+                }
+                4u, 22u -> false
+                else -> trip.directionId != 0u
+            }
         }
 
         private fun showTripFareUsedSection(view: View) {
@@ -264,6 +307,17 @@ class TripFragment : Fragment() {
             tripFareZoneUsedValue?.visibility = View.VISIBLE
         }
 
+        private fun showTripDirectionUsedSection(view: View) {
+            val tripDirectionUsedDivider = view.findViewById<View>(R.id.tripDirectionUsedDivider)
+            tripDirectionUsedDivider?.visibility = View.VISIBLE
+            val tripDirectionUsedIcon = view.findViewById<View>(R.id.tripDirectionUsedImageView)
+            tripDirectionUsedIcon?.visibility = View.VISIBLE
+            val tripDirectionUsedTitle = view.findViewById<TextView>(R.id.tripDirectionUsedTitleTv)
+            tripDirectionUsedTitle?.visibility = View.VISIBLE
+            val tripDirectionUsedValue = view.findViewById<TextView>(R.id.tripDirectionUsedValueTv)
+            tripDirectionUsedValue?.visibility = View.VISIBLE
+        }
+
         private fun hideTripFareUsedSection(view: View) {
             val tripFareUsedDivider = view.findViewById<View>(R.id.tripFareUsedDivider)
             tripFareUsedDivider?.visibility = View.GONE
@@ -284,6 +338,17 @@ class TripFragment : Fragment() {
             tripFareZoneUsedTitle?.visibility = View.GONE
             val tripFareZoneUsedValue = view.findViewById<TextView>(R.id.tripFareZoneUsedValueTv)
             tripFareZoneUsedValue?.visibility = View.GONE
+        }
+
+        private fun hideTripDirectionUsedSection(view: View) {
+            val tripDirectionUsedDivider = view.findViewById<View>(R.id.tripDirectionUsedDivider)
+            tripDirectionUsedDivider?.visibility = View.GONE
+            val tripDirectionUsedIcon = view.findViewById<View>(R.id.tripDirectionUsedImageView)
+            tripDirectionUsedIcon?.visibility = View.GONE
+            val tripDirectionUsedTitle = view.findViewById<TextView>(R.id.tripDirectionUsedTitleTv)
+            tripDirectionUsedTitle?.visibility = View.GONE
+            val tripDirectionUsedValue = view.findViewById<TextView>(R.id.tripDirectionUsedValueTv)
+            tripDirectionUsedValue?.visibility = View.GONE
         }
 
         private fun showTripCrowdSourceSection(view: View) {
