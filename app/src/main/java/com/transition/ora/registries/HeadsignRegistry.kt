@@ -73,10 +73,28 @@ object HeadsignRegistry {
         193u to mapOf(1u to "Saint-François", 2u to "Métro Radisson"),
         270u to mapOf(1u to "Saint-François", 2u to "Métro Montmorency"),
         304u to mapOf(1u to "Horizon-Jeunesse", 2u to "Métro Cartier"),
+        191u to mapOf(1u to "Collège Laval", 2u to "Auteuil"),
     )
 
     private val headsignMapForExoLaurentides: Map<UInt, Map<UInt, String>> = mapOf(
-        116u to mapOf(1u to "Pointe-Calumet", 2u to "Saint-Eustache"),
+        153u to mapOf(1u to "Carrefour du Nord", 2u to "SmartCentre Saint-Jérôme"),
+        158u to mapOf(1u to "Carrefour du Nord", 2u to "Terminus Saint-Jérôme"),
+        183u to mapOf(1u to "Fontainebleau - Chambéry", 2u to "Terminus Sainte-Thérèse"),
+        184u to mapOf(1u to "Rosemère", 2u to "Gare Rosemère"),
+        185u to mapOf(1u to "Lorraine - Terrebonne", 2u to "Terminus Sainte-Thérèse"),
+        186u to mapOf(1u to "Sainte-Anne-des-Plaines", 2u to "Terminus Sainte-Thérèse"),
+        189u to mapOf(1u to "Lorraine - Terrebonne", 2u to "Gare Rosemère"),
+        198u to mapOf(1u to "Sainte-Thérèse", 2u to "Deux-Montagnes"),
+        199u to mapOf(1u to "Station Deux-Montagnes", 2u to "Métro Montmorency"),
+        200u to mapOf(1u to "Sainte-Anne-des-Plaines", 2u to "Métro Cartier"),
+        201u to mapOf(1u to "Sainte-Thérèse", 2u to "Station Deux-Montagnes"),
+        202u to mapOf(1u to "Sainte-Anne-des-Plaines", 2u to "Métro Cartier"),
+        203u to mapOf(1u to "Sainte-Thérèse", 2u to "Station Deux-Montagnes"),
+        204u to mapOf(1u to "Terminus Terrebonne", 2u to "Terminus Sainte-Thérèse"),
+        205u to mapOf(1u to "Boisbriand", 2u to "Métro Montmorency"),
+        206u to mapOf(1u to "Station Deux-Montagnes", 2u to "Métro Montmorency"),
+        171u to mapOf(1u to "Gare Saint-Jérôme", 2u to "Métro Montmorency"),
+        142u to mapOf(1u to "Saint-Placide", 2u to "Station Deux-Montagnes"),
     )
 
     fun getHeadsignForSTM(directionId: UInt): String? = directionMapForSTM[directionId]
