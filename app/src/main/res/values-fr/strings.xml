@@ -230,7 +230,8 @@
     <string name="trip_boarding_date_title">Embarquement le</string>
     <string name="trip_validity_from_date_title">Valide à partir du</string>
 
-    <string name="fare_info_section_title">Information sur le titre</string>
+    <string name="fare_reload_section_title">Date de recharge du titre</string>
+    <string name="fare_info_section_title">Information à propos du titre</string>
     <string name="unknown_fare_info">
         Ce titre est présentement inconnu par l\'application.
     </string>

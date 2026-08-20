@@ -423,6 +423,7 @@ class CardContentParser {
             val typeId = this.getOpusCardFareTypeId(data)
             val operatorId = this.getOpusCardFareOperatorId(data)
             val buyingDate = this.getOpusCardFareBuyingDate(data)
+            val reloadingDate = this.getOpusCardFareReloadingDate(data)
 
             if ((data[5].toUInt().and(0xFFu).shl(8)
                         or data[6].toUInt().and(0xFFu)).compareTo(0u) == 0) {
@@ -436,6 +437,7 @@ class CardContentParser {
                         ticketCount,
                         null,
                         null,
+                        reloadingDate,
                         true,
                         i.toUInt()
                     )
@@ -452,6 +454,7 @@ class CardContentParser {
                         null,
                         validityFromDate,
                         validityUntilDate,
+                        reloadingDate,
                         true,
                         i.toUInt()
                     )
@@ -481,19 +484,27 @@ class CardContentParser {
         return this.uIntToDate(fareDaysBuying, fareMinutesBuying)
     }
 
-    private fun getOpusCardFareValidityFromDate(data: ByteArray): Calendar {
+    private fun getOpusCardFareReloadingDate(data: ByteArray): Calendar? {
+        val fareDaysReloading = (data[12].toUInt().and(0x01u).shl(13)
+                or data[13].toUInt().and(0xFFu).shl(5)
+                or data[14].toUInt().and(0xF0u).shr(3))
+
+        return if (fareDaysReloading != 0u) this.uIntToDate(fareDaysReloading, 0u) else null
+    }
+
+    private fun getOpusCardFareValidityFromDate(data: ByteArray): Calendar? {
         val fareValidityFromDays = (data[4].toUInt().and(0x7Fu).shl(7)
                 or data[5].toUInt().and(0xFEu).shr(1))
 
-        return this.uIntToDate(fareValidityFromDays, 0u)
+        return if (fareValidityFromDays != 0u) this.uIntToDate(fareValidityFromDays, 0u) else null
     }
 
-    private fun getOpusCardFareValidityUntilDate(data: ByteArray): Calendar {
+    private fun getOpusCardFareValidityUntilDate(data: ByteArray): Calendar? {
         val fareValidityUntilDays = (data[5].toUInt().and(0x01u).shl(13)
                 or data[6].toUInt().and(0xFFu).shl(5)
                 or data[7].toUInt().and(0xF8u).shr(3))
 
-        return this.uIntToDate(fareValidityUntilDays, 0u)
+        return if (fareValidityUntilDays != 0u) this.uIntToDate(fareValidityUntilDays, 0u) else null
     }
 
 

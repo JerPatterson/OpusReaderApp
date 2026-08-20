@@ -33,6 +33,7 @@ import com.transition.ora.services.CardContentConverter
 import com.transition.ora.types.Fare
 import com.transition.ora.types.FareProduct
 import com.transition.ora.types.Operator
+import com.transition.ora.types.Trip
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -120,9 +121,12 @@ class FareFragment : Fragment() {
         if (fromDate != null && untilDate != null) {
             addValidityInterval(fromDate, untilDate)
         }
+
         val operator = CardContentConverter.getOperatorById(fare.operatorId)
         addFareInfoSectionImages(operator)
         addFareDescriptionSection(fare, fareProduct)
+
+        if (fare.reloadingDate != null) addReloadingDateSection(fare)
     }
 
     private fun addBuyingDate(fare: Fare) {
@@ -161,6 +165,18 @@ class FareFragment : Fragment() {
     private fun addFareInfoSectionImages(operator: Operator) {
         val operatorImageView = this.mView?.findViewById<ImageView>(R.id.operatorImageView)
         operatorImageView?.setImageResource(operator.imageId)
+    }
+
+    private fun addReloadingDateSection(fare: Fare) {
+        val reloadingDateDivider = this.mView?.findViewById<View>(R.id.reloadingDateDivider)
+        reloadingDateDivider?.visibility = View.GONE
+        val reloadingDateIcon = this.mView?.findViewById<View>(R.id.reloadingDateImageView)
+        reloadingDateIcon?.visibility = View.GONE
+        val reloadingDateTitle = this.mView?.findViewById<TextView>(R.id.reloadingDateTitleTv)
+        reloadingDateTitle?.visibility = View.GONE
+        val reloadingDateValue = this.mView?.findViewById<TextView>(R.id.reloadingDateValueTv)
+        reloadingDateValue?.text = this.calendarToString(fare.reloadingDate!!)
+        reloadingDateValue?.visibility = View.GONE
     }
 
     private fun addFareDescriptionSection(fare: Fare, fareProduct: FareProduct) {
@@ -257,14 +273,31 @@ class FareFragment : Fragment() {
 
         override fun onClick(view: View) {
             if (isShowing) {
+                if (hasReloadingDate(fare)) hideReloadingDateSection(view)
                 hideFareTransferInfoSection(view)
                 hideFareCrowdSourceSection(view)
             } else {
+                if (hasReloadingDate(fare)) showReloadingDateSection(view)
                 showFareTransferInfoSection(view)
                 showFareCrowdSourceSection(view)
             }
 
             isShowing = !isShowing
+        }
+
+        private fun hasReloadingDate(fare: Fare): Boolean {
+            return fare.reloadingDate != null
+        }
+
+        private fun showReloadingDateSection(view: View) {
+            val reloadingDateDivider = view.findViewById<View>(R.id.reloadingDateDivider)
+            val reloadingDateIcon = view.findViewById<View>(R.id.reloadingDateImageView)
+            val reloadingDateTitle = view.findViewById<TextView>(R.id.reloadingDateTitleTv)
+            val reloadingDateValue = view.findViewById<TextView>(R.id.reloadingDateValueTv)
+            reloadingDateDivider?.visibility = View.VISIBLE
+            reloadingDateIcon?.visibility = View.VISIBLE
+            reloadingDateTitle?.visibility = View.VISIBLE
+            reloadingDateValue?.visibility = View.VISIBLE
         }
 
         private fun showFareTransferInfoSection(view: View) {
@@ -279,20 +312,6 @@ class FareFragment : Fragment() {
 
             val zonesIncludedImageView = view.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
             zonesIncludedImageView?.visibility = View.VISIBLE
-        }
-
-        private fun hideFareTransferInfoSection(view: View) {
-            val transferInfoDivider = view.findViewById<View>(R.id.fareDescriptionDivider)
-            val transferInfoIcon = view.findViewById<ImageView>(R.id.fareDescriptionImageView)
-            val transferInfoTitle = view.findViewById<TextView>(R.id.fareDescriptionTitle)
-            val transferInfoTv = view.findViewById<TextView>(R.id.fareDescriptionTv)
-            transferInfoDivider?.visibility = View.GONE
-            transferInfoIcon?.visibility = View.GONE
-            transferInfoTitle?.visibility = View.GONE
-            transferInfoTv?.visibility = View.GONE
-
-            val zonesIncludedImageView = view.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
-            zonesIncludedImageView?.visibility = View.GONE
         }
 
         private fun showFareCrowdSourceSection(view: View) {
@@ -319,6 +338,31 @@ class FareFragment : Fragment() {
             }
 
             enableCrowdSourceConfirmButton(view)
+        }
+
+        private fun hideReloadingDateSection(view: View) {
+            val reloadingDateDivider = view.findViewById<View>(R.id.reloadingDateDivider)
+            val reloadingDateIcon = view.findViewById<View>(R.id.reloadingDateImageView)
+            val reloadingDateTitle = view.findViewById<TextView>(R.id.reloadingDateTitleTv)
+            val reloadingDateValue = view.findViewById<TextView>(R.id.reloadingDateValueTv)
+            reloadingDateDivider?.visibility = View.GONE
+            reloadingDateIcon?.visibility = View.GONE
+            reloadingDateTitle?.visibility = View.GONE
+            reloadingDateValue?.visibility = View.GONE
+        }
+
+        private fun hideFareTransferInfoSection(view: View) {
+            val transferInfoDivider = view.findViewById<View>(R.id.fareDescriptionDivider)
+            val transferInfoIcon = view.findViewById<ImageView>(R.id.fareDescriptionImageView)
+            val transferInfoTitle = view.findViewById<TextView>(R.id.fareDescriptionTitle)
+            val transferInfoTv = view.findViewById<TextView>(R.id.fareDescriptionTv)
+            transferInfoDivider?.visibility = View.GONE
+            transferInfoIcon?.visibility = View.GONE
+            transferInfoTitle?.visibility = View.GONE
+            transferInfoTv?.visibility = View.GONE
+
+            val zonesIncludedImageView = view.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
+            zonesIncludedImageView?.visibility = View.GONE
         }
 
         private fun hideFareCrowdSourceSection(view: View) {

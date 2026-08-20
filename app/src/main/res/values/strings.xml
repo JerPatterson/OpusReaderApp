@@ -229,6 +229,7 @@
     <string name="trip_boarding_date_title">Boarding on</string>
     <string name="trip_validity_from_date_title">Valid starting on</string>
 
+    <string name="fare_reload_section_title">Date of fare reload</string>
     <string name="fare_info_section_title">Information about the fare</string>
     <string name="unknown_fare_info">
         This fare is currently unknown by the application.
