@@ -29,54 +29,60 @@
                 android:layout_height="38dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/opus"
                 android:contentDescription="@string/image_card_scanned"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/opus">
 
             </ImageView>
 
             <TextView
                 android:id="@+id/historyCardTypeTv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginEnd="10dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/deleteItemHistoryIcon"
                 app:layout_constraintStart_toEndOf="@+id/historyCardImageView"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="OPUS CARD" />
 
             <TextView
                 android:id="@+id/historyCardIdTv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/deleteItemHistoryIcon"
                 app:layout_constraintStart_toEndOf="@+id/historyCardImageView"
                 app:layout_constraintTop_toBottomOf="@+id/historyCardTypeTv"
                 tools:text="123456789" />
 
             <TextView
                 android:id="@+id/historyLastScanTimeTv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="-8dp"
+                android:layout_marginEnd="20dp"
                 android:text="@string/last_scan_time_title"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/historyLastScanTimeValueTv"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/historyLastScanTimeValueTv"
                 app:layout_constraintTop_toBottomOf="@+id/historyCardIdTv"
                 tools:text="Last scanned on" />
 
             <TextView
                 android:id="@+id/historyLastScanTimeValueTv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="6dp"

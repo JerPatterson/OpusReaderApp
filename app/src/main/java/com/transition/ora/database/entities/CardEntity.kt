@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 
 
-@Entity(tableName = "card", primaryKeys = [ "id", "scanDate" ])
+@Entity(tableName = "card", primaryKeys = ["id", "scanDate"])
 data class CardEntity(
     @ColumnInfo(name = "id")
     val id: String,

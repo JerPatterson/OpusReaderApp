@@ -22,7 +22,8 @@ private const val CHANNEL_ID = "opus_validity"
 
 class CardNotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
@@ -30,7 +31,8 @@ class CardNotificationReceiver : BroadcastReceiver() {
                 context.getString(R.string.validity_notification_opus_channel),
                 NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
-                description = context.getString(R.string.validity_notification_opus_channel_description)
+                description =
+                    context.getString(R.string.validity_notification_opus_channel_description)
             }
             notificationManager.createNotificationChannel(channel)
         }

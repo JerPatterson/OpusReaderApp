@@ -27,7 +27,8 @@ class CardContentReader(
     override fun onTagDiscovered(tag: Tag) {
         lateinit var cardParsed: Card
         if (tag.toString().contains("MifareUltralight")
-            || tag.toString().contains("NfcA")) {
+            || tag.toString().contains("NfcA")
+        ) {
             try {
                 val card = MifareUltralight.get(tag)
                 cardParsed = CardContentParser().parseOccasionalCard(card)
@@ -39,7 +40,8 @@ class CardContentReader(
                 return
             }
         } else if (tag.toString().contains("IsoDep")
-            || tag.toString().contains("NfcB")) {
+            || tag.toString().contains("NfcB")
+        ) {
             try {
                 val card = IsoDep.get(tag)
                 cardParsed = CardContentParser().parseOpusCard(card)

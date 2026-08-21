@@ -96,13 +96,19 @@ class TripFragment : Fragment() {
 
     private fun addTripInfoSectionTitles() {
         val boardingDateTitleTv = this.mView?.findViewById<TextView>(R.id.tripBoardingDateTv)
-        val validityFromDateTitleTv = this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
+        val validityFromDateTitleTv =
+            this.mView?.findViewById<TextView>(R.id.tripValidityFromDateTv)
         boardingDateTitleTv?.text = getString(R.string.trip_boarding_date_title)
         validityFromDateTitleTv?.text = getString(R.string.trip_validity_from_date_title)
     }
 
     private fun addTripInfoSectionValues(trip: Trip) {
-        val line = CardContentConverter.getLineById(requireContext(), trip.zoneId, trip.operatorId, trip.lineId)
+        val line = CardContentConverter.getLineById(
+            requireContext(),
+            trip.zoneId,
+            trip.operatorId,
+            trip.lineId
+        )
         val operator = CardContentConverter.getOperatorById(trip.operatorId)
         addTripLine(line)
         addTripDates(trip)
@@ -179,10 +185,13 @@ class TripFragment : Fragment() {
         tripFareZoneUsedTitle?.text = context?.getString(R.string.fare_zone_used_section_title)
         val tripFareZoneUsedValue = this.mView?.findViewById<TextView>(R.id.tripFareZoneUsedValueTv)
         when (trip.operatorId) {
-            5u -> tripFareZoneUsedValue?.text = context?.getString(R.string.fare_stop_used_value,
+            5u -> tripFareZoneUsedValue?.text = context?.getString(
+                R.string.fare_stop_used_value,
                 getZoneById(trip.zoneId)
             )
-            else -> tripFareZoneUsedValue?.text = context?.getString(R.string.fare_zone_used_value,
+
+            else -> tripFareZoneUsedValue?.text = context?.getString(
+                R.string.fare_zone_used_value,
                 getZoneById(trip.zoneId)
             )
         }
@@ -194,11 +203,14 @@ class TripFragment : Fragment() {
         tripDirectionUsedDivider?.visibility = View.GONE
         val tripDirectionUsedIcon = this.mView?.findViewById<View>(R.id.tripDirectionUsedImageView)
         tripDirectionUsedIcon?.visibility = View.GONE
-        val tripDirectionUsedTitle = this.mView?.findViewById<TextView>(R.id.tripDirectionUsedTitleTv)
+        val tripDirectionUsedTitle =
+            this.mView?.findViewById<TextView>(R.id.tripDirectionUsedTitleTv)
         tripDirectionUsedTitle?.visibility = View.GONE
 
-        val tripDirectionUsedValue = this.mView?.findViewById<TextView>(R.id.tripDirectionUsedValueTv)
-        tripDirectionUsedValue?.text = CardContentConverter.getHeadsignById(trip.operatorId, trip.lineId, trip.directionId)
+        val tripDirectionUsedValue =
+            this.mView?.findViewById<TextView>(R.id.tripDirectionUsedValueTv)
+        tripDirectionUsedValue?.text =
+            CardContentConverter.getHeadsignById(trip.operatorId, trip.lineId, trip.directionId)
         tripDirectionUsedValue?.visibility = View.GONE
     }
 
@@ -209,17 +221,27 @@ class TripFragment : Fragment() {
         tripCrowdSourceIcon?.visibility = View.GONE
         val tripCrowdSourceTitle = this.mView?.findViewById<TextView>(R.id.tripCrowdSourceTitle)
         tripCrowdSourceTitle?.visibility = View.GONE
-        val tripCrowdSourceDescription = this.mView?.findViewById<TextView>(R.id.tripCrowdSourceDescription)
+        val tripCrowdSourceDescription =
+            this.mView?.findViewById<TextView>(R.id.tripCrowdSourceDescription)
         tripCrowdSourceDescription?.visibility = View.GONE
         val tripCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
         tripCrowdSourceSpinner?.visibility = View.GONE
-        val tripCrowdSourceSwitch = this.mView?.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
+        val tripCrowdSourceSwitch =
+            this.mView?.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
         tripCrowdSourceSwitch?.visibility = View.GONE
-        val tripCrowdSourceConfirmButton = this.mView?.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
+        val tripCrowdSourceConfirmButton =
+            this.mView?.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
         tripCrowdSourceConfirmButton?.visibility = View.GONE
 
         val tripLayout = this.mView?.findViewById<ConstraintLayout>(R.id.tripLayout)
-        tripLayout?.setOnClickListener(this.id?.let { TripLayoutListener(it, trip, line, this.requireContext()) })
+        tripLayout?.setOnClickListener(this.id?.let {
+            TripLayoutListener(
+                it,
+                trip,
+                line,
+                this.requireContext()
+            )
+        })
     }
 
     private fun calendarToStringWithTime(cal: Calendar): String {
@@ -274,12 +296,13 @@ class TripFragment : Fragment() {
         private fun hasTripDirectionUsed(trip: Trip): Boolean {
             return when (trip.operatorId) {
                 2u -> {
-                    when(trip.lineId) {
+                    when (trip.lineId) {
                         3u -> getZoneById(trip.zoneId) == "B"
                         in 1u..4u, 224u -> false
                         else -> trip.directionId != 0u
                     }
                 }
+
                 4u, 22u -> false
                 else -> trip.directionId != 0u
             }
@@ -355,10 +378,12 @@ class TripFragment : Fragment() {
             val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdSourceDivider)
             val tripCrowdSourceIcon = view.findViewById<ImageView>(R.id.tripCrowdSourceImageView)
             val tripCrowdSourceTitle = view.findViewById<TextView>(R.id.tripCrowdSourceTitle)
-            val tripCrowdSourceDescription = view.findViewById<TextView>(R.id.tripCrowdSourceDescription)
+            val tripCrowdSourceDescription =
+                view.findViewById<TextView>(R.id.tripCrowdSourceDescription)
             val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
             val tripCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
-            val tripCrowdSourceConfirmButton = view.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
+            val tripCrowdSourceConfirmButton =
+                view.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
             tripCrowdSourceDivider?.visibility = View.VISIBLE
             tripCrowdSourceIcon?.visibility = View.VISIBLE
             tripCrowdSourceTitle?.visibility = View.VISIBLE
@@ -381,10 +406,12 @@ class TripFragment : Fragment() {
             val tripCrowdSourceDivider = view.findViewById<View>(R.id.tripCrowdSourceDivider)
             val tripCrowdSourceIcon = view.findViewById<ImageView>(R.id.tripCrowdSourceImageView)
             val tripCrowdSourceTitle = view.findViewById<TextView>(R.id.tripCrowdSourceTitle)
-            val tripCrowdSourceDescription = view.findViewById<TextView>(R.id.tripCrowdSourceDescription)
+            val tripCrowdSourceDescription =
+                view.findViewById<TextView>(R.id.tripCrowdSourceDescription)
             val tripCrowdSourceSpinner = view.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
             val tripCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.tripCrowdSourceSwitch)
-            val tripCrowdSourceConfirmButton = view.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
+            val tripCrowdSourceConfirmButton =
+                view.findViewById<Button>(R.id.tripCrowdSourceConfirmButton)
             tripCrowdSourceDivider?.visibility = View.GONE
             tripCrowdSourceIcon?.visibility = View.GONE
             tripCrowdSourceTitle?.visibility = View.GONE
@@ -432,19 +459,26 @@ class TripFragment : Fragment() {
                     val unavailableInApp = line.id == "?"
                     operator?.lines?.forEach { line ->
                         if (line.idOnCard == "" || (line.idOnCard == trip.lineId.toString() && unavailableInApp)
-                            || (line.idOnCard != trip.lineId.toString() && !filterKnownLines)) {
+                            || (line.idOnCard != trip.lineId.toString() && !filterKnownLines)
+                        ) {
                             options.add(line)
                         }
                     }
                 }
-            } catch (_: Error) { }
+            } catch (_: Error) {
+            }
         }
 
         private class SpinnerSelectListener(
             private val fragmentView: View,
             private val options: ArrayList<LineFirestore>
-        ): AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        ) : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 if (position == 0) return
 
                 val lineIdTv = this.fragmentView.findViewById<TextView>(R.id.tripLineIdTv)
@@ -464,7 +498,8 @@ class TripFragment : Fragment() {
                 } catch (_: IllegalArgumentException) {
                     Color.BLACK
                 }
-                val tripColorLayout = this.fragmentView.findViewById<LinearLayout>(R.id.tripColorLayout)
+                val tripColorLayout =
+                    this.fragmentView.findViewById<LinearLayout>(R.id.tripColorLayout)
                 lineIdTv?.setBackgroundColor(background)
                 tripColorLayout?.setBackgroundColor(background)
             }
@@ -483,7 +518,8 @@ class TripFragment : Fragment() {
             private val trip: Trip,
         ) : View.OnClickListener {
             override fun onClick(view: View) {
-                val tripCrowdSourceSpinner = parent.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
+                val tripCrowdSourceSpinner =
+                    parent.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
                 val selectedLineId = (tripCrowdSourceSpinner.selectedItem as LineFirestore).id
                 val selectedLineName = (tripCrowdSourceSpinner.selectedItem as LineFirestore).name
 
@@ -495,7 +531,9 @@ class TripFragment : Fragment() {
                     val lineIdInput = TextInputEditText(linearInputLayout.context)
                     val lineNameInput = TextInputEditText(linearInputLayout.context)
 
-                    val padding = view.context.resources.getDimension(R.dimen.line_missing_input_padding).roundToInt()
+                    val padding =
+                        view.context.resources.getDimension(R.dimen.line_missing_input_padding)
+                            .roundToInt()
                     lineIdInputLayout.setPadding(padding, 0, padding, 0)
                     lineIdInputLayout.hint = view.context.getString(R.string.line_id_input_hint)
                     lineIdInputLayout.addView(lineIdInput)
@@ -532,14 +570,16 @@ class TripFragment : Fragment() {
                 selectedLineId: String,
                 selectedLineName: String
             ) {
-                val tripCrowdSourceSpinner = parent.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
+                val tripCrowdSourceSpinner =
+                    parent.findViewById<Spinner>(R.id.tripCrowdSourceSpinner)
 
                 try {
                     val db = Firebase.firestore
-                    val document = db.collection(view.context.getString(R.string.proposition_collection))
-                        .document(trip.operatorId.toString())
-                        .collection("line-propositions")
-                        .document(id.toString() + "_" + trip.lineId)
+                    val document =
+                        db.collection(view.context.getString(R.string.proposition_collection))
+                            .document(trip.operatorId.toString())
+                            .collection("line-propositions")
+                            .document(id.toString() + "_" + trip.lineId)
 
                     val data = hashMapOf(
                         "id" to selectedLineId,
@@ -560,8 +600,10 @@ class TripFragment : Fragment() {
                                 "line",
                                 selectedLineId,
                                 selectedLineName,
-                                (tripCrowdSourceSpinner.selectedItem as LineFirestore).color ?: "#000000",
-                                (tripCrowdSourceSpinner.selectedItem as LineFirestore).textColor ?: "#ffffff",
+                                (tripCrowdSourceSpinner.selectedItem as LineFirestore).color
+                                    ?: "#000000",
+                                (tripCrowdSourceSpinner.selectedItem as LineFirestore).textColor
+                                    ?: "#ffffff",
                             )
                         )
                     }
@@ -575,7 +617,7 @@ class TripFragment : Fragment() {
                     val dialog = builder.create()
                     dialog.show()
 
-                } catch(_: Error) {
+                } catch (_: Error) {
                     val builder = AlertDialog.Builder(view.context)
                     builder.setTitle(R.string.proposition_error_title)
                         .setMessage(R.string.proposition_error_message)

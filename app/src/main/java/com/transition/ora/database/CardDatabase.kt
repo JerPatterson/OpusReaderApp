@@ -14,7 +14,8 @@ import com.transition.ora.database.entities.CardPropositionEntity
 private val MIGRATION_1_2 = object : Migration(1, 2) {
     override fun migrate(db: SupportSQLiteDatabase) {
         db.execSQL(
-            "CREATE TABLE IF NOT EXISTS `card_proposition` (`operatorId` TEXT NOT NULL, `idOnCard` TEXT NOT NULL, `type` TEXT NOT NULL, `id` TEXT NOT NULL, `name` TEXT NOT NULL, `color` TEXT NOT NULL, `textColor` TEXT NOT NULL, PRIMARY KEY(`operatorId`, `idOnCard`, `type`))")
+            "CREATE TABLE IF NOT EXISTS `card_proposition` (`operatorId` TEXT NOT NULL, `idOnCard` TEXT NOT NULL, `type` TEXT NOT NULL, `id` TEXT NOT NULL, `name` TEXT NOT NULL, `color` TEXT NOT NULL, `textColor` TEXT NOT NULL, PRIMARY KEY(`operatorId`, `idOnCard`, `type`))"
+        )
     }
 }
 
@@ -32,7 +33,7 @@ private val MIGRATION_3_4 = object : Migration(3, 4) {
 
 
 @Database(entities = [CardEntity::class, CardPropositionEntity::class], version = 4)
-abstract class CardDatabase: RoomDatabase() {
+abstract class CardDatabase : RoomDatabase() {
     abstract val dao: CardDao
     abstract val daoProposition: CardPropositionDao
 

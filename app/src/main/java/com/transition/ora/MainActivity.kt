@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         private val activity: MainActivity,
     ) : View.OnClickListener {
         override fun onClick(view: View) {
-            val intent = Intent(activity , HistoryActivity::class.java)
+            val intent = Intent(activity, HistoryActivity::class.java)
             activity.disableReaderMode()
             activity.startActivity(intent)
         }

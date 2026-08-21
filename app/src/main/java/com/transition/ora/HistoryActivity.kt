@@ -52,43 +52,48 @@ class HistoryActivity : AppCompatActivity() {
             while (cardEntityIterator.hasNext()) {
                 val cardEntity = cardEntityIterator.next()
                 if (cardEntity.type == CardType.Opus.name) {
-                    cards.add(Card(
-                        cardEntity.id.toULong(),
-                        CardType.Opus,
-                        Calendar.getInstance().apply {
-                            timeInMillis = cardEntity.scanDate.toLong()
-                        },
-                        Calendar.getInstance().apply {
-                            timeInMillis = cardEntity.expiryDate.toLong()
-                        },
-                        cardEntity.birthDate?.let { millis ->
-                            Calendar.getInstance().apply { timeInMillis = millis.toLong() }
-                        },
-                        cardEntity.typeVariant?.toUInt(),
-                        gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
-                        gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
-                    ))
+                    cards.add(
+                        Card(
+                            cardEntity.id.toULong(),
+                            CardType.Opus,
+                            Calendar.getInstance().apply {
+                                timeInMillis = cardEntity.scanDate.toLong()
+                            },
+                            Calendar.getInstance().apply {
+                                timeInMillis = cardEntity.expiryDate.toLong()
+                            },
+                            cardEntity.birthDate?.let { millis ->
+                                Calendar.getInstance().apply { timeInMillis = millis.toLong() }
+                            },
+                            cardEntity.typeVariant?.toUInt(),
+                            gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
+                            gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
+                        )
+                    )
                 } else if (cardEntity.type == CardType.Occasional.name
                     || cardEntity.type == CardType.OccasionalRTC.name
-                    || cardEntity.type == CardType.OccasionalSTLevis.name) {
-                    cards.add(Card(
-                        cardEntity.id.toULong(),
-                        when (cardEntity.type) {
-                            CardType.OccasionalRTC.name -> CardType.OccasionalRTC
-                            CardType.OccasionalSTLevis.name -> CardType.OccasionalSTLevis
-                            else -> CardType.Occasional
-                        },
-                        Calendar.getInstance().also { calendar ->
-                            calendar.timeInMillis = cardEntity.scanDate.toLong()
-                        },
-                        Calendar.getInstance().also { calendar ->
-                            calendar.timeInMillis = cardEntity.expiryDate.toLong()
-                        },
-                        null,
-                        cardEntity.typeVariant?.toUInt(),
-                        gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
-                        gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
-                    ))
+                    || cardEntity.type == CardType.OccasionalSTLevis.name
+                ) {
+                    cards.add(
+                        Card(
+                            cardEntity.id.toULong(),
+                            when (cardEntity.type) {
+                                CardType.OccasionalRTC.name -> CardType.OccasionalRTC
+                                CardType.OccasionalSTLevis.name -> CardType.OccasionalSTLevis
+                                else -> CardType.Occasional
+                            },
+                            Calendar.getInstance().also { calendar ->
+                                calendar.timeInMillis = cardEntity.scanDate.toLong()
+                            },
+                            Calendar.getInstance().also { calendar ->
+                                calendar.timeInMillis = cardEntity.expiryDate.toLong()
+                            },
+                            null,
+                            cardEntity.typeVariant?.toUInt(),
+                            gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
+                            gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
+                        )
+                    )
                 }
             }
         }
@@ -102,7 +107,7 @@ class HistoryActivity : AppCompatActivity() {
 
     private fun enableDeleteAllButton() {
         val deleteAllButton: Button = findViewById(R.id.deleteAllHistoryButton)
-        deleteAllButton.setOnClickListener(HistoryDeleteAllListener(db,this))
+        deleteAllButton.setOnClickListener(HistoryDeleteAllListener(db, this))
     }
 
     class HistoryDeleteAllListener(

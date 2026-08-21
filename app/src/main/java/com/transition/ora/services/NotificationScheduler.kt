@@ -53,7 +53,11 @@ class NotificationScheduler {
         alarmManager.cancel(fareNotificationPendingIntent)
     }
 
-    private fun scheduleCardNotificationAtTime(card: Card, context: Context, triggerTimeInMillis: Long) {
+    private fun scheduleCardNotificationAtTime(
+        card: Card,
+        context: Context,
+        triggerTimeInMillis: Long
+    ) {
         val now = Calendar.getInstance()
         val timeUntilTrigger = triggerTimeInMillis - (now.timeInMillis + 60 * 1000)
         if (timeUntilTrigger < 0) return
@@ -65,10 +69,14 @@ class NotificationScheduler {
         if (timeUntilTrigger >= MILLIS_IN_A_DAY) {
             triggerTimeUpdated = triggerTimeInMillis - MILLIS_IN_A_DAY
             title = context.getString(R.string.validity_notification_opus_title)
-            message = context.getString(R.string.validity_notification_opus_message, card.id.toString())
+            message =
+                context.getString(R.string.validity_notification_opus_message, card.id.toString())
         } else {
             title = context.getString(R.string.validity_ended_notification_opus_title)
-            message = context.getString(R.string.validity_ended_notification_opus_message, card.id.toString())
+            message = context.getString(
+                R.string.validity_ended_notification_opus_message,
+                card.id.toString()
+            )
         }
 
         val intent = Intent(context, CardNotificationReceiver::class.java)
@@ -87,11 +95,20 @@ class NotificationScheduler {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
             alarmManager.set(AlarmManager.RTC_WAKEUP, triggerTimeUpdated, pendingIntent)
         } else {
-            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerTimeUpdated, pendingIntent)
+            alarmManager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP,
+                triggerTimeUpdated,
+                pendingIntent
+            )
         }
     }
 
-    private fun scheduleFareNotificationAtTime(card: Card, fare: Fare, context: Context, triggerTimeInMillis: Long) {
+    private fun scheduleFareNotificationAtTime(
+        card: Card,
+        fare: Fare,
+        context: Context,
+        triggerTimeInMillis: Long
+    ) {
         val now = Calendar.getInstance()
         val timeUntilTrigger = triggerTimeInMillis - (now.timeInMillis + 60 * 1000)
         if (timeUntilTrigger < 0) return
@@ -99,7 +116,9 @@ class NotificationScheduler {
         val title: String
         val message: String
         var triggerTimeUpdated = triggerTimeInMillis
-        val fareName = CardContentConverter.getFareProductById(context, fare.operatorId, fare.typeId).getName(context)
+        val fareName =
+            CardContentConverter.getFareProductById(context, fare.operatorId, fare.typeId)
+                .getName(context)
 
         if (timeUntilTrigger >= MILLIS_IN_20MIN) {
             title = context.getString(R.string.validity_notification_title)
@@ -120,23 +139,57 @@ class NotificationScheduler {
 
             message = if (fare.ticketCount != null) {
                 when (fare.ticketCount) {
-                    0u -> context.getString(R.string.validity_notification_ticket_fare_empty_message, fareName, remainingTimeString)
-                    1u -> context.getString(R.string.validity_notification_ticket_fare_singular_message, fareName, remainingTimeString)
-                    else -> context.getString(R.string.validity_notification_ticket_fare_plural_message, fareName, remainingTimeString, fare.ticketCount!!.toInt())
+                    0u -> context.getString(
+                        R.string.validity_notification_ticket_fare_empty_message,
+                        fareName,
+                        remainingTimeString
+                    )
+
+                    1u -> context.getString(
+                        R.string.validity_notification_ticket_fare_singular_message,
+                        fareName,
+                        remainingTimeString
+                    )
+
+                    else -> context.getString(
+                        R.string.validity_notification_ticket_fare_plural_message,
+                        fareName,
+                        remainingTimeString,
+                        fare.ticketCount!!.toInt()
+                    )
                 }
             } else {
-                context.getString(R.string.validity_notification_unlimited_fare_message, fareName, remainingTimeString)
+                context.getString(
+                    R.string.validity_notification_unlimited_fare_message,
+                    fareName,
+                    remainingTimeString
+                )
             }
         } else {
             title = context.getString(R.string.validity_ended_notification_title)
             message = if (fare.ticketCount != null) {
                 when (fare.ticketCount) {
-                    0u -> context.getString(R.string.validity_ended_notification_ticket_fare_empty_message, fareName)
-                    1u -> context.getString(R.string.validity_ended_notification_ticket_fare_singular_message, fareName)
-                    else -> context.getString(R.string.validity_ended_notification_ticket_fare_plural_message, fareName, fare.ticketCount!!.toInt())
+                    0u -> context.getString(
+                        R.string.validity_ended_notification_ticket_fare_empty_message,
+                        fareName
+                    )
+
+                    1u -> context.getString(
+                        R.string.validity_ended_notification_ticket_fare_singular_message,
+                        fareName
+                    )
+
+                    else -> context.getString(
+                        R.string.validity_ended_notification_ticket_fare_plural_message,
+                        fareName,
+                        fare.ticketCount!!.toInt()
+                    )
                 }
             } else {
-                context.getString(R.string.validity_ended_notification_unlimited_fare_message, fareName)
+                context.getString(
+                    R.string.validity_ended_notification_unlimited_fare_message,
+                    fareName
+                )
             }
         }
 
@@ -156,7 +209,11 @@ class NotificationScheduler {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
             alarmManager.set(AlarmManager.RTC_WAKEUP, triggerTimeUpdated, pendingIntent)
         } else {
-            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerTimeUpdated, pendingIntent)
+            alarmManager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP,
+                triggerTimeUpdated,
+                pendingIntent
+            )
         }
     }
 
@@ -177,7 +234,12 @@ class NotificationScheduler {
             }
 
         if (fareToNotifyAbout != null) {
-            scheduleFareNotificationAtTime(card, fareToNotifyAbout!!, context, nearestValidityUntil!!.timeInMillis)
+            scheduleFareNotificationAtTime(
+                card,
+                fareToNotifyAbout!!,
+                context,
+                nearestValidityUntil!!.timeInMillis
+            )
         }
 
         return fareToNotifyAbout
@@ -190,7 +252,11 @@ class NotificationScheduler {
 
         val now = Calendar.getInstance()
         val nearestValidityUntilInterval = fares.filter { fare -> fare.ticketCount == null }
-            .minOfOrNull { fare -> abs(now.timeInMillis - (fare.validityUntilDate?.timeInMillis ?: 0)) }
+            .minOfOrNull { fare ->
+                abs(
+                    now.timeInMillis - (fare.validityUntilDate?.timeInMillis ?: 0)
+                )
+            }
 
         var nearestValidityUntil: Calendar? = null
         var fareToNotifyAbout: Fare? = null
@@ -209,7 +275,10 @@ class NotificationScheduler {
                             tripFirstUseDate.get(Calendar.MINUTE) + getDefaultValidityMinutes(fare)
                         )
 
-                        if (nearestValidityUntilInterval == null || nearestValidityUntilInterval > getDefaultValidityMillis(fare)) {
+                        if (nearestValidityUntilInterval == null || nearestValidityUntilInterval > getDefaultValidityMillis(
+                                fare
+                            )
+                        ) {
                             if (isCloserFutureToNow(now, endValidity, nearestValidityUntil)) {
                                 nearestValidityUntil = endValidity
                                 fareToNotifyAbout = fare
@@ -219,13 +288,22 @@ class NotificationScheduler {
             }
 
         if (fareToNotifyAbout != null) {
-            scheduleFareNotificationAtTime(card, fareToNotifyAbout!!, context, nearestValidityUntil!!.timeInMillis)
+            scheduleFareNotificationAtTime(
+                card,
+                fareToNotifyAbout!!,
+                context,
+                nearestValidityUntil!!.timeInMillis
+            )
         }
 
         return fareToNotifyAbout
     }
 
-    private fun isCloserFutureToNow(now: Calendar, challenger: Calendar?, currentBest: Calendar?): Boolean {
+    private fun isCloserFutureToNow(
+        now: Calendar,
+        challenger: Calendar?,
+        currentBest: Calendar?
+    ): Boolean {
         if (challenger == null) return false
         if (currentBest == null) return challenger.timeInMillis > now.timeInMillis
 

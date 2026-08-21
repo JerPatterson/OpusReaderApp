@@ -11,7 +11,7 @@ import com.transition.ora.R
 import com.transition.ora.firestore.FareFirestore
 
 
-class FareCrowdSrcAdapter (
+class FareCrowdSrcAdapter(
     private val context: Context,
     private val fareList: List<FareFirestore>
 ) : BaseAdapter() {
@@ -31,7 +31,8 @@ class FareCrowdSrcAdapter (
         val holder: MyViewHolder
 
         if (convertView == null) {
-            val itemView = LayoutInflater.from(context).inflate(R.layout.crowd_src_fare_row, parent, false)
+            val itemView =
+                LayoutInflater.from(context).inflate(R.layout.crowd_src_fare_row, parent, false)
             holder = MyViewHolder(itemView)
             itemView.tag = holder
         } else {
@@ -44,7 +45,7 @@ class FareCrowdSrcAdapter (
         return holder.itemView
     }
 
-    private class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    private class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val fareNameTv: TextView = itemView.findViewById(R.id.fareNameTv)
     }
 }

@@ -29,10 +29,11 @@ import java.util.Locale
 
 class HistoryCardAdapter(
     private val historyList: ArrayList<Card>,
-): RecyclerView.Adapter<HistoryCardAdapter.MyViewHolder>() {
+) : RecyclerView.Adapter<HistoryCardAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.history_card_row, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.history_card_row, parent, false)
 
         return MyViewHolder(itemView)
     }
@@ -48,11 +49,18 @@ class HistoryCardAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.cardIdValueTv.text = historyList[position].id.toString()
         holder.cardTypeValueTv.text = holder.getCardTypeValue(historyList[position].type)
-        holder.lastScanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
+        holder.lastScanTimeValueTv.text =
+            holder.calendarToStringWithTime(historyList[position].scanDate)
         holder.cardImageView.setImageResource(getImageResource(historyList[position].type))
 
         holder.itemView.setOnClickListener(HistoryItemListener(historyList[position], holder, this))
-        holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position],holder, this))
+        holder.deleteItemIcon.setOnClickListener(
+            HistoryItemDeleteListener(
+                historyList[position],
+                holder,
+                this
+            )
+        )
     }
 
     private fun removeItem(position: Int) {
@@ -71,7 +79,7 @@ class HistoryCardAdapter(
     }
 
 
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardImageView: ImageView = itemView.findViewById(R.id.historyCardImageView)
         val cardTypeValueTv: TextView = itemView.findViewById(R.id.historyCardTypeTv)
         val cardIdValueTv: TextView = itemView.findViewById(R.id.historyCardIdTv)
@@ -84,7 +92,10 @@ class HistoryCardAdapter(
                 CardType.Opus -> getString(itemView.context, R.string.opus_card_name)
                 CardType.Occasional -> getString(itemView.context, R.string.occasional_card_name)
                 CardType.OccasionalRTC -> getString(itemView.context, R.string.occasional_card_name)
-                CardType.OccasionalSTLevis -> getString(itemView.context, R.string.occasional_card_name)
+                CardType.OccasionalSTLevis -> getString(
+                    itemView.context,
+                    R.string.occasional_card_name
+                )
             }
         }
 
@@ -142,48 +153,54 @@ class HistoryCardAdapter(
             val gson = Gson()
             val cards = ArrayList<Card>()
             val job = CoroutineScope(Dispatchers.IO).launch {
-                val cardEntities = CardDatabase.getInstance(context).dao.getStoredCardById(card.getCardEntity().id)
+                val cardEntities =
+                    CardDatabase.getInstance(context).dao.getStoredCardById(card.getCardEntity().id)
                 val cardEntityIterator = cardEntities.listIterator()
                 while (cardEntityIterator.hasNext()) {
                     val cardEntity = cardEntityIterator.next()
                     if (cardEntity.type == CardType.Opus.name) {
-                        cards.add(Card(
-                            cardEntity.id.toULong(),
-                            CardType.Opus,
-                            Calendar.getInstance().apply {
-                                timeInMillis = cardEntity.scanDate.toLong()
-                            },
-                            Calendar.getInstance().apply {
-                                timeInMillis = cardEntity.expiryDate.toLong()
-                            },
-                            cardEntity.birthDate?.let { millis ->
-                                Calendar.getInstance().apply { timeInMillis = millis.toLong() }
-                            },
-                            cardEntity.typeVariant?.toUInt(),
-                            gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
-                            gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
-                        ))
+                        cards.add(
+                            Card(
+                                cardEntity.id.toULong(),
+                                CardType.Opus,
+                                Calendar.getInstance().apply {
+                                    timeInMillis = cardEntity.scanDate.toLong()
+                                },
+                                Calendar.getInstance().apply {
+                                    timeInMillis = cardEntity.expiryDate.toLong()
+                                },
+                                cardEntity.birthDate?.let { millis ->
+                                    Calendar.getInstance().apply { timeInMillis = millis.toLong() }
+                                },
+                                cardEntity.typeVariant?.toUInt(),
+                                gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
+                                gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
+                            )
+                        )
                     } else if (cardEntity.type == CardType.Occasional.name
                         || cardEntity.type == CardType.OccasionalRTC.name
-                        || cardEntity.type == CardType.OccasionalSTLevis.name) {
-                        cards.add(Card(
-                            cardEntity.id.toULong(),
-                            when (cardEntity.type) {
-                                CardType.OccasionalRTC.name -> CardType.OccasionalRTC
-                                CardType.OccasionalSTLevis.name -> CardType.OccasionalSTLevis
-                                else -> CardType.Occasional
-                            },
-                            Calendar.getInstance().also { calendar ->
-                                calendar.timeInMillis = cardEntity.scanDate.toLong()
-                            },
-                            Calendar.getInstance().also { calendar ->
-                                calendar.timeInMillis = cardEntity.expiryDate.toLong()
-                            },
-                            null,
-                            cardEntity.typeVariant?.toUInt(),
-                            gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
-                            gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
-                        ))
+                        || cardEntity.type == CardType.OccasionalSTLevis.name
+                    ) {
+                        cards.add(
+                            Card(
+                                cardEntity.id.toULong(),
+                                when (cardEntity.type) {
+                                    CardType.OccasionalRTC.name -> CardType.OccasionalRTC
+                                    CardType.OccasionalSTLevis.name -> CardType.OccasionalSTLevis
+                                    else -> CardType.Occasional
+                                },
+                                Calendar.getInstance().also { calendar ->
+                                    calendar.timeInMillis = cardEntity.scanDate.toLong()
+                                },
+                                Calendar.getInstance().also { calendar ->
+                                    calendar.timeInMillis = cardEntity.expiryDate.toLong()
+                                },
+                                null,
+                                cardEntity.typeVariant?.toUInt(),
+                                gson.fromJson(cardEntity.fares, ArrayList<Fare>()::class.java),
+                                gson.fromJson(cardEntity.trips, ArrayList<Trip>()::class.java)
+                            )
+                        )
                     }
                 }
             }
@@ -200,7 +217,7 @@ class HistoryCardAdapter(
         private val card: Card,
         private val holder: MyViewHolder,
         private val adapter: HistoryCardAdapter,
-    ): View.OnClickListener {
+    ) : View.OnClickListener {
         override fun onClick(view: View) {
             val builder = AlertDialog.Builder(view.context)
             builder.setMessage(R.string.delete_confirmation_message)

@@ -85,7 +85,7 @@
     <string name="calendar_without_year_pattern">dd MMMM</string>
     <string name="calendar_with_time_pattern">dd MMMM yyyy à HH:mm</string>
     <string name="calendar_with_time_without_year_pattern">dd MMMM à HH:mm</string>
-    <string name="calendar_with_time_without_year_pattern_line_break">dd MMMM\n à HH:mm</string>
+    <string name="calendar_with_time_without_year_pattern_line_break">dd MMMM\nà HH:mm</string>
     <string name="calendar_interval_linking_word">au</string>
 
     <string name="opus_card_name">CARTE OPUS</string>
@@ -853,7 +853,7 @@
     <string name="citcrc_ZHT_monthly">Mensuel, CITCRC (Chambly/Saint-Jean-sur-Richelieu)</string>
     <string name="citcrc_Z1356_monthly">Mensuel, CITCRC (Montréal/Longueuil/Saint-Jean-sur-Richelieu)</string>
     <string name="citcrc_Z1356_yearly">Annuel, CITCRC (Montréal/Longueuil/Saint-Jean-sur-Richelieu)</string>
-    
+
     <string name="cithsl_Z15_twenty_tickets">20 passages, CITHSL (Mercier/Châteauguay/Montréal)</string>
     <string name="cithsl_Z16_twenty_tickets">20 passages, CITHSL (Sainte-Martine/Montréal)</string>
     <string name="cithsl_Z17_twenty_tickets">20 passages, CITHSL (Howick/Très-Saint-Sacrement/Montréal)</string>
@@ -888,7 +888,7 @@
     <string name="cithsl_Z16_yearly">Annuel, CITHSL (Sainte-Martine/Montréal)</string>
     <string name="cithsl_Z17_yearly">Annuel, CITHSL (Howick/Très-Saint-Sacrement/Montréal)</string>
     <string name="cithsl_Z18_yearly">Annuel, CITHSL (Ormstown/Montréal)</string>
-    
+
     <string name="citla_one_ticket">1 passage, CITLA</string>
     <string name="citla_six_tickets">6 passages, CITLA</string>
     <string name="citla_monthly">Mensuel, CITLA</string>
@@ -896,7 +896,7 @@
     <string name="citla_passe_temps">Passe-Temps, CITLA</string>
     <string name="citla_passe_soleil">Passe-Soleil, CITLA</string>
     <string name="citla_yearly">Annuel, CITLA</string>
-    
+
     <string name="citlr_Z345_six_tickets">6 passages, CITLR (Brossard)</string>
     <string name="citlr_Z1345_six_tickets">6 passages, CITLR (Montréal/Longueuil)</string>
     <string name="citlr_Z345_ten_tickets">10 passages, CITLR (Brossard)</string>
@@ -905,7 +905,7 @@
     <string name="citlr_Z1345_monthly">Mensuel, CITLR (Montréal/Longueuil)</string>
     <string name="citlr_Z345_yearly">Annuel, CITLR (Brossard)</string>
     <string name="citlr_Z1345_yearly">Annuel, CITLR (Montréal/Longueuil)</string>
-    
+
     <string name="citpi_one_ticket">1 passage, CITPI</string>
     <string name="citpi_Z35_one_ticket">1 passage, CITPI (Zone 1)</string>
     <string name="citpi_Z37_one_ticket">1 passage, CITPI (Zone 2)</string>
@@ -918,12 +918,12 @@
     <string name="citpi_EXP_monthly">Mensuel, CITPI (Express)</string>
     <string name="citpi_Z37_yearly">Annuel, CITPI (Zone 2)</string>
     <string name="citpi_EXP_yearly">Annuel, CITPI (Express)</string>
-    
+
     <string name="citrous_Z15_six_tickets">6 passages, CITROUS</string>
     <string name="citrous_Z15_ten_tickets">10 passages, CITROUS</string>
     <string name="citrous_Z15_monthly">Mensuel, CITROUS</string>
     <string name="citrous_Z15_yearly">Annuel, CITROUS</string>
-    
+
     <string name="citso_Z15_one_ticket">1 passage, CITSO (Châteauguay/Kahnawake/Centre-ville)</string>
     <string name="citso_Z16_one_ticket">1 passage, CITSO (Beauharnois/Centre-ville)</string>
     <string name="citso_Z18_one_ticket">1 passage, CITSO (Salaberry-de-Valleyfield/Centre-ville)</string>
@@ -972,7 +972,7 @@
     <string name="citso_Z6_yearly">Annuel, CITSO (Beauharnois)</string>
     <string name="citso_Z68_yearly">Annuel, CITSO (Salaberry-de-Valleyfield/Beauharnois)</string>
     <string name="citso_Z8_yearly">Annuel, CITSO (Salaberry-de-Valleyfield)</string>
-    
+
     <string name="citsv_Z35_one_ticket">1 passage, CITSV (Varennes/Boucherville/Longueuil)</string>
     <string name="citsv_Z356_one_ticket">1 passage, CITSV (Verchères/Saint-Amable/Boucherville/Longueuil)</string>
     <string name="citsv_Z3567_one_ticket">1 passage, CITSV (Contrecoeur/Boucherville/Longueuil)</string>
@@ -1194,7 +1194,7 @@
     <string name="rtc_yearly">AbonneBUS, RTC"</string>
     <string name="rtc_metropolitain_yearly">AbonneBUS, Métropolitain"</string>
     <string name="rtc_parc_o_bus">Parc-o-bus"</string>
-    
+
     <string name="rtl_one_ticket">1 passage, RTL"</string>
     <string name="rtl_two_tickets">2 passages, RTL"</string>
     <string name="rtl_six_tickets">6 passages, RTL"</string>
@@ -1207,7 +1207,7 @@
     <string name="rtl_acces_65_off_peak">Mensuel, Accès 65 hors pointe"</string>
     <string name="rtl_four_months">4 mois, RTL"</string>
     <string name="rtl_six_months">6 mois, RTL"</string>
-    
+
     <string name="stl_one_ticket">1 passage, STL"</string>
     <string name="stl_one_ticket_eng_qual">1 passage, STL Eng. Qualité"</string>
     <string name="stl_two_tickets_eng_qual">2 passages, STL Eng. Qualité"</string>
@@ -1225,13 +1225,13 @@
     <string name="stl_horizon_65_plus">Horizon 65+"</string>
     <string name="stl_xtra">XTRA"</string>
     <string name="stl_yearly">Abonnement, STL"</string>
-    
+
     <string name="stlevis_four_tickets">4 passages, STLévis"</string>
     <string name="stlevis_eight_tickets">8 passages, STLévis"</string>
     <string name="stlevis_twelve_tickets">12 passages, STLévis"</string>
     <string name="stlevis_monthly">Mensuel, STLévis"</string>
     <string name="stlevis_adobus">AdoBUS"</string>
-    
+
     <string name="stm_bike_shelter">Abri-vélo, STM"</string>
     <string name="stm_one_ticket">1 passage, STM"</string>
     <string name="stm_two_tickets">2 passages, STM"</string>

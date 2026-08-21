@@ -84,7 +84,7 @@
     <string name="calendar_without_year_pattern">MMMM dd</string>
     <string name="calendar_with_time_pattern">MMMM dd, yyyy \'at\' hh:mm a</string>
     <string name="calendar_with_time_without_year_pattern">MMMM dd \'at\' hh:mm a</string>
-    <string name="calendar_with_time_without_year_pattern_line_break">MMMM dd\n \'at\' hh:mm a</string>
+    <string name="calendar_with_time_without_year_pattern_line_break">MMMM dd\n\'at\' hh:mm a</string>
     <string name="calendar_interval_linking_word">to</string>
 
     <string name="opus_card_name">OPUS CARD</string>

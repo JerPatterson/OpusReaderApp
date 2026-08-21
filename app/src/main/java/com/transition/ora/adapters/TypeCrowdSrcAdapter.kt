@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.transition.ora.R
 
-class TypeCrowdSrcAdapter (
+class TypeCrowdSrcAdapter(
     private val context: Context,
     private val cardTypeVariantList: List<String>
 ) : BaseAdapter() {
@@ -29,7 +29,8 @@ class TypeCrowdSrcAdapter (
         val holder: MyViewHolder
 
         if (convertView == null) {
-            val itemView = LayoutInflater.from(context).inflate(R.layout.crowd_src_type_row, parent, false)
+            val itemView =
+                LayoutInflater.from(context).inflate(R.layout.crowd_src_type_row, parent, false)
             holder = MyViewHolder(itemView)
             itemView.tag = holder
         } else {
@@ -42,7 +43,7 @@ class TypeCrowdSrcAdapter (
         return holder.itemView
     }
 
-    private class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    private class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardTypeVariantNameTv: TextView = itemView.findViewById(R.id.cardTypeVariantNameTv)
     }
 }

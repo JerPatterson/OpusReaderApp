@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 
 
-@Entity(tableName = "card_proposition", primaryKeys = [ "operatorId", "idOnCard", "type" ])
+@Entity(tableName = "card_proposition", primaryKeys = ["operatorId", "idOnCard", "type"])
 data class CardPropositionEntity(
     @ColumnInfo(name = "operatorId")
     val operatorId: String,

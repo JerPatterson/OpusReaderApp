@@ -82,23 +82,41 @@ class CardActivity : AppCompatActivity() {
         overlayLayout.visibility = View.GONE
     }
 
-    private fun addCardRegisteredInfo(cardType: CardType, expiryDate: Calendar?, birthDate: Calendar?) {
+    private fun addCardRegisteredInfo(
+        cardType: CardType,
+        expiryDate: Calendar?,
+        birthDate: Calendar?
+    ) {
         val now = Calendar.getInstance()
 
         if (cardType == CardType.Occasional
             || cardType == CardType.OccasionalRTC
-            || cardType == CardType.OccasionalSTLevis) {
+            || cardType == CardType.OccasionalSTLevis
+        ) {
 
             if (expiryDate != null && expiryDate.timeInMillis < now.timeInMillis) {
-                addSpecificCardRegisteredInfo(R.string.expired_card_title, R.string.expired_card_info, R.string.expired_occasional_card_description, true)
+                addSpecificCardRegisteredInfo(
+                    R.string.expired_card_title,
+                    R.string.expired_card_info,
+                    R.string.expired_occasional_card_description,
+                    true
+                )
                 return
             }
         } else if (cardType == CardType.Opus) {
             if (birthDate != null && expiryDate != null && expiryDate.timeInMillis >= now.timeInMillis) {
-                addSpecificCardRegisteredInfo(R.string.registered_card_title, R.string.registered_card_info, R.string.registered_card_description)
+                addSpecificCardRegisteredInfo(
+                    R.string.registered_card_title,
+                    R.string.registered_card_info,
+                    R.string.registered_card_description
+                )
                 return
             } else if (expiryDate != null && expiryDate.timeInMillis < now.timeInMillis) {
-                addSpecificCardRegisteredInfo(R.string.expired_card_title, R.string.expired_card_info, R.string.expired_card_description)
+                addSpecificCardRegisteredInfo(
+                    R.string.expired_card_title,
+                    R.string.expired_card_info,
+                    R.string.expired_card_description
+                )
                 return
             }
         }
@@ -107,7 +125,12 @@ class CardActivity : AppCompatActivity() {
         cardStatusButton.visibility = View.GONE
     }
 
-    private fun addSpecificCardRegisteredInfo(buttonText: Int, titleText: Int, descriptionText: Int, hideBirthday: Boolean = false) {
+    private fun addSpecificCardRegisteredInfo(
+        buttonText: Int,
+        titleText: Int,
+        descriptionText: Int,
+        hideBirthday: Boolean = false
+    ) {
         val cardStatusTv = findViewById<TextView>(R.id.cardStatusTv)
         val cardStatusInfoTitleTv = findViewById<TextView>(R.id.cardStatusInfoTitleTv)
         val cardStatusDescriptionTv = findViewById<TextView>(R.id.cardStatusDescriptionTv)
@@ -141,7 +164,12 @@ class CardActivity : AppCompatActivity() {
                 val cardTypeVariantButton = findViewById<CardView>(R.id.cardTypeButtonLayout)
                 cardTypeVariantButton.visibility = View.GONE
                 if (cardTypeVariant == CardTypeVariant.ValidOccasional) return
-                addSpecificCardRegisteredInfo(R.string.invalid_card_title, R.string.invalid_card_info, R.string.invalid_occasional_card_description, true)
+                addSpecificCardRegisteredInfo(
+                    R.string.invalid_card_title,
+                    R.string.invalid_card_info,
+                    R.string.invalid_occasional_card_description,
+                    true
+                )
                 return
             }
 
@@ -150,25 +178,41 @@ class CardActivity : AppCompatActivity() {
             CardTypeVariant.StandardSubscription -> {
                 addSpecificCardTypeVariantInfo(R.string.standard_card, R.string.standard_card_info)
             }
+
             CardTypeVariant.AllModesAB,
             CardTypeVariant.AllModesABReduced,
             CardTypeVariant.AllModesABSubscription -> {
-                addSpecificCardTypeVariantInfo(R.string.all_modes_AB_card, R.string.all_modes_AB_card_info)
+                addSpecificCardTypeVariantInfo(
+                    R.string.all_modes_AB_card,
+                    R.string.all_modes_AB_card_info
+                )
             }
+
             CardTypeVariant.AllModesABC,
             CardTypeVariant.AllModesABCReduced,
             CardTypeVariant.AllModesABCSubscription -> {
-                addSpecificCardTypeVariantInfo(R.string.all_modes_ABC_card, R.string.all_modes_ABC_card_info)
+                addSpecificCardTypeVariantInfo(
+                    R.string.all_modes_ABC_card,
+                    R.string.all_modes_ABC_card_info
+                )
             }
+
             CardTypeVariant.AllModesABCD,
             CardTypeVariant.AllModesABCDReduced,
             CardTypeVariant.AllModesABCDSubscription -> {
-                addSpecificCardTypeVariantInfo(R.string.all_modes_ABCD_card, R.string.all_modes_ABCD_card_info)
+                addSpecificCardTypeVariantInfo(
+                    R.string.all_modes_ABCD_card,
+                    R.string.all_modes_ABCD_card_info
+                )
             }
+
             CardTypeVariant.BusOutOfTerritory,
             CardTypeVariant.BusOutOfTerritoryReduced,
             CardTypeVariant.BusOutOfTerritorySubscription -> {
-                addSpecificCardTypeVariantInfo(R.string.bus_out_territory_card, R.string.bus_out_territory_card_info)
+                addSpecificCardTypeVariantInfo(
+                    R.string.bus_out_territory_card,
+                    R.string.bus_out_territory_card_info
+                )
             }
 
             else -> {
@@ -230,7 +274,13 @@ class CardActivity : AppCompatActivity() {
 
     private fun enableCrowdSourceConfirmButton(cardId: ULong, cardTypeVariantId: UInt) {
         val confirmButton: Button = findViewById(R.id.cardTypeCrowdSourceConfirmButton)
-        confirmButton.setOnClickListener(CrowdSourceConfirmListener(this, cardId, cardTypeVariantId))
+        confirmButton.setOnClickListener(
+            CrowdSourceConfirmListener(
+                this,
+                cardId,
+                cardTypeVariantId
+            )
+        )
     }
 
     private fun addCardInfoSectionTitles(cardType: CardType) {
@@ -257,15 +307,16 @@ class CardActivity : AppCompatActivity() {
         val birth = findViewById<TextView>(R.id.cardBirthDateValueTv)
 
         identifier.text = id.toString()
-        expiry.text = if (expiryDate != null) this.calendarToString(expiryDate) else getString(R.string.no_expiry_date)
-        birth.text = if (birthDate != null) this.calendarToString(birthDate) else getString(R.string.no_birth_date)
+        expiry.text =
+            if (expiryDate != null) this.calendarToString(expiryDate) else getString(R.string.no_expiry_date)
+        birth.text =
+            if (birthDate != null) this.calendarToString(birthDate) else getString(R.string.no_birth_date)
     }
 
     private fun addValiditySection(card: Card) {
         if (this.addValidityInfoSectionValues(card)) {
             this.addValidityInfoSectionTitles()
-        }
-        else {
+        } else {
             hideValidityInfoSectionTitles()
         }
     }
@@ -330,10 +381,13 @@ class CardActivity : AppCompatActivity() {
             when (i + 1) {
                 1 -> supportFragmentManager.beginTransaction()
                     .add(R.id.firstFareFragment, FareFragment.newInstance(id, fare)).commit()
+
                 2 -> supportFragmentManager.beginTransaction()
                     .add(R.id.secondFareFragment, FareFragment.newInstance(id, fare)).commit()
+
                 3 -> supportFragmentManager.beginTransaction()
                     .add(R.id.thirdFareFragment, FareFragment.newInstance(id, fare)).commit()
+
                 4 -> supportFragmentManager.beginTransaction()
                     .add(R.id.fourthFareFragment, FareFragment.newInstance(id, fare)).commit()
             }
@@ -353,8 +407,16 @@ class CardActivity : AppCompatActivity() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val notificationPermission = android.Manifest.permission.POST_NOTIFICATIONS
-            if (ContextCompat.checkSelfPermission(this, notificationPermission) != PackageManager.PERMISSION_GRANTED) {
-                if (sharedPreferences.getBoolean("reminder_to_enable_notifications_for_alerts", false)) return
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    notificationPermission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                if (sharedPreferences.getBoolean(
+                        "reminder_to_enable_notifications_for_alerts",
+                        false
+                    )
+                ) return
                 sharedPreferences.edit {
                     putBoolean("reminder_to_enable_notifications_for_alerts", true)
                 }
@@ -412,7 +474,7 @@ class CardActivity : AppCompatActivity() {
         if (this.addTripInfoSectionValues(card.id, card.getTrips(false))) {
             this.addTripInfoSectionTitles()
         } else {
-             this.hideTripInfoSectionTitles()
+            this.hideTripInfoSectionTitles()
         }
     }
 
@@ -443,8 +505,10 @@ class CardActivity : AppCompatActivity() {
             when (i + 1) {
                 1 -> supportFragmentManager.beginTransaction()
                     .add(R.id.firstTripFragment, TripFragment.newInstance(id, trip)).commit()
+
                 2 -> supportFragmentManager.beginTransaction()
                     .add(R.id.secondTripFragment, TripFragment.newInstance(id, trip)).commit()
+
                 3 -> supportFragmentManager.beginTransaction()
                     .add(R.id.thirdTripFragment, TripFragment.newInstance(id, trip)).commit()
             }
@@ -529,7 +593,7 @@ class CardActivity : AppCompatActivity() {
     private class SpinnerSelectListener(
         private val activity: CardActivity,
         private val options: ArrayList<String>
-    ): AdapterView.OnItemSelectedListener {
+    ) : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             if (position == 0) return
 
@@ -546,15 +610,17 @@ class CardActivity : AppCompatActivity() {
         private val cardTypeVariantId: UInt
     ) : View.OnClickListener {
         override fun onClick(view: View) {
-            val cardTypeCrowdSourceSpinner = activity.findViewById<Spinner>(R.id.cardTypeCrowdSourceSpinner)
+            val cardTypeCrowdSourceSpinner =
+                activity.findViewById<Spinner>(R.id.cardTypeCrowdSourceSpinner)
             val selectedCardType = cardTypeCrowdSourceSpinner.selectedItem as String
 
             try {
                 val db = Firebase.firestore
-                val document = db.collection(view.context.getString(R.string.proposition_collection))
-                    .document(CardType.Opus.name)
-                    .collection("type-propositions")
-                    .document(id.toString())
+                val document =
+                    db.collection(view.context.getString(R.string.proposition_collection))
+                        .document(CardType.Opus.name)
+                        .collection("type-propositions")
+                        .document(id.toString())
 
                 val data = hashMapOf(
                     "idOnCard" to cardTypeVariantId.toString(),
@@ -586,7 +652,7 @@ class CardActivity : AppCompatActivity() {
                 val dialog = builder.create()
                 dialog.show()
 
-            } catch(_: Error) {
+            } catch (_: Error) {
                 val builder = AlertDialog.Builder(view.context)
                 builder.setTitle(R.string.proposition_error_title)
                     .setMessage(R.string.proposition_error_message)

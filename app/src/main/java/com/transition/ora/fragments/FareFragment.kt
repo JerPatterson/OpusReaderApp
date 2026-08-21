@@ -89,7 +89,8 @@ class FareFragment : Fragment() {
     }
 
     private fun addFareInfoSection(fare: Fare) {
-        val fareProduct = CardContentConverter.getFareProductById(requireContext(), fare.operatorId, fare.typeId)
+        val fareProduct =
+            CardContentConverter.getFareProductById(requireContext(), fare.operatorId, fare.typeId)
         this.addFareInfoSectionTitles(fare, fareProduct)
         this.addFareInfoSectionValues(fare, fareProduct)
     }
@@ -106,7 +107,7 @@ class FareFragment : Fragment() {
             firstUseDateTitleTv?.text = getString(R.string.fare_first_use_date_title)
         }
 
-        if (fare.ticketCount != null)  {
+        if (fare.ticketCount != null) {
             val ticketCountTitleTv = this.mView?.findViewById<TextView>(R.id.ticketCountTv)
             ticketCountTitleTv?.text = getString(R.string.fare_ticket_count_title)
         }
@@ -142,11 +143,22 @@ class FareFragment : Fragment() {
         val ticketCountTv = this.mView?.findViewById<TextView>(R.id.ticketCountValueTv)
         ticketCountTv?.text = fare.ticketCount.toString()
 
-        val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
+        val fareValidityColorLayout =
+            this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
         if (fare.ticketCount == 0u) {
-            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.invalid_fare)))
+            fareValidityColorLayout?.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    (R.color.invalid_fare)
+                )
+            )
         } else {
-            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.valid_fare)))
+            fareValidityColorLayout?.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    (R.color.valid_fare)
+                )
+            )
         }
     }
 
@@ -154,11 +166,22 @@ class FareFragment : Fragment() {
         val validityFromDateTv = this.mView?.findViewById<TextView>(R.id.validityFromDateValueTv)
         validityFromDateTv?.text = calendarToStringInterval(fromDate, untilDate)
 
-        val fareValidityColorLayout = this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
+        val fareValidityColorLayout =
+            this.mView?.findViewById<LinearLayout>(R.id.fareValidityColorLayout)
         if (untilDate.time < Calendar.getInstance().time) {
-            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.invalid_fare)))
+            fareValidityColorLayout?.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    (R.color.invalid_fare)
+                )
+            )
         } else {
-            fareValidityColorLayout?.setBackgroundColor(ContextCompat.getColor(requireContext(), (R.color.valid_fare)))
+            fareValidityColorLayout?.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    (R.color.valid_fare)
+                )
+            )
         }
     }
 
@@ -202,7 +225,8 @@ class FareFragment : Fragment() {
         transferInfoTv?.text = getString(fareProduct.descriptionStringId)
         transferInfoTv?.visibility = View.GONE
 
-        val zonesIncludedImageView = this.mView?.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
+        val zonesIncludedImageView =
+            this.mView?.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
         if (fareProduct.includedZones != null) {
             zonesIncludedImageView?.setImageResource(
                 when (fareProduct.includedZones) {
@@ -222,17 +246,27 @@ class FareFragment : Fragment() {
         fareCrowdSourceIcon?.visibility = View.GONE
         val fareCrowdSourceTitle = this.mView?.findViewById<TextView>(R.id.fareCrowdSourceTitle)
         fareCrowdSourceTitle?.visibility = View.GONE
-        val fareCrowdSourceDescription = this.mView?.findViewById<TextView>(R.id.fareCrowdSourceDescription)
+        val fareCrowdSourceDescription =
+            this.mView?.findViewById<TextView>(R.id.fareCrowdSourceDescription)
         fareCrowdSourceDescription?.visibility = View.GONE
         val fareCrowdSourceSpinner = this.mView?.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
         fareCrowdSourceSpinner?.visibility = View.GONE
-        val fareCrowdSourceSwitch = this.mView?.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
+        val fareCrowdSourceSwitch =
+            this.mView?.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
         fareCrowdSourceSwitch?.visibility = View.GONE
-        val fareCrowdSourceConfirmButton = this.mView?.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
+        val fareCrowdSourceConfirmButton =
+            this.mView?.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
         fareCrowdSourceConfirmButton?.visibility = View.GONE
 
         val fareLayout = this.mView?.findViewById<ConstraintLayout>(R.id.fareLayout)
-        fareLayout?.setOnClickListener(this.id?.let { FareLayoutListener(it, fare, fareProduct, this.requireContext()) })
+        fareLayout?.setOnClickListener(this.id?.let {
+            FareLayoutListener(
+                it,
+                fare,
+                fareProduct,
+                this.requireContext()
+            )
+        })
     }
 
     private fun calendarToString(cal: Calendar): String {
@@ -269,7 +303,11 @@ class FareFragment : Fragment() {
     }
 
     private fun calendarToStringInterval(fromCal: Calendar, untilCal: Calendar): String {
-        return "${calendarToStringWithoutYear(fromCal)} ${getString(R.string.calendar_interval_linking_word)} ${calendarToString(untilCal)}"
+        return "${calendarToStringWithoutYear(fromCal)} ${getString(R.string.calendar_interval_linking_word)} ${
+            calendarToString(
+                untilCal
+            )
+        }"
     }
 
 
@@ -339,7 +377,8 @@ class FareFragment : Fragment() {
             transferInfoTitle?.visibility = View.VISIBLE
             transferInfoTv?.visibility = View.VISIBLE
 
-            val zonesIncludedImageView = view.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
+            val zonesIncludedImageView =
+                view.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
             zonesIncludedImageView?.visibility = View.VISIBLE
         }
 
@@ -347,10 +386,12 @@ class FareFragment : Fragment() {
             val fareCrowdSourceDivider = view.findViewById<View>(R.id.fareCrowdSourceDivider)
             val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
             val fareCrowdSourceTitle = view.findViewById<TextView>(R.id.fareCrowdSourceTitle)
-            val fareCrowdSourceDescription = view.findViewById<TextView>(R.id.fareCrowdSourceDescription)
+            val fareCrowdSourceDescription =
+                view.findViewById<TextView>(R.id.fareCrowdSourceDescription)
             val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
             val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
-            val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
+            val fareCrowdSourceConfirmButton =
+                view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
             fareCrowdSourceDivider?.visibility = View.VISIBLE
             fareCrowdSourceIcon?.visibility = View.VISIBLE
             fareCrowdSourceTitle?.visibility = View.VISIBLE
@@ -401,7 +442,8 @@ class FareFragment : Fragment() {
             transferInfoTitle?.visibility = View.GONE
             transferInfoTv?.visibility = View.GONE
 
-            val zonesIncludedImageView = view.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
+            val zonesIncludedImageView =
+                view.findViewById<ImageView>(R.id.fareIncludedZonesImageView)
             zonesIncludedImageView?.visibility = View.GONE
         }
 
@@ -409,10 +451,12 @@ class FareFragment : Fragment() {
             val fareCrowdSourceDivider = view.findViewById<View>(R.id.fareCrowdSourceDivider)
             val fareCrowdSourceIcon = view.findViewById<ImageView>(R.id.fareCrowdSourceImageView)
             val fareCrowdSourceTitle = view.findViewById<TextView>(R.id.fareCrowdSourceTitle)
-            val fareCrowdSourceDescription = view.findViewById<TextView>(R.id.fareCrowdSourceDescription)
+            val fareCrowdSourceDescription =
+                view.findViewById<TextView>(R.id.fareCrowdSourceDescription)
             val fareCrowdSourceSpinner = view.findViewById<Spinner>(R.id.fareCrowdSourceSpinner)
             val fareCrowdSourceSwitch = view.findViewById<SwitchCompat>(R.id.fareCrowdSourceSwitch)
-            val fareCrowdSourceConfirmButton = view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
+            val fareCrowdSourceConfirmButton =
+                view.findViewById<Button>(R.id.fareCrowdSourceConfirmButton)
             fareCrowdSourceDivider?.visibility = View.GONE
             fareCrowdSourceIcon?.visibility = View.GONE
             fareCrowdSourceTitle?.visibility = View.GONE
@@ -461,14 +505,20 @@ class FareFragment : Fragment() {
                         }
                     }
                 }
-            } catch (_: Error) { }
+            } catch (_: Error) {
+            }
         }
 
         private class SpinnerSelectListener(
             private val fragmentView: View,
             private val options: ArrayList<FareFirestore>
-        ): AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        ) : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 if (position == 0) return
 
                 val name = this.fragmentView.findViewById<TextView>(R.id.fareTypeValueTv)
@@ -499,7 +549,9 @@ class FareFragment : Fragment() {
                     val fareNameInputLayout = TextInputLayout(linearInputLayout.context)
                     val fareNameInput = TextInputEditText(linearInputLayout.context)
 
-                    val padding = view.context.resources.getDimension(R.dimen.fare_missing_input_padding).roundToInt()
+                    val padding =
+                        view.context.resources.getDimension(R.dimen.fare_missing_input_padding)
+                            .roundToInt()
                     fareNameInputLayout.setPadding(padding, 0, padding, 0)
                     fareNameInputLayout.hint = view.context.getString(R.string.fare_name_input_hint)
                     fareNameInputLayout.addView(fareNameInput)
@@ -535,12 +587,14 @@ class FareFragment : Fragment() {
 
                 try {
                     val db = Firebase.firestore
-                    val document = db.collection(view.context.getString(R.string.proposition_collection))
-                        .document(fare.operatorId.toString())
-                        .collection("fare-propositions")
-                        .document(id.toString() + "_" + fare.typeId)
+                    val document =
+                        db.collection(view.context.getString(R.string.proposition_collection))
+                            .document(fare.operatorId.toString())
+                            .collection("fare-propositions")
+                            .document(id.toString() + "_" + fare.typeId)
 
-                    val idOnCard = ((fareCrowdSourceSpinner.selectedItem as FareFirestore).idOnCard ?: listOf()) + fare.typeId.toString()
+                    val idOnCard = ((fareCrowdSourceSpinner.selectedItem as FareFirestore).idOnCard
+                        ?: listOf()) + fare.typeId.toString()
                     val data = hashMapOf(
                         "idOnCard" to idOnCard,
                         "name" to selectedFareName,

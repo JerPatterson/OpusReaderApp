@@ -13,7 +13,7 @@ import com.transition.ora.firestore.LineFirestore
 import androidx.core.graphics.toColorInt
 
 
-class LineCrowdSrcAdapter (
+class LineCrowdSrcAdapter(
     private val context: Context,
     private val lineList: List<LineFirestore>
 ) : BaseAdapter() {
@@ -33,7 +33,8 @@ class LineCrowdSrcAdapter (
         val holder: MyViewHolder
 
         if (convertView == null) {
-            val itemView = LayoutInflater.from(context).inflate(R.layout.crowd_src_line_row, parent, false)
+            val itemView =
+                LayoutInflater.from(context).inflate(R.layout.crowd_src_line_row, parent, false)
             holder = MyViewHolder(itemView)
             itemView.tag = holder
         } else {
@@ -61,7 +62,7 @@ class LineCrowdSrcAdapter (
         return holder.itemView
     }
 
-    private class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    private class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val lineIdTv: TextView = itemView.findViewById(R.id.lineIdTv)
         val lineNameTv: TextView = itemView.findViewById(R.id.lineNameTv)
     }

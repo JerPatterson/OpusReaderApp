@@ -31,9 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="CARTE OPUS" />
@@ -104,8 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
-            android:fillViewport="false"
             android:background="?android:attr/colorPrimaryDark"
+            android:fillViewport="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardImageView">
@@ -119,12 +119,12 @@
                     android:id="@+id/cardStatusButtonWrapper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="9dp"
-                    android:paddingBottom="9dp"
-                    android:paddingRight="6dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
+                    android:paddingTop="9dp"
+                    android:paddingRight="6dp"
+                    android:paddingBottom="9dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/cardImageView"
                     app:layout_constraintTop_toBottomOf="@+id/cardImageView">
@@ -163,11 +163,11 @@
                                 android:layout_marginEnd="6dp"
                                 android:contentDescription="@string/image_info"
                                 android:src="@drawable/info"
-                                app:tint="#122840"
                                 app:layout_constraintBottom_toBottomOf="@+id/cardStatusTv"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/cardStatusTv"
-                                app:layout_constraintTop_toTopOf="@+id/cardStatusTv" />
+                                app:layout_constraintTop_toTopOf="@+id/cardStatusTv"
+                                app:tint="#122840" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -179,12 +179,12 @@
                     android:id="@+id/cardTypeButtonWrapper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="9dp"
-                    android:paddingBottom="9dp"
-                    android:paddingRight="6dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
+                    android:paddingTop="9dp"
+                    android:paddingRight="6dp"
+                    android:paddingBottom="9dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/cardStatusButtonWrapper"
                     app:layout_constraintTop_toBottomOf="@+id/cardImageView">
@@ -224,11 +224,11 @@
                                 android:layout_marginEnd="6dp"
                                 android:contentDescription="@string/image_info"
                                 android:src="@drawable/info"
-                                app:tint="#122840"
                                 app:layout_constraintBottom_toBottomOf="@+id/cardTypeValueTv"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/cardTypeValueTv"
-                                app:layout_constraintTop_toTopOf="@+id/cardTypeValueTv" />
+                                app:layout_constraintTop_toTopOf="@+id/cardTypeValueTv"
+                                app:tint="#122840" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -240,11 +240,11 @@
                     android:id="@+id/cardLanguageButtonWrapper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="9dp"
-                    android:paddingBottom="9dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
+                    android:paddingTop="9dp"
+                    android:paddingBottom="9dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/cardTypeButtonWrapper"
                     app:layout_constraintTop_toBottomOf="@+id/cardImageView">
@@ -275,7 +275,7 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                tools:text="FR" />
+                                tools:text="Fr" />
 
 
                             <ImageView
@@ -284,11 +284,11 @@
                                 android:layout_marginEnd="6dp"
                                 android:contentDescription="@string/image_info"
                                 android:src="@drawable/info"
-                                app:tint="#122840"
                                 app:layout_constraintBottom_toBottomOf="@+id/cardLanguageValueTv"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/cardLanguageValueTv"
-                                app:layout_constraintTop_toTopOf="@+id/cardLanguageValueTv" />
+                                app:layout_constraintTop_toTopOf="@+id/cardLanguageValueTv"
+                                app:tint="#122840" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -301,10 +301,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+        android:id="@+id/cardContentScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="false"
+        android:layout_height="0dp"
         android:background="?android:attr/colorPrimaryDark"
+        android:clipToPadding="false"
+        android:fillViewport="false"
+        android:paddingBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardSectionLayout">
@@ -312,7 +316,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="12dp"
             android:orientation="vertical">
 
             <TextView
@@ -371,8 +374,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
                 android:background="?android:attr/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -446,8 +449,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
                 android:background="?android:attr/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -522,10 +525,10 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/info"
-                app:tint="#122840"
                 app:layout_constraintBottom_toBottomOf="@+id/cardStatusInfoTitleTv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cardStatusInfoTitleTv" />
+                app:layout_constraintTop_toTopOf="@+id/cardStatusInfoTitleTv"
+                app:tint="#122840" />
 
             <TextView
                 android:id="@+id/cardStatusInfoTitleTv"
@@ -570,10 +573,10 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/birthday"
-                app:tint="#122840"
                 app:layout_constraintBottom_toBottomOf="@+id/cardBirthDateTv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cardBirthDateTv" />
+                app:layout_constraintTop_toTopOf="@+id/cardBirthDateTv"
+                app:tint="#122840" />
 
             <TextView
                 android:id="@+id/cardBirthDateTv"
@@ -606,9 +609,9 @@
         android:id="@+id/cardTypeLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="-4dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="32dp"
         android:visibility="gone"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
@@ -631,10 +634,10 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/info"
-                app:tint="#122840"
                 app:layout_constraintBottom_toBottomOf="@+id/cardTypeInfoTitle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cardTypeInfoTitle" />
+                app:layout_constraintTop_toTopOf="@+id/cardTypeInfoTitle"
+                app:tint="#122840" />
 
             <TextView
                 android:id="@+id/cardTypeInfoTitle"
@@ -643,9 +646,9 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
+                android:text="@string/card_type_variant_info"
                 android:textColor="#122840"
                 android:textStyle="bold"
-                android:text="@string/card_type_variant_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardTypeInfoImageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -680,10 +683,10 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_edit"
                 android:src="@drawable/edit"
-                app:tint="#122840"
                 app:layout_constraintBottom_toBottomOf="@+id/cardTypeCrowdSourceTitle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cardTypeCrowdSourceTitle" />
+                app:layout_constraintTop_toTopOf="@+id/cardTypeCrowdSourceTitle"
+                app:tint="#122840" />
 
             <TextView
                 android:id="@+id/cardTypeCrowdSourceTitle"
@@ -691,9 +694,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
+                android:text="@string/edit_section_title"
                 android:textColor="#122840"
                 android:textStyle="bold"
-                android:text="@string/edit_section_title"
                 app:layout_constraintStart_toEndOf="@+id/cardTypeCrowdSourceImageView"
                 app:layout_constraintTop_toBottomOf="@+id/cardTypeCrowdSourceDivider"
                 tools:text="Suggest an edit" />
@@ -705,8 +708,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
-                android:textColor="#122840"
                 android:text="@string/edit_section_description"
+                android:textColor="#122840"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardTypeCrowdSourceTitle" />
@@ -728,10 +731,10 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="26dp"
                 android:layout_marginBottom="8dp"
-                android:textColor="#122840"
                 android:text="@string/card_type_proposition_all_toggle"
-                android:textOn="@string/card_type_proposition_all_toggle"
+                android:textColor="#122840"
                 android:textOff="@string/card_type_proposition_all_toggle"
+                android:textOn="@string/card_type_proposition_all_toggle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardTypeCrowdSourceSpinner" />
@@ -780,10 +783,10 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/image_info"
                 android:src="@drawable/info"
-                app:tint="#122840"
                 app:layout_constraintBottom_toBottomOf="@+id/cardLanguageInfoTitleTv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cardLanguageInfoTitleTv" />
+                app:layout_constraintTop_toTopOf="@+id/cardLanguageInfoTitleTv"
+                app:tint="#122840" />
 
             <TextView
                 android:id="@+id/cardLanguageInfoTitleTv"

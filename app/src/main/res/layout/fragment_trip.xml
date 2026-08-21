@@ -10,8 +10,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="0dp"
         app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tripLayout">
 
@@ -29,7 +29,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:background="#3F51B5" />
+                tools:background="#3f51b5" />
 
             <ImageView
                 android:id="@+id/modeImageView"
@@ -45,7 +45,7 @@
 
             <TextView
                 android:id="@+id/tripLineIdTv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:paddingLeft="4dp"
@@ -55,18 +55,18 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tripLineNameTv"
                 app:layout_constraintStart_toEndOf="@+id/modeImageView"
                 app:layout_constraintTop_toTopOf="@+id/tripLineNameTv"
-                tools:background="#3F51B5"
-                tools:textColor="#ffffff"
-                tools:text="73" />
+                tools:background="#3f51b5"
+                tools:text="73"
+                tools:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tripLineNameTv"
-                android:ellipsize="end"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="14dp"
-                android:layout_marginEnd="6dp"
+                android:layout_marginEnd="10dp"
+                android:ellipsize="end"
                 android:maxLines="2"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
@@ -78,55 +78,59 @@
 
             <TextView
                 android:id="@+id/tripBoardingDateTv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginEnd="10dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintEnd_toStartOf="@+id/operatorImageView"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripLineNameTv"
                 tools:text="Boarding on" />
 
             <TextView
                 android:id="@+id/tripBoardingDateValueTv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
                 android:textColor="?android:attr/textColorPrimary"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintEnd_toStartOf="@+id/operatorImageView"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripBoardingDateTv"
                 tools:text="August 21, 2023 at 17:51" />
 
             <TextView
                 android:id="@+id/tripValidityFromDateTv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintEnd_toStartOf="@+id/operatorImageView"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripBoardingDateValueTv"
                 tools:text="Starting on" />
 
             <TextView
                 android:id="@+id/tripValidityFromDateValueTv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
                 android:paddingBottom="14dp"
                 android:textColor="?android:attr/textColorPrimary"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintEnd_toStartOf="@+id/operatorImageView"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripValidityFromDateTv"
                 tools:text="August 21, 2023 at 16:57" />
@@ -136,12 +140,12 @@
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="75dp"
-                android:layout_marginEnd="6dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:contentDescription="@string/image_operator"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripLineNameTv"
-                tools:src="@drawable/stl"/>
+                tools:src="@drawable/stl" />
 
             <View
                 android:id="@+id/tripFareUsedDivider"
@@ -152,7 +156,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripColorLayout"
                 app:layout_constraintTop_toBottomOf="@+id/tripValidityFromDateValueTv"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <ImageView
                 android:id="@+id/tripFareUsedImageView"
@@ -165,7 +169,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tripFareUsedTitleTv"
                 app:layout_constraintStart_toStartOf="@+id/tripColorLayout"
                 app:layout_constraintTop_toTopOf="@+id/tripFareUsedTitleTv"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tripFareUsedTitleTv"
@@ -173,17 +177,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/fare_used_section_title"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
-                android:text="@string/fare_used_section_title"
                 android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripFareUsedImageView"
                 app:layout_constraintTop_toTopOf="@+id/tripFareUsedDivider"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tripFareUsedValueTv"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
@@ -194,7 +200,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripFareUsedTitleTv"
                 tools:text="Tous modes AB"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <View
                 android:id="@+id/tripFareZoneUsedDivider"
@@ -205,7 +211,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripColorLayout"
                 app:layout_constraintTop_toBottomOf="@+id/tripFareUsedValueTv"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <ImageView
                 android:id="@+id/tripFareZoneUsedImageView"
@@ -218,7 +224,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tripFareZoneUsedTitleTv"
                 app:layout_constraintStart_toStartOf="@+id/tripColorLayout"
                 app:layout_constraintTop_toTopOf="@+id/tripFareZoneUsedTitleTv"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tripFareZoneUsedTitleTv"
@@ -226,17 +232,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/fare_zone_used_section_title"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
-                android:text="@string/fare_zone_used_section_title"
                 android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripFareZoneUsedImageView"
                 app:layout_constraintTop_toBottomOf="@+id/tripFareUsedValueTv"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tripFareZoneUsedValueTv"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
@@ -247,7 +255,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripFareZoneUsedTitleTv"
                 tools:text="Zone B"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <View
                 android:id="@+id/tripDirectionUsedDivider"
@@ -258,7 +266,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripColorLayout"
                 app:layout_constraintTop_toBottomOf="@+id/tripFareZoneUsedValueTv"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <ImageView
                 android:id="@+id/tripDirectionUsedImageView"
@@ -271,7 +279,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tripDirectionUsedTitleTv"
                 app:layout_constraintStart_toStartOf="@+id/tripColorLayout"
                 app:layout_constraintTop_toTopOf="@+id/tripDirectionUsedTitleTv"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tripDirectionUsedTitleTv"
@@ -279,17 +287,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/fare_direction_used_section_title"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
-                android:text="@string/fare_direction_used_section_title"
                 android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripDirectionUsedImageView"
                 app:layout_constraintTop_toBottomOf="@+id/tripFareZoneUsedValueTv"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/tripDirectionUsedValueTv"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
@@ -300,7 +310,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripDirectionUsedTitleTv"
                 tools:text="Métro Cartier"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <View
                 android:id="@+id/tripCrowdSourceDivider"
@@ -328,15 +338,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/edit_section_title"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
-                android:text="@string/edit_section_title"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tripCrowdSourceImageView"
                 app:layout_constraintTop_toTopOf="@+id/tripCrowdSourceDivider" />
 
             <TextView
                 android:id="@+id/tripCrowdSourceDescription"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
@@ -348,7 +360,7 @@
 
             <Spinner
                 android:id="@+id/tripCrowdSourceSpinner"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
@@ -364,8 +376,8 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/lines_proposition_all_toggle"
-                android:textOn="@string/lines_proposition_all_toggle"
                 android:textOff="@string/lines_proposition_all_toggle"
+                android:textOn="@string/lines_proposition_all_toggle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripCrowdSourceSpinner" />

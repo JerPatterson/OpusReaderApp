@@ -27,10 +27,11 @@ class HistoryScanAdapter(
     private val historyList: ArrayList<Card>,
     private val holder: HistoryCardAdapter.MyViewHolder,
     private val historyCardAdapter: HistoryCardAdapter,
-): RecyclerView.Adapter<HistoryScanAdapter.MyViewHolder>() {
+) : RecyclerView.Adapter<HistoryScanAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.history_scan_row, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.history_scan_row, parent, false)
 
         return MyViewHolder(itemView)
     }
@@ -40,10 +41,22 @@ class HistoryScanAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.scanTimeValueTv.text = holder.calendarToStringWithTime(historyList[position].scanDate)
+        holder.scanTimeValueTv.text =
+            holder.calendarToStringWithTime(historyList[position].scanDate)
 
-        holder.itemView.setOnClickListener(HistoryScanItemListener(historyList[position], holder.itemView.context))
-        holder.deleteItemIcon.setOnClickListener(HistoryItemDeleteListener(historyList[position], holder, this))
+        holder.itemView.setOnClickListener(
+            HistoryScanItemListener(
+                historyList[position],
+                holder.itemView.context
+            )
+        )
+        holder.deleteItemIcon.setOnClickListener(
+            HistoryItemDeleteListener(
+                historyList[position],
+                holder,
+                this
+            )
+        )
     }
 
     private fun removeItem(position: Int) {
@@ -58,7 +71,7 @@ class HistoryScanAdapter(
     }
 
 
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val scanTimeValueTv: TextView = itemView.findViewById(R.id.historyScanTimeValueTv)
         val deleteItemIcon: ImageView = itemView.findViewById(R.id.deleteItemHistoryIcon)
 
@@ -80,7 +93,7 @@ class HistoryScanAdapter(
     ) : View.OnClickListener {
         override fun onClick(view: View) {
             val gson = Gson()
-            val intent = Intent(context , CardActivity::class.java)
+            val intent = Intent(context, CardActivity::class.java)
             intent.putExtra("card", gson.toJson(card))
             context.startActivity(intent)
         }
@@ -90,7 +103,7 @@ class HistoryScanAdapter(
         private val card: Card,
         private val holder: MyViewHolder,
         private val adapter: HistoryScanAdapter
-    ): View.OnClickListener {
+    ) : View.OnClickListener {
         override fun onClick(view: View) {
             val builder = AlertDialog.Builder(view.context)
             builder.setMessage(R.string.delete_confirmation_message)
