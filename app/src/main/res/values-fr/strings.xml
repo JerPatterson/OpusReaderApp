@@ -85,6 +85,7 @@
     <string name="calendar_without_year_pattern">dd MMMM</string>
     <string name="calendar_with_time_pattern">dd MMMM yyyy à HH:mm</string>
     <string name="calendar_with_time_without_year_pattern">dd MMMM à HH:mm</string>
+    <string name="calendar_with_time_without_year_pattern_line_break">dd MMMM\n à HH:mm</string>
     <string name="calendar_interval_linking_word">au</string>
 
     <string name="opus_card_name">CARTE OPUS</string>
@@ -166,6 +167,12 @@
         • Bus hors territoire: 1, 2 ou 10 passages, 24hrs, 3 jours\n
         • Soirée illimitée\n
         • Weekend illimité
+    </string>
+
+    <string name="language_card_info">Information sur la langue</string>
+    <string name="language_card_description">
+        Le texte affiché sur le valideur sera dans cette langue.
+        Il est possible de demander à la changer dans une billetterie.
     </string>
 
     <string name="validity_section_title">Validité du titre</string>

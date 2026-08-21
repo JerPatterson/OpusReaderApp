@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
     tools:context=".fragments.TripFragment">
 
     <androidx.cardview.widget.CardView
@@ -83,6 +84,8 @@
                 android:layout_marginTop="12dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@+id/operatorImageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripLineNameTv"
                 tools:text="Boarding on" />
@@ -94,6 +97,8 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="4dp"
                 android:textColor="?android:attr/textColorPrimary"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@+id/operatorImageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripBoardingDateTv"
                 tools:text="August 21, 2023 at 17:51" />
@@ -106,6 +111,8 @@
                 android:layout_marginTop="5dp"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@+id/operatorImageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripBoardingDateValueTv"
                 tools:text="Starting on" />
@@ -118,6 +125,8 @@
                 android:layout_marginTop="4dp"
                 android:paddingBottom="14dp"
                 android:textColor="?android:attr/textColorPrimary"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@+id/operatorImageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tripValidityFromDateTv"
                 tools:text="August 21, 2023 at 16:57" />

@@ -84,6 +84,7 @@
     <string name="calendar_without_year_pattern">MMMM dd</string>
     <string name="calendar_with_time_pattern">MMMM dd, yyyy \'at\' hh:mm a</string>
     <string name="calendar_with_time_without_year_pattern">MMMM dd \'at\' hh:mm a</string>
+    <string name="calendar_with_time_without_year_pattern_line_break">MMMM dd\n \'at\' hh:mm a</string>
     <string name="calendar_interval_linking_word">to</string>
 
     <string name="opus_card_name">OPUS CARD</string>
@@ -165,6 +166,12 @@
         • Bus out of territory: 1, 2, or 10 trips, 24hrs, 3 days\n
         • Unlimited evening\n
         • Unlimited weekend
+    </string>
+
+    <string name="language_card_info">Information about the language</string>
+    <string name="language_card_description">
+        The text shown on the fare reader will be in this language.
+        It is possible to ask for a change in a ticket office.
     </string>
 
     <string name="validity_section_title">Validity of the fare</string>

@@ -74,6 +74,7 @@ class CardActivity : AppCompatActivity() {
         this.addCardInfoSectionTitles(card.type)
         this.addCardRegisteredInfo(card.type, card.expiryDate, card.birthDate)
         this.addCardTypeVariantInfo(card.id, card.typeVariant)
+        this.addCardLanguageInfo(card.typeVariant)
         this.addCardInfoSectionValues(card.id, card.expiryDate, card.birthDate)
 
         val overlayLayout = findViewById<FrameLayout>(R.id.overlay)
@@ -189,6 +190,21 @@ class CardActivity : AppCompatActivity() {
         cardVariantTypeButton.setOnClickListener(CardTypeVariantListener(this))
 
         addOptionsToCrowdSourceSpinner()
+    }
+
+    private fun addCardLanguageInfo(cardTypeVariantId: UInt?) {
+        val cardLanguageButton = findViewById<CardView>(R.id.cardLanguageButtonLayout)
+        val cardLanguageShortName = CardContentConverter.getCardLanguageById(cardTypeVariantId)
+        if (cardLanguageShortName == null) {
+            cardLanguageButton.visibility = View.GONE
+            return
+        }
+
+        val cardLanguageInfoTitleTv = findViewById<TextView>(R.id.cardLanguageValueTv)
+        cardLanguageInfoTitleTv.text = cardLanguageShortName
+
+        cardLanguageButton.visibility = View.VISIBLE
+        cardLanguageButton.setOnClickListener(CardLanguageListener(this))
     }
 
     private fun addOptionsToCrowdSourceSpinner() {
@@ -467,12 +483,14 @@ class CardActivity : AppCompatActivity() {
     ) : View.OnClickListener {
         override fun onClick(view: View) {
             val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
-            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
             val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
+            val cardTypeLanguageLayout = activity.findViewById<CardView>(R.id.cardLanguageLayout)
 
             overlayLayout.visibility = View.VISIBLE
-            cardTypeVariantLayout.visibility = View.GONE
             registeredCardLayout.visibility = View.VISIBLE
+            cardTypeVariantLayout.visibility = View.GONE
+            cardTypeLanguageLayout.visibility = View.GONE
         }
     }
 
@@ -481,12 +499,30 @@ class CardActivity : AppCompatActivity() {
     ) : View.OnClickListener {
         override fun onClick(view: View) {
             val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
-            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
             val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
+            val cardTypeLanguageLayout = activity.findViewById<CardView>(R.id.cardLanguageLayout)
 
             overlayLayout.visibility = View.VISIBLE
-            cardTypeVariantLayout.visibility = View.VISIBLE
             registeredCardLayout.visibility = View.GONE
+            cardTypeVariantLayout.visibility = View.VISIBLE
+            cardTypeLanguageLayout.visibility = View.GONE
+        }
+    }
+
+    class CardLanguageListener(
+        private val activity: CardActivity,
+    ) : View.OnClickListener {
+        override fun onClick(view: View) {
+            val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
+            val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
+            val cardTypeLanguageLayout = activity.findViewById<CardView>(R.id.cardLanguageLayout)
+
+            overlayLayout.visibility = View.VISIBLE
+            registeredCardLayout.visibility = View.GONE
+            cardTypeVariantLayout.visibility = View.GONE
+            cardTypeLanguageLayout.visibility = View.VISIBLE
         }
     }
 
@@ -568,12 +604,14 @@ class CardActivity : AppCompatActivity() {
     ) : View.OnClickListener {
         override fun onClick(view: View) {
             val overlayLayout = activity.findViewById<FrameLayout>(R.id.overlay)
-            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
             val registeredCardLayout = activity.findViewById<CardView>(R.id.registeredLayout)
+            val cardTypeVariantLayout = activity.findViewById<CardView>(R.id.cardTypeLayout)
+            val cardTypeLanguageLayout = activity.findViewById<CardView>(R.id.cardLanguageLayout)
 
             overlayLayout.visibility = View.GONE
-            cardTypeVariantLayout.visibility = View.GONE
             registeredCardLayout.visibility = View.GONE
+            cardTypeVariantLayout.visibility = View.GONE
+            cardTypeLanguageLayout.visibility = View.GONE
         }
     }
 }

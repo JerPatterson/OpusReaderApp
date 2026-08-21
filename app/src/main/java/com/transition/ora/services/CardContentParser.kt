@@ -158,7 +158,7 @@ class CardContentParser {
     }
 
     private fun getOccasionalCardTypeVariant(data: Array<ByteArray>): UInt {
-        return 1024u + data[0][10].toUInt().and(0xE0u).shr(5)
+        return 0x400u + data[0][10].toUInt().and(0xE0u).shr(5)
     }
 
 
@@ -403,8 +403,12 @@ class CardContentParser {
     }
 
     private fun getOpusCardTypeVariant(data: ByteArray): UInt {
-        return (data[13].toUInt().and(0x03u).shl(8)
+        val cardTypeBits = (data[13].toUInt().and(0x1Fu).shl(8)
                 or data[14].toUInt().and(0xFFu))
+        val languageBits = (data[16].toUInt().and(0x03u).shl(4)
+                or data[17].toUInt().and(0xF0u).shr(4))
+
+        return languageBits.shl(16) or cardTypeBits
     }
 
 

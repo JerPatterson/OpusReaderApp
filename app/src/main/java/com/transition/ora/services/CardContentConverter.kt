@@ -21,8 +21,16 @@ import kotlinx.coroutines.runBlocking
 
 class CardContentConverter {
     companion object {
+        fun getCardLanguageById(id: UInt?): String? {
+            if (id == null) return null
+            return when (id.and(0x3F0000u).shr(16)) {
+                0u, 49u -> null
+                else -> "En"
+            }
+        }
+
         fun getCardTypeVariantById(context: Context, id: UInt): CardTypeVariant? {
-            return when (id) {
+            return when (id.and(0x7FFu)) {
                 392u -> CardTypeVariant.Standard
                 707u -> CardTypeVariant.Standard
                 767u -> CardTypeVariant.Standard
@@ -37,8 +45,8 @@ class CardContentConverter {
                 765u -> CardTypeVariant.BusOutOfTerritory
 
                 1024u -> CardTypeVariant.InvalidOccasional
-                in 0u..1023u -> lookForCardTypeVariantProposition(context, id.toString())
-                else -> CardTypeVariant.ValidOccasional
+                in 1025u..1031u -> CardTypeVariant.ValidOccasional
+                else -> lookForCardTypeVariantProposition(context, id.toString())
             }
         }
 

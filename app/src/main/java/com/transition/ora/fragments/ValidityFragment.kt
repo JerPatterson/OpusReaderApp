@@ -371,7 +371,7 @@ class ValidityFragment: Fragment() {
             .build()
 
         return SimpleDateFormat(
-            getString(R.string.calendar_with_time_without_year_pattern), locale
+            getString(R.string.calendar_with_time_without_year_pattern_line_break), locale
         ).format(cal.time)
     }
 
