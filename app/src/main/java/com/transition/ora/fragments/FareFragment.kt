@@ -33,7 +33,6 @@ import com.transition.ora.services.CardContentConverter
 import com.transition.ora.types.Fare
 import com.transition.ora.types.FareProduct
 import com.transition.ora.types.Operator
-import com.transition.ora.types.Trip
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -126,6 +125,7 @@ class FareFragment : Fragment() {
         addFareInfoSectionImages(operator)
         addFareDescriptionSection(fare, fareProduct)
 
+        if (fare.buyingId != 0u) addSaleProviderSection(fare)
         if (fare.reloadingDate != null) addReloadingDateSection(fare)
     }
 
@@ -165,6 +165,18 @@ class FareFragment : Fragment() {
     private fun addFareInfoSectionImages(operator: Operator) {
         val operatorImageView = this.mView?.findViewById<ImageView>(R.id.operatorImageView)
         operatorImageView?.setImageResource(operator.imageId)
+    }
+
+    private fun addSaleProviderSection(fare: Fare) {
+        val buyingTypeDivider = this.mView?.findViewById<View>(R.id.saleProviderDivider)
+        buyingTypeDivider?.visibility = View.GONE
+        val buyingTypeIcon = this.mView?.findViewById<View>(R.id.saleProviderImageView)
+        buyingTypeIcon?.visibility = View.GONE
+        val buyingTypeTitle = this.mView?.findViewById<TextView>(R.id.saleProviderTitleTv)
+        buyingTypeTitle?.visibility = View.GONE
+        val buyingTypeValue = this.mView?.findViewById<TextView>(R.id.saleProviderValueTv)
+        buyingTypeValue?.text = CardContentConverter.getSaleProviderById(fare.buyingId)
+        buyingTypeValue?.visibility = View.GONE
     }
 
     private fun addReloadingDateSection(fare: Fare) {
@@ -273,10 +285,12 @@ class FareFragment : Fragment() {
 
         override fun onClick(view: View) {
             if (isShowing) {
+                if (hasSaleProvider(fare)) hideSaleProviderSection(view)
                 if (hasReloadingDate(fare)) hideReloadingDateSection(view)
                 hideFareTransferInfoSection(view)
                 hideFareCrowdSourceSection(view)
             } else {
+                if (hasSaleProvider(fare)) showSaleProviderSection(view)
                 if (hasReloadingDate(fare)) showReloadingDateSection(view)
                 showFareTransferInfoSection(view)
                 showFareCrowdSourceSection(view)
@@ -285,8 +299,23 @@ class FareFragment : Fragment() {
             isShowing = !isShowing
         }
 
+        private fun hasSaleProvider(fare: Fare): Boolean {
+            return fare.buyingId != 0u
+        }
+
         private fun hasReloadingDate(fare: Fare): Boolean {
             return fare.reloadingDate != null
+        }
+
+        private fun showSaleProviderSection(view: View) {
+            val buyingTypeDivider = view.findViewById<View>(R.id.saleProviderDivider)
+            val buyingTypeIcon = view.findViewById<View>(R.id.saleProviderImageView)
+            val buyingTypeTitle = view.findViewById<TextView>(R.id.saleProviderTitleTv)
+            val buyingTypeValue = view.findViewById<TextView>(R.id.saleProviderValueTv)
+            buyingTypeDivider?.visibility = View.VISIBLE
+            buyingTypeIcon?.visibility = View.VISIBLE
+            buyingTypeTitle?.visibility = View.VISIBLE
+            buyingTypeValue?.visibility = View.VISIBLE
         }
 
         private fun showReloadingDateSection(view: View) {
@@ -338,6 +367,17 @@ class FareFragment : Fragment() {
             }
 
             enableCrowdSourceConfirmButton(view)
+        }
+
+        private fun hideSaleProviderSection(view: View) {
+            val buyingTypeDivider = view.findViewById<View>(R.id.saleProviderDivider)
+            val buyingTypeIcon = view.findViewById<View>(R.id.saleProviderImageView)
+            val buyingTypeTitle = view.findViewById<TextView>(R.id.saleProviderTitleTv)
+            val buyingTypeValue = view.findViewById<TextView>(R.id.saleProviderValueTv)
+            buyingTypeDivider?.visibility = View.GONE
+            buyingTypeIcon?.visibility = View.GONE
+            buyingTypeTitle?.visibility = View.GONE
+            buyingTypeValue?.visibility = View.GONE
         }
 
         private fun hideReloadingDateSection(view: View) {

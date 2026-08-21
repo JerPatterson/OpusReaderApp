@@ -229,6 +229,7 @@
     <string name="trip_boarding_date_title">Boarding on</string>
     <string name="trip_validity_from_date_title">Valid starting on</string>
 
+    <string name="fare_sale_provider_section_title">Sale provider of the fare</string>
     <string name="fare_reload_section_title">Date of fare reload</string>
     <string name="fare_info_section_title">Information about the fare</string>
     <string name="unknown_fare_info">
@@ -343,31 +344,31 @@
     </string>
     <string name="stl_csswl_monthly_info">
         This fare is valid for the whole month.
-        It is accepted on all bus lines of the STL (Société de Transport de Laval).
+        It is accepted on all bus lines of the STL (Société de transport de Laval).
         \n\nIt is reserved for students of Laval Junior Academy and Laval Senior Academy schools.
         It is available for all months of the current school year (September 1st to June 30th).
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="stl_xtra_info">
         This fare is valid from July 1st until August 31st.
-        It is accepted on all bus lines of the STL (Société de Transport de Laval).
+        It is accepted on all bus lines of the STL (Société de transport de Laval).
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="stl_eng_qual_one_ticket_info">
         This fare consists of a single ticket.
-        This ticket is accepted on the buses of the STL (Société de Transport de Laval).
+        This ticket is accepted on the buses of the STL (Société de transport de Laval).
         \n\nIt is provided for free with the Quality Commitment program of the agency.
         \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
     </string>
     <string name="stl_eng_qual_multiple_tickets_info">
         This fare consists of a multiple tickets.
-        Each ticket is accepted on the buses of the STL (Société de Transport de Laval).
+        Each ticket is accepted on the buses of the STL (Société de transport de Laval).
         \n\nThey are provided for free with the Quality Commitment program of the agency.
         \n\nOnce used, the transfer is possible with different bus routes during 120 minutes.
     </string>
     <string name="stl_horizon65plus_info">
         This fare is offered free of charge to seniors (65 years and older) of Laval.
-        It is accepted on all bus lines of the STL (Société de Transport de Laval).
+        It is accepted on all bus lines of the STL (Société de transport de Laval).
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
     <string name="transit_rtl_rem_monthly_info">

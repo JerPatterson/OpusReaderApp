@@ -230,6 +230,7 @@
     <string name="trip_boarding_date_title">Embarquement le</string>
     <string name="trip_validity_from_date_title">Valide à partir du</string>
 
+    <string name="fare_sale_provider_section_title">Prestataire de vente du titre</string>
     <string name="fare_reload_section_title">Date de recharge du titre</string>
     <string name="fare_info_section_title">Information à propos du titre</string>
     <string name="unknown_fare_info">
@@ -343,31 +344,31 @@
     </string>
     <string name="stl_csswl_monthly_info">
         Ce titre est valide pour la durée du mois.
-        Il permet d\'utiliser toutes les lignes de bus de la STL (Société de Transport de Laval).
+        Il permet d\'utiliser toutes les lignes de bus de la STL (Société de transport de Laval).
         \n\nIl est réservé aux élèves des écoles Laval Junior Academy et Laval Senior Academy.
         Il est disponible pour tous les mois de l\'année scolaire en cours (1er septembre au 30 juin).
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="stl_xtra_info">
         Ce titre est valide du 1er juillet au 31 août.
-        Il permet d\'utiliser toutes les lignes de bus de la STL (Société de Transport de Laval).
+        Il permet d\'utiliser toutes les lignes de bus de la STL (Société de transport de Laval).
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="stl_eng_qual_one_ticket_info">
         Ce titre contient un seul billet.
-        Ce billet est accepté dans les bus de la STL (Société de Transport de Laval).
+        Ce billet est accepté dans les bus de la STL (Société de transport de Laval).
         \n\nIl est fourni gratuitement dans le cadre du programme Engagement Qualité de l\'agence.
         \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelles autres lignes pendant 120 minutes.
     </string>
     <string name="stl_eng_qual_multiple_tickets_info">
         Ce titre contient plusieurs billets.
-        Chaque billet est accepté dans les bus de la STL (Société de Transport de Laval).
+        Chaque billet est accepté dans les bus de la STL (Société de transport de Laval).
         \n\nIls sont fournis gratuitement dans le cadre du programme Engagement Qualité de l\'agence.
         \n\nUne fois utilisée, la correspondance est valide sur n\'importe quelles autres lignes pendant 120 minutes.
     </string>
     <string name="stl_horizon65plus_info">
         Ce titre est offert gratuitement aux aînés (65 ans et plus) de Laval.
-        Il permet d\'utiliser toutes les lignes de bus de la STL (Société de Transport de Laval).
+        Il permet d\'utiliser toutes les lignes de bus de la STL (Société de transport de Laval).
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
     <string name="transit_rtl_rem_monthly_info">

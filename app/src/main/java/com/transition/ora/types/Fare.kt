@@ -8,6 +8,7 @@ import java.util.Calendar
 class Fare(
     var typeId: UInt,
     var operatorId: UInt,
+    var buyingId: UInt,
     var buyingDate: Calendar,
     var ticketCount: UInt?,
     var validityFromDate: Calendar? = null,

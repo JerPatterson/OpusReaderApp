@@ -81,6 +81,35 @@ class CardContentConverter {
             return OperatorRegistry.get(id) ?: Operator("Unknown (id: $id)", "#696969", R.drawable.unknown)
         }
 
+        fun getSaleProviderById(id: UInt): String {
+            return when (id) {
+                31u -> "ARTM (Autorité régionale de transport métropolitain)"
+                32u -> "STM (Société de transport de Montréal)"
+                33u -> "RTL (Réseau de transport de Longueuil)"
+                34u -> "exo (Réseau de transport métropolitain)"
+                35u -> "RTC (Réseau de transport de la Capitale)"
+                36u -> "STL (Société de transport de Laval)"
+                37u -> "exo Sorel-Varennes"
+                38u -> "exo Sainte-Julie"
+                39u -> "exo Vallée du Richelieu"
+                40u -> "exo Chambly-Richelieu-Carignan"
+                41u -> "exo Le Richelain"
+                42u -> "exo Roussillon"
+                43u -> "exo Haut-Saint-Laurent"
+                44u -> "exo Sud-Ouest"
+                45u -> "exo Laurentides"
+                46u -> "STLévis (Société de transport de Lévis)"
+                47u -> "exo La Presqu'Île"
+                48u -> "exo Terrebonne-Mascouche"
+                49u -> "exo L'Assomption"
+                50u -> "MRC de Joliette"
+                51u -> "STQ (Société des traversiers du Québec)"
+                52u -> "REM (Réseau express métropolitain)"
+
+                else -> "? ($id)"
+            }
+        }
+
         fun getLineById(context: Context, zoneId: UInt, operatorId: UInt, lineId: UInt): Line {
             return when (operatorId) {
                 2u -> this.getSTMLineById(context, zoneId, operatorId, lineId)
