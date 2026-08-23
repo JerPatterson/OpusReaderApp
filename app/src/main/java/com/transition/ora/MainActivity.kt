@@ -14,7 +14,7 @@ import com.transition.ora.database.CardDatabase
 import com.transition.ora.services.CardContentReader
 
 
-private const val FLAGS = NfcAdapter.FLAG_READER_NFC_A or NfcAdapter.FLAG_READER_NFC_B
+private const val FLAGS = NfcAdapter.FLAG_READER_NFC_A or NfcAdapter.FLAG_READER_NFC_B or NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK
 
 class MainActivity : AppCompatActivity() {
     private lateinit var reader: CardContentReader

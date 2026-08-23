@@ -18,6 +18,11 @@
     <string name="enable_alert_title">Alarms and Reminders Disabled</string>
     <string name="enable_alert_message">Permission to use the device\'s alarms and reminders is needed to receive precise alerts about fares validity.</string>
 
+    <string name="dismiss_snackbar_message">Dismiss</string>
+    <string name="error_unsupported_card">Unsupported card. Please use a valid OPUS or Occasional card.</string>
+    <string name="error_read_failed">Card read failed. Please hold it steady and try again.</string>
+    <string name="error_parse_failed">Error reading card data.</string>
+
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="accept">OK</string>

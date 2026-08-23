@@ -19,6 +19,11 @@
     <string name="enable_alert_title">Alarmes et rappels désactivés</string>
     <string name="enable_alert_message">L\'autorisation d\'utiliser les alarmes et rappels de l\'appareil est requise pour recevoir des alertes précises concernant la validité des titres.</string>
 
+    <string name="dismiss_snackbar_message">Fermer</string>
+    <string name="error_unsupported_card">Carte non prise en charge. Veuillez utiliser une carte OPUS ou occasionnelle valide.</string>
+    <string name="error_read_failed">Échec de la lecture. Veuillez maintenir la carte immobile et réessayer.</string>
+    <string name="error_parse_failed">Erreur lors de la lecture des données de la carte.</string>
+
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="accept">OK</string>

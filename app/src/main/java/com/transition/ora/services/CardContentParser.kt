@@ -41,6 +41,9 @@ class CardContentParser {
     fun parseOpusCard(card: IsoDep): Card {
         card.connect()
 
+        val selectCalypsoAid = hexStringToByteArray("00A4040008315449432E49434100")
+        card.transceive(selectCalypsoAid)
+
         val id = this.getOpusCardId(card)
         card.transceive(this.hexStringToByteArray("94A408000420002001"))
         val data = card.transceive(this.hexStringToByteArray("94B2010400"))
