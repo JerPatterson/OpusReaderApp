@@ -12,7 +12,6 @@
         android:id="@+id/validitySeekBar"
         android:layout_width="0dp"
         android:layout_height="16dp"
-        android:layout_marginTop="44dp"
         android:layout_marginEnd="72dp"
         android:clickable="false"
         android:paddingStart="16dp"
@@ -23,17 +22,19 @@
         android:thumbTint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/validityStartingValueTv" />
 
     <View
         android:id="@+id/validityStartLabelLine"
         android:layout_width="2dp"
-        android:layout_height="42dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginBottom="-8dp"
         android:background="@color/accent"
         app:layout_constraintBottom_toTopOf="@+id/validitySeekBar"
-        app:layout_constraintStart_toStartOf="@+id/validitySeekBar" />
+        app:layout_constraintStart_toStartOf="@+id/validitySeekBar"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/validityStartingTitleTv"
@@ -69,13 +70,13 @@
     <View
         android:id="@+id/validityEndingLabelLine"
         android:layout_width="2dp"
-        android:layout_height="42dp"
+        android:layout_height="0dp"
         android:layout_marginStart="-17dp"
         android:layout_marginBottom="-8dp"
         android:background="@color/accent"
         app:layout_constraintBottom_toTopOf="@+id/validitySeekBar"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/validitySeekBar" />
+        app:layout_constraintStart_toEndOf="@+id/validitySeekBar"
+        app:layout_constraintTop_toTopOf="@+id/validityStartLabelLine" />
 
     <TextView
         android:id="@+id/validityEndingTitleTv"
