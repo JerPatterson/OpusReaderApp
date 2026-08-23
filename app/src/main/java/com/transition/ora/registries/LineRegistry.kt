@@ -9,7 +9,7 @@ object LineRegistry {
         1u to { Line("1", "Ligne Verte", "#00a553", "#ffffff", R.drawable.metro) },
         2u to { Line("2", "Ligne Orange", "#f2832c", "#ffffff", R.drawable.metro) },
         224u to { Line("2", "Ligne Orange (zone B)", "#f2832c", "#ffffff", R.drawable.metro) },
-        3u to { zone -> Line("4", if (zone == "B") "Ligne Jaune (zone B)" else "Ligne Jaune", "#ffd200", "#000000", R.drawable.metro) },
+        3u to { zone -> Line("4", if (zone.startsWith('B')) "Ligne Jaune (zone B)" else "Ligne Jaune", "#ffd200", "#000000", R.drawable.metro) },
         4u to { Line("5", "Ligne Bleue", "#0078d0", "#ffffff", R.drawable.metro) },
         5u to { Line("10", "De Lorimier", "#009ee0", "#ffffff", R.drawable.bus) },
         6u to { Line("11", "Parc-du-Mont-Royal", "#009ee0", "#ffffff", R.drawable.bus) },
@@ -239,7 +239,7 @@ object LineRegistry {
         167u to { Line("430", "Express Pointe-aux-Trembles", "#009ee0", "#ffffff", R.drawable.bus) },
         243u to { Line("432", "Express Lacordaire", "#009ee0", "#ffffff", R.drawable.bus) },
         244u to { Line("435", "Express Du Parc / Côte-des-Neiges", "#009ee0", "#ffffff", R.drawable.bus) },
-        245u to { zone -> Line("439", if (zone == "B") "Express Pie-IX (zone B)" else "Express Pie-IX", "#781b7d", "#ffffff", R.drawable.bus) },
+        245u to { zone -> Line("439", if (zone.startsWith('B')) "Express Pie-IX (zone B)" else "Express Pie-IX", "#781b7d", "#ffffff", R.drawable.bus) },
         246u to { Line("440", "Express Charleroi", "#009ee0", "#ffffff", R.drawable.bus) },
         247u to { Line("444", "Express Cégep Marie-Victorin", "#009ee0", "#ffffff", R.drawable.bus) },
         282u to { Line("445", "Express Papineau", "#009ee0", "#ffffff", R.drawable.bus) },
@@ -352,11 +352,11 @@ object LineRegistry {
 
     private val lineMapForExo: Map<UInt, (zone: String) -> Line> = mapOf(
         1u to { Line("6", "Deux-Montagnes", "#f79e91", "#ffffff", R.drawable.train) },
-        2u to { zone -> Line("11", if (zone != "" || zone.startsWith("?")) "Vaudreuil-Hudson (zone $zone)" else "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train) },
-        3u to { zone -> Line("12", if (zone != "" || zone.startsWith("?")) "Saint-Jérôme (zone $zone)" else "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train) },
-        4u to { zone -> Line("13", if (zone != "" || zone.startsWith("?")) "Mont-Saint-Hilaire (zone $zone)" else "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train) },
-        5u to { zone -> Line("14", if (zone != "" || zone.startsWith("?")) "Candiac (zone $zone)" else "Candiac", "#5ab6b2", "#000000", R.drawable.train) },
-        7u to { zone -> Line("15", if (zone != "" || zone.startsWith("?")) "Mascouche (zone $zone)" else "Mascouche", "#ca5898", "#000000", R.drawable.train) }
+        2u to { zone -> Line("11", if (zone != "" || zone.startsWith("?")) "Vaudreuil-Hudson (zone ${zone.first()})" else "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train) },
+        3u to { zone -> Line("12", if (zone != "" || zone.startsWith("?")) "Saint-Jérôme (zone ${zone.first()})" else "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train) },
+        4u to { zone -> Line("13", if (zone != "" || zone.startsWith("?")) "Mont-Saint-Hilaire (zone ${zone.first()})" else "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train) },
+        5u to { zone -> Line("14", if (zone != "" || zone.startsWith("?")) "Candiac (zone ${zone.first()})" else "Candiac", "#5ab6b2", "#000000", R.drawable.train) },
+        7u to { zone -> Line("15", if (zone != "" || zone.startsWith("?")) "Mascouche (zone ${zone.first()})" else "Mascouche", "#ca5898", "#000000", R.drawable.train) }
     )
 
     private val lineMapForRTC: Map<UInt, Line> = mapOf(
@@ -1008,10 +1008,10 @@ object LineRegistry {
     )
 
     private val lineMapForREM: Map<UInt, (zone: String) -> Line> = mapOf(
-        2u to { zone -> Line("A1", if (zone != "" && zone != "A") "Brossard (zone $zone)" else "Brossard", "#72a300", "#ffffff", R.drawable.lightmetro) },
+        2u to { zone -> Line("A1", if (zone != "" && !zone.startsWith("A")) "Brossard (zone ${zone.first()})" else "Brossard", "#72a300", "#ffffff", R.drawable.lightmetro) },
         3u to { _ -> Line("A2", "YUL-Aéroport-Montréal-Trudeau", "#72a300", "#ffffff", R.drawable.lightmetro) },
         4u to { _ -> Line("A3", "Anse-à-l'Orme", "#72a300", "#ffffff", R.drawable.lightmetro) },
-        5u to { zone -> Line("A4", if (zone != "" && zone != "A") "Deux-Montagnes (zone $zone)" else "Deux-Montagnes", "#72a300", "#ffffff", R.drawable.lightmetro) }
+        5u to { zone -> Line("A4", if (zone != "" && !zone.startsWith("A")) "Deux-Montagnes (zone ${zone.first()})" else "Deux-Montagnes", "#72a300", "#ffffff", R.drawable.lightmetro) }
     )
 
 

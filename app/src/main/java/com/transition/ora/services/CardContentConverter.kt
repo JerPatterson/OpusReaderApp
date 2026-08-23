@@ -24,8 +24,9 @@ class CardContentConverter {
         fun getCardLanguageById(id: UInt?): String? {
             if (id == null) return null
             return when (id.and(0x3F0000u).shr(16)) {
-                0u, 49u -> null
-                else -> "En"
+                0u -> null
+                49u -> "Français"
+                else -> "English"
             }
         }
 

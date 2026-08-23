@@ -14,6 +14,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_half_card_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
         <ImageView
             android:id="@+id/cardActivityBack"
             android:layout_width="40dp"
@@ -44,11 +51,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginTop="10dp"
-            android:paddingTop="5dp"
+            android:layout_marginEnd="32dp"
             android:text="@string/card_id_title"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardImageView"
             app:layout_constraintTop_toBottomOf="@+id/cardSectionTitleTv" />
 
@@ -58,8 +66,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="32dp"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/cardIdTv"
             app:layout_constraintTop_toBottomOf="@+id/cardIdTv"
             tools:text="0123456789" />
@@ -69,10 +79,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
+            android:layout_marginEnd="32dp"
             android:text="@string/card_expiration_date_title"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/cardIdTv"
             app:layout_constraintTop_toBottomOf="@+id/cardIdValueTv" />
 
@@ -81,33 +93,37 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:paddingBottom="5dp"
+            android:layout_marginEnd="32dp"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/cardIdValueTv"
             app:layout_constraintTop_toBottomOf="@+id/cardExpiryDateTv"
             tools:text="October 31st 2023" />
 
         <ImageView
             android:id="@+id/cardImageView"
-            android:layout_width="168dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="32dp"
+            android:layout_marginEnd="7dp"
             android:contentDescription="@string/image_card_scanned"
+            android:scaleType="fitEnd"
+            android:adjustViewBounds="true"
             android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/cardExpiryDateValueTv"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_half_card_section"
             app:layout_constraintTop_toTopOf="@+id/cardIdTv"
             tools:src="@drawable/opus" />
 
         <HorizontalScrollView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
+            android:layout_marginRight="32dp"
             android:background="?android:attr/colorPrimaryDark"
             android:fillViewport="false"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardImageView"
             app:layout_constraintTop_toBottomOf="@id/cardImageView">
 
             <LinearLayout
@@ -124,10 +140,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:paddingTop="9dp"
                     android:paddingRight="6dp"
-                    android:paddingBottom="9dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/cardImageView"
-                    app:layout_constraintTop_toBottomOf="@+id/cardImageView">
+                    android:paddingBottom="9dp">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardStatusButtonLayout"
@@ -184,10 +197,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:paddingTop="9dp"
                     android:paddingRight="6dp"
-                    android:paddingBottom="9dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/cardStatusButtonWrapper"
-                    app:layout_constraintTop_toBottomOf="@+id/cardImageView">
+                    android:paddingBottom="9dp">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardTypeButtonLayout"
@@ -244,10 +254,7 @@
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
                     android:paddingTop="9dp"
-                    android:paddingBottom="9dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/cardTypeButtonWrapper"
-                    app:layout_constraintTop_toBottomOf="@+id/cardImageView">
+                    android:paddingBottom="9dp">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardLanguageButtonLayout"
@@ -275,7 +282,7 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                tools:text="Fr" />
+                                tools:text="Français" />
 
 
                             <ImageView

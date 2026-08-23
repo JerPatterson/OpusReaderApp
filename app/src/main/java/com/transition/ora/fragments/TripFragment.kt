@@ -297,7 +297,7 @@ class TripFragment : Fragment() {
             return when (trip.operatorId) {
                 2u -> {
                     when (trip.lineId) {
-                        3u -> getZoneById(trip.zoneId) == "B"
+                        3u -> getZoneById(trip.zoneId).startsWith('B')
                         in 1u..4u, 224u -> false
                         else -> trip.directionId != 0u
                     }

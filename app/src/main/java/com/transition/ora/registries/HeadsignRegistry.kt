@@ -11,10 +11,6 @@ object HeadsignRegistry {
         6u to "Ouest",
     )
 
-    private val headsignMapForRTL: Map<UInt, Map<UInt, String>> = mapOf(
-        5u to mapOf(1u to "Sect. M St-Hubert", 2u to "Terminus Panama"),
-    )
-
     private val headsignMapForSTL: Map<UInt, Map<UInt, String>> = mapOf(
         1u to mapOf(1u to "Métro Montmorency", 2u to "Métro Henri-Bourassa"),
         2u to mapOf(1u to "Pont-Viau", 2u to "Métro Cartier"),
@@ -286,7 +282,7 @@ object HeadsignRegistry {
     )
 
     fun getHeadsignForSTM(directionId: UInt): String? = directionMapForSTM[directionId]
-    fun getHeadsignForRTL(lineId: UInt, directionId: UInt): String? = headsignMapForRTL[lineId]?.get(directionId)
+    fun getHeadsignForRTL(lineId: UInt, directionId: UInt): String? = null
     fun getHeadsignForRTC(lineId: UInt, directionId: UInt): String? = null
     fun getHeadsignForSTL(lineId: UInt, directionId: UInt): String? = headsignMapForSTL[lineId]?.get(directionId)
     fun getHeadsignForExoSorelVarennes(lineId: UInt, directionId: UInt): String? = headsignMapForExoSorelVarennes[lineId]?.get(directionId)
