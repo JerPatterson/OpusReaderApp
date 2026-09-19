@@ -25,25 +25,27 @@ class CardContentConverter {
             if (id == null) return null
             return when (id.and(0x3F0000u).shr(16)) {
                 0u -> null
+                25u -> "English"
+                28u -> "Français"
                 49u -> "Français"
                 else -> "English"
             }
         }
 
         fun getCardTypeVariantById(context: Context, id: UInt): CardTypeVariant? {
-            return when (id.and(0x7FFu)) {
+            return when (id.and(0x3FFu)) {
+                196u -> CardTypeVariant.Standard
                 392u -> CardTypeVariant.Standard
-                707u -> CardTypeVariant.Standard
-                767u -> CardTypeVariant.Standard
                 705u -> CardTypeVariant.StandardReduced
-                757u -> CardTypeVariant.StandardSubscription
-
+                707u -> CardTypeVariant.Standard
                 727u -> CardTypeVariant.AllModesAB
+                732u -> CardTypeVariant.AllModesABCReduced
+                757u -> CardTypeVariant.StandardSubscription
                 762u -> CardTypeVariant.AllModesAB
-
                 763u -> CardTypeVariant.AllModesABC
                 764u -> CardTypeVariant.AllModesABCD
                 765u -> CardTypeVariant.BusOutOfTerritory
+                767u -> CardTypeVariant.Standard
 
                 1024u -> CardTypeVariant.InvalidOccasional
                 in 1025u..1031u -> CardTypeVariant.ValidOccasional
