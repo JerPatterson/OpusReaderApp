@@ -303,7 +303,7 @@ class TripFragment : Fragment() {
                     }
                 }
 
-                4u, 22u -> false
+                3u, 4u, 22u -> false
                 else -> trip.directionId != 0u
             }
         }
@@ -551,8 +551,8 @@ class TripFragment : Fragment() {
                         .setPositiveButton(view.context.getString(R.string.submit)) { _, _ ->
                             this.completeCrowdSourceEvent(
                                 view,
-                                lineIdInput.text.toString(),
-                                lineNameInput.text.toString()
+                                lineIdInput.text!!.toString(),
+                                lineNameInput.text!!.toString()
                             )
                         }
                         .setNegativeButton(view.context.getString(R.string.cancel)) { _, _ -> }

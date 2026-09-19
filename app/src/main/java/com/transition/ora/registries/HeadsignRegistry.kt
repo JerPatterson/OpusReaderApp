@@ -48,7 +48,7 @@ object HeadsignRegistry {
         143u to mapOf(1u to "Métro Cartier", 2u to "Métro Montmorency"),
         144u to mapOf(1u to "Fabreville", 2u to "Métro Cartier"),
         145u to mapOf(1u to "Saint-François", 2u to "Métro Cartier"),
-        146u to mapOf(1u to "Métro Montmorency", 2u to "Station Sainte-Dorothée"),
+        146u to mapOf(1u to "Station Sainte-Dorothée", 2u to "Métro Montmorency"),
         147u to mapOf(1u to "Métro Côte-Vertu", 2u to "Sainte-Dorothée"),
         148u to mapOf(1u to "Sainte-Rose", 2u to "Métro Côte-Vertu"),
         308u to mapOf(1u to "Station Sainte-Dorothée", 2u to "Fabreville"),
