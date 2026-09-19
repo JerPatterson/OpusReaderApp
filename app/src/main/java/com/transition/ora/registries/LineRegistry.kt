@@ -280,6 +280,7 @@ object LineRegistry {
         296u to { Line("806", "Navette", "#009ee0", "#ffffff", R.drawable.bus) },
         291u to { Line("810", "Navette", "#009ee0", "#ffffff", R.drawable.bus) },
         207u to { Line("811", "Navette Services santé", "#009ee0", "#ffffff", R.drawable.bus) },
+        209u to { Line("815", "REM Des Sources / YUL Aéroport", "#034638", "#ffffff", R.drawable.bus) },
         300u to { Line("822", "Navette Longue-Pointe", "#009ee0", "#ffffff", R.drawable.bus) },
         336u to { Line("872", "Île-des-Soeurs", "#009ee0", "#ffffff", R.drawable.bus) },
         281u to { Line("968", "Trainbus Roxboro / Côte-Vertu", "#009ee0", "#ffffff", R.drawable.bus) }
@@ -329,6 +330,7 @@ object LineRegistry {
         53u to Line("73", "Joliette / de Lyon", "#ce0037", "#ffe9d1", R.drawable.bus),
         54u to Line("74", "St-Laurent / Secteur Bellerive", "#ce0037", "#ffe9d1", R.drawable.bus),
         55u to Line("75", "Quinn / Brébeuf", "#ce0037", "#ffe9d1", R.drawable.bus),
+        338u to Line("76", "Roland-Therrien / Roberval", "#ce0037", "#ffe9d1", R.drawable.bus),
         56u to Line("77", "Taschereau / Coteau-Rouge / Cégep É.-Montpetit", "#ce0037", "#ffe9d1", R.drawable.bus),
         57u to Line("80", "De Montarville / Carrefour de la Rive-Sud", "#ce0037", "#ffe9d1", R.drawable.bus),
         58u to Line("81", "du Fort-St-Louis / Marie-Victorin", "#ce0037", "#ffe9d1", R.drawable.bus),
@@ -340,6 +342,7 @@ object LineRegistry {
         64u to Line("87", "Marie-Victorin / du Fort St-Louis / TCV", "#ce0037", "#ffe9d1", R.drawable.bus),
         65u to Line("88", "Ch. Chambly / Mountainview", "#ce0037", "#ffe9d1", R.drawable.bus),
         147u to Line("99", "Promenades St-Bruno / Saint-Bruno-de-Montarville", "#ce0037", "#ffe9d1", R.drawable.bus),
+        331u to Line("114", "Station Brossard / de Rome / St-Laurent", "#ce0037", "#ffe9d1", R.drawable.bus),
         70u to Line("123", "Jacques-Cartier / Parcs industriels", "#ce0037", "#ffe9d1", R.drawable.bus),
         71u to Line("132", "DIX30 / Parc de la Cité / Mountainview", "#ce0037", "#ffe9d1", R.drawable.bus),
         270u to Line("160", "Milan / Gaétan-Boucher / Centre-ville St-Bruno", "#ce0037", "#ffe9d1", R.drawable.bus),
@@ -347,7 +350,8 @@ object LineRegistry {
         340u to Line("417", "Express Roland-Therrien / Roberval", "#ce0037", "#ffe9d1", R.drawable.bus),
         263u to Line("720", "Navette REM - Interstation Rive-Sud", "#72a300", "#ffffff", R.drawable.bus),
         264u to Line("721", "Navette REM - Brossard / Du Quartier / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus),
-        265u to Line("722", "Navette REM - Panama / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus)
+        265u to Line("722", "Navette REM - Panama / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus),
+        339u to Line("901", "Ligne Métropolitaine Taschereau", "#00ab84", "#ffffff", R.drawable.bus)
     )
 
     private val lineMapForExo: Map<UInt, (zone: String) -> Line> = mapOf(
