@@ -676,8 +676,8 @@ object FareProductRegistry {
         FareProductId.OPUS_6TICKETS_SDO_SE_CRTL_RED.id to FareProduct(R.string.crtl_sdo_se_six_tickets, R.string.fare_unavailable_info),
         FareProductId.OPUS_6TICKETS_SDO_SR_CRTL.id to FareProduct(R.string.crtl_sdo_sr_six_tickets, R.string.fare_unavailable_info),
         FareProductId.OPUS_6TICKETS_SDO_SR_CRTL_RED.id to FareProduct(R.string.crtl_sdo_sr_six_tickets, R.string.fare_unavailable_info),
-        FareProductId.OPUS_6TICKETS_SDO_MTL_CRTL.id to FareProduct(R.string.crtl_sdo_mtl_six_tickets, R.string.sdo_mtl_six_tickets_info),
-        FareProductId.OPUS_6TICKETS_SDO_MTL_CRTL_RED.id to FareProduct(R.string.crtl_sdo_mtl_six_tickets, R.string.sdo_mtl_six_tickets_info),
+        FareProductId.OPUS_6TICKETS_SDO_MTL_CRTL.id to FareProduct(R.string.crtl_sdo_mtl_six_tickets, R.string.fare_unavailable_info),
+        FareProductId.OPUS_6TICKETS_SDO_MTL_CRTL_RED.id to FareProduct(R.string.crtl_sdo_mtl_six_tickets, R.string.fare_unavailable_info),
         FareProductId.OPUS_6TICKETS_ND_CH_CRTL.id to FareProduct(R.string.crtl_nd_ch_six_tickets, R.string.fare_unavailable_info),
         FareProductId.OPUS_6TICKETS_ND_CH_CRTL_RED.id to FareProduct(R.string.crtl_nd_ch_six_tickets, R.string.fare_unavailable_info),
         FareProductId.OPUS_6TICKETS_ND_RW_CRTL.id to FareProduct(R.string.crtl_nd_rw_six_tickets, R.string.fare_unavailable_info),
@@ -1137,6 +1137,8 @@ object FareProductRegistry {
         FareProductId.OPUS_MONTHLY_ALL_MODES_ABCD_REM_DISCOUNT.id to FareProduct(R.string.all_modes_ABCD_monthly, R.string.all_modes_ABCD_monthly_info_rem_discount, FareZones.ARTM_ABCD),
         FareProductId.OPUS_MONTHLY_ALL_MODES_ABCD_REM_DISCOUNT_RED.id to FareProduct(R.string.all_modes_ABCD_monthly, R.string.all_modes_ABCD_monthly_info_rem_discount, FareZones.ARTM_ABCD),
 
+        FareProductId.OPUS_9DAYS_ALL_MODES_ABC_SPECIAL_UCI_CHAMPIONSHIPS.id to FareProduct(R.string.special_uci_championships, R.string.special_uci_championships_info),
+
         FareProductId.OPUS_EMPLOYEE_OPT.id to FareProduct(R.string.employee_fare, R.string.fare_unavailable_info),
         FareProductId.OPUS_EMPLOYEE_AMT.id to FareProduct(R.string.employee_fare, R.string.fare_unavailable_info),
         FareProductId.OPUS_EMPLOYEE_CIT.id to FareProduct(R.string.employee_fare, R.string.fare_unavailable_info),
@@ -1408,6 +1410,8 @@ object FareProductRegistry {
         FareProductId.OCC_10TICKETS_ALL_MODES_ABC_SPECIAL_ILE_AUX_TOURTES.id to FareProduct(R.string.all_modes_ABC_ten_tickets, R.string.all_modes_ABC_ten_tickets_info_iat, FareZones.ARTM_ABC),
 
         FareProductId.OCC_10TICKETS_TRANSIT_RTL_REM.id to FareProduct(R.string.transit_rtl_rem_ten_tickets, R.string.transit_rtl_rem_ten_tickets_info),
+
+        FareProductId.OCC_9DAYS_ALL_MODES_ABC_SPECIAL_UCI_CHAMPIONSHIPS.id to FareProduct(R.string.special_uci_championships, R.string.special_uci_championships_info),
     )
 
 

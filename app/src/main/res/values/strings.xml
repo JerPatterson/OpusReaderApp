@@ -773,11 +773,10 @@
         It is accepted on the metro, the bus, the train and the REM in zones A, B, C and D.
         \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
-
-    <string name="sdo_mtl_six_tickets_info">
-        This fare consists of six distinct tickets.
-        Each ticket is accepted on bus route \'125 - Saint-Donat / Chertsey / Montréal\' from the MRC Joliette.
-        \n\nIt can be used for a trip between Saint-Donat and Montréal (or the other way around) on this route.
+    <string name="special_uci_championships_info">
+        To facilitate travel during the 2026 UCI Road World Championships in Montreal.
+        It is accepted on the metro, the bus, the train and the REM in zones A, B and C.
+        \n\nThis fare is unlimited. There are no transfer constraints.
     </string>
 
     <string name="employee_fare">Employee</string>
@@ -1187,7 +1186,7 @@
     <string name="rtc_ten_tickets_festibus">10 trips, FestiBUS"</string>
     <string name="rtc_ten_tickets_off_peak">10 trips off-peak, RTC"</string>
     <string name="rtc_twenty_tickets">20 trips, RTC"</string>
-    <string name="rtc_twenty_tickets_metropolitain">"20 Metropolitain trips"</string>
+    <string name="rtc_twenty_tickets_metropolitain">"20 trips, Metropolitain"</string>
     <string name="rtc_24_hours">24H, RTC"</string>
     <string name="rtc_five_days">5 days, RTC"</string>
     <string name="rtc_festibus_unlimited">Ulimited FestiBUS"</string>
@@ -1291,4 +1290,6 @@
     <string name="all_modes_ABCD_yearly">Subscription, All Modes ABCD</string>
     <string name="evening_unlimited">Unlimited Evening</string>
     <string name="weekend_unlimited">Unlimited Weekend</string>
+
+    <string name="special_uci_championships">Cycling Championships</string>
 </resources>

@@ -773,12 +773,12 @@
         Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B, C et D.
         \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
-
-    <string name="sdo_mtl_six_tickets_info">
-        Ce titre contient six billets distincts.
-        Chaque billet est accepté dans la \'125 - Saint-Donat / Chertsey / Montréal\' de la MRC Joliette.
-        \n\nIl peut être utilisé pour un déplacement entre Saint-Donat et Montréal (ou inversement) sur ce parcours.
+    <string name="special_uci_championships_info">
+        Pour faciliter les déplacements pendant les Championnats du Monde Route UCI Montréal 2026.
+        Il est accepté dans le métro, le bus, le train et le REM dans les zones A, B et C.
+        \n\nCe titre est illimité. Il n\'y a aucunes contraintes de correspondances.
     </string>
+
 
     <string name="employee_fare">Employé</string>
     <string name="unknown_fare">"Inconnu"</string>
@@ -1187,7 +1187,7 @@
     <string name="rtc_ten_tickets_festibus">10 passages, FestiBUS"</string>
     <string name="rtc_ten_tickets_off_peak">10 passages hors pointe, RTC"</string>
     <string name="rtc_twenty_tickets">20 passages, RTC"</string>
-    <string name="rtc_twenty_tickets_metropolitain">"20 passages métropolitain"</string>
+    <string name="rtc_twenty_tickets_metropolitain">"20 passages, Métropolitain"</string>
     <string name="rtc_24_hours">24hrs, RTC"</string>
     <string name="rtc_five_days">5 jours, RTC"</string>
     <string name="rtc_festibus_unlimited">FestiBUS illimité"</string>
@@ -1291,4 +1291,6 @@
     <string name="all_modes_ABCD_yearly">Abonnement, Tous modes ABCD</string>
     <string name="evening_unlimited">Soirée illimitée</string>
     <string name="weekend_unlimited">Weekend illimité</string>
+
+    <string name="special_uci_championships">Mondiaux cyclisme</string>
 </resources>

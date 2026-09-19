@@ -77,6 +77,20 @@ class Fare(
                 date
             }
 
+            FareProductId.OCC_9DAYS_ALL_MODES_ABC_SPECIAL_UCI_CHAMPIONSHIPS.id,
+            FareProductId.OPUS_9DAYS_ALL_MODES_ABC_SPECIAL_UCI_CHAMPIONSHIPS.id -> {
+                date.set(
+                    2026,
+                    9,
+                    19,
+                    0,
+                    0
+                )
+
+                date
+            }
+
+
             FareProductId.OCC_EVENING_UNLIMITED.id,
             FareProductId.OPUS_EVENING_UNLIMITED.id -> {
                 date.set(
@@ -786,6 +800,20 @@ class Fare(
                     validityFromDate.get(Calendar.YEAR),
                     validityFromDate.get(Calendar.MONTH),
                     validityFromDate.get(Calendar.DATE) + daysToAdd,
+                    23,
+                    59
+                )
+
+                date
+            }
+
+
+            FareProductId.OCC_9DAYS_ALL_MODES_ABC_SPECIAL_UCI_CHAMPIONSHIPS.id,
+            FareProductId.OPUS_9DAYS_ALL_MODES_ABC_SPECIAL_UCI_CHAMPIONSHIPS.id -> {
+                date.set(
+                    2026,
+                    9,
+                    27,
                     23,
                     59
                 )
