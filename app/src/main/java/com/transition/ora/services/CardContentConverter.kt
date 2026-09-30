@@ -33,7 +33,8 @@ class CardContentConverter {
         }
 
         fun getCardTypeVariantById(context: Context, id: UInt): CardTypeVariant? {
-            return when (id.and(0x3FFu)) {
+            val mask = if (id.and(0x3F0000u) == 0u) 0x7FFu else 0x3FFu
+            return when (id.and(mask)) {
                 196u -> CardTypeVariant.Standard
                 392u -> CardTypeVariant.Standard
                 705u -> CardTypeVariant.StandardReduced

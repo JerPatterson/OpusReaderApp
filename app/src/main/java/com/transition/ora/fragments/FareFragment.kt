@@ -565,7 +565,7 @@ class FareFragment : Fragment() {
                         .setPositiveButton(view.context.getString(R.string.submit)) { _, _ ->
                             this.completeCrowdSourceEvent(
                                 view,
-                                fareNameInput.text.toString()
+                                fareNameInput.text!!.toString()
                             )
                         }
                         .setNegativeButton(view.context.getString(R.string.cancel)) { _, _ -> }
