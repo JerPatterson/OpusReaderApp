@@ -100,7 +100,7 @@ class Fare(
             FareProductId.OPUS_9DAYS_ALL_MODES_ABC_SPECIAL_UCI_CHAMPIONSHIPS.id -> {
                 date.set(
                     2026,
-                    9,
+                    Calendar.SEPTEMBER,
                     19,
                     0,
                     0
