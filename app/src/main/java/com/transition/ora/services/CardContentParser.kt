@@ -618,7 +618,7 @@ class CardContentParser {
             val useDate = this.getOpusCardTripUseDate(data)
 
             if (fareIndex.toInt() in 1..4) {
-                val fareTypeId = getOpusCardFareTypeId(faresData[i - 1])
+                val fareTypeId = getOpusCardFareTypeId(faresData[fareIndex.toInt() - 1])
 
                 trips.add(
                     Trip(
