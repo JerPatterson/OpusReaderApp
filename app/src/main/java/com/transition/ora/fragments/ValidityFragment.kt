@@ -19,7 +19,6 @@ import com.transition.ora.R
 import com.transition.ora.database.CardDatabase
 import com.transition.ora.database.entities.CardPropositionEntity
 import com.transition.ora.enums.CardType
-import com.transition.ora.enums.FareProductId
 import com.transition.ora.services.CardContentConverter
 import com.transition.ora.types.Card
 import com.transition.ora.types.Fare

@@ -349,10 +349,12 @@ object LineRegistry {
         66u to Line("90", "Stationnement incitatif Chevrier / Terminus Centre-ville", "#ce0037", "#ffe9d1", R.drawable.bus),
         144u to Line("91", "Clairevue / de Boucherville / Gare Saint-Bruno", "#ce0037", "#ffe9d1", R.drawable.bus),
         145u to Line("92", "Yvonne-Duckett / Montarville / Gare Saint-Bruno", "#ce0037", "#ffe9d1", R.drawable.bus),
+        199u to Line("93", "Gare St-Bruno / Montarville / Y.-Duckett", "#ce0037", "#ffe9d1", R.drawable.bus),
         146u to Line("98", "Parc industriel St-Bruno / Parent", "#ce0037", "#ffe9d1", R.drawable.bus),
         147u to Line("99", "Promenades St-Bruno / Saint-Bruno-de-Montarville", "#ce0037", "#ffe9d1", R.drawable.bus),
         67u to Line("106", "Victoria / Sect. B Vieux-Longueuil", "#ce0037", "#ffe9d1", R.drawable.bus),
         331u to Line("114", "Station Brossard / de Rome / St-Laurent", "#ce0037", "#ffe9d1", R.drawable.bus),
+        332u to Line("128", "Zone aéroportuaire / Parc industriel St-Bruno", "#ce0037", "#ffe9d1", R.drawable.bus),
         68u to Line("115", "Churchill / Terminus Panama / Terminus Centre-ville", "#ce0037", "#ffe9d1", R.drawable.bus),
         69u to Line("117", "Roland-Therrien / Roberval", "#ce0037", "#ffe9d1", R.drawable.bus),
         285u to Line("120", "Fernand-Lafontaine / Stationnement de Mortagne", "#ce0037", "#ffe9d1", R.drawable.bus),
@@ -368,10 +370,12 @@ object LineRegistry {
         76u to Line("177", "Taschereau / Sainte-Foy / Terminus Panama", "#ce0037", "#ffe9d1", R.drawable.bus),
         77u to Line("185", "Ampère / Gay-Lussac", "#ce0037", "#ffe9d1", R.drawable.bus),
         296u to Line("192", "Terminus Brossard / Montarville / Yvonne-Duckett", "#ce0037", "#ffe9d1", R.drawable.bus),
+        305u to Line("199", "Seigneurial / Grand Boulevard", "#ce0037", "#ffe9d1", R.drawable.bus),
         186u to Line("214", "Station Brossard / de Rome / St-Laurent", "#ce0037", "#ffe9d1", R.drawable.bus),
         338u to Line("410", "Express Roland-Therrien / Belcourt", "#ce0037", "#ffe9d1", R.drawable.bus),
         340u to Line("417", "Express Roland-Therrien / Roberval", "#ce0037", "#ffe9d1", R.drawable.bus),
         234u to Line("428", "Zone aéroportuaire / Aéroport MET", "#ce0037", "#ffe9d1", R.drawable.bus),
+        200u to Line("442", "Cousineau / Pacific", "#ce0037", "#ffe9d1", R.drawable.bus),
         263u to Line("720", "Navette REM - Interstation Rive-Sud", "#72a300", "#ffffff", R.drawable.bus),
         264u to Line("721", "Navette REM - Brossard / Du Quartier / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus),
         265u to Line("722", "Navette REM - Panama / Gare Centrale", "#72a300", "#ffffff", R.drawable.bus),
@@ -380,11 +384,11 @@ object LineRegistry {
 
     private val lineMapForExo: Map<UInt, (zone: String) -> Line> = mapOf(
         1u to { Line("6", "Deux-Montagnes", "#f79e91", "#ffffff", R.drawable.train) },
-        2u to { zone -> Line("11", if (zone != "" || zone.startsWith("?")) "Vaudreuil-Hudson (zone ${zone.first()})" else "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train) },
-        3u to { zone -> Line("12", if (zone != "" || zone.startsWith("?")) "Saint-Jérôme (zone ${zone.first()})" else "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train) },
-        4u to { zone -> Line("13", if (zone != "" || zone.startsWith("?")) "Mont-Saint-Hilaire (zone ${zone.first()})" else "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train) },
-        5u to { zone -> Line("14", if (zone != "" || zone.startsWith("?")) "Candiac (zone ${zone.first()})" else "Candiac", "#5ab6b2", "#000000", R.drawable.train) },
-        7u to { zone -> Line("15", if (zone != "" || zone.startsWith("?")) "Mascouche (zone ${zone.first()})" else "Mascouche", "#ca5898", "#000000", R.drawable.train) }
+        2u to { zone -> Line("11", if (zone != "" && !zone.startsWith("?")) "Vaudreuil-Hudson (zone ${zone.first()})" else "Vaudreuil-Hudson", "#f16179", "#000000", R.drawable.train) },
+        3u to { zone -> Line("12", if (zone != "" && !zone.startsWith("?")) "Saint-Jérôme (zone ${zone.first()})" else "Saint-Jérôme", "#fed16d", "#000000", R.drawable.train) },
+        4u to { zone -> Line("13", if (zone != "" && !zone.startsWith("?")) "Mont-Saint-Hilaire (zone ${zone.first()})" else "Mont-Saint-Hilaire", "#999ac6", "#000000", R.drawable.train) },
+        5u to { zone -> Line("14", if (zone != "" && !zone.startsWith("?")) "Candiac (zone ${zone.first()})" else "Candiac", "#5ab6b2", "#000000", R.drawable.train) },
+        7u to { zone -> Line("15", if (zone != "" && !zone.startsWith("?")) "Mascouche (zone ${zone.first()})" else "Mascouche", "#ca5898", "#000000", R.drawable.train) }
     )
 
     private val lineMapForRTC: Map<UInt, Line> = mapOf(
